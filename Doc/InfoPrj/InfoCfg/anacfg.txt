@@ -297,3 +297,80 @@ typedef enum
     ADC_CONFIG_TRIGGERED_INTERRUPT,  // Mode déclenché avec interruptions pour signaler la fin de conversion
     ADC_CONFIG_TRIGGERED_DMA         // Mode déclenché avec DMA pour gestion des résultats
 } t_eADCConfigMode;
+
+
+Meilleur config = SCAN with DMA 
+
+void ADC1_Init(void)
+{
+    ADC_ChannelConfTypeDef sConfig = {0};
+
+    // Configuration de l'ADC
+    hadc1.Instance = ADC1;
+    hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;  // Diviseur de fréquence
+    hadc1.Init.Resolution = ADC_RESOLUTION_12B;            // Résolution 12 bits
+    hadc1.Init.ScanConvMode = ENABLE;                      // Activer le mode scan
+    hadc1.Init.ContinuousConvMode = DISABLE;               // Mode continu désactivé (mode scan)
+    hadc1.Init.DiscontinuousConvMode = DISABLE;
+    hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+    hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    hadc1.Init.NbrOfConversion = NUM_CHANNELS;             // Nombre de conversions (canaux)
+    hadc1.Init.DMAContinuousRequests = ENABLE;             // Activer les requêtes DMA
+    hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
+
+    if (HAL_ADC_Init(&hadc1) != HAL_OK)
+    {
+        // Gérer l'erreur
+    }
+
+    // Configuration de chaque canal
+    for (int i = 0; i < NUM_CHANNELS; i++)
+    {
+        sConfig.Channel = channels[i];          // Sélection du canal
+        sConfig.Rank = i + 1;                   // Ordre de conversion (1 à NUM_CHANNELS)
+        sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+        if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+        {
+            // Gérer l'erreur
+        }
+    }
+}
+
+void DMA_Init(void)
+{
+    __HAL_RCC_DMA2_CLK_ENABLE(); // Activer l'horloge du DMA
+
+    hdma_adc1.Instance = DMA2_Stream0;
+    hdma_adc1.Init.Channel = DMA_CHANNEL_0;              // Sélectionner le canal DMA
+    hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;     // Direction : périphérique vers mémoire
+    hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;         // Incrémentation du périphérique désactivée
+    hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;             // Incrémentation de la mémoire activée
+    hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD; // Alignement des données périphériques
+    hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;    // Alignement des données mémoire
+    hdma_adc1.Init.Mode = DMA_CIRCULAR;                  // Mode circulaire (pour des acquisitions continues)
+    hdma_adc1.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_adc1.Init.FIFOMode = DMA_FIFOMODE_DISABLE;      // Désactiver le FIFO
+
+    if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
+    {
+        // Gérer l'erreur
+    }
+
+    // Lier le DMA à l'ADC
+    __HAL_LINKDMA(&hadc1, DMA_Handle, hdma_adc1);
+}
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+    if (hadc->Instance == ADC1)
+    {
+        // Traiter les résultats ADC ici
+    }
+}
+Fonction de Callback du DMA (optionnelle) : Implémentez une fonction de rappel (callback) pour traiter les données lorsque le transfert DMA est terminé.
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc)
+{
+    if (hadc->Instance == ADC1)
+    {
+        // Traiter la moitié des résultats ADC si nécessaire
+    }
+}

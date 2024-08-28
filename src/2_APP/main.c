@@ -157,6 +157,12 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){ return FMKCPU_R
 void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterruptMngmt(htim);}
 void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterruptMngmt(htim);}
 
+
+void FMKMAC_SetDmaCfg(void * peripheralHandle_pv)
+{
+    // configuration du DMA et de la channel 
+    __HAL_LINKDMA(peripheralHandle_pv, DMA_Handle, (DMA_HandleTypeDef)hdma);
+}   
 //************************************************************************************
 // End of File
 //************************************************************************************
@@ -164,7 +170,7 @@ void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterr
 /**
  *
  *	@brief
- *	@details
+ *	@details    
  *
  *
  *	@params[in] 
