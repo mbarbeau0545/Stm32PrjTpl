@@ -1,0 +1,299 @@
+Pour configurer une broche (pin) en mode analogique sur un microcontrôleur STM32, vous devez principalement configurer la broche via la bibliothèque HAL (Hardware Abstraction Layer) de STMicroelectronics. Le mode analogique est utilisé généralement pour les entrées du convertisseur analogique-numérique (ADC).
+
+Voici les étapes générales pour configurer une broche en mode analogique sur un STM32 :
+
+1. Activer l'horloge du port GPIO
+Avant de configurer une broche en mode analogique, il est nécessaire d'activer l'horloge pour le port GPIO correspondant.
+
+c
+Copier le code
+__HAL_RCC_GPIOA_CLK_ENABLE();  // Par exemple, pour le port GPIOA
+2. Configurer la broche en mode analogique
+Vous devez configurer la broche spécifique en mode analogique. Cela se fait via la structure GPIO_InitTypeDef.
+
+c
+Copier le code
+GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+// Choisissez la broche que vous voulez configurer, par exemple PA0
+GPIO_InitStruct.Pin = GPIO_PIN_0;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;  // Mode analogique
+GPIO_InitStruct.Pull = GPIO_NOPULL;       // Pas de résistance de pull-up ou pull-down
+
+// Initialisation de la broche
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+3. Initialisation de l'ADC (si nécessaire)
+Si vous utilisez la broche pour une entrée ADC, vous devez aussi initialiser le périphérique ADC. Voici un exemple simple d'initialisation de l'ADC.
+
+c
+Copier le code
+ADC_HandleTypeDef hadc1;
+
+hadc1.Instance = ADC1;
+hadc1.Init.Resolution = ADC_RESOLUTION_12B;            // Résolution de 12 bits
+hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;            // Alignement des données à droite
+hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;            // Mode scan désactivé
+hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;         // Conversion unique
+hadc1.Init.ContinuousConvMode = DISABLE;               // Mode continu désactivé
+hadc1.Init.DiscontinuousConvMode = DISABLE;            // Mode discontinu désactivé
+hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;      // Démarrage par logiciel
+hadc1.Init.NbrOfConversion = 1;                        // Une seule conversion
+HAL_ADC_Init(&hadc1);
+
+// Configurer le canal ADC
+ADC_ChannelConfTypeDef sConfig = {0};
+sConfig.Channel = ADC_CHANNEL_0;    // Par exemple, ADC sur PA0
+sConfig.Rank = 1;                   // Rang dans la séquence de conversion
+sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;  // Temps d'échantillonnage
+HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+4. Démarrer la conversion ADC
+Une fois que tout est configuré, vous pouvez démarrer une conversion ADC et lire la valeur convertie :
+
+c
+Copier le code
+HAL_ADC_Start(&hadc1);  // Démarre la conversion ADC
+
+// Attendez la fin de la conversion
+if (HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
+{
+    uint32_t adc_value = HAL_ADC_GetValue(&hadc1);  // Lire la valeur convertie
+}
+ou par interruption ///////////////////////////////////////////////////////////////////////////////////////////
+void Start_ADC_Conversion(void)
+{
+    HAL_ADC_Start_IT(&hadc1);  // Démarrer la conversion en mode interruption
+} Gérer l'interruption
+Lorsque l'ADC termine la conversion, une interruption est générée et la fonction HAL_ADC_ConvCpltCallback() est appelée. Vous pouvez redéfinir cette fonction pour gérer l'événement de fin de conversion.
+
+c
+Copier le code
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    if (hadc->Instance == ADC1)
+    {
+        // Lire la valeur convertie
+        uint32_t adc_value = HAL_ADC_GetValue(hadc);
+
+        // Traiter la valeur, par exemple stocker, afficher ou utiliser dans une régulation
+    }
+}
+4. Routine d'interruption
+Le STM32 génère une interruption lorsque la conversion est terminée. Le gestionnaire d'interruption pour l'ADC est habituellement ADC1_2_IRQHandler pour les séries comme STM32F1 et certaines autres.
+
+Assurez-vous que cette fonction est correctement définie :
+
+c
+Copier le code
+void ADC1_2_IRQHandler(void)
+{
+    HAL_ADC_IRQHandler(&hadc1);  // Appelle la routine de gestion des interruptions de la HAL
+}
+5. Configurer le NVIC
+Lors de l'initialisation de l'ADC, assurez-vous que l'interruption est activée au niveau du NVIC :
+
+c
+Copier le code
+HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);  // Priorité de l'interruption
+HAL_NVIC_EnableIRQ(ADC1_2_IRQn);          // Activer l'interruption ADC
+
+
+
+
+
+// Arrêter l'ADC
+HAL_ADC_Stop(&hadc1);
+
+Remarques importantes :
+Résistances de Pull-Up/Pull-Down : En mode analogique, les résistances internes de pull-up et pull-down sont généralement désactivées pour éviter d'interférer avec le signal analogique.
+
+Broche spécifique : Assurez-vous que la broche que vous configurez est capable de supporter le mode analogique et est connectée à l'ADC du microcontrôleur. Toutes les broches ne sont pas forcément analogiques.
+
+Conversion continue : Si vous avez besoin de mesures continues, vous pouvez activer le mode de conversion continue (ContinuousConvMode = ENABLE) dans la configuration de l'ADC.
+
+Ces instructions sont basées sur l'utilisation de la bibliothèque HAL. Si vous utilisez une autre méthode ou un environnement de développement différent (comme CMSIS ou un autre framework), les étapes peuvent varier légèrement.
+
+
+
+
+MODE SCAN MODE ----------------------------------------
+BlockingMode, même confing 
+
+void Read_ADC_Sequential(void)
+{
+    uint32_t adc_values[6]; // Tableau pour stocker les valeurs des 6 canaux
+
+    // Démarrer la conversion ADC
+    HAL_ADC_Start(&hadc);
+
+    // Lire chaque canal dans l'ordre
+    for (int i = 0; i < 6; i++)
+    {
+        // Attendre que la conversion du canal actuel soit terminée
+        HAL_ADC_PollForConversion(&hadc, HAL_MAX_DELAY);
+
+        // Lire la valeur convertie et la stocker dans le tableau
+        adc_values[i] = HAL_ADC_GetValue(&hadc);
+    }
+
+    // Arrêter l'ADC après avoir lu tous les canaux
+    HAL_ADC_Stop(&hadc);
+
+    // Les valeurs des canaux sont maintenant stockées dans adc_values[0] à adc_values[5]
+    // Utiliser les valeurs selon les besoins, par exemple :
+    uint32_t channel_0_value = adc_values[0];
+    uint32_t channel_1_value = adc_values[1];
+    uint32_t channel_2_value = adc_values[2];
+    uint32_t channel_7_value = adc_values[3];
+    uint32_t channel_14_value = adc_values[4];
+    uint32_t channel_15_value = adc_values[5];
+}
+
+NON-blocking Mode--------------------
+Same Config
+
+Vous devez maintenant activer les interruptions pour l'ADC dans le fichier stm32xxxx_it.c (le fichier des interruptions) et définir une routine pour gérer les interruptions de l'ADC.
+
+c
+Copier le code
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    // Cette fonction est appelée à la fin de la conversion de la séquence complète
+    // Vous pouvez maintenant récupérer les valeurs des différents canaux
+
+    // Exemple : Lecture des valeurs de l'ADC (ordre des canaux doit être respecté)
+    uint32_t adc_value_channel_0 = HAL_ADC_GetValue(hadc);
+    uint32_t adc_value_channel_1 = HAL_ADC_GetValue(hadc);
+    uint32_t adc_value_channel_2 = HAL_ADC_GetValue(hadc);
+    uint32_t adc_value_channel_7 = HAL_ADC_GetValue(hadc);
+    uint32_t adc_value_channel_14 = HAL_ADC_GetValue(hadc);
+    uint32_t adc_value_channel_15 = HAL_ADC_GetValue(hadc);
+
+    // Traiter les valeurs comme vous le souhaitez ici
+}
+
+void Start_ADC_Conversion(void)
+{
+    // Activer l'interruption de l'ADC
+    HAL_NVIC_SetPriority(ADC1_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(ADC1_IRQn);
+
+    // Démarrer l'ADC en mode interruption
+    if (HAL_ADC_Start_IT(&hadc) != HAL_OK)
+    {
+        // Si la conversion ne démarre pas correctement
+        Error_Handler();
+    }
+}
+4. Routine d'interruption de l'ADC
+
+void ADC1_IRQHandler(void)
+{
+    // Appel de la fonction de gestion d'interruption du HAL
+    HAL_ADC_IRQHandler(&hadc);
+}
+
+
+
+Explications :
+Scan Mode : hadc.Init.ScanConvMode = ADC_SCAN_ENABLE; permet de balayer plusieurs canaux en séquence.
+Mode Interruption : En activant HAL_ADC_Start_IT, vous démarrez l'ADC en mode interruption. L'ADC génère une interruption après chaque séquence complète de conversions.
+Callback HAL_ADC_ConvCpltCallback : Cette fonction est appelée automatiquement par le HAL lorsque la conversion est terminée. Elle vous permet de lire les valeurs des canaux dans l'ordre de conversion.
+Routine d'Interruption ADC1_IRQHandler : Cette routine est appelée chaque fois qu'une interruption de l'ADC est déclenchée. Elle appelle la fonction de gestion du HAL pour gérer les interruptions.
+Avantages de ce mode :
+Efficacité : En utilisant les interruptions, vous réduisez l'occupation du CPU, car il n'est pas nécessaire de bloquer le CPU en attendant la fin des conversions.
+Réactivité : Votre code peut répondre immédiatement à la fin d'une séquence de conversions, ce qui est utile pour les applications temps réel.
+
+-----------------Mode d'acquisition
+Mode Simple Conversion (Single Conversion Mode) : Une seule conversion est effectuée sur le canal sélectionné, puis l'ADC s'arrête.
+
+1. Mode Scan
+Le mode Scan permet de lire plusieurs canaux analogiques de manière séquentielle. Il est donc particulièrement adapté pour les applications où plusieurs signaux analogiques doivent être surveillés simultanément, tels que :
+
+Surveillance de plusieurs capteurs (température, pression, lumière, etc.).
+Acquisition de données dans des systèmes multi-entrées (par exemple, dans des systèmes de contrôle ou d'acquisition de données).
+Avantages :
+Multi-Canaux : Le mode Scan peut traiter plusieurs canaux sans nécessiter de code supplémentaire pour changer manuellement les canaux.
+Flexibilité : Il peut être utilisé à la fois dans des systèmes avec un seul canal actif ou plusieurs canaux actifs, ce qui en fait un choix polyvalent.
+Optimisation des ressources : Ce mode permet de configurer plusieurs canaux à l'avance et d'obtenir les conversions séquentiellement, ce qui simplifie la gestion des ressources dans le logiciel.
+Inconvénients :
+Latence : Lors de l'acquisition de plusieurs canaux, la latence entre les conversions des canaux successifs peut devenir un facteur à prendre en compte si la synchronisation des données est critique.
+2. Mode Continu
+Le mode Continu est principalement utilisé lorsque vous avez besoin de surveiller un seul canal en permanence. Il effectue des conversions répétées sur un seul canal sans s'arrêter, ce qui peut être utile dans des applications où un signal unique doit être surveillé en permanence, comme :
+
+Surveillance d'un signal analogique avec des variations rapides.
+Applications de contrôle en boucle fermée avec une seule entrée analogique.
+Avantages :
+Simplicité : Idéal pour la surveillance d'un seul canal avec des exigences de fréquence d'échantillonnage constantes.
+Faible latence : Comme il ne change pas de canal, il peut offrir des taux d'échantillonnage élevés et une faible latence.
+Inconvénients :
+Limité à un seul canal : Ce mode est inefficace pour des applications nécessitant plusieurs canaux, car il ne prend en charge que la conversion continue sur un seul canal à la fois.
+Moins Flexible : Pas adapté si vous devez surveiller plusieurs canaux ou si la gestion de la puissance est importante.
+3. Mode Déclenché
+Le mode Déclenché permet de démarrer une conversion en réponse à un événement externe, comme une interruption, un signal provenant d'un timer ou un autre périphérique. Ce mode est utile lorsque vous avez besoin de synchroniser les conversions avec d'autres événements du système, par exemple :
+
+Synchronisation avec un événement physique (comme la rotation d'un moteur ou la réception d'une donnée série).
+Acquisition d'échantillons à des moments précis (par exemple, en réponse à un signal périodique ou un événement particulier).
+Avantages :
+Synchronisation : Parfait pour les applications où les conversions doivent être alignées avec d'autres événements du système.
+Gestion de la Puissance : L'ADC ne fonctionne que lorsque nécessaire, ce qui permet d'économiser de l'énergie dans les systèmes à faible consommation.
+Inconvénients :
+Configuration plus complexe : Nécessite la mise en place de mécanismes de déclenchement (timers, interruptions), ce qui peut rendre le code plus complexe.
+Moins adapté pour des échantillonnages continus : Ne conviendrait pas aux applications nécessitant une acquisition constante ou des taux d'échantillonnage très élevés sans interruptions.
+
+--------------------Gestion des résultats-------------------------------------------
+
+1. Registres de Résultats
+Dans ce mode, après chaque conversion, la valeur numérique est directement stockée dans un registre de données dédié, tel que le registre ADC_DR. Le CPU doit lire manuellement la valeur du registre pour la traiter.
+
+Avantages :
+Simplicité : Le mode est simple à implémenter et ne nécessite pas de configuration complexe. Il est bien adapté aux systèmes où une conversion occasionnelle est requise.
+Précision de contrôle : Vous avez un contrôle direct sur la gestion des données de chaque conversion. Chaque conversion doit être gérée par le programme, ce qui permet de vérifier les données immédiatement après la conversion.
+Peu de surcharge logicielle : Si les conversions sont rares, il n'y a pas besoin de configuration supplémentaire comme le DMA ou la gestion d'interruptions.
+Inconvénients :
+Charge du CPU : Le CPU doit vérifier manuellement si une conversion est terminée, puis lire les données. Cela peut entraîner une surcharge du processeur, notamment si les conversions sont fréquentes ou doivent être effectuées rapidement.
+Latence : Le temps nécessaire pour lire le registre peut introduire de la latence dans le système, surtout si le CPU est occupé à d'autres tâches.
+Non adapté aux conversions rapides : Pour des systèmes nécessitant des conversions rapides et continues, ce mode n'est pas optimal, car le CPU peut ne pas suivre le rythme.
+2. DMA (Direct Memory Access)
+Le DMA permet de transférer automatiquement les résultats des conversions ADC vers une zone mémoire dédiée sans intervention directe du CPU. Le DMA peut collecter plusieurs résultats de conversions en arrière-plan pendant que le CPU effectue d'autres tâches.
+
+Avantages :
+Réduction de la charge du CPU : Le CPU est libéré de la gestion des résultats de conversion. Il peut se concentrer sur d'autres tâches pendant que le DMA se charge de déplacer les données.
+Conversion rapide et efficace : Le DMA permet des taux d'échantillonnage élevés, car il peut gérer les résultats beaucoup plus rapidement qu'un CPU. Cela est particulièrement utile dans des applications où des conversions continues sont nécessaires.
+Gestion de grandes quantités de données : Le DMA est idéal pour des systèmes qui doivent traiter un grand nombre de conversions ou collecter des échantillons en continu, comme dans le traitement de signaux.
+Inconvénients :
+Complexité de configuration : La mise en place du DMA est plus complexe que la simple lecture des registres. Il nécessite une configuration correcte des canaux DMA, de la taille des buffers et de la gestion des erreurs.
+Manque de contrôle fin : Une fois configuré, le DMA travaille en arrière-plan et ne permet pas de vérifier individuellement chaque conversion en temps réel. Il y a un délai entre la conversion et le traitement des données par le CPU.
+Consommation d'énergie : Bien que plus efficace pour des transferts continus, le DMA peut consommer plus d'énergie, car il reste actif pendant la durée du transfert.
+
+
+3. Interruptions
+Dans ce mode, l'ADC génère une interruption chaque fois qu'une conversion est terminée. Le CPU peut ainsi être averti et traiter les données de manière asynchrone sans avoir besoin de vérifier constamment l'état du registre.
+
+Avantages :
+Gestion asynchrone : L'interruption permet une gestion non bloquante, car le CPU est notifié automatiquement à la fin de chaque conversion. Cela libère le CPU pour effectuer d'autres tâches en attendant la fin de la conversion.
+Réactivité : Les interruptions permettent une réponse rapide dès que la conversion est terminée, ce qui est utile dans des systèmes réactifs nécessitant une gestion des données en temps réel.
+Optimisation des performances : Cela permet d'optimiser l'utilisation des ressources du CPU, car il ne reste pas inactif en attendant la fin d'une conversion.
+Inconvénients :
+Complexité logicielle : La gestion des interruptions demande une programmation plus complexe, notamment pour la gestion des priorités, des contextes d'interruptions et des données partagées entre le code principal et l'interruption.
+Surcharge potentielle : Si les interruptions sont trop fréquentes, le CPU peut être surchargé, car il doit traiter chaque interruption et traiter les résultats, ce qui peut devenir problématique dans des systèmes où les conversions sont très rapides.
+Latence imprévisible : Si plusieurs sources d'interruptions sont présentes, il peut y avoir une latence variable dans le traitement des interruptions en fonction de la charge du système.
+Comparaison des Modes
+Critère	                    Registres de Résultats	 DMA	            Interruptions
+Complexité	                Faible	                Élevée	            Moyenne
+Charge CPU	                Élevée	                Très faible	        Moyenne à faible
+Taux d'échantillonnage	    Limité	                Très élevé	        Moyen à élevé
+Latence	Moyenne à élevée	Très faible	Variable
+Utilisation d'énergie	    Moyenne	                Moyenne à élevée	Variable
+Contrôle des résultats	    Très élevé	            Faible	            Moyenne
+
+typedef enum 
+{
+    ADC_CONFIG_SIMPLE_REGISTER,      // Utilisation simple avec lecture directe des registres
+    ADC_CONFIG_PERIODIC_INTERRUPT,   // Lecture périodique avec interruption pour notifier la fin de conversion
+    ADC_CONFIG_PERIODIC_DMA,         // Lecture périodique avec DMA pour gérer les résultats automatiquement
+    ADC_CONFIG_SCAN_INTERRUPT,       // Mode scan avec plusieurs canaux, gestion via interruptions
+    ADC_CONFIG_SCAN_DMA,             // Mode scan avec plusieurs canaux, gestion via DMA pour un grand nombre de données
+    ADC_CONFIG_TRIGGERED_REGISTER,   // Mode déclenché avec gestion manuelle par registre
+    ADC_CONFIG_TRIGGERED_INTERRUPT,  // Mode déclenché avec interruptions pour signaler la fin de conversion
+    ADC_CONFIG_TRIGGERED_DMA         // Mode déclenché avec DMA pour gestion des résultats
+} t_eADCConfigMode;

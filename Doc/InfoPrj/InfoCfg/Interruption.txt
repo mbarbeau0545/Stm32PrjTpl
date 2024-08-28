@@ -1,0 +1,561 @@
+
+1. PWM (Pulse Width Modulation)
+Description : Le timer peut être configuré pour générer un signal PWM. Le rapport cyclique (duty cycle) du PWM peut être ajusté pour contrôler des composants tels que des moteurs, des LEDs (pour la variation de luminosité), ou pour générer des signaux d'horloge pour d'autres circuits.
+Utilisation : Contrôle de la vitesse des moteurs, contrôle de la luminosité des LEDs, ou génération d'une horloge PWM.
+2. Mesure de la fréquence ou de la période d'un signal externe
+Description : Le timer peut être utilisé en mode de capture pour mesurer la fréquence ou la période d'un signal d'entrée. En mode capture, le timer enregistre la valeur du compteur lorsqu'un événement spécifique se produit sur une broche d'entrée.
+Utilisation : Mesure de la vitesse de rotation d'un moteur, mesure de la fréquence d'un signal externe.
+3. Capture/Compare
+Description : Le timer peut être configuré pour capturer une valeur de compteur lors d'un événement d'entrée (comme un front montant) ou pour comparer la valeur du compteur à une valeur prédéfinie pour déclencher une action.
+Utilisation : Chronométrage précis des événements, génération d'interruptions à des moments spécifiques, détection d'événements précis.
+4. Encoder Interface
+Description : Le timer peut être configuré pour fonctionner en mode encodeur pour lire la position et la direction de rotation d'un codeur rotatif.
+Utilisation : Suivi de la position angulaire ou de la rotation d'un axe dans des systèmes robotiques ou des moteurs.
+5. Watchdog Timer
+Description : Un timer peut être configuré en mode "watchdog" pour surveiller l'exécution du programme. Si le programme ne réinitialise pas le watchdog timer dans une période spécifiée, une réinitialisation du microcontrôleur est déclenchée.
+Utilisation : Prévention des blocages logiciels, amélioration de la robustesse du système.
+6. Time Base Generation
+Description : Le timer peut être utilisé pour générer une base de temps pour l'échantillonnage périodique, les horloges du système, ou les délais précis.
+Utilisation : Échantillonnage de capteurs, génération d'une horloge système, temporisation précise pour les délais.
+7. One-Pulse Mode
+Description : Le timer peut être configuré pour générer une seule impulsion en réponse à un événement externe. Cela permet de générer un signal d'une durée spécifique, souvent utilisé pour contrôler des relais ou d'autres dispositifs à impulsion.
+Utilisation : Génération de signaux de commande à impulsion unique, déclenchement de périphériques externes.
+8. Triggering ADC/DAC Conversions
+Description : Le timer peut être utilisé pour déclencher des conversions ADC (Analog-to-Digital Converter) ou DAC (Digital-to-Analog Converter) à intervalles réguliers.
+Utilisation : Échantillonnage périodique des signaux analogiques, génération de formes d'onde à partir d'un DAC.
+9. Baud Rate Generation
+Description : Un timer peut être utilisé pour générer des taux de baud pour des communications série comme UART, SPI, ou I2C.
+Utilisation : Contrôle des taux de transmission des données pour les interfaces série.
+10. Output Compare
+Description : Configurer un timer en mode Output Compare permet de générer une sortie sur une broche à un instant précis, défini par la comparaison de la valeur du compteur du timer avec une valeur de référence.
+Utilisation : Synchronisation d'événements, génération de signaux de synchronisation pour d'autres circuits.
+Pour générer une interruption toutes les secondes sur un microcontrôleur STM32, vous pouvez utiliser un timer configuré en mode d'interruption périodique. Voici les étapes générales à suivre pour configurer un timer pour générer une interruption chaque seconde :
+
+1. PWM (Pulse Width Modulation)
+c
+Copier le code
+TIM_HandleTypeDef htim;
+TIM_OC_InitTypeDef sConfigOC;
+
+void PWM_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 1000000) - 1;  // Fréquence de 1 MHz
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 1000 - 1;  // Période de 1 ms
+    htim.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+
+    HAL_TIM_PWM_Init(&htim);  // Initialiser le timer en mode PWM
+
+    sConfigOC.OCMode = TIM_OCMODE_PWM1;
+    sConfigOC.Pulse = 500;  // Rapport cyclique de 50%
+    sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+    sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+
+    HAL_TIM_PWM_ConfigChannel(&htim, &sConfigOC, TIM_CHANNEL_1);  // Configurer le canal PWM
+    HAL_TIM_PWM_Start(&htim, TIM_CHANNEL_1);  // Démarrer le PWM sur le canal 1
+}
+---------------------------update pwm dutycycle---------------------------------------------
+void UpdatePWMDutyCycle(TIM_HandleTypeDef *htim, uint32_t Channel, uint32_t dutyCyclePercent)
+{
+    uint32_t newCCRValue;
+
+    // La période totale du timer correspond à la valeur du registre ARR
+    uint32_t timerPeriod = __HAL_TIM_GET_AUTORELOAD(htim);
+
+    // Calculer la nouvelle valeur de CCR en fonction du pourcentage de duty cycle
+    newCCRValue = (timerPeriod * dutyCyclePercent) / 100;
+
+    // Mettre à jour la valeur du CCR pour le canal sélectionné
+    switch (Channel)
+    {
+        case TIM_CHANNEL_1:
+            __HAL_TIM_SET_COMPARE(htim, TIM_CHANNEL_1, newCCRValue);
+            break;
+        case TIM_CHANNEL_2:
+            __HAL_TIM_SET_COMPARE(htim, TIM_CHANNEL_2, newCCRValue);
+            break;
+        case TIM_CHANNEL_3:
+            __HAL_TIM_SET_COMPARE(htim, TIM_CHANNEL_3, newCCRValue);
+            break;
+        case TIM_CHANNEL_4:
+            __HAL_TIM_SET_COMPARE(htim, TIM_CHANNEL_4, newCCRValue);
+            break;
+        default:
+            // Gérer les erreurs si nécessaire
+            break;
+    }
+}
+2. Mesure de la fréquence ou de la période d'un signal externe (Input Capture)
+c
+Copier le code
+TIM_HandleTypeDef htim;
+TIM_IC_InitTypeDef sConfigIC;
+
+void InputCapture_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = 0;
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 0xFFFF;  // Compteur max
+    htim.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+
+    HAL_TIM_IC_Init(&htim);  // Initialiser le timer en mode Input Capture
+
+    sConfigIC.ICPolarity = TIM_ICPOLARITY_RISING;
+    sConfigIC.ICSelection = TIM_ICSELECTION_DIRECTTI;
+    sConfigIC.ICPrescaler = TIM_ICPSC_DIV1;
+    sConfigIC.ICFilter = 0;
+
+    HAL_TIM_IC_ConfigChannel(&htim, &sConfigIC, TIM_CHANNEL_1);  // Configurer le canal d'entrée
+    HAL_TIM_IC_Start_IT(&htim, TIM_CHANNEL_1);  // Démarrer la capture en mode interruption
+}
+3. Capture/Compare
+c
+Copier le code
+TIM_HandleTypeDef htim;
+TIM_OC_InitTypeDef sConfigOC;
+
+void CaptureCompare_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 1000000) - 1;  // Fréquence de 1 MHz
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 10000 - 1;  // Période de 10 ms
+
+    HAL_TIM_OC_Init(&htim);  // Initialiser le timer en mode Output Compare
+
+    sConfigOC.OCMode = TIM_OCMODE_TOGGLE;
+    sConfigOC.Pulse = 5000;  // Comparer après 5 ms
+    sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+
+    HAL_TIM_OC_ConfigChannel(&htim, &sConfigOC, TIM_CHANNEL_1);  // Configurer le canal OC
+    HAL_TIM_OC_Start_IT(&htim, TIM_CHANNEL_1);  // Démarrer en mode interruption
+}
+4. Encoder Interface
+c
+Copier le code
+TIM_HandleTypeDef htim;
+TIM_Encoder_InitTypeDef sConfig;
+
+void Encoder_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = 0;
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 0xFFFF;  // Compteur max
+
+    sConfig.EncoderMode = TIM_ENCODERMODE_TI12;
+    sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
+    sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
+    sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
+    sConfig.IC1Filter = 0;
+    sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
+    sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
+    sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
+    sConfig.IC2Filter = 0;
+
+    HAL_TIM_Encoder_Init(&htim, &sConfig);  // Initialiser le timer en mode Encodeur
+    HAL_TIM_Encoder_Start(&htim, TIM_CHANNEL_ALL);  // Démarrer l'encodeur
+}
+5. Watchdog Timer
+c
+Copier le code
+IWDG_HandleTypeDef hiwdg;
+
+void Watchdog_Config(void) {
+    __HAL_RCC_WWDG_CLK_ENABLE();  // Activer l'horloge du Watchdog
+
+    hiwdg.Instance = IWDG;
+    hiwdg.Init.Prescaler = IWDG_PRESCALER_64;  // Configurer le prédiviseur
+    hiwdg.Init.Reload = 4095;  // Période max (correspond à 1 seconde si la fréquence est configurée ainsi)
+
+    HAL_IWDG_Init(&hiwdg);  // Initialiser le Watchdog
+}
+6. Time Base Generation
+c
+Copier le code
+TIM_HandleTypeDef htim;
+
+void TimeBase_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 1000) - 1;  // Fréquence de 1 kHz
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 1000 - 1;  // Période de 1 seconde
+
+    HAL_TIM_Base_Init(&htim);  // Initialiser le timer en mode Time Base
+    HAL_TIM_Base_Start_IT(&htim);  // Démarrer le timer en mode interruption
+}
+7. One-Pulse Mode
+c
+Copier le code
+TIM_HandleTypeDef htim;
+TIM_OnePulse_InitTypeDef sConfigOPM;
+
+void OnePulse_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 1000000) - 1;  // Fréquence de 1 MHz
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 10000 - 1;  // Période de 10 ms
+
+    HAL_TIM_OnePulse_Init(&htim, TIM_OPMODE_SINGLE);  // Initialiser le timer en mode One-Pulse
+
+    sConfigOPM.OCMode = TIM_OCMODE_PWM1;
+    sConfigOPM.Pulse = 5000;  // Durée de l'impulsion
+    sConfigOPM.OCPolarity = TIM_OCPOLARITY_HIGH;
+    sConfigOPM.ICPolarity = TIM_ICPOLARITY_RISING;
+    sConfigOPM.ICSelection = TIM_ICSELECTION_DIRECTTI;
+
+    HAL_TIM_OnePulse_ConfigChannel(&htim, &sConfigOPM, TIM_CHANNEL_1, TIM_CHANNEL_2);  // Configurer le One-Pulse
+    HAL_TIM_OnePulse_Start(&htim, TIM_CHANNEL_1);  // Démarrer le mode One-Pulse
+}
+8. Triggering ADC/DAC Conversions
+c
+Copier le code
+TIM_HandleTypeDef htim;
+
+void Trigger_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 1000000) - 1;  // Fréquence de 1 MHz
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 1000 - 1;  // Période de 1 ms
+
+    HAL_TIM_Base_Init(&htim);  // Initialiser le timer en mode Time Base
+    HAL_TIM_Base_Start(&htim);  // Démarrer le timer
+
+    // Configurer le trigger ADC (remplacez ADCx par l'ADC correspondant)
+    ADC_HandleTypeDef hadc;
+    hadc.Instance = ADCx;
+    hadc.Init.ExternalTrigConv = TIM_TRGO_UPDATE;
+    HAL_ADC_Init(&hadc);
+    HAL_ADC_Start(&hadc);
+}
+9. Baud Rate Generation
+Les timers ne sont pas directement utilisés pour générer le baud rate en UART, SPI, ou I2C, mais vous pouvez configurer un timer pour une fréquence donnée qui peut ensuite être utilisée comme base de temps pour la communication. Par exemple, pour générer une horloge à une fréquence spécifique :
+
+c
+Copier le code
+TIM_HandleTypeDef htim;
+
+void BaudRate_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 9600) - 1;  // Configurer pour obtenir une fréquence de 9600 Hz
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 1;  // Période pour générer une horloge de 9600 baud
+
+    HAL_TIM_Base_Init(&htim);  // Initialiser le timer en mode Time Base
+    HAL_TIM_Base_Start_IT(&htim);  // Démarrer le timer en mode interruption
+}
+10. Output Compare
+c
+Copier le code
+TIM_HandleTypeDef htim;
+TIM_OC_InitTypeDef sConfigOC;
+
+void OutputCompare_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Remplacez TIMx par le timer que vous utilisez
+
+    htim.Instance = TIMx; // Remplacez TIMx par le timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 1000000) - 1;  // Fréquence de 1 MHz
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 10000 - 1;  // Période de 10 ms
+
+    HAL_TIM_OC_Init(&htim);  // Initialiser le timer en mode Output Compare
+
+    sConfigOC.OCMode = TIM_OCMODE_TOGGLE;
+    sConfigOC.Pulse = 5000;  // Comparaison après 5 ms
+    sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+
+    HAL_TIM_OC_ConfigChannel(&htim, &sConfigOC, TIM_CHANNEL_1);  // Configurer le canal OC
+    HAL_TIM_OC_Start_IT(&htim, TIM_CHANNEL_1);  // Démarrer en mode interruption
+}
+
+
+
+
+
+interruption with frequency----------------------------------------------------------
+
+
+Étape 1: Configuration du Timer
+Choisissez un timer disponible sur votre microcontrôleur STM32.
+
+Calculez la valeur de prédiviseur (Prescaler) et la valeur de chargement (Period) pour obtenir une période d'une seconde.
+
+Supposons que votre microcontrôleur fonctionne à une fréquence d'horloge de 16 MHz (HCLK = 16 MHz). Pour générer une interruption toutes les secondes, vous devez configurer le timer pour qu'il déborde après 1 seconde.
+
+c
+Copier le code
+Prescaler = (HCLK / 10000) - 1; // Divise l'horloge par 10 000 pour obtenir une fréquence de 1 kHz
+Period = 10000 - 1; // Compte jusqu'à 10 000 pour obtenir une période de 1 seconde
+Initialisez le timer avec ces paramètres.
+
+Étape 2: Initialisation du Timer dans le Code
+Voici un exemple de code pour configurer un timer pour générer une interruption toutes les secondes avec la HAL STM32.
+
+c
+Copier le code
+// Structure de gestion du Timer
+TIM_HandleTypeDef htim;
+
+// Configuration du Timer pour générer une interruption toutes les secondes
+void Timer_Config(void) {
+    __HAL_RCC_TIMx_CLK_ENABLE();  // Activer l'horloge du timer (remplacez TIMx par le timer que vous utilisez)
+
+    htim.Instance = TIMx; // Remplacez TIMx par le nom du timer que vous utilisez
+    htim.Init.Prescaler = (HCLK / 10000) - 1; // Calcul du prescaler
+    htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim.Init.Period = 10000 - 1; // Calcul de la période
+    htim.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    htim.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+
+    if (HAL_TIM_Base_Init(&htim) != HAL_OK) {
+        // Gestion de l'erreur
+    }
+
+    // Activer l'interruption du timer
+    HAL_NVIC_SetPriority(TIMx_IRQn, 0, 0); // Remplacez TIMx_IRQn par l'IRQ du timer que vous utilisez
+    HAL_NVIC_EnableIRQ(TIMx_IRQn);
+
+    // Démarrer le timer en mode interruption
+    HAL_TIM_Base_Start_IT(&htim);
+}
+Étape 3: Gestionnaire d'Interruption
+Vous devez ensuite implémenter le gestionnaire d'interruption du timer. Ce gestionnaire sera appelé chaque fois que le timer déborde (c'est-à-dire, chaque seconde).
+
+c
+Copier le code
+// Gestionnaire d'interruption pour le Timer
+void TIMx_IRQHandler(void) {
+    HAL_TIM_IRQHandler(&htim); // Appeler la fonction HAL pour gérer l'interruption
+}
+
+// Fonction callback appelée à chaque interruption du timer
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+    if (htim->Instance == TIMx) {  // Vérifiez si c'est bien notre timer
+        // Placez ici le code que vous souhaitez exécuter toutes les secondes
+    }
+}
+Étape 4: Initialisation Globale
+N'oubliez pas d'appeler votre fonction de configuration du timer dans la fonction principale de votre programme (main).
+
+c
+Copier le code
+int main(void) {
+    HAL_Init(); // Initialisation de la HAL
+    SystemClock_Config(); // Configuration de l'horloge système
+
+    Timer_Config(); // Initialisation du timer pour générer une interruption toutes les secondes
+
+    while (1) {
+        // Boucle principale du programme
+    }
+}
+Résumé
+Timer Config : Configure le timer avec un prédiviseur et une période pour débloquer chaque seconde.
+Interruption : Gère l'interruption déclenchée par le débordement du timer, où vous pouvez exécuter le code souhaité.
+Avec cette configuration, votre microcontrôleur STM32 générera une interruption toutes les secondes, et le code que vous placez dans le HAL_TIM_PeriodElapsedCallback sera exécuté à chaque interruption.
+
+
+
+interruption with pin----------------------------------------------------------
+
+1. Configurer le GPIO en mode entrée avec une interruption :
+Tout d'abord, il faut configurer le port GPIO auquel est connecté le signal. Vous devez définir le mode du GPIO comme entrée avec interruption.
+
+c
+Copier le code
+// Initialisation du GPIO pour l'interruption
+GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+__HAL_RCC_GPIOA_CLK_ENABLE();  // Activer l'horloge du GPIO si nécessaire
+
+GPIO_InitStruct.Pin = GPIO_PIN_0;  // Remplacez par le numéro de pin souhaité
+GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;  // Interruption sur front montant
+GPIO_InitStruct.Pull = GPIO_NOPULL;  // Pas de pull-up ni pull-down
+
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);  // Remplacez GPIOA par le port correct si nécessaire
+2. Activer et configurer le NVIC pour gérer l'interruption :
+Ensuite, vous devez activer l'interruption dans le contrôleur NVIC (Nested Vectored Interrupt Controller).
+
+c
+Copier le code
+// Activer et configurer le NVIC pour l'interruption EXTI
+HAL_NVIC_SetPriority(EXTI0_IRQn, 2, 0);  // Priorité de l'interruption (2 ici, à adapter selon les besoins)
+HAL_NVIC_EnableIRQ(EXTI0_IRQn);  // Activer l'interruption EXTI0 (à adapter selon le pin)
+3. Implémenter le handler d'interruption :
+Vous devez écrire la fonction de gestion d'interruption. Cette fonction sera appelée lorsque l'interruption se produira.
+
+c
+Copier le code
+void EXTI0_IRQHandler(void)
+{
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);  // Gérer l'interruption pour le pin 0
+}
+4. Implémenter la fonction de rappel d'interruption :
+Enfin, vous pouvez implémenter une fonction de rappel (callback) qui sera appelée à chaque fois que l'interruption se déclenche.
+
+c
+Copier le code
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if (GPIO_Pin == GPIO_PIN_0)
+    {
+        // Placez ici le code à exécuter lors de l'interruption
+    }
+}
+Récapitulatif :
+Configurez le GPIO en mode entrée avec interruption sur front montant.
+Activez et configurez le NVIC pour le bon canal d'interruption.
+Implémentez le handler d'interruption (IRQHandler).
+Ajoutez votre logique dans la fonction de rappel HAL_GPIO_EXTI_Callback.
+
+1. Utilisation d'une structure pour stocker les informations sur les pins
+Vous pouvez utiliser une structure pour stocker les informations relatives à chaque pin que vous souhaitez gérer de manière dynamique.
+
+c
+Copier le code
+typedef struct {
+    uint16_t GPIO_Pin;                  // Numéro de la pin
+    GPIO_TypeDef* GPIO_Port;            // Port GPIO (ex : GPIOA, GPIOB, ...)
+    void (*callback)(void);             // Pointeur de fonction pour la callback associée
+} EXTI_PinConfig_t;
+2. Créer un tableau de configurations
+Définissez un tableau qui stockera les configurations des pins d'interruption et leur callback associée.
+
+c
+Copier le code
+#define MAX_EXTI_PINS 10
+
+EXTI_PinConfig_t exti_pins[MAX_EXTI_PINS];
+uint8_t exti_pin_count = 0;
+3. Ajouter une fonction pour configurer dynamiquement un pin avec son callback
+Cette fonction ajoutera la configuration de la pin dans votre tableau.
+
+c
+Copier le code
+void EXTI_PinConfig(uint16_t GPIO_Pin, GPIO_TypeDef* GPIO_Port, void (*callback)(void)) {
+    if (exti_pin_count < MAX_EXTI_PINS) {
+        exti_pins[exti_pin_count].GPIO_Pin = GPIO_Pin;
+        exti_pins[exti_pin_count].GPIO_Port = GPIO_Port;
+        exti_pins[exti_pin_count].callback = callback;
+
+        // Configurer le GPIO en mode interruption
+        GPIO_InitTypeDef GPIO_InitStruct = {0};
+        GPIO_InitStruct.Pin = GPIO_Pin;
+        GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;  // Mode interruption sur front montant
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        HAL_GPIO_Init(GPIO_Port, &GPIO_InitStruct);
+
+        // Activer l'interruption dans le NVIC pour le pin spécifié
+        if (GPIO_Pin == GPIO_PIN_0) {
+            HAL_NVIC_SetPriority(EXTI0_IRQn, 2, 0);
+            HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+        }
+        // Ajouter ici d'autres conditions pour les autres lignes EXTI (EXTI1, EXTI2, etc.)
+
+        exti_pin_count++;
+    }
+}
+4. Modifier la fonction d'interruption pour gérer plusieurs pins
+Dans le handler d'interruption, vous pouvez maintenant parcourir votre tableau de configurations et appeler la bonne callback en fonction du pin qui a déclenché l'interruption.
+
+c
+Copier le code
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+    for (uint8_t i = 0; i < exti_pin_count; i++) {
+        if (exti_pins[i].GPIO_Pin == GPIO_Pin) {
+            if (exti_pins[i].callback != NULL) {
+                exti_pins[i].callback();  // Appeler la fonction callback associée
+            }
+            break;
+        }
+    }
+}
+
+
+
+1. Interruption en mode blocking (blocage)
+En mode blocking, le traitement de l'interruption se fait entièrement dans le contexte de l'interruption elle-même. L'ISR (Interrupt Service Routine) exécute tout le travail requis avant de retourner l'exécution au programme principal.
+
+Avantages :
+Simplicité : Le code est souvent plus simple à écrire et à comprendre, car toutes les actions nécessaires se trouvent dans la même routine d'interruption.
+Réponse rapide : L'interruption est gérée immédiatement, ce qui est utile pour des tâches très critiques en temps réel.
+Inconvénients :
+Risque de retard : Si l'ISR prend trop de temps (par exemple, attend des ressources ou traite une grande quantité de données), elle peut bloquer d'autres interruptions importantes, entraînant des pertes de données ou des performances dégradées.
+Impact sur les performances : Les routines d'interruption longues peuvent affecter les performances globales du système, car elles retardent la reprise de l'exécution du code principal et des autres tâches ou interruptions.
+Recommandation :
+Le mode blocking est recommandé uniquement pour des tâches très courtes, où la routine d'interruption peut être traitée rapidement (comme la lecture d'une valeur de capteur ou le basculement d'un GPIO).
+Pour des traitements longs ou complexes, ce mode est déconseillé car il peut dégrader les performances globales du système embarqué.
+2. Interruption en mode non-blocking (non-blocage)
+En mode non-blocking, l'ISR fait le strict minimum nécessaire et délègue le traitement complet à une autre partie du code, généralement en utilisant des mécanismes comme des flags, des buffers, ou des queues pour signaler qu'un événement est survenu. Le traitement complet se fait ensuite en dehors du contexte de l'ISR.
+
+Avantages :
+Réduction du temps d'exécution de l'ISR : Le travail dans l'ISR est réduit au strict nécessaire, minimisant le temps passé dans l'interruption et réduisant l'impact sur le reste du système.
+Meilleure réactivité globale : Les autres interruptions critiques ont plus de chances d'être traitées à temps, car l'ISR ne monopolise pas le CPU.
+Testabilité et débogage : Le traitement différé peut être plus facile à tester et à déboguer en dehors du contexte des interruptions.
+Inconvénients :
+Complexité accrue : La gestion des événements asynchrones via des flags ou des queues peut rendre le code plus complexe, avec des risques accrus de conditions de course ou de problèmes de synchronisation.
+Surcharge possible du système : Si le traitement différé n'est pas bien géré, il peut y avoir une surcharge de tâches en attente ou de buffers qui se remplissent trop rapidement.
+Recommandation :
+Mode non-blocking est généralement recommandé pour les systèmes embarqués lorsque le traitement de l'interruption est complexe ou lorsque vous avez besoin de gérer plusieurs interruptions avec différentes priorités.
+Ce mode est plus adapté aux applications où vous avez des délais stricts à respecter et où les interruptions doivent rester courtes et efficaces.
+Conclusion : Quelle approche choisir ?
+En général, pour les systèmes embarqués sur STM32 ou d'autres plateformes :
+
+Utilisez le mode blocking uniquement pour des tâches simples et rapides à exécuter (comme la gestion d'interruptions de GPIO ou la lecture d'un périphérique matériel où peu de traitement est requis).
+Utilisez le mode non-blocking pour la plupart des cas, notamment lorsque vous avez des tâches plus complexes, des priorités d'interruptions élevées, ou plusieurs interruptions à gérer en parallèle.
+Le mode non-blocking permet de maintenir un système réactif, surtout lorsque vous gérez des fonctionnalités temps réel ou des périphériques à haute fréquence d'interruption comme UART, SPI, ou des timers avancés.
+
+Pratiques supplémentaires :
+Priorisation des interruptions : Dans tous les cas, veillez à bien définir les priorités des interruptions pour que les tâches les plus critiques puissent être gérées correctement.
+Utilisation de RTOS : Si votre application devient plus complexe, envisagez l'utilisation d'un RTOS pour mieux structurer les tâches et gérer les interruptions de manière efficace.
+
+
+
+// Table de priorités pour les interruptions
+const FMKCPU_NVIC_PriorityLevel IRQ_Priorities[] = {
+    [NonMaskableInt_IRQn]         = FMKCPU_NVIC_HIGH_PRIORITY,   // Non Maskable Interrupt
+    [HardFault_IRQn]              = FMKCPU_NVIC_HIGH_PRIORITY,   // Hard Fault Interrupt
+    [SVC_IRQn]                    = FMKCPU_NVIC_MEDIUM_PRIORITY, // SV Call Interrupt
+    [PendSV_IRQn]                 = FMKCPU_NVIC_MEDIUM_PRIORITY, // Pend SV Interrupt
+    [SysTick_IRQn]                = FMKCPU_NVIC_MEDIUM_PRIORITY, // System Tick Interrupt
+
+    [WWDG_IRQn]                   = FMKCPU_NVIC_LOW_PRIORITY,    // Window WatchDog Interrupt
+    [RTC_IRQn]                    = FMKCPU_NVIC_LOW_PRIORITY,    // RTC Interrupt
+    [FLASH_IRQn]                  = FMKCPU_NVIC_LOW_PRIORITY,    // FLASH global Interrupt
+    [RCC_IRQn]                    = FMKCPU_NVIC_LOW_PRIORITY,    // RCC global Interrupt
+    [EXTI0_1_IRQn]                = FMKCPU_NVIC_MEDIUM_PRIORITY, // EXTI Line 0 and 1 Interrupt
+    [EXTI2_3_IRQn]                = FMKCPU_NVIC_MEDIUM_PRIORITY, // EXTI Line 2 and 3 Interrupt
+    [EXTI4_15_IRQn]               = FMKCPU_NVIC_MEDIUM_PRIORITY, // EXTI Line 4 to 15 Interrupt
+    [DMA1_Channel1_IRQn]          = FMKCPU_NVIC_LOW_PRIORITY,    // DMA1 Channel 1 Interrupt
+    [DMA1_Channel2_3_IRQn]        = FMKCPU_NVIC_LOW_PRIORITY,    // DMA1 Channel 2 and Channel 3 Interrupt
+    [DMA1_Channel4_5_IRQn]        = FMKCPU_NVIC_LOW_PRIORITY,    // DMA1 Channel 4 and Channel 5 Interrupt
+    [ADC1_IRQn]                   = FMKCPU_NVIC_MEDIUM_PRIORITY, // ADC1 Interrupt
+    [TIM1_BRK_UP_TRG_COM_IRQn]    = FMKCPU_NVIC_MEDIUM_PRIORITY, // TIM1 Break, Update, Trigger and Commutation Interrupt
+    [TIM1_CC_IRQn]                = FMKCPU_NVIC_MEDIUM_PRIORITY, // TIM1 Capture Compare Interrupt
+    [TIM3_IRQn]                   = FMKCPU_NVIC_LOW_PRIORITY,    // TIM3 global Interrupt
+    [TIM6_IRQn]                   = FMKCPU_NVIC_LOW_PRIORITY,    // TIM6 global Interrupt
+    [TIM14_IRQn]                  = FMKCPU_NVIC_LOW_PRIORITY,    // TIM14 global Interrupt
+    [TIM15_IRQn]                  = FMKCPU_NVIC_LOW_PRIORITY,    // TIM15 global Interrupt
+    [TIM16_IRQn]                  = FMKCPU_NVIC_LOW_PRIORITY,    // TIM16 global Interrupt
+    [TIM17_IRQn]                  = FMKCPU_NVIC_LOW_PRIORITY,    // TIM17 global Interrupt
+    [I2C1_IRQn]                   = FMKCPU_NVIC_LOW_PRIORITY,    // I2C1 Event Interrupt
+    [I2C2_IRQn]                   = FMKCPU_NVIC_LOW_PRIORITY,    // I2C2 Event Interrupt
+    [SPI1_IRQn]                   = FMKCPU_NVIC_LOW_PRIORITY,    // SPI1 global Interrupt
+    [SPI2_IRQn]                   = FMKCPU_NVIC_LOW_PRIORITY,    // SPI2 global Interrupt
+    [USART1_IRQn]                 = FMKCPU_NVIC_LOW_PRIORITY,    // USART1 global Interrupt
+    [USART2_IRQn]                 = FMKCPU_NVIC_LOW_PRIORITY     // USART2 global Interrupt
+};

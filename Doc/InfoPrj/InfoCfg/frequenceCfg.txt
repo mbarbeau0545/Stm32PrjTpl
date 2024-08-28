@@ -1,0 +1,108 @@
+Configurer une broche pour mesurer une fréquence sur un microcontrôleur STM32 implique généralement d'utiliser un timer en mode capture d'entrée (Input Capture). Ce mode permet au timer de capturer le moment où un événement se produit (comme un front montant ou descendant sur la broche), ce qui permet de mesurer le temps entre ces événements et donc de calculer la fréquence du signal.
+
+Voici comment configurer une broche pour mesurer une fréquence :
+
+1. Activer l'horloge pour le port GPIO et le timer
+Avant de configurer la broche et le timer, vous devez activer les horloges pour le port GPIO et pour le timer que vous allez utiliser.
+
+c
+Copier le code
+__HAL_RCC_GPIOA_CLK_ENABLE();   // Activer l'horloge pour le port GPIOA
+__HAL_RCC_TIM2_CLK_ENABLE();    // Activer l'horloge pour le timer TIM2 (par exemple)
+2. Configurer la broche en mode Alternate Function
+La broche doit être configurée en mode Alternate Function pour qu'elle puisse être utilisée comme entrée de capture pour le timer.
+
+c
+Copier le code
+GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+// Par exemple, configurer PA0 (TIM2_CH1) pour le mode Alternate Function
+GPIO_InitStruct.Pin = GPIO_PIN_0;
+GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;   // Mode Alternate Function Push-Pull
+GPIO_InitStruct.Pull = GPIO_NOPULL;       // Pas de résistance de pull-up ou pull-down
+GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;  // Vitesse élevée pour des signaux rapides
+GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;    // Associer PA0 à TIM2_CH1
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+3. Configurer le timer en mode Input Capture
+Ensuite, configurez le timer pour capturer les événements sur la broche sélectionnée.
+
+c
+Copier le code
+TIM_HandleTypeDef htim2;
+
+htim2.Instance = TIM2;
+htim2.Init.Prescaler = 0;  // Pas de division pour une mesure précise
+htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+htim2.Init.Period = 0xFFFF;  // Max pour capturer les périodes longues
+htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+HAL_TIM_IC_Init(&htim2);
+
+// Configurer le canal 1 du timer pour la capture d'entrée
+TIM_IC_InitTypeDef sConfigIC = {0};
+sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_RISING;   // Capture sur front montant
+sConfigIC.ICSelection = TIM_ICSELECTION_DIRECTTI;         // Capturer directement sur l'entrée du timer
+sConfigIC.ICPrescaler = TIM_ICPSC_DIV1;                   // Pas de division du signal d'entrée
+sConfigIC.ICFilter = 0;                                   // Pas de filtrage
+HAL_TIM_IC_ConfigChannel(&htim2, &sConfigIC, TIM_CHANNEL_1);
+4. Démarrer la capture d'entrée en mode interruption
+Démarrez la capture d'entrée en mode interruption pour que le microcontrôleur soit notifié chaque fois qu'un événement est capturé.
+
+c
+Copier le code
+HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
+5. Gérer l'interruption
+Lorsque le timer capture un événement (par exemple, un front montant), une interruption est générée. Vous pouvez gérer cette interruption pour calculer la période du signal et donc sa fréquence.
+
+c
+Copier le code
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
+{
+    static uint32_t lastCapture = 0;
+    uint32_t currentCapture;
+    uint32_t difference;
+    uint32_t frequency;
+
+    if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
+    {
+        // Lire la valeur capturée
+        currentCapture = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+        
+        // Calculer la différence avec la dernière capture
+        difference = currentCapture - lastCapture;
+        
+        // Stocker la capture actuelle pour la prochaine interruption
+        lastCapture = currentCapture;
+        
+        // Calculer la fréquence (en Hz)
+        if (difference != 0)
+        {
+            frequency = HAL_RCC_GetPCLK1Freq() / difference;
+            // Vous pouvez maintenant utiliser la fréquence calculée
+        }
+    }
+}
+6. Activer l'interruption NVIC pour le timer
+Vous devez activer l'interruption correspondante dans le NVIC pour que le système gère les interruptions du timer.
+
+c
+Copier le code
+HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);  // Priorité de l'interruption
+HAL_NVIC_EnableIRQ(TIM2_IRQn);          // Activer l'interruption TIM2
+7. Routine d'interruption pour le timer
+Vous devez également implémenter la routine d'interruption pour le timer :
+
+c
+Copier le code
+void TIM2_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&htim2);  // Appelle la routine de gestion des interruptions de la HAL
+}
+Remarques
+Résolution et précision : Ajustez le prescaler et la période du timer en fonction de la fréquence du signal que vous souhaitez mesurer. Pour des signaux de très haute fréquence, un prescaler de 0 est souvent nécessaire.
+
+Front montant ou descendant : Selon la nature de votre signal, vous pouvez choisir de capturer sur les fronts montants, descendants, ou les deux.
+
+Utilisation d'une horloge différente : Si vous utilisez un autre timer, assurez-vous d'ajuster les configurations en fonction du timer et de la broche spécifiques que vous utilisez.
+
+Avec cette configuration, vous pouvez mesurer des fréquences sur une broche en utilisant le timer en mode capture d'entrée.

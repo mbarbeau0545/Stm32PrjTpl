@@ -1,0 +1,72 @@
+- Faire un enum sur les diférentes callback 
+- POur toutes les callback appeleer la même fonction avec l'enum et tim qui a déclenché l'interruption, et en fonction de d'enum choisir 
+d'appleler la callback du timer ou la callback de la channel
+
+
+t_eReturnState FMKCPU_ReqstInterruptMngmt(TIM_HandleTypeDef *htim, t_eInterruptType interruptType)
+{
+    for(int i = 0; i < TIM_NB; i++)
+    {
+        if (g_TimInfo_as[i].TIMx.Instance == htim->Instance)
+        {
+            // Gérer les interruptions de type période ou trigger sans canal actif
+            if (interruptType == INTERRUPT_TYPE_PERIOD_ELAPSED || interruptType == INTERRUPT_TYPE_TRIGGER)
+            {
+                // Appeler le callback global si nécessaire
+                if (g_TimInfo_as[i].HwCallback_cb)
+                {
+                    return g_TimInfo_as[i].HwCallback_cb(FMKCPU_NO_CHANNEL);  // Pas de canal
+                }
+            }
+            else
+            {
+                // Récupérer le canal actif
+                HAL_TIM_ActiveChannel activeChannel = HAL_TIM_GetActiveChannel(htim);
+                
+                // Appeler le callback en fonction du canal actif
+                switch(activeChannel)
+                {
+                    case HAL_TIM_ACTIVE_CHANNEL_1:
+                        return g_TimInfo_as[i].HwCallback_cb(FMKCPU_CHANNEL_1);  // Canal 1
+                    case HAL_TIM_ACTIVE_CHANNEL_2:
+                        return g_TimInfo_as[i].HwCallback_cb(FMKCPU_CHANNEL_2);  // Canal 2
+                    case HAL_TIM_ACTIVE_CHANNEL_3:
+                        return g_TimInfo_as[i].HwCallback_cb(FMKCPU_CHANNEL_3);  // Canal 3
+                    case HAL_TIM_ACTIVE_CHANNEL_4:
+                        return g_TimInfo_as[i].HwCallback_cb(FMKCPU_CHANNEL_4);  // Canal 4
+                    case HAL_TIM_ACTIVE_CHANNEL_CLEARED:
+                        // Aucun canal actif
+                        break;
+                    default:
+                        // Gérer les autres cas si nécessaire
+                        break;
+                }
+            }
+        }
+    }
+    return RETURN_ERROR;  // Gérer les cas où aucune correspondance n'est trouvée
+}
+
+// Gestion des différents types d'interruption
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){ FMKCPU_ReqstInterruptMngmt(htim, INTERRUPT_TYPE_PERIOD_ELAPSED); }
+void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim){ FMKCPU_ReqstInterruptMngmt(htim, INTERRUPT_TYPE_TRIGGER); }
+// Autres callbacks
+
+INTERRUPT_TYPE_PERIOD_ELAPSED :
+
+Cette interruption se déclenche lorsque la période du timer est écoulée. Par exemple, cela correspondrait à l'appel de la fonction HAL_TIM_PeriodElapsedCallback.
+INTERRUPT_TYPE_TRIGGER :
+
+Cette interruption se déclenche lorsqu'un événement de déclenchement spécifique (par exemple, un signal d'entrée) est détecté. Cela correspondrait à l'appel de la fonction HAL_TIM_TriggerCallback.
+INTERRUPT_TYPE_PWM_PULSE_FINISHED :
+
+Cette interruption se déclenche à la fin d'un cycle de PWM, lorsque l'impulsion est terminée. Cela correspondrait à l'appel de la fonction HAL_TIM_PWM_PulseFinishedCallback.
+INTERRUPT_TYPE_OUTPUT_COMPARE :
+
+Cette interruption se déclenche lorsque le timer atteint une valeur spécifique de comparaison de sortie. Cela correspond à l'appel de la fonction HAL_TIM_OC_DelayElapsedCallback.
+INTERRUPT_TYPE_INPUT_CAPTURE :
+
+Cette interruption se déclenche lorsqu'une valeur d'entrée est capturée sur un canal de capture d'entrée. Cela correspondrait à l'appel de la fonction HAL_TIM_IC_CaptureCallback.
+INTERRUPT_TYPE_ERROR :
+
+Cette interruption se déclenche lors d'une erreur, comme un overflow du timer ou une autre condition d'erreur détectée. Cela correspond à l'appel de la fonction HAL_TIM_ErrorCallback.
