@@ -26,17 +26,16 @@
     // ********************************************************************
     // *                      Types
     // ********************************************************************
+    //-----------------------------ENUM TYPES-----------------------------//
     /* CAUTION : Automatic generated code section for Enum: Start */
 
     /* CAUTION : Automatic generated code section for Enum: End */
 
+    //-----------------------------TYPEDEF TYPES---------------------------//
+    //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */
 
     /* CAUTION : Automatic generated code section for Structure: End */
-    
-    /* CAUTION : Automatic generated code section : Start */
-
-    /* CAUTION : Automatic generated code section : End */
     // ********************************************************************
     // *                      Prototypes
     // ********************************************************************

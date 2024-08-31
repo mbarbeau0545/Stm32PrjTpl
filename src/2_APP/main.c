@@ -24,98 +24,23 @@
 #include "TypeCommon.h"
 #include "stm32f0xx_hal_rcc.h"
 #include "stm32f0xx_hal_adc.h"
-t_uint32 a = ADC1;
+#include "FMK_HAL/FMK_CPU/Src/FMK_CPU.h"
 
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
-#define NB_DIG_PIN 8
-enum 
+/*void EXTI0_IRQHandler(void)
 {
-    FLKIO_ANA_PIN_1 = 0,
-    FLKIO_ANA_PIN_2,
-    FLKIO_ANA_PIN_3,
-    FLKIO_ANA_PIN_4,
-    FLKIO_ANA_PIN_NB,
-
-
-};
-typedef enum 
-{
-    ACQUISITION_MODE_SINGLE = 0,
-    ACQUISITION_MODE_CONTINUOUS,
-    ACQUISITION_MODE_SCAN,
-    ACQUISITION_MODE_TRIGGERED,
-}t_eAcquisitionMode;
-typedef enum 
-{
-    RESULT_REGISTER = 0,
-    RESULT_INTERRUPT,
-    RESULT_DMA,
-}t_eResultMode;
-typedef struct 
-{
-    t_uint32* BspGPIOPort_32;
-    t_uint32* BspPin_u32;
-    t_bool    IsSigCOnfigured_b;
-}t_eFMKIO_SigInfo;
-
-
-typedef struct 
-{
-    t_eChannelMode Mode_e;
-    t_eIsChannelRunning channelState_e;
-    t_ePolarity polarity_e;
-    t_bool isInterruptEnabled_b;   // Indicateur d'activation de l'interruption
-    void (*channelCallback_fn)(void);  // Pointeur vers une fonction de callback spécifique
-    t_eErrorState errorState_e;    // État d'erreur pour ce canal
-
-}t_sMain_ChannelInfo;
-
-typedef void (t_cbFMKCDA_Channel)(void);
-t_uint32 c_SigChannelMapping[NB_FREQ_] = {
-    ADC_CHANNEL_0, // Pin_1
-    ADC_CHANNEL_1, // Pin_2
-    ADC_CHANNEL_4, // Pin_3
-    ADC_CHANNEL_12, // Pin_4
-};
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);  // Gérer l'interruption pour le pin 0
+}*/
 
 int main()
 {   
-    HAL_NVIC_EnableIRQ()
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    g_TimInfo_s[0].timCfg_s.Instance = TIM1
+    
     return 0;
 }
-typedef enum
-{
-    FMKCPU_CHANNEL_1 = 0,
-    FMKCPU_CHANNEL_2,
-    FMKCPU_CHANNEL_3,
-    FMKCPU_CHANNEL_4,
-}t_eChannel;
-enum{
-    TIM_1 = 0,
-    TIM_2,
-    TIM_NB
-};
-#define MAX_CHANNEL 9
 
-typedef t_eReturnState (t_cbHardwareInterrupt)(t_eChannel f_channel);
-typedef struct 
-{
-    TIM_HandleTypeDef TIMx;
-    t_cbHardwareInterrupt *HwCallback_cb;
-    t_bool IsTimerRunning_b;
-    t_bool IsTimerConfigured_b;
-    t_bool IsTimerClockEnable_b;
-    t_sFMKCPU_ChannelInfo[MAX_CHANNEL]
-
-}t_sFMKCPU_TimInfo;
-
-t_sFMKCPU_TimInfo g_TimInfo_as[TIM_NB];
-
-t_eReturnState FMKCPU_ReqstInterruptMngmt(TIM_HandleTypeDef *htim)
+/*t_eReturnState FMKCPU_ReqstInterruptMngmt(TIM_HandleTypeDef *htim)
 {
     for(int i = 0; i < TIM_NB; i++)
     {
@@ -155,14 +80,7 @@ void HAL_TIM_PeriodElapsedHalfCpltCallback(TIM_HandleTypeDef *htim){ return FMKC
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterruptMngmt(htim);}
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterruptMngmt(htim);}
 void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterruptMngmt(htim);}
-void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterruptMngmt(htim);}
-
-
-void FMKMAC_SetDmaCfg(void * peripheralHandle_pv)
-{
-    // configuration du DMA et de la channel 
-    __HAL_LINKDMA(peripheralHandle_pv, DMA_Handle, (DMA_HandleTypeDef)hdma);
-}   
+void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim){ return FMKCPU_ReqstInterruptMngmt(htim);}*/
 //************************************************************************************
 // End of File
 //************************************************************************************

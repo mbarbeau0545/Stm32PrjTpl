@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-08-30T19:07:47.729Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="e-0lULWTz4AJNbl7KIBo" version="24.6.1" type="device" pages="13">
+<mxfile host="Electron" modified="2024-08-31T16:52:55.655Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="9an-iDH98ula2CCv26xN" version="24.6.1" type="device" pages="14">
   <diagram name="Type" id="5uAFvneCDcM_lzJUFH2F">
-    <mxGraphModel dx="1728" dy="1697" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1419" dy="1516" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -135,7 +135,7 @@
         <mxCell id="6kZtZ3h49dXPzDli-yLT-191" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="720" y="-280" width="260" height="230.77" as="geometry" />
         </mxCell>
-        <mxCell id="6kZtZ3h49dXPzDli-yLT-192" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Enum: t_eFMKCPU_ChannelMode&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKCPU.h&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontSize=16;align=left;" parent="6kZtZ3h49dXPzDli-yLT-191" vertex="1">
+        <mxCell id="6kZtZ3h49dXPzDli-yLT-192" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Enum: t_eFMKCPU_HwChannelCfg&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKCPUCFG.h&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontSize=16;align=left;" parent="6kZtZ3h49dXPzDli-yLT-191" vertex="1">
           <mxGeometry width="260" height="230.77" as="geometry" />
         </mxCell>
         <mxCell id="6kZtZ3h49dXPzDli-yLT-193" value="FMKCPU_CHANNELMODE_PWM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontColor=#000000;" parent="6kZtZ3h49dXPzDli-yLT-191" vertex="1">
@@ -162,7 +162,7 @@
         <mxCell id="6kZtZ3h49dXPzDli-yLT-218" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="730" y="204.43" width="260" height="125.57" as="geometry" />
         </mxCell>
-        <mxCell id="6kZtZ3h49dXPzDli-yLT-214" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Enum:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-align: center;&quot;&gt;t_eFMKCPU_Polarity&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKCPU.h&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontSize=16;align=left;" parent="6kZtZ3h49dXPzDli-yLT-218" vertex="1">
+        <mxCell id="6kZtZ3h49dXPzDli-yLT-214" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Enum:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-align: center;&quot;&gt;t_eFMKCPU_ChnlPolarity&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKCPU.h&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontSize=16;align=left;" parent="6kZtZ3h49dXPzDli-yLT-218" vertex="1">
           <mxGeometry width="260" height="125.57" as="geometry" />
         </mxCell>
         <mxCell id="6kZtZ3h49dXPzDli-yLT-215" value="FMKCPU_CHNLPOLAR_HIGH" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontColor=#000000;" parent="6kZtZ3h49dXPzDli-yLT-218" vertex="1">
@@ -387,13 +387,13 @@
         <mxCell id="6kZtZ3h49dXPzDli-yLT-181" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Struct: t_sFMKCPU_ChanneIInfo&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKCPU.c&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontSize=16;align=left;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
           <mxGeometry x="1" width="240" height="310" as="geometry" />
         </mxCell>
-        <mxCell id="6kZtZ3h49dXPzDli-yLT-182" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_ChannelMode&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
+        <mxCell id="6kZtZ3h49dXPzDli-yLT-182" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_HwChannelCfg&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
           <mxGeometry y="49.99692307692308" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
         <mxCell id="6kZtZ3h49dXPzDli-yLT-183" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 11px;&quot;&gt;t_eFMKCPU_ChannelState&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
           <mxGeometry y="78.83999999999997" width="240" height="25.77" as="geometry" />
         </mxCell>
-        <mxCell id="6kZtZ3h49dXPzDli-yLT-184" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_Polarity&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
+        <mxCell id="6kZtZ3h49dXPzDli-yLT-184" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_ChnlPolarity&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
           <mxGeometry y="104.60692307692312" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
         <mxCell id="6kZtZ3h49dXPzDli-yLT-187" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_bool IsInterruptEnable_b&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
@@ -402,7 +402,7 @@
         <mxCell id="6kZtZ3h49dXPzDli-yLT-188" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_cbFMKCPU_ChannelFunc&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
           <mxGeometry x="1" y="223.4569230769232" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
-        <mxCell id="6kZtZ3h49dXPzDli-yLT-189" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_ErrorState&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
+        <mxCell id="6kZtZ3h49dXPzDli-yLT-189" value="tim" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
           <mxGeometry y="281.1569230769232" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
         <mxCell id="-_Xze7lcy6EqNcJHZ5Ro-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_ChannelRunMode&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="3YlXg_0V3ILtCfudAmSD-2" vertex="1">
@@ -578,21 +578,6 @@
         <mxCell id="g61GgAUmoKsB6qLWypFW-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="g61GgAUmoKsB6qLWypFW-6" target="g61GgAUmoKsB6qLWypFW-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FsVzkjTIgXri18mnCcAx-1" value="" style="group" parent="1" connectable="0" vertex="1">
-          <mxGeometry x="-580" y="-584" width="300" height="125.57" as="geometry" />
-        </mxCell>
-        <mxCell id="FsVzkjTIgXri18mnCcAx-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Enum:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-align: center;&quot;&gt;t_eFMKCPU_PwmMode&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKCPU.h&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontSize=16;align=left;" parent="FsVzkjTIgXri18mnCcAx-1" vertex="1">
-          <mxGeometry width="300" height="125.57" as="geometry" />
-        </mxCell>
-        <mxCell id="FsVzkjTIgXri18mnCcAx-3" value="FMKCPU_PWM_MODE_CONTINUOUS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontColor=#000000;" parent="FsVzkjTIgXri18mnCcAx-1" vertex="1">
-          <mxGeometry y="45.57076923076926" width="300" height="26.53846153846154" as="geometry" />
-        </mxCell>
-        <mxCell id="FsVzkjTIgXri18mnCcAx-4" value="FMKCPU_PWM_MODE_INTERRUPT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontColor=#000000;" parent="FsVzkjTIgXri18mnCcAx-1" vertex="1">
-          <mxGeometry y="72.11076923076928" width="300" height="26.53846153846154" as="geometry" />
-        </mxCell>
-        <mxCell id="FsVzkjTIgXri18mnCcAx-5" value="FMKCPU_PWM_MODE_NB" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontColor=#000000;" parent="FsVzkjTIgXri18mnCcAx-1" vertex="1">
-          <mxGeometry y="98.6507692307693" width="300" height="26.53846153846154" as="geometry" />
-        </mxCell>
         <mxCell id="tY9txM1QbKeZ9cvN-96q-1" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;t_uint32 timFrequency_32&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="-170" y="-434.43000000000006" width="280" height="25.77" as="geometry" />
         </mxCell>
@@ -606,7 +591,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="u1-pV1bSb9lh3qwmV6UE" name="Static API">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2246" dy="2685" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -634,7 +619,7 @@
         <mxCell id="kt3TuQJHhxjI1cwuXYRs-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" parent="kt3TuQJHhxjI1cwuXYRs-1" vertex="1">
           <mxGeometry width="560" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="kt3TuQJHhxjI1cwuXYRs-3" value="s_FMKCPU_GetBspChannel(&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMCPU_ITCHannel&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_InterruptChannel_u32&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;* f_channel_pu32&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="kt3TuQJHhxjI1cwuXYRs-1" vertex="1">
+        <mxCell id="kt3TuQJHhxjI1cwuXYRs-3" value="s_FMKCPU_GetBspChannel(&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_CHannel&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_InterruptChannel_u32&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;* f_channel_pu32&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="kt3TuQJHhxjI1cwuXYRs-1" vertex="1">
           <mxGeometry width="560" height="40" as="geometry" />
         </mxCell>
         <mxCell id="63BuEByYTxP5CMpHtGbq-1" value="" style="group" parent="1" connectable="0" vertex="1">
@@ -646,20 +631,20 @@
         <mxCell id="63BuEByYTxP5CMpHtGbq-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;s_FMKCPU_SetHwChannelState(&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_sFMKCPU_Bsp&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap; background-color: initial;&quot;&gt;TimerCfg&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;,&lt;/span&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_ChannelMode&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;&amp;nbsp;&lt;/span&gt;t_eFMKCPU_ChannelState)&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="63BuEByYTxP5CMpHtGbq-1" vertex="1">
           <mxGeometry width="580" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="rGdephtOOD1-kEhYhcTW-1" value="" style="group" connectable="0" vertex="1" parent="1">
+        <mxCell id="rGdephtOOD1-kEhYhcTW-1" value="" style="group" parent="1" connectable="0" vertex="1">
           <mxGeometry x="-890" y="-2240" width="580" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="rGdephtOOD1-kEhYhcTW-2" value="&amp;nbsp;Update&amp;nbsp;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;g_FMKCPU_TimInfo varaible &amp;amp; start/ stop depending on channelState&amp;nbsp; &amp;amp; channel Mode(In structure)&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;amp; pointeur fonction HAL&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" vertex="1" parent="rGdephtOOD1-kEhYhcTW-1">
+        <mxCell id="rGdephtOOD1-kEhYhcTW-2" value="&amp;nbsp;Update&amp;nbsp;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;g_FMKCPU_TimInfo varaible &amp;amp; start/ stop depending on channelState&amp;nbsp; &amp;amp; channel Mode(In structure)&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;amp; pointeur fonction HAL&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" parent="rGdephtOOD1-kEhYhcTW-1" vertex="1">
           <mxGeometry width="580" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="rGdephtOOD1-kEhYhcTW-3" value="s_FMKCPU_BspRqst_InterruptMngmt(tim_handleTypedf *, t_eFMKCPU_ChannelMode)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="rGdephtOOD1-kEhYhcTW-1">
+        <mxCell id="rGdephtOOD1-kEhYhcTW-3" value="s_FMKCPU_BspRqst_InterruptMngmt(tim_handleTypedf *, t_eFMKCPU_ChannelMode)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="rGdephtOOD1-kEhYhcTW-1" vertex="1">
           <mxGeometry width="580" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="GnNEmuDvuv31OQwTrysF" name="API">
-    <mxGraphModel dx="3833" dy="3121" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="5071" dy="3856" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -700,12 +685,12 @@
           <mxGeometry width="650" height="40" as="geometry" />
         </mxCell>
         <mxCell id="kdM2vDy27vD4kj0dBMUi-7" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-827" y="-1140" width="650" height="160" as="geometry" />
+          <mxGeometry x="-770" y="-850" width="650" height="160" as="geometry" />
         </mxCell>
         <mxCell id="kdM2vDy27vD4kj0dBMUi-8" value="Après configuration et startNow = False, FMKIO utilise cette fonction pour actualiser l&#39;état de la channel afin de générer le PWM selon la config, blocking ou non blocking" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" parent="kdM2vDy27vD4kj0dBMUi-7" vertex="1">
           <mxGeometry width="650" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="kdM2vDy27vD4kj0dBMUi-9" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;FMKCPU_SetPwmChannelState(&lt;/font&gt;&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_Timer,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;t_eFMCPU_InterruptChannel&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;t_eFMKCPU_ChannelState&lt;/font&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="kdM2vDy27vD4kj0dBMUi-7" vertex="1">
+        <mxCell id="kdM2vDy27vD4kj0dBMUi-9" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;FMKCPU_SetChannelState(&lt;/font&gt;&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_Timer,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;t_eFMCPU_InterruptChannel&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;t_eFMKCPU_ChannelState&lt;/font&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="kdM2vDy27vD4kj0dBMUi-7" vertex="1">
           <mxGeometry width="650" height="40" as="geometry" />
         </mxCell>
         <mxCell id="kdM2vDy27vD4kj0dBMUi-10" value="" style="group" parent="1" vertex="1" connectable="0">
@@ -715,24 +700,6 @@
           <mxGeometry width="650" height="160" as="geometry" />
         </mxCell>
         <mxCell id="kdM2vDy27vD4kj0dBMUi-12" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;FMKCPU_ResetWwdg(void)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="kdM2vDy27vD4kj0dBMUi-10" vertex="1">
-          <mxGeometry width="650" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="A621MeaLGn3DkK8PmuBy-1" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-827" y="-920" width="650" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="A621MeaLGn3DkK8PmuBy-2" value="Après configuration et startNow = False, user utilise cette fonction pour actualiser l&#39;état de la channel afin de générer le IC selon la config, blocking ou non blocking" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" parent="A621MeaLGn3DkK8PmuBy-1" vertex="1">
-          <mxGeometry width="650" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="A621MeaLGn3DkK8PmuBy-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;FMKCPU_SetICChannelState(&lt;/font&gt;&amp;nbsp;&lt;span style=&quot;text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMKCPU_Timer,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMCPU_InterruptChannel&lt;/span&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;t_eFMKCPU_ChannelState&lt;/font&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="A621MeaLGn3DkK8PmuBy-1" vertex="1">
-          <mxGeometry width="650" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="k-SDGnPlWry9u41RY17m-1" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-827" y="-680" width="650" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="k-SDGnPlWry9u41RY17m-2" value="Après configuration et startNow = False, user utilise cette fonction pour actualiser l&#39;état de la channel afin de générer le IC selon la config, blocking ou non blocking" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" parent="k-SDGnPlWry9u41RY17m-1" vertex="1">
-          <mxGeometry width="650" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="k-SDGnPlWry9u41RY17m-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;FMKCPU_SetEvntChannelState(&lt;/font&gt;t_eFMKCPU_EvntChannel&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;t_eFMKCPU_ChannelState&lt;/font&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="k-SDGnPlWry9u41RY17m-1" vertex="1">
           <mxGeometry width="650" height="40" as="geometry" />
         </mxCell>
         <mxCell id="CD7t3s2bxfS6A-ohvUtB-1" value="" style="group" parent="1" vertex="1" connectable="0">
@@ -759,7 +726,7 @@
         <mxCell id="Miae27zsOJYKgoOvAeoA-2" value="Use static function to get IRQN_Type &amp;amp; en fonction de enable/disable, switch case use HAL function for Priority use Cfg&amp;nbsp;&lt;br&gt;c_FMKCPU_NVIC_PriorityCfg_ae (comme c&#39;est un t_uint8 dans le HAL just caster suffit)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" parent="Miae27zsOJYKgoOvAeoA-1" vertex="1">
           <mxGeometry width="650" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="Miae27zsOJYKgoOvAeoA-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;FMKCPU_SetNVICState(&amp;nbsp;&lt;span style=&quot;font-size: 12px; text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_IRQNType,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;t_eFMKCPU_NVICOpe&lt;/span&gt;)&amp;nbsp;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;fontSize=12;" parent="Miae27zsOJYKgoOvAeoA-1" vertex="1">
+        <mxCell id="Miae27zsOJYKgoOvAeoA-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;FMKCPU_SetNVICState(&amp;nbsp;&lt;span style=&quot;font-size: 12px; text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_IRQNType,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;t_eFMKCPU_NVICPriority,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;t_eFMKCPU_NVICOpe&lt;/span&gt;)&amp;nbsp;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;fontSize=12;" parent="Miae27zsOJYKgoOvAeoA-1" vertex="1">
           <mxGeometry width="650" height="40" as="geometry" />
         </mxCell>
         <mxCell id="dqugZjiw3wvMzgtfIUN2-4" value="" style="group" parent="1" connectable="0" vertex="1">
@@ -802,7 +769,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Hc5vdaLQwgSRTTUlnFMZ" name="s_Func_SetHwChannelState">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1690" dy="1675" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -815,13 +782,13 @@
         <mxCell id="EZOvwXQwVTTqcnJmw7aJ-1" value="switch case sur g_TimInfo[][].channelRunMode" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="170" y="-960" width="441.25" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="EZOvwXQwVTTqcnJmw7aJ-2" target="cO3s4igQxqd80F6xHtyp-8">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="EZOvwXQwVTTqcnJmw7aJ-2" target="cO3s4igQxqd80F6xHtyp-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="EZOvwXQwVTTqcnJmw7aJ-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;c_BspTimChannelFunc_as&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;[f_channelMode]&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;.ModePolling(timer, channel)&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;le timer et la channel se trouve grâce au g_InfoTimer et&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap; background-color: initial;&quot;&gt;c_FMKCPU_HwChannelMapping&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="367" y="-720" width="750" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="imMZn9X-kaiyJLKYo8T8-2" target="cO3s4igQxqd80F6xHtyp-8">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="imMZn9X-kaiyJLKYo8T8-2" target="cO3s4igQxqd80F6xHtyp-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="imMZn9X-kaiyJLKYo8T8-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;c_BspTimChannelFunc_as[f_channelMode].ModeInterrupt(timer, channel)&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;le timer et la channel se trouve grâce au g_InfoTimer et&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap; background-color: initial;&quot;&gt;c_FMKCPU_HwChannelMapping&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" parent="1" vertex="1">
@@ -842,25 +809,25 @@
         <mxCell id="XAulMHmdQKIXQzF33vUn-1" value="Get ChannelRunMode from g_TimInfo" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="179.38" y="-1040" width="441.25" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-1" value="" style="group" connectable="0" vertex="1" parent="1">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-1" value="" style="group" parent="1" connectable="0" vertex="1">
           <mxGeometry x="119.99999999999983" y="-440" width="454.3800000000002" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-2" value="FMKCPU_SetNVICState" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="cO3s4igQxqd80F6xHtyp-1">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-2" value="FMKCPU_SetNVICState" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="cO3s4igQxqd80F6xHtyp-1" vertex="1">
           <mxGeometry x="4.380000000000109" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-3" value="g_TimerInfo[Interrupt_e].IRQNType" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="cO3s4igQxqd80F6xHtyp-1">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-3" value="g_TimerInfo[Interrupt_e].IRQNType" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="cO3s4igQxqd80F6xHtyp-1" vertex="1">
           <mxGeometry x="4.380000000000109" y="30" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-4" value="FMKCPU_NVIC_OPE_ENABLE" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="cO3s4igQxqd80F6xHtyp-1">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-4" value="FMKCPU_NVIC_OPE_ENABLE" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="cO3s4igQxqd80F6xHtyp-1" vertex="1">
           <mxGeometry y="60" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="cO3s4igQxqd80F6xHtyp-4" target="imMZn9X-kaiyJLKYo8T8-5">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="cO3s4igQxqd80F6xHtyp-4" target="imMZn9X-kaiyJLKYo8T8-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="cO3s4igQxqd80F6xHtyp-8" target="cO3s4igQxqd80F6xHtyp-2">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="cO3s4igQxqd80F6xHtyp-8" target="cO3s4igQxqd80F6xHtyp-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-8" value="if g_TimInfo.IsNVICenable_b == FAlse" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-8" value="if g_TimInfo.IsNVICenable_b == FAlse" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="130" y="-540" width="441.25" height="50" as="geometry" />
         </mxCell>
       </root>
@@ -890,7 +857,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="nyBnXCrND_C7Nns_vYdp" name="Func_SetPwmChannelCfg">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="441" dy="1427" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -904,7 +871,7 @@
           <mxGeometry x="688.13" y="-740" width="240" height="20" as="geometry" />
         </mxCell>
         <mxCell id="eTLtxIHD9OWe35pDIR-H-12" value="Update g_TimerInfo.timer" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="570.93" y="249.99999999999997" width="441.25" height="50" as="geometry" />
+          <mxGeometry x="588.64" y="530" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="zzUn1SkLogxUhO_n_l_T-23" value="&lt;span style=&quot;&quot;&gt;s_FMKCPU_SetTimerCfg usiing BspTimerCfg&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="570" y="-220.00000000000003" width="450" height="30" as="geometry" />
@@ -928,7 +895,7 @@
           <mxGeometry x="565.62" y="-70.00000000000003" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8WYg8kfWvQd2hX_rOMUx-10" value="" style="group;fontColor=#000000;" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="740.8379038967508" y="806.78" width="96.62419220649838" height="83.21709610324922" as="geometry" />
+          <mxGeometry x="758.5479038967509" y="1086.78" width="96.62419220649838" height="83.21709610324922" as="geometry" />
         </mxCell>
         <mxCell id="8WYg8kfWvQd2hX_rOMUx-11" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;container=0;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" parent="8WYg8kfWvQd2hX_rOMUx-10" vertex="1">
           <mxGeometry x="15.002096103249189" y="1.61" width="80" height="80" as="geometry" />
@@ -949,28 +916,28 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="8WYg8kfWvQd2hX_rOMUx-21" value="Filled&amp;nbsp;&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;g_FMKCPU_TimInfo[&lt;/span&gt;InterruptTimer_e&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;].channel&lt;/span&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="597.72" y="926.78" width="441.25" height="50" as="geometry" />
+          <mxGeometry x="615.4300000000001" y="1206.78" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="k3lN2m71cTOMhDr5_4g4-2" value=".IsTimerConfigured_b = True" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="879.1600000000001" y="976.78" width="220" height="50" as="geometry" />
+          <mxGeometry x="896.8700000000001" y="1256.78" width="220" height="50" as="geometry" />
         </mxCell>
         <mxCell id="k3lN2m71cTOMhDr5_4g4-3" value="&amp;amp;.Prescaler &amp;amp; period (value &amp;amp; value)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="872.5400000000001" y="1026.78" width="220" height="50" as="geometry" />
+          <mxGeometry x="890.2500000000001" y="1306.78" width="220" height="50" as="geometry" />
         </mxCell>
         <mxCell id="k3lN2m71cTOMhDr5_4g4-4" value=".IRQNvariable value" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="853.9699999999999" y="1076.78" width="220" height="50" as="geometry" />
+          <mxGeometry x="871.68" y="1356.78" width="220" height="50" as="geometry" />
         </mxCell>
         <mxCell id="k3lN2m71cTOMhDr5_4g4-5" value=".channelnfo_as[&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;BspChannel_e&lt;/span&gt;].mode = CHANELMODE_PWM" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="492.53999999999996" y="976.78" width="300" height="50" as="geometry" />
+          <mxGeometry x="510.24999999999994" y="1256.78" width="300" height="50" as="geometry" />
         </mxCell>
         <mxCell id="RGiiOUC31E2oM_8E8MaG-6" value=".channelnfo_as[&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;BspChannel_e&lt;/span&gt;].polarity_e=&amp;nbsp;&lt;div&gt;?&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="492.53999999999996" y="1026.78" width="300" height="50" as="geometry" />
+          <mxGeometry x="510.24999999999994" y="1306.78" width="300" height="50" as="geometry" />
         </mxCell>
         <mxCell id="RGiiOUC31E2oM_8E8MaG-7" value=".channelnfo_as[&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;BspChannel_e&lt;/span&gt;].HwChannelUsed=&amp;nbsp;&lt;div&gt;BspChnnel_pu32&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="492.53999999999996" y="1076.78" width="300" height="50" as="geometry" />
+          <mxGeometry x="510.24999999999994" y="1356.78" width="300" height="50" as="geometry" />
         </mxCell>
         <mxCell id="mcgJ4RoMHBE4hH0Z_oWX-1" value=".channellnfo_as[&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;BspChannel_e&lt;/span&gt;].ChannelRunMode=&amp;nbsp;&lt;div&gt;Basic for Now Polling&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="481.69000000000005" y="1126.78" width="321.7" height="50" as="geometry" />
+          <mxGeometry x="499.40000000000003" y="1406.78" width="321.7" height="50" as="geometry" />
         </mxCell>
         <mxCell id="CnP_6X-wK6_JPxZairrr-7" value="" style="group;fontColor=#000000;" parent="1" connectable="0" vertex="1">
           <mxGeometry x="749.9979038967508" y="-340" width="93.31209610324917" height="93.21709610324922" as="geometry" />
@@ -1011,10 +978,10 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="boJpU36Xsh5J-HQgA214-1" value="Filled&amp;nbsp;&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;g_FMKCPU_TimInfo[&lt;/span&gt;InterruptTimer_e&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;]&lt;/span&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="584.06" y="199.99999999999997" width="441.25" height="50" as="geometry" />
+          <mxGeometry x="601.77" y="480" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="Q8dn3NnmylO_boC4QcYT-1" value="" style="group" parent="1" connectable="0" vertex="1">
-          <mxGeometry x="570" y="530" width="450.0000000000001" height="120" as="geometry" />
+          <mxGeometry x="587.71" y="810" width="450.0000000000001" height="120" as="geometry" />
         </mxCell>
         <mxCell id="BOLlmFSKsZbmqi11r3l6-13" value="c_HwChannelMapping[&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;BspChannel_pe&amp;nbsp;&lt;/span&gt;]" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" parent="Q8dn3NnmylO_boC4QcYT-1" vertex="1">
           <mxGeometry y="90" width="450" height="30" as="geometry" />
@@ -1028,11 +995,11 @@
         <mxCell id="8WYg8kfWvQd2hX_rOMUx-1" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&amp;amp;sConfigOC&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" parent="Q8dn3NnmylO_boC4QcYT-1" vertex="1">
           <mxGeometry y="60" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="TvFXgHw-ZpTMF1wXNjy2-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Q8dn3NnmylO_boC4QcYT-2" target="BOLlmFSKsZbmqi11r3l6-11">
+        <mxCell id="TvFXgHw-ZpTMF1wXNjy2-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="Q8dn3NnmylO_boC4QcYT-2" target="BOLlmFSKsZbmqi11r3l6-11" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Q8dn3NnmylO_boC4QcYT-2" value="Filled sConfigOC (see with IA)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
-          <mxGeometry x="560" y="390" width="441.25" height="50" as="geometry" />
+          <mxGeometry x="577.71" y="670" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="2HubQn7V38fb_zi54e6l-1" value="" style="group" parent="1" connectable="0" vertex="1">
           <mxGeometry x="744.9579038967507" y="-670" width="120" height="110" as="geometry" />
@@ -1085,19 +1052,33 @@
             <mxPoint x="73.92656219731646" y="15" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2HubQn7V38fb_zi54e6l-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="2HubQn7V38fb_zi54e6l-13" target="boJpU36Xsh5J-HQgA214-1" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="NekA8WEB7xwkMN8KE2NF-1" value="AutoReloadPReload = ? IA" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="570" y="-40.00000000000003" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Bod5CzQaKFHP3nNX29Az-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="mcgJ4RoMHBE4hH0Z_oWX-1" target="Bod5CzQaKFHP3nNX29Az-1" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="818.3333333333333" y="1440" as="sourcePoint" />
+            <mxPoint x="836.0433333333333" y="1720" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Bod5CzQaKFHP3nNX29Az-1" value="End" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-          <mxGeometry x="778.35" y="1850" width="80" height="80" as="geometry" />
+          <mxGeometry x="796.0600000000001" y="2130" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WtUQleENGq51B6dkh2LX-6" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="573.34" y="270" width="450" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WtUQleENGq51B6dkh2LX-3" value="HAL_TIM_PWM_Init" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" vertex="1" parent="WtUQleENGq51B6dkh2LX-6">
+          <mxGeometry width="450" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WtUQleENGq51B6dkh2LX-4" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&amp;amp;g_TimerInfo[f_timer_e].BspInit_s&lt;/span&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=1;" vertex="1" parent="WtUQleENGq51B6dkh2LX-6">
+          <mxGeometry y="30" width="450" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WtUQleENGq51B6dkh2LX-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="2HubQn7V38fb_zi54e6l-11" target="WtUQleENGq51B6dkh2LX-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="796.6551724137931" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WtUQleENGq51B6dkh2LX-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="WtUQleENGq51B6dkh2LX-4" target="boJpU36Xsh5J-HQgA214-1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -1568,8 +1549,61 @@
       </root>
     </mxGraphModel>
   </diagram>
+  <diagram id="uVnIDFUmsAlEItz1H7CJ" name="Func_SetNVICState">
+    <mxGraphModel dx="493" dy="289" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="E1BaoYPO73k5OX1Zui97-1" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;FMKCPU_SetNVICState(&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMKCPU_IRQNType,&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;FMKCPU_SetNVICState(&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMKCPU_IRQNType,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_NVICPriority,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_NVICOpe&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;) ,&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap; text-align: left;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;t_eFMKCPU_NVICOpe&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;)&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_IRQNType = HAL enum&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="750" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="E1BaoYPO73k5OX1Zui97-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="E1BaoYPO73k5OX1Zui97-3" target="E1BaoYPO73k5OX1Zui97-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E1BaoYPO73k5OX1Zui97-3" value="Start" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="790" y="160" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E1BaoYPO73k5OX1Zui97-4" value="IF Verif argument" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+          <mxGeometry x="710" y="280" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VwNeM0ce9A9zDVCejq73-1" value="switch case sur l&#39;ope&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+          <mxGeometry x="710" y="340" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="KIa965C695mfGKxINh9p-1" value="ENABLE" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+          <mxGeometry x="860" y="370" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="wHLuwVmHXqVszVLP1ONq-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="KIa965C695mfGKxINh9p-2" target="wHLuwVmHXqVszVLP1ONq-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KIa965C695mfGKxINh9p-2" value="DISABLE" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+          <mxGeometry x="570" y="410" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="wHLuwVmHXqVszVLP1ONq-1" value="HAL_NVIC_DisableIRQ(f_IRQNType_é)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="580" y="490" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e3l27aFKFAF2WA8G0zmz-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="wHLuwVmHXqVszVLP1ONq-3" target="e3l27aFKFAF2WA8G0zmz-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wHLuwVmHXqVszVLP1ONq-3" value="&amp;nbsp;HAL_NVIC_SetPriority(irqNumber, nvicPriority, &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;);" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="870" y="530" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e3l27aFKFAF2WA8G0zmz-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="wHLuwVmHXqVszVLP1ONq-4" target="wHLuwVmHXqVszVLP1ONq-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wHLuwVmHXqVszVLP1ONq-4" value="switch case sur la priorité" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+          <mxGeometry x="860" y="470" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="e3l27aFKFAF2WA8G0zmz-3" value="&amp;nbsp;HAL_NVIC_EnableIRQ(irqNumber);" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="870" y="590" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qj9uI_5AfB-AV4Nzmyb2-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+          <mxGeometry x="860" y="420" width="240" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
   <diagram id="kO3wrNabqxqGP3FSsnQl" name="Func_SetPwmChannel_DutyCycle">
-    <mxGraphModel dx="861" dy="498" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1295" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1742,7 +1776,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="hiT9ywaENEeLDl5dpjeJ" name="Func_s_BspRqst_Interrupt">
-    <mxGraphModel dx="1036" dy="607" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="676" dy="391" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
