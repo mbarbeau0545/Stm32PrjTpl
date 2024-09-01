@@ -60,54 +60,64 @@
 
     } t_eReturnState;
 
-typedef unsigned char t_bool;               /**< Boolean type. */
-typedef unsigned char t_uint8;              /**< Unsigned 8-bit type. */
-typedef signed char t_sint8;                /**< Signed 8-bit type. */
-typedef unsigned short t_uint16;            /**< Unsigned 16-bit type. */
-typedef signed short t_sint16;              /**< Signed 16-bit type. */
-typedef unsigned long t_uint32;             /**< Unsigned 32-bit type. */
-typedef signed long t_sint32;               /**< Signed 32-bit type. */
-typedef float t_float32;                    /**< 32-bit float type. */
-//typedef unsigned long long t_uint64;        /**< Unsigned 64-bit type. */
-//typedef signed long long t_sint64;          /**< Signed 64-bit type. */
-typedef char t_char;
+    typedef enum 
+    {
+        STATE_CYCLIC_PREOPE = 0,
+        STATE_CYCLIC_OPE,
+        STATE_CYCLIC_BUSY,
+        STATE_CYCLIC_WAITING,
+        STATE_CYCLIC_ERROR,
+    } t_eCyclicFuncState;
 
-/* 0x000000FFUL*/
-// bit management 
-#define Mu8ExtractByte0fromU16 (Mu16Value)     (t_uint8)((t_uint16)(Mu16Value)        )
-#define Mu8ExtractByte1fromU16 (Mu16Value)     (t_uint8)((t_uint16)(Mu16Value) >> 8   )
-  
-#define Mu8ExtractByte0fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value)        )
-#define Mu8ExtractByte1fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value) >> 8   )
-#define Mu8ExtractByte2fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value) >> 16  )
-#define Mu8ExtractByte3fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value) >> 24  )
-  
-#define Ms8ExtractByte0fromU16 (Ms16Value)     (t_sint8)((t_sint16)(Ms16Value)        )  
-#define Ms8ExtractByte1fromU16 (Ms16Value)     (t_sint8)((t_sint16)(Ms16Value) >> 8   )  
-  
-#define Ms8ExtractByte0fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value)        )
-#define Ms8ExtractByte1fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value) >> 8   )
-#define Ms8ExtractByte2fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value) >> 16  )
-#define Ms8ExtractByte3fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value) >> 24  )
-  
+    
+    typedef unsigned char t_bool;               /**< Boolean type. */
+    typedef unsigned char t_uint8;              /**< Unsigned 8-bit type. */
+    typedef signed char t_sint8;                /**< Signed 8-bit type. */
+    typedef unsigned short t_uint16;            /**< Unsigned 16-bit type. */
+    typedef signed short t_sint16;              /**< Signed 16-bit type. */
+    typedef unsigned long t_uint32;             /**< Unsigned 32-bit type. */
+    typedef signed long t_sint32;               /**< Signed 32-bit type. */
+    typedef float t_float32;                    /**< 32-bit float type. */
+    //typedef unsigned long long t_uint64;        /**< Unsigned 64-bit type. */
+    //typedef signed long long t_sint64;          /**< Signed 64-bit type. */
+    typedef char t_char;
 
-#define Mu16BuildFromByte (Mu8ValueB0, Mu8ValueB1)  \
-(((t_uint16)(Mu8ValueB0))            /* 0x00FFUL*/ | \
-(((t_uint16)(Mu8ValueB1)) << 8)      /* 0xFF00UL*/   )
+    /* 0x000000FFUL*/
+    // bit management 
+    #define Mu8ExtractByte0fromU16 (Mu16Value)     (t_uint8)((t_uint16)(Mu16Value)        )
+    #define Mu8ExtractByte1fromU16 (Mu16Value)     (t_uint8)((t_uint16)(Mu16Value) >> 8   )
+    
+    #define Mu8ExtractByte0fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value)        )
+    #define Mu8ExtractByte1fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value) >> 8   )
+    #define Mu8ExtractByte2fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value) >> 16  )
+    #define Mu8ExtractByte3fromU32 (Mu32Value)     (t_uint8)((t_uint32)(Mu32Value) >> 24  )
+    
+    #define Ms8ExtractByte0fromU16 (Ms16Value)     (t_sint8)((t_sint16)(Ms16Value)        )  
+    #define Ms8ExtractByte1fromU16 (Ms16Value)     (t_sint8)((t_sint16)(Ms16Value) >> 8   )  
+    
+    #define Ms8ExtractByte0fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value)        )
+    #define Ms8ExtractByte1fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value) >> 8   )
+    #define Ms8ExtractByte2fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value) >> 16  )
+    #define Ms8ExtractByte3fromU32 (Ms32Value)     (t_sint8)((t_sint32)(Ms32Value) >> 24  )
+    
 
-#define Mu32BuildFromByte (Mu8ValueB0, Mu8ValueB1, Mu8ValueB2, Mu8ValueB3) \
-(((t_uint32)(Mu8ValueB0)         )       /* 0x000000FFUL*/ | \
-((t_uint32)(Mu8ValueB1) << 8     )       /* 0x0000FF00UL*/ | \
-((t_uint32)(Mu8ValueB2) << 16    )       /* 0x00FF0000UL*/ | \
-((t_uint32)(Mu8ValueB3) << 24    )       /* 0xFF000000UL*/ | )
+    #define Mu16BuildFromByte (Mu8ValueB0, Mu8ValueB1)  \
+    (((t_uint16)(Mu8ValueB0))            /* 0x00FFUL*/ | \
+    (((t_uint16)(Mu8ValueB1)) << 8)      /* 0xFF00UL*/   )
 
-#define Ms16BuildFromByte (Ms8ValueB0, Ms8ValueB1)  \
-(((t_sint16)(Ms8ValueB0))            /* 0x00FFUL*/ | \
-(((t_sint16)(Ms8ValueB1)) << 8   )      /* 0xFF00UL*/)
+    #define Mu32BuildFromByte (Mu8ValueB0, Mu8ValueB1, Mu8ValueB2, Mu8ValueB3) \
+    (((t_uint32)(Mu8ValueB0)         )       /* 0x000000FFUL*/ | \
+    ((t_uint32)(Mu8ValueB1) << 8     )       /* 0x0000FF00UL*/ | \
+    ((t_uint32)(Mu8ValueB2) << 16    )       /* 0x00FF0000UL*/ | \
+    ((t_uint32)(Mu8ValueB3) << 24    )       /* 0xFF000000UL*/ | )
 
-#define Ms32BuildFromByte (Ms8ValueB0, Ms8ValueB0, Ms8ValueB2, Ms8ValueB3) \
-(((t_sint32)(Mu8ValueB0)          )       /* 0x000000FFUL*/ | \
- ((t_sint32)(Mu8ValueB1) << 8     )       /* 0x0000FF00UL*/ | \
- ((t_sint32)(Mu8ValueB2) << 16    )       /* 0x00FF0000UL*/ | \
- ((t_sint32)(Mu8ValueB3) << 24    )       /* 0xFF000000UL*/ | )
+    #define Ms16BuildFromByte (Ms8ValueB0, Ms8ValueB1)  \
+    (((t_sint16)(Ms8ValueB0))            /* 0x00FFUL*/ | \
+    (((t_sint16)(Ms8ValueB1)) << 8   )      /* 0xFF00UL*/)
+
+    #define Ms32BuildFromByte (Ms8ValueB0, Ms8ValueB0, Ms8ValueB2, Ms8ValueB3) \
+    (((t_sint32)(Mu8ValueB0)          )       /* 0x000000FFUL*/ | \
+    ((t_sint32)(Mu8ValueB1) << 8     )       /* 0x0000FF00UL*/ | \
+    ((t_sint32)(Mu8ValueB2) << 16    )       /* 0x00FF0000UL*/ | \
+    ((t_sint32)(Mu8ValueB3) << 24    )       /* 0xFF000000UL*/ | )
 #endif //TYPECOMMON_H_INCLUDED

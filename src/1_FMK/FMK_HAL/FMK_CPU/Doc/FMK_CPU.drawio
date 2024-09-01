@@ -815,7 +815,7 @@
         <mxCell id="cO3s4igQxqd80F6xHtyp-2" value="FMKCPU_SetNVICState" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="cO3s4igQxqd80F6xHtyp-1" vertex="1">
           <mxGeometry x="4.380000000000109" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="cO3s4igQxqd80F6xHtyp-3" value="g_TimerInfo[Interrupt_e].IRQNType" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="cO3s4igQxqd80F6xHtyp-1" vertex="1">
+        <mxCell id="cO3s4igQxqd80F6xHtyp-3" value="g_TimerInfo_as[Interrupt_e].IRQNType" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="cO3s4igQxqd80F6xHtyp-1" vertex="1">
           <mxGeometry x="4.380000000000109" y="30" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="cO3s4igQxqd80F6xHtyp-4" value="FMKCPU_NVIC_OPE_ENABLE" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="cO3s4igQxqd80F6xHtyp-1" vertex="1">
@@ -847,7 +847,7 @@
         <mxCell id="AlAKnTvmj9zA8_9DaWfa-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="FJVCnUorkmyzMqRr8hH8-1" target="AlAKnTvmj9zA8_9DaWfa-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FJVCnUorkmyzMqRr8hH8-1" value="Filled&amp;nbsp; g_TimerInfo_as[&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMCPU_Timer&lt;/span&gt;] avec les arguments" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+        <mxCell id="FJVCnUorkmyzMqRr8hH8-1" value="Filled&amp;nbsp; g_TimerInfo_as_as[&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMCPU_Timer&lt;/span&gt;] avec les arguments" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
           <mxGeometry x="-240.62" y="-1030" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="AlAKnTvmj9zA8_9DaWfa-1" value="End" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
@@ -870,7 +870,7 @@
         <mxCell id="eTLtxIHD9OWe35pDIR-H-1" value="IF Verif argument" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="688.13" y="-740" width="240" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="eTLtxIHD9OWe35pDIR-H-12" value="Update g_TimerInfo.timer" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
+        <mxCell id="eTLtxIHD9OWe35pDIR-H-12" value="Update g_TimerInfo_as.timer" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="588.64" y="530" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="zzUn1SkLogxUhO_n_l_T-23" value="&lt;span style=&quot;&quot;&gt;s_FMKCPU_SetTimerCfg usiing BspTimerCfg&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
@@ -963,7 +963,7 @@
         <mxCell id="RPGP5ToCTAlCRVa-sgDn-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="tzOzcob6oXn7-bCbaCMa-1" target="zzUn1SkLogxUhO_n_l_T-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tzOzcob6oXn7-bCbaCMa-1" value="IF g_TimerInfo[InterruptTimer_pe&amp;nbsp;].IsTimerConfigured_b" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
+        <mxCell id="tzOzcob6oXn7-bCbaCMa-1" value="IF g_TimerInfo_as[InterruptTimer_pe&amp;nbsp;].IsTimerConfigured_b" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="620.1800000000001" y="-480" width="351.88" height="20" as="geometry" />
         </mxCell>
         <mxCell id="RPGP5ToCTAlCRVa-sgDn-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="zzUn1SkLogxUhO_n_l_T-19" target="eTLtxIHD9OWe35pDIR-H-12" edge="1">
@@ -1069,7 +1069,7 @@
         <mxCell id="WtUQleENGq51B6dkh2LX-3" value="HAL_TIM_PWM_Init" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" vertex="1" parent="WtUQleENGq51B6dkh2LX-6">
           <mxGeometry width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="WtUQleENGq51B6dkh2LX-4" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&amp;amp;g_TimerInfo[f_timer_e].BspInit_s&lt;/span&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=1;" vertex="1" parent="WtUQleENGq51B6dkh2LX-6">
+        <mxCell id="WtUQleENGq51B6dkh2LX-4" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;&amp;amp;g_TimerInfo_as[f_timer_e].BspInit_s&lt;/span&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=1;" vertex="1" parent="WtUQleENGq51B6dkh2LX-6">
           <mxGeometry y="30" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="WtUQleENGq51B6dkh2LX-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="2HubQn7V38fb_zi54e6l-11" target="WtUQleENGq51B6dkh2LX-3">
@@ -1165,7 +1165,7 @@
             <mxPoint x="73.92656219731646" y="15" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="w4U9whUe9-o1FQsoa8-h-40" value="Update g_TimerInfo.timer" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
+        <mxCell id="w4U9whUe9-o1FQsoa8-h-40" value="Update g_TimerInfo_as.timer" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="575.5799999999999" y="280" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="w4U9whUe9-o1FQsoa8-h-41" value="Filled&amp;nbsp;&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;g_FMKCPU_TimInfo[&lt;/span&gt;InterruptTimer_e&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;]&lt;/span&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
@@ -1303,7 +1303,7 @@
             <mxPoint x="809.02" y="-360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6wp51KLm_yBere3XsMuF-1" value="IF g_TimerInfo[InterruptTimer_pe&amp;nbsp;].IsTimerConfigured_b" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
+        <mxCell id="6wp51KLm_yBere3XsMuF-1" value="IF g_TimerInfo_as[InterruptTimer_pe&amp;nbsp;].IsTimerConfigured_b" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="622.4599999999999" y="-430" width="378.12" height="50" as="geometry" />
         </mxCell>
         <mxCell id="6wp51KLm_yBere3XsMuF-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="uOHicC3c4pzloKaM-k7J-11" target="6wp51KLm_yBere3XsMuF-1" edge="1">
@@ -1326,7 +1326,7 @@
         <mxCell id="6gVNlp0YhD7SjiDLWg3h-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="6gVNlp0YhD7SjiDLWg3h-9" target="6gVNlp0YhD7SjiDLWg3h-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="6gVNlp0YhD7SjiDLWg3h-9" value="IF g_TimerInfo[InterruptTimer_pe&amp;nbsp;].IsTimerConfigured_b" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
+        <mxCell id="6gVNlp0YhD7SjiDLWg3h-9" value="IF g_TimerInfo_as[InterruptTimer_pe&amp;nbsp;].IsTimerConfigured_b" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="632.19" y="-480" width="351.88" height="20" as="geometry" />
         </mxCell>
         <mxCell id="6gVNlp0YhD7SjiDLWg3h-10" value="&lt;span style=&quot;&quot;&gt;s_FMKCPU_SetTimerCfg&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
@@ -1403,7 +1403,7 @@
             <mxPoint x="73.92656219731646" y="15" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6gVNlp0YhD7SjiDLWg3h-33" value="Update g_TimerInfo.timer" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
+        <mxCell id="6gVNlp0YhD7SjiDLWg3h-33" value="Update g_TimerInfo_as.timer" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="575.5799999999999" y="280" width="441.25" height="50" as="geometry" />
         </mxCell>
         <mxCell id="6gVNlp0YhD7SjiDLWg3h-34" value="Filled&amp;nbsp;&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;g_FMKCPU_TimInfo[&lt;/span&gt;InterruptTimer_e&amp;nbsp;&lt;span style=&quot;text-align: left; text-wrap: nowrap; font-size: 11px;&quot;&gt;]&lt;/span&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
@@ -1497,7 +1497,7 @@
         <mxCell id="RId9DMbKOAYuHoX83hqd-1" value="AutoReloadPReload = ? IA" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="584.33" y="-30.00000000000003" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="jOoVFgVX0Ve7IYIc8Osn-1" value="Update g_TimerInfo.channel avec callback et tout" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+        <mxCell id="jOoVFgVX0Ve7IYIc8Osn-1" value="Update g_TimerInfo_as.channel avec callback et tout" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
           <mxGeometry x="562.4499999999999" y="330" width="441.25" height="50" as="geometry" />
         </mxCell>
       </root>
@@ -1634,7 +1634,7 @@
         <mxCell id="CU4Yk9atvRELr5IM1Lvu-3" value="&lt;span style=&quot;text-align: left;&quot;&gt;__HAL_TIM_SET_COMPARE&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" parent="CU4Yk9atvRELr5IM1Lvu-1" vertex="1">
           <mxGeometry width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="CU4Yk9atvRELr5IM1Lvu-4" value="&lt;div style=&quot;text-align: left;&quot;&gt;g_TimerInfo[f_timer_e].handleTypedef&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" parent="CU4Yk9atvRELr5IM1Lvu-1" vertex="1">
+        <mxCell id="CU4Yk9atvRELr5IM1Lvu-4" value="&lt;div style=&quot;text-align: left;&quot;&gt;g_TimerInfo_as[f_timer_e].handleTypedef&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" parent="CU4Yk9atvRELr5IM1Lvu-1" vertex="1">
           <mxGeometry y="30" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="CU4Yk9atvRELr5IM1Lvu-5" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;c_FMKCPU_HwChannelMapping[f_Channel_e]&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;container=0;" parent="CU4Yk9atvRELr5IM1Lvu-1" vertex="1">
@@ -1684,7 +1684,7 @@
         <mxCell id="iUs6MZCnRUdsfVpWGe6J-1" value="Update Timer Info channeml" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
           <mxGeometry x="649.06" y="650" width="351.88" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="iUs6MZCnRUdsfVpWGe6J-2" value="g_TimerInfo_s.channel[f_channel].IsRunnong_b = False" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#000000;container=0;" vertex="1" parent="1">
+        <mxCell id="iUs6MZCnRUdsfVpWGe6J-2" value="g_TimerInfo_as_s.channel[f_channel].IsRunnong_b = False" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#000000;container=0;" vertex="1" parent="1">
           <mxGeometry x="645" y="670" width="355.94" height="30" as="geometry" />
         </mxCell>
         <mxCell id="U4UMDO2yAXHRdFp7AWD_-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="U4UMDO2yAXHRdFp7AWD_-4" target="U4UMDO2yAXHRdFp7AWD_-6">
@@ -1698,7 +1698,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="U4UMDO2yAXHRdFp7AWD_-4" value="if g_TimerInfo_s.channel[f_channel].IsRunnong_b&amp;nbsp; == False" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+        <mxCell id="U4UMDO2yAXHRdFp7AWD_-4" value="if g_TimerInfo_as_s.channel[f_channel].IsRunnong_b&amp;nbsp; == False" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
           <mxGeometry x="670" y="880" width="357.81" height="70" as="geometry" />
         </mxCell>
         <mxCell id="U4UMDO2yAXHRdFp7AWD_-5" value="" style="group" vertex="1" connectable="0" parent="1">
@@ -1745,7 +1745,7 @@
         <mxCell id="w1n0ExOrf7Jnk5Kn_-f8-2" value="HAL_TIM_ReadCapturedValue" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="w1n0ExOrf7Jnk5Kn_-f8-1">
           <mxGeometry x="4.3799999999999955" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="w1n0ExOrf7Jnk5Kn_-f8-3" value="g_TImerInfo[f_timer_e].Instance" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="w1n0ExOrf7Jnk5Kn_-f8-1">
+        <mxCell id="w1n0ExOrf7Jnk5Kn_-f8-3" value="g_TimerInfo_as[f_timer_e].Instance" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="w1n0ExOrf7Jnk5Kn_-f8-1">
           <mxGeometry y="30" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="w1n0ExOrf7Jnk5Kn_-f8-4" value="f_channel_e" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="w1n0ExOrf7Jnk5Kn_-f8-1">
@@ -1763,7 +1763,7 @@
         <mxCell id="w1n0ExOrf7Jnk5Kn_-f8-12" value="Calculer duty cyclee" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="dBFnqIe6HkGuT3S1Impy-5">
           <mxGeometry x="5.939999999999998" width="350" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="dBFnqIe6HkGuT3S1Impy-1" value="*f_dutyCycle = (compared_value * 1000) / (g_TimerInfo.Period_u32+1)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#000000;container=0;" vertex="1" parent="dBFnqIe6HkGuT3S1Impy-5">
+        <mxCell id="dBFnqIe6HkGuT3S1Impy-1" value="*f_dutyCycle = (compared_value * 1000) / (g_TimerInfo_as.Period_u32+1)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#000000;container=0;" vertex="1" parent="dBFnqIe6HkGuT3S1Impy-5">
           <mxGeometry y="20" width="355.94" height="30" as="geometry" />
         </mxCell>
         <mxCell id="dBFnqIe6HkGuT3S1Impy-6" value="End" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
@@ -1813,7 +1813,7 @@
         <mxCell id="lb2Uktyn9yS1MjqObzRH-2" value="HAL_TIM_GetActiveChannel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="lb2Uktyn9yS1MjqObzRH-5" vertex="1">
           <mxGeometry width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="lb2Uktyn9yS1MjqObzRH-3" value="g_TimerInfo[Interrupt_e].Instance" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="lb2Uktyn9yS1MjqObzRH-5" vertex="1">
+        <mxCell id="lb2Uktyn9yS1MjqObzRH-3" value="g_TimerInfo_as[Interrupt_e].Instance" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="lb2Uktyn9yS1MjqObzRH-5" vertex="1">
           <mxGeometry y="30" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="lb2Uktyn9yS1MjqObzRH-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="lb2Uktyn9yS1MjqObzRH-6" target="gQe1svUSV_hEic704zoP-5" edge="1">
@@ -1860,7 +1860,7 @@
         <mxCell id="hFMRqt_S4-POH4KmRfDD-1" value="IF Verif argument&lt;div&gt;&amp;amp; verif timer already configured&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="710" y="-620" width="240" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="hFMRqt_S4-POH4KmRfDD-3" value="Update g_timerInfo[timer_e].[channel_e].RunMode = Interruption" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
+        <mxCell id="hFMRqt_S4-POH4KmRfDD-3" value="Update g_TimerInfo_as[timer_e].[channel_e].RunMode = Interruption" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="700" y="-520" width="240" height="50" as="geometry" />
         </mxCell>
         <mxCell id="hFMRqt_S4-POH4KmRfDD-5" value="Update callback in channel structure" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">

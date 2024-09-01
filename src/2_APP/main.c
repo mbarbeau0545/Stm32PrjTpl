@@ -16,7 +16,7 @@
 // ********************************************************************
 // *                      Includes
 // ********************************************************************
-
+#include "FMK_HAL/FKM_IO/Src/FMK_IO.h"
 
 // ********************************************************************
 // *                      Defines
@@ -28,7 +28,30 @@
 
 int main()
 {   
-    
+    t_eReturnState Ret_e = RC_OK;
+    t_uint8 LLI_u8;
+    t_eFMKIO_DigValue vl;
+    t_uint16 value_u16;
+    for (LLI_u8 = 0 ; LLI_u8 < FMKIO_INPUT_SIGANA_NB ; LLI_u8++)
+    {
+        Ret_e = FMKIO_Set_InAnaSigCfg((t_eFMKIO_InAnaSig)LLI_u8,
+                                FMKIO_PULL_MODE_UNABLE);
+        Ret_e = FMKIO_Set_InAnaSigCfg((t_eFMKIO_InDigSig)LLI_u8,
+                                FMKIO_PULL_MODE_UNABLE);
+        
+        Ret_e = FMKIO_Set_OutPwmSigCfg((t_eFMKIO_OutPwmSig)LLI_u8,
+                                FMKIO_PULL_MODE_UNABLE, 35,45,False);
+    }
+    while(1)
+    {
+        for (LLI_u8 = 0 ; LLI_u8 < FMKIO_INPUT_SIGANA_NB ; LLI_u8++)
+        {
+            Ret_e = FMKIO_Get_InAnaSigValue((t_eFMKIO_InAnaSig)LLI_u8, &value_u16);
+            Ret_e = FMKIO_Get_OutDigSigValue((t_eFMKIO_OutDigSig)LLI_u8, &vl);
+            Ret_e = FMKIO_Get_InDigSigValue((t_eFMKIO_InDigSig)LLI_u8, &vl);
+            Ret_e = FMKIO_Get_OutPwmSigValue((t_eFMKIO_OutPwmSig)LLI_u8, &value_u16);
+        }
+    }
     return 0;
 }
 

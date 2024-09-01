@@ -8,8 +8,8 @@
  * @version     1.0
  */
   
-#ifndef FMKCDA_CONFIGPRIVATE_H_INCLUDED
-#define FMKCDA_CONFIGPRIVATE_H_INCLUDED
+#ifndef FMKMAC_H_INCLUDED
+#define FMKMAC_H_INCLUDED
 
 
 
@@ -19,8 +19,7 @@
     // *                      Includes
     // ********************************************************************
     #include "TypeCommon.h"
-    #include "stm32f0xx_hal.h"
-    #include "./FMKCDA_ConfigPublic.h"
+    #include "FMK_CFG/FMKCFG_ConfigFiles/FMKMAC_ConfigPublic.h"
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -47,16 +46,29 @@
     // ********************************************************************
 
 
+
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************
-
-#endif // FMKCDA_CONFIGPRIVATE_H_INCLUDED           
+    /**************************************************************************
+ *
+ *	@brief
+ *	@details
+ *
+ *
+ *	@params[in] 
+ *	@params[out]
+ *	 
+ *
+ *
+ */
+t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType, void *f_ModuleHandle_s);
+#endif // FMKMAC_H_INCLUDED           
 //************************************************************************************
 // End of File
 //************************************************************************************
 
-/**
+/**************************************************************************
  *
  *	@brief
  *	@details

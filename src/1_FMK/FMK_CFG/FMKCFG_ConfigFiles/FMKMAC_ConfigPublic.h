@@ -8,8 +8,8 @@
  * @version     1.0
  */
   
-#ifndef FMKCDA_CONFIGPRIVATE_H_INCLUDED
-#define FMKCDA_CONFIGPRIVATE_H_INCLUDED
+#ifndef FMKMAC_CONFIGPUBLIC_H_INCLUDED
+#define FMKMAC_CONFIGPUBLIC_H_INCLUDED
 
 
 
@@ -19,8 +19,7 @@
     // *                      Includes
     // ********************************************************************
     #include "TypeCommon.h"
-    #include "stm32f0xx_hal.h"
-    #include "./FMKCDA_ConfigPublic.h"
+
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -45,13 +44,24 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
+    // Flag automatic generate code 
+    typedef enum 
+    {
+        FMKMAC_DMA_RQSTYPE_ADC1 = 0,
+        FMKMAC_DMA_RQSTYPE_SPI1,
+        FMKMAC_DMA_RQSTYPE_SPI2,
+        FMKMAC_DMA_RQSTYPE_UART1,
+
+        FMKMAC_DMA_RQSTYPE_NB,
+
+    } t_eFMKMAC_DmaRqstType;
 
 
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************
 
-#endif // FMKCDA_CONFIGPRIVATE_H_INCLUDED           
+#endif // FMKMAC_CONFIGPUBLIC_H_INCLUDED           
 //************************************************************************************
 // End of File
 //************************************************************************************

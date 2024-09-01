@@ -62,7 +62,7 @@
         FMKCPU_CLOCKPORT_OPE_DISABLE,
 
         FMKCPU_CLOCKPORT_OPE_NB
-    } t_eFMKCPU_ClockPortOPe;
+    } t_eFMKCPU_ClockPortOpe;
 
     typedef enum 
     {
@@ -141,7 +141,7 @@
     *
     */
     t_eReturnState FMKCPU_Set_HwClock(t_eFMKCPU_ClockPort f_clkPort_e, 
-                                       t_eFMKCPU_ClockPortOPe f_OpeState_e);
+                                       t_eFMKCPU_ClockPortOpe f_OpeState_e);
     /*****************************************************************************
     *
     *	@brief
