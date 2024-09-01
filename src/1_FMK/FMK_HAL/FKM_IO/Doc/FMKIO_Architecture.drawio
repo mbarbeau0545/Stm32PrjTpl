@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-08-30T19:46:50.166Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="cFIa8wUehMXCPY_bHmYP" version="24.6.1" type="device" pages="19">
+<mxfile host="Electron" modified="2024-08-31T21:51:00.728Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="BS4vlOKh9pkbBbacxNGS" version="24.6.1" type="device" pages="19">
   <diagram name="Type" id="DgGTK7NNw5K_QaCqsnyv">
-    <mxGraphModel dx="2010" dy="1854" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1320" dy="1458" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -617,7 +617,7 @@
         <mxCell id="QEsz1nNG4ZT09b4yNkeM-1" value="GPIO_InitTypedef BspInit_s" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0;fontColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="1320" y="1287.693076923077" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
-        <mxCell id="D-GtZkRVs94a3PZtCGSG-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="D-GtZkRVs94a3PZtCGSG-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="920" y="1760" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="D-GtZkRVs94a3PZtCGSG-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="D-GtZkRVs94a3PZtCGSG-1">
@@ -653,7 +653,7 @@
         <mxCell id="sUVdf6O402v0UnUkqld9-18" value="FMKIO_GPIO_PORT_NB" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="700" y="61.15384615384616" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
-        <mxCell id="NCdSZYAJUkpjukYSCEko-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="NCdSZYAJUkpjukYSCEko-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="2600" y="880" width="430" height="100" as="geometry" />
         </mxCell>
         <mxCell id="tDegpYcq1lW47vMZZENW-7" value="&lt;span style=&quot;font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;Struct: t_sFMKCPU_Bsp&lt;/span&gt;&lt;span style=&quot;font-size: 16px; text-align: left; text-wrap: nowrap; background-color: initial;&quot;&gt;TimerCfg&lt;/span&gt;&lt;div style=&quot;color: rgb(240, 240, 240); font-size: 16px; text-align: left;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKIOCFGPRIVATE&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" parent="NCdSZYAJUkpjukYSCEko-1" vertex="1">
@@ -662,10 +662,10 @@
         <mxCell id="tDegpYcq1lW47vMZZENW-8" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 16px; text-wrap: nowrap;&quot;&gt;c_FMKCPU_OutPwmPinMapp[PWM_PIN_NB]&lt;/span&gt;&lt;span style=&quot;font-size: 16px; text-wrap: nowrap; background-color: initial;&quot;&gt;UNUSED&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" parent="NCdSZYAJUkpjukYSCEko-1" vertex="1">
           <mxGeometry y="50" width="430" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Lwp7wFIT5e7vMZDcIKXV-3" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="Lwp7wFIT5e7vMZDcIKXV-3" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="1310" y="690" width="270" height="165.76999999999998" as="geometry" />
         </mxCell>
-        <mxCell id="JGpdQGYEjU-d6pFpJEvs-1" value="" style="group;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;container=0;" vertex="1" connectable="0" parent="Lwp7wFIT5e7vMZDcIKXV-3">
+        <mxCell id="JGpdQGYEjU-d6pFpJEvs-1" value="" style="group;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;container=0;" connectable="0" vertex="1" parent="Lwp7wFIT5e7vMZDcIKXV-3">
           <mxGeometry width="270" height="105.77000000000001" as="geometry" />
         </mxCell>
         <mxCell id="JGpdQGYEjU-d6pFpJEvs-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Struct: t_sFMKIO_BspTimerSigCfg&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKIO_CFG&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontSize=16;align=left;fontStyle=0" vertex="1" parent="Lwp7wFIT5e7vMZDcIKXV-3">
@@ -683,7 +683,7 @@
         <mxCell id="Lwp7wFIT5e7vMZDcIKXV-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCPU_Channel&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" vertex="1" parent="Lwp7wFIT5e7vMZDcIKXV-3">
           <mxGeometry y="134.62" width="270" height="28.85" as="geometry" />
         </mxCell>
-        <mxCell id="QR0IktEjM8CYOiKSLCD_-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="QR0IktEjM8CYOiKSLCD_-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="1310" y="890" width="271" height="100" as="geometry" />
         </mxCell>
         <mxCell id="_O7IhFxoC_TxVWbguyMf-141" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Struct: t_sFMKIO_BspSigCfg&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKIO_CFG&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontSize=16;align=left;fontStyle=0" parent="QR0IktEjM8CYOiKSLCD_-1" vertex="1">
@@ -707,7 +707,7 @@
         <mxCell id="lG34UknFN6TyqicELcHQ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="JGpdQGYEjU-d6pFpJEvs-2" target="_O7IhFxoC_TxVWbguyMf-144">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="lG34UknFN6TyqicELcHQ-2" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="lG34UknFN6TyqicELcHQ-2" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="2010" y="1070" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="lG34UknFN6TyqicELcHQ-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="lG34UknFN6TyqicELcHQ-2">
@@ -719,7 +719,7 @@
         <mxCell id="lG34UknFN6TyqicELcHQ-5" value="c_OutDigSigBspMap_s[FMKIO_ODIG_PIN_NB]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="lG34UknFN6TyqicELcHQ-2">
           <mxGeometry y="40" width="320" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="mG4XKtSI4yxEqn34TCkC-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="mG4XKtSI4yxEqn34TCkC-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="1670" y="490" width="271" height="100" as="geometry" />
         </mxCell>
         <mxCell id="mG4XKtSI4yxEqn34TCkC-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Struct: t_sFMKIO_BspSigCfg&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKIO_CFG&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontSize=16;align=left;fontStyle=0" vertex="1" parent="mG4XKtSI4yxEqn34TCkC-1">
@@ -731,7 +731,7 @@
         <mxCell id="mG4XKtSI4yxEqn34TCkC-4" value="&lt;font color=&quot;#000000&quot;&gt;t_e&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" vertex="1" parent="mG4XKtSI4yxEqn34TCkC-1">
           <mxGeometry y="71.14999999999998" width="270" height="28.85" as="geometry" />
         </mxCell>
-        <mxCell id="YErMyDcpWcypyKwWwJBw-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="YErMyDcpWcypyKwWwJBw-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="1280" y="1760" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="YErMyDcpWcypyKwWwJBw-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="YErMyDcpWcypyKwWwJBw-1">
@@ -755,7 +755,7 @@
         <mxCell id="hh3_5jYf-4cxXYgDD440-5" value="FMKIO_DIG_VALUE_NB" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;fontColor=#000000;fontStyle=0" vertex="1" parent="1">
           <mxGeometry x="1280" y="-57.23076923076928" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
-        <mxCell id="z1QFCz1P25t1_oI_w8dS-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="z1QFCz1P25t1_oI_w8dS-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="2040" y="880" width="271" height="100" as="geometry" />
         </mxCell>
         <mxCell id="z1QFCz1P25t1_oI_w8dS-2" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Struct: t_sFMKIO_SignalStatus&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKIO_CFG&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontSize=16;align=left;fontStyle=0" vertex="1" parent="z1QFCz1P25t1_oI_w8dS-1">
@@ -767,7 +767,7 @@
         <mxCell id="z1QFCz1P25t1_oI_w8dS-4" value="&lt;font color=&quot;#000000&quot;&gt;IsValueValid_b&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0" vertex="1" parent="z1QFCz1P25t1_oI_w8dS-1">
           <mxGeometry y="71.14999999999998" width="270" height="28.85" as="geometry" />
         </mxCell>
-        <mxCell id="i_NetA1vo_V3mRgHLq4G-4" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="i_NetA1vo_V3mRgHLq4G-4" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="1680" y="1230" width="240" height="140" as="geometry" />
         </mxCell>
         <mxCell id="i7aI1ocHTH8yVPidZN1g-38" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Struct: t_sFMKIO_ITSigInfo&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKIO.c&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontSize=16;align=left;fontStyle=0" parent="i_NetA1vo_V3mRgHLq4G-4" vertex="1">
@@ -782,7 +782,7 @@
         <mxCell id="i7aI1ocHTH8yVPidZN1g-48" value="t_bool IsInterruptEnabled_b" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0;fontColor=#000000;" parent="i_NetA1vo_V3mRgHLq4G-4" vertex="1">
           <mxGeometry y="81.15307692307715" width="240.00000000000003" height="28.846153846153847" as="geometry" />
         </mxCell>
-        <mxCell id="i_NetA1vo_V3mRgHLq4G-13" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="i_NetA1vo_V3mRgHLq4G-13" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="2800" y="1219.03" width="320" height="170" as="geometry" />
         </mxCell>
         <mxCell id="i_NetA1vo_V3mRgHLq4G-10" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Struct: t_sFMKIO_FreqSignalParam&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap;&quot;&gt;Location : FMKIO.c&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontSize=16;align=left;fontStyle=0" vertex="1" parent="i_NetA1vo_V3mRgHLq4G-13">
@@ -800,7 +800,7 @@
         <mxCell id="i-TRVUykluo4uumgtW4d-1" value="&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_uint32 lastCapture&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;fontStyle=0;fontColor=#000000;" vertex="1" parent="i_NetA1vo_V3mRgHLq4G-13">
           <mxGeometry y="83.26999999999975" width="320" height="28.85000000000004" as="geometry" />
         </mxCell>
-        <mxCell id="zmNRokJNxBu1HnXbR0CJ-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="zmNRokJNxBu1HnXbR0CJ-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="2780" y="1500" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="zmNRokJNxBu1HnXbR0CJ-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="zmNRokJNxBu1HnXbR0CJ-1">
@@ -819,7 +819,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="mo_44eIpyYxSh9bmF_kG" name="Static API">
-    <mxGraphModel dx="1919" dy="1801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -880,10 +880,10 @@
         <mxCell id="Bp_tCk4SNjC5nzsBg_Lb-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;s_FMKIO_GetBspSigType(&lt;/font&gt;&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKIO_SignalType&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial; text-wrap: nowrap; text-align: left;&quot;&gt;, t_uint32 BspSigType_pu32&lt;/span&gt;&lt;span style=&quot;background-color: initial; text-wrap: nowrap; text-align: left;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" parent="Bp_tCk4SNjC5nzsBg_Lb-1" vertex="1">
           <mxGeometry width="560" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="X0XKUsJ7Gq-_tUgO3Y4s-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Ik-aAiQWUD3Z3g1LI4wX-5" target="iG_bXhBnuhjVis4wvYLm-2">
+        <mxCell id="X0XKUsJ7Gq-_tUgO3Y4s-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ik-aAiQWUD3Z3g1LI4wX-5" target="iG_bXhBnuhjVis4wvYLm-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Iuv5dCj-jxtXSKVmoV4A-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="Iuv5dCj-jxtXSKVmoV4A-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="160" y="320" width="560" height="160" as="geometry" />
         </mxCell>
         <mxCell id="Iuv5dCj-jxtXSKVmoV4A-2" value="Initialize Bsp Config thanks to enum and variable&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" vertex="1" parent="Iuv5dCj-jxtXSKVmoV4A-1">
@@ -892,7 +892,7 @@
         <mxCell id="Iuv5dCj-jxtXSKVmoV4A-3" value="s_FMKIO_SetGPIOClockState(t_uin32 GPIO_32, t_eFMKCPU_ClockPortOpe)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="Iuv5dCj-jxtXSKVmoV4A-1">
           <mxGeometry width="560" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="u-YH4Quvd0DaEDb48Jy4-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="u-YH4Quvd0DaEDb48Jy4-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="160" y="585" width="560" height="160" as="geometry" />
         </mxCell>
         <mxCell id="u-YH4Quvd0DaEDb48Jy4-2" value="Initialize Bsp Config thanks to enum and variable&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" vertex="1" parent="u-YH4Quvd0DaEDb48Jy4-1">
@@ -901,7 +901,7 @@
         <mxCell id="u-YH4Quvd0DaEDb48Jy4-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;s_FMKIO_MngSigFrequency_cb(&lt;span style=&quot;text-align: left; text-wrap: nowrap;&quot;&gt;FMKCPU_TImer, FMKCPU_CHannel)&lt;/span&gt;)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="u-YH4Quvd0DaEDb48Jy4-1">
           <mxGeometry width="560" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="-W_0VSQF6F5PSwa4TTPU-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="-W_0VSQF6F5PSwa4TTPU-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="150" y="790" width="560" height="160" as="geometry" />
         </mxCell>
         <mxCell id="-W_0VSQF6F5PSwa4TTPU-2" value="Initialize Bsp Config thanks to enum and variable&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" vertex="1" parent="-W_0VSQF6F5PSwa4TTPU-1">
@@ -910,7 +910,7 @@
         <mxCell id="-W_0VSQF6F5PSwa4TTPU-3" value="s_FMKIO_GetBspTrigMode(t_eFMKIO_TrgCptr, t_uint32 * BspTrigMode)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="-W_0VSQF6F5PSwa4TTPU-1">
           <mxGeometry width="560" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ck7jXSCi1UKD47BAWVi_-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="ck7jXSCi1UKD47BAWVi_-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="-580" y="120" width="560" height="160" as="geometry" />
         </mxCell>
         <mxCell id="ck7jXSCi1UKD47BAWVi_-2" value="Initialize Bsp Config thanks to enum and variable&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;fontColor=#000000;align=left;" vertex="1" parent="ck7jXSCi1UKD47BAWVi_-1">
@@ -923,7 +923,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="VhVrSfPGHJhZtPBBqEFZ" name="API">
-    <mxGraphModel dx="1963" dy="2996" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1066,7 +1066,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_zsCq9w2Bqg7VBM66WpA" name="sFunc_SetBspSigInit">
-    <mxGraphModel dx="947" dy="1717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1126,7 +1126,7 @@
         <mxCell id="Rs8S5arT2amvCWfQwkWk-13" value="End" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="762.52" y="130" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="UHVnPiA2EZs_xKqBajcG-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="UHVnPiA2EZs_xKqBajcG-1" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="624.5500000000001" y="-180" width="360.8899999999999" height="80" as="geometry" />
         </mxCell>
         <mxCell id="9dBvK9h8cYkg4RhaCV6L-1" value="Update Bsp InitStructure" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="UHVnPiA2EZs_xKqBajcG-1" vertex="1">
@@ -1141,7 +1141,7 @@
         <mxCell id="Rs8S5arT2amvCWfQwkWk-6" value="BspInit_s.spd = BspSpd_u32" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#000000;" parent="UHVnPiA2EZs_xKqBajcG-1" vertex="1">
           <mxGeometry y="60" width="355.94" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="UHVnPiA2EZs_xKqBajcG-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Rs8S5arT2amvCWfQwkWk-6" target="Rs8S5arT2amvCWfQwkWk-13">
+        <mxCell id="UHVnPiA2EZs_xKqBajcG-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="Rs8S5arT2amvCWfQwkWk-6" target="Rs8S5arT2amvCWfQwkWk-13" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
@@ -1218,23 +1218,23 @@
     </mxGraphModel>
   </diagram>
   <diagram id="nxf1yjjE_i-0Ex7jZ3nd" name="Func_SetInDigCfg">
-    <mxGraphModel dx="710" dy="1580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="hzEKTL34LXlhhCa111q_-1" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;FMKIO_SetInDigCfg(&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMKIO_InDigSignal,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMKIO_PullMode&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+        <mxCell id="hzEKTL34LXlhhCa111q_-1" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;FMKIO_SetInDigCfg(&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMKIO_InDigSignal,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap: nowrap; text-align: left;&quot;&gt;t_eFMKIO_PullMode&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
           <mxGeometry x="310" y="-970" width="900" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="hzEKTL34LXlhhCa111q_-2" value="VerifArgument" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" vertex="1" parent="1">
+        <mxCell id="hzEKTL34LXlhhCa111q_-2" value="VerifArgument" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;" parent="1" vertex="1">
           <mxGeometry x="623.7499999999999" y="-720" width="351.88" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="hzEKTL34LXlhhCa111q_-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="hzEKTL34LXlhhCa111q_-4" target="hzEKTL34LXlhhCa111q_-2">
+        <mxCell id="hzEKTL34LXlhhCa111q_-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="hzEKTL34LXlhhCa111q_-4" target="hzEKTL34LXlhhCa111q_-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="hzEKTL34LXlhhCa111q_-4" value="Start" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+        <mxCell id="hzEKTL34LXlhhCa111q_-4" value="Start" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="759.69" y="-850" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yd8jL6HvBbtySGCF4220-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="Yd8jL6HvBbtySGCF4220-3" source="hzEKTL34LXlhhCa111q_-2">
+        <mxCell id="Yd8jL6HvBbtySGCF4220-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="hzEKTL34LXlhhCa111q_-2" target="Yd8jL6HvBbtySGCF4220-3" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="798" y="-640" as="sourcePoint" />
           </mxGeometry>
@@ -1242,7 +1242,7 @@
         <mxCell id="6ChLsnL3a7wnVprxnoU--1" value="&amp;amp;g_InDigInfo[f_signal_e].BspInit_s" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
           <mxGeometry x="569.9499999999999" y="-490" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9uHi3SOmG22PXoPcNnBm-6" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="9uHi3SOmG22PXoPcNnBm-6" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="610.3000000000001" y="-410" width="402.9699999999999" height="40" as="geometry" />
         </mxCell>
         <mxCell id="9uHi3SOmG22PXoPcNnBm-2" value="Filled specific field of Bspinit Struct" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;container=0;" vertex="1" parent="9uHi3SOmG22PXoPcNnBm-6">
@@ -1251,7 +1251,7 @@
         <mxCell id="9uHi3SOmG22PXoPcNnBm-3" value="g_InDigInfo[f_signal_e].BspInit_s.mode = MODE_INPUT" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#000000;container=0;" vertex="1" parent="9uHi3SOmG22PXoPcNnBm-6">
           <mxGeometry y="20" width="355.94" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="9uHi3SOmG22PXoPcNnBm-7" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="9uHi3SOmG22PXoPcNnBm-7" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="560" y="-300" width="454.3800000000001" height="90" as="geometry" />
         </mxCell>
         <mxCell id="9uHi3SOmG22PXoPcNnBm-8" value="HAL_GPIO_INIT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="9uHi3SOmG22PXoPcNnBm-7">
@@ -1284,7 +1284,7 @@
         <mxCell id="9uHi3SOmG22PXoPcNnBm-20" value="g_InDigInfo[f_signal_e].Isconfigured == False" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#6d8764;fontColor=#000000;strokeColor=#3A5431;container=0;" vertex="1" parent="1">
           <mxGeometry x="619.01" y="-700" width="351.88" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="XNfVPf5WEE9yMUKRnvlT-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="XNfVPf5WEE9yMUKRnvlT-1" value="" style="group" connectable="0" vertex="1" parent="1">
           <mxGeometry x="555.62" y="-100" width="454.3800000000001" height="90" as="geometry" />
         </mxCell>
         <mxCell id="XNfVPf5WEE9yMUKRnvlT-2" value="s_FMKIO_SetGPIOClockState" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="XNfVPf5WEE9yMUKRnvlT-1">
@@ -1308,13 +1308,13 @@
         <mxCell id="9uHi3SOmG22PXoPcNnBm-23" value="c_InDigSigBspMap_s[f_Signal_e].GPIOPort_32" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
           <mxGeometry x="569.9499999999999" y="-610" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yd8jL6HvBbtySGCF4220-3" value="s_FMKIO_SetBspSigCfg" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
+        <mxCell id="Yd8jL6HvBbtySGCF4220-3" value="s_FMKIO_SetBspSigCfg" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="574.6899999999999" y="-640" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yd8jL6HvBbtySGCF4220-4" value="c_InDigSigBspMap_s[f_Signal_e].pin_32" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
+        <mxCell id="Yd8jL6HvBbtySGCF4220-4" value="c_InDigSigBspMap_s[f_Signal_e].pin_32" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="569.9499999999999" y="-580" width="450" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yd8jL6HvBbtySGCF4220-5" value="pullMode_e" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">
+        <mxCell id="Yd8jL6HvBbtySGCF4220-5" value="pullMode_e" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" parent="1" vertex="1">
           <mxGeometry x="569.9499999999999" y="-550" width="450" height="30" as="geometry" />
         </mxCell>
         <mxCell id="g95E5kNbip7R2luG3Q5L-1" value="FMKIO_SPEED_LOW" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e51400;fontColor=#000000;strokeColor=#B20000;" vertex="1" parent="1">

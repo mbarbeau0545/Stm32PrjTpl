@@ -50,7 +50,7 @@
         {HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,         HAL_TIM_IC_Start_IT,        HAL_TIM_IC_Stop_IT},       // FMKCPU_CHANNEL_CFG_IC
         {HAL_TIM_OC_Start,                HAL_TIM_OC_Stop,         HAL_TIM_OC_Start_IT,        HAL_TIM_OC_Stop_IT},       // FMKCPU_CHANNEL_CFG_OC
         {HAL_TIM_OnePulse_Start,          HAL_TIM_OnePulse_Stop,   HAL_TIM_OnePulse_Start_IT,  HAL_TIM_OnePulse_Stop_IT}, // FMKCPU_CHANNEL_CFG_OP
-        {NULL_FONCTION,                   NULL_FONCTION,           NULL_FONCTION,              NULL_FONCTION},            // FMKCPU_CHANNEL_CFG_EVNT
+        {HAL_TIM_Base_Start,              HAL_TIM_Base_Stop,       HAL_TIM_Base_Start_IT,      HAL_TIM_Base_Stop_IT},            // FMKCPU_CHANNEL_CFG_EVNT
         {HAL_TIM_Encoder_Start,           HAL_TIM_Encoder_Stop,    HAL_TIM_Encoder_Start_IT,   HAL_TIM_Encoder_Stop_IT},  // FMKCPU_CHANNEL_CFG_ECDR
         {HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,         HAL_TIM_Encoder_Start_IT,   HAL_TIM_Encoder_Stop_IT},  // FMKCPU_CHANNEL_CFG_TRGR
     };

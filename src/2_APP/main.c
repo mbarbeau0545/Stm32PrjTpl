@@ -16,15 +16,7 @@
 // ********************************************************************
 // *                      Includes
 // ********************************************************************
-#include "stm32f0xx_hal.h"
-#include "stm32f0xx_hal_def.h"
-#include "stm32f0xx_hal_gpio.h"
-#include "stm32f0xx_hal_tim.h"
-#include "stm32f030x8.h"
-#include "TypeCommon.h"
-#include "stm32f0xx_hal_rcc.h"
-#include "stm32f0xx_hal_adc.h"
-#include "FMK_HAL/FMK_CPU/Src/FMK_CPU.h"
+
 
 // ********************************************************************
 // *                      Defines
