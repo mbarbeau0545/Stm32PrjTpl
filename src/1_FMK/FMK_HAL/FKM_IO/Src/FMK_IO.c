@@ -25,7 +25,7 @@
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
-
+#define FMKIO_AF_UNUSED ((t_uint8)0xFF)
 // ********************************************************************
 // *                      Types
 // ********************************************************************
@@ -63,7 +63,13 @@ t_sFMKIO_SigInfo g_InEvntSigInfo_as[FMKIO_INPUT_SIGEVNT_NB];
 t_sFMKIO_SigInfo g_OutPwmSigInfo_as[FMKIO_OUTPUT_SIGPWM_NB];
 t_sFMKIO_SigInfo g_OutDigSigInfo_as[FMKIO_OUTPUT_SIGDIG_NB];
 
-t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ab[FMKIO_GPIO_PORT_NB];
+t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
+    FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_A
+    FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_B
+    FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_C
+    FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_D
+    FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_F
+};
 
 t_uint32 g_InFreqSigRawValue_ua32[FMKIO_INPUT_SIGFREQ_NB];
 
@@ -108,7 +114,7 @@ static t_eReturnState s_FMKIO_Get_BspSpdMode(t_eFMKIO_SpdMode f_spd_e, t_uint32 
 *
 *
 */
-static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GPIO_TypeDef * f_BspGpio_ps);
+static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GPIO_TypeDef ** f_BspGpio_ps);
 /*****************************************************************************
 *
 *	@brief
@@ -189,19 +195,12 @@ t_eReturnState FMKIO_Set_InDigSigCfg(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_Pull
                                      (t_uint32)MODE_INPUT,
                                      f_pull_e,
                                      FMKIO_SPD_MODE_LOW, // irrevelent for a input sig dig
-                                     GPIO_AF0_EVENTOUT);
+                                     FMKIO_AF_UNUSED);
         if(Ret_e == RC_OK)
         {
-            if(g_IsGpioClockEnable_ab[gpioPort_e] == (t_bool)False)
-            {
-                Ret_e = s_FMKIO_Set_GpioClkState(gpioPort_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
-            }
-            if(Ret_e == RC_OK)
-            {// update info
-                g_InDigSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                g_InDigSigInfo_as[f_signal_e].pull_e = f_pull_e;
-                g_InDigSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_LOW;
-            }
+            g_InDigSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
+            g_InDigSigInfo_as[f_signal_e].pull_e = f_pull_e;
+            g_InDigSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_LOW;
         }
     }
     return Ret_e;
@@ -227,19 +226,13 @@ t_eReturnState FMKIO_Set_InAnaSigCfg(t_eFMKIO_InAnaSig f_signal_e, t_eFMKIO_Pull
                                      (t_uint32)MODE_ANALOG,
                                      f_pull_e,
                                      FMKIO_SPD_MODE_LOW, // irrevelent for a input sig dig
-                                     GPIO_AF0_EVENTOUT);
+                                     FMKIO_AF_UNUSED);
         if(Ret_e == RC_OK)
-        {
-            if(g_IsGpioClockEnable_ab[gpioPort_e] == (t_bool)False)
-            {
-                Ret_e = s_FMKIO_Set_GpioClkState(gpioPort_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
-            }
-            if(Ret_e == RC_OK)
-            {// configure the adc 
-                FMKCDA_AddAdcChannelCfg(c_InAnaSigAdcCfg_ae[f_signal_e].adc_e, 
-                                        c_InAnaSigAdcCfg_ae[f_signal_e].adcChannel_e,
-                                        FMKCDA_ADC_CFG_SCAN_DMA);
-            }
+        {// configure the adc 
+            Ret_e = FMKCDA_AddAdcChannelCfg(c_InAnaSigAdcCfg_ae[f_signal_e].adc_e, 
+                                    c_InAnaSigAdcCfg_ae[f_signal_e].adcChannel_e,
+                                    FMKCDA_ADC_CFG_SCAN_DMA);
+            
             if(Ret_e == RC_OK)
             {// update info
                 g_InAnaSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
@@ -284,23 +277,15 @@ t_eReturnState FMKIO_Set_InFreqSigCfg(t_eFMKIO_InFreqSig f_signal_e)
             {
                 Ret_e = FMKCPU_AddTimerChnlCallback(timerCfg_s.timer_e,
                                                     timerCfg_s.channel_e,
-                                                    (t_cbFMKCPU_InterruptChnl *)&s_FMKIO_MngSigFrequency );
+                                                    (t_cbFMKCPU_InterruptChnl *)&s_FMKIO_MngSigFrequency);
             }
             if(Ret_e == RC_OK)
-            {
-                if(g_IsGpioClockEnable_ab[gpioPort_e] == (t_bool)False)
-                {
-                    Ret_e = s_FMKIO_Set_GpioClkState(gpioPort_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
-                }
-                if(Ret_e == RC_OK)
-                {// update info
-                    g_InFreqSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                    g_InFreqSigInfo_as[f_signal_e].pull_e = FMKIO_PULL_MODE_UNABLE;
-                    g_InFreqSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_HIGH;
-                }
-            }
-        }            
-                
+            {// update info
+                g_InFreqSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
+                g_InFreqSigInfo_as[f_signal_e].pull_e = FMKIO_PULL_MODE_UNABLE;
+                g_InFreqSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_HIGH;
+            }            
+        }               
     }
     return Ret_e;
 }
@@ -345,18 +330,11 @@ t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e,
                                              FMKCPU_NVIC_PRIORITY_MEDIUM,
                                              FMKCPU_NVIC_OPE_ENABLE);
                 if(Ret_e == RC_OK)
-                {
-                    if(g_IsGpioClockEnable_ab[gpioPort_e] == (t_bool)False)
-                    {
-                        Ret_e = s_FMKIO_Set_GpioClkState(gpioPort_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
-                    }
-                    if(Ret_e == RC_OK)
-                    {// update info
-                        g_InEvntSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                        g_InEvntSigInfo_as[f_signal_e].pull_e = FMKIO_PULL_MODE_UNABLE;
-                        g_InEvntSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_LOW;
-                        g_InEvntSigInfo_as[f_signal_e].EvntFunc_cb = f_Evnt_cb;
-                    }
+                {// update info
+                    g_InEvntSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
+                    g_InEvntSigInfo_as[f_signal_e].pull_e = FMKIO_PULL_MODE_UNABLE;
+                    g_InEvntSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_LOW;
+                    g_InEvntSigInfo_as[f_signal_e].EvntFunc_cb = f_Evnt_cb;
                 }
             }            
         }        
@@ -398,27 +376,21 @@ t_eReturnState FMKIO_Set_OutPwmSigCfg(t_eFMKIO_OutPwmSig f_signal_e,
             timerCfg_s.timerPeriod_u32 = (t_uint32)(1000-1); // 1ms
             Ret_e = FMKCPU_Set_PWMChannelCfg(timerCfg_s);
         
-            if(Ret_e == RC_OK)
+            if(Ret_e == RC_OK && f_startNow_b == (t_bool)True)
             {
-                if(g_IsGpioClockEnable_ab[gpioPort_e] == (t_bool)False)
-                {
-                    Ret_e = s_FMKIO_Set_GpioClkState(gpioPort_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
-                }
-                if(Ret_e == RC_OK && f_startNow_b == (t_bool)True)
-                {
-                    Ret_e = FMKCPU_Set_ChannelState(timerCfg_s.timer_e, 
-                                                    timerCfg_s.channel_e,
-                                                    FMKCPU_CHNLST_ACTIVATED);
-                }
-                if(Ret_e == RC_OK)
-                {// update info
-                    g_OutPwmSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                    g_OutPwmSigInfo_as[f_signal_e].pull_e = f_pull_e;
-                    g_OutPwmSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_LOW;
-                }
+                Ret_e = FMKCPU_Set_PWMChannelDuty(timerCfg_s.timer_e, 
+                                                timerCfg_s.channel_e,
+                                                f_dutyCycle_u16);
             }
+            if(Ret_e == RC_OK)
+            {// update info
+                g_OutPwmSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
+                g_OutPwmSigInfo_as[f_signal_e].pull_e = f_pull_e;
+                g_OutPwmSigInfo_as[f_signal_e].spd_e  = FMKIO_SPD_MODE_LOW;
+            }            
         }
     }
+    #warning "f_dutyCycle not set on a channel"
     return Ret_e;
 }
 
@@ -441,24 +413,18 @@ t_eReturnState FMKIO_Set_OutDigSigCfg(t_eFMKIO_OutDigSig f_signal_e,
     if(Ret_e == RC_OK)
     {
         gpioPort_e = c_OutDigSigBspMap_as[f_signal_e].HwGpio_e;
+    
         Ret_e = s_FMKIO_Set_BspSigCfg(gpioPort_e,
                                      c_OutDigSigBspMap_as[f_signal_e].HwPin_e,
                                      (t_uint32)GPIO_MODE_OUTPUT_PP,
                                      f_pull_e,
-                                     f_spd_e, // irrevelent for a input sig dig
-                                     GPIO_AF0_EVENTOUT);
+                                     f_spd_e,
+                                     FMKIO_AF_UNUSED);
         if(Ret_e == RC_OK)
         {
-            if(g_IsGpioClockEnable_ab[gpioPort_e] == (t_bool)False)
-            {
-                Ret_e = s_FMKIO_Set_GpioClkState(gpioPort_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
-            }
-            if(Ret_e == RC_OK)
-            {// update info
-                g_OutDigSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                g_OutDigSigInfo_as[f_signal_e].pull_e = f_pull_e;
-                g_OutDigSigInfo_as[f_signal_e].spd_e  = f_spd_e;
-            }
+            g_OutDigSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
+            g_OutDigSigInfo_as[f_signal_e].pull_e = f_pull_e;
+            g_OutDigSigInfo_as[f_signal_e].spd_e  = f_spd_e;
         }
     }
     return Ret_e;
@@ -467,7 +433,7 @@ t_eReturnState FMKIO_Set_OutDigSigCfg(t_eFMKIO_OutDigSig f_signal_e,
 t_eReturnState FMKIO_Set_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_DigValue f_value_e)
 {
     t_eReturnState Ret_e = RC_OK;
-    GPIO_TypeDef bspGpio_u32;
+    GPIO_TypeDef *bspGpio_ps = (GPIO_TypeDef *)NULL;
     GPIO_PinState bspSigValue_e;
 
     if(f_signal_e > FMKIO_OUTPUT_SIGDIG_NB
@@ -477,7 +443,7 @@ t_eReturnState FMKIO_Set_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
     }
     if(Ret_e == RC_OK)
     {
-        Ret_e = s_FMKIO_Get_BspGpioPort(c_InDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_u32);
+        Ret_e = s_FMKIO_Get_BspGpioPort(c_OutDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_ps);
         if(Ret_e == RC_OK)
         {
             switch (f_value_e)
@@ -495,8 +461,8 @@ t_eReturnState FMKIO_Set_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
             }
             if(Ret_e == RC_OK)
             {
-                HAL_GPIO_WritePin(&bspGpio_u32, 
-                                  c_BspPinMapping_ua32[c_InDigSigBspMap_as[f_signal_e].HwPin_e],
+                HAL_GPIO_WritePin(bspGpio_ps, 
+                                  c_BspPinMapping_ua32[c_OutDigSigBspMap_as[f_signal_e].HwPin_e],
                                   bspSigValue_e);
             }
         }
@@ -529,7 +495,7 @@ t_eReturnState FMKIO_Set_OutPwmSigValue(t_eFMKIO_OutPwmSig f_signal_e, t_uint16 
 t_eReturnState FMKIO_Get_InDigSigValue(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_DigValue *f_value_pe)
 {
     t_eReturnState Ret_e = RC_OK;
-    GPIO_TypeDef bspGpio_u32;
+    GPIO_TypeDef *bspGpio_ps = (GPIO_TypeDef *)NULL;
     GPIO_PinState bspSigValue_e;
 
     if(f_signal_e > FMKIO_INPUT_SIGDIG_NB)
@@ -542,10 +508,10 @@ t_eReturnState FMKIO_Get_InDigSigValue(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_Di
     }
     if(Ret_e == RC_OK)
     {
-        Ret_e = s_FMKIO_Get_BspGpioPort(c_InDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_u32);
+        Ret_e = s_FMKIO_Get_BspGpioPort(c_InDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_ps);
         if(Ret_e == RC_OK)
         {
-            bspSigValue_e = HAL_GPIO_ReadPin(&bspGpio_u32, c_BspPinMapping_ua32[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
+            bspSigValue_e = HAL_GPIO_ReadPin(bspGpio_ps, c_BspPinMapping_ua32[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
             switch (bspSigValue_e)
             {
                 case GPIO_PIN_RESET:
@@ -639,7 +605,7 @@ t_eReturnState FMKIO_Get_OutPwmSigValue(t_eFMKIO_OutPwmSig f_signal_e, t_uint16 
 t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_DigValue *f_value_pe)
 {
     t_eReturnState Ret_e = RC_OK;
-    GPIO_TypeDef bspGpio_u32;
+    GPIO_TypeDef *bspGpio_ps = (GPIO_TypeDef *)NULL;
     GPIO_PinState bspSigValue_e;
 
     if(f_signal_e > FMKIO_OUTPUT_SIGDIG_NB)
@@ -652,10 +618,10 @@ t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
     }
     if(Ret_e == RC_OK)
     {
-        Ret_e = s_FMKIO_Get_BspGpioPort(c_InDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_u32);
+        Ret_e = s_FMKIO_Get_BspGpioPort(c_InDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_ps);
         if(Ret_e == RC_OK)
         {
-            bspSigValue_e = HAL_GPIO_ReadPin(&bspGpio_u32, c_BspPinMapping_ua32[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
+            bspSigValue_e = HAL_GPIO_ReadPin(bspGpio_ps, c_BspPinMapping_ua32[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
             switch (bspSigValue_e)
             {
                 case GPIO_PIN_RESET:
@@ -790,7 +756,7 @@ static t_eReturnState s_FMKIO_Get_BspTriggerMode(t_eFMKIO_SigTrigCptr f_trigger_
 /*********************************
 * s_FMKIO_Get_BspGpioPort
 *********************************/
-static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GPIO_TypeDef * f_BspGpio_ps)
+static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GPIO_TypeDef ** f_BspGpio_ps)
 {
     t_eReturnState Ret_e = RC_OK;
 
@@ -807,19 +773,19 @@ static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GP
         switch (f_GpioPort_e)
         {
             case FMKIO_GPIO_PORT_A:
-                f_BspGpio_ps = GPIOA;
+                *f_BspGpio_ps = GPIOA;
                 break;
             case FMKIO_GPIO_PORT_B:
-                f_BspGpio_ps = GPIOB;
+                *f_BspGpio_ps = GPIOB;
                 break;
             case FMKIO_GPIO_PORT_C:
-                f_BspGpio_ps = GPIOC;
+                *f_BspGpio_ps = GPIOC;
                 break;
             case FMKIO_GPIO_PORT_D:
-                f_BspGpio_ps = GPIOD;
+                *f_BspGpio_ps = GPIOD;
                 break;
             case FMKIO_GPIO_PORT_F:
-                f_BspGpio_ps = GPIOF;
+                *f_BspGpio_ps = GPIOF;
                 break;
             case FMKIO_GPIO_PORT_NB:
             default:
@@ -841,10 +807,10 @@ static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort   f_gpioPort_e,
                                             t_uint8             f_AltFunc_u8)
 {
     t_eReturnState Ret_e = RC_OK;
-    GPIO_TypeDef bspGpio_s;
+    GPIO_TypeDef *bspGpio_ps = (GPIO_TypeDef *)NULL;
     GPIO_InitTypeDef bspInit_s;
-    t_uint32 bspPull_32;
-    t_uint32 bspSpd_u32;
+    t_uint32 bspPull_32 = 0;
+    t_uint32 bspSpd_u32 = 0;
 
     if(f_gpioPort_e > FMKIO_GPIO_PORT_NB
     || f_pin_e      > FMKIO_GPIO_PIN_NB
@@ -855,7 +821,7 @@ static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort   f_gpioPort_e,
     }
     if(Ret_e == RC_OK)
     {
-        Ret_e = s_FMKIO_Get_BspGpioPort(f_gpioPort_e, &bspGpio_s);
+        Ret_e = s_FMKIO_Get_BspGpioPort(f_gpioPort_e, &bspGpio_ps);
         if(Ret_e == RC_OK)
         {
             Ret_e = s_FMKIO_Get_BspPullMode(f_pull_e, &bspPull_32);
@@ -864,14 +830,21 @@ static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort   f_gpioPort_e,
         {
             Ret_e = s_FMKIO_Get_BspSpdMode(f_spd_e, &bspSpd_u32);
         }
+        if(g_IsGpioClockEnable_ae[f_gpioPort_e] == FMKCPU_CLOCKPORT_OPE_DISABLE)
+        {
+            Ret_e = s_FMKIO_Set_GpioClkState(f_gpioPort_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
+        }
         if(Ret_e == RC_OK)
         {
-            bspInit_s.Alternate = (t_uint32)f_AltFunc_u8;
             bspInit_s.Mode      = (t_uint32)f_mode_u32;
             bspInit_s.Pin       = (t_uint32)c_BspPinMapping_ua32[f_pin_e];
             bspInit_s.Pull      = (t_uint32)bspPull_32;
             bspInit_s.Speed     = (t_uint32)bspSpd_u32;
-            HAL_GPIO_Init(&bspGpio_s, &bspInit_s);
+            if(f_AltFunc_u8 != (t_uint8)FMKIO_AF_UNUSED)
+            {
+                bspInit_s.Alternate = (t_uint32)f_AltFunc_u8;
+            }
+            HAL_GPIO_Init(bspGpio_ps, &bspInit_s);
         }
     }
     return Ret_e;
@@ -918,7 +891,7 @@ static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t
         }
         if(Ret_e == RC_OK)
         {
-            g_IsGpioClockEnable_ab[f_gpioPort_e] = f_ope_e;
+            g_IsGpioClockEnable_ae[f_gpioPort_e] = f_ope_e;
         }
     }
     return Ret_e;

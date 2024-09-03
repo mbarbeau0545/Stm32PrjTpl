@@ -183,12 +183,12 @@ t_eReturnState FMKCDA_Init(void)
     t_uint8 LLI2_u8 = 0;
     // initiate to default value variable structure 
     for(LLI1_u8 = (t_uint8)0 ; LLI1_u8 < (t_uint8)FMKCDA_ADC_NB ; LLI1_u8++)
-    {
+    {// all timer
         g_AdcInfo_as[LLI1_u8].IsAdcConfigured_b = (t_bool)False;
         g_AdcInfo_as[LLI1_u8].IsAdcRunning_b = (t_bool)False;
 
         for(LLI2_u8 = (t_uint8)0 ; LLI2_u8 < (t_uint8)FMKCDA_ADC_CHANNEL_NB ; LLI2_u8++)
-        {
+        {// all channel for a timer
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].IsChnlConfigured_b = (t_bool)False;
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].Error_e            = FMKCDA_CHANNEL_STATE_OK;
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].IsChnlUsed_b       = (t_bool)False;
@@ -341,6 +341,7 @@ static t_eReturnState s_FMKCDA_Operational(void)
             }
         }
     }
+    #warning "ADC SCAN not set"
     return Ret_e;
 }
 /*********************************
