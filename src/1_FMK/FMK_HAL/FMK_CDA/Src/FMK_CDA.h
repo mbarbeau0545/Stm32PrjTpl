@@ -121,7 +121,7 @@
     *
     *
     */
-    t_eReturnState FMKCDA_AddAdcChannelCfg(t_eFMKCDA_Adc f_Adc_e, 
+    t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e, 
                                        t_eFMKCDA_AdcChannel f_channel_e,
                                        t_eFMKCDA_HwAdcCfg   f_adcCfg_e);
     /*****************************************************************************

@@ -157,19 +157,29 @@
     *
     */
     typedef void (t_cbFMKCPU_ClockDisable)(void);
-    /* Typedef for HAL_TIMER_FUNCTION Mode Polling/Interrupt/ DMA */
+    /* Typedef for HAL_TIMER_FUNCTION Mode Polling/Interrupt*/
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function for Init
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimerInitFunc)(TIM_HandleTypeDef *f_handleTimer_s);
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function for Init
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimerDeInitFunc)(TIM_HandleTypeDef *f_handleTimer_s);
     /**************************************************************************************
      *
      *	@brief      HAL Timer function in Polling xay
     *	@details    This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
-    *
-    *
+    * 
     *	@param[in]      f_handleTimer_s : the bsp config structure 
     *	@param[out]     f_channel_u32   : the channel 
-    *	 
-    *
-    *
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStartFuncModePolling)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
     /**************************************************************************************
@@ -178,12 +188,8 @@
     *	@details    This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
-    *
     *	@param[in]      f_handleTimer_s : the bsp config structure 
     *	@param[out]     f_channel_u32   : the channel 
-    *	 
-    *
-    *
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStartFuncModeInterrupt)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
     /**************************************************************************************
@@ -192,12 +198,8 @@
     *	@details    This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
-    *
     *	@param[in]      f_handleTimer_s : the bsp config structure 
     *	@param[out]     f_channel_u32   : the channel 
-    *	 
-    *
-    *
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStopFuncModePolling)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
     /**************************************************************************************
@@ -206,12 +208,8 @@
     *	@details    This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
-    *
     *	@param[in]      f_handleTimer_s : the bsp config structure 
     *	@param[out]     f_channel_u32   : the channel 
-    *	 
-    *
-    *
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStopFuncModeInterrupt)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
 
@@ -221,10 +219,12 @@
     /* CAUTION : Automatic generated code section for Structure: End */
     typedef struct
     {
-        t_cbFMKCPU_TimStartFuncModePolling   * StartFuncPoll_cb;
-        t_cbFMKCPU_TimStopFuncModePolling    * StopFuncPoll_cb;
-        t_cbFMKCPU_TimStartFuncModeInterrupt * StartFuncInterrupt_cb;
-        t_cbFMKCPU_TimStopFuncModeInterrupt  * StopFuncInterrupt_cb;
+        t_cbFMKCPU_TimerInitFunc             * TimerInit_pcb;
+        t_cbFMKCPU_TimerDeInitFunc           * TimerDeInit_pcb;
+        t_cbFMKCPU_TimStartFuncModePolling   * StartFuncPoll_pcb;
+        t_cbFMKCPU_TimStopFuncModePolling    * StopFuncPoll_pcb;
+        t_cbFMKCPU_TimStartFuncModeInterrupt * StartFuncInterrupt_pcb;
+        t_cbFMKCPU_TimStopFuncModeInterrupt  * StopFuncInterrupt_pcb;
     } t_sFMKCPU_TimChannelFunc;
 
     typedef struct
@@ -237,8 +237,6 @@
     {
         t_eFMKCPU_Timer               timer_e;
         t_eFMKCPU_InterruptChnl       channel_e;
-        t_uint32                      timerFreq_u32;
-        t_uint32                      timerPeriod_u32;
     } t_sFMKCPU_BspTimerCfg;
     // ********************************************************************
     // *                      Prototypes

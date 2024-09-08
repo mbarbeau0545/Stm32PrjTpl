@@ -24,7 +24,13 @@
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
-    #define IRQN_TYPE_NB ((t_uint8)28)
+    #define FMKCPU_IRQN_TYPE_NB    ((t_uint8)28)       // The number of IRQN Type, this number should be the same as IRQn_Type_NB
+    #define FMKCPU_HSI_CLOCK_OSC   ((t_uint8)8)        // HSI oscillatator equals to 8 MHz
+    #define FMKCPU_TIMER_CLOCK_OSC ((t_uint8)8)        // Frequency of the timer are 8 MHz
+    #define FMKCPU_PWM_PSC         ((t_uint8)50)       // for every PWM the Prescaler is a constant 
+    #define FMKCPU_IC_PSC          ((t_uint8)0)       // for every InputCOmpare the Prescaler is a constant 
+    #define FMKCPU_IC_ARR          ((t_uint16)0xFFFF)       // for every InputCOmpare the Prescaler is a constant 
+    #define FMKCPU_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC * 1000)- (t_uint16)1) // The prescaler use for evnt timer, having 1000Hz (1ms)
     // ********************************************************************
     // *                      Types
     // ********************************************************************
@@ -43,18 +49,18 @@
     // *                      Variables
     // ********************************************************************
     // Flag automatic generate code 
-    const t_sFMKCPU_TimChannelFunc c_FMKCPU_BspTimChannelFunc_as[FMKCPU_HWCHNL_CFG_NB] = 
-    {// StartPolling Func                 StopPolling Funnc        Start Interrupt Func          Stop Interrupt Func
-        {HAL_TIM_PWM_Start,               HAL_TIM_PWM_Stop,        HAL_TIM_PWM_Start_IT,       HAL_TIM_PWM_Stop_IT},      // FMKCPU_CHANNEL_CFG_PWM 
-        {HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,         HAL_TIM_IC_Start_IT,        HAL_TIM_IC_Stop_IT},       // FMKCPU_CHANNEL_CFG_IC
-        {HAL_TIM_OC_Start,                HAL_TIM_OC_Stop,         HAL_TIM_OC_Start_IT,        HAL_TIM_OC_Stop_IT},       // FMKCPU_CHANNEL_CFG_OC
-        {HAL_TIM_OnePulse_Start,          HAL_TIM_OnePulse_Stop,   HAL_TIM_OnePulse_Start_IT,  HAL_TIM_OnePulse_Stop_IT}, // FMKCPU_CHANNEL_CFG_OP
-        {NULL_FONCTION,                   NULL_FONCTION,           NULL_FONCTION,              NULL_FONCTION},            // FMKCPU_CHANNEL_CFG_EVNT
-        {HAL_TIM_Encoder_Start,           HAL_TIM_Encoder_Stop,    HAL_TIM_Encoder_Start_IT,   HAL_TIM_Encoder_Stop_IT},  // FMKCPU_CHANNEL_CFG_ECDR
-        {HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,         HAL_TIM_Encoder_Start_IT,   HAL_TIM_Encoder_Stop_IT},  // FMKCPU_CHANNEL_CFG_TRGR
+    const t_sFMKCPU_TimChannelFunc c_FMKCPU_BspTimFunc_apf[FMKCPU_HWCHNL_CFG_NB] = 
+    {// Init Timer                         DeInitTimer                    StartPolling Func                 StopPolling Funnc             Start Interrupt Func          Stop Interrupt Func
+        {HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_PWM_Start,               HAL_TIM_PWM_Stop,             HAL_TIM_PWM_Start_IT,           HAL_TIM_PWM_Stop_IT},         // FMKCPU_CHANNEL_CFG_PWM 
+        {HAL_TIM_IC_Init,                 HAL_TIM_IC_DeInit,            HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,              HAL_TIM_IC_Start_IT,            HAL_TIM_IC_Stop_IT},          // FMKCPU_CHANNEL_CFG_IC
+        {HAL_TIM_OC_Init,                 HAL_TIM_OC_DeInit,            HAL_TIM_OC_Start,                HAL_TIM_OC_Stop,              HAL_TIM_OC_Start_IT,            HAL_TIM_OC_Stop_IT},          // FMKCPU_CHANNEL_CFG_OC
+        {NULL_FONCTION,                   HAL_TIM_OnePulse_DeInit,      HAL_TIM_OnePulse_Start,          HAL_TIM_OnePulse_Stop,        HAL_TIM_OnePulse_Start_IT,      HAL_TIM_OnePulse_Stop_IT},    // FMKCPU_CHANNEL_CFG_OP
+        {HAL_TIM_Base_Init,               HAL_TIM_Base_DeInit,          FMKCPU_HAL_TIM_Base_Start,       FMKCPU_HAL_TIM_Base_Stop,     FMKCPU_HAL_TIM_Base_Start_IT,   FMKCPU_HAL_TIM_Base_Stop_IT}, // FMKCPU_CHANNEL_CFG_EVNT
+        {NULL_FONCTION,                   HAL_TIM_Encoder_DeInit,       HAL_TIM_Encoder_Start,           HAL_TIM_Encoder_Stop,         HAL_TIM_Encoder_Start_IT,       HAL_TIM_Encoder_Stop_IT},     // FMKCPU_CHANNEL_CFG_ECDR
+        {HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,              HAL_TIM_Encoder_Start_IT,       HAL_TIM_Encoder_Stop_IT},     // FMKCPU_CHANNEL_CFG_TRGR
     };
     // Flag automatic generate code 
-    const t_eFMKCPU_NVICPriority c_FMKCPU_IRQNPriority_ae[IRQN_TYPE_NB] = {
+    const t_eFMKCPU_NVICPriority c_FMKCPU_IRQNPriority_ae[FMKCPU_IRQN_TYPE_NB] = {
         FMKCPU_NVIC_PRIORITY_MEDIUM,//WWDG_IRQn               
         FMKCPU_NVIC_PRIORITY_MEDIUM,//RTC_IRQn                
         FMKCPU_NVIC_PRIORITY_MEDIUM,//FLASH_IRQn              
@@ -111,8 +117,8 @@
 
     // Flag automatic generate code 
     const t_sFMKCPU_BspTimerCfg c_EvntTimerCfg_as[FMKCPU_EVENT_CHANNEL_NB] = {
-        {FMKCPU_TIMER_16, FMKCPU_CHANNEL_1, 200,  1000},
-        {FMKCPU_TIMER_17, FMKCPU_CHANNEL_1, 200,  1000},
+        {FMKCPU_TIMER_16, FMKCPU_CHANNEL_1}, // FMKCPU_EVENT_CHANNEL_1
+        {FMKCPU_TIMER_17, FMKCPU_CHANNEL_1}, // FMKCPU_EVENT_CHANNEL_2
     };
     //********************************************************************************
     //                      Public functions - Prototyupes

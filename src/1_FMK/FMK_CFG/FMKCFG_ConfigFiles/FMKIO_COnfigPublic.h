@@ -94,13 +94,13 @@
     /* List of output pwm pin available on this board*/
     typedef enum 
     {
-        FMKIO_OUTPUT_SIGPWM_1 = 0x00U,  // PC6
-        FMKIO_OUTPUT_SIGPWM_2,          // PC7
-        FMKIO_OUTPUT_SIGPWM_3,          // PC8
-        FMKIO_OUTPUT_SIGPWM_4,          // PA8
-        FMKIO_OUTPUT_SIGPWM_5,          // PA9
-        FMKIO_OUTPUT_SIGPWM_6,          // P10
-        FMKIO_OUTPUT_SIGPWM_7,          // P11
+        FMKIO_OUTPUT_SIGPWM_1 = 0x00U,  // PA8
+        FMKIO_OUTPUT_SIGPWM_2,          // PA9
+        FMKIO_OUTPUT_SIGPWM_3,          // P10 
+        FMKIO_OUTPUT_SIGPWM_4,          // PA11
+        FMKIO_OUTPUT_SIGPWM_5,          // PC6
+        FMKIO_OUTPUT_SIGPWM_6,          // PC7
+        FMKIO_OUTPUT_SIGPWM_7,          // PC8
 
         FMKIO_OUTPUT_SIGPWM_NB,
     } t_eFMKIO_OutPwmSig;

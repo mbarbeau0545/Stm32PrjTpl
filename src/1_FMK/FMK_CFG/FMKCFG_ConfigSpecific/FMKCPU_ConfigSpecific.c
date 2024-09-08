@@ -99,6 +99,11 @@ void FMKCPU_Disable_SRAM_Clock(void)   { __HAL_RCC_SRAM_CLK_DISABLE(); }
 void FMKCPU_Disable_FLITF_Clock(void)  { __HAL_RCC_FLITF_CLK_DISABLE(); }
 void FMKCPU_Disable_WWDG_Clock(void)   { __HAL_RCC_WWDG_CLK_DISABLE(); }
 void FMKCPU_Disable_PWR_Clock(void)    { __HAL_RCC_PWR_CLK_DISABLE(); }
+
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Start(TIM_HandleTypeDef *htim, uint32_t Channel){UNUSED(Channel); return HAL_TIM_Base_Start(htim);}
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim, uint32_t Channel){UNUSED(Channel); return HAL_TIM_Base_Stop(htim);}
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel){UNUSED(Channel); return HAL_TIM_Base_Start_IT(htim);}
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel){UNUSED(Channel); return HAL_TIM_Base_Stop_IT(htim);}
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************

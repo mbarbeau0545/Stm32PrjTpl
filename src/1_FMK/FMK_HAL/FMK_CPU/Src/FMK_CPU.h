@@ -125,6 +125,32 @@
     *
     *
     */
+    t_eReturnState FMKCPU_Init(void);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    t_eReturnState FMKCPU_Cyclic(void);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
     t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e, 
                                        t_eFMKCPU_NVICPriority f_priority_e, 
                                        t_eFMKCPU_NVIC_Ope f_OpeState_e);
@@ -167,7 +193,7 @@
     *
     *
     */
-    t_eReturnState FMKCPU_Set_PWMChannelCfg(t_sFMKCPU_BspTimerCfg f_bspCfg_s);
+    t_eReturnState FMKCPU_Set_PWMChannelCfg(t_sFMKCPU_BspTimerCfg f_bspCfg_s, t_uint32 f_pwmFreq_u32);
     /*****************************************************************************
     *
     *	@brief

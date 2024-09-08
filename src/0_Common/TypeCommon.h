@@ -16,8 +16,7 @@
 #define false	      ((t_uint8)0)
 #define True          ((t_uint8)1)
 #define False         ((t_uint8)0)
-#define NULL_FONCTION ((t_uint8)0)
-
+#define NULL_FONCTION ((void *)0)
 
     typedef enum
 

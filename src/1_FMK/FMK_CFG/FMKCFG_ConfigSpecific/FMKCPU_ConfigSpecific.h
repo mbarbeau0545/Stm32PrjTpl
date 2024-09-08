@@ -99,6 +99,10 @@
     void FMKCPU_Disable_WWDG_Clock(void)   ;
     void FMKCPU_Disable_PWR_Clock(void)    ;
 
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Start(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef FMKCPU_HAL_TIM_Base_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel);
 #endif // FMKPU_CONFIGSPECIFIC_H_INCLUDED           
 //************************************************************************************
 // End of File
