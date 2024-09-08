@@ -27,7 +27,7 @@
     // ********************************************************************
     // *                      Types
     // ********************************************************************
-        //-----------------------------ENUM TYPES-----------------------------//
+    //-----------------------------ENUM TYPES-----------------------------//
     /* CAUTION : Automatic generated code section for Enum: Start */
 
     /* CAUTION : Automatic generated code section for Enum: End */
@@ -121,6 +121,32 @@
     *
     */
     t_eReturnState FMKIO_Cyclic(void);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    t_eReturnState FMKIO_GetState(t_eCyclicFuncState *f_State_pe);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    t_eReturnState FMKIO_SetState(t_eCyclicFuncState f_State_e);
     /*****************************************************************************
     *
     *	@brief

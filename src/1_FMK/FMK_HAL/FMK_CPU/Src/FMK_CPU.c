@@ -80,6 +80,8 @@ typedef struct
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
+static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
+
 // Flag automatic generate code
 t_sFMKCPU_TimerInfo g_TimerInfo_as[FMKCPU_TIMER_NB] = {
     {
@@ -202,6 +204,36 @@ static t_eReturnState s_FMKCPU_Set_HwChannelState(t_eFMKCPU_Timer f_timer_e,
  *
  */
 static void s_FMKCPU_BspRqst_InterruptMngmt(TIM_HandleTypeDef *f_timerIstce_ps, t_eFMKCPU_HwChannelCfg f_HwChnlCfg_e);
+/*****************************************************************************
+ *
+ *
+ *
+ *	@brief
+ *	@details
+ *
+ *
+ *	@param[in]
+ *	@param[out]
+ *
+ *
+ *
+ */
+static t_eReturnState s_FMKCPU_Set_SysClockCfg(void);
+/*****************************************************************************
+ *
+ *
+ *
+ *	@brief
+ *	@details
+ *
+ *
+ *	@param[in]
+ *	@param[out]
+ *
+ *
+ *
+ */
+static t_eReturnState s_FMKCPU_Operational(void);
 
 //****************************************************************************
 //                      Public functions - Implementation
@@ -217,16 +249,111 @@ t_eReturnState FMKCPU_Init(void)
         g_TimerInfo_as[LLI_u8].IsTimerRunning_b    = (t_bool)False;
         for (LLI2_u8 = (t_uint8)0 ; LLI2_u8 < (t_eFMKCPU_InterruptChnl)FMKCPU_CHANNEL_NB ; LLI2_u8++)
         {
-             g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].chnl_cb = NULL_FONCTION;
-             g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].ErrState_e = FMKCPU_ERRSTATE_NONE;
-             g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].HwCfg_e = FMKCPU_HWCHNL_CFG_EVNT;
-             g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].IsChnlConfigure_b =  (t_bool)False;
-             g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].Polarity_e = FMKCPU_CHNLPOLARITY_LOW;
-             g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].RunMode_e = FMKCPU_CNHL_RUNMODE_POLLING;
-             g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].State_e = FMKCPU_CHNLST_DISACTIVATED;
+            g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].chnl_cb = NULL_FONCTION;
+            g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].ErrState_e = FMKCPU_ERRSTATE_NONE;
+            g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].HwCfg_e = FMKCPU_HWCHNL_CFG_EVNT;
+            g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].IsChnlConfigure_b =  (t_bool)False;
+            g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].Polarity_e = FMKCPU_CHNLPOLARITY_LOW;
+            g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].RunMode_e = FMKCPU_CNHL_RUNMODE_POLLING;
+            g_TimerInfo_as[LLI_u8].Channel_as[LLI2_u8].State_e = FMKCPU_CHNLST_DISACTIVATED;
         }
     }
     return RC_OK;
+}
+/*********************************
+ * FMKCPU_Set_Delay
+ *********************************/
+t_eReturnState FMKCPU_Cyclic(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    switch (g_state_e)
+    {
+    case STATE_CYCLIC_PREOPE:
+    {
+        Ret_e = s_FMKCPU_Set_SysClockCfg();
+        if(Ret_e == RC_OK)
+        {
+            g_state_e = STATE_CYCLIC_WAITING;
+        }
+        break;
+    }
+    case STATE_CYCLIC_WAITING:
+    {
+        // nothing to do, just wait all module are Ope
+        break;
+    }
+    case STATE_CYCLIC_OPE:
+    {
+        Ret_e = s_FMKCPU_Operational();
+        break;
+    }
+    case STATE_CYCLIC_ERROR:
+    {
+        break;
+    }
+    case STATE_CYCLIC_BUSY:
+    default:
+        Ret_e = RC_OK;
+        break;
+    }
+    return Ret_e;
+}
+
+/*********************************
+ * FMKCPU_GetState
+ *********************************/
+t_eReturnState FMKCPU_GetState(t_eCyclicFuncState *f_State_pe)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    if(f_State_pe == (t_eCyclicFuncState *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_State_pe = g_state_e;
+    }
+
+    return Ret_e;
+}
+
+/*********************************
+ * FMKCPU_SetState
+ *********************************/
+t_eReturnState FMKCPU_SetState(t_eCyclicFuncState f_State_e)
+{
+
+    g_state_e = f_State_e;
+
+    return RC_OK;
+}
+
+/*********************************
+ * FMKCPU_Set_Delay
+ *********************************/
+void FMKCPU_Set_Delay(t_uint32 f_delayms_u32)
+{
+    return HAL_Delay(f_delayms_u32);
+}
+
+/*********************************
+ * FMKCPU_Get_Tick
+ *********************************/
+t_eReturnState FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    if( f_tickms_pu32 == (t_uint32 *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_tickms_pu32 = HAL_GetTick();
+    }
+    return Ret_e;
 }
 /*********************************
  * FMKCPU_Set_NVICState
@@ -571,7 +698,7 @@ t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
                                          t_cbFMKCPU_InterruptChnl f_ITChannel_cb)
 {
     /********************************
-     *   Some useful information for PWM generation
+     *   Some useful information for Evnt generation
      *   In FMKCPU_ConfigPrivate, we set the prescaler so that
      *   the freqTimer counter is 1ms. In conclusion ARR = .period= (f_periodms -1) in ms
      ********************************/
@@ -608,7 +735,6 @@ t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
         }
         if (Ret_e == RC_OK)
         {
-            #warning "Interruption not manage for periodic event"
             // Update Flag Configured
             g_TimerInfo_as[EvntTimer_e].IsTimerConfigured_b = (t_bool)True;
             g_TimerInfo_as[EvntTimer_e].Channel_as[EvntChnl_e].HwCfg_e = FMKCPU_HWCHNL_CFG_EVNT;
@@ -670,6 +796,47 @@ t_eReturnState FMKCPU_Set_ChannelState(t_eFMKCPU_Timer f_timer_e,
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
+
+/*********************************
+ * s_FMKCPU_Get_BspTimer
+ *********************************/
+static t_eReturnState s_FMKCPU_Operational(void)
+{
+    return RC_OK;
+}
+
+/*********************************
+ * s_FMKCPU_Get_BspTimer
+ *********************************/
+static t_eReturnState s_FMKCPU_Set_SysClockCfg(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+    HAL_StatusTypeDef  bspRet_e = HAL_OK;
+    RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+    RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+    RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+    RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+
+    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                                    |RCC_CLOCKTYPE_PCLK1;
+    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+    RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+
+    bspRet_e = HAL_RCC_OscConfig(&RCC_OscInitStruct);
+    if(bspRet_e == HAL_OK)
+    {
+        bspRet_e = HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0);
+    }
+    if(bspRet_e != HAL_OK)
+    {
+        Ret_e = RC_ERROR_WRONG_RESULT;
+    }
+    return Ret_e;
+}
 /*********************************
  * s_FMKCPU_Get_BspTimer
  *********************************/
@@ -914,7 +1081,7 @@ static void s_FMKCPU_BspRqst_InterruptMngmt(TIM_HandleTypeDef *f_timerIstce_ps, 
     }
     else
     {
-#warning "only channel callback take in charged"
+    #warning "only channel callback take in charged"
         BspITChnl_e = HAL_TIM_GetActiveChannel(&g_TimerInfo_as[Calltimer_e].BspTimer_ps);
         switch (BspITChnl_e)
         {

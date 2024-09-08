@@ -151,6 +151,58 @@
     *
     *
     */
+    t_eReturnState FMKCPU_GetState(t_eCyclicFuncState *f_State_pe);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    t_eReturnState FMKCPU_SetState(t_eCyclicFuncState f_State_e);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    void FMKCPU_Set_Delay(t_uint32 f_delayms_u32);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    t_eReturnState FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
     t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e, 
                                        t_eFMKCPU_NVICPriority f_priority_e, 
                                        t_eFMKCPU_NVIC_Ope f_OpeState_e);

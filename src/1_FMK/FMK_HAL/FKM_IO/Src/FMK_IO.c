@@ -67,7 +67,7 @@ t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
 };
 
 t_uint32 g_InFreqSigRawValue_ua32[FMKIO_INPUT_SIGFREQ_NB];
-
+static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
@@ -167,9 +167,146 @@ static t_eReturnState s_FMKIO_MngSigFrequency(t_eFMKCPU_Timer f_timer_e, t_eFMKC
  *
  */
 static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t_eFMKCPU_ClockPortOpe f_ope_e);
+/**************************************************************************************
+ *
+ *	@brief
+ *	@details
+ *
+ *
+ *	@param[in]
+ *	@param[out]
+ *
+ *
+ *
+ */
+static t_eReturnState s_FMKIO_Operational(void);
 //****************************************************************************
 //                      Public functions - Implementation
 //********************************************************************************
+/*********************************
+ * FMKCPU_Init
+ *********************************/
+t_eReturnState FMKIO_Init(void)
+{
+    t_uint8 LLI_u8;
+    
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_INPUT_SIGFREQ_NB ; LLI_u8++)
+    {
+        g_InFreqSigRawValue_ua32[LLI_u8] = (t_uint32)0;
+        g_InFreqSigInfo_as[LLI_u8].altFunc_e = FMKIO_AF_NB;
+        g_InFreqSigInfo_as[LLI_u8].EvntFunc_cb = NULL;
+        g_InFreqSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
+        g_InFreqSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
+        g_InFreqSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
+        g_InFreqSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
+    }
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_INPUT_SIGANA_NB ; LLI_u8++)
+    {
+        g_InAnaSigInfo_as[LLI_u8].altFunc_e = FMKIO_AF_NB;
+        g_InAnaSigInfo_as[LLI_u8].EvntFunc_cb = NULL;
+        g_InAnaSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
+        g_InAnaSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
+        g_InAnaSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
+        g_InAnaSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
+    }
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_INPUT_SIGDIG_NB ; LLI_u8++)
+    {
+        g_InDigSigInfo_as[LLI_u8].altFunc_e = FMKIO_AF_NB;
+        g_InDigSigInfo_as[LLI_u8].EvntFunc_cb = NULL;
+        g_InDigSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
+        g_InDigSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
+        g_InDigSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
+        g_InDigSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
+    }
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
+    {
+        g_InEvntSigInfo_as[LLI_u8].altFunc_e = FMKIO_AF_NB;
+        g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb = NULL;
+        g_InEvntSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
+        g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
+        g_InEvntSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
+        g_InEvntSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
+    }
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_OUTPUT_SIGPWM_NB ; LLI_u8++)
+    {
+        g_OutPwmSigInfo_as[LLI_u8].altFunc_e = FMKIO_AF_NB;
+        g_OutPwmSigInfo_as[LLI_u8].EvntFunc_cb = NULL;
+        g_OutPwmSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
+        g_OutPwmSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
+        g_OutPwmSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
+        g_OutPwmSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
+    }
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_OUTPUT_SIGDIG_NB ; LLI_u8++)
+    {
+        g_OutDigSigInfo_as[LLI_u8].altFunc_e = FMKIO_AF_NB;
+        g_OutDigSigInfo_as[LLI_u8].EvntFunc_cb = NULL;
+        g_OutDigSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
+        g_OutDigSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
+        g_OutDigSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
+        g_OutDigSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
+    }
+
+    return RC_OK;
+}
+/*********************************
+ * FMKIO_Cyclic
+ *********************************/
+t_eReturnState FMKIO_Cyclic(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    switch (g_state_e)
+    {
+    case STATE_CYCLIC_WAITING:
+    {
+        // nothing to do, just wait all module are Ope
+        break;
+    }
+    case STATE_CYCLIC_OPE:
+    {
+        Ret_e = s_FMKIO_Operational();
+        break;
+    }
+    case STATE_CYCLIC_ERROR:
+    {
+        break;
+    }
+    case STATE_CYCLIC_PREOPE:
+    case STATE_CYCLIC_BUSY:
+    default:
+        Ret_e = RC_OK;
+        break;
+    }
+    return Ret_e;
+}
+
+/*********************************
+ * FMKIO_GetState
+ *********************************/
+t_eReturnState FMKIO_GetState(t_eCyclicFuncState *f_State_pe)
+{
+    t_eReturnState Ret_e = RC_OK;
+    
+    if(f_State_pe == (t_eCyclicFuncState *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_State_pe = g_state_e;
+    }
+
+    return Ret_e;
+}
+
+/*********************************
+ * FMKIO_SetState
+ *********************************/
+t_eReturnState FMKIO_SetState(t_eCyclicFuncState f_State_e)
+{
+    g_state_e = f_State_e;
+    return RC_OK;
+}
 /*********************************
  * s_FMKIO_Get_BspPullMode
  *********************************/
@@ -628,6 +765,13 @@ t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
+/*********************************
+ * s_FMKIO_Operational
+ *********************************/
+static t_eReturnState s_FMKIO_Operational(void)
+{
+    return RC_OK;
+}
 /*********************************
  * s_FMKIO_Get_BspPullMode
  *********************************/

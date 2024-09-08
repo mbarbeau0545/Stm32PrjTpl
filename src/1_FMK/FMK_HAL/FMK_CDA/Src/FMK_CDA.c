@@ -50,7 +50,7 @@ typedef enum
 typedef struct
 {
     t_uint16 rawValue_au16[FMKCDA_ADC_CHANNEL_NB];
-    t_uint8 BspChnlmapp[FMKCDA_ADC_CHANNEL_NB];
+    t_eFMKCPU_InterruptChnl BspChnlmapp[FMKCDA_ADC_CHANNEL_NB];
     t_bool FlagValueUpdated_b;
 } t_sFMKCDA_AdcBuffer;
 
@@ -92,9 +92,12 @@ t_sFMKCDA_AdcInfo g_AdcInfo_as[FMKCDA_ADC_NB] = {
         .BspInit_s.Instance = ADC1,
         .clock_e = FMKCPU_RCC_CLK_ADC1,
         .IRQNType_e = ADC1_IRQn,
-    }};
+    }
+};
 
-t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
+static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
+
+t_uint8 g_counterRank_u8 = 1;
 
 //********************************************************************************
 //                      Local functions - Prototypes
@@ -151,19 +154,6 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
  *
  *
  */
-static t_eReturnState s_FMKCDA_PreOperational(void);
-/*****************************************************************************
- *
- *	@brief
- *	@details
- *
- *
- *	@param[in]
- *	@param[out]
- *
- *
- *
- */
 static t_eReturnState s_FMKCDA_Operational(void);
 //****************************************************************************
 //                      Public functions - Implementation
@@ -201,11 +191,7 @@ t_eReturnState FMKCDA_Cyclic(void)
 
     switch (g_state_e)
     {
-    case STATE_CYCLIC_PREOPE:
-    {
-        Ret_e = s_FMKCDA_PreOperational();
-        break;
-    }
+
     case STATE_CYCLIC_OPE:
     {
         Ret_e = s_FMKCDA_Operational();
@@ -213,12 +199,14 @@ t_eReturnState FMKCDA_Cyclic(void)
     }
     case STATE_CYCLIC_WAITING:
     {
+        // nothing to do just wait AppSys Signal
         break;
     }
     case STATE_CYCLIC_ERROR:
     {
         break;
     }
+    case STATE_CYCLIC_PREOPE:
     case STATE_CYCLIC_BUSY:
     default:
         Ret_e = RC_OK;
@@ -226,6 +214,36 @@ t_eReturnState FMKCDA_Cyclic(void)
     }
     return Ret_e;
 }
+
+/*********************************
+ * FMKCDA_GetState
+ *********************************/
+t_eReturnState FMKCDA_GetState(t_eCyclicFuncState *f_State_pe)
+{
+    t_eReturnState Ret_e = RC_OK;
+    
+    if(f_State_pe == (t_eCyclicFuncState *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_State_pe = g_state_e;
+    }
+
+    return Ret_e;
+}
+
+/*********************************
+ * FMKCDA_SetState
+ *********************************/
+t_eReturnState FMKCDA_SetState(t_eCyclicFuncState f_State_e)
+{
+
+    g_state_e = f_State_e;
+    return RC_OK;
+}
+
 /*********************************
  * FMKCDA_Set_AdcChannelCfg
  *********************************/
@@ -247,7 +265,7 @@ t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e,
                                            f_hwAdcCfg_e);
             if (Ret_e == RC_OK)
             {
-#warning "Only Scan/DMA mode is trreated for AdcChannel Configuration"
+            #warning "Only Scan/DMA mode is trreated for AdcChannel Configuration"
                 Ret_e = FMKMAC_RqstDmaInit(FMKMAC_DMA_RQSTYPE_ADC1, (void *)&g_AdcInfo_as[f_Adc_e].BspInit_s);
                 if (Ret_e == RC_OK)
                 {
@@ -285,6 +303,7 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
         if (g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].FlagValueUpdated_b == (t_bool)True)
         {
             *f_AnaMeasure_u16 = g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].rawValue_u16;
+            g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].FlagValueUpdated_b = (t_bool)False;
         }
         else
         {
@@ -303,26 +322,43 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
 static t_eReturnState s_FMKCDA_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    t_uint8 timerCnt_u8 = 0;
-    t_uint8 chnlCnt_u8 = 0;
-    t_uint8 rankInBuffer_u8 = 0;
+    HAL_StatusTypeDef bspRet_e = HAL_OK;
+    t_uint8 LLI_u8;
+    t_uint8 LLI2_u8;
+    t_eFMKCPU_InterruptChnl channel_e;
 
-    for (timerCnt_u8 = (t_uint8)0; timerCnt_u8 < (t_uint8)FMKCDA_ADC_NB; timerCnt_u8++)
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKCDA_ADC_NB ; LLI_u8++)
     {
-        if (g_AdcBuffer_as[timerCnt_u8].FlagValueUpdated_b == (t_bool)True)
-        {
-            for (chnlCnt_u8 = (t_uint8)0; chnlCnt_u8 < (t_uint8)FMKCDA_ADC_CHANNEL_NB; chnlCnt_u8++)
+        // if ADc buffer for this ADC has been filled 
+        if(g_AdcBuffer_as[LLI_u8].FlagValueUpdated_b == (t_bool)True)
+        {// 
+            g_AdcBuffer_as[LLI_u8].FlagValueUpdated_b = (t_bool)False;
+            for(LLI2_u8 = (t_uint8)0 ; LLI2_u8 < g_counterRank_u8 ; LLI2_u8++)
             {
-                if (g_AdcInfo_as[timerCnt_u8].Channel_as[chnlCnt_u8].IsChnlUsed_b == (t_bool)True)
-                {
-                    rankInBuffer_u8 = g_AdcBuffer_as[timerCnt_u8].BspChnlmapp[chnlCnt_u8];
-                    g_AdcInfo_as[timerCnt_u8].Channel_as[chnlCnt_u8].rawValue_u16 =
-                        g_AdcBuffer_as[timerCnt_u8].rawValue_au16[rankInBuffer_u8];
-                }
+                channel_e = g_AdcBuffer_as[LLI_u8].BspChnlmapp[LLI2_u8];
+                g_AdcInfo_as[LLI_u8].Channel_as[channel_e].rawValue_u16 = 
+                    g_AdcBuffer_as[LLI_u8].rawValue_au16[LLI2_u8];
+
+                g_AdcInfo_as[LLI_u8].Channel_as[channel_e].FlagValueUpdated_b = (t_bool)True;
+            }
+        }
+        else
+        {
+            bspRet_e = HAL_ADC_Start_DMA(&g_AdcInfo_as[LLI_u8].BspInit_s,
+                                         (t_uint32 *)g_AdcBuffer_as[LLI_u8].rawValue_au16,
+                                         g_counterRank_u8);
+            
+            if(bspRet_e != HAL_OK)
+            {
+                Ret_e = RC_ERROR_WRONG_STATE;
+            }
+            else
+            {
+                g_AdcInfo_as[LLI_u8].IsAdcRunning_b = True;
             }
         }
     }
-#warning "ADC SCAN not set"
+
     return Ret_e;
 }
 
@@ -543,7 +579,6 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
     t_eReturnState Ret_e = RC_OK;
     HAL_StatusTypeDef BspRet_e = HAL_OK;
     t_uint32 bspChannel_u32 = 0;
-    static t_uint8 s_counterRank_u8 = 1;
 
     ADC_ChannelConfTypeDef BspChannelInit_s = {.SamplingTime = ADC_SAMPLETIME_13CYCLES_5}; // all channel ave this cfg
 
@@ -559,16 +594,17 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
         if (Ret_e == RC_OK)
         {
             BspChannelInit_s.Channel = bspChannel_u32;
-            BspChannelInit_s.Rank = s_counterRank_u8;
+            BspChannelInit_s.Rank = g_counterRank_u8;
             BspRet_e = HAL_ADC_ConfigChannel(&g_AdcInfo_as[f_Adc_e].BspInit_s,
                                              &BspChannelInit_s);
 
             if (BspRet_e == HAL_OK)
             {
                 // update mapping
-                g_AdcBuffer_as[f_Adc_e].BspChnlmapp[f_channel_e] = s_counterRank_u8;
+                g_AdcBuffer_as[f_Adc_e].BspChnlmapp[g_counterRank_u8] = f_channel_e;
                 g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlConfigured_b = (t_bool)True;
-                s_counterRank_u8 += (t_uint8)1;
+                g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlUsed_b = (t_bool)True;
+                g_counterRank_u8 += (t_uint8)1;
             }
             else
             {
@@ -596,7 +632,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     }
     if (IT_Adc_e < FMKCDA_ADC_NB)
     {
-        g_AdcBuffer_as[LLI_u8].FlagValueUpdated_b = (t_bool)True;
+        g_AdcBuffer_as[IT_Adc_e].FlagValueUpdated_b = (t_bool)True;
     }
     return;
 }

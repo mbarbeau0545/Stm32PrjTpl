@@ -1,5 +1,5 @@
 /*********************************************************************
- * @file        item.h
+ * @file        APP_ACT.c
  * @brief       Template_BriefDescription.
  * @details     TemplateDetailsDescription.\n
  *
@@ -8,46 +8,57 @@
  * @version     1.0
  */
 
+
+
+
+
+
 // ********************************************************************
 // *                      Includes
 // ********************************************************************
-#include "APP_CTRL/APP_SYS/Src/APP_SYS.h"
-#include "APP_LGC/Src/APP_LGC.h"
+
+#include "./APP_ACT.h"
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
-/* If define only logic Init & Cyclic are called
-*  else all framework & application function are called
-*/
-#define STANDALONE_MODE 
+
+// ********************************************************************
+// *                      Types
+// ********************************************************************
+/* CAUTION : Automatic generated code section for Enum: Start */
+
+/* CAUTION : Automatic generated code section for Enum: End */
+//-----------------------------ENUM TYPES-----------------------------//
+
+
+/* CAUTION : Automatic generated code section for Structure: Start */
+
+/* CAUTION : Automatic generated code section for Structure: End */
+//-----------------------------STRUCT TYPES---------------------------//
+/* CAUTION : Automatic generated code section : Start */
+
+/* CAUTION : Automatic generated code section : End */
+//-----------------------------TYPEDEF TYPES---------------------------//
 // ********************************************************************
 // *                      Prototypes
 // ********************************************************************
-    
+	
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
 
 //********************************************************************************
-//                      main
+//                      Local functions - Prototypes
 //********************************************************************************
-int main(void)
-{
-    #ifdef STANDALONE_MODE
-        APPLGC_Init();
-    #else
-        APPSYS_Init();
-    #endif
-    while (1)
-    {
-        #ifdef STANDALONE_MODE
-            APPLGC_Cyclic();
-        #else
-            APPSYS_Cyclic();
-        #endif
-    }
-    return 0;
-}
+
+//****************************************************************************
+//                      Public functions - Implementation
+//********************************************************************************
+
+//********************************************************************************
+//                      Local functions - Implementation
+//********************************************************************************
+
 //************************************************************************************
 // End of File
 //************************************************************************************
@@ -58,9 +69,10 @@ int main(void)
  *	@details
  *
  *
- *	@params[in]
+ *	@params[in] 
  *	@params[out]
- *
+ *	 
  *
  *
  */
+
