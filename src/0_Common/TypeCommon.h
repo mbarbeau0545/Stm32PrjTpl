@@ -18,6 +18,11 @@
 #define False         ((t_uint8)0)
 #define NULL_FONCTION ((void *)0)
 
+#ifndef NULL
+    #define NULL ((void *)0)
+#endif
+
+    /**< ENum for return function */
     typedef enum
 
     {
@@ -59,13 +64,14 @@
 
     } t_eReturnState;
 
+    /**< Enum for Cyclic function management */
     typedef enum 
     {
-        STATE_CYCLIC_PREOPE = 0,
-        STATE_CYCLIC_OPE,
-        STATE_CYCLIC_BUSY,
-        STATE_CYCLIC_WAITING,
-        STATE_CYCLIC_ERROR,
+        STATE_CYCLIC_PREOPE = 0,            /**< The module needs to make actions before the operational state */
+        STATE_CYCLIC_OPE,                   /**< The module perform operational action */
+        STATE_CYCLIC_BUSY,                  /**< The module is busy doing other things */
+        STATE_CYCLIC_WAITING,               /**< The module is waiting ready to ope_state and wait system signal */
+        STATE_CYCLIC_ERROR,                 /**< The module is in error state, Deprecated mode */
     } t_eCyclicFuncState;
 
     

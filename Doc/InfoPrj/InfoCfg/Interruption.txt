@@ -164,6 +164,28 @@ void Encoder_Config(void) {
 }
 5. Watchdog Timer
 c
+
+La différence principale entre le WWDG (Window Watchdog) et l'IWDG (Independent Watchdog) réside dans leur source d'horloge, leur comportement, et les scénarios d'utilisation. Voici un tableau comparatif pour vous aider à comprendre leurs différences et savoir lequel utiliser dans chaque cas :
+
+Caractéristique	WWDG (Window Watchdog)	IWDG (Independent Watchdog)
+Source d'horloge	Horloge APB1 (PCLK1) divisée par 4096.	Horloge LSI (Low Speed Internal, généralement 32 kHz).
+Disponibilité de l'horloge	Dépend de l'horloge APB1, qui peut être affectée par l'état du système (mode sleep, arrêt, etc.).	Indépendant de l'horloge système, toujours disponible même en veille profonde.
+Fonctionnalité de fenêtre	Dispose d'une fonctionnalité de fenêtre, qui permet de contrôler quand le Watchdog peut être réarmé (pas trop tôt ni trop tard).	Ne dispose pas de cette fonctionnalité de fenêtre.
+Précision	Plus précise si l'horloge APB1 est stable et bien configurée.	Moins précise (la LSI a une précision faible et peut varier entre 30 kHz et 60 kHz).
+Réarmement	Doit être réarmé dans une fenêtre spécifique pour éviter une réinitialisation.	Peut être réarmé à tout moment avant l'expiration.
+Scénario d'usage	Utilisé quand l'application peut gérer une horloge système fiable et quand la fonctionnalité de fenêtre est nécessaire pour prévenir les réarmements trop fréquents ou trop tardifs.	Utilisé dans les applications où la sécurité est critique, car il fonctionne même en cas de défaillance de l'horloge système ou en mode veille profonde.
+Exemple d'application	Systèmes où un contrôle plus fin du réarmement est souhaité, ou lorsqu'on est sûr que l'horloge APB1 ne sera pas affectée par des modes basse consommation.	Applications critiques nécessitant un fonctionnement en continu du Watchdog, même pendant les modes basse consommation ou les interruptions d'horloge système.
+Quel Watchdog choisir ?
+WWDG (Window Watchdog) :
+
+Avantages : Il est plus précis lorsque l'horloge APB1 est bien configurée et stable. Il permet aussi de contrôler plus finement le moment où le Watchdog peut être réarmé grâce à la fonctionnalité de fenêtre.
+Limites : Il ne fonctionne pas en veille profonde ou si l'horloge système est perturbée. Si le microcontrôleur entre dans un mode basse consommation qui coupe l'horloge APB1, le WWDG cesse de fonctionner.
+Utilisation recommandée : Pour des systèmes où vous avez besoin d'un contrôle précis et n'avez pas besoin de fonctionnalités de veille profonde.
+IWDG (Independent Watchdog) :
+
+Avantages : Il est totalement indépendant de l'horloge système et continue de fonctionner même lorsque le microcontrôleur est en mode veille ou arrêt. Il est utile dans les applications critiques où une surveillance continue est nécessaire, même en cas de panne d'horloge système.
+Limites : Il est moins précis en raison de la faible précision de l'horloge LSI, et il ne dispose pas de la fonctionnalité de fenêtre.
+Utilisation recommandée : Pour des systèmes critiques où il est essentiel que le Watchdog soit toujours en marche, même en mode veille profonde ou si l'horloge système échoue (comme les applications de sécurité).
 Copier le code
 IWDG_HandleTypeDef hiwdg;
 

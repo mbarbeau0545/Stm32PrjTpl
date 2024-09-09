@@ -136,7 +136,7 @@
     *	@param[out]
     *	 
     *
-    *
+    
     */
     t_eReturnState FMKCPU_Cyclic(void);
     /*****************************************************************************
@@ -221,6 +221,21 @@
     t_eReturnState FMKCPU_Set_HwClock(t_eFMKCPU_ClockPort f_clkPort_e, 
                                        t_eFMKCPU_ClockPortOpe f_OpeState_e);
     /*****************************************************************************
+     *
+     *
+     *
+     *	@brief
+    *	@details
+    *
+    *
+    *	@param[in]
+    *	@param[out]
+    *
+    *
+    *
+    */
+    t_eReturnState FMKCPU_Set_SysClockCfg(void);
+    /*****************************************************************************
     *
     *	@brief
     *	@details
@@ -232,7 +247,20 @@
     *
     *
     */
-    t_eReturnState FMKCPU_Set_WWDGChannelCfg(void);
+    t_eReturnState FMKCPU_Set_WwdgCfg(t_eFMKCPu_WwdgResetPeriod f_period_e);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    t_eReturnState FMKCPU_ResetWwdg(void);
     /*****************************************************************************
     *
     *	@brief

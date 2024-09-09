@@ -86,55 +86,70 @@ void APPSYS_Cyclic(void)
     static t_uint32 s_previousCnt_u32 = 0;
     t_uint32 elapsedTime_u32 =  0;
     static t_bool   s_IsAllModInitialized_b = False;
-
-    FMKCPU_Get_Tick(&currentCnt_u32);
-    elapsedTime_u32 = (t_uint32)(currentCnt_u32 - s_previousCnt_u32);
-    if((elapsedTime_u32) > APPSYS_ELAPSED_TIME_CYCLIC)
-    {// call every fmk/app function cyclic
-        s_previousCnt_u32 = currentCnt_u32;
-        for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < (t_uint8)APPSYS_MODULE_NB) && (Ret_e == RC_OK) ; LLI_u8++)
-        {
-            Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcCyclic_cb();
-            if((s_IsAllModInitialized_b == (t_bool)False) && (Ret_e == RC_OK))
-            {
-                Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcGetState_cb(&g_ModuleState_ae[LLI_u8]);
-                if(g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_OPE
-                || g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_WAITING)
-                {
-                    ModuleInitCnt_u8 += 1;
-                }
-            }
-        }
-    // manage error
+    
+    Ret_e = FMKCPU_Get_Tick(&currentCnt_u32);
+    if(Ret_e == RC_OK)
+    {
+        Ret_e = FMKCPU_ResetWwdg();
     }
     if(Ret_e == RC_OK)
     {
-        switch (s_IsAllModInitialized_b)
+        elapsedTime_u32 = (t_uint32)(currentCnt_u32 - s_previousCnt_u32);
+        if((elapsedTime_u32) > APPSYS_ELAPSED_TIME_CYCLIC)
         {
-            case False:
+            // reset whatchdog for fmk/app cycle
+           
+            s_previousCnt_u32 = currentCnt_u32;
+           // call every fmk/app function cyclic
+            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < (t_uint8)APPSYS_MODULE_NB) && (Ret_e == RC_OK) ; LLI_u8++)
             {
-                if(ModuleInitCnt_u8 == (t_uint8)APPSYS_MODULE_NB)
+                Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcCyclic_cb();
+                if((s_IsAllModInitialized_b == (t_bool)False) && (Ret_e == RC_OK))
                 {
-                    // Update state for module which are waiting to be in Logic Mode
-                    for(LLI_u8 = (t_uint8)0 ; (LLI_u8 <  (t_uint8)APPSYS_MODULE_NB) && (Ret_e == RC_OK) ; LLI_u8++)
+                    Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcGetState_cb(&g_ModuleState_ae[LLI_u8]);
+                    if(g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_OPE
+                    || g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_WAITING)
                     {
-                        if(g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_WAITING)
-                        {
-                            Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcSetState_cb(STATE_CYCLIC_OPE);
-                        }
+                        ModuleInitCnt_u8 += 1;
                     }
-                    s_IsAllModInitialized_b = True;
                 }
-                break;
             }
-            case True:
+        // manage error
+        }
+        if(Ret_e == RC_OK)
+        {
+            // reset watchdog for logic cycle
+            Ret_e = FMKCPU_ResetWwdg();
+        }
+        if(Ret_e == RC_OK)
+        {
+            switch (s_IsAllModInitialized_b)
             {
-                Ret_e = APPLGC_Cyclic();
-                if(Ret_e != RC_OK)
-                {
-                    // deal error 
+                case False:
+                {// see if all module are in WaitingMode means ready for logic
+                    if(ModuleInitCnt_u8 == (t_uint8)APPSYS_MODULE_NB)
+                    {
+                        // Update state for module which are waiting to be in Logic Mode
+                        for(LLI_u8 = (t_uint8)0 ; (LLI_u8 <  (t_uint8)APPSYS_MODULE_NB) && (Ret_e == RC_OK) ; LLI_u8++)
+                        {
+                            if(g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_WAITING)
+                            {
+                                Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcSetState_cb(STATE_CYCLIC_OPE);
+                            }
+                        }
+                        s_IsAllModInitialized_b = True;
+                    }
+                    break;
                 }
-                break;
+                case True:
+                {
+                    Ret_e = APPLGC_Cyclic();
+                    if(Ret_e != RC_OK)
+                    {
+                        // deal error 
+                    }
+                    break;
+                }
             }
         }
     }

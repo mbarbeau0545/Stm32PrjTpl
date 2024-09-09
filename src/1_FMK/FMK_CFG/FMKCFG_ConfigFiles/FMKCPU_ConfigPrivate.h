@@ -31,6 +31,8 @@
     #define FMKCPU_IC_PSC          ((t_uint8)0)       // for every InputCOmpare the Prescaler is a constant 
     #define FMKCPU_IC_ARR          ((t_uint16)0xFFFF)       // for every InputCOmpare the Prescaler is a constant 
     #define FMKCPU_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC * 1000)- (t_uint16)1) // The prescaler use for evnt timer, having 1000Hz (1ms)
+
+    #define FMKCPU_WWDG_RESET_CFG  FMKCPU_WWDG_RESET_100MS
     // ********************************************************************
     // *                      Types
     // ********************************************************************
@@ -38,9 +40,115 @@
 
     /* CAUTION : Automatic generated code section for Enum: End */
 
+    /**************************************************************************************
+     *
+     *	@brief      HAL enable clock Function abstraction
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    *
+    *
+    *	@param[in]      f_handleTimer_s : the bsp config structure 
+    *	@param[out]     f_channel_u32   : the channel 
+    *	 
+    *
+    *
+    */
+    typedef void (t_cbFMKCPU_ClockEnable)(void);
+    /**************************************************************************************
+     *
+     *	@brief      HAL Disable clock Function abstraction
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    *
+    *
+    *	@param[in]      f_handleTimer_s : the bsp config structure 
+    *	@param[out]     f_channel_u32   : the channel 
+    *	 
+    *
+    *
+    */
+    typedef void (t_cbFMKCPU_ClockDisable)(void);
+    /* Typedef for HAL_TIMER_FUNCTION Mode Polling/Interrupt*/
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function for Init
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimerInitFunc)(TIM_HandleTypeDef *f_handleTimer_s);
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function for Init
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimerDeInitFunc)(TIM_HandleTypeDef *f_handleTimer_s);
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function in Polling xay
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    * 
+    *	@param[in]      f_handleTimer_s : the bsp config structure 
+    *	@param[out]     f_channel_u32   : the channel 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStartFuncModePolling)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function in Interruption way  
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    *
+    *	@param[in]      f_handleTimer_s : the bsp config structure 
+    *	@param[out]     f_channel_u32   : the channel 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStartFuncModeInterrupt)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function in Polling xay
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    *
+    *	@param[in]      f_handleTimer_s : the bsp config structure 
+    *	@param[out]     f_channel_u32   : the channel 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStopFuncModePolling)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
+    /**************************************************************************************
+     *
+     *	@brief      HAL Timer function in Interruption way  
+    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *               is used in blocking mode 
+    *
+    *	@param[in]      f_handleTimer_s : the bsp config structure 
+    *	@param[out]     f_channel_u32   : the channel 
+    */
+    typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStopFuncModeInterrupt)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
+
+    //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */
 
     /* CAUTION : Automatic generated code section for Structure: End */
+    typedef struct
+    {
+        t_cbFMKCPU_TimerInitFunc             * TimerInit_pcb;
+        t_cbFMKCPU_TimerDeInitFunc           * TimerDeInit_pcb;
+        t_cbFMKCPU_TimStartFuncModePolling   * StartFuncPoll_pcb;
+        t_cbFMKCPU_TimStopFuncModePolling    * StopFuncPoll_pcb;
+        t_cbFMKCPU_TimStartFuncModeInterrupt * StartFuncInterrupt_pcb;
+        t_cbFMKCPU_TimStopFuncModeInterrupt  * StopFuncInterrupt_pcb;
+    } t_sFMKCPU_TimChannelFunc;
+
+    typedef struct
+    {
+        t_cbFMKCPU_ClockEnable  * EnableClk_pcb;
+        t_cbFMKCPU_ClockDisable * DisableClk_pcb;
+    }t_sFMKCPU_ClkFunc;
+
+    typedef struct 
+    {
+        t_uint16 psc_u16;
+        t_uint16 reload_u16;
+    } t_sFMKCPU_BspWwdgCfg;
     // ********************************************************************
     // *                      Prototypes
     // ********************************************************************
@@ -49,6 +157,7 @@
     // *                      Variables
     // ********************************************************************
     // Flag automatic generate code 
+    /**< Referencing all HAL_TIM function*/
     const t_sFMKCPU_TimChannelFunc c_FMKCPU_BspTimFunc_apf[FMKCPU_HWCHNL_CFG_NB] = 
     {// Init Timer                         DeInitTimer                    StartPolling Func                 StopPolling Funnc             Start Interrupt Func          Stop Interrupt Func
         {HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_PWM_Start,               HAL_TIM_PWM_Stop,             HAL_TIM_PWM_Start_IT,           HAL_TIM_PWM_Stop_IT},         // FMKCPU_CHANNEL_CFG_PWM 
@@ -60,6 +169,7 @@
         {HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,              HAL_TIM_Encoder_Start_IT,       HAL_TIM_Encoder_Stop_IT},     // FMKCPU_CHANNEL_CFG_TRGR
     };
     // Flag automatic generate code 
+    /**< Set the NVIC Priority for all NVIC_IRqn Priority */
     const t_eFMKCPU_NVICPriority c_FMKCPU_IRQNPriority_ae[FMKCPU_IRQN_TYPE_NB] = {
         FMKCPU_NVIC_PRIORITY_MEDIUM,//WWDG_IRQn               
         FMKCPU_NVIC_PRIORITY_MEDIUM,//RTC_IRQn                
@@ -89,6 +199,7 @@
     };
 
     // Flag automatic generate code 
+    /**< Referencing all Enable/Disable Rcc clock function */
     const t_sFMKCPU_ClkFunc c_FMKCPU_ClkFunctions_apcb[FMKCPU_RCC_CLK_NB] = {
     {FMKCPU_Enable_SYSCFG_Clock , FMKCPU_Disable_SYSCFG_Clock},   // FMKCPU_RCC_CLK_SYSCFG
     {FMKCPU_Enable_ADC1_Clock   , FMKCPU_Disable_ADC1_Clock},     // FMKCPU_RCC_CLK_ADC1
@@ -116,9 +227,19 @@
     };
 
     // Flag automatic generate code 
-    const t_sFMKCPU_BspTimerCfg c_EvntTimerCfg_as[FMKCPU_EVENT_CHANNEL_NB] = {
+    /**< Hardware configuration for Event Period Timer */
+    const t_sFMKCPU_BspTimerCfg c_FMKCPU_EvntTimerCfg_as[FMKCPU_EVENT_CHANNEL_NB] = {
         {FMKCPU_TIMER_16, FMKCPU_CHANNEL_1}, // FMKCPU_EVENT_CHANNEL_1
         {FMKCPU_TIMER_17, FMKCPU_CHANNEL_1}, // FMKCPU_EVENT_CHANNEL_2
+    };
+
+    /**< Hardware configuration watchdog Period Timer */
+    const t_sFMKCPU_BspWwdgCfg c_FMKCPU_WwdgPeriodcfg_ua16[FMKCPU_WWDG_RESET_NB] = {
+        // prescaler value         reload value
+        {WWDG_PRESCALER_1,          98}, // FMKCPU_WWDG_RESET_50MS
+        {WWDG_PRESCALER_2,          98}, // FMKCPU_WWDG_RESET_100MS
+        {WWDG_PRESCALER_4,          98}, // FMKCPU_WWDG_RESET_200MS
+        {WWDG_PRESCALER_8,          122},// FMKCPU_WWDG_RESET_500MS
     };
     //********************************************************************************
     //                      Public functions - Prototyupes

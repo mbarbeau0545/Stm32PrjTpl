@@ -20,7 +20,7 @@
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
-#define FMKIO_AF_UNUSED ((t_uint8)0xFF)
+#define FMKIO_AF_UNUSED ((t_uint8)0xFF) /**< Flag to say that the alternate function is not used in Signal Init */
 // ********************************************************************
 // *                      Types
 // ********************************************************************
@@ -34,6 +34,7 @@
 /* CAUTION : Automatic generated code section for Structure: Start */
 
 /* CAUTION : Automatic generated code section for Structure: End */
+/**< Structure common to all signal to repertory signal information */
 typedef struct
 {
     t_eFMKIO_PullMode pull_e;
@@ -51,13 +52,14 @@ typedef struct
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-t_sFMKIO_SigInfo g_InFreqSigInfo_as[FMKIO_INPUT_SIGFREQ_NB];
-t_sFMKIO_SigInfo g_InAnaSigInfo_as[FMKIO_INPUT_SIGANA_NB];
-t_sFMKIO_SigInfo g_InDigSigInfo_as[FMKIO_INPUT_SIGDIG_NB];
-t_sFMKIO_SigInfo g_InEvntSigInfo_as[FMKIO_INPUT_SIGEVNT_NB];
-t_sFMKIO_SigInfo g_OutPwmSigInfo_as[FMKIO_OUTPUT_SIGPWM_NB];
-t_sFMKIO_SigInfo g_OutDigSigInfo_as[FMKIO_OUTPUT_SIGDIG_NB];
+t_sFMKIO_SigInfo g_InFreqSigInfo_as[FMKIO_INPUT_SIGFREQ_NB];        /**< Signal information for input frequency */
+t_sFMKIO_SigInfo g_InAnaSigInfo_as[FMKIO_INPUT_SIGANA_NB];          /**< Signal information for input Analog */
+t_sFMKIO_SigInfo g_InDigSigInfo_as[FMKIO_INPUT_SIGDIG_NB];          /**< Signal information for input Digital */
+t_sFMKIO_SigInfo g_InEvntSigInfo_as[FMKIO_INPUT_SIGEVNT_NB];        /**< Signal information for input Event */
+t_sFMKIO_SigInfo g_OutPwmSigInfo_as[FMKIO_OUTPUT_SIGPWM_NB];        /**< Signal information for output PWM */
+t_sFMKIO_SigInfo g_OutDigSigInfo_as[FMKIO_OUTPUT_SIGDIG_NB];        /**< Signal information for output Digital */
 
+/**< Variable to store the state of GPIO Clock */
 t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
     FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_A
     FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_B
@@ -66,73 +68,90 @@ t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
     FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_F
 };
 
+/**< Variable to put the Signal Frequency value */
 t_uint32 g_InFreqSigRawValue_ua32[FMKIO_INPUT_SIGFREQ_NB];
+/**< Module state */
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
- *
- *
- *	@param[in]
- *	@param[out]
+ *	@brief      Get the Bsp Pull Mode 
+ *	@details    Using the enum f_pull_e and switch case, this function 
+                return the right uint32 hal pull for a pin.\n
  *
  *
+ *	@param[in]  f_pull_e       : the enum that says the pull mode, value from @ref t_eFMKIO_PullMode
+ *	@param[in]  f_bspPull_pu32 : the Hal value correponding the enum
+ *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Get_BspPullMode(t_eFMKIO_PullMode f_pull_e, t_uint32 *f_bspPull_pu32);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
- *
- *
- *	@param[in]
- *	@param[out]
+ *	@brief      Get the Bsp speed Mode 
+ *	@details    Using the enum f_spd_e and switch case, this function 
+                return the right uint32 hal speed for a pin.\n
  *
  *
+ *	@param[in]  f_spd_e       : the enum that says the speed mode, value from @ref t_eFMKIO_SpdMode
+ *	@param[in]  f_bspSpd_pu32 : the Hal value correponding the enum
+ *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Get_BspSpdMode(t_eFMKIO_SpdMode f_spd_e, t_uint32 *f_bspSpd_pu32);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
- *
- *
- *	@param[in]
- *	@param[out]
+ *	@brief      Get the Bsp Gpio Port Instance 
+ *	@details    Using the enum f_spd_e and switch case, this function 
+                return the right GPIOPort Instance.\n
  *
  *
+ *	@param[in]  f_GpioPort_e       : GPIOPort enum from @ref t_eFMKIO_GpioPort
+ *	@param[in]  f_BspGpio_ps       : pointor to pointor to change the direction a the pointer
+ *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GPIO_TypeDef **f_BspGpio_ps);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
- *
- *
- *	@param[in]
- *	@param[out]
+ *	@brief      Get the Bsp trigger Mode for signal event
+ *	@details    Using the enum f_trigger_e and switch case, this function 
+                return the right uint32 hal trigger for a pin.\n
  *
  *
+ *	@param[in]  f_trigger_e           : the enum that says the trigger mode, value from @ref t_eFMKIO_SigTrigCptr
+ *	@param[in]  f_bspTrigger_pu32     : the Hal value correponding the enum
+ *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Get_BspTriggerMode(t_eFMKIO_SigTrigCptr f_trigger_e, t_uint32 *f_bspTrigger_pu32);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
+ *	@brief      This function set the Init of a pin on a GPIO
  *
+ *	@param[in]  f_GpioPort_e     : GPIOPort enum from @ref t_eFMKIO_GpioPort
+ *	@param[in]  f_pin_e          : pin enum from @ref t_eFMKIO_BspGpioPin
+ *	@param[in]  f_mode_u32       : Pin Mode from HAL_GPIO.h
+ *	@param[in]  f_pull_e         : the enum that says the pull mode, value from @ref t_eFMKIO_PullMode
+ *	@param[in]  f_spd_e          : the enum that says the speed mode, value from @ref t_eFMKIO_SpdMode
+ *	@param[in]  f_AltFunc_u8     : the alternate function, FMKIO_AF_UNUSED if not used
  *
- *	@param[in]
- *	@param[out]
- *
- *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort f_gpioPort_e,
@@ -141,42 +160,36 @@ static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort f_gpioPort_e,
                                             t_eFMKIO_PullMode f_pull_e,
                                             t_eFMKIO_SpdMode f_spd_e,
                                             t_uint8 f_AltFunc_u8);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
+ *	@brief      FMKCPU callback function to determine signal frequency value
  *
+ *	@param[in]  f_timer_e        : timer from  @ref t_eFMKCPU_Timer
+ *	@param[in]  f_channel_e      : timer channel  from @ref t_eFMKCPU_InterruptChnl
  *
- *	@param[in]
- *	@param[out]
- *
- *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_MngSigFrequency(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e);
-/**************************************************************************************
+/**
  *
- *	@brief
- *	@details
+ *	@brief      Function to set HAL_RCC clock state : Enable/Disable
  *
+ *	@param[in]  f_GpioPort_e     : GPIOPort enum, value from @ref t_eFMKIO_GpioPort
+ *	@param[in]  f_ope_e          : Enable or Diable RCC clock, value from @ref t_eFMKCPU_ClockPortOpe
  *
- *	@param[in]
- *	@param[out]
- *
- *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t_eFMKCPU_ClockPortOpe f_ope_e);
-/**************************************************************************************
+/**
  *
- *	@brief
- *	@details
+ *	@brief      Function to perform diag on siganl used 
  *
- *
- *	@param[in]
- *	@param[out]
- *
- *
+ * @retval RC_OK                             @copyright RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Operational(void);
@@ -565,6 +578,10 @@ t_eReturnState FMKIO_Set_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
+    if(g_OutDigSigInfo_as[f_signal_e].IsSigConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
+    }
     if (Ret_e == RC_OK)
     {
         Ret_e = s_FMKIO_Get_BspGpioPort(c_OutDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_ps);
@@ -604,6 +621,10 @@ t_eReturnState FMKIO_Set_OutPwmSigValue(t_eFMKIO_OutPwmSig f_signal_e, t_uint16 
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
+    if(g_OutPwmSigInfo_as[f_signal_e].IsSigConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
+    }
     if (Ret_e == RC_OK)
     {
         Ret_e = FMKCPU_Set_PWMChannelDuty(c_OutPwmSigBspMap_as[f_signal_e].timer_e,
@@ -629,6 +650,10 @@ t_eReturnState FMKIO_Get_InDigSigValue(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_Di
     if (f_value_pe == (t_eFMKIO_DigValue *)NULL)
     {
         Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(g_InDigSigInfo_as[f_signal_e].IsSigConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
     }
     if (Ret_e == RC_OK)
     {
@@ -668,6 +693,10 @@ t_eReturnState FMKIO_Get_InAnaSigValue(t_eFMKIO_InAnaSig f_signal_e, t_uint16 *f
     {
         Ret_e = RC_ERROR_PTR_NULL;
     }
+    if(g_InAnaSigInfo_as[f_signal_e].IsSigConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
+    }
     if (Ret_e == RC_OK)
     {
         Ret_e = FMKCDA_Get_AnaChannelMeasure(c_InAnaSigAdcCfg_ae[f_signal_e].adc_e,
@@ -686,6 +715,10 @@ t_eReturnState FMKIO_Get_InFreqSigValue(t_eFMKIO_InFreqSig f_signal_e, t_uint32 
     if (f_signal_e > FMKIO_INPUT_SIGFREQ_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(g_InFreqSigInfo_as[f_signal_e].IsSigConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
     }
     if (f_value_pu32 == (t_uint32 *)NULL)
     {
@@ -713,6 +746,10 @@ t_eReturnState FMKIO_Get_OutPwmSigValue(t_eFMKIO_OutPwmSig f_signal_e, t_uint16 
     {
         Ret_e = RC_ERROR_PTR_NULL;
     }
+    if(g_OutPwmSigInfo_as[f_signal_e].IsSigConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
+    }
     if (Ret_e == RC_OK)
     {
         Ret_e = FMKCPU_Get_PWMChannelDuty(c_OutPwmSigBspMap_as[f_signal_e].timer_e,
@@ -738,6 +775,10 @@ t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
     if (f_value_pe == (t_eFMKIO_DigValue *)NULL)
     {
         Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(g_OutDigSigInfo_as[f_signal_e].IsSigConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
     }
     if (Ret_e == RC_OK)
     {
@@ -1023,7 +1064,28 @@ static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t
     }
     return Ret_e;
 }
-
+//********************************************************************************
+//                      HAL_Callback Implementation
+//********************************************************************************
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    t_uint8 LLI_u8;
+    t_eFMKIO_BspGpioPin bspPinEvnt_e;
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
+    {
+        bspPinEvnt_e = c_InEvntSigBspMap_as[LLI_u8].BasicCfg.HwPin_e;
+        if(c_BspPinMapping_ua32[bspPinEvnt_e] == GPIO_Pin)
+        {
+            break;
+        }
+    }
+    if(g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb != (t_cbFMKIO_EventFunc *)NULL_FONCTION)
+    {
+        g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb();
+    }
+    
+    return;
+}
 //************************************************************************************
 // End of File
 //************************************************************************************
@@ -1035,7 +1097,7 @@ static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t
  *
  *
  *	@params[in]
- *	@params[out]
+ *	@params[in]
  *
  *
  *

@@ -31,7 +31,9 @@
 
     /* CAUTION : Automatic generated code section for Enum: End */
     // Flag automatic generate code 
-    /* NUmber of ADC in this harware*/
+    /*****************************************************
+     * @brief NUmber of ADC in this harware
+     */
     typedef enum
     {
         FMKCDA_ADC_1 = 0,
@@ -39,11 +41,13 @@
         FMKCDA_ADC_NB
     }t_eFMKCDA_Adc;
     // Flag automatic generate code 
-    /*Number of channel in ADC hardware*/
+    /*****************************************************
+     * @brief Number of channel in ADC Instances
+     */
     typedef enum 
     {
-        FMKCDA_ADC_CHANNEL_0 = 0,
-        FMKCDA_ADC_CHANNEL_1,
+        FMKCDA_ADC_CHANNEL_0 = 0,   /**< reference to the define ADC_CHANNEL_0 */
+        FMKCDA_ADC_CHANNEL_1,       /**< reference to the define ADC_CHANNEL_1 */
         FMKCDA_ADC_CHANNEL_2,
         FMKCDA_ADC_CHANNEL_3,
         FMKCDA_ADC_CHANNEL_4,
@@ -63,9 +67,6 @@
 
         FMKCDA_ADC_CHANNEL_NB,
     } t_eFMKCDA_AdcChannel;
-
-    
-    /*Number of channel in ADC hardware*/
     //-----------------------------TYPEDEF TYPES---------------------------//
     //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */

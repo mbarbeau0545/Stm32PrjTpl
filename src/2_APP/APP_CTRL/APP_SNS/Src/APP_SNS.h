@@ -19,6 +19,7 @@
     // *                      Includes
     // ********************************************************************
     #include "TypeCommon.h"
+    #include "APP_CFG/ConfigFiles/APPSNS_ConfigPublic.h"
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -98,8 +99,20 @@
     *
     *
     */
-    t_eReturnState APPSNS_SetState(t_eCyclicFuncState f_State_pe);
-
+    t_eReturnState APPSNS_SetState(t_eCyclicFuncState f_State_e);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    t_eReturnState APPSNS_Get_SnsValue(t_eAPPSNS_Sensors f_Sns_e, t_sint16 *f_SnsValue_ps16);
 
     //********************************************************************************
     //                      Public functions - Prototyupes

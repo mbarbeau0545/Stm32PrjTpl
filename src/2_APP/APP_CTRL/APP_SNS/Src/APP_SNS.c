@@ -18,6 +18,7 @@
 // ********************************************************************
 
 #include "./APP_SNS.h"
+#include "APP_CFG/ConfigFiles/APPSNS_ConfigPrivate.h"
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
@@ -46,19 +47,314 @@
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-
+static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
-
+/*****************************************************************************
+*
+*	@brief
+*	@details
+*
+*
+*	@param[in] 
+*	@param[out]
+*	 
+*
+*
+*/
+static t_eReturnState s_APPSNS_PreOperational(void);
+/*****************************************************************************
+*
+*	@brief
+*	@details
+*
+*
+*	@param[in] 
+*	@param[out]
+*	 
+*
+*
+*/
+static t_eReturnState s_APPSNS_Operational(void);
+/*****************************************************************************
+*
+*	@brief
+*	@details
+*
+*
+*	@param[in] 
+*	@param[out]
+*	 
+*
+*
+*/
+static t_eReturnState s_APPSNS_SetValUnity(t_eAPPSNS_SnsMeasType f_measType_e, t_sint16 *f_UnitVal_ps16);
 //****************************************************************************
 //                      Public functions - Implementation
 //********************************************************************************
+/*********************************
+ * APPSNS_Init
+ *********************************/
+t_eReturnState APPSNS_Init(void)
+{
+    return RC_OK;
+}
+/*********************************
+ * APPSNS_Init
+ *********************************/
+t_eReturnState APPSNS_Cyclic(void)
+{
+    t_eReturnState Ret_e = RC_OK;
 
+    switch (g_state_e)
+    {
+    case STATE_CYCLIC_PREOPE:
+    {
+        Ret_e = s_APPSNS_PreOperational();
+        break;
+    }
+    case STATE_CYCLIC_WAITING:
+    {
+        // nothing to do, just wait all module are Ope
+        break;
+    }
+    case STATE_CYCLIC_OPE:
+    {
+        Ret_e = s_APPSNS_Operational();
+        break;
+    }
+    case STATE_CYCLIC_ERROR:
+    {
+        break;
+    }
+    case STATE_CYCLIC_BUSY:
+    default:
+        Ret_e = RC_OK;
+        break;
+    }
+    return Ret_e;
+}
+
+/*********************************
+ * APPSNS_GetState
+ *********************************/
+t_eReturnState APPSNS_GetState(t_eCyclicFuncState *f_State_pe)
+{
+    t_eReturnState Ret_e = RC_OK;
+    
+    if(f_State_pe == (t_eCyclicFuncState *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_State_pe = g_state_e;
+    }
+    return Ret_e;
+}
+/*********************************
+ * APPSNS_GetState
+ *********************************/
+t_eReturnState APPSNS_SetState(t_eCyclicFuncState f_State_e)
+{
+    g_state_e = f_State_e;
+    return RC_OK;
+}
+
+/*********************************
+ * APPSNS_Get_SnsValue
+ *********************************/
+t_eReturnState APPSNS_Get_SnsValue(t_eAPPSNS_Sensors f_Sns_e, t_sint16 *f_SnsValue_ps16)
+{
+    t_eReturnState Ret_e = RC_OK;
+    t_sAPPSNS_ValueInfo valInfo_s = {0};
+
+    if(g_state_e != STATE_CYCLIC_OPE)
+    {
+        Ret_e = RC_ERROR_MODULE_NOT_INITIALIZED;
+    }
+    if(f_SnsValue_ps16 == (t_sint16 *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(f_Sns_e > APPSNS_SNS_NB)
+    {
+        Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(Ret_e == RC_OK)
+    {
+        // call specific function to get value
+        if(c_AppSns_SysSns_apf[f_Sns_e].GetValue_pcb != (t_cbAppSns_GetSnsValue *)NULL_FONCTION)
+        {
+            Ret_e = (c_AppSns_SysSns_apf[f_Sns_e].GetValue_pcb)(&valInfo_s);
+            if(Ret_e == RC_OK)
+            {
+                if(c_AppSns_SnsMeasType_ae[f_Sns_e] != APPSNS_MEASTYPE_RAW)
+                {
+                    Ret_e = s_APPSNS_SetValUnity(c_AppSns_SnsState_ae[f_Sns_e], &valInfo_s.SnsValue_s16);
+                    if(valInfo_s.IsValueOK_b == True)
+                    {
+                        *f_SnsValue_ps16 = valInfo_s.SnsValue_s16;
+                    }
+                    else
+                    {
+                        *f_SnsValue_ps16 = valInfo_s.rawValue_s16;
+                    }
+                }
+                else
+                {
+                    *f_SnsValue_ps16 = valInfo_s.rawValue_s16;
+                }
+            }
+        }
+        else 
+        {
+            Ret_e = RC_ERROR_PTR_NULL;
+        }
+    }
+
+    return Ret_e;
+}
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
+/*********************************
+ * s_APPSNS_PreOperational
+ *********************************/
+static t_eReturnState s_APPSNS_PreOperational(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+    t_uint8 LLI_u8;
+    static t_uint8 LLSnsCfg_u8 = 0;
+    static t_uint8 SnsCfgCnt_u8 = 0;
+    static t_bool s_IsDrvInitDone_b = False;
+    // first call drv init function 
+    switch (s_IsDrvInitDone_b)
+    {
+        case False:
+        {
+            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRV_NB) && (Ret_e == RC_OK) ; LLI_u8++)
+            {
+                if(c_AppSns_DrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
+                {
+                    if(c_AppSns_SysDrv_apf[LLI_u8].Init_pcb != (t_cbAppSns_DrvInit *)NULL_FONCTION)
+                    {
+                        Ret_e = (c_AppSns_SysDrv_apf[LLI_u8].Init_pcb)();
+                    }
+                }
+            }
+            if((LLI_u8 >= APPSNS_DRV_NB) && (Ret_e == RC_OK))
+            {
+                s_IsDrvInitDone_b = (t_bool)True;
+            }
+            break;
+        }
+        case True:
+        {// then config the sensors only if the Sensors is used which means in "enable"
+            while((SnsCfgCnt_u8 < (t_uint8)APPSNS_CFG_NB_PER_CYCLE) && (Ret_e == RC_OK))
+            {
+                if(c_AppSns_SnsState_ae[LLSnsCfg_u8] == APPSNS_SENSOR_ENABLE)
+                {
+                    if(c_AppSns_SysSns_apf[LLSnsCfg_u8].SetCfg_pcb != (t_cbAppSns_SetSnsCfg *)NULL_FONCTION)
+                    {
+                        Ret_e = (c_AppSns_SysSns_apf[LLSnsCfg_u8].SetCfg_pcb)();
+                        if(Ret_e == RC_OK)
+                        {
+                            SnsCfgCnt_u8 += (t_uint8)1;
+                        }
+                    }                    
+                }
+                if(Ret_e == RC_OK)
+                {
+                    LLI_u8 += (t_uint8)1;
+                    if(LLI_u8 >= APPSNS_SNS_NB)
+                    {
+                        g_state_e = STATE_CYCLIC_WAITING;
+                        break;
+                    }
+                }
+            }
+            break;
+        }
+    }
+    return Ret_e;
+}
+/*********************************
+ * s_APPSNS_Operational
+ *********************************/
+static t_eReturnState s_APPSNS_Operational(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+    static t_bool s_IsDrvCylic_b = True;
+    t_bool DrvCyclicCnt_u8 = 0;
+    t_uint8 LLI_u8; 
 
+    if(s_IsDrvCylic_b == (t_bool)True)
+    {
+        for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRV_NB) && (Ret_e == RC_OK); LLI_u8++)
+        {
+            if(c_AppSns_DrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
+            {
+                if(c_AppSns_SysDrv_apf[LLI_u8].Cyclic_pcb != (t_cbAppSns_DrvCyclic *)NULL_FONCTION)
+                {
+                    Ret_e = (c_AppSns_SysDrv_apf[LLI_u8].Cyclic_pcb)();
+                }
+            }
+            else
+            {
+                DrvCyclicCnt_u8 += (t_uint8)1;
+            }
+        }
+        if(DrvCyclicCnt_u8 == (t_uint8)0)
+        {
+            s_IsDrvCylic_b = (t_bool)False;
+        }
+    }
+
+    return Ret_e;
+}
+
+/*********************************
+ * s_APPSNS_SetValUnity
+ *********************************/
+static t_eReturnState s_APPSNS_SetValUnity(t_eAPPSNS_SnsMeasType f_measType_e, t_sint16 *f_UnitVal_ps16)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    if( f_measType_e > APPSNS_MEASTYPE_NB)
+    {
+        Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(f_UnitVal_ps16 == (t_sint16 *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        switch(f_measType_e)
+        {
+            case APPSNS_MEASTYPE_ANGLE_RAD:
+            case APPSNS_MEASTYPE_ANGLE_DEGREE:
+            case APPSNS_MEASTYPE_DISTANCE_M:
+            case APPSNS_MEASTYPE_DISTANCE_MM:
+            case APPSNS_MEASTYPE_TEMPERATURE_C:
+            case APPSNS_MEASTYPE_TEMPERATURE_F:
+            case APPSNS_MEASTYPE_PRESSURE_PA:
+            case APPSNS_MEASTYPE_PRESSURE_BAR:
+            case APPSNS_MEASTYPE_HUMIDITY:
+            case APPSNS_MEASTYPE_ACCELERATION_M_S2:
+            case APPSNS_MEASTYPE_VELOCITY_M_S:
+            case APPSNS_MEASTYPE_POWER_W:
+            case APPSNS_MEASTYPE_ENERGY_J:
+            case APPSNS_MEASTYPE_VOLUME:
+            case APPSNS_MEASTYPE_RAW:
+            default:
+                Ret_e = RC_WARNING_NO_OPERATION;
+        }
+    }
+    return Ret_e;
+}
 //************************************************************************************
 // End of File
 //************************************************************************************

@@ -374,3 +374,16 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc)
         // Traiter la moitié des résultats ADC si nécessaire
     }
 }
+
+ADC_AnalogWDGConfTypeDef AnalogWDGConfig;
+
+// Configuration pour détecter les courts-circuits
+AnalogWDGConfig.WatchdogMode = ADC_ANALOGWATCHDOG_SINGLE_REG;
+AnalogWDGConfig.HighThreshold = 3000;  // Seuil haut en mV (ou en unités ADC)
+AnalogWDGConfig.LowThreshold = 100;    // Seuil bas en mV (valeur proche de 0 pour détecter les courts-circuits)
+AnalogWDGConfig.Channel = ADC_CHANNEL_1; // Canal ADC à configurer
+
+if (HAL_ADC_AnalogWDGConfig(&hadc1, &AnalogWDGConfig) != HAL_OK)
+{
+    // Erreur dans la configuration de la surveillance analogique
+}

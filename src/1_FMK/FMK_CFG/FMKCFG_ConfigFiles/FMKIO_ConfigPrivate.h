@@ -51,6 +51,7 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
+    // Flag automatic generate code 
     const t_uint32 c_BspPinMapping_ua32[FMKIO_GPIO_PIN_NB] = {
         GPIO_PIN_0,         // FMKIO_GPIO_PIN_0
         GPIO_PIN_1,         // FMKIO_GPIO_PIN_1
@@ -83,7 +84,7 @@
         {FMKIO_GPIO_PORT_B            , FMKIO_GPIO_PIN_0},      // FMKIO_INPUT_SIGANA_9
         {FMKIO_GPIO_PORT_B            , FMKIO_GPIO_PIN_1},      // FMKIO_INPUT_SIGANA_10
     };
-
+    // Flag automatic generate code 
     const t_sFMKIO_AnaAdcCfg c_InAnaSigAdcCfg_ae[FMKIO_INPUT_SIGANA_NB] = {
         {FMKCDA_ADC_1, FMKCDA_ADC_CHANNEL_10},      //FMKIO_INPUT_SIGANA_1
         {FMKCDA_ADC_1, FMKCDA_ADC_CHANNEL_11},      //FMKIO_INPUT_SIGANA_2
@@ -96,6 +97,7 @@
         {FMKCDA_ADC_1, FMKCDA_ADC_CHANNEL_8},       //FMKIO_INPUT_SIGANA_9
         {FMKCDA_ADC_1, FMKCDA_ADC_CHANNEL_9},       //FMKIO_INPUT_SIGANA_10
     };
+    // Flag automatic generate code 
     const t_sFMKIO_BspSigCfg c_InDigSigBspMap_as[FMKIO_INPUT_SIGDIG_NB] = {
         {FMKIO_GPIO_PORT_C            , FMKIO_GPIO_PIN_13},     // FMKIO_INPUT_SIGDIG_1
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},      // FMKIO_INPUT_SIGDIG_2
@@ -110,6 +112,7 @@
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},      // FMKIO_INPUT_SIGDIG_11
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},      // FMKIO_INPUT_SIGDIG_12
     };
+    // Flag automatic generate code 
     const t_sFMKIO_BspSigCfg c_OutDigSigBspMap_as[FMKIO_OUTPUT_SIGDIG_NB] = {
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_12},     // FMKIO_OUTPUT_SIGDIG_1
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_13},     // FMKIO_OUTPUT_SIGDIG_2
@@ -125,13 +128,14 @@
         {FMKIO_GPIO_PORT_B            , FMKIO_GPIO_PIN_13},     // FMKIO_OUTPUT_SIGDIG_12
         {FMKIO_GPIO_PORT_C            , FMKIO_GPIO_PIN_13},     // FMKIO_OUTPUT_SIGDIG_13
     };
+    // Flag automatic generate code 
     const t_sFMKIO_BspTimerSigCfg c_InFreqSigBspMap_as[FMKIO_INPUT_SIGFREQ_NB] = {
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},     GPIO_AF0_TIM14    ,FMKCPU_TIMER_14,   FMKCPU_CHANNEL_1}, // FMKIO_INPUT_SIGFREQ_1
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},     GPIO_AF0_TIM15    ,FMKCPU_TIMER_14,   FMKCPU_CHANNEL_1}, // FMKIO_INPUT_SIGFREQ_2
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},     GPIO_AF0_TIM15    ,FMKCPU_TIMER_14,   FMKCPU_CHANNEL_2}, // FMKIO_INPUT_SIGFREQ_3
        
     };
-    
+    // Flag automatic generate code 
     const t_sFMKIO_BspTimerSigCfg c_OutPwmSigBspMap_as[FMKIO_OUTPUT_SIGPWM_NB] = {
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_8},     GPIO_AF0_MCO    ,FMKCPU_TIMER_1,   FMKCPU_CHANNEL_1}, // FMKIO_OUTPUT_SIGPWM_1
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_9},     GPIO_AF0_MCO    ,FMKCPU_TIMER_1,   FMKCPU_CHANNEL_2}, // FMKIO_OUTPUT_SIGPWM_2

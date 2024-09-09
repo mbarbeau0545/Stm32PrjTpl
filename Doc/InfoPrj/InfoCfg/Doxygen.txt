@@ -1,0 +1,49 @@
+ Créer un fichier de configuration Doxygen
+Ouvrez un terminal dans votre projet et exécutez la commande suivante pour générer un fichier de configuration Doxygen :
+bash
+Copier le code
+doxygen -g
+Cela créera un fichier de configuration appelé Doxyfile.
+3. Configurer Doxygen
+Ouvrez le fichier Doxyfile dans un éditeur de texte (comme Visual Studio Code).
+Modifiez les paramètres importants suivants :
+PROJECT_NAME : Donnez un nom à votre projet.
+INPUT : Indiquez le chemin vers les fichiers sources C où les fonctions et structures sont définies.
+OUTPUT_DIRECTORY : Spécifiez où vous souhaitez générer la documentation.
+EXTRACT_ALL : Si défini sur YES, Doxygen extraira les commentaires de tous les fichiers, même sans annotation spécifique.
+GENERATE_HTML : Mettre sur YES pour générer une documentation HTML.
+GENERATE_LATEX : Mettre sur NO si vous ne souhaitez pas générer de documentation LaTeX.
+4. Ajouter des commentaires Doxygen dans votre code
+Pour que Doxygen génère des docstrings à partir de votre code en C, vous devez ajouter des commentaires dans le format pris en charge par Doxygen. Voici un exemple :
+
+c
+Copier le code
+/**
+ * @brief This function adds two integers.
+ * 
+ * @param a The first integer.
+ * @param b The second integer.
+ * @return int The sum of the two integers.
+ */
+int add(int a, int b) {
+    return a + b;
+}
+Vous pouvez documenter les structures de manière similaire :
+
+c
+Copier le code
+/**
+ * @brief A structure representing a point in 2D space.
+ */
+typedef struct {
+    int x; /**< The x-coordinate. */
+    int y; /**< The y-coordinate. */
+} Point;
+5. Générer la documentation
+Exécutez la commande suivante pour générer la documentation :
+bash
+Copier le code
+doxygen Doxyfile
+Doxygen analysera vos fichiers et générera des fichiers de documentation (HTML, LaTeX, ou autres formats configurés) avec les docstrings extraits.
+6. Lire la documentation
+Ouvrez le fichier index.html dans le répertoire de sortie (généralement html/ par défaut) pour visualiser la documentation dans un navigateur.

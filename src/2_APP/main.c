@@ -12,6 +12,8 @@
 // *                      Includes
 // ********************************************************************
 #include "APP_CTRL/APP_SYS/Src/APP_SYS.h"
+
+#include "FMK_HAL/FMK_CPU/Src/FMK_CPU.h"
 #include "APP_LGC/Src/APP_LGC.h"
 // ********************************************************************
 // *                      Defines
@@ -19,7 +21,7 @@
 /* If define only logic Init & Cyclic are called
 *  else all framework & application function are called
 */
-#define STANDALONE_MODE 
+//#define STANDALONE_MODE 
 // ********************************************************************
 // *                      Prototypes
 // ********************************************************************
@@ -34,6 +36,7 @@
 int main(void)
 {
     #ifdef STANDALONE_MODE
+        FMKCPU_Set_SysClockCfg();
         APPLGC_Init();
     #else
         APPSYS_Init();

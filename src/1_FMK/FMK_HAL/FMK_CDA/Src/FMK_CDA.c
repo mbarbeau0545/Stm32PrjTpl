@@ -191,26 +191,25 @@ t_eReturnState FMKCDA_Cyclic(void)
 
     switch (g_state_e)
     {
-
-    case STATE_CYCLIC_OPE:
-    {
-        Ret_e = s_FMKCDA_Operational();
-        break;
-    }
-    case STATE_CYCLIC_WAITING:
-    {
-        // nothing to do just wait AppSys Signal
-        break;
-    }
-    case STATE_CYCLIC_ERROR:
-    {
-        break;
-    }
-    case STATE_CYCLIC_PREOPE:
-    case STATE_CYCLIC_BUSY:
-    default:
-        Ret_e = RC_OK;
-        break;
+        case STATE_CYCLIC_WAITING:
+        {
+            // nothing to do just wait AppSys Signal
+            break;
+        }
+        case STATE_CYCLIC_OPE:
+        {
+            Ret_e = s_FMKCDA_Operational();
+            break;
+        }
+        case STATE_CYCLIC_ERROR:
+        {
+            break;
+        }
+        case STATE_CYCLIC_PREOPE:
+        case STATE_CYCLIC_BUSY:
+        default:
+            Ret_e = RC_OK;
+            break;
     }
     return Ret_e;
 }
@@ -308,7 +307,7 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
         else
         {
             *f_AnaMeasure_u16 = (t_uint16)0;
-            Ret_e = RC_ERROR_BUSY;
+            Ret_e = RC_WARNING_NO_OPERATION;
         }
     }
     return Ret_e;

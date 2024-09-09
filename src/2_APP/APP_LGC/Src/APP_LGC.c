@@ -18,6 +18,7 @@
 // ********************************************************************
 
 #include "./APP_LGC.h"
+#include "FMK_HAL/FMK_CPU/Src/FMK_CPU.h"
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
@@ -59,8 +60,9 @@
  *********************************/
 t_eReturnState APPLGC_Init(void)
 {
+    t_eReturnState Ret_e = RC_OK;
     // code to run once here
-    return;
+    return Ret_e;
 }
 
 /*********************************
@@ -68,8 +70,9 @@ t_eReturnState APPLGC_Init(void)
  *********************************/
 t_eReturnState APPLGC_Cyclic(void)
 {
+    t_eReturnState Ret_e = RC_OK;
     // code to run every x milliseconds, config in APPSYS_ConfigPrivate.h
-    return;
+    return Ret_e;
 }
 //********************************************************************************
 //                      Local functions - Implementation

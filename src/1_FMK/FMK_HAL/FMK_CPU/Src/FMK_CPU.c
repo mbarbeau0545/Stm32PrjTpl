@@ -48,7 +48,8 @@ typedef enum
 /* CAUTION : Automatic generated code section for Structure: Start */
 
 /* CAUTION : Automatic generated code section for Structure: End */
-/* Structure of information on a timer-channel */
+
+/**< Structure of information on a timer-channel*/
 typedef struct
 {
     t_eFMKCPU_HwChannelCfg HwCfg_e;
@@ -60,7 +61,7 @@ typedef struct
     t_bool IsChnlConfigure_b;
 } t_sFMKCPU_CHnlInfo;
 
-/* Structure of information on a timer */
+/**< Structure of information on a timer*/
 typedef struct
 {
     TIM_HandleTypeDef BspTimer_ps; /* The Timer structure for HAL STM32*/
@@ -82,6 +83,7 @@ typedef struct
 // ********************************************************************
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 
+WWDG_HandleTypeDef g_wwdgInfos_s = {0};
 // Flag automatic generate code
 t_sFMKCPU_TimerInfo g_TimerInfo_as[FMKCPU_TIMER_NB] = {
     {
@@ -218,7 +220,7 @@ static void s_FMKCPU_BspRqst_InterruptMngmt(TIM_HandleTypeDef *f_timerIstce_ps, 
  *
  *
  */
-static t_eReturnState s_FMKCPU_Set_SysClockCfg(void);
+t_eReturnState FMKCPU_Set_SysClockCfg(void);
 /*****************************************************************************
  *
  *
@@ -234,6 +236,22 @@ static t_eReturnState s_FMKCPU_Set_SysClockCfg(void);
  *
  */
 static t_eReturnState s_FMKCPU_Operational(void);
+
+/*****************************************************************************
+ *
+ *
+ *
+ *	@brief
+ *	@details
+ *
+ *
+ *	@param[in]
+ *	@param[out]
+ *
+ *
+ *
+ */
+static t_eReturnState s_FMKCPU_PreOperational(void);
 
 //****************************************************************************
 //                      Public functions - Implementation
@@ -271,7 +289,8 @@ t_eReturnState FMKCPU_Cyclic(void)
     {
     case STATE_CYCLIC_PREOPE:
     {
-        Ret_e = s_FMKCPU_Set_SysClockCfg();
+
+        Ret_e = s_FMKCPU_PreOperational();
         if(Ret_e == RC_OK)
         {
             g_state_e = STATE_CYCLIC_WAITING;
@@ -416,9 +435,9 @@ t_eReturnState FMKCPU_Set_HwClock(t_eFMKCPU_ClockPort f_clkPort_e,
         {
         case FMKCPU_CLOCKPORT_OPE_ENABLE:
         {
-            if (c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].EnableClk_cb != (t_cbFMKCPU_ClockDisable *)NULL_FONCTION)
+            if (c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].EnableClk_pcb != (t_cbFMKCPU_ClockDisable *)NULL_FONCTION)
             {
-                c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].EnableClk_cb();
+                c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].EnableClk_pcb();
             }
             else
             {
@@ -428,9 +447,9 @@ t_eReturnState FMKCPU_Set_HwClock(t_eFMKCPU_ClockPort f_clkPort_e,
         }
         case FMKCPU_CLOCKPORT_OPE_DISABLE:
         {
-            if (c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].DisableClk_cb != (t_cbFMKCPU_ClockDisable *)NULL_FONCTION)
+            if (c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].DisableClk_pcb != (t_cbFMKCPU_ClockDisable *)NULL_FONCTION)
             {
-                c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].DisableClk_cb();
+                c_FMKCPU_ClkFunctions_apcb[f_clkPort_e].DisableClk_pcb();
             }
             else
             {
@@ -448,9 +467,54 @@ t_eReturnState FMKCPU_Set_HwClock(t_eFMKCPU_ClockPort f_clkPort_e,
 }
 
 /*********************************
+ * FMKCPU_Set_WwdgCfg
+ *********************************/
+t_eReturnState FMKCPU_Set_WwdgCfg(t_eFMKCPu_WwdgResetPeriod f_period_e)
+{
+    t_eReturnState Ret_e = RC_OK;
+    HAL_StatusTypeDef bspRet_e = HAL_OK;
+
+    Ret_e = FMKCPU_Set_HwClock(FMKCPU_RCC_CLK_WWDG, FMKCPU_CLOCKPORT_OPE_ENABLE);
+    if(Ret_e == RC_OK)
+    {
+        Ret_e = FMKCPU_Set_NVICState(WWDG_IRQn,FMKCPU_NVIC_PRIORITY_HIGH ,FMKCPU_NVIC_OPE_ENABLE);
+    }
+    if(Ret_e == RC_OK)
+    {
+        g_wwdgInfos_s.Instance       = WWDG;
+        g_wwdgInfos_s.Init.Prescaler = c_FMKCPU_WwdgPeriodcfg_ua16[f_period_e].psc_u16;
+        g_wwdgInfos_s.Init.Counter   = c_FMKCPU_WwdgPeriodcfg_ua16[f_period_e].reload_u16;
+        g_wwdgInfos_s.Init.Window    = (t_uint32)0x0FFF;
+        g_wwdgInfos_s.Init.EWIMode   = WWDG_EWI_ENABLE;
+        bspRet_e = HAL_WWDG_Init(&g_wwdgInfos_s);
+
+        if(bspRet_e != HAL_OK)
+        {
+            Ret_e = RC_ERROR_WRONG_STATE;
+        }
+    }
+
+    return Ret_e;
+}
+
+/*********************************
+ * FMKCPU_ResetWwdg
+ *********************************/
+t_eReturnState FMKCPU_ResetWwdg(void)
+{
+    HAL_StatusTypeDef bspRet_e = HAL_OK;
+    t_eReturnState Ret_e = RC_OK;
+    bspRet_e = HAL_WWDG_Refresh(&g_wwdgInfos_s);
+
+    if(bspRet_e != HAL_OK)
+    {
+        Ret_e = RC_ERROR_WRONG_RESULT;
+    }
+    return Ret_e;
+}
+/*********************************
  * FMKCPU_Set_PWMChannelCfg
  *********************************/
-
 t_eReturnState FMKCPU_Set_PWMChannelCfg(t_sFMKCPU_BspTimerCfg f_bspCfg_s, t_uint32 f_pwmFreq_u32)
 {
     /********************************
@@ -716,8 +780,8 @@ t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
     }
     if(Ret_e == RC_OK)
     {
-        EvntTimer_e = c_EvntTimerCfg_as[f_evntChannel_e].timer_e;
-        EvntChnl_e = c_EvntTimerCfg_as[f_evntChannel_e].channel_e;
+        EvntTimer_e = c_FMKCPU_EvntTimerCfg_as[f_evntChannel_e].timer_e;
+        EvntChnl_e = c_FMKCPU_EvntTimerCfg_as[f_evntChannel_e].channel_e;
     
         if (g_TimerInfo_as[EvntTimer_e].IsTimerConfigured_b == (t_bool)False)
         {
@@ -796,9 +860,24 @@ t_eReturnState FMKCPU_Set_ChannelState(t_eFMKCPU_Timer f_timer_e,
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
-
 /*********************************
- * s_FMKCPU_Get_BspTimer
+ * s_FMKCPU_PreOperational
+ *********************************/
+static t_eReturnState s_FMKCPU_PreOperational(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    // set sys confgiguration 
+    Ret_e = FMKCPU_Set_SysClockCfg();
+    if(Ret_e == RC_OK)
+    {
+        Ret_e = FMKCPU_Set_WwdgCfg((t_eFMKCPu_WwdgResetPeriod)FMKCPU_WWDG_RESET_CFG);
+    }
+
+    return Ret_e;
+}
+/*********************************
+ * s_FMKCPU_Operational
  *********************************/
 static t_eReturnState s_FMKCPU_Operational(void)
 {
@@ -806,9 +885,9 @@ static t_eReturnState s_FMKCPU_Operational(void)
 }
 
 /*********************************
- * s_FMKCPU_Get_BspTimer
+ * FMKCPU_Set_SysClockCfg
  *********************************/
-static t_eReturnState s_FMKCPU_Set_SysClockCfg(void)
+t_eReturnState FMKCPU_Set_SysClockCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
     HAL_StatusTypeDef  bspRet_e = HAL_OK;
@@ -856,20 +935,20 @@ static t_eReturnState s_FMKCPU_Get_BspNVICPriority(t_eFMKCPU_NVICPriority f_prio
     {
         switch (f_priority_e)
         {
-        case FMKCPU_NVIC_PRIORITY_LOW:
-            *f_BspNVICPriority_pu32 = 1;
-            break;
-        case FMKCPU_NVIC_PRIORITY_MEDIUM:
-            *f_BspNVICPriority_pu32 = 3;
-            break;
-        case FMKCPU_NVIC_PRIORITY_HIGH:
-            *f_BspNVICPriority_pu32 = 5;
-            break;
+            case FMKCPU_NVIC_PRIORITY_LOW:
+                *f_BspNVICPriority_pu32 = 1;
+                break;
+            case FMKCPU_NVIC_PRIORITY_MEDIUM:
+                *f_BspNVICPriority_pu32 = 3;
+                break;
+            case FMKCPU_NVIC_PRIORITY_HIGH:
+                *f_BspNVICPriority_pu32 = 5;
+                break;
 
-        case FMKCPU_NVIC_PRIORITY_NB:
-        default:
-            Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
-            break;
+            case FMKCPU_NVIC_PRIORITY_NB:
+            default:
+                Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
+                break;
         }
     }
     return Ret_e;
@@ -1135,6 +1214,20 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim) { return s_FMKCP
 void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim) { return s_FMKCPU_BspRqst_InterruptMngmt(htim, FMKCPU_HWCHNL_CFG_PWM); }
 void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim) { return s_FMKCPU_BspRqst_InterruptMngmt(htim, FMKCPU_HWCHNL_CFG_TRGR); }
 void SysTick_Handler(void) { return HAL_IncTick(); }
+
+/***********************************
+ * WWDG_IRQHandler
+ ***********************************/
+void WWDG_IRQHandler(void)
+{
+    if (g_wwdgInfos_s.Instance->SR & WWDG_SR_EWIF)
+    {
+        // Effacer le drapeau d'interruption précoce
+        g_wwdgInfos_s.Instance->SR &= ~WWDG_SR_EWIF;
+
+        // deal with error
+    }
+}
 //************************************************************************************
 // End of File
 //************************************************************************************

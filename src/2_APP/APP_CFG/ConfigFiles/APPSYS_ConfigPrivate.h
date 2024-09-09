@@ -46,6 +46,68 @@
 
 	/* CAUTION : Automatic generated code section : End */
 	//-----------------------------TYPEDEF TYPES---------------------------//
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    typedef t_eReturnState (t_cbAppSys_FuncInit)(void);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    typedef t_eReturnState (t_cbAppSys_FuncCyclic)(void);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    typedef t_eReturnState (t_cbAppSys_GetState)(t_eCyclicFuncState *f_state_pe);
+    /*****************************************************************************
+    *
+    *	@brief
+    *	@details
+    *
+    *
+    *	@param[in] 
+    *	@param[out]
+    *	 
+    *
+    *
+    */
+    typedef t_eReturnState (t_cbAppSys_SetState)(t_eCyclicFuncState f_state_pe);
+
+    /* Structure to store Init and Cyclic Func*/
+
+    typedef struct 
+    {
+        t_cbAppSys_FuncInit   * funcInit_cb;
+        t_cbAppSys_FuncCyclic * funcCyclic_cb;
+        t_cbAppSys_GetState   * funcGetState_cb;
+        t_cbAppSys_SetState   * funcSetState_cb;
+    } t_sAppSys_SysFunc;
     // ********************************************************************
     // *                      Prototypes
     // ********************************************************************
