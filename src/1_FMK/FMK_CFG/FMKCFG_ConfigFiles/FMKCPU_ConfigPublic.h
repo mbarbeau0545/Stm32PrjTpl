@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMKCPU_ConfigPublic.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      AUDMBA
  * @date        31/08/2024
@@ -37,7 +37,7 @@
 
     /* CAUTION : Automatic generated code section for Enum: End */
     // Flag automatic generate code 
-    /* Number max of cannel enable by timer */
+    /**< Number max of cannel enable by timer */
     typedef enum 
     {
         FMKCPU_CHANNEL_1 = 0x0U,
@@ -49,7 +49,7 @@
     } t_eFMKCPU_InterruptChnl;
 
     // Flag automatic generate code 
-    /* Number of timer enable in smt32f08 family */
+    /**< Number of timer enable in smt32f08 family */
     typedef enum 
     {
         FMKCPU_TIMER_1 = 0x0U,
@@ -63,7 +63,7 @@
     } t_eFMKCPU_Timer;
 
     // Flag automatic generate code 
-    /* Number max of cannel enable by timer */
+    /**< Number max of cannel enable by timer */
     typedef enum 
     {
         FMKCPU_EVENT_CHANNEL_1 = 0x0U,
@@ -73,7 +73,7 @@
     } t_eFMKCPU_EventChannel;
 
     // Flag automatic generate code 
-    /* Number max of cannel enable by timer */
+    /**< Number max of cannel enable by timer */
     typedef enum 
     {
         FMKCPU_RCC_CLK_SYSCFG = 0x0U,
@@ -103,20 +103,21 @@
         FMKCPU_RCC_CLK_NB,
     } t_eFMKCPU_ClockPort;
 
-    /* typedef enum for channel mode */
+    /**< typedef enum for channel mode */
     typedef enum 
     {
-        FMKCPU_HWCHNL_CFG_PWM = 0x0U,
-        FMKCPU_HWCHNL_CFG_IC,
-        FMKCPU_HWCHNL_CFG_OC,
-        FMKCPU_HWCHNL_CFG_OP,
-        FMKCPU_HWCHNL_CFG_EVNT,
-        FMKCPU_HWCHNL_CFG_ECDR,
-        FMKCPU_HWCHNL_CFG_TRGR,
+        FMKCPU_HWTIM_CFG_PWM = 0x0U,
+        FMKCPU_HWTIM_CFG_IC,
+        FMKCPU_HWTIM_CFG_OC,
+        FMKCPU_HWTIM_CFG_OP,
+        FMKCPU_HWTIM_CFG_EVNT,
+        FMKCPU_HWTIM_CFG_ECDR,
+        FMKCPU_HWTIM_CFG_TRGR,
 
-        FMKCPU_HWCHNL_CFG_NB,
-    } t_eFMKCPU_HwChannelCfg;
+        FMKCPU_HWTIM_CFG_NB,
+    } t_eFMKCPU_HwTimerCfg;
 
+    /**< Enum for NVIC priority */
     typedef enum 
     {
         FMKCPU_NVIC_PRIORITY_LOW = 0x0U,
@@ -126,6 +127,7 @@
         FMKCPU_NVIC_PRIORITY_NB
     } t_eFMKCPU_NVICPriority;
 
+    /**< Enum for watchdog timer list */
     typedef enum
     {
         FMKCPU_WWDG_RESET_50MS = 0,
@@ -136,15 +138,9 @@
         FMKCPU_WWDG_RESET_NB,
     } t_eFMKCPu_WwdgResetPeriod;
     //-----------------------------TYPEDEF TYPES---------------------------//
-    /*IRQNType available in stm32f030x8*/
+    /**< Abstraction for  IRQN type specfific for SMT32 card*/
     typedef IRQn_Type (t_eFMKCPU_IRQNType);
     
-
-    typedef struct
-    {
-        t_eFMKCPU_Timer               timer_e;
-        t_eFMKCPU_InterruptChnl       channel_e;
-    } t_sFMKCPU_BspTimerCfg;
     // ********************************************************************
     // *                      Prototypes
     // ********************************************************************
@@ -167,7 +163,7 @@
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@param[in] 

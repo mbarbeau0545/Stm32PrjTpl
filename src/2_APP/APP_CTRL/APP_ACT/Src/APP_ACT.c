@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        APP_ACT.c
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -54,7 +54,7 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 /*****************************************************************************
 *
 *	@brief
-*	@details
+*	@note   
 *
 *
 *	@param[in] 
@@ -67,7 +67,7 @@ static t_eReturnState s_APPACT_PreOperational(void);
 /*****************************************************************************
 *
 *	@brief
-*	@details
+*	@note   
 *
 *
 *	@param[in] 
@@ -316,7 +316,7 @@ static t_eReturnState s_APPACT_Operational(void)
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

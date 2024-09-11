@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMKCPU_ConfigPrivate.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -24,13 +24,13 @@
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
-    #define FMKCPU_IRQN_TYPE_NB    ((t_uint8)28)       // The number of IRQN Type, this number should be the same as IRQn_Type_NB
-    #define FMKCPU_HSI_CLOCK_OSC   ((t_uint8)8)        // HSI oscillatator equals to 8 MHz
-    #define FMKCPU_TIMER_CLOCK_OSC ((t_uint8)8)        // Frequency of the timer are 8 MHz
-    #define FMKCPU_PWM_PSC         ((t_uint8)50)       // for every PWM the Prescaler is a constant 
-    #define FMKCPU_IC_PSC          ((t_uint8)0)       // for every InputCOmpare the Prescaler is a constant 
-    #define FMKCPU_IC_ARR          ((t_uint16)0xFFFF)       // for every InputCOmpare the Prescaler is a constant 
-    #define FMKCPU_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC * 1000)- (t_uint16)1) // The prescaler use for evnt timer, having 1000Hz (1ms)
+    #define FMKCPU_IRQN_TYPE_NB    ((t_uint8)28)       /**<The number of IRQN Type, this number should be the same as IRQn_Type_NB */
+    #define FMKCPU_HSI_CLOCK_OSC   ((t_uint8)8)        /**<  HSI oscillatator equals to 8 MHz */
+    #define FMKCPU_TIMER_CLOCK_OSC ((t_uint8)8)        /**<  Frequency of the timer are 8 MHz */
+    #define FMKCPU_PWM_PSC         ((t_uint8)50)       /**<  for every PWM the Prescaler is a constant */
+    #define FMKCPU_IC_PSC          ((t_uint8)0)        /**<  for every InputCOmpare the Prescaler is a constant */
+    #define FMKCPU_IC_ARR          ((t_uint16)0xFFFF)       /**<  for every InputCOmpare the Prescaler is a constant */
+    #define FMKCPU_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC * 1000)- (t_uint16)1) /**<  The prescaler use for evnt timer, having 1000Hz (1ms) */
 
     #define FMKCPU_WWDG_RESET_CFG  FMKCPU_WWDG_RESET_100MS
     // ********************************************************************
@@ -40,10 +40,10 @@
 
     /* CAUTION : Automatic generated code section for Enum: End */
 
-    /**************************************************************************************
+    /**
      *
      *	@brief      HAL enable clock Function abstraction
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
     *
@@ -54,10 +54,10 @@
     *
     */
     typedef void (t_cbFMKCPU_ClockEnable)(void);
-    /**************************************************************************************
+    /**
      *
      *	@brief      HAL Disable clock Function abstraction
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
     *
@@ -68,59 +68,80 @@
     *
     */
     typedef void (t_cbFMKCPU_ClockDisable)(void);
-    /* Typedef for HAL_TIMER_FUNCTION Mode Polling/Interrupt*/
-    /**************************************************************************************
-     *
-     *	@brief      HAL Timer function for Init
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    /**
+    *
+    *	@brief      HAL Timer function for Init
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
+    * 
+    *   @param[in] f_handleTimer_s : the bsp init structure
+    *  
+    *   @retval HAL_OK                     @ref HAL_OK
+    *   @retval HAL_ERROR                  @ref HAL_ERROR
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimerInitFunc)(TIM_HandleTypeDef *f_handleTimer_s);
-    /**************************************************************************************
-     *
-     *	@brief      HAL Timer function for Init
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    /**
+    *
+    *	@brief      HAL Timer function for Init
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
+    * 
+    *   @param[in] f_handleTimer_s : the bsp init structure
+    * 
+    *   @retval HAL_OK                     @ref HAL_OK
+    *   @retval HAL_ERROR                  @ref HAL_ERROR
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimerDeInitFunc)(TIM_HandleTypeDef *f_handleTimer_s);
-    /**************************************************************************************
-     *
-     *	@brief      HAL Timer function in Polling xay
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    /**
+    *
+    *	@brief      HAL Timer function in Polling xay
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     * 
     *	@param[in]      f_handleTimer_s : the bsp config structure 
-    *	@param[out]     f_channel_u32   : the channel 
+    *	@param[out]     f_channel_u32   : the channel
+    *
+    *   @retval HAL_OK                     @ref HAL_OK
+    *   @retval HAL_ERROR                  @ref HAL_ERROR 
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStartFuncModePolling)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
-    /**************************************************************************************
-     *
-     *	@brief      HAL Timer function in Interruption way  
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    /**
+    *
+    *	@brief      HAL Timer function in Interruption way  
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
     *	@param[in]      f_handleTimer_s : the bsp config structure 
     *	@param[out]     f_channel_u32   : the channel 
+    *
+    *   @retval HAL_OK                     @ref HAL_OK
+    *   @retval HAL_ERROR                  @ref HAL_ERROR
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStartFuncModeInterrupt)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
-    /**************************************************************************************
-     *
-     *	@brief      HAL Timer function in Polling xay
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    /**
+    *
+    *	@brief      HAL Timer function in Polling xay
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
     *	@param[in]      f_handleTimer_s : the bsp config structure 
-    *	@param[out]     f_channel_u32   : the channel 
+    *	@param[out]     f_channel_u32   : the channel
+    *
+    *   @retval HAL_OK                     @ref HAL_OK
+    *   @retval HAL_ERROR                  @ref HAL_ERROR
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStopFuncModePolling)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
-    /**************************************************************************************
-     *
-     *	@brief      HAL Timer function in Interruption way  
-    *	@details    This function repertory in stm32f00xx_hal_tim,
+    /**
+    *
+    *	@brief      HAL Timer function in Interruption way  
+    *	@note       This function repertory in stm32f00xx_hal_tim,
     *               is used in blocking mode 
     *
     *	@param[in]      f_handleTimer_s : the bsp config structure 
     *	@param[out]     f_channel_u32   : the channel 
+    *
+    *   @retval HAL_OK                     @ref HAL_OK
+    *   @retval HAL_ERROR                  @ref HAL_ERROR
     */
     typedef HAL_StatusTypeDef (t_cbFMKCPU_TimStopFuncModeInterrupt)(TIM_HandleTypeDef *f_handleTimer_s, uint32_t f_channel_u32);
 
@@ -128,6 +149,8 @@
     /* CAUTION : Automatic generated code section for Structure: Start */
 
     /* CAUTION : Automatic generated code section for Structure: End */
+
+    /**< Structure for repertory all HAL_TIM function */
     typedef struct
     {
         t_cbFMKCPU_TimerInitFunc             * TimerInit_pcb;
@@ -138,17 +161,26 @@
         t_cbFMKCPU_TimStopFuncModeInterrupt  * StopFuncInterrupt_pcb;
     } t_sFMKCPU_TimChannelFunc;
 
+    /**< Structure for repertory all clock enable/disable function */
     typedef struct
     {
         t_cbFMKCPU_ClockEnable  * EnableClk_pcb;
         t_cbFMKCPU_ClockDisable * DisableClk_pcb;
     }t_sFMKCPU_ClkFunc;
 
+    /**< Structure for watchdog configuration */
     typedef struct 
     {
         t_uint16 psc_u16;
         t_uint16 reload_u16;
     } t_sFMKCPU_BspWwdgCfg;
+
+    /**< Structure for timer channel configuration */
+    typedef struct
+    {
+        t_eFMKCPU_Timer               timer_e;
+        t_eFMKCPU_InterruptChnl       channel_e;
+    } t_sFMKCPU_BspTimerCfg;
     // ********************************************************************
     // *                      Prototypes
     // ********************************************************************
@@ -158,7 +190,7 @@
     // ********************************************************************
     // Flag automatic generate code 
     /**< Referencing all HAL_TIM function*/
-    const t_sFMKCPU_TimChannelFunc c_FMKCPU_BspTimFunc_apf[FMKCPU_HWCHNL_CFG_NB] = 
+    const t_sFMKCPU_TimChannelFunc c_FMKCPU_BspTimFunc_apf[FMKCPU_HWTIM_CFG_NB] = 
     {// Init Timer                         DeInitTimer                    StartPolling Func                 StopPolling Funnc             Start Interrupt Func          Stop Interrupt Func
         {HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_PWM_Start,               HAL_TIM_PWM_Stop,             HAL_TIM_PWM_Start_IT,           HAL_TIM_PWM_Stop_IT},         // FMKCPU_CHANNEL_CFG_PWM 
         {HAL_TIM_IC_Init,                 HAL_TIM_IC_DeInit,            HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,              HAL_TIM_IC_Start_IT,            HAL_TIM_IC_Stop_IT},          // FMKCPU_CHANNEL_CFG_IC
@@ -253,7 +285,7 @@
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

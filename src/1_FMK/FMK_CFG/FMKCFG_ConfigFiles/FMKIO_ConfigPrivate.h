@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMKCIO_ConfigPrivate.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -39,6 +39,8 @@
     /* CAUTION : Automatic generated code section for Structure: Start */
 
     /* CAUTION : Automatic generated code section for Structure: End */
+
+    /**< Structure for Analog signal adc configuration */
     typedef struct 
     {
         t_eFMKCDA_Adc        adc_e;
@@ -52,6 +54,7 @@
     // *                      Variables
     // ********************************************************************
     // Flag automatic generate code 
+    /**< Variable for bsp/ enum pin mapping */
     const t_uint32 c_BspPinMapping_ua32[FMKIO_GPIO_PIN_NB] = {
         GPIO_PIN_0,         // FMKIO_GPIO_PIN_0
         GPIO_PIN_1,         // FMKIO_GPIO_PIN_1
@@ -72,6 +75,7 @@
     };
     
     // Flag automatic generate code 
+    /**< Variable for bsp_Gpio_Pin Analog input signal mapping */
     const t_sFMKIO_BspSigCfg c_InAnaSigBspMap_as[FMKIO_INPUT_SIGANA_NB] = {
         {FMKIO_GPIO_PORT_C            , FMKIO_GPIO_PIN_0},      // FMKIO_INPUT_SIGANA_1
         {FMKIO_GPIO_PORT_C            , FMKIO_GPIO_PIN_1},      // FMKIO_INPUT_SIGANA_2
@@ -85,6 +89,7 @@
         {FMKIO_GPIO_PORT_B            , FMKIO_GPIO_PIN_1},      // FMKIO_INPUT_SIGANA_10
     };
     // Flag automatic generate code 
+    /**< Variable for adc_channel Analog signal mapping */
     const t_sFMKIO_AnaAdcCfg c_InAnaSigAdcCfg_ae[FMKIO_INPUT_SIGANA_NB] = {
         {FMKCDA_ADC_1, FMKCDA_ADC_CHANNEL_10},      //FMKIO_INPUT_SIGANA_1
         {FMKCDA_ADC_1, FMKCDA_ADC_CHANNEL_11},      //FMKIO_INPUT_SIGANA_2
@@ -98,6 +103,7 @@
         {FMKCDA_ADC_1, FMKCDA_ADC_CHANNEL_9},       //FMKIO_INPUT_SIGANA_10
     };
     // Flag automatic generate code 
+    /**< Variable for bsp_Gpio_Pin Digital input signal mapping */
     const t_sFMKIO_BspSigCfg c_InDigSigBspMap_as[FMKIO_INPUT_SIGDIG_NB] = {
         {FMKIO_GPIO_PORT_C            , FMKIO_GPIO_PIN_13},     // FMKIO_INPUT_SIGDIG_1
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},      // FMKIO_INPUT_SIGDIG_2
@@ -113,6 +119,7 @@
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},      // FMKIO_INPUT_SIGDIG_12
     };
     // Flag automatic generate code 
+    /**< Variable for bsp_Gpio_Pin Digital ouput signal mapping */
     const t_sFMKIO_BspSigCfg c_OutDigSigBspMap_as[FMKIO_OUTPUT_SIGDIG_NB] = {
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_12},     // FMKIO_OUTPUT_SIGDIG_1
         {FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_13},     // FMKIO_OUTPUT_SIGDIG_2
@@ -129,6 +136,7 @@
         {FMKIO_GPIO_PORT_C            , FMKIO_GPIO_PIN_13},     // FMKIO_OUTPUT_SIGDIG_13
     };
     // Flag automatic generate code 
+    /**< Variable for bsp_Gpio_Pin frequency input signal mapping */
     const t_sFMKIO_BspTimerSigCfg c_InFreqSigBspMap_as[FMKIO_INPUT_SIGFREQ_NB] = {
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},     GPIO_AF0_TIM14    ,FMKCPU_TIMER_14,   FMKCPU_CHANNEL_1}, // FMKIO_INPUT_SIGFREQ_1
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},     GPIO_AF0_TIM15    ,FMKCPU_TIMER_14,   FMKCPU_CHANNEL_1}, // FMKIO_INPUT_SIGFREQ_2
@@ -136,6 +144,7 @@
        
     };
     // Flag automatic generate code 
+    /**< Variable for bsp_Gpio_Pin PWM output signal mapping */
     const t_sFMKIO_BspTimerSigCfg c_OutPwmSigBspMap_as[FMKIO_OUTPUT_SIGPWM_NB] = {
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_8},     GPIO_AF0_MCO    ,FMKCPU_TIMER_1,   FMKCPU_CHANNEL_1}, // FMKIO_OUTPUT_SIGPWM_1
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_9},     GPIO_AF0_MCO    ,FMKCPU_TIMER_1,   FMKCPU_CHANNEL_2}, // FMKIO_OUTPUT_SIGPWM_2
@@ -147,6 +156,7 @@
        
     };
 
+    /**< Variable for bsp_Gpio_Pin event input signal mapping */
     const t_sFMKIO_BspEvntSigCfg c_InEvntSigBspMap_as[FMKIO_INPUT_SIGEVNT_NB] = {
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},     GPIO_AF2_TIM16, EXTI0_1_IRQn},
         {{FMKIO_GPIO_PORT_A            , FMKIO_GPIO_PIN_0},     GPIO_AF0_TIM17, EXTI2_3_IRQn},
@@ -167,7 +177,7 @@
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        APPSNS_SPEC_Humidity.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -81,7 +81,7 @@ t_eReturnState APPSNS_SPEC_Humidity_DiagHdlr(t_uint8 f_InSigProblem_u8)
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

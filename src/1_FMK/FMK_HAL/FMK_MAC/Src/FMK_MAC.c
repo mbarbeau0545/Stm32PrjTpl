@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMK_MAC.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -84,7 +84,7 @@ t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType_e, void *f_Mod
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

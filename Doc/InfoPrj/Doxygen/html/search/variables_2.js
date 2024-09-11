@@ -25,7 +25,7 @@ var searchData=
   ['c_5foutpwmsigbspmap_5fas_22',['c_OutPwmSigBspMap_as',['../_f_m_k_i_o___config_private_8h.html#a75d31728d11b5d3d691ac9fc4122467f',1,'FMKIO_ConfigPrivate.h']]],
   ['channel_5fas_23',['Channel_as',['../structt__s_f_m_k_c_d_a___adc_info.html#a5ec4324ea8276006b368a6e3af459b1c',1,'t_sFMKCDA_AdcInfo::Channel_as'],['../structt__s_f_m_k_c_p_u___timer_info.html#a3dd227aa22a653f4b443073f65006a36',1,'t_sFMKCPU_TimerInfo::Channel_as']]],
   ['channel_5fe_24',['channel_e',['../structt__s_f_m_k_c_p_u___bsp_timer_cfg.html#a60730585db794d1d1a5277a710ab946c',1,'t_sFMKCPU_BspTimerCfg::channel_e'],['../structt__s_f_m_k_i_o___bsp_timer_sig_cfg.html#a60730585db794d1d1a5277a710ab946c',1,'t_sFMKIO_BspTimerSigCfg::channel_e']]],
-  ['chnl_5fcb_25',['chnl_cb',['../structt__s_f_m_k_c_p_u___c_hnl_info.html#afa77f866378823d6702c3eb387d500ae',1,'t_sFMKCPU_CHnlInfo']]],
+  ['chnl_5fcb_25',['chnl_cb',['../structt__s_f_m_k_c_p_u___c_hnl_info.html#afa77f866378823d6702c3eb387d500ae',1,'t_sFMKCPU_ChnlInfo']]],
   ['clock_5fe_26',['clock_e',['../structt__s_f_m_k_c_d_a___adc_info.html#a13df327cc2145d1c2a1ca2caaff5772d',1,'t_sFMKCDA_AdcInfo::clock_e'],['../structt__s_f_m_k_c_p_u___timer_info.html#a13df327cc2145d1c2a1ca2caaff5772d',1,'t_sFMKCPU_TimerInfo::clock_e']]],
   ['cyclic_5fpcb_27',['Cyclic_pcb',['../structt__s_a_p_p_a_c_t___sys_drv_func.html#a9d857158b61af7580d15e13209565ed2',1,'t_sAPPACT_SysDrvFunc::Cyclic_pcb'],['../structt__s_a_p_p_s_n_s___sys_drv_func.html#a0cdd105a36b8b3d07b09a416b423ba73',1,'t_sAPPSNS_SysDrvFunc::Cyclic_pcb']]]
 ];

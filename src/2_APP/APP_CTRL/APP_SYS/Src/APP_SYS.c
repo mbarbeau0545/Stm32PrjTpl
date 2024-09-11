@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        APP_SYS.c
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -167,7 +167,7 @@ void APPSYS_Cyclic(void)
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

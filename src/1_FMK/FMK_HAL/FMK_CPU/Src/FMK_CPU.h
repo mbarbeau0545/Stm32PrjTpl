@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMK_CPU.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -85,7 +85,7 @@
     /**
     *
     *	@brief
-    *	@details
+    *	@note   
     *
     *
     *	@param[in] 
@@ -113,185 +113,174 @@
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
+    *	@brief      Perform all Init action for this module.\n
+    *	@note       Set to default value all globals structure that
+    *                store information for each signals.\n
     *
     */
     t_eReturnState FMKCPU_Init(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief      Perform all Cyclic action for this module.\n
+    *	@note       In preOpe mode this module makes the configuration of the system clock and 
+                    watchdogs configuration.\n 
+                    In ope mode, this module makesdiag on timer channel currently used, and 
+    *               called the appropriate callback if an error occured + call APPDEM
+    *               to reference error.\n
     *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    
     */
     t_eReturnState FMKCPU_Cyclic(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief Function to know the module state.\n 
     *
+    *	@param[in]  f_State_pe : store the value, value from @ref t_eCyclicFuncState
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *   @retval RC_OK                             @ref RC_OK
+    *   @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NUL
     */
     t_eReturnState FMKCPU_GetState(t_eCyclicFuncState *f_State_pe);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief Function to update the module state.\n
     *
+    *	@param[in]  f_State_e : the new value, value from @ref t_eCyclicFuncState
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *   @retval RC_OK                             @ref RC_OK
     */
     t_eReturnState FMKCPU_SetState(t_eCyclicFuncState f_State_e);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief      Set the system clock configuration.\n
+    *   @note       This function has to be first one to be call in the Software.\n
+    *               Configure the Clocks used and the frequency for each clock.\n
     *
+    *	@param[in]  f_State_pe : store the value, value from @ref t_eCyclicFuncState
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
+    *   @retval RC_OK                             @ref RC_OK
+    *   @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
+    */
+    t_eReturnState FMKCPU_Set_SysClockCfg(void);
+    /**
     *
+    *	@brief      Set a Delay.\n
+    *
+    *	@param[in]  f_delayms_u32 : period delay in millisecond.\n
     *
     */
     void FMKCPU_Set_Delay(t_uint32 f_delayms_u32);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief      Get a tick from clock freqency.\n
     *
+    *	@param[in]  f_tickms_pu32 : store the tick value in millisecond.\n
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *   @retval RC_OK                             @ref RC_OK
+    *   @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
     */
     t_eReturnState FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief      Set the priority for a NVIC and the state ON/OFF\n
+    *   @note       This function is called to set the interruption priority
+    *               for f_IRQN_e interruption.\n 
+    *               If an interruption (2) occur while another Interruption (1) is running, 
+    *               depending on the value of f_priority_e (2) will interruot or not
+    *               the interruption (1).\n
+    *               This function also disable the IRQN interruption if needed.\n
     *
+    *	@param[in]  f_IRQN_e     : enum value for IRQN type, value from @ref t_eFMKCPU_IRQNType
+    *	@param[in]  f_priority_e : enum value for priority, value from @ref t_eFMKCPU_NVICPriority
+    *	@param[in]  f_OpeState_e : enum value for  pose state,value from @ref t_eFMKCPU_NVIC_Ope
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
     */
     t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e, 
                                        t_eFMKCPU_NVICPriority f_priority_e, 
                                        t_eFMKCPU_NVIC_Ope f_OpeState_e);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief      Set the RCC clock state.\n
+    *   @note       In order to write down bit in everry register (ADC,GPIO,TIM,etc),
+    *               the RCC clock has to be enable first. This function enable or disable
+    *               the RCC clock reference to f_clkPort_e.\n
+    *              
     *
+    *	@param[in]  f_clkPort_e     : enum value for RCC clock, value from @ref t_eFMKCPU_ClockPort
+    *	@param[in]  f_OpeState_e    : enum value for priority, value from @ref t_eFMKCPU_NVICPriority
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
+    *  @retval RC_WARNING_NO_OPERATION           @ref RC_WARNING_NO_OPERATION
     */
     t_eReturnState FMKCPU_Set_HwClock(t_eFMKCPU_ClockPort f_clkPort_e, 
                                        t_eFMKCPU_ClockPortOpe f_OpeState_e);
-    /*****************************************************************************
-     *
-     *
-     *
-     *	@brief
-    *	@details
+    /**
     *
+    *	@brief      Set the watchdog configuration.\n
+    *   @note       Set the watchdogs configuration and active it imeddiately.\n              
     *
-    *	@param[in]
-    *	@param[out]
+    *	@param[in]  f_period_e      : enum value for period before reset, value from @ref t_eFMKCPu_WwdgResetPeriod
     *
-    *
-    *
-    */
-    t_eReturnState FMKCPU_Set_SysClockCfg(void);
-    /*****************************************************************************
-    *
-    *	@brief
-    *	@details
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
     */
     t_eReturnState FMKCPU_Set_WwdgCfg(t_eFMKCPu_WwdgResetPeriod f_period_e);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief      Reset the watchdogs coutner.\n
     *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
     */
     t_eReturnState FMKCPU_ResetWwdg(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief      Configure a timer channel in PWM configuration.\n
+    *   @note       First, this configuration set the bsp timer cfg in PWM mode.\n
+    *               Once it's done, this function configure the bsp channel in PWM mode too.\n
+    *               IMPORTANT, the PWM generation is based on a timer configuration which share
+    *               multiple channel, as so, frequency is shared by all PWM channel.\n
+    *               In result, the modification of the timer configuration reverbate for all channels.\n          
     *
+    *	@param[in]  f_timer_e              : enum value for the priority, value from @ref t_eFMKCPU_Timer
+    *	@param[in]  f_channel_e            : enum value for the channel, value from @ref t_eFMKCPU_InterruptChnl
+    *	@param[in]  f_pwmFreq_u32      : the frequency timer.
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
+    *  @retval RC_ERROR_WRONG_RESULT             @ref RC_ERROR_WRONG_RESULT
     */
-    t_eReturnState FMKCPU_Set_PWMChannelCfg(t_sFMKCPU_BspTimerCfg f_bspCfg_s, t_uint32 f_pwmFreq_u32);
-    /*****************************************************************************
+    t_eReturnState FMKCPU_Set_PWMChannelCfg(t_eFMKCPU_Timer f_timer_e,
+                                            t_eFMKCPU_InterruptChnl f_channel_e,
+                                            t_uint32 f_pwmFreq_u32);
+    /**
     *
-    *	@brief
-    *	@details
+    *	@brief    
+    *   @note      
     *
+    *	@param[in]  f_timer_e              : enum value for the priority, value from @ref t_eFMKCPU_Timer
+    *	@param[in]  f_channel_e            : enum value for the channel, value from @ref t_eFMKCPU_InterruptChnl
+    *	@param[in]  f_pwmFreq_u32      : the frequency timer.
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
+    *  @retval RC_ERROR_WRONG_RESULT             @ref RC_ERROR_WRONG_RESULT
     */
     t_eReturnState FMKCPU_Set_PWMChannelDuty(t_eFMKCPU_Timer f_timer_e, 
                                              t_eFMKCPU_InterruptChnl f_channel_e,
                                              t_uint16 f_dutyCycle_u16);
     /*****************************************************************************
     *	@brief
-    *	@details
+    *	@note   
     *
     *
     *	@param[in] 
@@ -306,7 +295,7 @@
     /*****************************************************************************
     *
     *	@brief
-    *	@details
+    *	@note   
     *
     *
     *	@param[in] 
@@ -315,11 +304,13 @@
     *
     *
     */
-    t_eReturnState FMKCPU_Set_ICChannelCfg(t_sFMKCPU_BspTimerCfg f_bspCfg_s, t_eFMKCPU_ChnlMeasTrigger f_MeasTrigger_e);
+    t_eReturnState FMKCPU_Set_ICChannelCfg(t_eFMKCPU_Timer f_timer_e,
+                                         t_eFMKCPU_InterruptChnl f_channel_e, 
+                                         t_eFMKCPU_ChnlMeasTrigger f_MeasTrigger_e);
     /*****************************************************************************
     *
     *	@brief
-    *	@details
+    *	@note   
     *
     *
     *	@param[in] 
@@ -334,7 +325,7 @@
     /*****************************************************************************
     *
     *	@brief
-    *	@details
+    *	@note   
     *
     *
     *	@param[in] 
@@ -349,7 +340,7 @@
     /*****************************************************************************
     *
     *	@brief
-    *	@details
+    *	@note   
     *
     *
     *	@param[in] 
@@ -370,7 +361,7 @@
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@param[in] 

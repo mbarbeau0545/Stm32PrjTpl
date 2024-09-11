@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMKCDA_ConfigPrivate.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -45,6 +45,7 @@
     // *                      Variables
     // ********************************************************************
     // Flag automatic generate code 
+    /**< Enum for the different request available for DMA service */
     typedef enum 
     {
         FMKMAC_DMA_RQSTYPE_ADC1 = 0,
@@ -69,7 +70,7 @@
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

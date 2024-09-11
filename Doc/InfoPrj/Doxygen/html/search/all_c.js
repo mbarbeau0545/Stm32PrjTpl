@@ -31,5 +31,5 @@ var searchData=
   ['rc_5fwarning_5fwrong_5fconfig_28',['RC_WARNING_WRONG_CONFIG',['../_type_common_8h.html#af3fc622932488c58b80868c563cdd969ab79e19828059b453255f9e74ee525675',1,'TypeCommon.h']]],
   ['rc_5fwarning_5fwrong_5fresult_29',['RC_WARNING_WRONG_RESULT',['../_type_common_8h.html#af3fc622932488c58b80868c563cdd969aaad7c1593efc15d4fdd6e4dd43731fd4',1,'TypeCommon.h']]],
   ['reload_5fu16_30',['reload_u16',['../structt__s_f_m_k_c_p_u___bsp_wwdg_cfg.html#a61ec998c88cbcc0aae5e330c6cfa1de2',1,'t_sFMKCPU_BspWwdgCfg']]],
-  ['runmode_5fe_31',['RunMode_e',['../structt__s_f_m_k_c_p_u___c_hnl_info.html#a66051a815653b3caf3dfbd176642b885',1,'t_sFMKCPU_CHnlInfo']]]
+  ['runmode_5fe_31',['RunMode_e',['../structt__s_f_m_k_c_p_u___c_hnl_info.html#a66051a815653b3caf3dfbd176642b885',1,'t_sFMKCPU_ChnlInfo']]]
 ];

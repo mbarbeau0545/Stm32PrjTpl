@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMKIO.c
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -78,64 +78,68 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
 /**
  *
  *	@brief      Get the Bsp Pull Mode 
- *	@details    Using the enum f_pull_e and switch case, this function 
+ *	@note       Using the enum f_pull_e and switch case, this function 
                 return the right uint32 hal pull for a pin.\n
  *
  *
  *	@param[in]  f_pull_e       : the enum that says the pull mode, value from @ref t_eFMKIO_PullMode
  *	@param[in]  f_bspPull_pu32 : the Hal value correponding the enum
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ * @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
  *
  */
 static t_eReturnState s_FMKIO_Get_BspPullMode(t_eFMKIO_PullMode f_pull_e, t_uint32 *f_bspPull_pu32);
 /**
  *
  *	@brief      Get the Bsp speed Mode 
- *	@details    Using the enum f_spd_e and switch case, this function 
+ *	@note       Using the enum f_spd_e and switch case, this function 
                 return the right uint32 hal speed for a pin.\n
  *
  *
  *	@param[in]  f_spd_e       : the enum that says the speed mode, value from @ref t_eFMKIO_SpdMode
  *	@param[in]  f_bspSpd_pu32 : the Hal value correponding the enum
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ * @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
  *
  */
 static t_eReturnState s_FMKIO_Get_BspSpdMode(t_eFMKIO_SpdMode f_spd_e, t_uint32 *f_bspSpd_pu32);
 /**
  *
  *	@brief      Get the Bsp Gpio Port Instance 
- *	@details    Using the enum f_spd_e and switch case, this function 
+ *	@note       Using the enum f_spd_e and switch case, this function 
                 return the right GPIOPort Instance.\n
  *
  *
  *	@param[in]  f_GpioPort_e       : GPIOPort enum from @ref t_eFMKIO_GpioPort
  *	@param[in]  f_BspGpio_ps       : pointor to pointor to change the direction a the pointer
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ * @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
  *
  */
 static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GPIO_TypeDef **f_BspGpio_ps);
 /**
  *
  *	@brief      Get the Bsp trigger Mode for signal event
- *	@details    Using the enum f_trigger_e and switch case, this function 
+ *	@note       Using the enum f_trigger_e and switch case, this function 
                 return the right uint32 hal trigger for a pin.\n
  *
  *
  *	@param[in]  f_trigger_e           : the enum that says the trigger mode, value from @ref t_eFMKIO_SigTrigCptr
  *	@param[in]  f_bspTrigger_pu32     : the Hal value correponding the enum
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PTR_NULL                 @copyright RC_ERROR_PTR_NULL
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ * @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
  *
  */
 static t_eReturnState s_FMKIO_Get_BspTriggerMode(t_eFMKIO_SigTrigCptr f_trigger_e, t_uint32 *f_bspTrigger_pu32);
@@ -150,8 +154,8 @@ static t_eReturnState s_FMKIO_Get_BspTriggerMode(t_eFMKIO_SigTrigCptr f_trigger_
  *	@param[in]  f_spd_e          : the enum that says the speed mode, value from @ref t_eFMKIO_SpdMode
  *	@param[in]  f_AltFunc_u8     : the alternate function, FMKIO_AF_UNUSED if not used
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort f_gpioPort_e,
@@ -167,8 +171,8 @@ static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort f_gpioPort_e,
  *	@param[in]  f_timer_e        : timer from  @ref t_eFMKCPU_Timer
  *	@param[in]  f_channel_e      : timer channel  from @ref t_eFMKCPU_InterruptChnl
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_MngSigFrequency(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e);
@@ -179,8 +183,8 @@ static t_eReturnState s_FMKIO_MngSigFrequency(t_eFMKCPU_Timer f_timer_e, t_eFMKC
  *	@param[in]  f_GpioPort_e     : GPIOPort enum, value from @ref t_eFMKIO_GpioPort
  *	@param[in]  f_ope_e          : Enable or Diable RCC clock, value from @ref t_eFMKCPU_ClockPortOpe
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t_eFMKCPU_ClockPortOpe f_ope_e);
@@ -188,8 +192,8 @@ static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t
  *
  *	@brief      Function to perform diag on siganl used 
  *
- * @retval RC_OK                             @copyright RC_OK
- * @retval RC_ERROR_PARAM_INVALID            @copyright RC_ERROR_PARAM_INVALID
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
  *
  */
 static t_eReturnState s_FMKIO_Operational(void);
@@ -843,7 +847,7 @@ static t_eReturnState s_FMKIO_Get_BspPullMode(t_eFMKIO_PullMode f_pull_e, t_uint
             break;
         case FMKIO_PULL_MODE_NB:
         default:
-            Ret_e = RC_WARNING_NO_OPERATION;
+            Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
             break;
         }
     }
@@ -880,7 +884,7 @@ static t_eReturnState s_FMKIO_Get_BspSpdMode(t_eFMKIO_SpdMode f_spd_e, t_uint32 
             break;
         case FMKIO_SPD_MODE_NB:
         default:
-            Ret_e = RC_WARNING_NO_OPERATION;
+            Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
             break;
         }
     }
@@ -917,7 +921,7 @@ static t_eReturnState s_FMKIO_Get_BspTriggerMode(t_eFMKIO_SigTrigCptr f_trigger_
             break;
         case FMKIO_STC_NB:
         default:
-            Ret_e = RC_WARNING_NO_OPERATION;
+            Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
             break;
         }
     }
@@ -1093,7 +1097,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in]

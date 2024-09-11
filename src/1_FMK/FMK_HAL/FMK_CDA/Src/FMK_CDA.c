@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMK_IO.c
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -28,17 +28,17 @@
 /* CAUTION : Automatic generated code section for Enum: Start */
 
 /* CAUTION : Automatic generated code section for Enum: End */
-/* Channel error status*/
+/**< enum for Channel error status*/
 typedef enum
 {
-    FMKCDA_CHANNEL_STATE_OK = 0,
-    FMKCDA_CHANNEL_STATE_ERR_INTERNAL,
-    FMKCDA_CHANNEL_STATE_ERR_OVR,
-    FMKCDA_CHANNEL_STATE_ERR_DMA,
-    FMKCDA_CHANNEL_STATE_CB,
-    FMKCDA_CHANNEL_STATE_JQOVF,
+    FMKCDA_CHANNEL_STATE_OK = 0,            /**< No error detected on channel */
+    FMKCDA_CHANNEL_STATE_ERR_INTERNAL,      /**< Internal/ bsp error detected on channel */
+    FMKCDA_CHANNEL_STATE_ERR_OVR,           /**< overrun error detetcted on channel */
+    FMKCDA_CHANNEL_STATE_ERR_DMA,           /**< Dma error detetected on channel */
+    FMKCDA_CHANNEL_STATE_CB,                /**< callback error detetected on channel */
+    FMKCDA_CHANNEL_STATE_JQOVF,             /**< to do */
 
-    FMKCDA_CHANNEL_STATE_NB
+    FMKCDA_CHANNEL_STATE_NB                 /**< Number of channel state error */
 } t_eFMKCDA_ChnlErrState;
 
 //-----------------------------TYPEDEF TYPES---------------------------//
@@ -46,34 +46,34 @@ typedef enum
 /* CAUTION : Automatic generated code section for Structure: Start */
 
 /* CAUTION : Automatic generated code section for Structure: End */
-
+/**< Structure for store and manage analog value in Scan_Dma mode */
 typedef struct
 {
-    t_uint16 rawValue_au16[FMKCDA_ADC_CHANNEL_NB];
-    t_eFMKCPU_InterruptChnl BspChnlmapp[FMKCDA_ADC_CHANNEL_NB];
-    t_bool FlagValueUpdated_b;
+    t_uint16 rawValue_au16[FMKCDA_ADC_CHANNEL_NB];                  /**< Array for analog value for all channel */
+    t_eFMKCPU_InterruptChnl BspChnlmapp[FMKCDA_ADC_CHANNEL_NB];     /**< Mapping with raywvalue array and channelINfo structure abalog value */    
+    t_bool FlagValueUpdated_b;                                      /**< Flag to know whenever the adc ennding a conversion */
 } t_sFMKCDA_AdcBuffer;
 
-/* Structure for adc channel info*/
+/**< Structure for adc channel information*/
 typedef struct
 {
-    t_uint16 rawValue_u16;
-    t_bool FlagValueUpdated_b;
-    t_bool IsChnlUsed_b;
-    t_bool IsChnlConfigured_b;
-    t_eFMKCDA_ChnlErrState Error_e;
+    t_uint16 rawValue_u16;              /**< the analog value for this channel */
+    t_bool FlagValueUpdated_b;          /**< Flag to know when the rawvalue is available */
+    t_bool IsChnlUsed_b;                /**< Flag to know if the channel is currently used */
+    t_bool IsChnlConfigured_b;          /**< Flag to know if the channel if configured well */
+    t_eFMKCDA_ChnlErrState Error_e;     /**< Store the channel error status */
 } t_sFMKCDA_ChnlInfo;
 
-/* Structure for adc info*/
+/**< Structure for adc information*/
 typedef struct
 {
-    ADC_HandleTypeDef BspInit_s;
-    t_eFMKCDA_HwAdcCfg HwCfg_e;
-    t_sFMKCDA_ChnlInfo Channel_as[FMKCDA_ADC_CHANNEL_NB];
-    const t_eFMKCPU_ClockPort clock_e;
-    const t_eFMKCPU_IRQNType IRQNType_e;
-    t_bool IsAdcConfigured_b;
-    t_bool IsAdcRunning_b;
+    ADC_HandleTypeDef BspInit_s;                            /**< Store the bsp information needed */
+    t_eFMKCDA_HwAdcCfg HwCfg_e;                             /**< Store in which mode the ADC is currently set */
+    t_sFMKCDA_ChnlInfo Channel_as[FMKCDA_ADC_CHANNEL_NB];   /**< Structure channel information for each channel */
+    const t_eFMKCPU_ClockPort clock_e;                      /**< constant to store the clock for each ADC */
+    const t_eFMKCPU_IRQNType IRQNType_e;                    /**< constant to store the IRQN for each ADC */
+    t_bool IsAdcConfigured_b;                               /**< Flag to know if the ADC is configured */
+    t_bool IsAdcRunning_b;                                  /**< Flag to know if the Adc is running a conversion */
 } t_sFMKCDA_AdcInfo;
 // ********************************************************************
 // *                      Prototypes
@@ -82,10 +82,10 @@ typedef struct
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-/*store the raw value for each channel of each adc converter*/
+/**< store the raw value for each channel of each adc converter*/
 t_sFMKCDA_AdcBuffer g_AdcBuffer_as[FMKCDA_ADC_NB];
 // Flag automatic generate code
-/* Store the Adc Info variable*/
+/**< Store the Adc Info variable*/
 t_sFMKCDA_AdcInfo g_AdcInfo_as[FMKCDA_ADC_NB] = {
     {
         // ADC_1
@@ -97,61 +97,77 @@ t_sFMKCDA_AdcInfo g_AdcInfo_as[FMKCDA_ADC_NB] = {
 
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
 
-t_uint8 g_counterRank_u8 = 1;
+// Flag automatic generate code
+/**< Rank for each channel add for ADC */
+t_uint8 g_counterRank_au8[FMKCDA_ADC_NB] = { 
+    (t_uint8)1
+}; 
 
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
+ *	@brief      Function to get the bsp channel based on the value of f_channel_e.\n
  *
+ *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_AdcChannel
+ *	@param[in]  f_bspChannel_32       : bsp adc channel uint32
  *
- *	@param[in]
- *	@param[out]
- *
- *
+ *  @retval RC_OK                             @ref RC_OK
+ *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ *  @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+ *  @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
  *
  */
 static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_AdcChannel f_channel_e, t_uint32 *f_bspChannel_32);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
+ *	@brief      Function to set the bsp adc Init.\n
+ *  @note       Depending on f_HwAdcCfg_e this function set the bsp Init with the right 
+ *              element and call hal_adc_init and set the rcc clock enable.\n 
+ *              
  *
+ *	@param[in]  f_Adc_e               : enum adc, value from @ref t_eFMKCDA_Adc
+ *	@param[in]  f_HwAdcCfg_e          : enum for adc configuration, value from @ref t_eFMKCDA_HwAdcCfg
  *
- *	@param[in]
- *	@param[out]
- *
- *
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ * @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
  *
  */
 static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
                                              t_eFMKCDA_HwAdcCfg f_HwAdcCfg_e);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
+ *	@brief      Function to set the bsp channel Init.\n
+ *  @note       The ADC config must be set before calling this function.n
+ *              This function allow user to configure a adc_channel -> f_channel_e from 
+ *              an ADC -> f_Adc_e.\n This function call hal_set_adc_channel.\n
+ *              If hardware failed, this function return retcode Wrong_State
+ *              
  *
+ *	@param[in]  f_Adc_e               : enum adc, value from @ref t_eFMKCDA_Adc
+ *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_AdcChannel
  *
- *	@param[in]
- *	@param[out]
- *
- *
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ * @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
+ * @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
  *
  */
 static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_AdcChannel f_channel_e);
-/*****************************************************************************
+/**
  *
- *	@brief
- *	@details
- *
- *
- *	@param[in]
- *	@param[out]
- *
- *
+ *	@brief      Perform cyclic operation for this module.\n
+ *  @note       Every Cycle in OPE_MODE, this function start Adc conversion 
+ *              if the adc is config as so (Interruption or Dma). If a previous conversion 
+ *              is finished, this function store the value in the right channel and update 
+ *              flag in consequence.\n This function also perform cyclic diagnostic on channel
+ *              every x seconds, parameter reference in configPrivate.\n
+ *              
+ * @retval RC_OK                               @ref RC_OK
+ * @retval RC_WARNING_WRONG_STATE              @ref RC_ERROR_WARNING_STATE
+ * @retval RC_WARNING_BUSY                     @ref RC_WARNING_BUSY
  *
  */
 static t_eReturnState s_FMKCDA_Operational(void);
@@ -296,6 +312,15 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
     {
         Ret_e = RC_ERROR_PTR_NULL;
     }
+    if(g_state_e != STATE_CYCLIC_OPE)
+    {
+        Ret_e = RC_ERROR_MODULE_NOT_INITIALIZED;
+    }
+    if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False
+    || g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
+    }
     if (Ret_e == RC_OK)
     {
         // give the last raw analog value if value is updated
@@ -332,7 +357,7 @@ static t_eReturnState s_FMKCDA_Operational(void)
         if(g_AdcBuffer_as[LLI_u8].FlagValueUpdated_b == (t_bool)True)
         {// 
             g_AdcBuffer_as[LLI_u8].FlagValueUpdated_b = (t_bool)False;
-            for(LLI2_u8 = (t_uint8)0 ; LLI2_u8 < g_counterRank_u8 ; LLI2_u8++)
+            for(LLI2_u8 = (t_uint8)0 ; LLI2_u8 < g_counterRank_au8[LLI_u8] ; LLI2_u8++)
             {
                 channel_e = g_AdcBuffer_as[LLI_u8].BspChnlmapp[LLI2_u8];
                 g_AdcInfo_as[LLI_u8].Channel_as[channel_e].rawValue_u16 = 
@@ -345,7 +370,7 @@ static t_eReturnState s_FMKCDA_Operational(void)
         {
             bspRet_e = HAL_ADC_Start_DMA(&g_AdcInfo_as[LLI_u8].BspInit_s,
                                          (t_uint32 *)g_AdcBuffer_as[LLI_u8].rawValue_au16,
-                                         g_counterRank_u8);
+                                         g_counterRank_au8[LLI_u8]);
             
             if(bspRet_e != HAL_OK)
             {
@@ -435,7 +460,7 @@ static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_AdcChannel f_channel_e, 
             break;
         case FMKCDA_ADC_CHANNEL_NB:
         default:
-            Ret_e = RC_WARNING_NO_OPERATION;
+            Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
         }
     }
     return Ret_e;
@@ -585,6 +610,10 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
+    if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False)
+    {
+        Ret_e = RC_ERROR_MISSING_CONFIG;
+    }
     if (Ret_e == RC_OK)
     {
         // configure channel
@@ -593,17 +622,17 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
         if (Ret_e == RC_OK)
         {
             BspChannelInit_s.Channel = bspChannel_u32;
-            BspChannelInit_s.Rank = g_counterRank_u8;
+            BspChannelInit_s.Rank = g_counterRank_au8[f_Adc_e];
             BspRet_e = HAL_ADC_ConfigChannel(&g_AdcInfo_as[f_Adc_e].BspInit_s,
                                              &BspChannelInit_s);
 
             if (BspRet_e == HAL_OK)
             {
                 // update mapping
-                g_AdcBuffer_as[f_Adc_e].BspChnlmapp[g_counterRank_u8] = f_channel_e;
+                g_AdcBuffer_as[f_Adc_e].BspChnlmapp[g_counterRank_au8[f_Adc_e]] = f_channel_e;
                 g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlConfigured_b = (t_bool)True;
                 g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlUsed_b = (t_bool)True;
-                g_counterRank_u8 += (t_uint8)1;
+                g_counterRank_au8[f_Adc_e] += (t_uint8)1;
             }
             else
             {
@@ -642,7 +671,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in]

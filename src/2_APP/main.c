@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        item.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -58,7 +58,7 @@ int main(void)
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in]

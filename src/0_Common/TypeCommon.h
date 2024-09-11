@@ -1,7 +1,7 @@
 /*****************************************************************************
  * @file        TypeCommon.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -22,7 +22,7 @@
     #define NULL ((void *)0)
 #endif
 
-    /**< ENum for return function */
+    /**< Enum for return function */
     typedef enum
 
     {

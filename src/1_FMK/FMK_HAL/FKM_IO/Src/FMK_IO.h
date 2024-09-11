@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMK_IO.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -96,7 +96,7 @@
     /**
     *
     *	@brief      This function is a callback function for event signal.\n
-    *	@details    Once the trigger is detected this function callback should be
+    *	@note       Once the trigger is detected this function callback should be
     *               called.\n
     *                store information for each signals.\n
     *
@@ -122,7 +122,7 @@
     /**
     *
     *	@brief      Perform all Init action for this module.\n
-    *	@details    Set to default value all globals structure that
+    *	@note       Set to default value all globals structure that
     *                store information for each signals.\n
     *
     */
@@ -130,7 +130,7 @@
     /**
     *
     *	@brief      Perform all Cyclic action for this module.\n
-    *	@details    In ope mode this module makes diag on input currently used, and 
+    *	@note       In ope mode this module makes diag on input currently used, and 
     *               called the appropriate callback if an error occured + call APPDEM
     *               to reference error.\n
     *
@@ -157,7 +157,7 @@
     /**
     *
     *	@brief      Set an input in Digital configuration.\n
-    *	@details    Allow the user to choose among digitals inputs.\n
+    *	@note       Allow the user to choose among digitals inputs.\n
     *               & a pullMode.\n This function configure bspInit and call HAL_function.\n
     *
     *
@@ -172,7 +172,7 @@
     /**
     *
     *	@brief      Set an input in Analog configuration.\n
-    *	@details    Allow the user to choose among analogs inputs.\n
+    *	@note       Allow the user to choose among analogs inputs.\n
     *               & a pullMode.\n 
     *               This function configure bspInit ,call HAL_function,
     *               call FMKCDA to configure an ADC_channel.\n
@@ -189,7 +189,7 @@
     /**
     *
     *	@brief      Set an input in frequency configuration.\n
-    *	@details    Allow the user to choose among frequencies inputs.\n 
+    *	@note       Allow the user to choose among frequencies inputs.\n 
     *               This function configure bspInit , call HAL_function,
     *               call FMKCPU to configure a timer in order to convert a digital signal
     *               into a frequency.\n
@@ -206,7 +206,7 @@
     /**
     *
     *	@brief      Set an intput in event configuration.\n
-    *	@details    Allow the user to choose among event inputs.\n 
+    *	@note       Allow the user to choose among event inputs.\n 
     *               This function configure bspInit, call HAL_function, 
     *               configure a external Interrupt which from hal_library will call 
     *               f_Evnt_cb on f_trigger_e detection.\n
@@ -229,7 +229,7 @@
     /**
     *
     *	@brief      Set an intput in PWM configuration.\n
-    *	@details    Allow the user to choose among pwm intputs.\n 
+    *	@note       Allow the user to choose among pwm intputs.\n 
     *               This function configure bspInit , call HAL_function,
     *               call FMKCPU to configure a timer in order to convert generate
     *               the pwm period and dutycycle.\n
@@ -257,7 +257,7 @@
     /**
     *
     *	@brief      Set an output in digital configuration.\n
-    *	@details    Allow the user to choose among digitals output.\n 
+    *	@note       Allow the user to choose among digitals output.\n 
     *               This function configure bspInit & call HAL_function.\n
     *
     *
@@ -275,7 +275,7 @@
     /**
     *
     *	@brief      Update the digital output.\n
-    *	@details    Once the configuration is done, this function update the state of 
+    *	@note       Once the configuration is done, this function update the state of 
     *               the digital cycle with f_value_e.\n
     *
     *
@@ -291,7 +291,7 @@
     /**
     *
     *	@brief      Get the digital inout.\n
-    *	@details    Once the configuration is done, this function call hal library to
+    *	@note       Once the configuration is done, this function call hal library to
                     know the state of the signal on store it into f_value_pe.\n
     *
     *
@@ -307,7 +307,7 @@
     /**
     *
     *	@brief      Get the analog input.\n
-    *	@details    Once the configuration is done, this function call the FMKCDA to know 
+    *	@note       Once the configuration is done, this function call the FMKCDA to know 
     *               the analog signal value.\n
     *               IMPORTANT -> Depending on FMKCDA scan mode (the one used on V0.1) it may be possible
     *               that the conversion of all analog is not finished, in this case, the value return is 0 and
@@ -328,7 +328,7 @@
     /**
     *
     *	@brief      Get the frequency input.\n
-    *	@details    Once the configuration is done, this function store the 
+    *	@note       Once the configuration is done, this function store the 
     *               frequency value in f_value_pu32.\n
     *               Depending on configuration, this value is either a coutner, a period (ms) or a frequency (Hz)
     *
@@ -345,7 +345,7 @@
     /**
     *
     *	@brief      Update the dutyCycle for a PWM.\n
-    *	@details    Once the configuration is done, this function update the dutycyle of 
+    *	@note       Once the configuration is done, this function update the dutycyle of 
     *               the pwm. if the PWM is not started yet the framework automatically set ON the channel
     *               if the dutyCycle is set to 0 that will shut down the pulse generation.\n 
     *
@@ -362,7 +362,7 @@
     /**
     *
     *	@brief      Get the PWM output generation.\n
-    *	@details    Once the configuration is done, this function ask FMKCPU 
+    *	@note       Once the configuration is done, this function ask FMKCPU 
     *               the value of the dedicate channel and store the dutycycle in f_value_pu16
     *
     *	@param[in]      f_signal_e       : the input frequency signal, a value from @ref t_eFMKIO_OutPwmSig
@@ -378,7 +378,7 @@
     /**
     *
     *	@brief      Get the digital output.\n
-    *	@details    Once the configuration is done, this function ask HAL_library 
+    *	@note       Once the configuration is done, this function ask HAL_library 
     *               the value of the dedicate signal and store it in f_value_pu16
     *
     *	@param[in]      f_signal_e       : the input frequency signal, a value from @ref t_eFMKIO_OutPwmSig
@@ -399,7 +399,7 @@
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

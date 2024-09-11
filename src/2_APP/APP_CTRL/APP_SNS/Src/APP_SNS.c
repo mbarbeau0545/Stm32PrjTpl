@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        APP_SNS.c
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -54,7 +54,7 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 /*****************************************************************************
 *
 *	@brief
-*	@details
+*	@note   
 *
 *
 *	@param[in] 
@@ -67,7 +67,7 @@ static t_eReturnState s_APPSNS_PreOperational(void);
 /*****************************************************************************
 *
 *	@brief
-*	@details
+*	@note   
 *
 *
 *	@param[in] 
@@ -80,7 +80,7 @@ static t_eReturnState s_APPSNS_Operational(void);
 /*****************************************************************************
 *
 *	@brief
-*	@details
+*	@note   
 *
 *
 *	@param[in] 
@@ -362,7 +362,7 @@ static t_eReturnState s_APPSNS_SetValUnity(t_eAPPSNS_SnsMeasType f_measType_e, t
 /**
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 

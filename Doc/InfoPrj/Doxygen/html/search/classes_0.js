@@ -12,7 +12,7 @@ var searchData=
   ['t_5fsfmkcda_5fchnlinfo_9',['t_sFMKCDA_ChnlInfo',['../structt__s_f_m_k_c_d_a___chnl_info.html',1,'']]],
   ['t_5fsfmkcpu_5fbsptimercfg_10',['t_sFMKCPU_BspTimerCfg',['../structt__s_f_m_k_c_p_u___bsp_timer_cfg.html',1,'']]],
   ['t_5fsfmkcpu_5fbspwwdgcfg_11',['t_sFMKCPU_BspWwdgCfg',['../structt__s_f_m_k_c_p_u___bsp_wwdg_cfg.html',1,'']]],
-  ['t_5fsfmkcpu_5fchnlinfo_12',['t_sFMKCPU_CHnlInfo',['../structt__s_f_m_k_c_p_u___c_hnl_info.html',1,'']]],
+  ['t_5fsfmkcpu_5fchnlinfo_12',['t_sFMKCPU_ChnlInfo',['../structt__s_f_m_k_c_p_u___c_hnl_info.html',1,'']]],
   ['t_5fsfmkcpu_5fclkfunc_13',['t_sFMKCPU_ClkFunc',['../structt__s_f_m_k_c_p_u___clk_func.html',1,'']]],
   ['t_5fsfmkcpu_5ftimchannelfunc_14',['t_sFMKCPU_TimChannelFunc',['../structt__s_f_m_k_c_p_u___tim_channel_func.html',1,'']]],
   ['t_5fsfmkcpu_5ftimerinfo_15',['t_sFMKCPU_TimerInfo',['../structt__s_f_m_k_c_p_u___timer_info.html',1,'']]],

@@ -4,7 +4,7 @@ var searchData=
   ['irqntype_5fe_1',['IRQNType_e',['../structt__s_f_m_k_c_d_a___adc_info.html#a6169ef84e460cb7883e4d7692f4bf478',1,'t_sFMKCDA_AdcInfo::IRQNType_e'],['../structt__s_f_m_k_c_p_u___timer_info.html#a6169ef84e460cb7883e4d7692f4bf478',1,'t_sFMKCPU_TimerInfo::IRQNType_e']]],
   ['isadcconfigured_5fb_2',['IsAdcConfigured_b',['../structt__s_f_m_k_c_d_a___adc_info.html#a13d8d565e89ff016320dbbd79d600705',1,'t_sFMKCDA_AdcInfo']]],
   ['isadcrunning_5fb_3',['IsAdcRunning_b',['../structt__s_f_m_k_c_d_a___adc_info.html#a55a7382da87fbedff41c80d4932601b6',1,'t_sFMKCDA_AdcInfo']]],
-  ['ischnlconfigure_5fb_4',['IsChnlConfigure_b',['../structt__s_f_m_k_c_p_u___c_hnl_info.html#a945549dbd1d4b0a15ad893f75b9decbf',1,'t_sFMKCPU_CHnlInfo']]],
+  ['ischnlconfigure_5fb_4',['IsChnlConfigure_b',['../structt__s_f_m_k_c_p_u___c_hnl_info.html#a945549dbd1d4b0a15ad893f75b9decbf',1,'t_sFMKCPU_ChnlInfo']]],
   ['ischnlconfigured_5fb_5',['IsChnlConfigured_b',['../structt__s_f_m_k_c_d_a___chnl_info.html#a845bae7749317670f3060c40e3250e4d',1,'t_sFMKCDA_ChnlInfo']]],
   ['ischnlused_5fb_6',['IsChnlUsed_b',['../structt__s_f_m_k_c_d_a___chnl_info.html#ae4179767488db81fce3a275539828196',1,'t_sFMKCDA_ChnlInfo']]],
   ['isinterruptenable_5fb_7',['IsInterruptEnable_b',['../structt__s_f_m_k_i_o___sig_info.html#a4e434e4844ee11e14e9055ee5eb01315',1,'t_sFMKIO_SigInfo']]],

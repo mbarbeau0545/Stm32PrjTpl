@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file        FMKCDA_ConfigPrivate.h
  * @brief       Template_BriefDescription.
- * @details     TemplateDetailsDescription.\n
+ * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
  * @date        jj/mm/yyyy
@@ -53,7 +53,7 @@
     /**************************************************************************
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 
@@ -71,7 +71,7 @@ t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType, void *f_Modul
 /**************************************************************************
  *
  *	@brief
- *	@details
+ *	@note   
  *
  *
  *	@params[in] 
