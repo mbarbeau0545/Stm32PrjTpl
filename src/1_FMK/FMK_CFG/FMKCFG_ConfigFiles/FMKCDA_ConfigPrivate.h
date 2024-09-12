@@ -45,7 +45,9 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
+    /* CAUTION : Automatic generated code section for Variable: Start */
 
+    /* CAUTION : Automatic generated code section for Variable: End */
 
     //********************************************************************************
     //                      Public functions - Prototyupes

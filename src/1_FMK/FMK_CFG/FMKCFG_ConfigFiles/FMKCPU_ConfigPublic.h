@@ -52,8 +52,8 @@
     /**< Number of timer enable in smt32f08 family */
     typedef enum 
     {
-        FMKCPU_TIMER_1 = 0x0U,  /**< Reference to hal timer 1 */
-        FMKCPU_TIMER_3,         /**< Reference to hal timer 3 */
+        FMKCPU_TIMER_1 = 0x0U,  /**< Reference to hal timer 1, this timer has 4 channels */
+        FMKCPU_TIMER_3,         /**< Reference to hal timer 3, this timer has 4 channels */
         FMKCPU_TIMER_14,
         FMKCPU_TIMER_15,
         FMKCPU_TIMER_16,

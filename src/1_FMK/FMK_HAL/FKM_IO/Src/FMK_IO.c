@@ -59,6 +59,9 @@ t_sFMKIO_SigInfo g_InEvntSigInfo_as[FMKIO_INPUT_SIGEVNT_NB];        /**< Signal 
 t_sFMKIO_SigInfo g_OutPwmSigInfo_as[FMKIO_OUTPUT_SIGPWM_NB];        /**< Signal information for output PWM */
 t_sFMKIO_SigInfo g_OutDigSigInfo_as[FMKIO_OUTPUT_SIGDIG_NB];        /**< Signal information for output Digital */
 
+/* CAUTION : Automatic generated code section for Variable: Start */
+
+/* CAUTION : Automatic generated code section for Variable: End */
 /**< Variable to store the state of GPIO Clock */
 t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
     FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_A
@@ -365,7 +368,6 @@ t_eReturnState FMKIO_Set_InDigSigCfg(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_Pull
 t_eReturnState FMKIO_Set_InAnaSigCfg(t_eFMKIO_InAnaSig f_signal_e, t_eFMKIO_PullMode f_pull_e)
 {
     t_eReturnState Ret_e = RC_OK;
-    t_eFMKIO_GpioPort gpioPort_e;
 
     if (f_signal_e > FMKIO_INPUT_SIGANA_NB || f_pull_e > FMKIO_PULL_MODE_NB)
     {
@@ -377,17 +379,16 @@ t_eReturnState FMKIO_Set_InAnaSigCfg(t_eFMKIO_InAnaSig f_signal_e, t_eFMKIO_Pull
     }
     if (Ret_e == RC_OK)
     {
-        gpioPort_e = c_InAnaSigBspMap_as[f_signal_e].HwGpio_e;
-        Ret_e = s_FMKIO_Set_BspSigCfg(gpioPort_e,
-                                      c_InAnaSigBspMap_as[f_signal_e].HwPin_e,
+        Ret_e = s_FMKIO_Set_BspSigCfg(c_InAnaSigBspMap_as[f_signal_e].BasicCfg.HwGpio_e,
+                                      c_InAnaSigBspMap_as[f_signal_e].BasicCfg.HwPin_e,
                                       (t_uint32)MODE_ANALOG,
                                       f_pull_e,
                                       FMKIO_SPD_MODE_LOW, // irrevelent for a input sig dig
                                       FMKIO_AF_UNUSED);
         if (Ret_e == RC_OK)
         { // configure the adc
-            Ret_e = FMKCDA_Set_AdcChannelCfg(c_InAnaSigAdcCfg_ae[f_signal_e].adc_e,
-                                             c_InAnaSigAdcCfg_ae[f_signal_e].adcChannel_e,
+            Ret_e = FMKCDA_Set_AdcChannelCfg(c_InAnaSigBspMap_as[f_signal_e].adc_e,
+                                             c_InAnaSigBspMap_as[f_signal_e].adcChannel_e,
                                              FMKCDA_ADC_CFG_SCAN_DMA);
 
             if (Ret_e == RC_OK)
@@ -476,7 +477,7 @@ t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e,
                                           (t_uint32)bspTrigger_u32,
                                           FMKIO_PULL_MODE_UNABLE,
                                           FMKIO_SPD_MODE_LOW, // irrevelent for a input sig dig
-                                          c_InFreqSigBspMap_as[f_signal_e].BspAlternateFunc_u8);
+                                          FMKIO_AF_UNUSED);
             if (Ret_e == RC_OK)
             {
 
@@ -721,8 +722,8 @@ t_eReturnState FMKIO_Get_InAnaSigValue(t_eFMKIO_InAnaSig f_signal_e, t_uint16 *f
     }
     if (Ret_e == RC_OK)
     {
-        Ret_e = FMKCDA_Get_AnaChannelMeasure(c_InAnaSigAdcCfg_ae[f_signal_e].adc_e,
-                                             c_InAnaSigAdcCfg_ae[f_signal_e].adcChannel_e,
+        Ret_e = FMKCDA_Get_AnaChannelMeasure(c_InAnaSigBspMap_as[f_signal_e].adc_e,
+                                             c_InAnaSigBspMap_as[f_signal_e].adcChannel_e,
                                              f_value_pu16);
     }
     return Ret_e;
@@ -965,26 +966,28 @@ static t_eReturnState s_FMKIO_Get_BspGpioPort(t_eFMKIO_GpioPort f_GpioPort_e, GP
     {
         switch (f_GpioPort_e)
         {
-        case FMKIO_GPIO_PORT_A:
-            *f_BspGpio_ps = GPIOA;
-            break;
-        case FMKIO_GPIO_PORT_B:
-            *f_BspGpio_ps = GPIOB;
-            break;
-        case FMKIO_GPIO_PORT_C:
-            *f_BspGpio_ps = GPIOC;
-            break;
-        case FMKIO_GPIO_PORT_D:
-            *f_BspGpio_ps = GPIOD;
-            break;
-        case FMKIO_GPIO_PORT_F:
-            *f_BspGpio_ps = GPIOF;
-            break;
-        case FMKIO_GPIO_PORT_NB:
-        default:
-            Ret_e = RC_WARNING_NO_OPERATION;
-            break;
-        }
+            /* CAUTION : Automatic generated code section for GPIO switch case: Start */
+            case FMKIO_GPIO_PORT_A:
+                *f_BspGpio_ps = GPIOA;
+                break;
+            case FMKIO_GPIO_PORT_B:
+                *f_BspGpio_ps = GPIOB;
+                break;
+            case FMKIO_GPIO_PORT_C:
+                *f_BspGpio_ps = GPIOC;
+                break;
+            case FMKIO_GPIO_PORT_D:
+                *f_BspGpio_ps = GPIOD;
+                break;
+            case FMKIO_GPIO_PORT_F:
+                *f_BspGpio_ps = GPIOF;
+                break;
+            /* CAUTION : Automatic generated code section for GPIO switch case: End */
+            case FMKIO_GPIO_PORT_NB:
+            default:
+                Ret_e = RC_WARNING_NO_OPERATION;
+                break;
+            }
     }
     return Ret_e;
 }

@@ -560,7 +560,7 @@
         <mxCell id="P58AmdQNeam6rq8ZTSZe-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" parent="P58AmdQNeam6rq8ZTSZe-1" vertex="1">
           <mxGeometry width="349" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="P58AmdQNeam6rq8ZTSZe-3" value="&lt;span style=&quot;font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCDA_AdcChannelI&lt;/span&gt;&lt;span style=&quot;font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;n FMKIO_CFG_PRIV&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" parent="P58AmdQNeam6rq8ZTSZe-1" vertex="1">
+        <mxCell id="P58AmdQNeam6rq8ZTSZe-3" value="&lt;span style=&quot;font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;t_eFMKCDA_Adc1ChannelI&lt;/span&gt;&lt;span style=&quot;font-size: 16px; text-align: left; text-wrap: nowrap;&quot;&gt;n FMKIO_CFG_PRIV&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" parent="P58AmdQNeam6rq8ZTSZe-1" vertex="1">
           <mxGeometry width="349" height="40" as="geometry" />
         </mxCell>
         <mxCell id="P58AmdQNeam6rq8ZTSZe-4" value="c_InAnaSigAdcCfg_ae[FMKIO_IANAPIN_NB]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontColor=#000000;" parent="P58AmdQNeam6rq8ZTSZe-1" vertex="1">

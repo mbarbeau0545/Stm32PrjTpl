@@ -188,7 +188,7 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
-    // Flag automatic generate code 
+
     /**< Referencing all HAL_TIM function*/
     const t_sFMKCPU_TimChannelFunc c_FMKCPU_BspTimFunc_apf[FMKCPU_HWTIM_CFG_NB] = 
     {// Init Timer                         DeInitTimer                    StartPolling Func                 StopPolling Funnc             Start Interrupt Func          Stop Interrupt Func

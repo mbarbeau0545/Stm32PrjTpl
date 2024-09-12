@@ -141,7 +141,6 @@
 
     // Flag automatic generate code
     /**< List of Pin available for each GPIO on this board*/
-
     typedef enum
     {
         FMKIO_GPIO_PIN_0 = 0x0U,        /**< Reference to bsp GPIO pin 0 value */
@@ -165,7 +164,7 @@
     } t_eFMKIO_BspGpioPin;
 
     // Flag automatic generate code
-    /**< List of Pin available for each GPIO on this board*/
+    /**< List of alternate function*/
     typedef enum
     {
         FMKIO_AF0_EVENTOUT = 0x0U,  /*!< AF0: EVENTOUT Alternate Function mapping */
@@ -233,13 +232,7 @@
         t_eFMKCPU_InterruptChnl channel_e;              /**< Channel enum configuration */
     } t_sFMKIO_BspTimerSigCfg;
 
-    /**< Structure configuration for Event Signal*/
-    typedef struct 
-    {
-        t_sFMKIO_BspSigCfg      BasicCfg;               /**< GPIO configuration */
-        t_uint8                 BspAlternateFunc_u8;    /**< Alterante function/Timer_Channel relate to the pin */
-        t_eFMKCPU_IRQNType      ExtiIRQN_e;             /**< IRQN Type related to the signal */
-    } t_sFMKIO_BspEvntSigCfg;
+
 
     // ********************************************************************
     // *                      Prototypes
