@@ -133,7 +133,7 @@
     *
     *   @retval RC_OK                               @ref RC_OK
     *   @retval RC_WARNING_WRONG_STATE              @ref RC_ERROR_WARNING_STATE
-    *   @retval RC_ERROR_MISSING_CONFIG             @ref RC_ERROR_MISSING_CONFIG
+    *   @retval RC_ERROR_ALREADY_CONFIGURED             @ref RC_ERROR_ALREADY_CONFIGURED
     */
     t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e, 
                                        t_eFMKCDA_AdcChannel f_channel_e,
@@ -154,7 +154,7 @@
     *   @retval RC_OK                               @ref RC_OK
     *   @retval RC_ERROR_PTR_NULL                   @ref RC_ERROR_PTR_NUL
     *   @retval RC_WARNING_WRONG_STATE              @ref RC_ERROR_WARNING_STATE
-    *   @retval RC_ERROR_MISSING_CONFIG             @ref RC_ERROR_MISSING_CONFIG
+    *   @retval RC_ERROR_ALREADY_CONFIGURED             @ref RC_ERROR_ALREADY_CONFIGURED
     *   @retval RC_WARNING_NO_OPERATION             @ref RC_WARNING_NO_OPERATION
     *   @retval RC_ERROR_MODULE_NOT_INITIALIZED     @ref RC_ERROR_MODULE_NOT_INITIALIZED
     */

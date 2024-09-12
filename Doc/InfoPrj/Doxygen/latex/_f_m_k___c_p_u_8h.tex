@@ -1,5 +1,5 @@
-\doxysection{src/1\+\_\+\+FMK/\+FMK\+\_\+\+HAL/\+FMK\+\_\+\+CPU/\+Src/\+FMK\+\_\+\+CPU.h File Reference}
-\hypertarget{_f_m_k___c_p_u_8h}{}\label{_f_m_k___c_p_u_8h}\index{src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h@{src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h}}
+\doxysection{C\+:/\+Users/mbarb/\+Documents/\+Platform\+IO/\+Projects/\+STM32\+\_\+tplprj/src/1\+\_\+\+FMK/\+FMK\+\_\+\+HAL/\+FMK\+\_\+\+CPU/\+Src/\+FMK\+\_\+\+CPU.h File Reference}
+\hypertarget{_f_m_k___c_p_u_8h}{}\label{_f_m_k___c_p_u_8h}\index{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h@{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h}}
 {\ttfamily \#include "{}FMK\+\_\+\+CFG/\+FMKCFG\+\_\+\+Config\+Files/\+FMKCPU\+\_\+\+Config\+Public.\+h"{}}\newline
 {\ttfamily \#include "{}Type\+Common.\+h"{}}\newline
 \doxysubsubsection*{Macros}
@@ -52,34 +52,47 @@ enum \mbox{\hyperlink{_f_m_k___c_p_u_8h_aba9aa13b09efd7f1d8aa2805ff38b301}{t\+\_
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3f8a0b3f948f251f4a49615b99214567}{FMKCPU\+\_\+\+Init}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Perform all Init action for this module.~\newline
+. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_ada5ebc941ad521d4338966e80e698f15}{FMKCPU\+\_\+\+Cyclic}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Perform all Cyclic action for this module.~\newline
+. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_ab0e031ae820fd8661f0a1be174462853}{FMKCPU\+\_\+\+Get\+State}} (\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} \texorpdfstring{$\ast$}{*}f\+\_\+\+State\+\_\+pe)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to know the module state.~\newline
+. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_acaca75f0d8867a5b3e0a2bde245e79a9}{FMKCPU\+\_\+\+Set\+State}} (\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} f\+\_\+\+State\+\_\+e)
-\item 
-void \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3781183498c848aa58c960c873f70094}{FMKCPU\+\_\+\+Set\+\_\+\+Delay}} (\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+delayms\+\_\+u32)
-\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_aad5afa0db90627a3c1b6a20c32a5c896}{FMKCPU\+\_\+\+Get\+\_\+\+Tick}} (\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} \texorpdfstring{$\ast$}{*}f\+\_\+tickms\+\_\+pu32)
-\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_ac40b45930ed1477a125eb47492be18b4}{FMKCPU\+\_\+\+Set\+\_\+\+NVICState}} (t\+\_\+e\+FMKCPU\+\_\+\+IRQNType f\+\_\+\+IRQN\+\_\+e, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1602ad08e}{t\+\_\+e\+FMKCPU\+\_\+\+NVICPriority}} f\+\_\+priority\+\_\+e, \mbox{\hyperlink{_f_m_k___c_p_u_8h_ad864f2490ecd7dc3b94314bf65f1d9ef}{t\+\_\+e\+FMKCPU\+\_\+\+NVIC\+\_\+\+Ope}} f\+\_\+\+Ope\+State\+\_\+e)
-\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_ab1f77ff513accfba4a6f550730d717c5}{FMKCPU\+\_\+\+Set\+\_\+\+Hw\+Clock}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dc}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port}} f\+\_\+clk\+Port\+\_\+e, \mbox{\hyperlink{_f_m_k___c_p_u_8h_a7006a8100165413151d17dbe4b3a2def}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port\+Ope}} f\+\_\+\+Ope\+State\+\_\+e)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to update the module state.~\newline
+. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_abe28cb7add1078e41b94092380e173be}{FMKCPU\+\_\+\+Set\+\_\+\+Sys\+Clock\+Cfg}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the system clock configuration.~\newline
+. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3781183498c848aa58c960c873f70094}{FMKCPU\+\_\+\+Set\+\_\+\+Delay}} (\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+delayms\+\_\+u32)
+\begin{DoxyCompactList}\small\item\em Set a Delay.~\newline
+. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_aad5afa0db90627a3c1b6a20c32a5c896}{FMKCPU\+\_\+\+Get\+\_\+\+Tick}} (\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} \texorpdfstring{$\ast$}{*}f\+\_\+tickms\+\_\+pu32)
+\begin{DoxyCompactList}\small\item\em Get a tick from clock freqency.~\newline
+. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_ac40b45930ed1477a125eb47492be18b4}{FMKCPU\+\_\+\+Set\+\_\+\+NVICState}} (t\+\_\+e\+FMKCPU\+\_\+\+IRQNType f\+\_\+\+IRQN\+\_\+e, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1602ad08e}{t\+\_\+e\+FMKCPU\+\_\+\+NVICPriority}} f\+\_\+priority\+\_\+e, \mbox{\hyperlink{_f_m_k___c_p_u_8h_ad864f2490ecd7dc3b94314bf65f1d9ef}{t\+\_\+e\+FMKCPU\+\_\+\+NVIC\+\_\+\+Ope}} f\+\_\+\+Ope\+State\+\_\+e)
+\begin{DoxyCompactList}\small\item\em Set the priority for a NVIC and the state ON/\+OFF~\newline
+. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_ab1f77ff513accfba4a6f550730d717c5}{FMKCPU\+\_\+\+Set\+\_\+\+Hw\+Clock}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dc}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port}} f\+\_\+clk\+Port\+\_\+e, \mbox{\hyperlink{_f_m_k___c_p_u_8h_a7006a8100165413151d17dbe4b3a2def}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port\+Ope}} f\+\_\+\+Ope\+State\+\_\+e)
+\begin{DoxyCompactList}\small\item\em Set the RCC clock state.~\newline
+. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a60e3806dec6978b25e9d6a239be247eb}{FMKCPU\+\_\+\+Set\+\_\+\+Wwdg\+Cfg}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7}{t\+\_\+e\+FMKCPu\+\_\+\+Wwdg\+Reset\+Period}} f\+\_\+period\+\_\+e)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the watchdog configuration.~\newline
+. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a2e6c15b2b4e3465e9319dc2b72f1564e}{FMKCPU\+\_\+\+Reset\+Wwdg}} (void)
-\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a96ee1f495e77d8299b93cce46fa60513}{FMKCPU\+\_\+\+Set\+\_\+\+PWMChannel\+Cfg}} (\mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\+\_\+s\+FMKCPU\+\_\+\+Bsp\+Timer\+Cfg}} f\+\_\+bsp\+Cfg\+\_\+s, \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+pwm\+Freq\+\_\+u32)
-\item 
+\begin{DoxyCompactList}\small\item\em Reset the watchdogs coutner.~\newline
+. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a41754534bb3a39ff40aee1681e6bb176}{FMKCPU\+\_\+\+Set\+\_\+\+PWMChannel\+Cfg}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}} f\+\_\+timer\+\_\+e, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}} f\+\_\+channel\+\_\+e, \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+pwm\+Freq\+\_\+u32)
+\begin{DoxyCompactList}\small\item\em Configure a timer channel in PWM configuration.~\newline
+. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a28fc139596ec5b24369d085c66ae8b69}{FMKCPU\+\_\+\+Set\+\_\+\+PWMChannel\+Duty}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}} f\+\_\+timer\+\_\+e, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}} f\+\_\+channel\+\_\+e, \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} f\+\_\+duty\+Cycle\+\_\+u16)
-\item 
+\begin{DoxyCompactList}\small\item\em ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3034498766ccde11c32215ce5d4c4b94}{FMKCPU\+\_\+\+Get\+\_\+\+PWMChannel\+Duty}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}} f\+\_\+timer\+\_\+e, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}} f\+\_\+channel\+\_\+e, \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} \texorpdfstring{$\ast$}{*}f\+\_\+duty\+Cycle\+\_\+u16)
 \item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a78c2c00b3a69ae53b3993fc5436cd466}{FMKCPU\+\_\+\+Set\+\_\+\+ICChannel\+Cfg}} (\mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\+\_\+s\+FMKCPU\+\_\+\+Bsp\+Timer\+Cfg}} f\+\_\+bsp\+Cfg\+\_\+s, \mbox{\hyperlink{_f_m_k___c_p_u_8h_aba9aa13b09efd7f1d8aa2805ff38b301}{t\+\_\+e\+FMKCPU\+\_\+\+Chnl\+Meas\+Trigger}} f\+\_\+\+Meas\+Trigger\+\_\+e)
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_a0a666a73c0dd731eeef2e8ca3b4874a1}{FMKCPU\+\_\+\+Set\+\_\+\+ICChannel\+Cfg}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}} f\+\_\+timer\+\_\+e, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}} f\+\_\+channel\+\_\+e, \mbox{\hyperlink{_f_m_k___c_p_u_8h_aba9aa13b09efd7f1d8aa2805ff38b301}{t\+\_\+e\+FMKCPU\+\_\+\+Chnl\+Meas\+Trigger}} f\+\_\+\+Meas\+Trigger\+\_\+e)
 \item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_p_u_8h_abdcfd49a46e1ec2a7e5d958946e82dea}{FMKCPU\+\_\+\+Set\+\_\+\+Evnt\+Channel\+Cfg}} (\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a3e2f7da9e5fe4b2768ed682326f65c23}{t\+\_\+e\+FMKCPU\+\_\+\+Event\+Channel}} f\+\_\+evnt\+Channel\+\_\+e, \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+periodms\+\_\+u32, \mbox{\hyperlink{_f_m_k___c_p_u_8h_a5bf4a85a03bebbab937c29f89146a888}{t\+\_\+cb\+FMKCPU\+\_\+\+Interrupt\+Chnl}} f\+\_\+\+ITChannel\+\_\+cb)
 \item 
@@ -111,6 +124,10 @@ void \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3781183498c848aa58c960c873f70094}{FMKCP
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a5bf4a85a03bebbab937c29f89146a888} 
 typedef void t\+\_\+cb\+FMKCPU\+\_\+\+Interrupt\+Chnl(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}} f\+\_\+timer\+\_\+e, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}} f\+\_\+channel\+\_\+e)}
 
+\begin{DoxyNote}{Note}
+~\newline
+
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em } & \\
@@ -258,6 +275,16 @@ FMKCPU\+\_\+\+NVIC\+\_\+\+OPE\+\_\+\+NB&\\
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_ada5ebc941ad521d4338966e80e698f15} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Cyclic (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
 
+
+
+Perform all Cyclic action for this module.~\newline
+. 
+
+\begin{DoxyNote}{Note}
+In pre\+Ope mode this module makes the configuration of the system clock and watchdogs configuration.~\newline
+ In ope mode, this module makesdiag on timer channel currently used, and called the appropriate callback if an error occured + call APPDEM to reference error.~\newline
+
+\end{DoxyNote}
 \Hypertarget{_f_m_k___c_p_u_8h_a3034498766ccde11c32215ce5d4c4b94}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Get\_PWMChannelDuty@{FMKCPU\_Get\_PWMChannelDuty}}
 \index{FMKCPU\_Get\_PWMChannelDuty@{FMKCPU\_Get\_PWMChannelDuty}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Get\_PWMChannelDuty()}{FMKCPU\_Get\_PWMChannelDuty()}}
@@ -270,24 +297,80 @@ FMKCPU\+\_\+\+NVIC\+\_\+\+OPE\+\_\+\+NB&\\
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_aad5afa0db90627a3c1b6a20c32a5c896} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Get\+\_\+\+Tick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+tickms\+\_\+pu32}{}\end{DoxyParamCaption})}
 
+
+
+Get a tick from clock freqency.~\newline
+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+tickms\+\_\+pu32} & \+: store the tick value in millisecond.~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a6e288ccffa3577ad6162eaf01d9d29c8}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_p_u_8h_ab0e031ae820fd8661f0a1be174462853}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_GetState@{FMKCPU\_GetState}}
 \index{FMKCPU\_GetState@{FMKCPU\_GetState}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_GetState()}{FMKCPU\_GetState()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_ab0e031ae820fd8661f0a1be174462853} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Get\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+\+State\+\_\+pe}{}\end{DoxyParamCaption})}
 
+
+
+Function to know the module state.~\newline
+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+State\+\_\+pe} & \+: store the value, value from \doxylink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NUL \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_p_u_8h_a3f8a0b3f948f251f4a49615b99214567}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Init@{FMKCPU\_Init}}
 \index{FMKCPU\_Init@{FMKCPU\_Init}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Init()}{FMKCPU\_Init()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a3f8a0b3f948f251f4a49615b99214567} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
 
+
+
+Perform all Init action for this module.~\newline
+. 
+
+\begin{DoxyNote}{Note}
+Set to default value all globals structure that store information for each signals.~\newline
+
+\end{DoxyNote}
 \Hypertarget{_f_m_k___c_p_u_8h_a2e6c15b2b4e3465e9319dc2b72f1564e}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_ResetWwdg@{FMKCPU\_ResetWwdg}}
 \index{FMKCPU\_ResetWwdg@{FMKCPU\_ResetWwdg}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_ResetWwdg()}{FMKCPU\_ResetWwdg()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a2e6c15b2b4e3465e9319dc2b72f1564e} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Reset\+Wwdg (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
 
+
+
+Reset the watchdogs coutner.~\newline
+. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a6e288ccffa3577ad6162eaf01d9d29c8}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_p_u_8h_adb8dfb21f4aac3d65a45ac8eed341c7a}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_ChannelState@{FMKCPU\_Set\_ChannelState}}
 \index{FMKCPU\_Set\_ChannelState@{FMKCPU\_Set\_ChannelState}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Set\_ChannelState()}{FMKCPU\_Set\_ChannelState()}}
@@ -300,6 +383,17 @@ FMKCPU\+\_\+\+NVIC\+\_\+\+OPE\+\_\+\+NB&\\
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a3781183498c848aa58c960c873f70094} 
 void FMKCPU\+\_\+\+Set\+\_\+\+Delay (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}}}]{f\+\_\+delayms\+\_\+u32}{}\end{DoxyParamCaption})}
 
+
+
+Set a Delay.~\newline
+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+delayms\+\_\+u32} & \+: period delay in millisecond.~\newline
+\\
+\hline
+\end{DoxyParams}
 \Hypertarget{_f_m_k___c_p_u_8h_abdcfd49a46e1ec2a7e5d958946e82dea}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_EvntChannelCfg@{FMKCPU\_Set\_EvntChannelCfg}}
 \index{FMKCPU\_Set\_EvntChannelCfg@{FMKCPU\_Set\_EvntChannelCfg}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Set\_EvntChannelCfg()}{FMKCPU\_Set\_EvntChannelCfg()}}
@@ -312,11 +406,38 @@ void FMKCPU\+\_\+\+Set\+\_\+\+Delay (\begin{DoxyParamCaption}\item[{\mbox{\hyper
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_ab1f77ff513accfba4a6f550730d717c5} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+Hw\+Clock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dc}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port}}}]{f\+\_\+clk\+Port\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___c_p_u_8h_a7006a8100165413151d17dbe4b3a2def}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port\+Ope}}}]{f\+\_\+\+Ope\+State\+\_\+e}{}\end{DoxyParamCaption})}
 
-\Hypertarget{_f_m_k___c_p_u_8h_a78c2c00b3a69ae53b3993fc5436cd466}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_ICChannelCfg@{FMKCPU\_Set\_ICChannelCfg}}
+
+
+Set the RCC clock state.~\newline
+. 
+
+\begin{DoxyNote}{Note}
+In order to write down bit in everry register (ADC,GPIO,TIM,etc), the RCC clock has to be enable first. This function enable or disable the RCC clock reference to f\+\_\+clk\+Port\+\_\+e.~\newline
+
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+clk\+Port\+\_\+e} & \+: enum value for RCC clock, value from \doxylink{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dc}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+Ope\+State\+\_\+e} & \+: enum value for priority, value from \doxylink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1602ad08e}{t\+\_\+e\+FMKCPU\+\_\+\+NVICPriority}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+NOT\+\_\+\+SUPPORTED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a5e31e38d764592ef1c58261b0f50fde2}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+NOT\+\_\+\+SUPPORTED} \\
+\hline
+{\em RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969aa5710a83f0780f20a2e9fc5f53f47bc2}{RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{_f_m_k___c_p_u_8h_a0a666a73c0dd731eeef2e8ca3b4874a1}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_ICChannelCfg@{FMKCPU\_Set\_ICChannelCfg}}
 \index{FMKCPU\_Set\_ICChannelCfg@{FMKCPU\_Set\_ICChannelCfg}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Set\_ICChannelCfg()}{FMKCPU\_Set\_ICChannelCfg()}}
-{\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a78c2c00b3a69ae53b3993fc5436cd466} 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+ICChannel\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\+\_\+s\+FMKCPU\+\_\+\+Bsp\+Timer\+Cfg}}}]{f\+\_\+bsp\+Cfg\+\_\+s}{, }\item[{\mbox{\hyperlink{_f_m_k___c_p_u_8h_aba9aa13b09efd7f1d8aa2805ff38b301}{t\+\_\+e\+FMKCPU\+\_\+\+Chnl\+Meas\+Trigger}}}]{f\+\_\+\+Meas\+Trigger\+\_\+e}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a0a666a73c0dd731eeef2e8ca3b4874a1} 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+ICChannel\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}}}]{f\+\_\+timer\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}}}]{f\+\_\+channel\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___c_p_u_8h_aba9aa13b09efd7f1d8aa2805ff38b301}{t\+\_\+e\+FMKCPU\+\_\+\+Chnl\+Meas\+Trigger}}}]{f\+\_\+\+Meas\+Trigger\+\_\+e}{}\end{DoxyParamCaption})}
 
 \Hypertarget{_f_m_k___c_p_u_8h_ac40b45930ed1477a125eb47492be18b4}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_NVICState@{FMKCPU\_Set\_NVICState}}
 \index{FMKCPU\_Set\_NVICState@{FMKCPU\_Set\_NVICState}!FMK\_CPU.h@{FMK\_CPU.h}}
@@ -324,33 +445,185 @@ void FMKCPU\+\_\+\+Set\+\_\+\+Delay (\begin{DoxyParamCaption}\item[{\mbox{\hyper
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_ac40b45930ed1477a125eb47492be18b4} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+NVICState (\begin{DoxyParamCaption}\item[{t\+\_\+e\+FMKCPU\+\_\+\+IRQNType}]{f\+\_\+\+IRQN\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1602ad08e}{t\+\_\+e\+FMKCPU\+\_\+\+NVICPriority}}}]{f\+\_\+priority\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___c_p_u_8h_ad864f2490ecd7dc3b94314bf65f1d9ef}{t\+\_\+e\+FMKCPU\+\_\+\+NVIC\+\_\+\+Ope}}}]{f\+\_\+\+Ope\+State\+\_\+e}{}\end{DoxyParamCaption})}
 
-\Hypertarget{_f_m_k___c_p_u_8h_a96ee1f495e77d8299b93cce46fa60513}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_PWMChannelCfg@{FMKCPU\_Set\_PWMChannelCfg}}
+
+
+Set the priority for a NVIC and the state ON/\+OFF~\newline
+. 
+
+\begin{DoxyNote}{Note}
+This function is called to set the interruption priority for f\+\_\+\+IRQN\+\_\+e interruption.~\newline
+ If an interruption (2) occur while another Interruption (1) is running, depending on the value of f\+\_\+priority\+\_\+e (2) will interruot or not the interruption (1).~\newline
+ This function also disable the IRQN interruption if needed.~\newline
+ 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+IRQN\+\_\+e} & \+: enum value for IRQN type, value from t\+\_\+e\+FMKCPU\+\_\+\+IRQNType \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+priority\+\_\+e} & \+: enum value for priority, value from \doxylink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1602ad08e}{t\+\_\+e\+FMKCPU\+\_\+\+NVICPriority} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+Ope\+State\+\_\+e} & \+: enum value for pose state,value from \doxylink{_f_m_k___c_p_u_8h_ad864f2490ecd7dc3b94314bf65f1d9ef}{t\+\_\+e\+FMKCPU\+\_\+\+NVIC\+\_\+\+Ope}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+NOT\+\_\+\+SUPPORTED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a5e31e38d764592ef1c58261b0f50fde2}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+NOT\+\_\+\+SUPPORTED} \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{_f_m_k___c_p_u_8h_a41754534bb3a39ff40aee1681e6bb176}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_PWMChannelCfg@{FMKCPU\_Set\_PWMChannelCfg}}
 \index{FMKCPU\_Set\_PWMChannelCfg@{FMKCPU\_Set\_PWMChannelCfg}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Set\_PWMChannelCfg()}{FMKCPU\_Set\_PWMChannelCfg()}}
-{\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a96ee1f495e77d8299b93cce46fa60513} 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+PWMChannel\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\+\_\+s\+FMKCPU\+\_\+\+Bsp\+Timer\+Cfg}}}]{f\+\_\+bsp\+Cfg\+\_\+s}{, }\item[{\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}}}]{f\+\_\+pwm\+Freq\+\_\+u32}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a41754534bb3a39ff40aee1681e6bb176} 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+PWMChannel\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}}}]{f\+\_\+timer\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}}}]{f\+\_\+channel\+\_\+e}{, }\item[{\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}}}]{f\+\_\+pwm\+Freq\+\_\+u32}{}\end{DoxyParamCaption})}
 
+
+
+Configure a timer channel in PWM configuration.~\newline
+. 
+
+\begin{DoxyNote}{Note}
+First, this configuration set the bsp timer cfg in PWM mode.~\newline
+ Once it\textquotesingle{}s done, this function configure the bsp channel in PWM mode too.~\newline
+ IMPORTANT, the PWM generation is based on a timer configuration which share multiple channel, as so, frequency is shared by all PWM channel.~\newline
+ In result, the modification of the timer configuration reverbate for all channels.~\newline
+ ~\newline
+
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+timer\+\_\+e} & \+: enum value for the priority, value from \doxylink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+channel\+\_\+e} & \+: enum value for the channel, value from \doxylink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+pwm\+Freq\+\_\+u32} & \+: the frequency timer.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a6e288ccffa3577ad6162eaf01d9d29c8}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+RESULT} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969af8a1af8b0532c8faae8d4cc5be304659}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+RESULT} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_p_u_8h_a28fc139596ec5b24369d085c66ae8b69}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_PWMChannelDuty@{FMKCPU\_Set\_PWMChannelDuty}}
 \index{FMKCPU\_Set\_PWMChannelDuty@{FMKCPU\_Set\_PWMChannelDuty}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Set\_PWMChannelDuty()}{FMKCPU\_Set\_PWMChannelDuty()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a28fc139596ec5b24369d085c66ae8b69} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+PWMChannel\+Duty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer}}}]{f\+\_\+timer\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl}}}]{f\+\_\+channel\+\_\+e}{, }\item[{\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}}}]{f\+\_\+duty\+Cycle\+\_\+u16}{}\end{DoxyParamCaption})}
 
+
+
+~\newline
+ 
+
+\begin{DoxyNote}{Note}
+~\newline
+
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+timer\+\_\+e} & \+: enum value for the priority, value from \doxylink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\+\_\+e\+FMKCPU\+\_\+\+Timer} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+channel\+\_\+e} & \+: enum value for the channel, value from \doxylink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\+\_\+e\+FMKCPU\+\_\+\+Interrupt\+Chnl} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+pwm\+Freq\+\_\+u32} & \+: the frequency timer.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a6e288ccffa3577ad6162eaf01d9d29c8}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+RESULT} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969af8a1af8b0532c8faae8d4cc5be304659}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+RESULT} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_p_u_8h_abe28cb7add1078e41b94092380e173be}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_SysClockCfg@{FMKCPU\_Set\_SysClockCfg}}
 \index{FMKCPU\_Set\_SysClockCfg@{FMKCPU\_Set\_SysClockCfg}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Set\_SysClockCfg()}{FMKCPU\_Set\_SysClockCfg()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_abe28cb7add1078e41b94092380e173be} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+Sys\+Clock\+Cfg (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
 
+
+
+Set the system clock configuration.~\newline
+. 
+
+\begin{DoxyNote}{Note}
+This function has to be first one to be call in the Software.~\newline
+ Configure the Clocks used and the frequency for each clock.~\newline
+ 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+State\+\_\+pe} & \+: store the value, value from \doxylink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a6e288ccffa3577ad6162eaf01d9d29c8}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_p_u_8h_a60e3806dec6978b25e9d6a239be247eb}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_Set\_WwdgCfg@{FMKCPU\_Set\_WwdgCfg}}
 \index{FMKCPU\_Set\_WwdgCfg@{FMKCPU\_Set\_WwdgCfg}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_Set\_WwdgCfg()}{FMKCPU\_Set\_WwdgCfg()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_a60e3806dec6978b25e9d6a239be247eb} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+\_\+\+Wwdg\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7}{t\+\_\+e\+FMKCPu\+\_\+\+Wwdg\+Reset\+Period}}}]{f\+\_\+period\+\_\+e}{}\end{DoxyParamCaption})}
 
+
+
+Set the watchdog configuration.~\newline
+. 
+
+\begin{DoxyNote}{Note}
+Set the watchdogs configuration and active it imeddiately.~\newline
+ ~\newline
+
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+period\+\_\+e} & \+: enum value for period before reset, value from \doxylink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7}{t\+\_\+e\+FMKCPu\+\_\+\+Wwdg\+Reset\+Period}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a6e288ccffa3577ad6162eaf01d9d29c8}{RC\+\_\+\+ERROR\+\_\+\+WRONG\+\_\+\+STATE} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_p_u_8h_acaca75f0d8867a5b3e0a2bde245e79a9}\index{FMK\_CPU.h@{FMK\_CPU.h}!FMKCPU\_SetState@{FMKCPU\_SetState}}
 \index{FMKCPU\_SetState@{FMKCPU\_SetState}!FMK\_CPU.h@{FMK\_CPU.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_SetState()}{FMKCPU\_SetState()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_p_u_8h_acaca75f0d8867a5b3e0a2bde245e79a9} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCPU\+\_\+\+Set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}}}]{f\+\_\+\+State\+\_\+e}{}\end{DoxyParamCaption})}
 
+
+
+Function to update the module state.~\newline
+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+State\+\_\+e} & \+: the new value, value from \doxylink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+\end{DoxyRetVals}

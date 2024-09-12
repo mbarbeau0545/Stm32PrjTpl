@@ -28,6 +28,7 @@
     {
 
         // Errors
+        RC_ERROR_ALREADY_CONFIGURED = -17,              /**< The operation is not accepted */
         RC_ERROR_COPY_FAILED = -16,                      /**< The copy between two variable failed*/
         RC_ERROR_PTR_NULL = -15,                         /**< At least one of the pointer is null*/
         RC_ERROR_PARAM_INVALID = -14,                   /**< At least one of the parameters is not in the allowed range. */
@@ -52,15 +53,14 @@
         RC_WARNING_NO_OPERATION = 1,                    /**< No error occurred, but there was no operation to execute. */
         RC_WARNING_BUSY = 2,                            /**< The operation is accepted, but the process was already busy, */
                                                         /**< which means the previous operation has been stopped. */
-        RC_WARNING_ALREADY_CONFIGURED = 3,              /**< The operation is accepted, but the user must be aware that */
                                                         /**< a previous configuration has been lost. */
-        RC_WARNING_WRONG_CONFIG = 4,                     /**< The configuration is not consistent. */
-        RC_WARNING_MISSING_CONFIG = 5,                  /**< Some configuration is missing. */
-        RC_WARNING_INIT_PROBLEM = 6,                    /**< No initialization done, process performed as default mode. */
-        RC_WARNING_PENDING = 7,                         /**< Operation accepted and started, but the result is not immediate. */
-        RC_WARNING_NOT_ALLOWED = 8,                     /**< Not allowed to perform the requested operation. */
-        RC_WARNING_LIMIT_REACHED = 9,                   /**< The operation cannot be done because a limit has been reached. */
-        RC_WARNING_WRONG_RESULT = 10,                  /**< The operation has succeeded, but the result is incorrect. */
+        RC_WARNING_WRONG_CONFIG = 3,                     /**< The configuration is not consistent. */
+        RC_WARNING_MISSING_CONFIG = 4,                  /**< Some configuration is missing. */
+        RC_WARNING_INIT_PROBLEM = 5,                    /**< No initialization done, process performed as default mode. */
+        RC_WARNING_PENDING = 6,                         /**< Operation accepted and started, but the result is not immediate. */
+        RC_WARNING_NOT_ALLOWED = 7,                     /**< Not allowed to perform the requested operation. */
+        RC_WARNING_LIMIT_REACHED = 8,                   /**< The operation cannot be done because a limit has been reached. */
+        RC_WARNING_WRONG_RESULT = 9,                  /**< The operation has succeeded, but the result is incorrect. */
 
     } t_eReturnState;
 
@@ -68,8 +68,8 @@
     typedef enum 
     {
         STATE_CYCLIC_PREOPE = 0,            /**< The module needs to make actions before the operational state */
-        STATE_CYCLIC_OPE,                   /**< The module perform operational action */
-        STATE_CYCLIC_BUSY,                  /**< The module is busy doing other things */
+        STATE_CYCLIC_OPE,                   /**< The module perform operational cyclic action */
+        STATE_CYCLIC_BUSY,                  /**< The module is busy doing other things, cylic operation are not executed*/
         STATE_CYCLIC_WAITING,               /**< The module is waiting ready to ope_state and wait system signal */
         STATE_CYCLIC_ERROR,                 /**< The module is in error state, Deprecated mode */
     } t_eCyclicFuncState;

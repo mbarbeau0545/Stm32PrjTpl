@@ -11,7 +11,7 @@ var searchData=
   ['c_5fappsns_5fsyssns_5fapf_8',['c_AppSns_SysSns_apf',['../_a_p_p_s_n_s___config_private_8h.html#a1e23fae52e6f446f58b0aca54dce4f54',1,'APPSNS_ConfigPrivate.h']]],
   ['c_5fappsys_5fmodulefunc_5fapf_9',['c_AppSys_ModuleFunc_apf',['../_a_p_p_s_y_s___config_private_8h.html#a62abb39dafd96e62536c5bf36e4454c9',1,'APPSYS_ConfigPrivate.h']]],
   ['c_5fbsppinmapping_5fua32_10',['c_BspPinMapping_ua32',['../_f_m_k_i_o___config_private_8h.html#ad7a1aefc83b28ffe555b99dc190ea15b',1,'FMKIO_ConfigPrivate.h']]],
-  ['c_5ffmkcpu_5fbsptimfunc_5fapf_11',['c_FMKCPU_BspTimFunc_apf',['../_f_m_k_c_p_u___config_private_8h.html#a246446fc4d951f64d59b9dfaf6801820',1,'FMKCPU_ConfigPrivate.h']]],
+  ['c_5ffmkcpu_5fbsptimfunc_5fapf_11',['c_FMKCPU_BspTimFunc_apf',['../_f_m_k_c_p_u___config_private_8h.html#a3aa77a2c8612b5296a19740fe80256c8',1,'FMKCPU_ConfigPrivate.h']]],
   ['c_5ffmkcpu_5fclkfunctions_5fapcb_12',['c_FMKCPU_ClkFunctions_apcb',['../_f_m_k_c_p_u___config_private_8h.html#ab5bf759728856b8e0dd57529b4fb8903',1,'FMKCPU_ConfigPrivate.h']]],
   ['c_5ffmkcpu_5fevnttimercfg_5fas_13',['c_FMKCPU_EvntTimerCfg_as',['../_f_m_k_c_p_u___config_private_8h.html#a306a37e409d033a6facde59372f32716',1,'FMKCPU_ConfigPrivate.h']]],
   ['c_5ffmkcpu_5firqnpriority_5fae_14',['c_FMKCPU_IRQNPriority_ae',['../_f_m_k_c_p_u___config_private_8h.html#a710f03e5271befea3245aacc199e5463',1,'FMKCPU_ConfigPrivate.h']]],
@@ -23,9 +23,9 @@ var searchData=
   ['c_5finfreqsigbspmap_5fas_20',['c_InFreqSigBspMap_as',['../_f_m_k_i_o___config_private_8h.html#a4a82609dfe068f66ea277795f8f184ee',1,'FMKIO_ConfigPrivate.h']]],
   ['c_5foutdigsigbspmap_5fas_21',['c_OutDigSigBspMap_as',['../_f_m_k_i_o___config_private_8h.html#a692561f27e9c034d3c160ef7b9488511',1,'FMKIO_ConfigPrivate.h']]],
   ['c_5foutpwmsigbspmap_5fas_22',['c_OutPwmSigBspMap_as',['../_f_m_k_i_o___config_private_8h.html#a75d31728d11b5d3d691ac9fc4122467f',1,'FMKIO_ConfigPrivate.h']]],
-  ['channel_5fas_23',['Channel_as',['../structt__s_f_m_k_c_d_a___adc_info.html#a5ec4324ea8276006b368a6e3af459b1c',1,'t_sFMKCDA_AdcInfo::Channel_as'],['../structt__s_f_m_k_c_p_u___timer_info.html#a3dd227aa22a653f4b443073f65006a36',1,'t_sFMKCPU_TimerInfo::Channel_as']]],
+  ['channel_5fas_23',['Channel_as',['../structt__s_f_m_k_c_d_a___adc_info.html#a5ec4324ea8276006b368a6e3af459b1c',1,'t_sFMKCDA_AdcInfo::Channel_as'],['../structt__s_f_m_k_c_p_u___timer_info.html#aec054679a0a9852d69514e218659ea88',1,'t_sFMKCPU_TimerInfo::Channel_as']]],
   ['channel_5fe_24',['channel_e',['../structt__s_f_m_k_c_p_u___bsp_timer_cfg.html#a60730585db794d1d1a5277a710ab946c',1,'t_sFMKCPU_BspTimerCfg::channel_e'],['../structt__s_f_m_k_i_o___bsp_timer_sig_cfg.html#a60730585db794d1d1a5277a710ab946c',1,'t_sFMKIO_BspTimerSigCfg::channel_e']]],
-  ['chnl_5fcb_25',['chnl_cb',['../structt__s_f_m_k_c_p_u___c_hnl_info.html#afa77f866378823d6702c3eb387d500ae',1,'t_sFMKCPU_ChnlInfo']]],
+  ['chnl_5fcb_25',['chnl_cb',['../structt__s_f_m_k_c_p_u___chnl_info.html#afa77f866378823d6702c3eb387d500ae',1,'t_sFMKCPU_ChnlInfo']]],
   ['clock_5fe_26',['clock_e',['../structt__s_f_m_k_c_d_a___adc_info.html#a13df327cc2145d1c2a1ca2caaff5772d',1,'t_sFMKCDA_AdcInfo::clock_e'],['../structt__s_f_m_k_c_p_u___timer_info.html#a13df327cc2145d1c2a1ca2caaff5772d',1,'t_sFMKCPU_TimerInfo::clock_e']]],
   ['cyclic_5fpcb_27',['Cyclic_pcb',['../structt__s_a_p_p_a_c_t___sys_drv_func.html#a9d857158b61af7580d15e13209565ed2',1,'t_sAPPACT_SysDrvFunc::Cyclic_pcb'],['../structt__s_a_p_p_s_n_s___sys_drv_func.html#a0cdd105a36b8b3d07b09a416b423ba73',1,'t_sAPPSNS_SysDrvFunc::Cyclic_pcb']]]
 ];

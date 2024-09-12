@@ -20,7 +20,7 @@
     // ********************************************************************
     #include "./APPSNS_ConfigPublic.h"
 
-    #include "../ConfigSpecific/APP_SNS_CFGSPEC/APPSNS_SPEC_Humidity.h"
+    #include "../ConfigSpecific/AppSns_ConfigSpecific/APPSNS_SPEC_Humidity.h"
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -39,55 +39,28 @@
 	//-----------------------------ENUM TYPES-----------------------------//
 
     //-----------------------------TYPEDEF TYPES---------------------------//
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *	@brief      Set a sensor configuration 
+
     */
     typedef t_eReturnState (t_cbAppSns_SetSnsCfg)(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
+    *	@brief      get value for a sensor
     *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
+    *	@param[in] f_SnsValue_ps : structure to store value and validity
     *
     */
     typedef t_eReturnState (t_cbAppSns_GetSnsValue)(t_sAPPSNS_ValueInfo *f_SnsValue_ps);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *	@brief      Set the driver init function
     */
     typedef t_eReturnState (t_cbAppSns_DrvInit)(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
+    *	@brief      Set the driver cyclic function
     *
     */
     typedef t_eReturnState (t_cbAppSns_DrvCyclic)(void);
@@ -96,13 +69,14 @@
 	/* CAUTION : Automatic generated code section : Start */
 
 	/* CAUTION : Automatic generated code section : End */
-	
+	/**< Structure to store needed functions for a sensor */
     typedef struct 
     {
-        t_cbAppSns_SetSnsCfg      * SetCfg_pcb;
-        t_cbAppSns_GetSnsValue    * GetValue_pcb;
+        t_cbAppSns_SetSnsCfg      * SetCfg_pcb;         /**< Reference to "set config" function */
+        t_cbAppSns_GetSnsValue    * GetValue_pcb;       /**< Reference to "get value" function */
     } t_sAPPSNS_SysSnsFunc;
 
+    /**< Structure to store needed functions for a driver */
     typedef struct 
     {
         t_cbAppSns_DrvInit   * Init_pcb;
@@ -116,6 +90,7 @@
     // *                      Variables
     // ********************************************************************
     // Flag automatic generate code
+    /**< Variable for System Sensors functions*/
     const t_sAPPSNS_SysSnsFunc c_AppSns_SysSns_apf[APPSNS_SNS_NB] = {
         {APPSNS_SPEC_Humidity_SetCfg,    APPSNS_SPEC_Humidity_GetValue},
         {APPSNS_SPEC_Humidity_SetCfg,    APPSNS_SPEC_Humidity_GetValue},
@@ -127,17 +102,20 @@
         {(t_cbAppSns_DrvInit *)NULL_FONCTION , (t_cbAppSns_DrvCyclic *)NULL_FONCTION},
     };
     // Flag automatic generate code
+    /**< Variable for System Sensors Drivers functions*/
     const t_eAPPSNS_SnsMeasType c_AppSns_SnsMeasType_ae[APPSNS_SNS_NB] = {
         APPSNS_MEASTYPE_RAW, // APPSNS_SNS_1
         APPSNS_MEASTYPE_RAW, // APPSNS_SNS_2
     };
     // Flag automatic generate code
+    /**< Variable for Sensors Drivers State*/
     const t_eAPPSNS_DrvState c_AppSns_DrvState_ae[APPSNS_DRV_NB] = {
         APPSNS_DRIVER_ENABLE, // APPSNS_DRV_JOY_1
         APPSNS_DRIVER_ENABLE, // APPSNS_DRV_JOY_2
     };
 
     // Flag automatic generate code
+    /**< Variable for Sensors State*/
     const t_eAPPSNS_SensorState c_AppSns_SnsState_ae[APPSNS_SNS_NB] = {
         APPSNS_SENSOR_ENABLE, // APPSNS_SNS_1
         APPSNS_SENSOR_ENABLE, // APPSNS_SNS_2

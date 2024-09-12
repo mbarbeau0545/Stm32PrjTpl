@@ -2207,21 +2207,21 @@ u {
 	text-decoration: underline;
 }
 
-note>summary {
+details>summary {
   list-style-type: none;
 }
 
-note > summary::-webkit-note-marker {
+details > summary::-webkit-details-marker {
     display: none;
 }
 
-note>summary::before {
+details>summary::before {
     content: "\25ba";
     padding-right:4px;
     font-size: 80%;
 }
 
-note[open]>summary::before {
+details[open]>summary::before {
     content: "\25bc";
     padding-right:4px;
     font-size: 80%;

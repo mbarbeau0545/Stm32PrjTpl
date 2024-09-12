@@ -2,7 +2,7 @@ var searchData=
 [
   ['g_5fadcbuffer_5fas_0',['g_AdcBuffer_as',['../_f_m_k___c_d_a_8c.html#ad7f4d4acce16a170824ba3618e289727',1,'FMK_CDA.c']]],
   ['g_5fadcinfo_5fas_1',['g_AdcInfo_as',['../_f_m_k___c_d_a_8c.html#ac6f90e48fcbd4a21a390f18e799e9e95',1,'FMK_CDA.c']]],
-  ['g_5fcounterrank_5fu8_2',['g_counterRank_u8',['../_f_m_k___c_d_a_8c.html#aa091dfd514bcf3de3d03aa469cf4457d',1,'FMK_CDA.c']]],
+  ['g_5fcounterrank_5fau8_2',['g_counterRank_au8',['../_f_m_k___c_d_a_8c.html#ad6418df7abc5bc7f2a45d5af41ae6d46',1,'FMK_CDA.c']]],
   ['g_5finanasiginfo_5fas_3',['g_InAnaSigInfo_as',['../_f_m_k___i_o_8c.html#aea7da4761390d2d3deb1b49d6bfd728b',1,'FMK_IO.c']]],
   ['g_5findigsiginfo_5fas_4',['g_InDigSigInfo_as',['../_f_m_k___i_o_8c.html#a53d22296a81830900d065abe8a20b46c',1,'FMK_IO.c']]],
   ['g_5finevntsiginfo_5fas_5',['g_InEvntSigInfo_as',['../_f_m_k___i_o_8c.html#a484d7cb701aea551b332590dd6cab0f2',1,'FMK_IO.c']]],

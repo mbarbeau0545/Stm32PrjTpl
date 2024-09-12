@@ -24,15 +24,15 @@
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
-    #define FMKCPU_IRQN_TYPE_NB    ((t_uint8)28)       /**<The number of IRQN Type, this number should be the same as IRQn_Type_NB */
-    #define FMKCPU_HSI_CLOCK_OSC   ((t_uint8)8)        /**<  HSI oscillatator equals to 8 MHz */
-    #define FMKCPU_TIMER_CLOCK_OSC ((t_uint8)8)        /**<  Frequency of the timer are 8 MHz */
-    #define FMKCPU_PWM_PSC         ((t_uint8)50)       /**<  for every PWM the Prescaler is a constant */
-    #define FMKCPU_IC_PSC          ((t_uint8)0)        /**<  for every InputCOmpare the Prescaler is a constant */
-    #define FMKCPU_IC_ARR          ((t_uint16)0xFFFF)       /**<  for every InputCOmpare the Prescaler is a constant */
-    #define FMKCPU_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC * 1000)- (t_uint16)1) /**<  The prescaler use for evnt timer, having 1000Hz (1ms) */
+    #define FMKCPU_IRQN_TYPE_NB          ((t_uint8)28)       /**<The number of IRQN Type, this number should be the same as IRQn_Type_NB */
+    #define FMKCPU_HSI_CLOCK_OSC_MHZ     ((t_uint8)8)        /**<  HSI oscillatator equals to 8 MHz */
+    #define FMKCPU_TIMER_CLOCK_OSC_MHZ   ((t_uint8)8)        /**<  Frequency of the timer are 8 MHz */
+    #define FMKCPU_TIMER_PWM_PSC         ((t_uint8)50)       /**<  for every PWM the Prescaler is a constant */
+    #define FMKCPU_TIMER_IC_PSC          ((t_uint8)0)        /**<  for every InputCOmpare the Prescaler is a constant */
+    #define FMKCPU_TIMER_IC_ARR          ((t_uint16)0xFFFF)       /**<  for every InputCOmpare the Prescaler is a constant */
+    #define FMKCPU_TIMER_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC_MHZ * 1000)- (t_uint16)1) /**<  The prescaler use for evnt timer, having 1000Hz (1ms) */
 
-    #define FMKCPU_WWDG_RESET_CFG  FMKCPU_WWDG_RESET_100MS
+    #define FMKCPU_WWDG_RESET_CFG  FMKCPU_WWDG_RESET_100MS /**< default watchdogs configuration */
     // ********************************************************************
     // *                      Types
     // ********************************************************************
@@ -153,33 +153,33 @@
     /**< Structure for repertory all HAL_TIM function */
     typedef struct
     {
-        t_cbFMKCPU_TimerInitFunc             * TimerInit_pcb;
-        t_cbFMKCPU_TimerDeInitFunc           * TimerDeInit_pcb;
-        t_cbFMKCPU_TimStartFuncModePolling   * StartFuncPoll_pcb;
-        t_cbFMKCPU_TimStopFuncModePolling    * StopFuncPoll_pcb;
-        t_cbFMKCPU_TimStartFuncModeInterrupt * StartFuncInterrupt_pcb;
-        t_cbFMKCPU_TimStopFuncModeInterrupt  * StopFuncInterrupt_pcb;
+        t_cbFMKCPU_TimerInitFunc             * TimerInit_pcb;           /**< HAL_TIM function to set a timer init */
+        t_cbFMKCPU_TimerDeInitFunc           * TimerDeInit_pcb;         /**< HAL_TIM function to set a timer deinit */
+        t_cbFMKCPU_TimStartFuncModePolling   * StartFuncPoll_pcb;       /**< HAL_TIM function to start a timer_channel in polling mode */
+        t_cbFMKCPU_TimStopFuncModePolling    * StopFuncPoll_pcb;        /**< HAL_TIM function to start a timer_channel in interruption mode */
+        t_cbFMKCPU_TimStartFuncModeInterrupt * StartFuncInterrupt_pcb;  /**< HAL_TIM function to stop a timer_channel in polling mode */
+        t_cbFMKCPU_TimStopFuncModeInterrupt  * StopFuncInterrupt_pcb;   /**< HAL_TIM function to stop a timer_channel in interruption mode */
     } t_sFMKCPU_TimChannelFunc;
 
     /**< Structure for repertory all clock enable/disable function */
     typedef struct
     {
-        t_cbFMKCPU_ClockEnable  * EnableClk_pcb;
-        t_cbFMKCPU_ClockDisable * DisableClk_pcb;
+        t_cbFMKCPU_ClockEnable  * EnableClk_pcb;        /**< HAL_TIM function to enable rcc clock */
+        t_cbFMKCPU_ClockDisable * DisableClk_pcb;       /**< HAL_TIM function to disable rcc clock */
     }t_sFMKCPU_ClkFunc;
 
     /**< Structure for watchdog configuration */
     typedef struct 
     {
-        t_uint16 psc_u16;
-        t_uint16 reload_u16;
+        t_uint16 psc_u16;           /**< variable for wacthdog timer prescaler value */
+        t_uint16 reload_u16;        /**< variable for wacthdog timer ARR value */
     } t_sFMKCPU_BspWwdgCfg;
 
     /**< Structure for timer channel configuration */
     typedef struct
     {
-        t_eFMKCPU_Timer               timer_e;
-        t_eFMKCPU_InterruptChnl       channel_e;
+        t_eFMKCPU_Timer               timer_e;      /**< timer configuration */
+        t_eFMKCPU_InterruptChnl       channel_e;    /**< channel configuration */
     } t_sFMKCPU_BspTimerCfg;
     // ********************************************************************
     // *                      Prototypes
@@ -203,31 +203,31 @@
     // Flag automatic generate code 
     /**< Set the NVIC Priority for all NVIC_IRqn Priority */
     const t_eFMKCPU_NVICPriority c_FMKCPU_IRQNPriority_ae[FMKCPU_IRQN_TYPE_NB] = {
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//WWDG_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//RTC_IRQn                
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//FLASH_IRQn              
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//RCC_IRQn                
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//EXTI0_1_IRQn            
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//EXTI2_3_IRQn            
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//EXTI4_15_IRQn           
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//DMA1_Channel1_IRQn      
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//DMA1_Channel2_3_IRQn    
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//DMA1_Channel4_5_IRQn    
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//ADC1_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM1_BRK_UP_TRG_COM_IRQn
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM1_CC_IRQn            
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM3_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM6_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM14_IRQn              
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM15_IRQn              
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM16_IRQn              
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//TIM17_IRQn              
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//I2C1_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//I2C2_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//SPI1_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//SPI2_IRQn               
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//USART1_IRQn             
-        FMKCPU_NVIC_PRIORITY_MEDIUM,//USART2_IRQn
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //WWDG_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //RTC_IRQn                
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //FLASH_IRQn              
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //RCC_IRQn                
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //EXTI0_1_IRQn            
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //EXTI2_3_IRQn            
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //EXTI4_15_IRQn           
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //DMA1_Channel1_IRQn      
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //DMA1_Channel2_3_IRQn    
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //DMA1_Channel4_5_IRQn    
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //ADC1_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM1_BRK_UP_TRG_COM_IRQn
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM1_CC_IRQn            
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM3_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM6_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM14_IRQn              
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM15_IRQn              
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM16_IRQn              
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //TIM17_IRQn              
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //I2C1_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //I2C2_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //SPI1_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //SPI2_IRQn               
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //USART1_IRQn             
+        FMKCPU_NVIC_PRIORITY_MEDIUM,            //USART2_IRQn
     };
 
     // Flag automatic generate code 

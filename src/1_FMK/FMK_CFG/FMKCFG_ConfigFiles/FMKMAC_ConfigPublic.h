@@ -48,8 +48,8 @@
     /**< Enum for the different request available for DMA service */
     typedef enum 
     {
-        FMKMAC_DMA_RQSTYPE_ADC1 = 0,
-        FMKMAC_DMA_RQSTYPE_SPI1,
+        FMKMAC_DMA_RQSTYPE_ADC1 = 0,    /**< Reference to bsp dma request for ADC1 */
+        FMKMAC_DMA_RQSTYPE_SPI1,        /**< Reference to bsp dma request for SPI1 */
         FMKMAC_DMA_RQSTYPE_SPI2,
         FMKMAC_DMA_RQSTYPE_UART1,
 

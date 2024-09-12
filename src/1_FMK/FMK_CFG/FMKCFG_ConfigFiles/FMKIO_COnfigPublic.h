@@ -32,11 +32,11 @@
 
     /* CAUTION : Automatic generated code section for Enum: End */
     // Flag automatic generate code
-    /* List of input digital pin available on this board*/
+    /**< List of input digital pin available on this board*/
     typedef enum 
     {
         FMKIO_INPUT_SIGDIG_1 = 0x00U,   
-        FMKIO_INPUT_SIGDIG_2,
+        FMKIO_INPUT_SIGDIG_2,           
         FMKIO_INPUT_SIGDIG_3,
         FMKIO_INPUT_SIGDIG_4,
         FMKIO_INPUT_SIGDIG_5,
@@ -52,7 +52,7 @@
     } t_eFMKIO_InDigSig;
 
     // Flag automatic generate code
-    /* List of input Analog pin available on this board*/
+    /**< List of input Analog pin available on this board*/
    typedef enum 
     {
         FMKIO_INPUT_SIGANA_1 = 0x00U,   // PC0
@@ -70,7 +70,7 @@
     } t_eFMKIO_InAnaSig;
 
     // Flag automatic generate code
-    /* List of input frequency pin available on this board*/
+    /**< List of input frequency pin available on this board*/
     typedef enum 
     {
         FMKIO_INPUT_SIGFREQ_1 = 0x00U,  // PA4
@@ -81,7 +81,7 @@
     } t_eFMKIO_InFreqSig;
 
     // Flag automatic generate code
-    /* List of input frequency pin available on this board*/
+    /**< List of input frequency pin available on this board*/
     typedef enum 
     {
         FMKIO_INPUT_SIGEVNT_1 = 0x00U,  // 
@@ -91,7 +91,7 @@
     } t_eFMKIO_InEvntSig;
 
     // Flag automatic generate code
-    /* List of output pwm pin available on this board*/
+    /**< List of output pwm pin available on this board*/
     typedef enum 
     {
         FMKIO_OUTPUT_SIGPWM_1 = 0x00U,  // PA8
@@ -106,7 +106,7 @@
     } t_eFMKIO_OutPwmSig;
 
     // Flag automatic generate code
-    /* List of output digital pin available on this board*/
+    /**< List of output digital pin available on this board*/
     typedef enum 
     {
         FMKIO_OUTPUT_SIGDIG_1 = 0x00U,   // PA12
@@ -127,11 +127,11 @@
     } t_eFMKIO_OutDigSig;
 
     // Flag automatic generate code
-    /* List of gpio port available on this board*/
+    /**< List of gpio port available on this board*/
     typedef enum
     {
-        FMKIO_GPIO_PORT_A = 0x00U,
-        FMKIO_GPIO_PORT_B,
+        FMKIO_GPIO_PORT_A = 0x00U,      /**< Reference to bsp GPIO port A register */
+        FMKIO_GPIO_PORT_B,              /**< Reference to bsp GPIO port B register */
         FMKIO_GPIO_PORT_C,
         FMKIO_GPIO_PORT_D,
         FMKIO_GPIO_PORT_F,
@@ -140,11 +140,12 @@
     } t_eFMKIO_GpioPort;
 
     // Flag automatic generate code
-    /* List of Pin available for each GPIO on this board*/
+    /**< List of Pin available for each GPIO on this board*/
+
     typedef enum
     {
-        FMKIO_GPIO_PIN_0 = 0x0U,
-        FMKIO_GPIO_PIN_1,
+        FMKIO_GPIO_PIN_0 = 0x0U,        /**< Reference to bsp GPIO pin 0 value */
+        FMKIO_GPIO_PIN_1,               /**< Reference to bsp GPIO pin 1 value */
         FMKIO_GPIO_PIN_2,
         FMKIO_GPIO_PIN_3,
         FMKIO_GPIO_PIN_4,
@@ -164,7 +165,7 @@
     } t_eFMKIO_BspGpioPin;
 
     // Flag automatic generate code
-    /* List of Pin available for each GPIO on this board*/
+    /**< List of Pin available for each GPIO on this board*/
     typedef enum
     {
         FMKIO_AF0_EVENTOUT = 0x0U,  /*!< AF0: EVENTOUT Alternate Function mapping */
@@ -216,27 +217,28 @@
 
     /* CAUTION : Automatic generated code section for Structure: End */
 
-    /* Basic configuration needed in all Signal configuration*/
+    /**< Basic configuration needed in all Signal configuration*/
     typedef struct 
     {
-        t_eFMKIO_GpioPort    HwGpio_e;
-        t_eFMKIO_BspGpioPin  HwPin_e;
+        t_eFMKIO_GpioPort    HwGpio_e;      /**< GPIO Port used for a certain signal */
+        t_eFMKIO_BspGpioPin  HwPin_e;       /**< GPIO Pin used for a certain signal */
     } t_sFMKIO_BspSigCfg;
 
-    /* Structure configuration for Pwm and Signal needed timer*/
+    /**< Structure configuration for Pwm and Signal needed timer*/
     typedef struct 
     {
-        t_sFMKIO_BspSigCfg      BasicCfg;
-        t_uint8                 BspAlternateFunc_u8;
-        t_eFMKCPU_Timer         timer_e;
-        t_eFMKCPU_InterruptChnl channel_e;
+        t_sFMKIO_BspSigCfg      BasicCfg;               /**< GPIO configuration */
+        t_uint8                 BspAlternateFunc_u8;    /**< Alterante function/Timer_Channel relate to the pin */
+        t_eFMKCPU_Timer         timer_e;                /**< Timer enum configuration */
+        t_eFMKCPU_InterruptChnl channel_e;              /**< Channel enum configuration */
     } t_sFMKIO_BspTimerSigCfg;
 
+    /**< Structure configuration for Event Signal*/
     typedef struct 
     {
-        t_sFMKIO_BspSigCfg      BasicCfg;
-        t_uint8                 BspAlternateFunc_u8;
-        t_eFMKCPU_IRQNType      ExtiIRQN_e;
+        t_sFMKIO_BspSigCfg      BasicCfg;               /**< GPIO configuration */
+        t_uint8                 BspAlternateFunc_u8;    /**< Alterante function/Timer_Channel relate to the pin */
+        t_eFMKCPU_IRQNType      ExtiIRQN_e;             /**< IRQN Type related to the signal */
     } t_sFMKIO_BspEvntSigCfg;
 
     // ********************************************************************
@@ -246,7 +248,6 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
-    // Flag automatic generate code 
 
 
     //********************************************************************************

@@ -49,27 +49,14 @@
     // ********************************************************************
     /*****************************************************************************
     *
-    *	@brief
+    *	@brief  Perform Application system init
     *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
     */
     void APPSYS_Init(void);
     /*****************************************************************************
     *
-    *	@brief
+    *	@brief  Perform Application system cyclic
     *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
     *
     */
     void APPSYS_Cyclic(void);

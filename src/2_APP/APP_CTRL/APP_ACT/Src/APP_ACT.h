@@ -53,81 +53,56 @@
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
+    *	@brief      Perform all Init action for this module.\n
     *
     */
     t_eReturnState APPACT_Init(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
+    *	@brief      Perform all Cyclic action for this module.\n
+    *   @note       In preOpe mode -> If one of the configuration is not set the Module Cyclic 
+    *               retry indefinitely and the module state doesn't change until all 
+    *               actuator configuration are set
+    *               In Ope mode -> call driver cyclic
     *
     */
     t_eReturnState APPACT_Cyclic(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
+    *	@brief Function to know the module state.\n 
     *
+    *	@param[in]  f_State_pe : store the value, value from @ref t_eCyclicFuncState
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *   @retval RC_OK                             @ref RC_OK
+    *   @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NUL
     */
     t_eReturnState APPACT_GetState(t_eCyclicFuncState *f_State_pe);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
+    *	@brief Function to update the module state.\n
     *
+    *	@param[in]  f_State_e : the new value, value from @ref t_eCyclicFuncState
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *   @retval RC_OK                             @ref RC_OK
     */
     t_eReturnState APPACT_SetState(t_eCyclicFuncState f_State_e);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
+    *	@brief  Get actuator value 
     *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *	@param[in]  f_actuator_e   : actuator enum
+    *	@param[in]  f_value_ps16   : storage for the value 
+    * 
     */
     t_eReturnState APPACT_Get_ActValue(t_eAPPACT_Actuators f_actuator_e, t_sint16 * f_value_ps16);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
+    *	@brief      Set value for an actuator
     *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
+    *	@param[in]  f_actuator_e   : actuator enum
+    *	@param[in] f_value_s16 : value to set
     *
     */
     t_eReturnState APPACT_Set_ActValue(t_eAPPACT_Actuators f_actuator_e, t_sint16 f_value_s16);

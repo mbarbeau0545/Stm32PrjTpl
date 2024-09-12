@@ -1,11 +1,11 @@
 \doxysection{FMK\+\_\+\+CPU.\+h}
-\hypertarget{_f_m_k___c_p_u_8h_source}{}\label{_f_m_k___c_p_u_8h_source}\index{src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h@{src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h}}
+\hypertarget{_f_m_k___c_p_u_8h_source}{}\label{_f_m_k___c_p_u_8h_source}\index{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h@{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FMK\_CPU/Src/FMK\_CPU.h}}
 \mbox{\hyperlink{_f_m_k___c_p_u_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
 \DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ \ \ \ \ \ \ FMK\_CPU.h}}
 \DoxyCodeLine{00003\ \textcolor{comment}{\ *\ @brief\ \ \ \ \ \ \ Template\_BriefDescription.}}
-\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @note   \ \ \ \ \ TemplateDetailsDescription.\(\backslash\)n}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @note\ \ \ \ \ \ \ \ TemplateDetailsDescription.\(\backslash\)n}}
 \DoxyCodeLine{00005\ \textcolor{comment}{\ *}}
 \DoxyCodeLine{00006\ \textcolor{comment}{\ *\ @author\ \ \ \ \ \ xxxxxx}}
 \DoxyCodeLine{00007\ \textcolor{comment}{\ *\ @date\ \ \ \ \ \ \ \ jj/mm/yyyy}}
@@ -105,259 +105,105 @@
 \DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//********************************************************************************}}
 \DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Public\ functions\ -\/\ Prototyupes}}
 \DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//********************************************************************************}}
-\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00118\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00125\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00126\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00127\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3f8a0b3f948f251f4a49615b99214567}{FMKCPU\_Init}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ \ }}
-\DoxyCodeLine{00140\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ada5ebc941ad521d4338966e80e698f15}{FMKCPU\_Cyclic}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00143\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00147\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00152\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ab0e031ae820fd8661f0a1be174462853}{FMKCPU\_GetState}}(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\_eCyclicFuncState}}\ *f\_State\_pe);}
-\DoxyCodeLine{00155\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00158\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00161\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00162\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00163\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00164\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00165\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00166\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_acaca75f0d8867a5b3e0a2bde245e79a9}{FMKCPU\_SetState}}(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\_eCyclicFuncState}}\ f\_State\_e);}
-\DoxyCodeLine{00168\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00169\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00170\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00171\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00172\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00173\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00174\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00175\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00176\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00177\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00178\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00179\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3781183498c848aa58c960c873f70094}{FMKCPU\_Set\_Delay}}(\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ f\_delayms\_u32);}
-\DoxyCodeLine{00181\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00182\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00183\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00184\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00185\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00186\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00187\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00188\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00189\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00190\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00191\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00192\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_aad5afa0db90627a3c1b6a20c32a5c896}{FMKCPU\_Get\_Tick}}(\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ *\ f\_tickms\_pu32);}
-\DoxyCodeLine{00194\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00195\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00196\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00197\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00198\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00199\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00200\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00201\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00202\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00203\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00204\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00205\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ac40b45930ed1477a125eb47492be18b4}{FMKCPU\_Set\_NVICState}}(t\_eFMKCPU\_IRQNType\ f\_IRQN\_e,\ }
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1602ad08e}{t\_eFMKCPU\_NVICPriority}}\ f\_priority\_e,\ }
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ad864f2490ecd7dc3b94314bf65f1d9ef}{t\_eFMKCPU\_NVIC\_Ope}}\ f\_OpeState\_e);}
-\DoxyCodeLine{00209\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00210\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00211\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00212\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00213\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00214\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00215\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00216\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00217\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00218\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00219\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00220\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3f8a0b3f948f251f4a49615b99214567}{FMKCPU\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ada5ebc941ad521d4338966e80e698f15}{FMKCPU\_Cyclic}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ab0e031ae820fd8661f0a1be174462853}{FMKCPU\_GetState}}(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\_eCyclicFuncState}}\ *f\_State\_pe);}
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_acaca75f0d8867a5b3e0a2bde245e79a9}{FMKCPU\_SetState}}(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\_eCyclicFuncState}}\ f\_State\_e);}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_abe28cb7add1078e41b94092380e173be}{FMKCPU\_Set\_SysClockCfg}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3781183498c848aa58c960c873f70094}{FMKCPU\_Set\_Delay}}(\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ f\_delayms\_u32);}
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_aad5afa0db90627a3c1b6a20c32a5c896}{FMKCPU\_Get\_Tick}}(\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ *\ f\_tickms\_pu32);}
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ac40b45930ed1477a125eb47492be18b4}{FMKCPU\_Set\_NVICState}}(t\_eFMKCPU\_IRQNType\ f\_IRQN\_e,\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1602ad08e}{t\_eFMKCPU\_NVICPriority}}\ f\_priority\_e,\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ad864f2490ecd7dc3b94314bf65f1d9ef}{t\_eFMKCPU\_NVIC\_Ope}}\ f\_OpeState\_e);}
 \DoxyCodeLine{00221\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_ab1f77ff513accfba4a6f550730d717c5}{FMKCPU\_Set\_HwClock}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dc}{t\_eFMKCPU\_ClockPort}}\ f\_clkPort\_e,\ }
 \DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a7006a8100165413151d17dbe4b3a2def}{t\_eFMKCPU\_ClockPortOpe}}\ f\_OpeState\_e);}
-\DoxyCodeLine{00223\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00224\ \textcolor{comment}{\ \ \ \ \ *}}
-\DoxyCodeLine{00225\ \textcolor{comment}{\ \ \ \ \ *}}
-\DoxyCodeLine{00226\ \textcolor{comment}{\ \ \ \ \ *}}
-\DoxyCodeLine{00227\ \textcolor{comment}{\ \ \ \ \ *\ \ @brief}}
-\DoxyCodeLine{00228\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00229\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00230\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00231\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]}}
-\DoxyCodeLine{00232\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00233\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00234\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00235\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00236\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_abe28cb7add1078e41b94092380e173be}{FMKCPU\_Set\_SysClockCfg}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00238\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00239\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00240\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00241\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00242\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00243\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00244\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00245\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00246\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00247\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00248\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00249\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a60e3806dec6978b25e9d6a239be247eb}{FMKCPU\_Set\_WwdgCfg}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7}{t\_eFMKCPu\_WwdgResetPeriod}}\ f\_period\_e);}
-\DoxyCodeLine{00251\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00252\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00253\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00254\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00255\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00256\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00257\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00258\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00259\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00260\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00261\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00262\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a2e6c15b2b4e3465e9319dc2b72f1564e}{FMKCPU\_ResetWwdg}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00264\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00265\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00266\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00267\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00268\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00269\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00270\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00271\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00272\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00273\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00274\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00275\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00276\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a96ee1f495e77d8299b93cce46fa60513}{FMKCPU\_Set\_PWMChannelCfg}}(\mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\_sFMKCPU\_BspTimerCfg}}\ f\_bspCfg\_s,\ \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ f\_pwmFreq\_u32);}
-\DoxyCodeLine{00277\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00278\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00279\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00280\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00281\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00282\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00283\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00284\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00285\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00286\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00287\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00288\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00289\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a28fc139596ec5b24369d085c66ae8b69}{FMKCPU\_Set\_PWMChannelDuty}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
-\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
-\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\_uint16}}\ f\_dutyCycle\_u16);}
-\DoxyCodeLine{00292\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a60e3806dec6978b25e9d6a239be247eb}{FMKCPU\_Set\_WwdgCfg}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7}{t\_eFMKCPu\_WwdgResetPeriod}}\ f\_period\_e);}
+\DoxyCodeLine{00242\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a2e6c15b2b4e3465e9319dc2b72f1564e}{FMKCPU\_ResetWwdg}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00261\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a41754534bb3a39ff40aee1681e6bb176}{FMKCPU\_Set\_PWMChannelCfg}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ f\_pwmFreq\_u32);}
+\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a28fc139596ec5b24369d085c66ae8b69}{FMKCPU\_Set\_PWMChannelDuty}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\_uint16}}\ f\_dutyCycle\_u16);}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
+\DoxyCodeLine{00282\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
+\DoxyCodeLine{00283\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00286\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
+\DoxyCodeLine{00287\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
+\DoxyCodeLine{00288\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
+\DoxyCodeLine{00289\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00290\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00291\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3034498766ccde11c32215ce5d4c4b94}{FMKCPU\_Get\_PWMChannelDuty}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\_uint16}}\ *f\_dutyCycle\_u16);}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
 \DoxyCodeLine{00296\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00297\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00298\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00299\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
+\DoxyCodeLine{00297\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
+\DoxyCodeLine{00298\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ \ \ \ *}}
 \DoxyCodeLine{00300\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00301\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00302\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00303\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a3034498766ccde11c32215ce5d4c4b94}{FMKCPU\_Get\_PWMChannelDuty}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
-\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
-\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\_uint16}}\ *f\_dutyCycle\_u16);}
-\DoxyCodeLine{00306\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00307\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00308\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00309\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00310\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00301\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
+\DoxyCodeLine{00302\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
+\DoxyCodeLine{00303\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
+\DoxyCodeLine{00304\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00305\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00306\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00307\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a0a666a73c0dd731eeef2e8ca3b4874a1}{FMKCPU\_Set\_ICChannelCfg}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,\ }
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_aba9aa13b09efd7f1d8aa2805ff38b301}{t\_eFMKCPU\_ChnlMeasTrigger}}\ f\_MeasTrigger\_e);}
+\DoxyCodeLine{00310\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
 \DoxyCodeLine{00311\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00312\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00313\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00314\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
+\DoxyCodeLine{00312\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
+\DoxyCodeLine{00313\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
+\DoxyCodeLine{00314\ \textcolor{comment}{\ \ \ \ *}}
 \DoxyCodeLine{00315\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00316\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00317\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00318\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a78c2c00b3a69ae53b3993fc5436cd466}{FMKCPU\_Set\_ICChannelCfg}}(\mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\_sFMKCPU\_BspTimerCfg}}\ f\_bspCfg\_s,\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_aba9aa13b09efd7f1d8aa2805ff38b301}{t\_eFMKCPU\_ChnlMeasTrigger}}\ f\_MeasTrigger\_e);}
-\DoxyCodeLine{00319\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
+\DoxyCodeLine{00316\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
+\DoxyCodeLine{00317\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
+\DoxyCodeLine{00318\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
+\DoxyCodeLine{00319\ \textcolor{comment}{\ \ \ \ *}}
 \DoxyCodeLine{00320\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00321\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00322\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00323\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00324\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00325\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00326\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00327\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00328\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00321\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00322\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_abdcfd49a46e1ec2a7e5d958946e82dea}{FMKCPU\_Set\_EvntChannelCfg}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a3e2f7da9e5fe4b2768ed682326f65c23}{t\_eFMKCPU\_EventChannel}}\ f\_evntChannel\_e,\ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ f\_periodms\_u32,}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a5bf4a85a03bebbab937c29f89146a888}{t\_cbFMKCPU\_InterruptChnl}}\ f\_ITChannel\_cb);}
+\DoxyCodeLine{00325\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
+\DoxyCodeLine{00326\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00327\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
+\DoxyCodeLine{00328\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
 \DoxyCodeLine{00329\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00330\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00331\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_abdcfd49a46e1ec2a7e5d958946e82dea}{FMKCPU\_Set\_EvntChannelCfg}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a3e2f7da9e5fe4b2768ed682326f65c23}{t\_eFMKCPU\_EventChannel}}\ f\_evntChannel\_e,\ }
-\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\_uint32}}\ f\_periodms\_u32,}
-\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a5bf4a85a03bebbab937c29f89146a888}{t\_cbFMKCPU\_InterruptChnl}}\ f\_ITChannel\_cb);}
-\DoxyCodeLine{00334\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
+\DoxyCodeLine{00330\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00331\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
+\DoxyCodeLine{00332\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
+\DoxyCodeLine{00333\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
+\DoxyCodeLine{00334\ \textcolor{comment}{\ \ \ \ *}}
 \DoxyCodeLine{00335\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00336\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00337\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00338\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00339\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00340\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00341\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00342\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00343\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00336\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00337\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a4f9d7cdfeb63d6ec451bef5f7a33cd57}{FMKCPU\_AddTimerChnlCallback}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a5bf4a85a03bebbab937c29f89146a888}{t\_cbFMKCPU\_InterruptChnl}}\ *f\_ITChannel\_cb);}
+\DoxyCodeLine{00340\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
+\DoxyCodeLine{00341\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00342\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
+\DoxyCodeLine{00343\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
 \DoxyCodeLine{00344\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00345\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00346\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a4f9d7cdfeb63d6ec451bef5f7a33cd57}{FMKCPU\_AddTimerChnlCallback}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
-\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
-\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a5bf4a85a03bebbab937c29f89146a888}{t\_cbFMKCPU\_InterruptChnl}}\ *f\_ITChannel\_cb);}
-\DoxyCodeLine{00349\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
+\DoxyCodeLine{00345\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00346\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
+\DoxyCodeLine{00347\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
+\DoxyCodeLine{00348\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
+\DoxyCodeLine{00349\ \textcolor{comment}{\ \ \ \ *}}
 \DoxyCodeLine{00350\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00351\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00352\ \textcolor{comment}{\ \ \ \ *\ \ \ @note   }}
-\DoxyCodeLine{00353\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00354\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00355\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00356\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00357\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00358\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00359\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00360\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00361\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_adb8dfb21f4aac3d65a45ac8eed341c7a}{FMKCPU\_Set\_ChannelState}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
-\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
-\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a363704238712a93d6366df129285ef28}{t\_eFMKCPU\_ChnlState}}\ f\_channelState\_e);}
-\DoxyCodeLine{00364\ }
-\DoxyCodeLine{00365\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FMKCPU\_H\_INCLUDED\ \ \ \ \ \ \ \ \ \ \ }}
-\DoxyCodeLine{00366\ \textcolor{comment}{//************************************************************************************}}
-\DoxyCodeLine{00367\ \textcolor{comment}{//\ End\ of\ File}}
-\DoxyCodeLine{00368\ \textcolor{comment}{//************************************************************************************}}
-\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00351\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00352\ \ \ \ \ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ \mbox{\hyperlink{_f_m_k___c_p_u_8h_adb8dfb21f4aac3d65a45ac8eed341c7a}{FMKCPU\_Set\_ChannelState}}(\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7}{t\_eFMKCPU\_Timer}}\ f\_timer\_e,\ }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a62c77c6bd32b5ea82296617e8f03a25b}{t\_eFMKCPU\_InterruptChnl}}\ f\_channel\_e,}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k___c_p_u_8h_a363704238712a93d6366df129285ef28}{t\_eFMKCPU\_ChnlState}}\ f\_channelState\_e);}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FMKCPU\_H\_INCLUDED\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00357\ \textcolor{comment}{//************************************************************************************}}
+\DoxyCodeLine{00358\ \textcolor{comment}{//\ End\ of\ File}}
+\DoxyCodeLine{00359\ \textcolor{comment}{//************************************************************************************}}
+\DoxyCodeLine{00360\ }
 
 \end{DoxyCode}

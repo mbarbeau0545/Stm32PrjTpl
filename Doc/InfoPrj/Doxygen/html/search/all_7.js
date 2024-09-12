@@ -10,7 +10,7 @@ var searchData=
   ['hal_5ftim_5fpwm_5fpulsefinishedcallback_7',['HAL_TIM_PWM_PulseFinishedCallback',['../_f_m_k___c_p_u_8c.html#a07e5fc4d223b16bec2fd6bed547cf91d',1,'FMK_CPU.c']]],
   ['hal_5ftim_5fpwm_5fpulsefinishedhalfcpltcallback_8',['HAL_TIM_PWM_PulseFinishedHalfCpltCallback',['../_f_m_k___c_p_u_8c.html#af669ea0eacb07d5fee199704b612841f',1,'FMK_CPU.c']]],
   ['hal_5ftim_5ftriggercallback_9',['HAL_TIM_TriggerCallback',['../_f_m_k___c_p_u_8c.html#a189577c72b1963671b26820d8161d678',1,'FMK_CPU.c']]],
-  ['hwcfg_5fe_10',['HwCfg_e',['../structt__s_f_m_k_c_d_a___adc_info.html#adb0f61b7d069ec5be2b87694fb7dce1c',1,'t_sFMKCDA_AdcInfo::HwCfg_e'],['../structt__s_f_m_k_c_p_u___c_hnl_info.html#a599a0fa1ee265466cb099fb6ea356ec2',1,'t_sFMKCPU_ChnlInfo::HwCfg_e']]],
+  ['hwcfg_5fe_10',['HwCfg_e',['../structt__s_f_m_k_c_d_a___adc_info.html#adb0f61b7d069ec5be2b87694fb7dce1c',1,'t_sFMKCDA_AdcInfo::HwCfg_e'],['../structt__s_f_m_k_c_p_u___timer_info.html#ad3f4294de443cf7ff53a13a088ad3c07',1,'t_sFMKCPU_TimerInfo::HwCfg_e']]],
   ['hwgpio_5fe_11',['HwGpio_e',['../structt__s_f_m_k_i_o___bsp_sig_cfg.html#a35e0f07ed45a7c9503931d88794fa244',1,'t_sFMKIO_BspSigCfg']]],
   ['hwpin_5fe_12',['HwPin_e',['../structt__s_f_m_k_i_o___bsp_sig_cfg.html#ad0c487a4f711690b5adedfc529942137',1,'t_sFMKIO_BspSigCfg']]]
 ];

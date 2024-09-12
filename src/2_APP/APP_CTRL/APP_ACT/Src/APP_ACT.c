@@ -51,29 +51,24 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
-/*****************************************************************************
-*
-*	@brief
-*	@note   
-*
-*
-*	@param[in] 
-*	@param[out]
-*	 
-*
-*
-*/
+/**
+ *
+ *	@brief      Perform preOperationnal action.\n
+ *  @note       Set the actuator configuration.\n
+ *              Call driver init function.\n
+ *              If one of the configuration is not set the Module Cyclic 
+ *              retry indefinitely.\n
+ *              
+ * 
+ *  @retval RC_OK                             @ref RC_OK
+ *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
+
+ */
 static t_eReturnState s_APPACT_PreOperational(void);
-/*****************************************************************************
+/**
 *
-*	@brief
-*	@note   
-*
-*
-*	@param[in] 
-*	@param[out]
-*	 
-*
+*	@brief  Call driver cyclic function
 *
 */
 static t_eReturnState s_APPACT_Operational(void);

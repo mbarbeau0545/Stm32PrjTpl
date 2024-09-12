@@ -1,5 +1,5 @@
-\doxysection{src/1\+\_\+\+FMK/\+FMK\+\_\+\+HAL/\+FKM\+\_\+\+IO/\+Src/\+FMK\+\_\+\+IO.c File Reference}
-\hypertarget{_f_m_k___i_o_8c}{}\label{_f_m_k___i_o_8c}\index{src/1\_FMK/FMK\_HAL/FKM\_IO/Src/FMK\_IO.c@{src/1\_FMK/FMK\_HAL/FKM\_IO/Src/FMK\_IO.c}}
+\doxysection{C\+:/\+Users/mbarb/\+Documents/\+Platform\+IO/\+Projects/\+STM32\+\_\+tplprj/src/1\+\_\+\+FMK/\+FMK\+\_\+\+HAL/\+FKM\+\_\+\+IO/\+Src/\+FMK\+\_\+\+IO.c File Reference}
+\hypertarget{_f_m_k___i_o_8c}{}\label{_f_m_k___i_o_8c}\index{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FKM\_IO/Src/FMK\_IO.c@{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FKM\_IO/Src/FMK\_IO.c}}
 {\ttfamily \#include "{}stm32f0xx\+\_\+hal.\+h"{}}\newline
 {\ttfamily \#include "{}./\+FMK\+\_\+\+IO.\+h"{}}\newline
 {\ttfamily \#include "{}FMK\+\_\+\+CFG/\+FMKCFG\+\_\+\+Config\+Files/\+FMKIO\+\_\+\+Config\+Private.\+h"{}}\newline
@@ -96,7 +96,7 @@ void \mbox{\hyperlink{_f_m_k___i_o_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{HAL\+\_
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a699f4c20fc065821add7e93247bde3cb} 
 \#define FMKIO\+\_\+\+AF\+\_\+\+UNUSED~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})0x\+FF)}
 
-
+Flag to say that the alternate function is not used in Signal Init 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{_f_m_k___i_o_8c_a0f33201863bef3c2adecdf895eed9971}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Cyclic@{FMKIO\_Cyclic}}
@@ -110,7 +110,10 @@ void \mbox{\hyperlink{_f_m_k___i_o_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{HAL\+\_
 Perform all Cyclic action for this module.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 In ope mode this module makes diag on input currently used, and called the appropriate callback if an error occured + call APPDEM to reference error.~\newline
+
+\end{DoxyNote}
 \Hypertarget{_f_m_k___i_o_8c_a8033b60bc130abd4da8b0d3e4410b9aa}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Get\_InAnaSigValue@{FMKIO\_Get\_InAnaSigValue}}
 \index{FMKIO\_Get\_InAnaSigValue@{FMKIO\_Get\_InAnaSigValue}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{FMKIO\_Get\_InAnaSigValue()}{FMKIO\_Get\_InAnaSigValue()}}
@@ -122,9 +125,10 @@ In ope mode this module makes diag on input currently used, and called the appro
 Get the analog input.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Once the configuration is done, this function call the FMKCDA to know the analog signal value.~\newline
  IMPORTANT -\/\texorpdfstring{$>$}{>} Depending on FMKCDA scan mode (the one used on V0.\+1) it may be possible that the conversion of all analog is not finished, in this case, the value return is 0 and Ret\+Code = RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig} \\
@@ -156,9 +160,10 @@ Once the configuration is done, this function call the FMKCDA to know the analog
 Get the digital inout.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Once the configuration is done, this function call hal library to know the state of the signal on store it into f\+\_\+value\+\_\+pe.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9}{t\+\_\+e\+FMKIO\+\_\+\+In\+Dig\+Sig} \\
@@ -186,9 +191,10 @@ Once the configuration is done, this function call hal library to know the state
 Get the frequency input.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Once the configuration is done, this function store the frequency value in f\+\_\+value\+\_\+pu32.~\newline
  Depending on configuration, this value is either a coutner, a period (ms) or a frequency (Hz)
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4}{t\+\_\+e\+FMKIO\+\_\+\+In\+Freq\+Sig} \\
@@ -218,8 +224,9 @@ Once the configuration is done, this function store the frequency value in f\+\_
 Get the digital output.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Once the configuration is done, this function ask HAL\+\_\+library the value of the dedicate signal and store it in f\+\_\+value\+\_\+pu16
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig} \\
@@ -249,8 +256,9 @@ Once the configuration is done, this function ask HAL\+\_\+library the value of 
 Get the PWM output generation.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Once the configuration is done, this function ask FMKCPU the value of the dedicate channel and store the dutycycle in f\+\_\+value\+\_\+pu16
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig} \\
@@ -302,7 +310,10 @@ Function to know the module state.
 Perform all Init action for this module.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Set to default value all globals structure that store information for each signals.~\newline
+
+\end{DoxyNote}
 \Hypertarget{_f_m_k___i_o_8c_a079baea6d65eef05882dd3309277d688}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InAnaSigCfg@{FMKIO\_Set\_InAnaSigCfg}}
 \index{FMKIO\_Set\_InAnaSigCfg@{FMKIO\_Set\_InAnaSigCfg}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{FMKIO\_Set\_InAnaSigCfg()}{FMKIO\_Set\_InAnaSigCfg()}}
@@ -314,11 +325,12 @@ Set to default value all globals structure that store information for each signa
 Set an input in Analog configuration.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Allow the user to choose among analogs inputs.~\newline
  \& a pull\+Mode.~\newline
  This function configure bsp\+Init ,call HAL\+\_\+function, call FMKCDA to configure an ADC\+\_\+channel.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input analog signal, value from \doxylink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig} \\
@@ -344,11 +356,12 @@ Allow the user to choose among analogs inputs.~\newline
 Set an input in Digital configuration.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Allow the user to choose among digitals inputs.~\newline
  \& a pull\+Mode.~\newline
  This function configure bsp\+Init and call HAL\+\_\+function.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input digital signal, value from \doxylink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9}{t\+\_\+e\+FMKIO\+\_\+\+In\+Dig\+Sig} \\
@@ -374,10 +387,11 @@ Allow the user to choose among digitals inputs.~\newline
 Set an intput in event configuration.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Allow the user to choose among event inputs.~\newline
  This function configure bsp\+Init, call HAL\+\_\+function, configure a external Interrupt which from hal\+\_\+library will call f\+\_\+\+Evnt\+\_\+cb on f\+\_\+trigger\+\_\+e detection.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0}{t\+\_\+e\+FMKIO\+\_\+\+In\+Evnt\+Sig} \\
@@ -409,10 +423,11 @@ Allow the user to choose among event inputs.~\newline
 Set an input in frequency configuration.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Allow the user to choose among frequencies inputs.~\newline
  This function configure bsp\+Init , call HAL\+\_\+function, call FMKCPU to configure a timer in order to convert a digital signal into a frequency.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4}{t\+\_\+e\+FMKIO\+\_\+\+In\+Freq\+Sig} \\
@@ -438,10 +453,11 @@ Allow the user to choose among frequencies inputs.~\newline
 Set an output in digital configuration.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Allow the user to choose among digitals output.~\newline
  This function configure bsp\+Init \& call HAL\+\_\+function.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaa}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Dig\+Sig} \\
@@ -469,9 +485,10 @@ Allow the user to choose among digitals output.~\newline
 Update the digital output.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Once the configuration is done, this function update the state of the digital cycle with f\+\_\+value\+\_\+e.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaa}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Dig\+Sig} \\
@@ -499,12 +516,13 @@ Once the configuration is done, this function update the state of the digital cy
 Set an intput in PWM configuration.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Allow the user to choose among pwm intputs.~\newline
  This function configure bsp\+Init , call HAL\+\_\+function, call FMKCPU to configure a timer in order to convert generate the pwm period and dutycycle.~\newline
  IMPORTANT NOTE -\/\texorpdfstring{$>$}{>} For SMT32, each signal has a timer and a channel based on confifguration. A timer has multiple channel that shared the frequency f\+\_\+frequency\+\_\+u32, once the timer set with this frequency the other signal (channel) will have the same frequency.~\newline
  If the frequency is changed, it will be changed for every signal.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input analog signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig} \\
@@ -536,9 +554,10 @@ Allow the user to choose among pwm intputs.~\newline
 Update the duty\+Cycle for a PWM.~\newline
 . 
 
+\begin{DoxyNote}{Note}
 Once the configuration is done, this function update the dutycyle of the pwm. if the PWM is not started yet the framework automatically set ON the channel if the duty\+Cycle is set to 0 that will shut down the pulse generation.~\newline
 
-
+\end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig} \\
@@ -592,31 +611,31 @@ void HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Callback (\begin{DoxyParamCaption}\item[
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_aea7da4761390d2d3deb1b49d6bfd728b} 
 \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Ana\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGANA\+\_\+\+NB}}\mbox{]}}
 
-\Hypertarget{_f_m_k___i_o_8c_a53d22296a81830900d065abe8a20b46c}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InDigSigInfo\_as@{g\_InDigSigInfo\_as}}
+Signal information for input Analog \Hypertarget{_f_m_k___i_o_8c_a53d22296a81830900d065abe8a20b46c}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InDigSigInfo\_as@{g\_InDigSigInfo\_as}}
 \index{g\_InDigSigInfo\_as@{g\_InDigSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InDigSigInfo\_as}{g\_InDigSigInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a53d22296a81830900d065abe8a20b46c} 
 \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Dig\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9af9764c577b0f6788965b8188df594e1f}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}}
 
-\Hypertarget{_f_m_k___i_o_8c_a484d7cb701aea551b332590dd6cab0f2}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InEvntSigInfo\_as@{g\_InEvntSigInfo\_as}}
+Signal information for input Digital \Hypertarget{_f_m_k___i_o_8c_a484d7cb701aea551b332590dd6cab0f2}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InEvntSigInfo\_as@{g\_InEvntSigInfo\_as}}
 \index{g\_InEvntSigInfo\_as@{g\_InEvntSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InEvntSigInfo\_as}{g\_InEvntSigInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a484d7cb701aea551b332590dd6cab0f2} 
 \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Evnt\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0a3c6c7e808c822cbbe3af496ebc284e0a}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGEVNT\+\_\+\+NB}}\mbox{]}}
 
-\Hypertarget{_f_m_k___i_o_8c_a5f4ee554081bb2f77dae5a2b9a8bc379}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InFreqSigInfo\_as@{g\_InFreqSigInfo\_as}}
+Signal information for input Event \Hypertarget{_f_m_k___i_o_8c_a5f4ee554081bb2f77dae5a2b9a8bc379}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InFreqSigInfo\_as@{g\_InFreqSigInfo\_as}}
 \index{g\_InFreqSigInfo\_as@{g\_InFreqSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InFreqSigInfo\_as}{g\_InFreqSigInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a5f4ee554081bb2f77dae5a2b9a8bc379} 
 \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Freq\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}}
 
-\Hypertarget{_f_m_k___i_o_8c_a6118019af9c356d15ae27deedfdd7e10}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InFreqSigRawValue\_ua32@{g\_InFreqSigRawValue\_ua32}}
+Signal information for input frequency \Hypertarget{_f_m_k___i_o_8c_a6118019af9c356d15ae27deedfdd7e10}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InFreqSigRawValue\_ua32@{g\_InFreqSigRawValue\_ua32}}
 \index{g\_InFreqSigRawValue\_ua32@{g\_InFreqSigRawValue\_ua32}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InFreqSigRawValue\_ua32}{g\_InFreqSigRawValue\_ua32}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a6118019af9c356d15ae27deedfdd7e10} 
 \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} g\+\_\+\+In\+Freq\+Sig\+Raw\+Value\+\_\+ua32\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}}
 
-\Hypertarget{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}\index{FMK\_IO.c@{FMK\_IO.c}!g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}}
+Module state \Hypertarget{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}\index{FMK\_IO.c@{FMK\_IO.c}!g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}}
 \index{g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_IsGpioClockEnable\_ae}{g\_IsGpioClockEnable\_ae}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18} 
@@ -633,15 +652,16 @@ void HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Callback (\begin{DoxyParamCaption}\item[
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\Hypertarget{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}}
+Variable to put the Signal Frequency value \Hypertarget{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}}
 \index{g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_OutDigSigInfo\_as}{g\_OutDigSigInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1} 
 \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+Out\+Dig\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}}
 
-\Hypertarget{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}}
+Signal information for output Digital Variable to store the state of GPIO Clock \Hypertarget{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}}
 \index{g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_OutPwmSigInfo\_as}{g\_OutPwmSigInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa} 
 \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+Out\+Pwm\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGPWM\+\_\+\+NB}}\mbox{]}}
 
+Signal information for output PWM 

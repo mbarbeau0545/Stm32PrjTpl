@@ -31,6 +31,7 @@
 	/* CAUTION : Automatic generated code section for Enum: End */
 	//-----------------------------ENUM TYPES-----------------------------//
     // Flag automatic generate code
+    /**< enum for module list */
     typedef enum
     {
         APPSYS_MODULE_FMK_CPU = 0,
@@ -60,8 +61,6 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
-    
-
 
     //********************************************************************************
     //                      Public functions - Prototyupes

@@ -1,5 +1,5 @@
-\doxysection{src/1\+\_\+\+FMK/\+FMK\+\_\+\+HAL/\+FMK\+\_\+\+CDA/\+Src/\+FMK\+\_\+\+CDA.c File Reference}
-\hypertarget{_f_m_k___c_d_a_8c}{}\label{_f_m_k___c_d_a_8c}\index{src/1\_FMK/FMK\_HAL/FMK\_CDA/Src/FMK\_CDA.c@{src/1\_FMK/FMK\_HAL/FMK\_CDA/Src/FMK\_CDA.c}}
+\doxysection{C\+:/\+Users/mbarb/\+Documents/\+Platform\+IO/\+Projects/\+STM32\+\_\+tplprj/src/1\+\_\+\+FMK/\+FMK\+\_\+\+HAL/\+FMK\+\_\+\+CDA/\+Src/\+FMK\+\_\+\+CDA.c File Reference}
+\hypertarget{_f_m_k___c_d_a_8c}{}\label{_f_m_k___c_d_a_8c}\index{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FMK\_CDA/Src/FMK\_CDA.c@{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FMK\_CDA/Src/FMK\_CDA.c}}
 {\ttfamily \#include "{}./\+FMK\+\_\+\+CDA.\+h"{}}\newline
 {\ttfamily \#include "{}FMK\+\_\+\+HAL/\+FMK\+\_\+\+MAC/\+Src/\+FMK\+\_\+\+MAC.\+h"{}}\newline
 {\ttfamily \#include "{}FMK\+\_\+\+HAL/\+FMK\+\_\+\+CPU/\+Src/\+FMK\+\_\+\+CPU.\+h"{}}\newline
@@ -37,17 +37,18 @@ enum \mbox{\hyperlink{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193}{t\+\_
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_a5db2ccad399532331783f3daad8921f3}{FMKCDA\+\_\+\+Init}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Perform all init action to this module. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ac11f19ed4e979333f6a96b69e737ccee}{FMKCDA\+\_\+\+Cyclic}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Perform all cyclic action to this module ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_a332c3fdd2006dc0d7fdc9c2edc5fabda}{FMKCDA\+\_\+\+Get\+State}} (\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} \texorpdfstring{$\ast$}{*}f\+\_\+\+State\+\_\+pe)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to know the module state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ad058c2853d407eef1ce24c293be76fb9}{FMKCDA\+\_\+\+Set\+State}} (\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} f\+\_\+\+State\+\_\+e)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to update the module state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_a7b8b7ff82bea5f3fdc6ae2c064b47a4e}{FMKCDA\+\_\+\+Set\+\_\+\+Adc\+Channel\+Cfg}} (\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690a}{t\+\_\+e\+FMKCDA\+\_\+\+Adc}} f\+\_\+\+Adc\+\_\+e, \mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a8a7cf2dd524526e08e4b02ba4399ae33}{t\+\_\+e\+FMKCDA\+\_\+\+Adc\+Channel}} f\+\_\+channel\+\_\+e, \mbox{\hyperlink{_f_m_k___c_d_a_8h_a2f1c9b5f338ca53ed1e79c6d50732d71}{t\+\_\+e\+FMKCDA\+\_\+\+Hw\+Adc\+Cfg}} f\+\_\+hw\+Adc\+Cfg\+\_\+e)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to add a adc channel configuration to an adc instance. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ab8052715231b7e259e73b4ea091f32a6}{FMKCDA\+\_\+\+Get\+\_\+\+Ana\+Channel\+Measure}} (\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690a}{t\+\_\+e\+FMKCDA\+\_\+\+Adc}} f\+\_\+\+Adc\+\_\+e, \mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a8a7cf2dd524526e08e4b02ba4399ae33}{t\+\_\+e\+FMKCDA\+\_\+\+Adc\+Channel}} f\+\_\+channel\+\_\+e, \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} \texorpdfstring{$\ast$}{*}f\+\_\+\+Ana\+Measure\+\_\+u16)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to get the analog value from a adc channel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_f_m_k___c_d_a_8c_af20a88180db1113be1e89266917d148b}{HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback}} (ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hadc)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
@@ -57,7 +58,7 @@ void \mbox{\hyperlink{_f_m_k___c_d_a_8c_af20a88180db1113be1e89266917d148b}{HAL\+
 \item 
 \mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_info}{t\+\_\+s\+FMKCDA\+\_\+\+Adc\+Info}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ac6f90e48fcbd4a21a390f18e799e9e95}{g\+\_\+\+Adc\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}
 \item 
-\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_aa091dfd514bcf3de3d03aa469cf4457d}{g\+\_\+counter\+Rank\+\_\+u8}} = 1
+\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ad6418df7abc5bc7f2a45d5af41ae6d46}{g\+\_\+counter\+Rank\+\_\+au8}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}
 \end{DoxyCompactItemize}
 
 
@@ -77,33 +78,33 @@ void \mbox{\hyperlink{_f_m_k___c_d_a_8c_af20a88180db1113be1e89266917d148b}{HAL\+
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
 enum \mbox{\hyperlink{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193}{t\+\_\+e\+FMKCDA\+\_\+\+Chnl\+Err\+State}}}
 
-\begin{DoxyEnumFields}[2]{Enumerator}
+\texorpdfstring{$<$}{<} enum for Channel error status \begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCDA\_CHANNEL\_STATE\_OK@{FMKCDA\_CHANNEL\_STATE\_OK}!FMK\_CDA.c@{FMK\_CDA.c}}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_CHANNEL\_STATE\_OK@{FMKCDA\_CHANNEL\_STATE\_OK}}}\Hypertarget{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193a1461b9d64b7a30f205bf4eab3bbd7476}\label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
-FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+OK&\\
+FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+OK&No error detected on channel \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCDA\_CHANNEL\_STATE\_ERR\_INTERNAL@{FMKCDA\_CHANNEL\_STATE\_ERR\_INTERNAL}!FMK\_CDA.c@{FMK\_CDA.c}}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_CHANNEL\_STATE\_ERR\_INTERNAL@{FMKCDA\_CHANNEL\_STATE\_ERR\_INTERNAL}}}\Hypertarget{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193a86ba85231d24194603cb1d9c7bc948e9}\label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
-FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+ERR\+\_\+\+INTERNAL&\\
+FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+ERR\+\_\+\+INTERNAL&Internal/ bsp error detected on channel \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCDA\_CHANNEL\_STATE\_ERR\_OVR@{FMKCDA\_CHANNEL\_STATE\_ERR\_OVR}!FMK\_CDA.c@{FMK\_CDA.c}}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_CHANNEL\_STATE\_ERR\_OVR@{FMKCDA\_CHANNEL\_STATE\_ERR\_OVR}}}\Hypertarget{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193a3b3b1e68805a1e6e123b2584eae7ec6f}\label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
-FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+ERR\+\_\+\+OVR&\\
+FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+ERR\+\_\+\+OVR&overrun error detetcted on channel \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCDA\_CHANNEL\_STATE\_ERR\_DMA@{FMKCDA\_CHANNEL\_STATE\_ERR\_DMA}!FMK\_CDA.c@{FMK\_CDA.c}}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_CHANNEL\_STATE\_ERR\_DMA@{FMKCDA\_CHANNEL\_STATE\_ERR\_DMA}}}\Hypertarget{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193a29119b6ef1ae2305e33da023456bdbe6}\label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
-FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+ERR\+\_\+\+DMA&\\
+FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+ERR\+\_\+\+DMA&Dma error detetected on channel \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCDA\_CHANNEL\_STATE\_CB@{FMKCDA\_CHANNEL\_STATE\_CB}!FMK\_CDA.c@{FMK\_CDA.c}}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_CHANNEL\_STATE\_CB@{FMKCDA\_CHANNEL\_STATE\_CB}}}\Hypertarget{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193a0d672e6e615d4826422594aeb7b4aebd}\label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
-FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+CB&\\
+FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+CB&callback error detetected on channel \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCDA\_CHANNEL\_STATE\_JQOVF@{FMKCDA\_CHANNEL\_STATE\_JQOVF}!FMK\_CDA.c@{FMK\_CDA.c}}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_CHANNEL\_STATE\_JQOVF@{FMKCDA\_CHANNEL\_STATE\_JQOVF}}}\Hypertarget{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193a5fb8dff42bf8ccdb7d040498fca0922d}\label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
-FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+JQOVF&\\
+FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+JQOVF&to do \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCDA\_CHANNEL\_STATE\_NB@{FMKCDA\_CHANNEL\_STATE\_NB}!FMK\_CDA.c@{FMK\_CDA.c}}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_CHANNEL\_STATE\_NB@{FMKCDA\_CHANNEL\_STATE\_NB}}}\Hypertarget{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193a9b6cffb85bd07822cfa15af11343027e}\label{_f_m_k___c_d_a_8c_a094a68e7da206f421e2a0a092d7b8193} 
-FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+NB&\\
+FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+NB&Number of channel state error \\
 \hline
 
 \end{DoxyEnumFields}
@@ -116,36 +117,158 @@ FMKCDA\+\_\+\+CHANNEL\+\_\+\+STATE\+\_\+\+NB&\\
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_ac11f19ed4e979333f6a96b69e737ccee} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCDA\+\_\+\+Cyclic (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
 
+
+
+Perform all cyclic action to this module ~\newline
+ 
+
+\begin{DoxyNote}{Note}
+Every Cycle in OPE\+\_\+\+MODE, this function start Adc conversion if the adc is config as so (Interruption or Dma). If a previous conversion is finished, this function store the value in the right channel and update flag in consequence.~\newline
+ This function also perform cyclic diagnostic on channel every x seconds, parameter reference in config\+Private.~\newline
+
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+WARNING\+\_\+\+WRONG\+\_\+\+STATE} & RC\+\_\+\+ERROR\+\_\+\+WARNING\+\_\+\+STATE \\
+\hline
+{\em RC\+\_\+\+WARNING\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a8b9ebbf8efc99649db6d574cad11a175}{RC\+\_\+\+WARNING\+\_\+\+BUSY} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_d_a_8c_ab8052715231b7e259e73b4ea091f32a6}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_Get\_AnaChannelMeasure@{FMKCDA\_Get\_AnaChannelMeasure}}
 \index{FMKCDA\_Get\_AnaChannelMeasure@{FMKCDA\_Get\_AnaChannelMeasure}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{FMKCDA\_Get\_AnaChannelMeasure()}{FMKCDA\_Get\_AnaChannelMeasure()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_ab8052715231b7e259e73b4ea091f32a6} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCDA\+\_\+\+Get\+\_\+\+Ana\+Channel\+Measure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690a}{t\+\_\+e\+FMKCDA\+\_\+\+Adc}}}]{f\+\_\+\+Adc\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a8a7cf2dd524526e08e4b02ba4399ae33}{t\+\_\+e\+FMKCDA\+\_\+\+Adc\+Channel}}}]{f\+\_\+channel\+\_\+e}{, }\item[{\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+\+Ana\+Measure\+\_\+u16}{}\end{DoxyParamCaption})}
 
+
+
+Function to get the analog value from a adc channel. 
+
+\begin{DoxyNote}{Note}
+This function has to be used in every adc configuration except the ones involving interrupt.~\newline
+ if the conversion of adc is done and the value is updated, this function store the raw\+Analog value in f\+\_\+\+Ana\+Measure\+\_\+u16.~\newline
+ else return 0 and retcode NO\+\_\+\+OPERATION
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+Adc\+\_\+e} & \+: enum adc, value from \doxylink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690a}{t\+\_\+e\+FMKCDA\+\_\+\+Adc} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+channel\+\_\+e} & \+: enum adc channel, value from \doxylink{_f_m_k_c_d_a___config_public_8h_a8a7cf2dd524526e08e4b02ba4399ae33}{t\+\_\+e\+FMKCDA\+\_\+\+Adc\+Channel} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+Ana\+Measure\+\_\+u16} & \+: enum adc config, value from \doxylink{_f_m_k___c_d_a_8h_a2f1c9b5f338ca53ed1e79c6d50732d71}{t\+\_\+e\+FMKCDA\+\_\+\+Hw\+Adc\+Cfg}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NUL \\
+\hline
+{\em RC\+\_\+\+WARNING\+\_\+\+WRONG\+\_\+\+STATE} & RC\+\_\+\+ERROR\+\_\+\+WARNING\+\_\+\+STATE \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+\hline
+{\em RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969aa5710a83f0780f20a2e9fc5f53f47bc2}{RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+MODULE\+\_\+\+NOT\+\_\+\+INITIALIZED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a866a182ef691f43f7952f0ebf7a6d8d0}{RC\+\_\+\+ERROR\+\_\+\+MODULE\+\_\+\+NOT\+\_\+\+INITIALIZED} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_d_a_8c_a332c3fdd2006dc0d7fdc9c2edc5fabda}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_GetState@{FMKCDA\_GetState}}
 \index{FMKCDA\_GetState@{FMKCDA\_GetState}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{FMKCDA\_GetState()}{FMKCDA\_GetState()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_a332c3fdd2006dc0d7fdc9c2edc5fabda} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCDA\+\_\+\+Get\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+\+State\+\_\+pe}{}\end{DoxyParamCaption})}
 
+
+
+Function to know the module state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+State\+\_\+pe} & \+: store the value, value from \doxylink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NUL \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_d_a_8c_a5db2ccad399532331783f3daad8921f3}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_Init@{FMKCDA\_Init}}
 \index{FMKCDA\_Init@{FMKCDA\_Init}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{FMKCDA\_Init()}{FMKCDA\_Init()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_a5db2ccad399532331783f3daad8921f3} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCDA\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
 
+
+
+Perform all init action to this module. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_d_a_8c_a7b8b7ff82bea5f3fdc6ae2c064b47a4e}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_Set\_AdcChannelCfg@{FMKCDA\_Set\_AdcChannelCfg}}
 \index{FMKCDA\_Set\_AdcChannelCfg@{FMKCDA\_Set\_AdcChannelCfg}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{FMKCDA\_Set\_AdcChannelCfg()}{FMKCDA\_Set\_AdcChannelCfg()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_a7b8b7ff82bea5f3fdc6ae2c064b47a4e} 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCDA\+\_\+\+Set\+\_\+\+Adc\+Channel\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690a}{t\+\_\+e\+FMKCDA\+\_\+\+Adc}}}]{f\+\_\+\+Adc\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a8a7cf2dd524526e08e4b02ba4399ae33}{t\+\_\+e\+FMKCDA\+\_\+\+Adc\+Channel}}}]{f\+\_\+channel\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___c_d_a_8h_a2f1c9b5f338ca53ed1e79c6d50732d71}{t\+\_\+e\+FMKCDA\+\_\+\+Hw\+Adc\+Cfg}}}]{f\+\_\+hw\+Adc\+Cfg\+\_\+e}{}\end{DoxyParamCaption})}
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCDA\+\_\+\+Set\+\_\+\+Adc\+Channel\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690a}{t\+\_\+e\+FMKCDA\+\_\+\+Adc}}}]{f\+\_\+\+Adc\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a8a7cf2dd524526e08e4b02ba4399ae33}{t\+\_\+e\+FMKCDA\+\_\+\+Adc\+Channel}}}]{f\+\_\+channel\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___c_d_a_8h_a2f1c9b5f338ca53ed1e79c6d50732d71}{t\+\_\+e\+FMKCDA\+\_\+\+Hw\+Adc\+Cfg}}}]{f\+\_\+adc\+Cfg\+\_\+e}{}\end{DoxyParamCaption})}
 
+
+
+Function to add a adc channel configuration to an adc instance. 
+
+\begin{DoxyNote}{Note}
+If the Adc config is not congigured yet it will be with f\+\_\+adc\+Cfg\+\_\+e.~\newline
+ Keep in mind that once the ADC is configured with a config every channel of the ADC has the same configuration.~\newline
+ That means every channel from an ADC should have the same hardware config.~\newline
+ If not, a error is reach.~\newline
+ 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+Adc\+\_\+e} & \+: enum adc, value from \doxylink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690a}{t\+\_\+e\+FMKCDA\+\_\+\+Adc} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+channel\+\_\+e} & \+: enum adc channel, value from \doxylink{_f_m_k_c_d_a___config_public_8h_a8a7cf2dd524526e08e4b02ba4399ae33}{t\+\_\+e\+FMKCDA\+\_\+\+Adc\+Channel} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+adc\+Cfg\+\_\+e} & \+: enum adc config, value from \doxylink{_f_m_k___c_d_a_8h_a2f1c9b5f338ca53ed1e79c6d50732d71}{t\+\_\+e\+FMKCDA\+\_\+\+Hw\+Adc\+Cfg}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+WARNING\+\_\+\+WRONG\+\_\+\+STATE} & RC\+\_\+\+ERROR\+\_\+\+WARNING\+\_\+\+STATE \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_d_a_8c_ad058c2853d407eef1ce24c293be76fb9}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_SetState@{FMKCDA\_SetState}}
 \index{FMKCDA\_SetState@{FMKCDA\_SetState}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{FMKCDA\_SetState()}{FMKCDA\_SetState()}}
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_ad058c2853d407eef1ce24c293be76fb9} 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKCDA\+\_\+\+Set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}}}]{f\+\_\+\+State\+\_\+e}{}\end{DoxyParamCaption})}
 
+
+
+Function to update the module state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+State\+\_\+e} & \+: the new value, value from \doxylink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NUL \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_d_a_8c_af20a88180db1113be1e89266917d148b}\index{FMK\_CDA.c@{FMK\_CDA.c}!HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}}
 \index{HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{HAL\_ADC\_ConvCpltCallback()}{HAL\_ADC\_ConvCpltCallback()}}
@@ -161,7 +284,7 @@ void HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_ad7f4d4acce16a170824ba3618e289727} 
 \mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_buffer}{t\+\_\+s\+FMKCDA\+\_\+\+Adc\+Buffer}} g\+\_\+\+Adc\+Buffer\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}}
 
-\Hypertarget{_f_m_k___c_d_a_8c_ac6f90e48fcbd4a21a390f18e799e9e95}\index{FMK\_CDA.c@{FMK\_CDA.c}!g\_AdcInfo\_as@{g\_AdcInfo\_as}}
+\texorpdfstring{$<$}{<} store the raw value for each channel of each adc converter \Hypertarget{_f_m_k___c_d_a_8c_ac6f90e48fcbd4a21a390f18e799e9e95}\index{FMK\_CDA.c@{FMK\_CDA.c}!g\_AdcInfo\_as@{g\_AdcInfo\_as}}
 \index{g\_AdcInfo\_as@{g\_AdcInfo\_as}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{g\_AdcInfo\_as}{g\_AdcInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_ac6f90e48fcbd4a21a390f18e799e9e95} 
@@ -179,9 +302,17 @@ void HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\Hypertarget{_f_m_k___c_d_a_8c_aa091dfd514bcf3de3d03aa469cf4457d}\index{FMK\_CDA.c@{FMK\_CDA.c}!g\_counterRank\_u8@{g\_counterRank\_u8}}
-\index{g\_counterRank\_u8@{g\_counterRank\_u8}!FMK\_CDA.c@{FMK\_CDA.c}}
-\doxysubsubsection{\texorpdfstring{g\_counterRank\_u8}{g\_counterRank\_u8}}
-{\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_aa091dfd514bcf3de3d03aa469cf4457d} 
-\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}} g\+\_\+counter\+Rank\+\_\+u8 = 1}
+\texorpdfstring{$<$}{<} Store the Adc Info variable \Hypertarget{_f_m_k___c_d_a_8c_ad6418df7abc5bc7f2a45d5af41ae6d46}\index{FMK\_CDA.c@{FMK\_CDA.c}!g\_counterRank\_au8@{g\_counterRank\_au8}}
+\index{g\_counterRank\_au8@{g\_counterRank\_au8}!FMK\_CDA.c@{FMK\_CDA.c}}
+\doxysubsubsection{\texorpdfstring{g\_counterRank\_au8}{g\_counterRank\_au8}}
+{\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_ad6418df7abc5bc7f2a45d5af41ae6d46} 
+\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}} g\+\_\+counter\+Rank\+\_\+au8\mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}}
 
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{\ }
+\DoxyCodeLine{\ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})1}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\texorpdfstring{$<$}{<} Rank for each channel add for ADC 

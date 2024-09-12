@@ -28,7 +28,7 @@
     // *                      Defines
     // ********************************************************************
 
-    #define APPSYS_ELAPSED_TIME_CYCLIC ((t_uint8)20) /* elapsed time between all cyclic function are called*/
+    #define APPSYS_ELAPSED_TIME_CYCLIC ((t_uint8)20) /**< Elapsed time between cyclic function call*/
     // ********************************************************************
     // *                      Types
     // ********************************************************************
@@ -46,64 +46,42 @@
 
 	/* CAUTION : Automatic generated code section : End */
 	//-----------------------------TYPEDEF TYPES---------------------------//
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *	@brief      Set a module function init 
+
     */
     typedef t_eReturnState (t_cbAppSys_FuncInit)(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
-    *
-    *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *	@brief      Set a module cyclic function
+
     */
     typedef t_eReturnState (t_cbAppSys_FuncCyclic)(void);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
+    *	@brief Function to know the module state.\n 
     *
+    *	@param[in]  f_State_pe : store the value, value from @ref t_eCyclicFuncState
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *   @retval RC_OK                             @ref RC_OK
+    *   @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NUL
     */
     typedef t_eReturnState (t_cbAppSys_GetState)(t_eCyclicFuncState *f_state_pe);
-    /*****************************************************************************
+    /**
     *
-    *	@brief
-    *	@note   
+    *	@brief Function to update the module state.\n
     *
+    *	@param[in]  f_State_e : the new value, value from @ref t_eCyclicFuncState
     *
-    *	@param[in] 
-    *	@param[out]
-    *	 
-    *
-    *
+    *   @retval RC_OK                             @ref RC_OK
     */
     typedef t_eReturnState (t_cbAppSys_SetState)(t_eCyclicFuncState f_state_pe);
 
     /* Structure to store Init and Cyclic Func*/
-
     typedef struct 
     {
-        t_cbAppSys_FuncInit   * funcInit_cb;
+        t_cbAppSys_FuncInit   * funcInit_cb;        
         t_cbAppSys_FuncCyclic * funcCyclic_cb;
         t_cbAppSys_GetState   * funcGetState_cb;
         t_cbAppSys_SetState   * funcSetState_cb;
@@ -117,6 +95,7 @@
     // ********************************************************************
     
     // Flag automatic generate code
+    /**< variable to store modules functions */
     t_sAppSys_SysFunc c_AppSys_ModuleFunc_apf[APPSYS_MODULE_NB] = {
         // FrameWork module 
         {FMKCPU_Init,    FMKCPU_Cyclic,     FMKCPU_GetState, FMKCPU_SetState},

@@ -151,7 +151,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
  *
  * @retval RC_OK                             @ref RC_OK
  * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
- * @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
+ * @retval RC_ERROR_ALREADY_CONFIGURED           @ref RC_ERROR_ALREADY_CONFIGURED
  * @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
  *
  */
@@ -319,7 +319,7 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
     if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False
     || g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlConfigured_b == (t_bool)False)
     {
-        Ret_e = RC_ERROR_MISSING_CONFIG;
+        Ret_e = RC_ERROR_ALREADY_CONFIGURED;
     }
     if (Ret_e == RC_OK)
     {
@@ -612,7 +612,7 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
     }
     if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False)
     {
-        Ret_e = RC_ERROR_MISSING_CONFIG;
+        Ret_e = RC_ERROR_ALREADY_CONFIGURED;
     }
     if (Ret_e == RC_OK)
     {
