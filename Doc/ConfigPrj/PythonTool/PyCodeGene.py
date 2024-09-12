@@ -36,10 +36,10 @@ TARGET_T_END_LINE =   "    /* CAUTION : Automatic generated code section: End */
 TARGET_T_ENUM_START_LINE = "    /* CAUTION : Automatic generated code section for Enum: Start */\n"
 TARGET_T_ENUM_END_LINE =   "    /* CAUTION : Automatic generated code section for Enum: End */\n"
 
-TARGET_T_VARIABLE_START_LINE = "/* CAUTION : Automatic generated code section for Variable: Start */\n"
-TARGET_T_VARIABLE_END_LINE = "/* CAUTION : Automatic generated code section for Variable: End */\n"
-TARGET_T_STRUCT_START_LINE = "    /* CAUTION : Automatic generated code section for Structure: Start */\n"
-TARGET_T_STRUCT_END_LINE =   "    /* CAUTION : Automatic generated code section for Structure: End */\n"
+TARGET_T_VARIABLE_START_LINE = "    /* CAUTION : Automatic generated code section for Variable: Start */\n"
+TARGET_T_VARIABLE_END_LINE   = "    /* CAUTION : Automatic generated code section for Variable: End */\n"
+TARGET_T_STRUCT_START_LINE   = "    /* CAUTION : Automatic generated code section for Structure: Start */\n"
+TARGET_T_STRUCT_END_LINE      ="    /* CAUTION : Automatic generated code section for Structure: End */\n"
 #------------------------------------------------------------------------------
 #                                       CLASS
 #------------------------------------------------------------------------------
@@ -235,10 +235,10 @@ class LoadConfig_FromExcel():
         rc_enum: str = ""
         space: int = 0
         make_desc_b = False
-        if not all((isinstance(f_enum_name),str), 
+        if not all((isinstance(f_enum_name,str), 
                    isinstance(f_first_val,int), 
                    isinstance(f_root_enum,str), 
-                   isinstance(f_suffix_enum,list)):
+                   isinstance(f_suffix_enum,list))):
             raise TypeError("Arg invalid")
 
         if f_element_description != []:
@@ -249,30 +249,34 @@ class LoadConfig_FromExcel():
         if(f_enum_description != ""):
             if f_IsHfile_b:
                 rc_enum += "    "
-            rc_enum += f"/* {f_enum_description} */"
+            rc_enum += f"/* {f_enum_description} */\n"
             if f_IsHfile_b:
                 rc_enum += "    "
-            rc_enum += "typedef enum\n  {\n"
+            rc_enum += "typedef enum\n    {\n"
 
         for idx, element in enumerate(f_suffix_enum):
             if f_IsHfile_b:
                 rc_enum += "    "
-            rc_enum += "    " + f_root_enum.upper() + "_" + element.upper()
+            rc_enum += "    " + str(f_root_enum).upper() + "_" + str(element).upper()
             if(idx == 0):
                 # set the value to the first enum
-                rc_enum += f" = {f_first_val}"
+                rc_enum += f" = {str(hex(f_first_val))},"
             else:
-                rc_enum +=  ",\n"
+                rc_enum +=  ","
             if make_desc_b:
-                rc_enum += " " * (15 -( len(element) + (4) if idx == 0 else (0)))
-                rc_enum += f"/**< {f_element_description[idx]} */"
+                rc_enum += " " * (15 - (len(str(element)) + ((6) if idx == 0 else (0))))
+                rc_enum += f"/**< {f_element_description[idx]} */\n"
+            else:
+                rc_enum += "\n"
 
         if f_IsHfile_b:
             rc_enum += "    "
-        rc_enum += + "  " + f_root_enum + "NB,\n"
+        rc_enum +=  "\n        " + f_root_enum + "_NB,\n"
         if f_IsHfile_b:
                 rc_enum += "    "
         rc_enum += "} " + f_enum_name + ";\n\n"
+
+        return rc_enum
 #------------------------------------------------------------------------------
 #                             FUNCTION IMPLMENTATION
 #------------------------------------------------------------------------------

@@ -10,7 +10,7 @@
 #------------------------------------------------------------------------------
 #                                       IMPORT
 #------------------------------------------------------------------------------
-from .PyCodeGene import LoadConfig_FromExcel as LCFE, TARGET_T_END_LINE,TARGET_T_ENUM_END_LINE, \
+from PyCodeGene import LoadConfig_FromExcel as LCFE, TARGET_T_END_LINE,TARGET_T_ENUM_END_LINE, \
                                                     TARGET_T_ENUM_START_LINE,TARGET_T_START_LINE,TARGET_T_VARIABLE_START_LINE,\
                                                     TARGET_T_VARIABLE_END_LINE,TARGET_T_STRUCT_START_LINE,\
                                                     TARGET_T_STRUCT_END_LINE
@@ -19,7 +19,7 @@ from typing import List, Dict
 #------------------------------------------------------------------------------
 #                                       CONSTANT
 #------------------------------------------------------------------------------
-HARDWARE_CFG_PATH = ".\ExcelCfg\Hardware_Configuration.xlsx"
+HARDWARE_CFG_PATH = "Doc\ConfigPrj\ExcelCfg\Hardware_Configuration.xlsx"
 FMKIO_CONFIGPRIVATE_PATH = "src\\1_FMK\FMK_CFG\FMKCFG_ConfigFiles\FMKIO_ConfigPrivate.h"
 FMKIO_CONFIGPUBLIC_PATH = "src\\1_FMK\FMK_CFG\FMKCFG_ConfigFiles\FMKIO_ConfigPublic.h"
 FMKIO_PATH = "src\\1_FMK\FMK_HAL\FKM_IO\Src\FMK_IO.c"
@@ -32,16 +32,16 @@ SPACE_VARIABLE = 30
 ENUM_GPIO_PORT_ROOT = "FMKIO_GPIO_PORT"
 ENUM_INSIGANA_ROOT    = "FMKIO_INPUT_SIGANA"
 ENUM_INSIGDIG_ROOT    = "FMKIO_INPUT_SIGDIG"
-ENUM_INSIGFREQ_ROOT    = "FMKIO_INPUT_SIFREQ"
+ENUM_INSIGFREQ_ROOT    = "FMKIO_INPUT_SIGFREQ"
 ENUM_INSIGEVNT_ROOT    = "FMKIO_INPUT_SIGEVNT"
-ENUM_OUTSIGDIG_ROOT    = "FMKIO_OUTPUT_SIGPWM"
-ENUM_OUTSIGPWM_ROOT    = "FMKIO_INPUT_SIGDIG"
+ENUM_OUTSIGDIG_ROOT    = "FMKIO_OUTPUT_SIGDIG"
+ENUM_OUTSIGPWM_ROOT    = "FMKIO_INPUT_SIGPWM"
 
 ENUM_FMKCPU_TIMER_ROOT = "FMKCPU_TIMER"
 ENUM_FMKCPU_CHANNEL_ROOT = "FMKCPU_CHANNEL"
 ENUM_GPIO_PIN_ROOT = "FMKIO_GPIO_PIN"
 ENUM_ADC_ISCT_ROOT = "FMKCDA_ADC"
-ENUM_ADC_CNL_ROOT = "FMKCDA_ADC_"
+ENUM_ADC_CNL_ROOT = "FMKCDA_ADC"
 # CAUTION : Automatic generated code section: Start #
 
 # CAUTION : Automatic generated code section: End #
@@ -90,7 +90,7 @@ class HardwareCodeGeneration():
         enum_OutPWM = ""
         enum_OutDig = ""
         var_bsp_pin_map = ""
-        var_InAna = ""
+        var_InAna: str = ""
         var_InDig = ""
         var_InFreq = ""
         var_InEvnt= ""
@@ -107,7 +107,7 @@ class HardwareCodeGeneration():
         #---------------------------------------------------
         #-----------------make GPIO enum--------------------
         #---------------------------------------------------
-        enum_description += "/**< List of gpio port available on this board*/"
+        enum_description += "List of gpio port available on this board"
         for gpio_a in gpio_astr:
             #                  only take the gpio letter
             gpio_letter = str(gpio_a[0])[5:]
@@ -123,11 +123,11 @@ class HardwareCodeGeneration():
             # Make switch case GPIO
             switch_gpio += f"            case {ENUM_GPIO_PORT_ROOT}_{gpio_letter}:\n" \
                             + f"                *f_BspGpio_ps = GPIO{gpio_letter};\n" \
-                            + f"                break;"
+                            + f"                break;\n"
 
             # Make GPIO clock default value
             gpio_enable_clk += f"    FMKCPU_CLOCKPORT_OPE_DISABLE, // {ENUM_GPIO_PORT_ROOT}_{gpio_letter}\n"
-        gpio_enable_clk += "}\n\n"
+        gpio_enable_clk += "};\n\n"
         enum_gpio = self.code_gen.make_enum_from_variable(ENUM_GPIO_PORT_ROOT, enum_suffix_a, 
                                                           "t_eFMKIO_GpioPort", 0, enum_description, 
                                                            element_description_a)
@@ -138,16 +138,19 @@ class HardwareCodeGeneration():
         #---------------------------------------------------
         pin_list = [value for value in range(0, max_pin_per_gpio)]
         enum_pin = self.code_gen.make_enum_from_variable(ENUM_GPIO_PIN_ROOT, pin_list,
-                                                            "t_eFMKIO_BspGpioPin", 0, [f"Reference to bsp gpio pin {pin}" for pin in pin_list])
+                                                            "t_eFMKIO_BspGpioPin", 0,
+                                                              "List of Pin available for each GPIO on this board", 
+                                                              [f"Reference to bsp gpio pin {pin}" for pin in pin_list])
     
         #---------------------------------------------------------------
         #-----------------make Pin mapping variable---------------------
         #---------------------------------------------------------------
-        var_bsp_pin_map += "    /**< Variable for bsp/ enum pin mapping */\n" \
+        var_bsp_pin_map += "    /**< Variable for bsp_enum pin mapping */\n" \
                             + "    const t_uint32 c_BspPinMapping_ua32[FMKIO_GPIO_PIN_NB] = {\n"
-        for pin in pin_list:
-            var_bsp_pin_map += f"    GPIO_PIN_{pin},"
-            var_bsp_pin_map += " " * (SPACE_VARIABLE - len(f"    GPIO_PIN_{pin},")) + "\n"
+        for idx,pin in enumerate(pin_list):
+            var_bsp_pin_map += f"        GPIO_PIN_{pin},"  \
+                                + " " * (SPACE_VARIABLE - len(f"    GPIO_PIN_{pin},")) \
+                                + f"// {ENUM_GPIO_PIN_ROOT}_{idx}\n"
 
         var_bsp_pin_map += "    };\n\n"
 
@@ -166,7 +169,7 @@ class HardwareCodeGeneration():
                  
                         
             # make const variable     
-            var_InAna += "      {" + "{" \
+            var_InAna += "      {{" \
                         + f"{ENUM_GPIO_PORT_ROOT}_{pin_ana_cfg[0][5:]}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_GPIO_PORT_ROOT}_{pin_ana_cfg[0][5:]}")) \
                         + f"{ENUM_GPIO_PIN_ROOT}_{pin_ana_cfg[1][4:]}" + "}," \
@@ -174,14 +177,14 @@ class HardwareCodeGeneration():
                         + f"{ENUM_ADC_ISCT_ROOT}_{pin_ana_cfg[2][4:]}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_ADC_ISCT_ROOT}_{pin_ana_cfg[2][4:]}")) \
                         + f"{ENUM_ADC_CNL_ROOT}_{pin_ana_cfg[2][4:]}_CHANNEL_{pin_ana_cfg[3][8:]}" \
-                        + "}," + " " * 5 - len(f"{pin_ana_cfg[3][9:]}") \
-                        + f"{ENUM_INSIGANA_ROOT}_{idx + 1}\n"
-        var_InAna += "  };\n\n"
+                        + "}," + " " * (5 - len(f"{pin_ana_cfg[3][9:]}")) \
+                        + f"// {ENUM_INSIGANA_ROOT}_{idx + 1};\n"
+        var_InAna += "    };\n\n"
         #-----------------------------------------------------------
         #-----------------make InDig cfg variable-------------------
         #-----------------------------------------------------------
-        var_InDig += "    /**< Variable for bsp_Gpio_Pin Digital input signal mapping */" \
-                    + "    const t_sFMKIO_AnaAdcCfg c_InAnaSigBspMap_as[FMKIO_INPUT_SIGANA_NB] = {"
+        var_InDig += "    /**< Variable for bsp_Gpio_Pin Digital input signal mapping */\n" \
+                    + "    const t_sFMKIO_BspSigCfg c_InDigSigBspMap_as[FMKIO_INPUT_SIGDIG_NB] = {\n"
         # make description 
         var_InDig += "      //" 
         for elem_desc in InDig_astr[0]:
@@ -192,14 +195,14 @@ class HardwareCodeGeneration():
                         + f"{ENUM_GPIO_PORT_ROOT}_{pin_dig_cfg[0][5:]}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_GPIO_PORT_ROOT}_{pin_dig_cfg[0][5:]}")) \
                         + f"{ENUM_GPIO_PIN_ROOT}_{pin_dig_cfg[1][4:]}" + "}," \
-                        + " " * 5 - len(f"{pin_dig_cfg[1][4:]}") \
-                        + f"{ENUM_INSIGDIG_ROOT}_{idx + 1}" + "\n"
-        var_InDig += "  };\n\n"
+                        + " " * (5 - len(f"{pin_dig_cfg[1][4:]}")) \
+                        + f"// {ENUM_INSIGDIG_ROOT}_{idx + 1},\n"
+        var_InDig += "    };\n\n"
         #-----------------------------------------------------------
         #-----------------make InFreq cfg variable-------------------
         #-----------------------------------------------------------
-        var_InFreq += "    /**< Variable for bsp_Gpio_Pin frequency input signal mapping */" \
-                    + "    const t_sFMKIO_BspTimerSigCfg c_InFreqSigBspMap_as[FMKIO_INPUT_SIGFREQ_NB] = {"
+        var_InFreq += "    /**< Variable for bsp_Gpio_Pin frequency input signal mapping */\n" \
+                    + "    const t_sFMKIO_BspTimerSigCfg c_InFreqSigBspMap_as[FMKIO_INPUT_SIGFREQ_NB] = {\n"
         # make description 
         var_InFreq += "      //" 
         for elem_desc in InFreq_astr[0]:
@@ -217,14 +220,14 @@ class HardwareCodeGeneration():
                         + f"{ENUM_FMKCPU_TIMER_ROOT}_{pin_freq_cfg[3][6:]}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_FMKCPU_TIMER_ROOT}_{pin_freq_cfg[3][6:]},")) \
                         + f"{ENUM_FMKCPU_CHANNEL_ROOT}_{pin_freq_cfg[4][8:]}" \
-                        + "}," +  " " * 5 - len(f"{pin_freq_cfg[4][8:]}") \
-                        + f"{ENUM_INSIGFREQ_ROOT}_{idx + 1}" + "\n"
-        var_InFreq += "  };\n\n" 
+                        + "}," +  " " * (5 - len(f"{pin_freq_cfg[4][8:]}")) \
+                        + f"// {ENUM_INSIGFREQ_ROOT}_{idx + 1},\n" 
+        var_InFreq += "    };\n\n" 
         #-----------------------------------------------------------
         #-----------------make InEvnt cfg variable-------------------
         #-----------------------------------------------------------
-        var_InEvnt += "    /**< Variable for bsp_Gpio_Pin frequency input signal mapping */" \
-                    + "    const t_sFMKIO_BspTimerSigCfg c_InFreqSigBspMap_as[FMKIO_INPUT_SIGFREQ_NB] = {"
+        var_InEvnt += "    /**< Variable for bsp_Gpio_Pin frequency input signal mapping */\n" \
+                    + "const t_sFMKIO_BspEvntSigCfg c_InEvntSigBspMap_as[FMKIO_INPUT_SIGEVNT_NB] = {\n"
         # make description 
         var_InEvnt += "      //" 
         for elem_desc in InEvnt_astr[0]:
@@ -238,14 +241,15 @@ class HardwareCodeGeneration():
                         + f"{ENUM_GPIO_PIN_ROOT}_{pin_evnt_cfg[1][4:]}" + "}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_GPIO_PIN_ROOT}_{pin_evnt_cfg[1][4:]}")) \
                         + f"{pin_evnt_cfg[2]}" \
-                        + "    },\n"
+                        + "}," +  " " * (25 - len(f"{pin_evnt_cfg[2]}")) \
+                        + f"// {ENUM_INSIGEVNT_ROOT}_{idx + 1},\n"
         var_InEvnt += "    };\n\n"
 
         #-----------------------------------------------------------
         #-----------------make OutPWM cfg variable-------------------
         #-----------------------------------------------------------
-        var_OutPWM += "    /**< Variable for bsp_Gpio_Pin PWM output signal mapping */" \
-                    + "    const t_sFMKIO_BspTimerSigCfg c_OutPwmSigBspMap_as[FMKIO_OUTPUT_SIGPWM_NB] = {"
+        var_OutPWM += "    /**< Variable for bsp_Gpio_Pin PWM output signal mapping */\n" \
+                    + "    const t_sFMKIO_BspTimerSigCfg c_OutPwmSigBspMap_as[FMKIO_OUTPUT_SIGPWM_NB] = {\n"
         # make description 
         var_OutPWM += "      //" 
         for elem_desc in OutPWM_astr[0]:
@@ -263,52 +267,52 @@ class HardwareCodeGeneration():
                         + f"{ENUM_FMKCPU_TIMER_ROOT}_{pin_pwm_cfg[3][6:]}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_FMKCPU_TIMER_ROOT}_{pin_pwm_cfg[3][6:]},")) \
                         + f"{ENUM_FMKCPU_CHANNEL_ROOT}_{pin_pwm_cfg[4][8:]}" \
-                        + "}," +  " " * 5 - len(f"{pin_pwm_cfg[4][8:]}") \
-                        + f"{ENUM_OUTSIGPWM_ROOT}_{idx + 1}" + "\n"
-        var_OutPWM += "  };\n\n" 
+                        + "}," +  " " * (5 - len(f"{pin_pwm_cfg[4][8:]}")) \
+                        + f"// {ENUM_OUTSIGDIG_ROOT}_{idx + 1},\n"
+        var_OutPWM += "    };\n\n" 
         #-----------------------------------------------------------
         #-----------------make OutDig cfg variable-------------------
         #-----------------------------------------------------------
-        var_OutDig += "    /**< Variable for bsp_Gpio_Pin Digital ouput signal mapping */" \
-                    + "    const t_sFMKIO_BspSigCfg c_OutDigSigBspMap_as[FMKIO_OUTPUT_SIGDIG_NB] = {"
+        var_OutDig += "    /**< Variable for bsp_Gpio_Pin Digital ouput signal mapping */\n" \
+                    + "    const t_sFMKIO_BspSigCfg c_OutDigSigBspMap_as[FMKIO_OUTPUT_SIGDIG_NB] = {\n"
         # make description 
         var_OutDig += "      //" 
         for elem_desc in OutDig_astr[0]:
-            var_InDig += f"{elem_desc}" + " " * (SPACE_VARIABLE - len(elem_desc))
+            var_OutDig += f"{elem_desc}" + " " * (SPACE_VARIABLE - len(elem_desc))
         var_OutDig += "\n"
         for idx, pin_dig_cfg in enumerate(OutDig_astr[1:]):
             var_OutDig += "      {"\
                         + f"{ENUM_GPIO_PORT_ROOT}_{pin_dig_cfg[0][5:]}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_GPIO_PORT_ROOT}_{pin_dig_cfg[0][5:]}")) \
                         + f"{ENUM_GPIO_PIN_ROOT}_{pin_dig_cfg[1][4:]}" + "}," \
-                        + " " * 5 - len(f"{pin_dig_cfg[1][4:]}") \
-                        + f"{ENUM_OUTSIGDIG_ROOT}_{idx + 1}" + "\n"
-        var_OutDig += "  };\n\n"
+                        + " " * (5 - len(f"{pin_dig_cfg[1][4:]}")) \
+                        + f"// {ENUM_OUTSIGPWM_ROOT}_{idx + 1},\n"
+        var_OutDig += "    };\n\n"
         #-----------------------------------------------------------
         #-----------------make enum signal--------------------------
         #-----------------------------------------------------------
         enum_InAna = self.code_gen.make_enum_from_variable(ENUM_INSIGANA_ROOT, [str(idx + 1) for idx in range((len(InAna_astr[1:])))],
-                                                            "t_eFMKIO_InAnaSig", 0, "/**< List of input Analog pin available on this board*/",
+                                                            "t_eFMKIO_InAnaSig", 0, "List of input Analog pin available on this board",
                                                             [str(ana_cfg[(-1)]) for ana_cfg in InAna_astr[1:]])
         
         enum_InDig = self.code_gen.make_enum_from_variable(ENUM_INSIGDIG_ROOT, [str(idx + 1) for idx in range((len(InDig_astr[1:])))],
-                                                            "t_eFMKIO_InDigSig", 0, "/**< List of input digital pin available on this board*/",
+                                                            "t_eFMKIO_InDigSig", 0, "/List of input digital pin available on this board",
                                                             [str(dig_cfg[(-1)]) for dig_cfg in InDig_astr[1:]])
         
         enum_InFreq = self.code_gen.make_enum_from_variable(ENUM_INSIGFREQ_ROOT, [str(idx + 1) for idx in range((len(InFreq_astr[1:])))],
-                                                            "t_eFMKIO_InFreqSig", 0, "//**< List of input frequency pin available on this board*/",
+                                                            "t_eFMKIO_InFreqSig", 0, "List of input frequency pin available on this board",
                                                             [str(freq_cfg[(-1)]) for freq_cfg in InFreq_astr[1:]])
         
         enum_InEvnt = self.code_gen.make_enum_from_variable(ENUM_INSIGEVNT_ROOT, [str(idx + 1) for idx in range((len(InEvnt_astr[1:])))],
-                                                            "t_eFMKIO_InEvntSig", 0, "/**< List of input event pin available on this board*/",
+                                                            "t_eFMKIO_InEvntSig", 0, "List of input event pin available on this board",
                                                             [str(evnt_cfg[(-1)]) for evnt_cfg in InEvnt_astr[1:]])
         
         enum_OutDig = self.code_gen.make_enum_from_variable(ENUM_OUTSIGDIG_ROOT, [str(idx + 1) for idx in range((len(OutDig_astr[1:])))],
-                                                            "t_eFMKIO_OutDigSig", 0, "/**< List of output digital pin available on this board*/",
+                                                            "t_eFMKIO_OutDigSig", 0, "List of output digital pin available on this board",
                                                             [str(dig_cfg[(-1)]) for dig_cfg in OutDig_astr[1:]])
         
         enum_OutPWM = self.code_gen.make_enum_from_variable(ENUM_OUTSIGPWM_ROOT, [str(idx + 1) for idx in range((len(OutPWM_astr[1:])))],
-                                                            "t_eFMKIO_OutPwmSig", 0, "/**< List of output PWM pin available on this board*/",
+                                                            "t_eFMKIO_OutPwmSig", 0, "List of output PWM pin available on this board",
                                                             [str(pwm_cfg[(-1)]) for pwm_cfg in OutPWM_astr[1:]])
        
         #-----------------------------------------------------------
@@ -324,6 +328,7 @@ class HardwareCodeGeneration():
         self.code_gen._write_into_file(var_InDig, FMKIO_CONFIGPRIVATE_PATH)
         self.code_gen._write_into_file(var_bsp_pin_map, FMKIO_CONFIGPRIVATE_PATH)
 
+        # for FMKIO Config public
         self.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE, TARGET_T_ENUM_END_LINE)
         self.code_gen._write_into_file(enum_OutPWM, FMKIO_CONFIGPUBLIC_PATH)
         self.code_gen._write_into_file(enum_OutDig, FMKIO_CONFIGPUBLIC_PATH)
@@ -334,13 +339,18 @@ class HardwareCodeGeneration():
         self.code_gen._write_into_file(enum_pin, FMKIO_CONFIGPUBLIC_PATH)
         self.code_gen._write_into_file(enum_gpio, FMKIO_CONFIGPUBLIC_PATH)
 
+        # for FMKIO
         self.code_gen.change_target_balise(TARGET_BALISE_SWITCH_GPIO_START, TARGET_BALISE_SWITCH_GPIO_END)
         self.code_gen._write_into_file(switch_gpio, FMKIO_PATH)
 
         self.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE[4:], TARGET_T_VARIABLE_END_LINE[4:])
         self.code_gen._write_into_file(gpio_enable_clk, FMKIO_PATH)
-
-        # for FMKIO Config public
+    
+    #--------------------------
+    # FMKCPU_CodeGen
+    #--------------------------
+    def FMKCPU_CodeGen(self):
+        pass
 #------------------------------------------------------------------------------
 #                             FUNCTION IMPLMENTATION
 #------------------------------------------------------------------------------

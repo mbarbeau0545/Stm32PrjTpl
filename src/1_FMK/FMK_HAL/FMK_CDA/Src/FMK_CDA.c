@@ -404,58 +404,58 @@ static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_Adc1Channel f_channel_e,
     {
         switch (f_channel_e)
         {
-        case FMKCDA_ADC_CHANNEL_0:
+        case FMKCDA_ADC_1_CHANNEL_0:
             *f_bspChannel_32 = ADC_CHANNEL_0;
             break;
-        case FMKCDA_ADC_CHANNEL_1:
+        case FMKCDA_ADC_1_CHANNEL_1:
             *f_bspChannel_32 = ADC_CHANNEL_1;
             break;
-        case FMKCDA_ADC_CHANNEL_2:
+        case FMKCDA_ADC_1_CHANNEL_2:
             *f_bspChannel_32 = ADC_CHANNEL_2;
             break;
-        case FMKCDA_ADC_CHANNEL_3:
+        case FMKCDA_ADC_1_CHANNEL_3:
             *f_bspChannel_32 = ADC_CHANNEL_3;
             break;
-        case FMKCDA_ADC_CHANNEL_4:
+        case FMKCDA_ADC_1_CHANNEL_4:
             *f_bspChannel_32 = ADC_CHANNEL_4;
             break;
-        case FMKCDA_ADC_CHANNEL_5:
+        case FMKCDA_ADC_1_CHANNEL_5:
             *f_bspChannel_32 = ADC_CHANNEL_5;
             break;
-        case FMKCDA_ADC_CHANNEL_6:
+        case FMKCDA_ADC_1_CHANNEL_6:
             *f_bspChannel_32 = ADC_CHANNEL_6;
             break;
-        case FMKCDA_ADC_CHANNEL_7:
+        case FMKCDA_ADC_1_CHANNEL_7:
             *f_bspChannel_32 = ADC_CHANNEL_7;
             break;
-        case FMKCDA_ADC_CHANNEL_8:
+        case FMKCDA_ADC_1_CHANNEL_8:
             *f_bspChannel_32 = ADC_CHANNEL_8;
             break;
-        case FMKCDA_ADC_CHANNEL_9:
+        case FMKCDA_ADC_1_CHANNEL_9:
             *f_bspChannel_32 = ADC_CHANNEL_9;
             break;
-        case FMKCDA_ADC_CHANNEL_10:
+        case FMKCDA_ADC_1_CHANNEL_10:
             *f_bspChannel_32 = ADC_CHANNEL_10;
             break;
-        case FMKCDA_ADC_CHANNEL_11:
+        case FMKCDA_ADC_1_CHANNEL_11:
             *f_bspChannel_32 = ADC_CHANNEL_11;
             break;
-        case FMKCDA_ADC_CHANNEL_12:
+        case FMKCDA_ADC_1_CHANNEL_12:
             *f_bspChannel_32 = ADC_CHANNEL_12;
             break;
-        case FMKCDA_ADC_CHANNEL_13:
+        case FMKCDA_ADC_1_CHANNEL_13:
             *f_bspChannel_32 = ADC_CHANNEL_13;
             break;
-        case FMKCDA_ADC_CHANNEL_14:
+        case FMKCDA_ADC_1_CHANNEL_14:
             *f_bspChannel_32 = ADC_CHANNEL_14;
             break;
-        case FMKCDA_ADC_CHANNEL_15:
+        case FMKCDA_ADC_1_CHANNEL_15:
             *f_bspChannel_32 = ADC_CHANNEL_15;
             break;
-        case FMKCDA_ADC_CHANNEL_16:
+        case FMKCDA_ADC_1_CHANNEL_16:
             *f_bspChannel_32 = ADC_CHANNEL_16;
             break;
-        case FMKCDA_ADC_CHANNEL_17:
+        case FMKCDA_ADC_1_CHANNEL_17:
             *f_bspChannel_32 = ADC_CHANNEL_17;
             break;
         case FMKCDA_ADC_1_CHANNEL_NB:

@@ -60,8 +60,6 @@ t_sFMKIO_SigInfo g_OutPwmSigInfo_as[FMKIO_OUTPUT_SIGPWM_NB];        /**< Signal 
 t_sFMKIO_SigInfo g_OutDigSigInfo_as[FMKIO_OUTPUT_SIGDIG_NB];        /**< Signal information for output Digital */
 
 /* CAUTION : Automatic generated code section for Variable: Start */
-
-/* CAUTION : Automatic generated code section for Variable: End */
 /**< Variable to store the state of GPIO Clock */
 t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
     FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_A
@@ -70,6 +68,8 @@ t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
     FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_D
     FMKCPU_CLOCKPORT_OPE_DISABLE, // FMKIO_GPIO_PORT_F
 };
+
+/* CAUTION : Automatic generated code section for Variable: End */
 
 /**< Variable to put the Signal Frequency value */
 t_uint32 g_InFreqSigRawValue_ua32[FMKIO_INPUT_SIGFREQ_NB];

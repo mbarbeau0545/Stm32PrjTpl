@@ -30,6 +30,7 @@
     /* CAUTION : Automatic generated code section for Enum: Start */
 
     /* CAUTION : Automatic generated code section for Enum: End */
+    
     // Flag automatic generate code 
     /*****************************************************
      * @brief NUmber of ADC in this harware
