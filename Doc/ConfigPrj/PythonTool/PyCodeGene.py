@@ -264,7 +264,7 @@ class LoadConfig_FromExcel():
             else:
                 rc_enum +=  ","
             if make_desc_b:
-                rc_enum += " " * (15 - (len(str(element)) + ((6) if idx == 0 else (0))))
+                rc_enum += " " * (25 - (len(str(element)) + ((6) if idx == 0 else (0))))
                 rc_enum += f"/**< {f_element_description[idx]} */\n"
             else:
                 rc_enum += "\n"

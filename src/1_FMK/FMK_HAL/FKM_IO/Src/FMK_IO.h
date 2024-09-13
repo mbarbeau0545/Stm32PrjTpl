@@ -232,7 +232,7 @@
                                           t_cbFMKIO_EventFunc * f_Evnt_cb);
     /**
     *
-    *	@brief      Set an intput in PWM configuration.\n
+    *	@brief      Set an output in PWM configuration.\n
     *	@note       Allow the user to choose among pwm intputs.\n 
     *               This function configure bspInit , call HAL_function,
     *               call FMKCPU to configure a timer in order to convert generate

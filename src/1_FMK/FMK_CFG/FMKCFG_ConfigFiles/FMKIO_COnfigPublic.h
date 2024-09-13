@@ -139,7 +139,7 @@
         FMKIO_INPUT_SIGPWM_2,              /**< PA2 */
         FMKIO_INPUT_SIGPWM_3,              /**< PA3 */
     
-        FMKIO_INPUT_SIGPWM_NB,
+        FMKIO_OUTPUT_SIGPWM_NB,
     } t_eFMKIO_OutPwmSig;
 
     /* CAUTION : Automatic generated code section for Enum: End */
