@@ -49,7 +49,7 @@ class FMKCPU_CodeGen():
                - Enum timer list                   x
                - Enum Event channel                x
                - Enum Rcc Clock                    x
-               - Enum NVIC                       
+               - Enum NVIC                         x
             
             file FMKCPU_ConfigPrivate.h :
                 - variable NVIC prioirty           x
@@ -64,7 +64,8 @@ class FMKCPU_CodeGen():
                 - -enable/ disable clock declaration    x
 
             file  FMK_CPU.c
-                - variable g_timerInfo_as init  
+                - variable g_timerInfo_as init          x  
+                - switch case IRQN to bsp IRQN          x
         """
     def __init__(self) -> None:
         self.code_gen = LCFE()
@@ -196,7 +197,7 @@ class FMKCPU_CodeGen():
                                                           [f"Reference to HAL nvic {nvic_cfg[0]}" for nvic_cfg in irqn_cfg_a[1:] ])
 
         #-----------------------------------------------------------
-        #------------code genration for FMKIO module----------------
+        #------------code genration for FMKCPU module---------------
         #-----------------------------------------------------------
         # For FMKCPU_Config Public
         self.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE,TARGET_T_ENUM_END_LINE)

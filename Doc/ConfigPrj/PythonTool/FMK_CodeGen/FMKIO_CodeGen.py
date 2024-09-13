@@ -149,7 +149,7 @@ class FMKIO_CodeGen():
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_GPIO_PIN_ROOT}_{pin_ana_cfg[1][5:]}")) \
                         + f"{ENUM_ADC_ISCT_ROOT}_{pin_ana_cfg[2][4:]}," \
                         + " " * (SPACE_VARIABLE - len(f"{ENUM_ADC_ISCT_ROOT}_{pin_ana_cfg[2][4:]}")) \
-                        + f"{ENUM_ADC_CNL_ROOT}_{pin_ana_cfg[2][4:]}_CHANNEL_{pin_ana_cfg[3][8:]}" \
+                        + f"{ENUM_ADC_CHNL_ROOT}_{pin_ana_cfg[3][8:]}" \
                         + "}," + " " * (5 - len(f"{pin_ana_cfg[3][9:]}")) \
                         + f"// {ENUM_INSIGANA_ROOT}_{idx + 1};\n"
         var_InAna += "    };\n\n"

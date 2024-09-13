@@ -28,44 +28,40 @@
     // ********************************************************************
     //-----------------------------ENUM TYPES-----------------------------//
     /* CAUTION : Automatic generated code section for Enum: Start */
-
-    /* CAUTION : Automatic generated code section for Enum: End */
-    
-    // Flag automatic generate code 
-    /*****************************************************
-     * @brief NUmber of ADC in this harware
-     */
+    /* NUmber of ADC in this harware */
     typedef enum
     {
-        FMKCDA_ADC_1 = 0,
+        FMKCDA_ADC_1 = 0x0,                  /**< Reference to HAL ADC1 */
+    
+        FMKCDA_ADC_NB,
+    } t_eFMKCDA_Adc;
 
-        FMKCDA_ADC_NB
-    }t_eFMKCDA_Adc;
-    // Flag automatic generate code 
-    /*****************************************************
-     * @brief Number of channel in ADC Instances
-     */
-    typedef enum 
+    /*  Number of channel in ADC Instances */
+    typedef enum
     {
-        FMKCDA_ADC_1_CHANNEL_0 = 0,   /**< reference to the define ADC_CHANNEL_0 */
-        FMKCDA_ADC_1_CHANNEL_1,       /**< reference to the define ADC_CHANNEL_1 */
-        FMKCDA_ADC_1_CHANNEL_2,
-        FMKCDA_ADC_1_CHANNEL_3,
-        FMKCDA_ADC_1_CHANNEL_4,
-        FMKCDA_ADC_1_CHANNEL_5,
-        FMKCDA_ADC_1_CHANNEL_6,
-        FMKCDA_ADC_1_CHANNEL_7,
-        FMKCDA_ADC_1_CHANNEL_8,
-        FMKCDA_ADC_1_CHANNEL_9,
-        FMKCDA_ADC_1_CHANNEL_10,
-        FMKCDA_ADC_1_CHANNEL_11,
-        FMKCDA_ADC_1_CHANNEL_12,
-        FMKCDA_ADC_1_CHANNEL_13,
-        FMKCDA_ADC_1_CHANNEL_14,
-        FMKCDA_ADC_1_CHANNEL_15,
+        FMKCDA_ADC_CHANNEL_0 = 0x0,                  /**< Reference to HAL adc channel 0 */
+        FMKCDA_ADC_CHANNEL_1,                        /**< Reference to HAL adc channel 1 */
+        FMKCDA_ADC_CHANNEL_2,                        /**< Reference to HAL adc channel 2 */
+        FMKCDA_ADC_CHANNEL_3,                        /**< Reference to HAL adc channel 3 */
+        FMKCDA_ADC_CHANNEL_4,                        /**< Reference to HAL adc channel 4 */
+        FMKCDA_ADC_CHANNEL_5,                        /**< Reference to HAL adc channel 5 */
+        FMKCDA_ADC_CHANNEL_6,                        /**< Reference to HAL adc channel 6 */
+        FMKCDA_ADC_CHANNEL_7,                        /**< Reference to HAL adc channel 7 */
+        FMKCDA_ADC_CHANNEL_8,                        /**< Reference to HAL adc channel 8 */
+        FMKCDA_ADC_CHANNEL_9,                        /**< Reference to HAL adc channel 9 */
+        FMKCDA_ADC_CHANNEL_10,                       /**< Reference to HAL adc channel 10 */
+        FMKCDA_ADC_CHANNEL_11,                       /**< Reference to HAL adc channel 11 */
+        FMKCDA_ADC_CHANNEL_12,                       /**< Reference to HAL adc channel 12 */
+        FMKCDA_ADC_CHANNEL_13,                       /**< Reference to HAL adc channel 13 */
+        FMKCDA_ADC_CHANNEL_14,                       /**< Reference to HAL adc channel 14 */
+        FMKCDA_ADC_CHANNEL_15,                       /**< Reference to HAL adc channel 15 */
+        FMKCDA_ADC_CHANNEL_16,                       /**< Reference to HAL adc channel 16 */
+        FMKCDA_ADC_CHANNEL_17,                       /**< Reference to HAL adc channel 17 */
+    
+        FMKCDA_ADC_CHANNEL_NB,
+    } t_eFMKCDA_AdcChannel;
 
-        FMKCDA_ADC_1_CHANNEL_NB,
-    } t_eFMKCDA_Adc1Channel;
+    /* CAUTION : Automatic generated code section for Enum: End */
     //-----------------------------TYPEDEF TYPES---------------------------//
     //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */

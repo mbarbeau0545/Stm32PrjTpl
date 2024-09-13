@@ -49,8 +49,8 @@ typedef enum
 /**< Structure for store and manage analog value in Scan_Dma mode */
 typedef struct
 {
-    t_uint16 rawValue_au16[FMKCDA_ADC_1_CHANNEL_NB];                  /**< Array for analog value for all channel */
-    t_eFMKCPU_InterruptChnl BspChnlmapp[FMKCDA_ADC_1_CHANNEL_NB];     /**< Mapping with raywvalue array and channelINfo structure abalog value */    
+    t_uint16 rawValue_au16[FMKCDA_ADC_CHANNEL_NB];                  /**< Array for analog value for all channel */
+    t_eFMKCPU_InterruptChnl BspChnlmapp[FMKCDA_ADC_CHANNEL_NB];     /**< Mapping with raywvalue array and channelINfo structure abalog value */    
     t_bool FlagValueUpdated_b;                                      /**< Flag to know whenever the adc ennding a conversion */
 } t_sFMKCDA_AdcBuffer;
 
@@ -69,7 +69,7 @@ typedef struct
 {
     ADC_HandleTypeDef BspInit_s;                            /**< Store the bsp information needed */
     t_eFMKCDA_HwAdcCfg HwCfg_e;                             /**< Store in which mode the ADC is currently set */
-    t_sFMKCDA_ChnlInfo Channel_as[FMKCDA_ADC_1_CHANNEL_NB];   /**< Structure channel information for each channel */
+    t_sFMKCDA_ChnlInfo Channel_as[FMKCDA_ADC_CHANNEL_NB];   /**< Structure channel information for each channel */
     const t_eFMKCPU_ClockPort clock_e;                      /**< constant to store the clock for each ADC */
     const t_eFMKCPU_IRQNType IRQNType_e;                    /**< constant to store the IRQN for each ADC */
     t_bool IsAdcConfigured_b;                               /**< Flag to know if the ADC is configured */
@@ -82,24 +82,25 @@ typedef struct
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-/**< store the raw value for each channel of each adc converter*/
-t_sFMKCDA_AdcBuffer g_AdcBuffer_as[FMKCDA_ADC_NB];
-// Flag automatic generate code
+/* CAUTION : Automatic generated code section for Variable: Start */
 /**< Store the Adc Info variable*/
 t_sFMKCDA_AdcInfo g_AdcInfo_as[FMKCDA_ADC_NB] = {
     {
         // ADC_1
         .BspInit_s.Instance = ADC1,
         .clock_e = FMKCPU_RCC_CLK_ADC1,
-        .IRQNType_e = ADC1_IRQn,
+        .IRQNType_e = FMKCPU_NVIC_ADC1_IRQN,
     }
 };
 
-// Flag automatic generate code
 /**< Rank for each channel add for ADC */
-t_uint8 g_counterRank_au8[FMKCDA_ADC_NB] = { 
-    (t_uint8)1
-}; 
+t_uint8 g_counterRank_au8[FMKCDA_ADC_NB] = {
+    (t_uint8)1,
+};
+
+/* CAUTION : Automatic generated code section for Variable: End */
+/**< store the raw value for each channel of each adc converter*/
+t_sFMKCDA_AdcBuffer g_AdcBuffer_as[FMKCDA_ADC_NB];
 
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
 
@@ -110,7 +111,7 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
  *
  *	@brief      Function to get the bsp channel based on the value of f_channel_e.\n
  *
- *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_Adc1Channel
+ *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_AdcChannel
  *	@param[in]  f_bspChannel_32       : bsp adc channel uint32
  *
  *  @retval RC_OK                             @ref RC_OK
@@ -119,7 +120,7 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
  *  @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
  *
  */
-static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_Adc1Channel f_channel_e, t_uint32 *f_bspChannel_32);
+static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_AdcChannel f_channel_e, t_uint32 *f_bspChannel_32);
 /**
  *
  *	@brief      Function to set the bsp adc Init.\n
@@ -147,7 +148,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
  *              
  *
  *	@param[in]  f_Adc_e               : enum adc, value from @ref t_eFMKCDA_Adc
- *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_Adc1Channel
+ *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_AdcChannel
  *
  * @retval RC_OK                             @ref RC_OK
  * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
@@ -155,7 +156,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
  * @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
  *
  */
-static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc1Channel f_channel_e);
+static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_AdcChannel f_channel_e);
 /**
  *
  *	@brief      Perform cyclic operation for this module.\n
@@ -187,7 +188,7 @@ t_eReturnState FMKCDA_Init(void)
         g_AdcInfo_as[LLI1_u8].IsAdcConfigured_b = (t_bool)False;
         g_AdcInfo_as[LLI1_u8].IsAdcRunning_b = (t_bool)False;
 
-        for (LLI2_u8 = (t_uint8)0; LLI2_u8 < (t_uint8)FMKCDA_ADC_1_CHANNEL_NB; LLI2_u8++)
+        for (LLI2_u8 = (t_uint8)0; LLI2_u8 < (t_uint8)FMKCDA_ADC_CHANNEL_NB; LLI2_u8++)
         { // all channel for a timer
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].IsChnlConfigured_b = (t_bool)False;
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].Error_e = FMKCDA_CHANNEL_STATE_OK;
@@ -263,12 +264,12 @@ t_eReturnState FMKCDA_SetState(t_eCyclicFuncState f_State_e)
  * FMKCDA_Set_AdcChannelCfg
  *********************************/
 t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e,
-                                        t_eFMKCDA_Adc1Channel f_channel_e,
+                                        t_eFMKCDA_AdcChannel f_channel_e,
                                         t_eFMKCDA_HwAdcCfg f_hwAdcCfg_e)
 {
     t_eReturnState Ret_e = RC_OK;
 
-    if (f_Adc_e > FMKCDA_ADC_NB || f_channel_e > FMKCDA_ADC_1_CHANNEL_NB)
+    if (f_Adc_e > FMKCDA_ADC_NB || f_channel_e > FMKCDA_ADC_CHANNEL_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -300,11 +301,11 @@ t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e,
 /*********************************
  * FMKCDA_Get_AnaChannelMeasure
  *********************************/
-t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc1Channel f_channel_e, t_uint16 *f_AnaMeasure_u16)
+t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_AdcChannel f_channel_e, t_uint16 *f_AnaMeasure_u16)
 {
     t_eReturnState Ret_e = RC_OK;
 
-    if (f_Adc_e > FMKCDA_ADC_NB || f_channel_e > FMKCDA_ADC_1_CHANNEL_NB)
+    if (f_Adc_e > FMKCDA_ADC_NB || f_channel_e > FMKCDA_ADC_CHANNEL_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -389,10 +390,10 @@ static t_eReturnState s_FMKCDA_Operational(void)
 /*********************************
  * s_FMKCDA_Get_BspChannel
  *********************************/
-static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_Adc1Channel f_channel_e, t_uint32 *f_bspChannel_32)
+static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_AdcChannel f_channel_e, t_uint32 *f_bspChannel_32)
 {
     t_eReturnState Ret_e = RC_OK;
-    if (f_channel_e > FMKCDA_ADC_1_CHANNEL_NB)
+    if (f_channel_e > FMKCDA_ADC_CHANNEL_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -404,63 +405,65 @@ static t_eReturnState s_FMKCDA_Get_BspChannel(t_eFMKCDA_Adc1Channel f_channel_e,
     {
         switch (f_channel_e)
         {
-        case FMKCDA_ADC_1_CHANNEL_0:
-            *f_bspChannel_32 = ADC_CHANNEL_0;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_1:
-            *f_bspChannel_32 = ADC_CHANNEL_1;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_2:
-            *f_bspChannel_32 = ADC_CHANNEL_2;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_3:
-            *f_bspChannel_32 = ADC_CHANNEL_3;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_4:
-            *f_bspChannel_32 = ADC_CHANNEL_4;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_5:
-            *f_bspChannel_32 = ADC_CHANNEL_5;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_6:
-            *f_bspChannel_32 = ADC_CHANNEL_6;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_7:
-            *f_bspChannel_32 = ADC_CHANNEL_7;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_8:
-            *f_bspChannel_32 = ADC_CHANNEL_8;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_9:
-            *f_bspChannel_32 = ADC_CHANNEL_9;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_10:
-            *f_bspChannel_32 = ADC_CHANNEL_10;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_11:
-            *f_bspChannel_32 = ADC_CHANNEL_11;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_12:
-            *f_bspChannel_32 = ADC_CHANNEL_12;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_13:
-            *f_bspChannel_32 = ADC_CHANNEL_13;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_14:
-            *f_bspChannel_32 = ADC_CHANNEL_14;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_15:
-            *f_bspChannel_32 = ADC_CHANNEL_15;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_16:
-            *f_bspChannel_32 = ADC_CHANNEL_16;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_17:
-            *f_bspChannel_32 = ADC_CHANNEL_17;
-            break;
-        case FMKCDA_ADC_1_CHANNEL_NB:
-        default:
-            Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
+            /* CAUTION : Automatic generated code section for switch_case ADC channel: Start */
+            case FMKCDA_ADC_CHANNEL_0:
+                *f_bspChannel_32 = ADC_CHANNEL_0;
+                break;
+            case FMKCDA_ADC_CHANNEL_1:
+                *f_bspChannel_32 = ADC_CHANNEL_1;
+                break;
+            case FMKCDA_ADC_CHANNEL_2:
+                *f_bspChannel_32 = ADC_CHANNEL_2;
+                break;
+            case FMKCDA_ADC_CHANNEL_3:
+                *f_bspChannel_32 = ADC_CHANNEL_3;
+                break;
+            case FMKCDA_ADC_CHANNEL_4:
+                *f_bspChannel_32 = ADC_CHANNEL_4;
+                break;
+            case FMKCDA_ADC_CHANNEL_5:
+                *f_bspChannel_32 = ADC_CHANNEL_5;
+                break;
+            case FMKCDA_ADC_CHANNEL_6:
+                *f_bspChannel_32 = ADC_CHANNEL_6;
+                break;
+            case FMKCDA_ADC_CHANNEL_7:
+                *f_bspChannel_32 = ADC_CHANNEL_7;
+                break;
+            case FMKCDA_ADC_CHANNEL_8:
+                *f_bspChannel_32 = ADC_CHANNEL_8;
+                break;
+            case FMKCDA_ADC_CHANNEL_9:
+                *f_bspChannel_32 = ADC_CHANNEL_9;
+                break;
+            case FMKCDA_ADC_CHANNEL_10:
+                *f_bspChannel_32 = ADC_CHANNEL_10;
+                break;
+            case FMKCDA_ADC_CHANNEL_11:
+                *f_bspChannel_32 = ADC_CHANNEL_11;
+                break;
+            case FMKCDA_ADC_CHANNEL_12:
+                *f_bspChannel_32 = ADC_CHANNEL_12;
+                break;
+            case FMKCDA_ADC_CHANNEL_13:
+                *f_bspChannel_32 = ADC_CHANNEL_13;
+                break;
+            case FMKCDA_ADC_CHANNEL_14:
+                *f_bspChannel_32 = ADC_CHANNEL_14;
+                break;
+            case FMKCDA_ADC_CHANNEL_15:
+                *f_bspChannel_32 = ADC_CHANNEL_15;
+                break;
+            case FMKCDA_ADC_CHANNEL_16:
+                *f_bspChannel_32 = ADC_CHANNEL_16;
+                break;
+            case FMKCDA_ADC_CHANNEL_17:
+                *f_bspChannel_32 = ADC_CHANNEL_17;
+                break;
+            /* CAUTION : Automatic generated code section for switch_case ADC channel: End */
+            case FMKCDA_ADC_CHANNEL_NB:
+            default:
+                Ret_e = RC_ERROR_PARAM_NOT_SUPPORTED;
         }
     }
     return Ret_e;
@@ -598,7 +601,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
 /*********************************
  * s_FMKCDA_Set_BspChannelCfg
  *********************************/
-static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc1Channel f_channel_e)
+static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_AdcChannel f_channel_e)
 {
     t_eReturnState Ret_e = RC_OK;
     HAL_StatusTypeDef BspRet_e = HAL_OK;

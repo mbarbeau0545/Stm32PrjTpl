@@ -44,7 +44,7 @@
     {
         t_sFMKIO_BspSigCfg      BasicCfg;
         t_eFMKCDA_Adc           adc_e;
-        t_eFMKCDA_Adc1Channel    adcChannel_e;
+        t_eFMKCDA_AdcChannel    adcChannel_e;
     }t_sFMKIO_AnaAdcCfg;
      
     /**< Structure configuration for Event Signal*/

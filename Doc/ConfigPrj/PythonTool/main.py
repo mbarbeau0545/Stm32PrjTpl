@@ -12,6 +12,7 @@
 #------------------------------------------------------------------------------
 from FMK_CodeGen.FMKCPU_CodeGen import FMKCPU_CodeGen as FMKCPU
 from FMK_CodeGen.FMKIO_CodeGen  import FMKIO_CodeGen as FMKIO
+from FMK_CodeGen.FMKCDA_CodeGen  import FMKCDA_CodeGen as FMKCDA
 #------------------------------------------------------------------------------
 #                                       CONSTANT
 #------------------------------------------------------------------------------
@@ -26,7 +27,7 @@ from FMK_CodeGen.FMKIO_CodeGen  import FMKIO_CodeGen as FMKIO
 #                             FUNCTION IMPLMENTATION
 #------------------------------------------------------------------------------
 def main()-> None:
-    a = FMKCPU()
+    a = FMKCDA()
     return
 #------------------------------------------------------------------------------
 #			                MAIN

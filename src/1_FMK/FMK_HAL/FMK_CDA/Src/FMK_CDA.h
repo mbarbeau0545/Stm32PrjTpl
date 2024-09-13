@@ -128,7 +128,7 @@
     *               should have the same hardware config.\n If not, a error is reach.\n
     * 
     *	@param[in]  f_Adc_e               : enum adc, value from @ref t_eFMKCDA_Adc
-    *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_Adc1Channel
+    *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_AdcChannel
     *	@param[in]  f_adcCfg_e            : enum adc config, value from  @ref t_eFMKCDA_HwAdcCfg
     *
     *   @retval RC_OK                               @ref RC_OK
@@ -136,7 +136,7 @@
     *   @retval RC_ERROR_ALREADY_CONFIGURED             @ref RC_ERROR_ALREADY_CONFIGURED
     */
     t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e, 
-                                       t_eFMKCDA_Adc1Channel f_channel_e,
+                                       t_eFMKCDA_AdcChannel f_channel_e,
                                        t_eFMKCDA_HwAdcCfg   f_adcCfg_e);
     /**
     *
@@ -148,7 +148,7 @@
     *               else return 0 and retcode NO_OPERATION
     * 
     *	@param[in]  f_Adc_e               : enum adc, value from @ref t_eFMKCDA_Adc
-    *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_Adc1Channel
+    *	@param[in]  f_channel_e           : enum adc channel, value from @ref t_eFMKCDA_AdcChannel
     *	@param[in]  f_AnaMeasure_u16            : enum adc config, value from  @ref t_eFMKCDA_HwAdcCfg
     *
     *   @retval RC_OK                               @ref RC_OK
@@ -158,7 +158,7 @@
     *   @retval RC_WARNING_NO_OPERATION             @ref RC_WARNING_NO_OPERATION
     *   @retval RC_ERROR_MODULE_NOT_INITIALIZED     @ref RC_ERROR_MODULE_NOT_INITIALIZED
     */
-    t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc1Channel f_channel_e, t_uint16 *f_AnaMeasure_u16);
+    t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_AdcChannel f_channel_e, t_uint16 *f_AnaMeasure_u16);
     
 #endif // FMKCPU_H_INCLUDED           
 //************************************************************************************

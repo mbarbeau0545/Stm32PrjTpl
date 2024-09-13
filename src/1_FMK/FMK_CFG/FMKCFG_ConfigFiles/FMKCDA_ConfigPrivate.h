@@ -24,7 +24,9 @@
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
-
+    /* CAUTION : Automatic generated code section for ADC channels number: Start */
+    #define FMKCDA_ADC_1_MAX_CHANNELS ((t_uint8)18)
+    /* CAUTION : Automatic generated code section for ADC channels number: End */
     // ********************************************************************
     // *                      Types
     // ********************************************************************
@@ -46,6 +48,10 @@
     // *                      Variables
     // ********************************************************************
     /* CAUTION : Automatic generated code section for Variable: Start */
+    /**< Variable for Adc Max channel*/
+    const t_uint8 c_FmkCda_AdcMaxChnl_ua8[FMKCDA_ADC_NB] = {
+        (t_uint8)FMKCDA_ADC_1_MAX_CHANNELS,
+    };
 
     /* CAUTION : Automatic generated code section for Variable: End */
 
