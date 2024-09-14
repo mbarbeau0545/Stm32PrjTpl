@@ -32,69 +32,87 @@
     /* CAUTION : Automatic generated code section for Enum: Start */
 
     /* CAUTION : Automatic generated code section for Enum: End */
+    /**< Enum for harware channel polarity */
     typedef enum
     {
-        FMKCPU_CHNLPOLARITY_LOW = 0x0U,
-        FMKCPU_CHNLPOLARITY_HIGH,
+        FMKCPU_CHNLPOLARITY_LOW = 0x0U,         /**< Reference to harware channel polarity low */
+        FMKCPU_CHNLPOLARITY_HIGH,               /**< Reference to harware channel polarity high */
 
-        FMKCPU_CHNLPOLARITY_NB
+        FMKCPU_CHNLPOLARITY_NB                  /**< Number of hardxware channel polarity */
     } t_eFMKCPU_ChnlPolarity;
 
+    /**< Enum  for channel state */
     typedef enum
     {
-        FMKCPU_CHNLST_ACTIVATED= 0x0U,
-        FMKCPU_CHNLST_DISACTIVATED,
+        FMKCPU_CHNLST_ACTIVATED= 0x0U,          /**< The channel is acitvated by software, is running */
+        FMKCPU_CHNLST_DISACTIVATED,             /**< the channel is disactivated by software, not running */
 
-        FMKCPU_CHNLST_NB
+        FMKCPU_CHNLST_NB                        /**< Number of channel state */
     } t_eFMKCPU_ChnlState;
 
+    /**< Enum for channel run mode */
     typedef enum 
     {
-        FMKCPU_CNHL_RUNMODE_POLLING = 0x0U,
-        FMKCPU_CNHL_RUNMODE_INTERRUPT,
+        FMKCPU_CNHL_RUNMODE_POLLING = 0x0U,     /**< The channel is running in polling mode (standard mode) */
+        FMKCPU_CNHL_RUNMODE_INTERRUPT,          /**< The channel is running in interrupt mode, which means HAL error callback is active,
+                                                 among other things*/
 
-        FMKCPU_CNHL_RUNMODE_NB
+        FMKCPU_CNHL_RUNMODE_NB                  /**< Number of channel run mode take in charge (DMA currently not available) */
     } t_eFMKCPU_ChnlRunMode; 
 
+    /**< Enuum for crcc clock port operation */
     typedef enum 
     {
-        FMKCPU_CLOCKPORT_OPE_ENABLE = 0x0U,
-        FMKCPU_CLOCKPORT_OPE_DISABLE,
+        FMKCPU_CLOCKPORT_OPE_ENABLE = 0x0U,     /**< The operation to make on rcc clock port will be to enable it */
+        FMKCPU_CLOCKPORT_OPE_DISABLE,           /**< The operation to make on rcc clock port will be to disable it */
 
-        FMKCPU_CLOCKPORT_OPE_NB
+        FMKCPU_CLOCKPORT_OPE_NB                 /**< Number of operation on rcc clock state */
     } t_eFMKCPU_ClockPortOpe;
 
+    /**< enum for NVIC operation state */
     typedef enum 
     {
-        FMKCPU_NVIC_OPE_ENABLE = 0x0U,
-        FMKCPU_NVIC_OPE_DISABLE,
+        FMKCPU_NVIC_OPE_ENABLE = 0x0U,          /**< The operation to make on NVIC is to enable it */
+        FMKCPU_NVIC_OPE_DISABLE,                /**< The operation to make on NVIC is to disable it */
 
         FMKCPU_NVIC_OPE_NB
     } t_eFMKCPU_NVIC_Ope;
 
+    /**< Enum for interruption channel trigger */
     typedef enum 
     {
-        FMKCPU_CHNL_MEAS_RISING_EDGE = 0x0U,
-        FMKCPU_CHNL_MEAS_FALLING_EDGE,
-        FMKCPU_CHNL_MEAS_BOTH_EDGE,
+        FMKCPU_CHNL_MEAS_RISING_EDGE = 0x0U,        /**< The channel interrupt will be triggered on rising edge */
+        FMKCPU_CHNL_MEAS_FALLING_EDGE,              /**< The channel interrupt will be triggered on falling edge */
+        FMKCPU_CHNL_MEAS_BOTH_EDGE,                 /**< The channel interrupt will be triggered on both edge */
 
-        FMKCPU_CHNL_MEAS_NB
+        FMKCPU_CHNL_MEAS_NB                         /**< Number of trigger mode */
     }t_eFMKCPU_ChnlMeasTrigger;
 
+    /**< Enum for timer channel  error */
+    typedef enum
+    {
+        FMKCPU_ERRSTATE_OK              = 0X00U,     /**< No error detected */
+        FMKCPU_ERRSTATE_INVALID_CHANNEL = 0x01U,     /**< Invalid canal */
+        FMKCPU_ERRSTATE_TIMEOUT         = 0x02U,     /**< time waiting excedeed */
+        FMKCPU_ERRSTATE_OVERFLOW        = 0x04U,     /**< overflow capacity */
+        FMKCPU_ERRSTATE_UNDERFLOW       = 0x08U,     /**< Under flow capacity */
+        FMKCPU_ERRSTATE_NOT_CONFIGURED  = 0x10U,     /**< timer or channel not configured */
+        FMKCPU_ERRSTATE_BUSY            = 0x20U,     /**< channel is busy */
+        FMKCPU_ERRSTATE_INIT_FAILED     = 0x04U,     /**< Failed during intitialize of channel */
+        FMKCPU_ERRSTATE_UNKNOWN         = 0x80U,     /**< unknown error detected */
+
+    } t_eFMKCPU_ChnlErrorState;
     //-----------------------------TYPEDEF TYPES---------------------------//
     /**
     *
-    *	@brief
-    *	@note   
+    *	@brief  Call back function for channels
     *
-    *
-    *	@param[in] 
-    *	@param[out]
+    *	@param[in]      f_timer_e : timer channel 
+    *	@param[out]     f_channel_e : channel which make the interruption
     *	 
     *
-    *
     */
-   typedef void (t_cbFMKCPU_InterruptChnl)(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e);
+   typedef t_eReturnState (t_cbFMKCPU_InterruptChnl)(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e);
     //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */
 
@@ -187,7 +205,7 @@
     *   @note       This function is called to set the interruption priority
     *               for f_IRQN_e interruption.\n 
     *               If an interruption (2) occur while another Interruption (1) is running, 
-    *               depending on the value of f_priority_e (2) will interruot or not
+    *               depending on the value of f_priority_e (2)n that will interrupt or not
     *               the interruption (1).\n
     *               This function also disable the IRQN interruption if needed.\n
     *
@@ -234,7 +252,7 @@
     t_eReturnState FMKCPU_Set_WwdgCfg(t_eFMKCPu_WwdgResetPeriod f_period_e);
     /**
     *
-    *	@brief      Reset the watchdogs coutner.\n
+    *	@brief      Reset the watchdogs counter.\n
     *
     *  @retval RC_OK                             @ref RC_OK
     *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
@@ -301,7 +319,7 @@
                                              t_uint16 *f_dutyCycle_u16);
     /**
     *
-    *	@brief    Set a timer channel in Input Compare configuration.\n
+    *	@brief    Configure a timer channel in Input Compare configuration.\n
     *   @note     The IC Timer configuration is used to measure a signal frequency.\n
     *             This function initialize the timer in Input Compare confgiuration if the
     *             timer is not configured yet.\n
@@ -326,7 +344,7 @@
                                          t_cbFMKCPU_InterruptChnl f_ITChannel_cb);
     /**
     *
-    *	@brief    Set a timer channel on event configuration.\n
+    *	@brief    Configure a a timer channel on event configuration.\n
     *   @note     This function initialize the timer in event configuration if the
     *             timer is not configured yet.\n
     *             Once the timer configure is done, update the channel state using function 
@@ -385,7 +403,38 @@
     t_eReturnState FMKCPU_Set_ChannelState(t_eFMKCPU_Timer f_timer_e, 
                                            t_eFMKCPU_InterruptChnl f_channel_e,
                                            t_eFMKCPU_ChnlState f_channelState_e);
-
+    /**
+    *
+    *	@brief      Function to get the error code for a timer_channel
+    *
+    *	@param[in]  f_timer_e                : enum value for the timer, value from @ref t_eFMKCPU_Timer
+    *	@param[in]  f_channel_e              : enum value for the channel, value from @ref t_eFMKCPU_InterruptChnl
+    *	@param[in]  f_chnlErrInfo_pe         : storage for channel error.\n
+    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+    *
+    */
+    t_eReturnState FMKCPU_Get_ChannelErrorStatus(t_eFMKCPU_Timer f_timer_e,
+                                             t_eFMKCPU_InterruptChnl f_channel_e, 
+                                             t_eFMKCPU_ChnlErrorState *f_chnlErrInfo_pe);
+    /**
+    *
+    *	@brief      Function to get CCRx register value
+    *
+    *	@param[in]  f_timer_e                : enum value for the timer, value from @ref t_eFMKCPU_Timer
+    *	@param[in]  f_channel_e              : enum value for the channel, value from @ref t_eFMKCPU_InterruptChnl
+    *	@param[in]  f_CCRxValue_pu32         : storage for CCRx Value.\n
+    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+    *
+    */
+    t_eReturnState FMKCPU_Get_RegisterCRRx(t_eFMKCPU_Timer f_timer_e, 
+                                        t_eFMKCPU_InterruptChnl f_channel_e,
+                                        t_uint32 * f_CCRxValue_pu32);
 #endif // FMKCPU_H_INCLUDED           
 //************************************************************************************
 // End of File

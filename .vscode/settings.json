@@ -28,6 +28,7 @@
         "app_act.h": "c",
         "appact_spec_valvesome.h": "c",
         "fmk_cda.h": "c",
-        "fmkcda_configpublic.h": "c"
+        "fmkcda_configpublic.h": "c",
+        "fmkio_configprivate.h": "c"
     }
 }

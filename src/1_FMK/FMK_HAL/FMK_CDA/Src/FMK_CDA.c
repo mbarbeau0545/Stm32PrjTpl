@@ -20,7 +20,7 @@
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
-#define FMKCDA_CHNLCFG_PER_CYCLE ((t_uint8)5) /* Number of channel configuration per Cycle*/
+
 // ********************************************************************
 // *                      Types
 // ********************************************************************
@@ -28,18 +28,6 @@
 /* CAUTION : Automatic generated code section for Enum: Start */
 
 /* CAUTION : Automatic generated code section for Enum: End */
-/**< enum for Channel error status*/
-typedef enum
-{
-    FMKCDA_CHANNEL_STATE_OK = 0,            /**< No error detected on channel */
-    FMKCDA_CHANNEL_STATE_ERR_INTERNAL,      /**< Internal/ bsp error detected on channel */
-    FMKCDA_CHANNEL_STATE_ERR_OVR,           /**< overrun error detetcted on channel */
-    FMKCDA_CHANNEL_STATE_ERR_DMA,           /**< Dma error detetected on channel */
-    FMKCDA_CHANNEL_STATE_CB,                /**< callback error detetected on channel */
-    FMKCDA_CHANNEL_STATE_JQOVF,             /**< to do */
-
-    FMKCDA_CHANNEL_STATE_NB                 /**< Number of channel state error */
-} t_eFMKCDA_ChnlErrState;
 
 //-----------------------------TYPEDEF TYPES---------------------------//
 //-----------------------------STRUCT TYPES---------------------------//
@@ -61,7 +49,6 @@ typedef struct
     t_bool FlagValueUpdated_b;          /**< Flag to know when the rawvalue is available */
     t_bool IsChnlUsed_b;                /**< Flag to know if the channel is currently used */
     t_bool IsChnlConfigured_b;          /**< Flag to know if the channel if configured well */
-    t_eFMKCDA_ChnlErrState Error_e;     /**< Store the channel error status */
 } t_sFMKCDA_ChnlInfo;
 
 /**< Structure for adc information*/
@@ -74,6 +61,8 @@ typedef struct
     const t_eFMKCPU_IRQNType IRQNType_e;                    /**< constant to store the IRQN for each ADC */
     t_bool IsAdcConfigured_b;                               /**< Flag to know if the ADC is configured */
     t_bool IsAdcRunning_b;                                  /**< Flag to know if the Adc is running a conversion */
+    t_bool flagErrDetected_b;                            /**< Flag in DMA/Interrupt mode Error Callback has been call */                 
+    t_eFMKCDA_ChnlErrState Error_e;                         /**< Store the adc error status */
 } t_sFMKCDA_AdcInfo;
 // ********************************************************************
 // *                      Prototypes
@@ -172,6 +161,20 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
  *
  */
 static t_eReturnState s_FMKCDA_Operational(void);
+/**
+ *
+ *	@brief      Perform Diagnostic on adc & dac
+ *  @note       In basic mode we call HAL_Function to know 
+ *              Diag already handle in harware lawyer and HAL_ADC_ErrorCallback implementation 
+ *              Manage error.\n
+ * 
+ *  @retval RC_OK                             @ref RC_OK
+ *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
+
+ */
+static t_eReturnState s_FMKCDA_PerformDiagnostic(void);
+
 //****************************************************************************
 //                      Public functions - Implementation
 //********************************************************************************
@@ -185,13 +188,14 @@ t_eReturnState FMKCDA_Init(void)
     // initiate to default value variable structure
     for (LLI1_u8 = (t_uint8)0; LLI1_u8 < (t_uint8)FMKCDA_ADC_NB; LLI1_u8++)
     { // all timer
-        g_AdcInfo_as[LLI1_u8].IsAdcConfigured_b = (t_bool)False;
-        g_AdcInfo_as[LLI1_u8].IsAdcRunning_b = (t_bool)False;
+        g_AdcInfo_as[LLI1_u8].IsAdcConfigured_b    = (t_bool)False;
+        g_AdcInfo_as[LLI1_u8].IsAdcRunning_b       = (t_bool)False;
+        g_AdcInfo_as[LLI1_u8].flagErrDetected_b    = (t_bool)False;
+        g_AdcInfo_as[LLI1_u8].Error_e = FMKCDA_ERRSTATE_OK;
 
         for (LLI2_u8 = (t_uint8)0; LLI2_u8 < (t_uint8)FMKCDA_ADC_CHANNEL_NB; LLI2_u8++)
         { // all channel for a timer
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].IsChnlConfigured_b = (t_bool)False;
-            g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].Error_e = FMKCDA_CHANNEL_STATE_OK;
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].IsChnlUsed_b = (t_bool)False;
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].rawValue_u16 = (t_uint16)0;
         }
@@ -269,7 +273,8 @@ t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e,
 {
     t_eReturnState Ret_e = RC_OK;
 
-    if (f_Adc_e > FMKCDA_ADC_NB || f_channel_e > FMKCDA_ADC_CHANNEL_NB)
+    if (f_Adc_e > FMKCDA_ADC_NB 
+    || f_channel_e > c_FmkCda_AdcMaxChnl_ua8[f_Adc_e])
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -305,7 +310,8 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
 {
     t_eReturnState Ret_e = RC_OK;
 
-    if (f_Adc_e > FMKCDA_ADC_NB || f_channel_e > FMKCDA_ADC_CHANNEL_NB)
+    if (f_Adc_e > FMKCDA_ADC_NB 
+    || f_channel_e > c_FmkCda_AdcMaxChnl_ua8[f_Adc_e])
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -315,12 +321,16 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
     }
     if(g_state_e != STATE_CYCLIC_OPE)
     {
-        Ret_e = RC_ERROR_MODULE_NOT_INITIALIZED;
+        Ret_e = RC_ERROR_WRONG_STATE;
     }
     if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False
     || g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlConfigured_b == (t_bool)False)
     {
-        Ret_e = RC_ERROR_ALREADY_CONFIGURED;
+        Ret_e = RC_ERROR_MISSING_CONFIG;
+    }
+    if(g_AdcInfo_as[f_Adc_e].Error_e != FMKCDA_ERRSTATE_OK)
+    {
+        Ret_e = RC_ERROR_WRONG_STATE;
     }
     if (Ret_e == RC_OK)
     {
@@ -338,6 +348,29 @@ t_eReturnState FMKCDA_Get_AnaChannelMeasure(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_Adc
     }
     return Ret_e;
 }
+
+/*********************************
+ * FMKCDA_Get_AnaChannelMeasure
+ *********************************/
+t_eReturnState FMKCDA_Get_AdcError(t_eFMKCDA_Adc f_adc_e, t_eFMKCDA_ChnlErrState *f_chnlErrInfo_pe)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    if(f_adc_e > FMKCDA_ADC_NB)
+    {
+        Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(f_chnlErrInfo_pe == (t_eFMKCDA_ChnlErrState *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_chnlErrInfo_pe = g_AdcInfo_as[f_adc_e].Error_e;
+    }
+    
+    return Ret_e;
+}
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
@@ -348,10 +381,20 @@ static t_eReturnState s_FMKCDA_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
     HAL_StatusTypeDef bspRet_e = HAL_OK;
+    static t_uint32 SavedTime_u32 = 0;
+    t_uint32 currentTime_u32 = 0;
     t_uint8 LLI_u8;
     t_uint8 LLI2_u8;
     t_eFMKCPU_InterruptChnl channel_e;
 
+    Ret_e = FMKCPU_Get_Tick(&currentTime_u32);
+    if(Ret_e == RC_OK)
+    {
+        if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKCDA_TIME_BTWN_DIAG_MS)
+        {//perform diag on timer / chnl used
+            Ret_e = s_FMKCDA_PerformDiagnostic();
+        }
+    }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKCDA_ADC_NB ; LLI_u8++)
     {
         // if ADc buffer for this ADC has been filled 
@@ -387,6 +430,70 @@ static t_eReturnState s_FMKCDA_Operational(void)
     return Ret_e;
 }
 
+/*********************************
+ * s_FMKCDA_PerformDiagnostic
+ *********************************/
+static t_eReturnState s_FMKCDA_PerformDiagnostic(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+    t_uint8 LLI_u8 = 0; /**< Loop for Adc */
+    t_uint32 adcErr_u32 = HAL_ADC_ERROR_NONE;
+    t_sFMKCDA_AdcInfo * adcInfo_ps;
+
+    for (LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKCDA_ADC_NB ; LLI_u8++)
+    {
+        adcInfo_ps = (t_sFMKCDA_AdcInfo *)&g_AdcInfo_as[LLI_u8];
+        // enter in condition only in basic_register or triggered register (no HAL_errorCallback)
+        // or if the flag is set to true in DMA & Interrupt mode
+        if(adcInfo_ps->HwCfg_e == FMKCDA_ADC_CFG_BASIC_REGISTER 
+        || adcInfo_ps->HwCfg_e == FMKCDA_ADC_CFG_TRIGGERED_REGISTER
+        || adcInfo_ps->flagErrDetected_b == (t_bool)True)
+        {
+            adcErr_u32 = HAL_ADC_GetError(&adcInfo_ps->BspInit_s);
+        }
+        if(adcErr_u32 != HAL_ADC_ERROR_NONE)
+        {// mng mapping error with enum
+            if((adcErr_u32 & HAL_ADC_ERROR_OVR) == HAL_ADC_ERROR_OVR)
+            {
+                adcInfo_ps->Error_e |= FMKCDA_ERRSTATE_ERR_OVR;
+            }
+            if((adcErr_u32 & HAL_ADC_ERROR_DMA) == HAL_ADC_ERROR_DMA)
+            {
+                adcInfo_ps->Error_e |= FMKCDA_ERRSTATE_ERR_DMA;
+            }
+            if((adcErr_u32 & HAL_ADC_ERROR_INTERNAL) == HAL_ADC_ERROR_INTERNAL)
+            {
+                adcInfo_ps->Error_e |= FMKCDA_ERRSTATE_UNKNOWN;
+            }
+        }
+        
+    }
+    return Ret_e;
+}
+/**
+ *
+ *	@brief      CallBack function called when adc in DMa or Interrupt mdode
+ *  @note       Update flag error detected.\n
+ *             
+ */
+void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
+{
+    t_uint8 LLI_u8;
+
+    // find enum adc corresponding
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKCDA_ADC_NB ; LLI_u8++)
+    {
+        if(&g_AdcInfo_as[LLI_u8].BspInit_s == hadc)
+        {
+            break;
+        }
+    }
+    if(LLI_u8 < FMKCDA_ADC_NB)
+    {
+        g_AdcInfo_as[LLI_u8].flagErrDetected_b = (t_bool)True;
+    }
+    return;
+}
 /*********************************
  * s_FMKCDA_Get_BspChannel
  *********************************/

@@ -34,7 +34,7 @@
     /**< Enum for signal hardware pull mode  */
     typedef enum 
     {
-        FMKIO_PULL_MODE_UNABLE = 0,     /**< There is no pull resisstance attached to the signal */
+        FMKIO_PULL_MODE_UNABLE = 0x0U,     /**< There is no pull resisstance attached to the signal */
         FMKIO_PULL_MODE_DOWN,           /**< There is a pull down resistance attached to the signal */
         FMKIO_PULL_MODE_UP,             /**< There is a pull up resistance attached to the signal */
 
@@ -44,7 +44,7 @@
     /**< Enum for signal hardware speed mode  */
     typedef enum
     {
-        FMKIO_SPD_MODE_LOW = 0,         /**< The signal is checked not frequently by hardware */
+        FMKIO_SPD_MODE_LOW = 0x0U,         /**< The signal is checked not frequently by hardware */
         FMKIO_SPD_MODE_MEDIUM,          /**< The signal is checked frequently by hardware */
         FMKIO_SPD_MODE_HIGH,            /**< The signal is checked very frequently by hardware */
 
@@ -54,7 +54,7 @@
     /**< Enum for Signal event trigger capture  */
     typedef enum
     {
-        FMKIO_STC_RISING_EDGE = 0,      /**< The signal is captured on rising edge */
+        FMKIO_STC_RISING_EDGE = 0x0U,      /**< The signal is captured on rising edge */
         FMKIO_STC_FALLING_EDGE,         /**< The signal is captured on falling edge */
         FMKIO_STC_BOTH_EDGE,            /**< The signal is captured on rising and falling edge */
 
@@ -64,7 +64,7 @@
     /**< Enum for input signal frequency value */
     typedef enum
     {
-        FMKIO_FREQ_MEAS_RAW = 0,        /**< Freqency signal is a freqency in Hz */
+        FMKIO_FREQ_MEAS_FREQ = 0x0U,        /**< Freqency signal is a freqency in Hz */
         FMKIO_FREQ_MEAS_COUNT,          /**< Freqency signal is a counter of event detected (rise/fall or both) */
         FMKIO_FREQ_MEAS_PERIOD,         /**< Freqency signal is a period in ms */
 
@@ -74,7 +74,7 @@
     /**< Enum for signal type manage in this module */
     typedef enum 
     {
-        FMKIO_SIGTYPE_INPUT_DIG = 0,        /**< Signal are digital input */
+        FMKIO_SIGTYPE_INPUT_DIG = 0x0U,        /**< Signal are digital input */
         FMKIO_SIGTYPE_INPUT_FREQ,           /**< Signal are frequency input */
         FMKIO_SIGTYPE_INPUT_ANA,            /**< Signal are analog input */
         FMKIO_SIGTYPE_INPUT_EVNT,           /**< Signal are event input */
@@ -87,7 +87,7 @@
     /**< Enum for signal digital state */
     typedef enum 
     {
-        FMKIO_DIG_VALUE_LOW = 0,        /**< Signal digital state set to low, logic level 0 */
+        FMKIO_DIG_VALUE_LOW = 0x0U,        /**< Signal digital state set to low, logic level 0 */
         FMKIO_DIG_VALUE_HIGH,           /**< Signal digital state set to high, logic level 1 */
 
         FMKIO_DIG_VALUE_NB              /**< Number of digital state */
@@ -102,6 +102,25 @@
     *
     */
     typedef t_eReturnState (t_cbFMKIO_EventFunc)(void);
+    /**
+    *
+    *	@brief      This function is a callback function for dignostic/ error
+                    management.\n
+    *	@note       FMKIO module ask FMKCPU & FMKCDA modules if there is any error 
+    *               detected on respectively timer or channel and adc.\n
+    *               If an error is repertory and a callback function is given during 
+    *               FMKIO_cfg function, it will be called with debugging info from FMKCDA or 
+    *               FMKCPU module.\n
+    * 
+    *	@param[in]      f_debugInfo1_u8 : Debug Info numero 1
+    *                   For Pwm, Ana, Freq this varaible equals to the channel error status 
+    *                   @ref t_eFMKCPU_ChnlErrorState or @ref t_eFMKCDA_ChnlErrState
+    *	@param[in]      f_debugInfo2_u8 : Debug Info numero 2
+    *                   UNUSED for now 
+    *                store information for each signals.\n
+    *
+    */
+    typedef t_eReturnState (t_cbFMKIO_SigErrorMngmt)(t_uint8 f_debugInfo1_u8, t_uint8 f_debugInfo2_u8);
     //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */
 
@@ -179,15 +198,18 @@
     *               call FMKCDA to configure an ADC_channel.\n
     *
     *
-    *	@param[in]      f_signal_e : the input analog signal, value from @ref t_eFMKIO_InAnaSig
-    *	@param[in]     f_pull_e   : the input pull mode, value from @ref t_eFMKIO_PullMode
+    *	@param[in]      f_signal_e     : the input analog signal, value from @ref t_eFMKIO_InAnaSig
+    *	@param[in]     f_pull_e        : the input pull mode, value from @ref t_eFMKIO_PullMode
+    *	@param[in]      f_sigErr_cb     : callbback function that will be called if an error occured
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *   @retval RC_ERROR_ALREADY_CONFIGURED       @ref RC_ERROR_ALREADY_CONFIGURED
     *
     */
-    t_eReturnState FMKIO_Set_InAnaSigCfg(t_eFMKIO_InAnaSig f_signal_e, t_eFMKIO_PullMode f_pull_e);
+    t_eReturnState FMKIO_Set_InAnaSigCfg(t_eFMKIO_InAnaSig f_signal_e, 
+                                            t_eFMKIO_PullMode f_pull_e,
+                                            t_cbFMKIO_SigErrorMngmt *f_sigErr_cb);
     /**
     *
     *	@brief      Set an input in frequency configuration.\n
@@ -198,14 +220,18 @@
     *
     *
     *	@param[in]      f_signal_e     : the input frequency signal, a value from @ref t_eFMKIO_InFreqSig
-    *	@param[in]     f_measType_e   : the input pull mode, value from @ref t_eFMKIO_FreqMeas
+    *	@param[in]     f_measType_e    : the input pull mode, value from @ref t_eFMKIO_FreqMeas
+    *	@param[in]      f_sigErr_cb     : callbback function that will be called if an error occured
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *   @retval RC_ERROR_ALREADY_CONFIGURED       @ref RC_ERROR_ALREADY_CONFIGURED
     *
     */
-    t_eReturnState FMKIO_Set_InFreqSigCfg(t_eFMKIO_InFreqSig f_signal_e);
+    t_eReturnState FMKIO_Set_InFreqSigCfg(t_eFMKIO_InFreqSig f_signal_e, 
+                                            t_eFMKIO_SigTrigCptr f_trigger_e,
+                                            t_eFMKIO_FreqMeas f_freqMeas_e,
+                                            t_cbFMKIO_SigErrorMngmt *f_sigErr_cb);
     /**
     *
     *	@brief      Set an intput in event configuration.\n
@@ -219,6 +245,7 @@
     *	@param[in]      f_pull_e       : the input pull mode, value from @ref t_eFMKIO_PullMode
     *	@param[in]      f_trigger_e    : the detection mode, value from @ref t_eFMKIO_SigTrigCptr
     *	@param[in]      f_Evnt_cb      : Function to call when the edge is detected by hardware
+    *	@param[in]      f_sigErr_cb     : callbback function that will be called if an error occured
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
@@ -229,7 +256,8 @@
     t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e, 
                                           t_eFMKIO_PullMode f_pull_e,
                                           t_eFMKIO_SigTrigCptr f_trigger_e,
-                                          t_cbFMKIO_EventFunc * f_Evnt_cb);
+                                          t_cbFMKIO_EventFunc * f_Evnt_cb,
+                                          t_cbFMKIO_SigErrorMngmt *f_sigErr_cb);
     /**
     *
     *	@brief      Set an output in PWM configuration.\n
@@ -246,19 +274,21 @@
     *	@param[in]      f_signal_e             : the input analog signal, a value from @ref t_eFMKIO_OutPwmSig
     *	@param[in]      f_pull_e               : the input pull mode, value from @ref t_eFMKIO_PullMode
     *	@param[in]      f_frequency_u32        : the PWM frequency 
-    *	@param[in]      f_dutyCycle_u16   : the dutycyle, value between 0 (0%) - 1000 (100%)
+    *	@param[in]      f_dutyCycle_u16        : the dutycyle, value between 0 (0%) - 1000 (100%)
     *	@param[in]      f_puf_startNow_bll_e   : wether or not the pulse generation should start immediately
+    *	@param[in]      f_sigErr_cb             : callbback function that will be called if an error occured
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *   @retval RC_ERROR_ALREADY_CONFIGURED       @ref RC_ERROR_ALREADY_CONFIGURED
     *
     */
-    t_eReturnState FMKIO_Set_OutPwmSigCfg(t_eFMKIO_OutPwmSig f_signal_e, 
-                                          t_eFMKIO_PullMode  f_pull_e,
-                                          t_uint32           f_frequency_u32,
-                                          t_uint16           f_dutyCycle_u16,
-                                          t_bool             f_startNow_b);
+    t_eReturnState FMKIO_Set_OutPwmSigCfg(t_eFMKIO_OutPwmSig       f_signal_e, 
+                                          t_eFMKIO_PullMode        f_pull_e,
+                                          t_uint32                 f_frequency_u32,
+                                          t_uint16                 f_dutyCycle_u16,
+                                          t_bool                   f_startNow_b,
+                                          t_cbFMKIO_SigErrorMngmt *f_sigErr_cb);
     /**
     *
     *	@brief      Set an output in digital configuration.\n
@@ -290,13 +320,14 @@
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
-    *   @retval RC_ERROR_ALREADY_CONFIGURED       @ref RC_ERROR_ALREADY_CONFIGURED
+    *   @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
+    *   @retval RC_ERROR_BUSY                     @ref RC_ERROR_BUSY
     *
     */
     t_eReturnState FMKIO_Set_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_DigValue f_value_e);
     /**
     *
-    *	@brief      Get the digital inout.\n
+    *	@brief      Get the digital input.\n
     *	@note       Once the configuration is done, this function call hal library to
                     know the state of the signal on store it into f_value_pe.\n
     *
@@ -306,7 +337,8 @@
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
-    *   @retval RC_ERROR_ALREADY_CONFIGURED           @ref RC_ERROR_ALREADY_CONFIGURED
+    *   @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
+    *   @retval RC_ERROR_BUSY                     @ref RC_ERROR_BUSY
     *
     */
     t_eReturnState FMKIO_Get_InDigSigValue(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_DigValue *f_value_pe);
@@ -326,16 +358,22 @@
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *   @retval RC_WARNING_NO_OPERATION           @ref RC_WARNING_NO_OPERATION
-    *   @retval RC_ERROR_ALREADY_CONFIGURED           @ref RC_ERROR_ALREADY_CONFIGURED
+    *   @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
     *   @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+    *   @retval RC_ERROR_BUSY                     @ref RC_ERROR_BUSY
     *
     */
     t_eReturnState FMKIO_Get_InAnaSigValue(t_eFMKIO_InAnaSig f_signal_e, t_uint16 *f_value_pu16);
     /**
     *
     *	@brief      Get the frequency input.\n
-    *	@note       Once the configuration is done, this function store the 
-    *               frequency value in f_value_pu32.\n
+    *	@note       Once the configuration is done, a function is called based on the meas trigger
+                    give in configuration function.\n
+                    In the interrupt function we either increment a counter (count mode) or get the channel
+                    capture value and store it.\n
+                    In this function we either get this value or the last saved capture value if
+                    an interruption is in progress and interruption function is writing in countainer "value".\n
+                    If this happens retcode WARNING_BUSY is set and the calcul will be made on saved value.\n
     *               Depending on configuration, this value is either a coutner, a period (ms) or a frequency (Hz)
     *
     *	@param[in]      f_signal_e       : the input frequency signal, a value from @ref t_eFMKIO_InFreqSig
@@ -344,7 +382,9 @@
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *   @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
-    *   @retval RC_ERROR_ALREADY_CONFIGURED           @ref RC_ERROR_ALREADY_CONFIGURED
+    *   @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
+    *   @retval RC_WARNING_BUSY                   @ref RC_WARNING_BUSY
+    *   @retval RC_ERROR_BUSY                     @ref RC_ERROR_BUSY
     *
     */
     t_eReturnState FMKIO_Get_InFreqSigValue(t_eFMKIO_InFreqSig f_signal_e, t_uint32 *f_value_pu32);
@@ -361,7 +401,8 @@
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
-    *   @retval RC_ERROR_ALREADY_CONFIGURED           @ref RC_ERROR_ALREADY_CONFIGURED
+    *   @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
+    *   @retval RC_ERROR_BUSY                     @ref RC_ERROR_BUSY
     *
     */
     t_eReturnState FMKIO_Set_OutPwmSigValue(t_eFMKIO_OutPwmSig f_signal_e, t_uint16 f_dutyCycle_u16);
@@ -375,9 +416,10 @@
     *	@param[in]      f_value_pu16     : storage for value
     *	 
     *   @retval RC_OK                             @ref RC_OK
-    *   @retval RC_ERROR_ALREADY_CONFIGURED           @ref RC_ERROR_ALREADY_CONFIGURED
+    *   @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *   @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+    *   @retval RC_ERROR_BUSY                     @ref RC_ERROR_BUSY
     *
     */
     t_eReturnState FMKIO_Get_OutPwmSigValue(t_eFMKIO_OutPwmSig f_signal_e, t_uint16 *f_value_pu16);
@@ -391,9 +433,10 @@
     *	@param[in]      f_value_pe       : storage for value, value from @ref t_eFMKIO_DigValue
     *	 
     *   @retval RC_OK                             @ref RC_OK
-    *   @retval RC_ERROR_ALREADY_CONFIGURED           @ref RC_ERROR_ALREADY_CONFIGURED
+    *   @retval RC_ERROR_MISSING_CONFIG           @ref RC_ERROR_MISSING_CONFIG
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *   @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+    *   @retval RC_ERROR_BUSY                     @ref RC_ERROR_BUSY
     *
     */
     t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_DigValue *f_value_pe);

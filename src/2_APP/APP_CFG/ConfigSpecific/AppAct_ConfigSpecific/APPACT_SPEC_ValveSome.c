@@ -56,7 +56,7 @@
 //********************************************************************************
 t_eReturnState APPACT_SPEC_ValveSome_SetCfg(void)
 {
-    FMKIO_Set_OutPwmSigCfg(FMKIO_OUTPUT_SIGPWM_2,FMKIO_PULL_MODE_UNABLE, 200, 500, False);
+    FMKIO_Set_OutPwmSigCfg(FMKIO_OUTPUT_SIGPWM_2,FMKIO_PULL_MODE_UNABLE, 200, 500, False,NULL_FONCTION);
     return RC_OK;
 }
 

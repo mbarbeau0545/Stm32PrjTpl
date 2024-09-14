@@ -22,7 +22,9 @@
     #define NULL ((void *)0)
 #endif
 
-    /**< Enum for return function */
+    /**
+    *  @brief Enum for return function
+    */
     typedef enum
 
     {

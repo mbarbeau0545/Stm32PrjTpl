@@ -27,6 +27,8 @@
     /* CAUTION : Automatic generated code section for ADC channels number: Start */
     #define FMKCDA_ADC_1_MAX_CHANNELS ((t_uint8)18)
     /* CAUTION : Automatic generated code section for ADC channels number: End */
+
+    #define FMKCDA_TIME_BTWN_DIAG_MS ((t_uint16)2000) /**< Time between diagnostic for adc & dac channel in cyclic ope mode*/
     // ********************************************************************
     // *                      Types
     // ********************************************************************

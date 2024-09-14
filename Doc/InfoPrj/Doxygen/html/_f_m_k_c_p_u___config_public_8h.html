@@ -90,8 +90,7 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">FMKCPU_ConfigPublic.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -103,18 +102,8 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a62c77c6bd32b5ea82296617e8f03a25b" id="r_a62c77c6bd32b5ea82296617e8f03a25b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25b">t_eFMKCPU_InterruptChnl</a> { <br />
-&#160;&#160;<a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba84abefb2204b561bdf70e29412abccf2">FMKCPU_CHANNEL_1</a> = 0x0U
-, <a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba77dc9f2d8f9ef8451b5536953840e4eb">FMKCPU_CHANNEL_2</a>
-, <a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba65829ed46fa50790a7e09dd81efb97dc">FMKCPU_CHANNEL_3</a>
-, <a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba9dc88603ad6924c30eb593e896a395b6">FMKCPU_CHANNEL_4</a>
-, <br />
-&#160;&#160;<a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba3c76bf2978af0a5e6fa25f0ea95785bf">FMKCPU_CHANNEL_NB</a>
-<br />
- }</td></tr>
-<tr class="separator:a62c77c6bd32b5ea82296617e8f03a25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17696e6a68cdf4f872408b479c0e1bd7" id="r_a17696e6a68cdf4f872408b479c0e1bd7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17696e6a68cdf4f872408b479c0e1bd7">t_eFMKCPU_Timer</a> { <br />
-&#160;&#160;<a class="el" href="#a17696e6a68cdf4f872408b479c0e1bd7a5270d1d405a3127f27b162a00ee52642">FMKCPU_TIMER_1</a> = 0x0U
+&#160;&#160;<a class="el" href="#a17696e6a68cdf4f872408b479c0e1bd7a5270d1d405a3127f27b162a00ee52642">FMKCPU_TIMER_1</a> = 0x0
 , <a class="el" href="#a17696e6a68cdf4f872408b479c0e1bd7a3bc9e57428d72f1d9935b96215d24ea1">FMKCPU_TIMER_3</a>
 , <a class="el" href="#a17696e6a68cdf4f872408b479c0e1bd7ac581ca7b6ce38f2e7b61d6b04e01c4cb">FMKCPU_TIMER_14</a>
 , <a class="el" href="#a17696e6a68cdf4f872408b479c0e1bd7afee0fcbe543ad97034815d9e0cf3f244">FMKCPU_TIMER_15</a>
@@ -125,13 +114,23 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a17696e6a68cdf4f872408b479c0e1bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e2f7da9e5fe4b2768ed682326f65c23" id="r_a3e2f7da9e5fe4b2768ed682326f65c23"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e2f7da9e5fe4b2768ed682326f65c23">t_eFMKCPU_EventChannel</a> { <a class="el" href="#a3e2f7da9e5fe4b2768ed682326f65c23af784bd4724362e38f7457b559b852d3a">FMKCPU_EVENT_CHANNEL_1</a> = 0x0U
+<tr class="memitem:a62c77c6bd32b5ea82296617e8f03a25b" id="r_a62c77c6bd32b5ea82296617e8f03a25b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25b">t_eFMKCPU_InterruptChnl</a> { <br />
+&#160;&#160;<a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba84abefb2204b561bdf70e29412abccf2">FMKCPU_CHANNEL_1</a> = 0x0
+, <a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba77dc9f2d8f9ef8451b5536953840e4eb">FMKCPU_CHANNEL_2</a>
+, <a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba65829ed46fa50790a7e09dd81efb97dc">FMKCPU_CHANNEL_3</a>
+, <a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba9dc88603ad6924c30eb593e896a395b6">FMKCPU_CHANNEL_4</a>
+, <br />
+&#160;&#160;<a class="el" href="#a62c77c6bd32b5ea82296617e8f03a25ba3c76bf2978af0a5e6fa25f0ea95785bf">FMKCPU_CHANNEL_NB</a>
+<br />
+ }</td></tr>
+<tr class="separator:a62c77c6bd32b5ea82296617e8f03a25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e2f7da9e5fe4b2768ed682326f65c23" id="r_a3e2f7da9e5fe4b2768ed682326f65c23"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e2f7da9e5fe4b2768ed682326f65c23">t_eFMKCPU_EventChannel</a> { <a class="el" href="#a3e2f7da9e5fe4b2768ed682326f65c23af784bd4724362e38f7457b559b852d3a">FMKCPU_EVENT_CHANNEL_1</a> = 0x0
 , <a class="el" href="#a3e2f7da9e5fe4b2768ed682326f65c23a5e4252070621f4cfb1243b81d131e453">FMKCPU_EVENT_CHANNEL_2</a>
 , <a class="el" href="#a3e2f7da9e5fe4b2768ed682326f65c23a23884d1ad34090357efbc1a6d25adf71">FMKCPU_EVENT_CHANNEL_NB</a>
  }</td></tr>
 <tr class="separator:a3e2f7da9e5fe4b2768ed682326f65c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1667f208dff1f64a5c256a8851c480dc" id="r_a1667f208dff1f64a5c256a8851c480dc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1667f208dff1f64a5c256a8851c480dc">t_eFMKCPU_ClockPort</a> { <br />
-&#160;&#160;<a class="el" href="#a1667f208dff1f64a5c256a8851c480dca254a4b1acaa9bdde22478af704c6c47d">FMKCPU_RCC_CLK_SYSCFG</a> = 0x0U
+&#160;&#160;<a class="el" href="#a1667f208dff1f64a5c256a8851c480dca254a4b1acaa9bdde22478af704c6c47d">FMKCPU_RCC_CLK_SYSCFG</a> = 0x0
 , <a class="el" href="#a1667f208dff1f64a5c256a8851c480dcad563dfc327681dec1c2ebdce3ce61f9f">FMKCPU_RCC_CLK_ADC1</a>
 , <a class="el" href="#a1667f208dff1f64a5c256a8851c480dcaca2ac211cfb8ad950cd539f11e9eeeff">FMKCPU_RCC_CLK_TIM1</a>
 , <a class="el" href="#a1667f208dff1f64a5c256a8851c480dca21684685a52aad01da55d779269b7fc5">FMKCPU_RCC_CLK_TIM3</a>
@@ -163,6 +162,42 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a1667f208dff1f64a5c256a8851c480dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2196bfb127e600673166e06e677a3f23" id="r_a2196bfb127e600673166e06e677a3f23"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2196bfb127e600673166e06e677a3f23">t_eFMKCPU_IRQNType</a> { <br />
+&#160;&#160;<a class="el" href="#a2196bfb127e600673166e06e677a3f23a0a2a205dca0b067ebc036625afa24316">FMKCPU_NVIC_WWDG_IRQN</a> = 0x0
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a5f83eff169f746352803db7d101a4a41">FMKCPU_NVIC_RTC_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a216e73f5abd9184177c095cff6595088">FMKCPU_NVIC_FLASH_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23af455dc8dcb166e1cb124427bf7358a6a">FMKCPU_NVIC_RCC_IRQN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a2196bfb127e600673166e06e677a3f23ac721a59c41b86a4bd1d76f323a0723f8">FMKCPU_NVIC_EXTI0_1_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23accdefb7996e8f89512686cd2ff9eab2d">FMKCPU_NVIC_EXTI2_3_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23af25498b116aee66fd7e369afc9e3de0c">FMKCPU_NVIC_EXTI4_15_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23abfac284ce4d00bedc19365829ff94467">FMKCPU_NVIC_DMA1_CHANNEL1_IRQN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a2196bfb127e600673166e06e677a3f23a7ab0cd6d807754ecc0e84b980795e365">FMKCPU_NVIC_DMA1_CHANNEL2_3_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a2347fd9f25d6d8b2e4dfd96142fa1f31">FMKCPU_NVIC_DMA1_CHANNEL4_5_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a794fd7f94e165eb5a3516a778286fbed">FMKCPU_NVIC_ADC1_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23ad5c1671e7f7b36a46d3a1859967e69b3">FMKCPU_NVIC_TIM1_BRK_UP_TRG_COM_IRQN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a2196bfb127e600673166e06e677a3f23aad548bb2265d51e208f00b55f4067f2c">FMKCPU_NVIC_TIM1_CC_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a9a89bb04f1a80be8bd79c0680d1a133d">FMKCPU_NVIC_TIM3_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a8016303239ed28c1b19dbb7e25b22af6">FMKCPU_NVIC_TIM6_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a6ecc9c6b017232abc719f378c508dc38">FMKCPU_NVIC_TIM14_IRQN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a2196bfb127e600673166e06e677a3f23a9a679792b9a2ea47dc36b6dc446b1266">FMKCPU_NVIC_TIM15_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a5e9a864b13918be642cbce25153d924f">FMKCPU_NVIC_TIM16_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a5e6398b152325ec130b3564e2bc7aa5d">FMKCPU_NVIC_TIM17_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a10ac015034d7934c3e58c5fcf5da6120">FMKCPU_NVIC_I2C1_IRQN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a2196bfb127e600673166e06e677a3f23a14d1cc0133d69972f7b7c9f0eeda72ff">FMKCPU_NVIC_I2C2_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a8ac8e0622ccdfabe445b9ca27d72cc08">FMKCPU_NVIC_SPI1_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23a2266df89802c891c93602cbe19e84bdc">FMKCPU_NVIC_SPI2_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23aad7017e1cdc34c74e7fc07721bd0b701">FMKCPU_NVIC_USART1_IRQN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a2196bfb127e600673166e06e677a3f23aa049b3cad787e3be97b27c9507ee44c9">FMKCPU_NVIC_USART2_IRQN</a>
+, <a class="el" href="#a2196bfb127e600673166e06e677a3f23ada1693bb5d3c64e463dbbf38295dd60c">FMKCPU_NVIC_NB</a>
+<br />
+ }</td></tr>
+<tr class="separator:a2196bfb127e600673166e06e677a3f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a68a17e31a534e603cb06bde4ec660c" id="r_a6a68a17e31a534e603cb06bde4ec660c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a68a17e31a534e603cb06bde4ec660c">t_eFMKCPU_HwTimerCfg</a> { <br />
 &#160;&#160;<a class="el" href="#a6a68a17e31a534e603cb06bde4ec660ca1801077b968741a58bf661c7bd2f5962">FMKCPU_HWTIM_CFG_PWM</a> = 0x0U
 , <a class="el" href="#a6a68a17e31a534e603cb06bde4ec660ca5708699a4333a7d9cf69277b285251a6">FMKCPU_HWTIM_CFG_IC</a>
@@ -192,11 +227,6 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a25152b931793a54096307a6aea7af3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a93324ef3fdf32280881a1a3870ffa3dc" id="r_a93324ef3fdf32280881a1a3870ffa3dc"><td class="memItemLeft" align="right" valign="top">typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93324ef3fdf32280881a1a3870ffa3dc">IRQn_Type</a> (t_eFMKCPU_IRQNType)</td></tr>
-<tr class="separator:a93324ef3fdf32280881a1a3870ffa3dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a1667f208dff1f64a5c256a8851c480dc" name="a1667f208dff1f64a5c256a8851c480dc"></a>
@@ -210,31 +240,53 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Number max of cannel enable by timer </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca254a4b1acaa9bdde22478af704c6c47d" name="a1667f208dff1f64a5c256a8851c480dca254a4b1acaa9bdde22478af704c6c47d"></a>FMKCPU_RCC_CLK_SYSCFG&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcad563dfc327681dec1c2ebdce3ce61f9f" name="a1667f208dff1f64a5c256a8851c480dcad563dfc327681dec1c2ebdce3ce61f9f"></a>FMKCPU_RCC_CLK_ADC1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaca2ac211cfb8ad950cd539f11e9eeeff" name="a1667f208dff1f64a5c256a8851c480dcaca2ac211cfb8ad950cd539f11e9eeeff"></a>FMKCPU_RCC_CLK_TIM1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca21684685a52aad01da55d779269b7fc5" name="a1667f208dff1f64a5c256a8851c480dca21684685a52aad01da55d779269b7fc5"></a>FMKCPU_RCC_CLK_TIM3&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca443ea031c365ca519c4c9d338bb2471a" name="a1667f208dff1f64a5c256a8851c480dca443ea031c365ca519c4c9d338bb2471a"></a>FMKCPU_RCC_CLK_TIM14&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcabbf5db9ad3673dcd1591e51fd85f99ba" name="a1667f208dff1f64a5c256a8851c480dcabbf5db9ad3673dcd1591e51fd85f99ba"></a>FMKCPU_RCC_CLK_TIM15&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcac86307d28c1be61301ad7a2fe1122127" name="a1667f208dff1f64a5c256a8851c480dcac86307d28c1be61301ad7a2fe1122127"></a>FMKCPU_RCC_CLK_TIM16&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca86704ce723a00da2034ab9cf38e4b348" name="a1667f208dff1f64a5c256a8851c480dca86704ce723a00da2034ab9cf38e4b348"></a>FMKCPU_RCC_CLK_TIM17&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca09f5abdc621670197300f373a445091d" name="a1667f208dff1f64a5c256a8851c480dca09f5abdc621670197300f373a445091d"></a>FMKCPU_RCC_CLK_SPI1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcad9abd9d12ed38d9039c6adfd2294b152" name="a1667f208dff1f64a5c256a8851c480dcad9abd9d12ed38d9039c6adfd2294b152"></a>FMKCPU_RCC_CLK_SPI2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca0f38e7ff449af09c6b11497c796992e7" name="a1667f208dff1f64a5c256a8851c480dca0f38e7ff449af09c6b11497c796992e7"></a>FMKCPU_RCC_CLK_USART1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaa9e439b8eca8f349f78d9eb0fba8d90a" name="a1667f208dff1f64a5c256a8851c480dcaa9e439b8eca8f349f78d9eb0fba8d90a"></a>FMKCPU_RCC_CLK_USART2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaf24d3904acd8d8b83d85cf789e02d0c9" name="a1667f208dff1f64a5c256a8851c480dcaf24d3904acd8d8b83d85cf789e02d0c9"></a>FMKCPU_RCC_CLK_I2C1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca7b578dcfdf10e1e8963ae2fef3930aeb" name="a1667f208dff1f64a5c256a8851c480dca7b578dcfdf10e1e8963ae2fef3930aeb"></a>FMKCPU_RCC_CLK_GPIOA&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca4808455abe99f9b863767239b75d3987" name="a1667f208dff1f64a5c256a8851c480dca4808455abe99f9b863767239b75d3987"></a>FMKCPU_RCC_CLK_GPIOB&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcae1cc0b78f9402c2f33588e9814be8676" name="a1667f208dff1f64a5c256a8851c480dcae1cc0b78f9402c2f33588e9814be8676"></a>FMKCPU_RCC_CLK_GPIOC&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca54fb9883228dd1f5723f985bcfa92c1c" name="a1667f208dff1f64a5c256a8851c480dca54fb9883228dd1f5723f985bcfa92c1c"></a>FMKCPU_RCC_CLK_GPIOF&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaca3f2309047108ce42dfa0fa84ccb2e3" name="a1667f208dff1f64a5c256a8851c480dcaca3f2309047108ce42dfa0fa84ccb2e3"></a>FMKCPU_RCC_CLK_CRC&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaab6ace5fe776c7cd6f6382fbd66b6fd0" name="a1667f208dff1f64a5c256a8851c480dcaab6ace5fe776c7cd6f6382fbd66b6fd0"></a>FMKCPU_RCC_CLK_DMA1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca734b786a0c3a3f3306a2a9cf720a0615" name="a1667f208dff1f64a5c256a8851c480dca734b786a0c3a3f3306a2a9cf720a0615"></a>FMKCPU_RCC_CLK_SRAM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca41477a2772c7e16c8b508ba46a7fa35e" name="a1667f208dff1f64a5c256a8851c480dca41477a2772c7e16c8b508ba46a7fa35e"></a>FMKCPU_RCC_CLK_FLITF&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca8fc1da406d79e2711bdb91fddc66003c" name="a1667f208dff1f64a5c256a8851c480dca8fc1da406d79e2711bdb91fddc66003c"></a>FMKCPU_RCC_CLK_WWDG&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca813170236654a9c42fb8e851bab06105" name="a1667f208dff1f64a5c256a8851c480dca813170236654a9c42fb8e851bab06105"></a>FMKCPU_RCC_CLK_PWR&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca254a4b1acaa9bdde22478af704c6c47d" name="a1667f208dff1f64a5c256a8851c480dca254a4b1acaa9bdde22478af704c6c47d"></a>FMKCPU_RCC_CLK_SYSCFG&#160;</td><td class="fielddoc"><p>Clock for Global System configuration. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcad563dfc327681dec1c2ebdce3ce61f9f" name="a1667f208dff1f64a5c256a8851c480dcad563dfc327681dec1c2ebdce3ce61f9f"></a>FMKCPU_RCC_CLK_ADC1&#160;</td><td class="fielddoc"><p>Clock for ADC1 register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaca2ac211cfb8ad950cd539f11e9eeeff" name="a1667f208dff1f64a5c256a8851c480dcaca2ac211cfb8ad950cd539f11e9eeeff"></a>FMKCPU_RCC_CLK_TIM1&#160;</td><td class="fielddoc"><p>Clock for Timer 1 register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca21684685a52aad01da55d779269b7fc5" name="a1667f208dff1f64a5c256a8851c480dca21684685a52aad01da55d779269b7fc5"></a>FMKCPU_RCC_CLK_TIM3&#160;</td><td class="fielddoc"><p>Clock for Timer 3 register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca443ea031c365ca519c4c9d338bb2471a" name="a1667f208dff1f64a5c256a8851c480dca443ea031c365ca519c4c9d338bb2471a"></a>FMKCPU_RCC_CLK_TIM14&#160;</td><td class="fielddoc"><p>Clock for Timer 14 register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcabbf5db9ad3673dcd1591e51fd85f99ba" name="a1667f208dff1f64a5c256a8851c480dcabbf5db9ad3673dcd1591e51fd85f99ba"></a>FMKCPU_RCC_CLK_TIM15&#160;</td><td class="fielddoc"><p>Clock for Timer 15 register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcac86307d28c1be61301ad7a2fe1122127" name="a1667f208dff1f64a5c256a8851c480dcac86307d28c1be61301ad7a2fe1122127"></a>FMKCPU_RCC_CLK_TIM16&#160;</td><td class="fielddoc"><p>Clock for Timer 16 register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca86704ce723a00da2034ab9cf38e4b348" name="a1667f208dff1f64a5c256a8851c480dca86704ce723a00da2034ab9cf38e4b348"></a>FMKCPU_RCC_CLK_TIM17&#160;</td><td class="fielddoc"><p>Clock for Timer 17 register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca09f5abdc621670197300f373a445091d" name="a1667f208dff1f64a5c256a8851c480dca09f5abdc621670197300f373a445091d"></a>FMKCPU_RCC_CLK_SPI1&#160;</td><td class="fielddoc"><p>Clock for SPI1 register access (Serial Peripheral Interface). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcad9abd9d12ed38d9039c6adfd2294b152" name="a1667f208dff1f64a5c256a8851c480dcad9abd9d12ed38d9039c6adfd2294b152"></a>FMKCPU_RCC_CLK_SPI2&#160;</td><td class="fielddoc"><p>Clock for SPI2 register access (Serial Peripheral Interface). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca0f38e7ff449af09c6b11497c796992e7" name="a1667f208dff1f64a5c256a8851c480dca0f38e7ff449af09c6b11497c796992e7"></a>FMKCPU_RCC_CLK_USART1&#160;</td><td class="fielddoc"><p>Clock for USART1 register access (Universal Synchronous/Asynchronous Receiver/Transmitter). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaa9e439b8eca8f349f78d9eb0fba8d90a" name="a1667f208dff1f64a5c256a8851c480dcaa9e439b8eca8f349f78d9eb0fba8d90a"></a>FMKCPU_RCC_CLK_USART2&#160;</td><td class="fielddoc"><p>Clock for USART2 register access (Universal Synchronous/Asynchronous Receiver/Transmitter). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaf24d3904acd8d8b83d85cf789e02d0c9" name="a1667f208dff1f64a5c256a8851c480dcaf24d3904acd8d8b83d85cf789e02d0c9"></a>FMKCPU_RCC_CLK_I2C1&#160;</td><td class="fielddoc"><p>Clock for I2C1 register access (Inter-Integrated Circuit). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca7b578dcfdf10e1e8963ae2fef3930aeb" name="a1667f208dff1f64a5c256a8851c480dca7b578dcfdf10e1e8963ae2fef3930aeb"></a>FMKCPU_RCC_CLK_GPIOA&#160;</td><td class="fielddoc"><p>Clock for GPIOA register access (General Purpose Input/Output A). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca4808455abe99f9b863767239b75d3987" name="a1667f208dff1f64a5c256a8851c480dca4808455abe99f9b863767239b75d3987"></a>FMKCPU_RCC_CLK_GPIOB&#160;</td><td class="fielddoc"><p>Clock for GPIOB register access (General Purpose Input/Output B). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcae1cc0b78f9402c2f33588e9814be8676" name="a1667f208dff1f64a5c256a8851c480dcae1cc0b78f9402c2f33588e9814be8676"></a>FMKCPU_RCC_CLK_GPIOC&#160;</td><td class="fielddoc"><p>Clock for GPIOC register access (General Purpose Input/Output C). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca54fb9883228dd1f5723f985bcfa92c1c" name="a1667f208dff1f64a5c256a8851c480dca54fb9883228dd1f5723f985bcfa92c1c"></a>FMKCPU_RCC_CLK_GPIOF&#160;</td><td class="fielddoc"><p>Clock for GPIOF register access (General Purpose Input/Output F). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaca3f2309047108ce42dfa0fa84ccb2e3" name="a1667f208dff1f64a5c256a8851c480dcaca3f2309047108ce42dfa0fa84ccb2e3"></a>FMKCPU_RCC_CLK_CRC&#160;</td><td class="fielddoc"><p>Clock for CRC register access (Cyclic Redundancy Check). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dcaab6ace5fe776c7cd6f6382fbd66b6fd0" name="a1667f208dff1f64a5c256a8851c480dcaab6ace5fe776c7cd6f6382fbd66b6fd0"></a>FMKCPU_RCC_CLK_DMA1&#160;</td><td class="fielddoc"><p>Clock for DMA1 register access (Direct Memory Access). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca734b786a0c3a3f3306a2a9cf720a0615" name="a1667f208dff1f64a5c256a8851c480dca734b786a0c3a3f3306a2a9cf720a0615"></a>FMKCPU_RCC_CLK_SRAM&#160;</td><td class="fielddoc"><p>Clock for SRAM register access (Static Random Access Memory). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca41477a2772c7e16c8b508ba46a7fa35e" name="a1667f208dff1f64a5c256a8851c480dca41477a2772c7e16c8b508ba46a7fa35e"></a>FMKCPU_RCC_CLK_FLITF&#160;</td><td class="fielddoc"><p>Clock for Flash Interface register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca8fc1da406d79e2711bdb91fddc66003c" name="a1667f208dff1f64a5c256a8851c480dca8fc1da406d79e2711bdb91fddc66003c"></a>FMKCPU_RCC_CLK_WWDG&#160;</td><td class="fielddoc"><p>Clock for Window Watchdog register access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca813170236654a9c42fb8e851bab06105" name="a1667f208dff1f64a5c256a8851c480dca813170236654a9c42fb8e851bab06105"></a>FMKCPU_RCC_CLK_PWR&#160;</td><td class="fielddoc"><p>Clock for Power Control register access. </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a1667f208dff1f64a5c256a8851c480dca537c782af99d6aa010fe28bae92eb867" name="a1667f208dff1f64a5c256a8851c480dca537c782af99d6aa010fe28bae92eb867"></a>FMKCPU_RCC_CLK_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -251,10 +303,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Number max of cannel enable by timer </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3e2f7da9e5fe4b2768ed682326f65c23af784bd4724362e38f7457b559b852d3a" name="a3e2f7da9e5fe4b2768ed682326f65c23af784bd4724362e38f7457b559b852d3a"></a>FMKCPU_EVENT_CHANNEL_1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3e2f7da9e5fe4b2768ed682326f65c23a5e4252070621f4cfb1243b81d131e453" name="a3e2f7da9e5fe4b2768ed682326f65c23a5e4252070621f4cfb1243b81d131e453"></a>FMKCPU_EVENT_CHANNEL_2&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3e2f7da9e5fe4b2768ed682326f65c23af784bd4724362e38f7457b559b852d3a" name="a3e2f7da9e5fe4b2768ed682326f65c23af784bd4724362e38f7457b559b852d3a"></a>FMKCPU_EVENT_CHANNEL_1&#160;</td><td class="fielddoc"><p>Event channel 0 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3e2f7da9e5fe4b2768ed682326f65c23a5e4252070621f4cfb1243b81d131e453" name="a3e2f7da9e5fe4b2768ed682326f65c23a5e4252070621f4cfb1243b81d131e453"></a>FMKCPU_EVENT_CHANNEL_2&#160;</td><td class="fielddoc"><p>Event channel 1 </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a3e2f7da9e5fe4b2768ed682326f65c23a23884d1ad34090357efbc1a6d25adf71" name="a3e2f7da9e5fe4b2768ed682326f65c23a23884d1ad34090357efbc1a6d25adf71"></a>FMKCPU_EVENT_CHANNEL_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -271,15 +324,24 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>&lt; typedef enum for channel mode </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca1801077b968741a58bf661c7bd2f5962" name="a6a68a17e31a534e603cb06bde4ec660ca1801077b968741a58bf661c7bd2f5962"></a>FMKCPU_HWTIM_CFG_PWM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca5708699a4333a7d9cf69277b285251a6" name="a6a68a17e31a534e603cb06bde4ec660ca5708699a4333a7d9cf69277b285251a6"></a>FMKCPU_HWTIM_CFG_IC&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca332f5a43dd3513357a73ff71103c982b" name="a6a68a17e31a534e603cb06bde4ec660ca332f5a43dd3513357a73ff71103c982b"></a>FMKCPU_HWTIM_CFG_OC&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca4ac0f63786432f304bbda0fa215b07ce" name="a6a68a17e31a534e603cb06bde4ec660ca4ac0f63786432f304bbda0fa215b07ce"></a>FMKCPU_HWTIM_CFG_OP&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81" name="a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81"></a>FMKCPU_HWTIM_CFG_EVNT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8" name="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8"></a>FMKCPU_HWTIM_CFG_ECDR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583" name="a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583"></a>FMKCPU_HWTIM_CFG_TRGR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04" name="a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04"></a>FMKCPU_HWTIM_CFG_NB&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca1801077b968741a58bf661c7bd2f5962" name="a6a68a17e31a534e603cb06bde4ec660ca1801077b968741a58bf661c7bd2f5962"></a>FMKCPU_HWTIM_CFG_PWM&#160;</td><td class="fielddoc"><p>Timer configuration in PWM mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca5708699a4333a7d9cf69277b285251a6" name="a6a68a17e31a534e603cb06bde4ec660ca5708699a4333a7d9cf69277b285251a6"></a>FMKCPU_HWTIM_CFG_IC&#160;</td><td class="fielddoc"><p>Timer configuration in Input Capture mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca332f5a43dd3513357a73ff71103c982b" name="a6a68a17e31a534e603cb06bde4ec660ca332f5a43dd3513357a73ff71103c982b"></a>FMKCPU_HWTIM_CFG_OC&#160;</td><td class="fielddoc"><p>Timer configuration in Ouput Compare mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca4ac0f63786432f304bbda0fa215b07ce" name="a6a68a17e31a534e603cb06bde4ec660ca4ac0f63786432f304bbda0fa215b07ce"></a>FMKCPU_HWTIM_CFG_OP&#160;</td><td class="fielddoc"><p>Timer configuration in One Pulse mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81" name="a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81"></a>FMKCPU_HWTIM_CFG_EVNT&#160;</td><td class="fielddoc"><p>Timer configuration in Event mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8" name="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8"></a>FMKCPU_HWTIM_CFG_ECDR&#160;</td><td class="fielddoc"><p>Timer configuration in j'saisplus mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583" name="a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583"></a>FMKCPU_HWTIM_CFG_TRGR&#160;</td><td class="fielddoc"><p>Timer configuration in trigger mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04" name="a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04"></a>FMKCPU_HWTIM_CFG_NB&#160;</td><td class="fielddoc"><p>Number of timer configuration mode </p>
+</td></tr>
 </table>
 
 </div>
@@ -295,13 +357,83 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Number max of cannel enable by timer </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba84abefb2204b561bdf70e29412abccf2" name="a62c77c6bd32b5ea82296617e8f03a25ba84abefb2204b561bdf70e29412abccf2"></a>FMKCPU_CHANNEL_1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba77dc9f2d8f9ef8451b5536953840e4eb" name="a62c77c6bd32b5ea82296617e8f03a25ba77dc9f2d8f9ef8451b5536953840e4eb"></a>FMKCPU_CHANNEL_2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba65829ed46fa50790a7e09dd81efb97dc" name="a62c77c6bd32b5ea82296617e8f03a25ba65829ed46fa50790a7e09dd81efb97dc"></a>FMKCPU_CHANNEL_3&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba9dc88603ad6924c30eb593e896a395b6" name="a62c77c6bd32b5ea82296617e8f03a25ba9dc88603ad6924c30eb593e896a395b6"></a>FMKCPU_CHANNEL_4&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba84abefb2204b561bdf70e29412abccf2" name="a62c77c6bd32b5ea82296617e8f03a25ba84abefb2204b561bdf70e29412abccf2"></a>FMKCPU_CHANNEL_1&#160;</td><td class="fielddoc"><p>Reference to HAL channel 0 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba77dc9f2d8f9ef8451b5536953840e4eb" name="a62c77c6bd32b5ea82296617e8f03a25ba77dc9f2d8f9ef8451b5536953840e4eb"></a>FMKCPU_CHANNEL_2&#160;</td><td class="fielddoc"><p>Reference to HAL channel 1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba65829ed46fa50790a7e09dd81efb97dc" name="a62c77c6bd32b5ea82296617e8f03a25ba65829ed46fa50790a7e09dd81efb97dc"></a>FMKCPU_CHANNEL_3&#160;</td><td class="fielddoc"><p>Reference to HAL channel 2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba9dc88603ad6924c30eb593e896a395b6" name="a62c77c6bd32b5ea82296617e8f03a25ba9dc88603ad6924c30eb593e896a395b6"></a>FMKCPU_CHANNEL_4&#160;</td><td class="fielddoc"><p>Reference to HAL channel 3 </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a62c77c6bd32b5ea82296617e8f03a25ba3c76bf2978af0a5e6fa25f0ea95785bf" name="a62c77c6bd32b5ea82296617e8f03a25ba3c76bf2978af0a5e6fa25f0ea95785bf"></a>FMKCPU_CHANNEL_NB&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a2196bfb127e600673166e06e677a3f23" name="a2196bfb127e600673166e06e677a3f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2196bfb127e600673166e06e677a3f23">&#9670;&#160;</a></span>t_eFMKCPU_IRQNType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a2196bfb127e600673166e06e677a3f23">t_eFMKCPU_IRQNType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a0a2a205dca0b067ebc036625afa24316" name="a2196bfb127e600673166e06e677a3f23a0a2a205dca0b067ebc036625afa24316"></a>FMKCPU_NVIC_WWDG_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic WWDG_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a5f83eff169f746352803db7d101a4a41" name="a2196bfb127e600673166e06e677a3f23a5f83eff169f746352803db7d101a4a41"></a>FMKCPU_NVIC_RTC_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic RTC_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a216e73f5abd9184177c095cff6595088" name="a2196bfb127e600673166e06e677a3f23a216e73f5abd9184177c095cff6595088"></a>FMKCPU_NVIC_FLASH_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic FLASH_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23af455dc8dcb166e1cb124427bf7358a6a" name="a2196bfb127e600673166e06e677a3f23af455dc8dcb166e1cb124427bf7358a6a"></a>FMKCPU_NVIC_RCC_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic RCC_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23ac721a59c41b86a4bd1d76f323a0723f8" name="a2196bfb127e600673166e06e677a3f23ac721a59c41b86a4bd1d76f323a0723f8"></a>FMKCPU_NVIC_EXTI0_1_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic EXTI0_1_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23accdefb7996e8f89512686cd2ff9eab2d" name="a2196bfb127e600673166e06e677a3f23accdefb7996e8f89512686cd2ff9eab2d"></a>FMKCPU_NVIC_EXTI2_3_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic EXTI2_3_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23af25498b116aee66fd7e369afc9e3de0c" name="a2196bfb127e600673166e06e677a3f23af25498b116aee66fd7e369afc9e3de0c"></a>FMKCPU_NVIC_EXTI4_15_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic EXTI4_15_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23abfac284ce4d00bedc19365829ff94467" name="a2196bfb127e600673166e06e677a3f23abfac284ce4d00bedc19365829ff94467"></a>FMKCPU_NVIC_DMA1_CHANNEL1_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic DMA1_Channel1_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a7ab0cd6d807754ecc0e84b980795e365" name="a2196bfb127e600673166e06e677a3f23a7ab0cd6d807754ecc0e84b980795e365"></a>FMKCPU_NVIC_DMA1_CHANNEL2_3_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic DMA1_Channel2_3_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a2347fd9f25d6d8b2e4dfd96142fa1f31" name="a2196bfb127e600673166e06e677a3f23a2347fd9f25d6d8b2e4dfd96142fa1f31"></a>FMKCPU_NVIC_DMA1_CHANNEL4_5_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic DMA1_Channel4_5_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a794fd7f94e165eb5a3516a778286fbed" name="a2196bfb127e600673166e06e677a3f23a794fd7f94e165eb5a3516a778286fbed"></a>FMKCPU_NVIC_ADC1_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic ADC1_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23ad5c1671e7f7b36a46d3a1859967e69b3" name="a2196bfb127e600673166e06e677a3f23ad5c1671e7f7b36a46d3a1859967e69b3"></a>FMKCPU_NVIC_TIM1_BRK_UP_TRG_COM_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM1_BRK_UP_TRG_COM_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23aad548bb2265d51e208f00b55f4067f2c" name="a2196bfb127e600673166e06e677a3f23aad548bb2265d51e208f00b55f4067f2c"></a>FMKCPU_NVIC_TIM1_CC_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM1_CC_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a9a89bb04f1a80be8bd79c0680d1a133d" name="a2196bfb127e600673166e06e677a3f23a9a89bb04f1a80be8bd79c0680d1a133d"></a>FMKCPU_NVIC_TIM3_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM3_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a8016303239ed28c1b19dbb7e25b22af6" name="a2196bfb127e600673166e06e677a3f23a8016303239ed28c1b19dbb7e25b22af6"></a>FMKCPU_NVIC_TIM6_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM6_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a6ecc9c6b017232abc719f378c508dc38" name="a2196bfb127e600673166e06e677a3f23a6ecc9c6b017232abc719f378c508dc38"></a>FMKCPU_NVIC_TIM14_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM14_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a9a679792b9a2ea47dc36b6dc446b1266" name="a2196bfb127e600673166e06e677a3f23a9a679792b9a2ea47dc36b6dc446b1266"></a>FMKCPU_NVIC_TIM15_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM15_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a5e9a864b13918be642cbce25153d924f" name="a2196bfb127e600673166e06e677a3f23a5e9a864b13918be642cbce25153d924f"></a>FMKCPU_NVIC_TIM16_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM16_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a5e6398b152325ec130b3564e2bc7aa5d" name="a2196bfb127e600673166e06e677a3f23a5e6398b152325ec130b3564e2bc7aa5d"></a>FMKCPU_NVIC_TIM17_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic TIM17_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a10ac015034d7934c3e58c5fcf5da6120" name="a2196bfb127e600673166e06e677a3f23a10ac015034d7934c3e58c5fcf5da6120"></a>FMKCPU_NVIC_I2C1_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic I2C1_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a14d1cc0133d69972f7b7c9f0eeda72ff" name="a2196bfb127e600673166e06e677a3f23a14d1cc0133d69972f7b7c9f0eeda72ff"></a>FMKCPU_NVIC_I2C2_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic I2C2_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a8ac8e0622ccdfabe445b9ca27d72cc08" name="a2196bfb127e600673166e06e677a3f23a8ac8e0622ccdfabe445b9ca27d72cc08"></a>FMKCPU_NVIC_SPI1_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic SPI1_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23a2266df89802c891c93602cbe19e84bdc" name="a2196bfb127e600673166e06e677a3f23a2266df89802c891c93602cbe19e84bdc"></a>FMKCPU_NVIC_SPI2_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic SPI2_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23aad7017e1cdc34c74e7fc07721bd0b701" name="a2196bfb127e600673166e06e677a3f23aad7017e1cdc34c74e7fc07721bd0b701"></a>FMKCPU_NVIC_USART1_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic USART1_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23aa049b3cad787e3be97b27c9507ee44c9" name="a2196bfb127e600673166e06e677a3f23aa049b3cad787e3be97b27c9507ee44c9"></a>FMKCPU_NVIC_USART2_IRQN&#160;</td><td class="fielddoc"><p>Reference to HAL nvic USART2_IRQn </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2196bfb127e600673166e06e677a3f23ada1693bb5d3c64e463dbbf38295dd60c" name="a2196bfb127e600673166e06e677a3f23ada1693bb5d3c64e463dbbf38295dd60c"></a>FMKCPU_NVIC_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -318,10 +450,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ea0cd1fedbfce2af130200c891e7c387e7" name="aaaf20d3204ade01b365203d1602ad08ea0cd1fedbfce2af130200c891e7c387e7"></a>FMKCPU_NVIC_PRIORITY_LOW&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ea48bec305c1534254ea688f6646eb4da7" name="aaaf20d3204ade01b365203d1602ad08ea48bec305c1534254ea688f6646eb4da7"></a>FMKCPU_NVIC_PRIORITY_MEDIUM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ead010ac278e585e64bbb68cdf8c0bfb30" name="aaaf20d3204ade01b365203d1602ad08ead010ac278e585e64bbb68cdf8c0bfb30"></a>FMKCPU_NVIC_PRIORITY_HIGH&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ea14f242a3f8047654761ac47e80184b4d" name="aaaf20d3204ade01b365203d1602ad08ea14f242a3f8047654761ac47e80184b4d"></a>FMKCPU_NVIC_PRIORITY_NB&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ea0cd1fedbfce2af130200c891e7c387e7" name="aaaf20d3204ade01b365203d1602ad08ea0cd1fedbfce2af130200c891e7c387e7"></a>FMKCPU_NVIC_PRIORITY_LOW&#160;</td><td class="fielddoc"><p>Reference to bsp priority low value </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ea48bec305c1534254ea688f6646eb4da7" name="aaaf20d3204ade01b365203d1602ad08ea48bec305c1534254ea688f6646eb4da7"></a>FMKCPU_NVIC_PRIORITY_MEDIUM&#160;</td><td class="fielddoc"><p>Reference to bsp priority medium value </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ead010ac278e585e64bbb68cdf8c0bfb30" name="aaaf20d3204ade01b365203d1602ad08ead010ac278e585e64bbb68cdf8c0bfb30"></a>FMKCPU_NVIC_PRIORITY_HIGH&#160;</td><td class="fielddoc"><p>Reference to bsp priority high value </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aaaf20d3204ade01b365203d1602ad08ea14f242a3f8047654761ac47e80184b4d" name="aaaf20d3204ade01b365203d1602ad08ea14f242a3f8047654761ac47e80184b4d"></a>FMKCPU_NVIC_PRIORITY_NB&#160;</td><td class="fielddoc"><p>Number of reference to bsp priority </p>
+</td></tr>
 </table>
 
 </div>
@@ -337,14 +473,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Number of timer enable in smt32f08 family </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7a5270d1d405a3127f27b162a00ee52642" name="a17696e6a68cdf4f872408b479c0e1bd7a5270d1d405a3127f27b162a00ee52642"></a>FMKCPU_TIMER_1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7a3bc9e57428d72f1d9935b96215d24ea1" name="a17696e6a68cdf4f872408b479c0e1bd7a3bc9e57428d72f1d9935b96215d24ea1"></a>FMKCPU_TIMER_3&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7ac581ca7b6ce38f2e7b61d6b04e01c4cb" name="a17696e6a68cdf4f872408b479c0e1bd7ac581ca7b6ce38f2e7b61d6b04e01c4cb"></a>FMKCPU_TIMER_14&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7afee0fcbe543ad97034815d9e0cf3f244" name="a17696e6a68cdf4f872408b479c0e1bd7afee0fcbe543ad97034815d9e0cf3f244"></a>FMKCPU_TIMER_15&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7ac4126ddfabae8d90c0453cf3af867208" name="a17696e6a68cdf4f872408b479c0e1bd7ac4126ddfabae8d90c0453cf3af867208"></a>FMKCPU_TIMER_16&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7adbcb91b7aa8e2f1a0f5029d16aa16148" name="a17696e6a68cdf4f872408b479c0e1bd7adbcb91b7aa8e2f1a0f5029d16aa16148"></a>FMKCPU_TIMER_17&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7a5270d1d405a3127f27b162a00ee52642" name="a17696e6a68cdf4f872408b479c0e1bd7a5270d1d405a3127f27b162a00ee52642"></a>FMKCPU_TIMER_1&#160;</td><td class="fielddoc"><p>Reference for HAL timer_1, this timer has 4 channel(s) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7a3bc9e57428d72f1d9935b96215d24ea1" name="a17696e6a68cdf4f872408b479c0e1bd7a3bc9e57428d72f1d9935b96215d24ea1"></a>FMKCPU_TIMER_3&#160;</td><td class="fielddoc"><p>Reference for HAL timer_3, this timer has 4 channel(s) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7ac581ca7b6ce38f2e7b61d6b04e01c4cb" name="a17696e6a68cdf4f872408b479c0e1bd7ac581ca7b6ce38f2e7b61d6b04e01c4cb"></a>FMKCPU_TIMER_14&#160;</td><td class="fielddoc"><p>Reference for HAL timer_14, this timer has 1 channel(s) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7afee0fcbe543ad97034815d9e0cf3f244" name="a17696e6a68cdf4f872408b479c0e1bd7afee0fcbe543ad97034815d9e0cf3f244"></a>FMKCPU_TIMER_15&#160;</td><td class="fielddoc"><p>Reference for HAL timer_15, this timer has 2 channel(s) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7ac4126ddfabae8d90c0453cf3af867208" name="a17696e6a68cdf4f872408b479c0e1bd7ac4126ddfabae8d90c0453cf3af867208"></a>FMKCPU_TIMER_16&#160;</td><td class="fielddoc"><p>Reference for HAL timer_16, this timer has 1 channel(s) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7adbcb91b7aa8e2f1a0f5029d16aa16148" name="a17696e6a68cdf4f872408b479c0e1bd7adbcb91b7aa8e2f1a0f5029d16aa16148"></a>FMKCPU_TIMER_17&#160;</td><td class="fielddoc"><p>Reference for HAL timer_17, this timer has 1 channel(s) </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a17696e6a68cdf4f872408b479c0e1bd7abebcc97094cfd64e76d0eec9f876549c" name="a17696e6a68cdf4f872408b479c0e1bd7abebcc97094cfd64e76d0eec9f876549c"></a>FMKCPU_TIMER_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -362,31 +503,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a1cf49bcebdc0d144a3c6c1c48c311f49" name="a25152b931793a54096307a6aea7af3b7a1cf49bcebdc0d144a3c6c1c48c311f49"></a>FMKCPU_WWDG_RESET_50MS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d" name="a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d"></a>FMKCPU_WWDG_RESET_100MS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a581332cf40fc60a00b8517424586d0a0" name="a25152b931793a54096307a6aea7af3b7a581332cf40fc60a00b8517424586d0a0"></a>FMKCPU_WWDG_RESET_200MS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a9837d16c717e6993fc970e9dce265543" name="a25152b931793a54096307a6aea7af3b7a9837d16c717e6993fc970e9dce265543"></a>FMKCPU_WWDG_RESET_500MS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a9a4d74bb11139d4afac8a8d7f01f77d5" name="a25152b931793a54096307a6aea7af3b7a9a4d74bb11139d4afac8a8d7f01f77d5"></a>FMKCPU_WWDG_RESET_NB&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a1cf49bcebdc0d144a3c6c1c48c311f49" name="a25152b931793a54096307a6aea7af3b7a1cf49bcebdc0d144a3c6c1c48c311f49"></a>FMKCPU_WWDG_RESET_50MS&#160;</td><td class="fielddoc"><p>Watchdogs reset parameter is 50 ms </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d" name="a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d"></a>FMKCPU_WWDG_RESET_100MS&#160;</td><td class="fielddoc"><p>Watchdogs reset parameter is 100 ms </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a581332cf40fc60a00b8517424586d0a0" name="a25152b931793a54096307a6aea7af3b7a581332cf40fc60a00b8517424586d0a0"></a>FMKCPU_WWDG_RESET_200MS&#160;</td><td class="fielddoc"><p>Watchdogs reset parameter is 200 ms </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a9837d16c717e6993fc970e9dce265543" name="a25152b931793a54096307a6aea7af3b7a9837d16c717e6993fc970e9dce265543"></a>FMKCPU_WWDG_RESET_500MS&#160;</td><td class="fielddoc"><p>Watchdogs reset parameter is 500 ms </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a25152b931793a54096307a6aea7af3b7a9a4d74bb11139d4afac8a8d7f01f77d5" name="a25152b931793a54096307a6aea7af3b7a9a4d74bb11139d4afac8a8d7f01f77d5"></a>FMKCPU_WWDG_RESET_NB&#160;</td><td class="fielddoc"><p>Number of watchdogs reset parameter <br  />
+ </p>
+</td></tr>
 </table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a93324ef3fdf32280881a1a3870ffa3dc" name="a93324ef3fdf32280881a1a3870ffa3dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93324ef3fdf32280881a1a3870ffa3dc">&#9670;&#160;</a></span>IRQn_Type()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef IRQn_Type </td>
-          <td>(</td>
-          <td class="paramtype">t_eFMKCPU_IRQNType</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>&lt; Abstraction for IRQN type specfific for SMT32 card </p>
 
 </div>
 </div>

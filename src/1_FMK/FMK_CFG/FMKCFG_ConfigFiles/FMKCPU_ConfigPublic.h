@@ -136,8 +136,7 @@
         FMKCPU_HWTIM_CFG_OC,                /**< Timer configuration in Ouput Compare mode */
         FMKCPU_HWTIM_CFG_OP,                /**< Timer configuration in One Pulse mode */
         FMKCPU_HWTIM_CFG_EVNT,              /**< Timer configuration in Event mode */
-        FMKCPU_HWTIM_CFG_ECDR,              /**< Timer configuration in j'saisplus mode */
-        FMKCPU_HWTIM_CFG_TRGR,              /**< Timer configuration in trigger mode */
+        FMKCPU_HWTIM_CFG_ECDR,              /**< Timer configuration in encoder mode */
 
         FMKCPU_HWTIM_CFG_NB,                /**< Number of timer configuration mode*/
     } t_eFMKCPU_HwTimerCfg;

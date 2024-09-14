@@ -56,7 +56,7 @@
 //********************************************************************************
 t_eReturnState APPSNS_SPEC_Humidity_SetCfg(void)
 {
-    FMKIO_Set_InAnaSigCfg(FMKIO_INPUT_SIGANA_1, FMKIO_PULL_MODE_UNABLE);
+    FMKIO_Set_InAnaSigCfg(FMKIO_INPUT_SIGANA_1, FMKIO_PULL_MODE_UNABLE, NULL_FONCTION);
     return RC_OK;
 }
 t_eReturnState APPSNS_SPEC_Humidity_GetValue(t_sAPPSNS_ValueInfo *f_SnsValue_ps)

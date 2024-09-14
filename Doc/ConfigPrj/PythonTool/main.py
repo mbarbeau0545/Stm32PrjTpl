@@ -27,7 +27,10 @@ from FMK_CodeGen.FMKCDA_CodeGen  import FMKCDA_CodeGen as FMKCDA
 #                             FUNCTION IMPLMENTATION
 #------------------------------------------------------------------------------
 def main()-> None:
-    a = FMKCDA()
+    
+    FMKCPU.code_generation()
+    FMKCDA.code_genration()
+    FMKIO.code_generation()
     return
 #------------------------------------------------------------------------------
 #			                MAIN

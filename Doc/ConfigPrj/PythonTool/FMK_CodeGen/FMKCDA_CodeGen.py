@@ -30,28 +30,31 @@ TARGET_ADC_CHNLNB_END   = "    /* CAUTION : Automatic generated code section for
 #                                       CLASS
 #------------------------------------------------------------------------------
 class FMKCDA_CodeGen():
-    def __init__(self) -> None:
-        """
-            Make code generation for FMKCDA module which include 
-            file FMKCDA_ConfigPublic.h : 
-               - Enum Adc Channel                                
-               - Enum Adc                                 
-            
-            file FMKCDA_ConfigPrivate.h :
-                define ADC_x max channel
-                varaible ADCx max channel
+    """
+        Make code generation for FMKCDA module which include 
+        file FMKCDA_ConfigPublic.h : 
+            - Enum Adc Channel                                
+            - Enum Adc                                 
+        
+        file FMKCDA_ConfigPrivate.h :
+            define ADC_x max channel
+            varaible ADCx max channel
 
-            file  FMK_CDA.c
-                - variable g_AdcInfo_as init 
-                - varaible for scan mode counter rank              
-                - switch case Adc channel to bsp channel 
-        """
+        file  FMK_CDA.c
+            - variable g_AdcInfo_as init 
+            - varaible for scan mode counter rank              
+            - switch case Adc channel to bsp channel 
+    """
+    code_gen = LCFE()
+
+    @classmethod
+    def code_genration(cls) -> None:
+        
         # load array needed
-        self.code_gen = LCFE()
-        self.code_gen.load_excel_file(HARDWARE_CFG_PATH)
-        #irqn_cfg_a = self.code_gen.get_array_from_excel("GI_IRQN")
-        adc_astr  = self.code_gen.get_array_from_excel("GI_ADC")[1:]
-        dac_astr  = self.code_gen.get_array_from_excel("GI_DAC")[1:]
+        cls.code_gen.load_excel_file(HARDWARE_CFG_PATH)
+        #irqn_cfg_a = cls.code_gen.get_array_from_excel("GI_IRQN")
+        adc_astr  = cls.code_gen.get_array_from_excel("GI_ADC")[1:]
+        dac_astr  = cls.code_gen.get_array_from_excel("GI_DAC")[1:]
 
         enum_adc = ""
         enum_adc_channel = ""
@@ -64,7 +67,7 @@ class FMKCDA_CodeGen():
         #----------------------------------------------------------------
         #-----------------------------make adc enum----------------------
         #-----------------------------------------------------------------
-        enum_adc = self.code_gen.make_enum_from_variable(ENUM_ADC_ISCT_ROOT, [str(adc_info[0][4:]) for adc_info in adc_astr],
+        enum_adc = cls.code_gen.make_enum_from_variable(ENUM_ADC_ISCT_ROOT, [str(adc_info[0][4:]) for adc_info in adc_astr],
                                                           "t_eFMKCDA_Adc", 0 , "NUmber of ADC in this harware",
                                                           [f"Reference to HAL ADC{adc_info[0][4:]}" for adc_info in adc_astr])
         #----------------------------------------------------------------
@@ -99,7 +102,7 @@ class FMKCDA_CodeGen():
         var_adc_max_channel += "    };\n\n"
         var_adc_info += "};\n\n"
         var_rank_counter += "};\n\n"
-        enum_adc_channel = self.code_gen.make_enum_from_variable(ENUM_ADC_CHNL_ROOT, [int(idx) for idx in range(max_adc_channel)],
+        enum_adc_channel = cls.code_gen.make_enum_from_variable(ENUM_ADC_CHNL_ROOT, [int(idx) for idx in range(max_adc_channel)],
                                                                 "t_eFMKCDA_AdcChannel", 0 , " Number of channel in ADC Instances",
                                                                   [f"Reference to HAL adc channel {int(idx)}" for idx in range(max_adc_channel)])
 
@@ -114,18 +117,18 @@ class FMKCDA_CodeGen():
         #-----------------------------------------------------------
         #------------code genration for FMKADC module---------------
         #-----------------------------------------------------------
-        self.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE, TARGET_T_ENUM_END_LINE)
-        self.code_gen._write_into_file(enum_adc_channel, FMKCDA_CONFIGPUBLIC)
-        self.code_gen._write_into_file(enum_adc, FMKCDA_CONFIGPUBLIC)
-        self.code_gen.change_target_balise(TARGET_ADC_CHNLNB_START, TARGET_ADC_CHNLNB_END)
-        self.code_gen._write_into_file(def_adcx_max_channel, FMKCDA_CONFIGPRIVATE)
-        self.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE, TARGET_T_VARIABLE_END_LINE)
-        self.code_gen._write_into_file(var_adc_max_channel, FMKCDA_CONFIGPRIVATE)
-        self.code_gen.change_target_balise(TARGET_ADC_SWITCH_START, TARGET_ADC_SWITCH_END)
-        self.code_gen._write_into_file(switch_adc_channel, FMKCDA)
-        self.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE[4:], TARGET_T_VARIABLE_END_LINE[4:])
-        self.code_gen._write_into_file(var_rank_counter, FMKCDA)
-        self.code_gen._write_into_file(var_adc_info, FMKCDA)
+        cls.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE, TARGET_T_ENUM_END_LINE)
+        cls.code_gen._write_into_file(enum_adc_channel, FMKCDA_CONFIGPUBLIC)
+        cls.code_gen._write_into_file(enum_adc, FMKCDA_CONFIGPUBLIC)
+        cls.code_gen.change_target_balise(TARGET_ADC_CHNLNB_START, TARGET_ADC_CHNLNB_END)
+        cls.code_gen._write_into_file(def_adcx_max_channel, FMKCDA_CONFIGPRIVATE)
+        cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE, TARGET_T_VARIABLE_END_LINE)
+        cls.code_gen._write_into_file(var_adc_max_channel, FMKCDA_CONFIGPRIVATE)
+        cls.code_gen.change_target_balise(TARGET_ADC_SWITCH_START, TARGET_ADC_SWITCH_END)
+        cls.code_gen._write_into_file(switch_adc_channel, FMKCDA)
+        cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE[4:], TARGET_T_VARIABLE_END_LINE[4:])
+        cls.code_gen._write_into_file(var_rank_counter, FMKCDA)
+        cls.code_gen._write_into_file(var_adc_info, FMKCDA)
 #------------------------------------------------------------------------------
 #                             FUNCTION IMPLMENTATION
 #------------------------------------------------------------------------------

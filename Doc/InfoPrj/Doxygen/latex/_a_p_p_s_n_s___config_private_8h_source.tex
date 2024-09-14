@@ -24,7 +24,7 @@
 \DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h}{./APPSNS\_ConfigPublic.h}}"{}}}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8h}{../ConfigSpecific/APP\_SNS\_CFGSPEC/APPSNS\_SPEC\_Humidity.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8h}{../ConfigSpecific/AppSns\_ConfigSpecific/APPSNS\_SPEC\_Humidity.h}}"{}}}
 \DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
 \DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Defines}}
 \DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
@@ -43,117 +43,68 @@
 \DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ENUM\ TYPES-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
 \DoxyCodeLine{00040\ }
 \DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/TYPEDEF\ TYPES-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
-\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
-\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_aa11796d15ae8f2a5d475243386bfb8ea}{t\_cbAppSns\_SetSnsCfg}})(void);}
-\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00057\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00058\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
-\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00061\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afa96ada0aa79102c8f6e19f0abc80153}{t\_cbAppSns\_GetSnsValue}})(\mbox{\hyperlink{structt__s_a_p_p_s_n_s___value_info}{t\_sAPPSNS\_ValueInfo}}\ *f\_SnsValue\_ps);}
-\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
-\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}})(void);}
-\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ /*****************************************************************************}}
-\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ *\ \ \ @brief}}
-\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ *\ \ \ @note\ \ \ }}
-\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[in]\ }}
-\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ *\ \ \ @param[out]}}
-\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ *\ \ \ \ }}
-\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ \ *}}
-\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}})(void);}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ \ \ \ \ }
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{/*\ CAUTION\ :\ Automatic\ generated\ code\ section\ :\ Start\ */}}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{/*\ CAUTION\ :\ Automatic\ generated\ code\ section\ :\ End\ */}}
-\DoxyCodeLine{00099\ \ \ \ \ }
-\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
-\DoxyCodeLine{00101\ \ \ \ \ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_aa11796d15ae8f2a5d475243386bfb8ea}{t\_cbAppSns\_SetSnsCfg}}\ \ \ \ \ \ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func_a7ab2d023add644e476ada13c4926132a}{SetCfg\_pcb}};}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afa96ada0aa79102c8f6e19f0abc80153}{t\_cbAppSns\_GetSnsValue}}\ \ \ \ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func_a89f7d634a75a800b4abba725e0dc86a0}{GetValue\_pcb}};}
-\DoxyCodeLine{00104\ \ \ \ \ \}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func}{t\_sAPPSNS\_SysSnsFunc}};}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
-\DoxyCodeLine{00107\ \ \ \ \ \{}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}}\ \ \ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func_a730c4ab3605f9a7c9cafe08dc658e313}{Init\_pcb}};}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}}\ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func_a0cdd105a36b8b3d07b09a416b423ba73}{Cyclic\_pcb}};}
-\DoxyCodeLine{00110\ \ \ \ \ \}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func}{t\_sAPPSNS\_SysDrvFunc}};}
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Prototypes}}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Variables}}
-\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
-\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func}{t\_sAPPSNS\_SysSnsFunc}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a1e23fae52e6f446f58b0aca54dce4f54}{c\_AppSns\_SysSns\_apf}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9}{APPSNS\_SNS\_NB}}]\ =\ \{}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_acc3a9d62819e4d5b0171e2b510d6f328}{APPSNS\_SPEC\_Humidity\_SetCfg}},\ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_a310d31203d8d9d4fa06b6efd61f7445b}{APPSNS\_SPEC\_Humidity\_GetValue}}\},}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_acc3a9d62819e4d5b0171e2b510d6f328}{APPSNS\_SPEC\_Humidity\_SetCfg}},\ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_a310d31203d8d9d4fa06b6efd61f7445b}{APPSNS\_SPEC\_Humidity\_GetValue}}\},}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_aa11796d15ae8f2a5d475243386bfb8ea}{t\_cbAppSns\_SetSnsCfg}})(void);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afa96ada0aa79102c8f6e19f0abc80153}{t\_cbAppSns\_GetSnsValue}})(\mbox{\hyperlink{structt__s_a_p_p_s_n_s___value_info}{t\_sAPPSNS\_ValueInfo}}\ *f\_SnsValue\_ps);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}})(void);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\_eReturnState}}\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}})(void);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{/*\ CAUTION\ :\ Automatic\ generated\ code\ section\ :\ Start\ */}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{/*\ CAUTION\ :\ Automatic\ generated\ code\ section\ :\ End\ */}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_aa11796d15ae8f2a5d475243386bfb8ea}{t\_cbAppSns\_SetSnsCfg}}\ \ \ \ \ \ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func_a7ab2d023add644e476ada13c4926132a}{SetCfg\_pcb}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afa96ada0aa79102c8f6e19f0abc80153}{t\_cbAppSns\_GetSnsValue}}\ \ \ \ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func_a89f7d634a75a800b4abba725e0dc86a0}{GetValue\_pcb}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func}{t\_sAPPSNS\_SysSnsFunc}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}}\ \ \ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func_a730c4ab3605f9a7c9cafe08dc658e313}{Init\_pcb}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}}\ *\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func_a0cdd105a36b8b3d07b09a416b423ba73}{Cyclic\_pcb}};}
+\DoxyCodeLine{00084\ \ \ \ \ \}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func}{t\_sAPPSNS\_SysDrvFunc}};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Prototypes}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Variables}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_sns_func}{t\_sAPPSNS\_SysSnsFunc}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a1e23fae52e6f446f58b0aca54dce4f54}{c\_AppSns\_SysSns\_apf}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9}{APPSNS\_SNS\_NB}}]\ =\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_acc3a9d62819e4d5b0171e2b510d6f328}{APPSNS\_SPEC\_Humidity\_SetCfg}},\ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_a310d31203d8d9d4fa06b6efd61f7445b}{APPSNS\_SPEC\_Humidity\_GetValue}}\},}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_acc3a9d62819e4d5b0171e2b510d6f328}{APPSNS\_SPEC\_Humidity\_SetCfg}},\ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___s_p_e_c___humidity_8c_a310d31203d8d9d4fa06b6efd61f7445b}{APPSNS\_SPEC\_Humidity\_GetValue}}\},}
+\DoxyCodeLine{00097\ \ \ \ \ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func}{t\_sAPPSNS\_SysDrvFunc}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afca0ce4370c9d4b61ca5d65969d6cffa}{c\_AppSns\_SysDrv\_apf}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ae479a9dbf75dd3ff4f9fad8038aed69caad7018d907ac7d88e9ca88620e039808}{APPSNS\_DRV\_NB}}]\ =\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{(\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\ ,\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\},}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \{(\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\ ,\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\},}
+\DoxyCodeLine{00103\ \ \ \ \ \};}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a4b2f12d7e5441f19c5c89bb067f10d68}{t\_eAPPSNS\_SnsMeasType}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afe169b1e074e88598520a98d8b7f1e72}{c\_AppSns\_SnsMeasType\_ae}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9}{APPSNS\_SNS\_NB}}]\ =\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a4b2f12d7e5441f19c5c89bb067f10d68a18b37215eba6aacfd29f3a40f6ce56fa}{APPSNS\_MEASTYPE\_RAW}},\ \textcolor{comment}{//\ APPSNS\_SNS\_1}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a4b2f12d7e5441f19c5c89bb067f10d68a18b37215eba6aacfd29f3a40f6ce56fa}{APPSNS\_MEASTYPE\_RAW}},\ \textcolor{comment}{//\ APPSNS\_SNS\_2}}
+\DoxyCodeLine{00109\ \ \ \ \ \};}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ad6ef4d954b286471e5a367bf0db5084c}{t\_eAPPSNS\_DrvState}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a632d6ed344906041423218f50ba4886e}{c\_AppSns\_DrvState\_ae}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ae479a9dbf75dd3ff4f9fad8038aed69caad7018d907ac7d88e9ca88620e039808}{APPSNS\_DRV\_NB}}]\ =\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ad6ef4d954b286471e5a367bf0db5084caac9e7869c1d857210c9cc8c28973376f}{APPSNS\_DRIVER\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_DRV\_JOY\_1}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ad6ef4d954b286471e5a367bf0db5084caac9e7869c1d857210c9cc8c28973376f}{APPSNS\_DRIVER\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_DRV\_JOY\_2}}
+\DoxyCodeLine{00115\ \ \ \ \ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_af7afd89244a58f698fc5ac71cbbc897f}{t\_eAPPSNS\_SensorState}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a459ae32741657eef001920d8235a2150}{c\_AppSns\_SnsState\_ae}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9}{APPSNS\_SNS\_NB}}]\ =\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_af7afd89244a58f698fc5ac71cbbc897fa9f055dd22205dff6130d0b56643fb70c}{APPSNS\_SENSOR\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_SNS\_1}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_af7afd89244a58f698fc5ac71cbbc897fa9f055dd22205dff6130d0b56643fb70c}{APPSNS\_SENSOR\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_SNS\_2}}
 \DoxyCodeLine{00122\ \ \ \ \ \};}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
-\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structt__s_a_p_p_s_n_s___sys_drv_func}{t\_sAPPSNS\_SysDrvFunc}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afca0ce4370c9d4b61ca5d65969d6cffa}{c\_AppSns\_SysDrv\_apf}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ae479a9dbf75dd3ff4f9fad8038aed69caad7018d907ac7d88e9ca88620e039808}{APPSNS\_DRV\_NB}}]\ =\ \{}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \{(\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\ ,\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\},}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \{(\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_ac0b718c3c80da33cd9277cb04992ddb9}{t\_cbAppSns\_DrvInit}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\ ,\ (\mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a91ba85bd001e92c0ac033d3ccf7dec61}{t\_cbAppSns\_DrvCyclic}}\ *)\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}}\},}
-\DoxyCodeLine{00128\ \ \ \ \ \};}
-\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a4b2f12d7e5441f19c5c89bb067f10d68}{t\_eAPPSNS\_SnsMeasType}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_afe169b1e074e88598520a98d8b7f1e72}{c\_AppSns\_SnsMeasType\_ae}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9}{APPSNS\_SNS\_NB}}]\ =\ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a4b2f12d7e5441f19c5c89bb067f10d68a18b37215eba6aacfd29f3a40f6ce56fa}{APPSNS\_MEASTYPE\_RAW}},\ \textcolor{comment}{//\ APPSNS\_SNS\_1}}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a4b2f12d7e5441f19c5c89bb067f10d68a18b37215eba6aacfd29f3a40f6ce56fa}{APPSNS\_MEASTYPE\_RAW}},\ \textcolor{comment}{//\ APPSNS\_SNS\_2}}
-\DoxyCodeLine{00133\ \ \ \ \ \};}
-\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ad6ef4d954b286471e5a367bf0db5084c}{t\_eAPPSNS\_DrvState}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a632d6ed344906041423218f50ba4886e}{c\_AppSns\_DrvState\_ae}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ae479a9dbf75dd3ff4f9fad8038aed69caad7018d907ac7d88e9ca88620e039808}{APPSNS\_DRV\_NB}}]\ =\ \{}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ad6ef4d954b286471e5a367bf0db5084caac9e7869c1d857210c9cc8c28973376f}{APPSNS\_DRIVER\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_DRV\_JOY\_1}}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_ad6ef4d954b286471e5a367bf0db5084caac9e7869c1d857210c9cc8c28973376f}{APPSNS\_DRIVER\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_DRV\_JOY\_2}}
-\DoxyCodeLine{00138\ \ \ \ \ \};}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//\ Flag\ automatic\ generate\ code}}
-\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_af7afd89244a58f698fc5ac71cbbc897f}{t\_eAPPSNS\_SensorState}}\ \mbox{\hyperlink{_a_p_p_s_n_s___config_private_8h_a459ae32741657eef001920d8235a2150}{c\_AppSns\_SnsState\_ae}}[\mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9}{APPSNS\_SNS\_NB}}]\ =\ \{}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_af7afd89244a58f698fc5ac71cbbc897fa9f055dd22205dff6130d0b56643fb70c}{APPSNS\_SENSOR\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_SNS\_1}}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_p_p_s_n_s___config_public_8h_af7afd89244a58f698fc5ac71cbbc897fa9f055dd22205dff6130d0b56643fb70c}{APPSNS\_SENSOR\_ENABLE}},\ \textcolor{comment}{//\ APPSNS\_SNS\_2}}
-\DoxyCodeLine{00144\ \ \ \ \ \};}
-\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//********************************************************************************}}
-\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Public\ functions\ -\/\ Prototyupes}}
-\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//********************************************************************************}}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ APPSNS\_CONFIGPRIVATE\_H\_INCLUDED\ \ \ \ \ \ \ \ \ \ \ }}
-\DoxyCodeLine{00150\ \textcolor{comment}{//************************************************************************************}}
-\DoxyCodeLine{00151\ \textcolor{comment}{//\ End\ of\ File}}
-\DoxyCodeLine{00152\ \textcolor{comment}{//************************************************************************************}}
-\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//********************************************************************************}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Public\ functions\ -\/\ Prototyupes}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//********************************************************************************}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ APPSNS\_CONFIGPRIVATE\_H\_INCLUDED\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00128\ \textcolor{comment}{//************************************************************************************}}
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ End\ of\ File}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//************************************************************************************}}
+\DoxyCodeLine{00131\ }
 
 \end{DoxyCode}

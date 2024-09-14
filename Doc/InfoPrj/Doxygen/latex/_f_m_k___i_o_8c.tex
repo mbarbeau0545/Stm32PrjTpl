@@ -40,7 +40,7 @@ struct \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+
 \begin{DoxyCompactList}\small\item\em Set an intput in event configuration.~\newline
 . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_ad83c85db82d3414554f9b912a79e6c91}{FMKIO\+\_\+\+Set\+\_\+\+Out\+Pwm\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+frequency\+\_\+u32, \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} f\+\_\+duty\+Cycle\+\_\+u16, \mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}} f\+\_\+start\+Now\+\_\+b)
-\begin{DoxyCompactList}\small\item\em Set an intput in PWM configuration.~\newline
+\begin{DoxyCompactList}\small\item\em Set an output in PWM configuration.~\newline
 . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_ae9254905f9bb1daba6a585db07c1e566}{FMKIO\+\_\+\+Set\+\_\+\+Out\+Dig\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaa}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Dig\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a950c0b1b828b4b0f79f24eed0d4728e4}{t\+\_\+e\+FMKIO\+\_\+\+Spd\+Mode}} f\+\_\+spd\+\_\+e)
 \begin{DoxyCompactList}\small\item\em Set an output in digital configuration.~\newline
@@ -144,7 +144,7 @@ Once the configuration is done, this function call the FMKCDA to know the analog
 \hline
 {\em RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969aa5710a83f0780f20a2e9fc5f53f47bc2}{RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
 \hline
@@ -177,7 +177,7 @@ Once the configuration is done, this function call hal library to know the state
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_af0ad4bd498e8fce8bcfc8d46ad8e43de}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Get\_InFreqSigValue@{FMKIO\_Get\_InFreqSigValue}}
@@ -210,7 +210,7 @@ Once the configuration is done, this function store the frequency value in f\+\_
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_a824b03b20cc051862161c3fdf680d39c}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Get\_OutDigSigValue@{FMKIO\_Get\_OutDigSigValue}}
@@ -238,7 +238,7 @@ Once the configuration is done, this function ask HAL\+\_\+library the value of 
 \begin{DoxyRetVals}{Return values}
 {\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
@@ -270,7 +270,7 @@ Once the configuration is done, this function ask FMKCPU the value of the dedica
 \begin{DoxyRetVals}{Return values}
 {\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
@@ -344,6 +344,8 @@ Allow the user to choose among analogs inputs.~\newline
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+\hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_aeaa02d76b4ee106625e64fbdfc2fea67}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InDigSigCfg@{FMKIO\_Set\_InDigSigCfg}}
 \index{FMKIO\_Set\_InDigSigCfg@{FMKIO\_Set\_InDigSigCfg}!FMK\_IO.c@{FMK\_IO.c}}
@@ -374,6 +376,8 @@ Allow the user to choose among digitals inputs.~\newline
 {\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_afd609eb9cd6cd452799a6a253a4ae5a2}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InEvntSigCfg@{FMKIO\_Set\_InEvntSigCfg}}
@@ -409,6 +413,8 @@ Allow the user to choose among event inputs.~\newline
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+\hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
 \hline
 \end{DoxyRetVals}
@@ -440,6 +446,8 @@ Allow the user to choose among frequencies inputs.~\newline
 {\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_ae9254905f9bb1daba6a585db07c1e566}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_OutDigSigCfg@{FMKIO\_Set\_OutDigSigCfg}}
@@ -473,6 +481,8 @@ Allow the user to choose among digitals output.~\newline
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+\hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_a3ee3b76284c4d38783885c1c273d9a51}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_OutDigSigValue@{FMKIO\_Set\_OutDigSigValue}}
 \index{FMKIO\_Set\_OutDigSigValue@{FMKIO\_Set\_OutDigSigValue}!FMK\_IO.c@{FMK\_IO.c}}
@@ -502,7 +512,7 @@ Once the configuration is done, this function update the state of the digital cy
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_ad83c85db82d3414554f9b912a79e6c91}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_OutPwmSigCfg@{FMKIO\_Set\_OutPwmSigCfg}}
@@ -513,7 +523,7 @@ Once the configuration is done, this function update the state of the digital cy
 
 
 
-Set an intput in PWM configuration.~\newline
+Set an output in PWM configuration.~\newline
 . 
 
 \begin{DoxyNote}{Note}
@@ -541,6 +551,8 @@ Allow the user to choose among pwm intputs.~\newline
 {\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_a137f22945fdc325923ac04f96f26bf38}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_OutPwmSigValue@{FMKIO\_Set\_OutPwmSigValue}}
@@ -571,7 +583,7 @@ Once the configuration is done, this function update the dutycyle of the pwm. if
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_af89cf198960b73b5a68d4798ec3837de}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_SetState@{FMKIO\_SetState}}
@@ -635,7 +647,7 @@ Signal information for input frequency \Hypertarget{_f_m_k___i_o_8c_a6118019af9c
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a6118019af9c356d15ae27deedfdd7e10} 
 \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} g\+\_\+\+In\+Freq\+Sig\+Raw\+Value\+\_\+ua32\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}}
 
-Module state \Hypertarget{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}\index{FMK\_IO.c@{FMK\_IO.c}!g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}}
+\texorpdfstring{$<$}{<} Variable to put the Signal Frequency value Module state \Hypertarget{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}\index{FMK\_IO.c@{FMK\_IO.c}!g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}}
 \index{g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_IsGpioClockEnable\_ae}{g\_IsGpioClockEnable\_ae}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18} 
@@ -652,13 +664,13 @@ Module state \Hypertarget{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}\ind
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-Variable to put the Signal Frequency value \Hypertarget{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}}
+\texorpdfstring{$<$}{<} Variable to store the state of GPIO Clock \Hypertarget{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}}
 \index{g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_OutDigSigInfo\_as}{g\_OutDigSigInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1} 
 \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+Out\+Dig\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}}
 
-Signal information for output Digital Variable to store the state of GPIO Clock \Hypertarget{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}}
+Signal information for output Digital \Hypertarget{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}}
 \index{g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_OutPwmSigInfo\_as}{g\_OutPwmSigInfo\_as}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa} 

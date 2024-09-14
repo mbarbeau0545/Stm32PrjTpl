@@ -54,11 +54,11 @@ void \mbox{\hyperlink{_f_m_k___c_d_a_8c_af20a88180db1113be1e89266917d148b}{HAL\+
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_buffer}{t\+\_\+s\+FMKCDA\+\_\+\+Adc\+Buffer}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ad7f4d4acce16a170824ba3618e289727}{g\+\_\+\+Adc\+Buffer\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}
-\item 
 \mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_info}{t\+\_\+s\+FMKCDA\+\_\+\+Adc\+Info}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ac6f90e48fcbd4a21a390f18e799e9e95}{g\+\_\+\+Adc\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}
 \item 
 \mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ad6418df7abc5bc7f2a45d5af41ae6d46}{g\+\_\+counter\+Rank\+\_\+au8}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}
+\item 
+\mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_buffer}{t\+\_\+s\+FMKCDA\+\_\+\+Adc\+Buffer}} \mbox{\hyperlink{_f_m_k___c_d_a_8c_ad7f4d4acce16a170824ba3618e289727}{g\+\_\+\+Adc\+Buffer\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_d_a___config_public_8h_a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128}{FMKCDA\+\_\+\+ADC\+\_\+\+NB}}\mbox{]}
 \end{DoxyCompactItemize}
 
 
@@ -168,7 +168,7 @@ This function has to be used in every adc configuration except the ones involvin
 \hline
 {\em RC\+\_\+\+WARNING\+\_\+\+WRONG\+\_\+\+STATE} & RC\+\_\+\+ERROR\+\_\+\+WARNING\+\_\+\+STATE \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 {\em RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969aa5710a83f0780f20a2e9fc5f53f47bc2}{RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} \\
 \hline
@@ -244,7 +244,7 @@ If the Adc config is not congigured yet it will be with f\+\_\+adc\+Cfg\+\_\+e.~
 \hline
 {\em RC\+\_\+\+WARNING\+\_\+\+WRONG\+\_\+\+STATE} & RC\+\_\+\+ERROR\+\_\+\+WARNING\+\_\+\+STATE \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___c_d_a_8c_ad058c2853d407eef1ce24c293be76fb9}\index{FMK\_CDA.c@{FMK\_CDA.c}!FMKCDA\_SetState@{FMKCDA\_SetState}}
@@ -297,12 +297,12 @@ void HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{
 \DoxyCodeLine{\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\ \ \ \ \ \ \ \ .BspInit\_s.Instance\ =\ ADC1,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ .clock\_e\ =\ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dcad563dfc327681dec1c2ebdce3ce61f9f}{FMKCPU\_RCC\_CLK\_ADC1}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .IRQNType\_e\ =\ ADC1\_IRQn,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .IRQNType\_e\ =\ \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a2196bfb127e600673166e06e677a3f23a794fd7f94e165eb5a3516a778286fbed}{FMKCPU\_NVIC\_ADC1\_IRQN}},}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\texorpdfstring{$<$}{<} Store the Adc Info variable \Hypertarget{_f_m_k___c_d_a_8c_ad6418df7abc5bc7f2a45d5af41ae6d46}\index{FMK\_CDA.c@{FMK\_CDA.c}!g\_counterRank\_au8@{g\_counterRank\_au8}}
+\texorpdfstring{$<$}{<} Store the Adc Info variable Rank for each channel add for ADC \Hypertarget{_f_m_k___c_d_a_8c_ad6418df7abc5bc7f2a45d5af41ae6d46}\index{FMK\_CDA.c@{FMK\_CDA.c}!g\_counterRank\_au8@{g\_counterRank\_au8}}
 \index{g\_counterRank\_au8@{g\_counterRank\_au8}!FMK\_CDA.c@{FMK\_CDA.c}}
 \doxysubsubsection{\texorpdfstring{g\_counterRank\_au8}{g\_counterRank\_au8}}
 {\footnotesize\ttfamily \label{_f_m_k___c_d_a_8c_ad6418df7abc5bc7f2a45d5af41ae6d46} 
@@ -310,9 +310,8 @@ void HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{=\ \{\ }
-\DoxyCodeLine{\ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})1}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})1,}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\texorpdfstring{$<$}{<} Rank for each channel add for ADC 

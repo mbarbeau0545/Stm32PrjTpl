@@ -32,6 +32,7 @@
     #define FMKCPU_TIMER_IC_ARR          ((t_uint16)0xFFFF)       /**<  for every InputCOmpare the Prescaler is a constant */
     #define FMKCPU_TIMER_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC_MHZ * 1000)- (t_uint16)1) /**<  The prescaler use for evnt timer, having 1000Hz (1ms) */
 
+    #define FMKCPU_TIME_BTWN_DIAG_MS     ((t_uint16)2000)   /**< Time between diagnostic for timer and channel in cyclic ope mode*/
     #define FMKCPU_WWDG_RESET_CFG  FMKCPU_WWDG_RESET_100MS /**< default watchdogs configuration */
     // ********************************************************************
     // *                      Types
@@ -68,6 +69,17 @@
     *
     */
     typedef void (t_cbFMKCPU_ClockDisable)(void);
+    /**
+    *
+    *	@brief      HAL Timer function for get the hardware timer state
+    *	@note       This function repertory in stm32f00xx_hal_tim,
+    * 
+    *   @param[in] f_handleTimer_s : the bsp init structure
+    *  
+    *   @retval HAL_OK                     @ref HAL_OK
+    *   @retval HAL_ERROR                  @ref HAL_ERROR
+    */
+    typedef HAL_TIM_StateTypeDef (t_cbFMKCPU_GetTimerState)(TIM_HandleTypeDef *f_handleTimer_s);
     /**
     *
     *	@brief      HAL Timer function for Init
@@ -153,6 +165,7 @@
     /**< Structure for repertory all HAL_TIM function */
     typedef struct
     {
+        t_cbFMKCPU_GetTimerState             * GetTimerState_cb;        /**< HAL_TIM function to get the timer state */
         t_cbFMKCPU_TimerInitFunc             * TimerInit_pcb;           /**< HAL_TIM function to set a timer init */
         t_cbFMKCPU_TimerDeInitFunc           * TimerDeInit_pcb;         /**< HAL_TIM function to set a timer deinit */
         t_cbFMKCPU_TimStartFuncModePolling   * StartFuncPoll_pcb;       /**< HAL_TIM function to start a timer_channel in polling mode */
@@ -227,7 +240,7 @@
     };
 
     /**< Referencing all Enable/Disable Rcc clock function */
-    const t_sFMKCPU_ClkFunc c_FMKCPU_ClkFunctions_apcb[FMKCPU_RCC_CLK_NB] = {
+    const t_sFMKCPU_ClkFunc c_FMKCPU_ClkFunctions_apcb[FMKCPU_NVIC_NB] = {
       //Colonne1                      Colonne2                      
         {FMKCPU_Enable_SYSCFG_Clock,    FMKCPU_Disable_SYSCFG_Clock},   // FMKCPU_RCC_CLK_SYSCFG
         {FMKCPU_Enable_ADC1_Clock,      FMKCPU_Disable_ADC1_Clock},     // FMKCPU_RCC_CLK_ADC1
@@ -255,16 +268,16 @@
     };
 
     /* CAUTION : Automatic generated code section for Variable: End */
+
     /**< Referencing all HAL_TIM function*/
     const t_sFMKCPU_TimChannelFunc c_FMKCPU_BspTimFunc_apf[FMKCPU_HWTIM_CFG_NB] = 
-    {// Init Timer                         DeInitTimer                    StartPolling Func                 StopPolling Funnc             Start Interrupt Func          Stop Interrupt Func
-        {HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_PWM_Start,               HAL_TIM_PWM_Stop,             HAL_TIM_PWM_Start_IT,           HAL_TIM_PWM_Stop_IT},         // FMKCPU_CHANNEL_CFG_PWM 
-        {HAL_TIM_IC_Init,                 HAL_TIM_IC_DeInit,            HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,              HAL_TIM_IC_Start_IT,            HAL_TIM_IC_Stop_IT},          // FMKCPU_CHANNEL_CFG_IC
-        {HAL_TIM_OC_Init,                 HAL_TIM_OC_DeInit,            HAL_TIM_OC_Start,                HAL_TIM_OC_Stop,              HAL_TIM_OC_Start_IT,            HAL_TIM_OC_Stop_IT},          // FMKCPU_CHANNEL_CFG_OC
-        {NULL_FONCTION,                   HAL_TIM_OnePulse_DeInit,      HAL_TIM_OnePulse_Start,          HAL_TIM_OnePulse_Stop,        HAL_TIM_OnePulse_Start_IT,      HAL_TIM_OnePulse_Stop_IT},    // FMKCPU_CHANNEL_CFG_OP
-        {HAL_TIM_Base_Init,               HAL_TIM_Base_DeInit,          FMKCPU_HAL_TIM_Base_Start,       FMKCPU_HAL_TIM_Base_Stop,     FMKCPU_HAL_TIM_Base_Start_IT,   FMKCPU_HAL_TIM_Base_Stop_IT}, // FMKCPU_CHANNEL_CFG_EVNT
-        {NULL_FONCTION,                   HAL_TIM_Encoder_DeInit,       HAL_TIM_Encoder_Start,           HAL_TIM_Encoder_Stop,         HAL_TIM_Encoder_Start_IT,       HAL_TIM_Encoder_Stop_IT},     // FMKCPU_CHANNEL_CFG_ECDR
-        {HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,              HAL_TIM_Encoder_Start_IT,       HAL_TIM_Encoder_Stop_IT},     // FMKCPU_CHANNEL_CFG_TRGR
+    {//    Get Timer State                 Init Timer                       DeInitTimer                   StartPolling Func                StopPolling Funnc            Start Interrupt Func             Stop Interrupt Func
+        {HAL_TIM_PWM_GetState,             HAL_TIM_PWM_Init,                HAL_TIM_PWM_DeInit,           HAL_TIM_PWM_Start,               HAL_TIM_PWM_Stop,             HAL_TIM_PWM_Start_IT,           HAL_TIM_PWM_Stop_IT},         // FMKCPU_CHANNEL_CFG_PWM 
+        {HAL_TIM_IC_GetState,              HAL_TIM_IC_Init,                 HAL_TIM_IC_DeInit,            HAL_TIM_IC_Start,                HAL_TIM_IC_Stop,              HAL_TIM_IC_Start_IT,            HAL_TIM_IC_Stop_IT},          // FMKCPU_CHANNEL_CFG_IC
+        {HAL_TIM_OC_GetState,              HAL_TIM_OC_Init,                 HAL_TIM_OC_DeInit,            HAL_TIM_OC_Start,                HAL_TIM_OC_Stop,              HAL_TIM_OC_Start_IT,            HAL_TIM_OC_Stop_IT},          // FMKCPU_CHANNEL_CFG_OC
+        {HAL_TIM_OnePulse_GetState,        NULL_FONCTION,                   HAL_TIM_OnePulse_DeInit,      HAL_TIM_OnePulse_Start,          HAL_TIM_OnePulse_Stop,        HAL_TIM_OnePulse_Start_IT,      HAL_TIM_OnePulse_Stop_IT},    // FMKCPU_CHANNEL_CFG_OP
+        {HAL_TIM_Base_GetState,            HAL_TIM_Base_Init,               HAL_TIM_Base_DeInit,          FMKCPU_HAL_TIM_Base_Start,       FMKCPU_HAL_TIM_Base_Stop,     FMKCPU_HAL_TIM_Base_Start_IT,   FMKCPU_HAL_TIM_Base_Stop_IT}, // FMKCPU_CHANNEL_CFG_EVNT
+        {HAL_TIM_Encoder_GetState,         NULL_FONCTION,                   HAL_TIM_Encoder_DeInit,       HAL_TIM_Encoder_Start,           HAL_TIM_Encoder_Stop,         HAL_TIM_Encoder_Start_IT,       HAL_TIM_Encoder_Stop_IT},     // FMKCPU_CHANNEL_CFG_ECDR
     };
 
     /**< Hardware configuration watchdog Period Timer */

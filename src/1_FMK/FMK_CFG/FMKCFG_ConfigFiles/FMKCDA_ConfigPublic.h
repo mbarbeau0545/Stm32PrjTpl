@@ -28,7 +28,9 @@
     // ********************************************************************
     //-----------------------------ENUM TYPES-----------------------------//
     /* CAUTION : Automatic generated code section for Enum: Start */
-    /* NUmber of ADC in this harware */
+    /**
+    * @brief  Number of ADC in this harware
+    */
     typedef enum
     {
         FMKCDA_ADC_1 = 0x0,                  /**< Reference to HAL ADC1 */

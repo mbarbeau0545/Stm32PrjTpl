@@ -67,13 +67,15 @@ class FMKCPU_CodeGen():
                 - variable g_timerInfo_as init          x  
                 - switch case IRQN to bsp IRQN          x
         """
-    def __init__(self) -> None:
-        self.code_gen = LCFE()
-        self.code_gen.load_excel_file(HARDWARE_CFG_PATH)
-        irqn_cfg_a    = self.code_gen.get_array_from_excel("GI_IRQN")
-        timer_cfg_a   = self.code_gen.get_array_from_excel("GI_Timer")
-        rcclock_cfg_a = self.code_gen.get_array_from_excel("GI_RCC_CLOCK")
-        evnt_cfg_a    = self.code_gen.get_array_from_excel("FMKCPU_EvntTimer")
+    code_gen = LCFE()
+    @classmethod
+    def code_generation(cls) -> None:
+        
+        cls.code_gen.load_excel_file(HARDWARE_CFG_PATH)
+        irqn_cfg_a    = cls.code_gen.get_array_from_excel("GI_IRQN")
+        timer_cfg_a   = cls.code_gen.get_array_from_excel("GI_Timer")
+        rcclock_cfg_a = cls.code_gen.get_array_from_excel("GI_RCC_CLOCK")
+        evnt_cfg_a    = cls.code_gen.get_array_from_excel("FMKCPU_EvntTimer")
         enum_channel = ""
         enum_timer = ""
         enum_rcc = ""
@@ -94,7 +96,7 @@ class FMKCPU_CodeGen():
         #----------------------------------------------------------------
         #-----------------------------make rcc enum----------------------
         #-----------------------------------------------------------------
-        enum_rcc = self.code_gen.make_enum_from_variable(ENUM_FMKCPU_RCC_ROOT, [str(rcclock_cfg[0]) for rcclock_cfg in rcclock_cfg_a[1:]], 
+        enum_rcc = cls.code_gen.make_enum_from_variable(ENUM_FMKCPU_RCC_ROOT, [str(rcclock_cfg[0]) for rcclock_cfg in rcclock_cfg_a[1:]], 
                                                             "t_eFMKCPU_ClockPort", 0, 
                                                             "Enum for rcc clock state reference",
                                                             [str(rcclock_cfg[1]) for rcclock_cfg in rcclock_cfg_a[1:]])
@@ -108,12 +110,19 @@ class FMKCPU_CodeGen():
             var_clk_state += f"{elem_desc}" + " " * (SPACE_VARIABLE - len(elem_desc))
         var_clk_state += "\n"
         for rccclock_cfg in rcclock_cfg_a[1:]:
+            rcc_dis_imple += f"    /**< Function to enable {rccclock_cfg[0]} rcc clock*/\n"
             rcc_ena_imple += f"void FMKCPU_Enable_{rccclock_cfg[0]}_Clock(void) " \
                             + "{" + f"__HAL_RCC_{rccclock_cfg[0]}_CLK_ENABLE();" + "}\n"
+            
+            
+            rcc_dis_imple += f"    /**< Function to disable {rccclock_cfg[0]} rcc clock*/\n"
             rcc_dis_imple += f"void FMKCPU_Disable_{rccclock_cfg[0]}_Clock(void) " \
                             + "{" + f"__HAL_RCC_{rccclock_cfg[0]}_CLK_DISABLE();" + "}\n"
             
+            rcc_ena_decl += f"    /**< Function to enable  {rccclock_cfg[0]} rcc clock*/\n"
             rcc_ena_decl +=  f"    void FMKCPU_Enable_{rccclock_cfg[0]}_Clock(void);\n"
+
+            rcc_dis_decl += f"    /**< Function to disable {rccclock_cfg[0]} rcc clock*/\n"
             rcc_dis_decl  +=  f"    void FMKCPU_Disable_{rccclock_cfg[0]}_Clock(void);\n"
 
             var_clk_state += "        {" \
@@ -144,10 +153,10 @@ class FMKCPU_CodeGen():
                         + "    },\n"
         var_timinfo += "};\n\n"
 
-        enum_timer = self.code_gen.make_enum_from_variable(ENUM_FMKCPU_TIMER_ROOT, timer_number_a,
+        enum_timer = cls.code_gen.make_enum_from_variable(ENUM_FMKCPU_TIMER_ROOT, timer_number_a,
                                                            "t_eFMKCPU_Timer", 0, "Number of timer enable in smt32xxx board",
                                                            [f"Reference for HAL timer{timer_cfg[0][5:]}, this timer has {timer_cfg[1]} channel(s)" for timer_cfg in timer_cfg_a][1:])
-        enum_channel = self.code_gen.make_enum_from_variable(ENUM_FMKCPU_CHANNEL_ROOT, [str(int(idx + 1)) for idx in range(max_channel)],
+        enum_channel = cls.code_gen.make_enum_from_variable(ENUM_FMKCPU_CHANNEL_ROOT, [str(int(idx + 1)) for idx in range(max_channel)],
                                                              "t_eFMKCPU_InterruptChnl", 0, "Number max of channel enable by timer",
                                                              [f"Reference to HAL channel {idx}" for idx in range(max_channel)])
 
@@ -169,7 +178,7 @@ class FMKCPU_CodeGen():
                         + f"  // {ENUM_FMKCPU_EVENT_ROOT}_{idx+1}\n"
         var_evntcfg += "    };\n\n"
 
-        enum_evnt += self.code_gen.make_enum_from_variable(ENUM_FMKCPU_EVENT_ROOT, [str(int(idx + 1)) for idx in range(nb_evnt_channel)],
+        enum_evnt += cls.code_gen.make_enum_from_variable(ENUM_FMKCPU_EVENT_ROOT, [str(int(idx + 1)) for idx in range(nb_evnt_channel)],
                                                            "t_eFMKCPU_EventChannel", 0, "Number of cannel channel dedicate for timer_event configuration",
                                                            [f"Event channel {idx}" for idx in range(nb_evnt_channel)])
 
@@ -177,7 +186,7 @@ class FMKCPU_CodeGen():
         #-----------------------------make var NVIC priority-------------
         #-----------------------------------------------------------------
         var_nvic_prio += "    /**< Set the NVIC Priority for all NVIC_IRqn Priority */\n" \
-                        + "    const t_eFMKCPU_NVICPriority c_FMKCPU_IRQNPriority_ae[FMKCPU_IRQN_TYPE_NB] = {\n"
+                        + f"    const t_eFMKCPU_NVICPriority c_FMKCPU_IRQNPriority_ae[{ENUM_FMKCPU_NVIC_ROOT}_NB] = " + "{\n" 
         var_nvic_prio += "      //" 
         for elem_desc in evnt_cfg_a[0]:
             var_nvic_prio += f"{elem_desc}" + " " * (SPACE_VARIABLE - len(elem_desc))
@@ -192,7 +201,7 @@ class FMKCPU_CodeGen():
                             + f"                *f_bspIRQN_pe = {nvic_cfg[0]};\n" \
                             + f"                break;\n" 
         var_nvic_prio += "    };\n\n"
-        enum_nvic = self.code_gen.make_enum_from_variable(ENUM_FMKCPU_NVIC_ROOT, [str(nvic_cfg[0]).upper() for nvic_cfg in irqn_cfg_a[1:]],
+        enum_nvic = cls.code_gen.make_enum_from_variable(ENUM_FMKCPU_NVIC_ROOT, [str(nvic_cfg[0]).upper() for nvic_cfg in irqn_cfg_a[1:]],
                                                           "t_eFMKCPU_IRQNType", 0, "Enum for NVIC list",
                                                           [f"Reference to HAL nvic {nvic_cfg[0]}" for nvic_cfg in irqn_cfg_a[1:] ])
 
@@ -200,29 +209,29 @@ class FMKCPU_CodeGen():
         #------------code genration for FMKCPU module---------------
         #-----------------------------------------------------------
         # For FMKCPU_Config Public
-        self.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE,TARGET_T_ENUM_END_LINE)
-        self.code_gen._write_into_file(enum_nvic, FMKCPU_CONFIGPUBLIC)
-        self.code_gen._write_into_file(enum_rcc, FMKCPU_CONFIGPUBLIC)
-        self.code_gen._write_into_file(enum_evnt, FMKCPU_CONFIGPUBLIC)
-        self.code_gen._write_into_file(enum_channel, FMKCPU_CONFIGPUBLIC)
-        self.code_gen._write_into_file(enum_timer, FMKCPU_CONFIGPUBLIC)
+        cls.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE,TARGET_T_ENUM_END_LINE)
+        cls.code_gen._write_into_file(enum_nvic, FMKCPU_CONFIGPUBLIC)
+        cls.code_gen._write_into_file(enum_rcc, FMKCPU_CONFIGPUBLIC)
+        cls.code_gen._write_into_file(enum_evnt, FMKCPU_CONFIGPUBLIC)
+        cls.code_gen._write_into_file(enum_channel, FMKCPU_CONFIGPUBLIC)
+        cls.code_gen._write_into_file(enum_timer, FMKCPU_CONFIGPUBLIC)
         # For FMKCPU_Config Private
-        self.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE, TARGET_T_VARIABLE_END_LINE)
-        self.code_gen._write_into_file(var_clk_state, FMKCPU_CONFIGPRIVATE)
-        self.code_gen._write_into_file(var_nvic_prio, FMKCPU_CONFIGPRIVATE)
-        self.code_gen._write_into_file(var_evntcfg, FMKCPU_CONFIGPRIVATE)
-        self.code_gen.change_target_balise(TARGET_CLOCK_ENABLE_IMPL_START, TARGET_CLOCK_ENABLE_IMPL_END)
-        self.code_gen._write_into_file(rcc_ena_imple, FMKCPU_CONFIGSPECIFIC_C)
-        self.code_gen.change_target_balise(TARGET_CLOCK_DISABLE_IMPL_START, TARGET_CLOCK_DISABLE_IMPL_END)
-        self.code_gen._write_into_file(rcc_dis_imple, FMKCPU_CONFIGSPECIFIC_C)
-        self.code_gen.change_target_balise(TARGET_CLOCK_ENABLE_DECL_START, TARGET_CLOCK_ENABLE_DECL_END)
-        self.code_gen._write_into_file(rcc_ena_decl, FMKCPU_CONFIGSPECIFIC_H)
-        self.code_gen.change_target_balise(TARGET_CLOCK_DISABLE_DECL_START, TARGET_CLOCK_DISABLE_DECL_END)
-        self.code_gen._write_into_file(rcc_dis_decl, FMKCPU_CONFIGSPECIFIC_H)
-        self.code_gen.change_target_balise(TARGET_TIMER_INFO_START, TARGET_TIMER_INFO_END)
-        self.code_gen._write_into_file(var_timinfo, FMKCPU)
-        self.code_gen.change_target_balise(TARGET_SWITCH_NVIC_START, TARGET_SWITCH_NVIC_END)
-        self.code_gen._write_into_file(switch_irqn, FMKCPU)
+        cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE, TARGET_T_VARIABLE_END_LINE)
+        cls.code_gen._write_into_file(var_clk_state, FMKCPU_CONFIGPRIVATE)
+        cls.code_gen._write_into_file(var_nvic_prio, FMKCPU_CONFIGPRIVATE)
+        cls.code_gen._write_into_file(var_evntcfg, FMKCPU_CONFIGPRIVATE)
+        cls.code_gen.change_target_balise(TARGET_CLOCK_ENABLE_IMPL_START, TARGET_CLOCK_ENABLE_IMPL_END)
+        cls.code_gen._write_into_file(rcc_ena_imple, FMKCPU_CONFIGSPECIFIC_C)
+        cls.code_gen.change_target_balise(TARGET_CLOCK_DISABLE_IMPL_START, TARGET_CLOCK_DISABLE_IMPL_END)
+        cls.code_gen._write_into_file(rcc_dis_imple, FMKCPU_CONFIGSPECIFIC_C)
+        cls.code_gen.change_target_balise(TARGET_CLOCK_ENABLE_DECL_START, TARGET_CLOCK_ENABLE_DECL_END)
+        cls.code_gen._write_into_file(rcc_ena_decl, FMKCPU_CONFIGSPECIFIC_H)
+        cls.code_gen.change_target_balise(TARGET_CLOCK_DISABLE_DECL_START, TARGET_CLOCK_DISABLE_DECL_END)
+        cls.code_gen._write_into_file(rcc_dis_decl, FMKCPU_CONFIGSPECIFIC_H)
+        cls.code_gen.change_target_balise(TARGET_TIMER_INFO_START, TARGET_TIMER_INFO_END)
+        cls.code_gen._write_into_file(var_timinfo, FMKCPU)
+        cls.code_gen.change_target_balise(TARGET_SWITCH_NVIC_START, TARGET_SWITCH_NVIC_END)
+        cls.code_gen._write_into_file(switch_irqn, FMKCPU)
     
 #------------------------------------------------------------------------------
 #                             FUNCTION IMPLMENTATION

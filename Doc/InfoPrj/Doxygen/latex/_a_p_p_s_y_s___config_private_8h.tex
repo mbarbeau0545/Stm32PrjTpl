@@ -14,19 +14,21 @@ struct \mbox{\hyperlink{structt__s_app_sys___sys_func}{t\+\_\+s\+App\+Sys\+\_\+\
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{_a_p_p_s_y_s___config_private_8h_afcaa9990c375a5266d7f44d1be57fa36}{APPSYS\+\_\+\+ELAPSED\+\_\+\+TIME\+\_\+\+CYCLIC}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})20) /\texorpdfstring{$\ast$}{*} elapsed time between all cyclic function are called\texorpdfstring{$\ast$}{*}/
+\#define \mbox{\hyperlink{_a_p_p_s_y_s___config_private_8h_afcaa9990c375a5266d7f44d1be57fa36}{APPSYS\+\_\+\+ELAPSED\+\_\+\+TIME\+\_\+\+CYCLIC}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})20)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_a_p_p_s_y_s___config_private_8h_af8348098a975e9d462f869fbfc805777}{t\+\_\+cb\+App\+Sys\+\_\+\+Func\+Init}}(void)
-\item 
+\begin{DoxyCompactList}\small\item\em Set a module function init. \end{DoxyCompactList}\item 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_a_p_p_s_y_s___config_private_8h_abaaeba4756d3e2d5bc23f8e06e84c0a6}{t\+\_\+cb\+App\+Sys\+\_\+\+Func\+Cyclic}}(void)
-\item 
+\begin{DoxyCompactList}\small\item\em Set a module cyclic function. \end{DoxyCompactList}\item 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_a_p_p_s_y_s___config_private_8h_a0169ba549824c1457214680ad42dcc55}{t\+\_\+cb\+App\+Sys\+\_\+\+Get\+State}}(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} \texorpdfstring{$\ast$}{*}f\+\_\+state\+\_\+pe)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to know the module state.~\newline
+. \end{DoxyCompactList}\item 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_a_p_p_s_y_s___config_private_8h_a8224362c528bf3c949fffcf1a873bb48}{t\+\_\+cb\+App\+Sys\+\_\+\+Set\+State}}(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} f\+\_\+state\+\_\+pe)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to update the module state.~\newline
+. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,9 +41,9 @@ typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\
 \index{APPSYS\_ELAPSED\_TIME\_CYCLIC@{APPSYS\_ELAPSED\_TIME\_CYCLIC}!APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}}
 \doxysubsubsection{\texorpdfstring{APPSYS\_ELAPSED\_TIME\_CYCLIC}{APPSYS\_ELAPSED\_TIME\_CYCLIC}}
 {\footnotesize\ttfamily \label{_a_p_p_s_y_s___config_private_8h_afcaa9990c375a5266d7f44d1be57fa36} 
-\#define APPSYS\+\_\+\+ELAPSED\+\_\+\+TIME\+\_\+\+CYCLIC~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})20) /\texorpdfstring{$\ast$}{*} elapsed time between all cyclic function are called\texorpdfstring{$\ast$}{*}/}
+\#define APPSYS\+\_\+\+ELAPSED\+\_\+\+TIME\+\_\+\+CYCLIC~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})20)}
 
-
+Elapsed time between cyclic function call 
 
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_a_p_p_s_y_s___config_private_8h_abaaeba4756d3e2d5bc23f8e06e84c0a6}\index{APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}!t\_cbAppSys\_FuncCyclic@{t\_cbAppSys\_FuncCyclic}}
@@ -50,11 +52,19 @@ typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\
 {\footnotesize\ttfamily \label{_a_p_p_s_y_s___config_private_8h_abaaeba4756d3e2d5bc23f8e06e84c0a6} 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} t\+\_\+cb\+App\+Sys\+\_\+\+Func\+Cyclic(void)}
 
+
+
+Set a module cyclic function. 
+
 \Hypertarget{_a_p_p_s_y_s___config_private_8h_af8348098a975e9d462f869fbfc805777}\index{APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}!t\_cbAppSys\_FuncInit@{t\_cbAppSys\_FuncInit}}
 \index{t\_cbAppSys\_FuncInit@{t\_cbAppSys\_FuncInit}!APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}}
 \doxysubsubsection{\texorpdfstring{t\_cbAppSys\_FuncInit}{t\_cbAppSys\_FuncInit}}
 {\footnotesize\ttfamily \label{_a_p_p_s_y_s___config_private_8h_af8348098a975e9d462f869fbfc805777} 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} t\+\_\+cb\+App\+Sys\+\_\+\+Func\+Init(void)}
+
+
+
+Set a module function init. 
 
 \Hypertarget{_a_p_p_s_y_s___config_private_8h_a0169ba549824c1457214680ad42dcc55}\index{APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}!t\_cbAppSys\_GetState@{t\_cbAppSys\_GetState}}
 \index{t\_cbAppSys\_GetState@{t\_cbAppSys\_GetState}!APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}}
@@ -62,12 +72,44 @@ typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\
 {\footnotesize\ttfamily \label{_a_p_p_s_y_s___config_private_8h_a0169ba549824c1457214680ad42dcc55} 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} t\+\_\+cb\+App\+Sys\+\_\+\+Get\+State(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} \texorpdfstring{$\ast$}{*}f\+\_\+state\+\_\+pe)}
 
+
+
+Function to know the module state.~\newline
+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+State\+\_\+pe} & \+: store the value, value from \doxylink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NUL \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_a_p_p_s_y_s___config_private_8h_a8224362c528bf3c949fffcf1a873bb48}\index{APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}!t\_cbAppSys\_SetState@{t\_cbAppSys\_SetState}}
 \index{t\_cbAppSys\_SetState@{t\_cbAppSys\_SetState}!APPSYS\_ConfigPrivate.h@{APPSYS\_ConfigPrivate.h}}
 \doxysubsubsection{\texorpdfstring{t\_cbAppSys\_SetState}{t\_cbAppSys\_SetState}}
 {\footnotesize\ttfamily \label{_a_p_p_s_y_s___config_private_8h_a8224362c528bf3c949fffcf1a873bb48} 
 typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} t\+\_\+cb\+App\+Sys\+\_\+\+Set\+State(\mbox{\hyperlink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}} f\+\_\+state\+\_\+pe)}
 
+
+
+Function to update the module state.~\newline
+. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+State\+\_\+e} & \+: the new value, value from \doxylink{_type_common_8h_a3880607bf76af2806d46607baf78e6e5}{t\+\_\+e\+Cyclic\+Func\+State}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
+\hline
+\end{DoxyRetVals}
 
 
 \doxysubsection{Variable Documentation}
@@ -91,3 +133,4 @@ typedef \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\
 \DoxyCodeLine{\ \ \ \ \}}
 
 \end{DoxyCode}
+\texorpdfstring{$<$}{<} variable to store modules functions 
