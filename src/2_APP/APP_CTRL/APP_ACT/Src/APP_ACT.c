@@ -47,6 +47,19 @@
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
+/* CAUTION : Automatic generated code section for Variable: Start */
+    /**< Variable for Actuators Drivers State*/
+    const t_eAPPACT_DrvState c_AppAct_DrvState_ae[APPACT_DRV_NB] = {
+        APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_TOMATE
+        APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_COURGETTE
+        APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_CAROTTE
+    };
+
+    /**< Variable for Actuators Drivers State*/
+    const t_eAPPACT_DrvState c_AppSns_DrvState_ae[APPACT_DRIVER_NB] = {
+    };
+
+/* CAUTION : Automatic generated code section for Variable: End */
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 //********************************************************************************
 //                      Local functions - Prototypes

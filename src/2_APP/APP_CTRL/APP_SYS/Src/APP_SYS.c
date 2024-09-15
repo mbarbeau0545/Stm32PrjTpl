@@ -101,14 +101,13 @@ void APPSYS_Cyclic(void)
            
             s_previousCnt_u32 = currentCnt_u32;
            // call every fmk/app function cyclic
-            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < (t_uint8)APPSYS_MODULE_NB) && (Ret_e == RC_OK) ; LLI_u8++)
+            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < (t_uint8)APPSYS_MODULE_NB) && (Ret_e > RC_OK) ; LLI_u8++)
             {
                 Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcCyclic_cb();
                 if((s_IsAllModInitialized_b == (t_bool)False) && (Ret_e == RC_OK))
                 {
                     Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcGetState_cb(&g_ModuleState_ae[LLI_u8]);
-                    if(g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_OPE
-                    || g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_WAITING)
+                    if(g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_WAITING)
                     {
                         ModuleInitCnt_u8 += 1;
                     }

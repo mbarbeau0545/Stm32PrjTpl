@@ -47,6 +47,20 @@
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
+/* CAUTION : Automatic generated code section for Variable: Start */
+    /**< Variable for Sensors Drivers State*/
+    const t_eAPPSNS_SensorState c_AppSns_SnsState_ae[APPSNS_SENSOR_NB] = {
+        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_AIRTEMPERATURE
+    };
+
+    /**< Variable for Sensors Drivers State*/
+    const t_eAPPSNS_DrvState c_AppSns_DrvState_ae[APPSNS_DRIVER_NB] = {
+        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_SICK
+        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_KUBER
+        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_MTS
+    };
+
+/* CAUTION : Automatic generated code section for Variable: End */
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 //********************************************************************************
 //                      Local functions - Prototypes
@@ -173,7 +187,7 @@ t_eReturnState APPSNS_Get_SnsValue(t_eAPPSNS_Sensors f_Sns_e, t_sint16 *f_SnsVal
     {
         Ret_e = RC_ERROR_PTR_NULL;
     }
-    if(f_Sns_e > APPSNS_SNS_NB)
+    if(f_Sns_e > APPSNS_SENSOR_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -229,7 +243,7 @@ static t_eReturnState s_APPSNS_PreOperational(void)
     {
         case False:
         {
-            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRV_NB) && (Ret_e == RC_OK) ; LLI_u8++)
+            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRIVER_NB) && (Ret_e == RC_OK) ; LLI_u8++)
             {
                 if(c_AppSns_DrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
                 {
@@ -239,7 +253,7 @@ static t_eReturnState s_APPSNS_PreOperational(void)
                     }
                 }
             }
-            if((LLI_u8 >= APPSNS_DRV_NB) && (Ret_e == RC_OK))
+            if((LLI_u8 >= APPSNS_DRIVER_NB) && (Ret_e == RC_OK))
             {
                 s_IsDrvInitDone_b = (t_bool)True;
             }
@@ -263,7 +277,7 @@ static t_eReturnState s_APPSNS_PreOperational(void)
                 if(Ret_e == RC_OK)
                 {
                     LLI_u8 += (t_uint8)1;
-                    if(LLI_u8 >= APPSNS_SNS_NB)
+                    if(LLI_u8 >= APPSNS_SENSOR_NB)
                     {
                         g_state_e = STATE_CYCLIC_WAITING;
                         break;
@@ -287,7 +301,7 @@ static t_eReturnState s_APPSNS_Operational(void)
 
     if(s_IsDrvCylic_b == (t_bool)True)
     {
-        for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRV_NB) && (Ret_e == RC_OK); LLI_u8++)
+        for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRIVER_NB) && (Ret_e == RC_OK); LLI_u8++)
         {
             if(c_AppSns_DrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
             {

@@ -19,8 +19,9 @@
     // *                      Includes
     // ********************************************************************
     #include "./APPSNS_ConfigPublic.h"
-
-    #include "../ConfigSpecific/AppSns_ConfigSpecific/APPSNS_SPEC_Humidity.h"
+    /* CAUTION : Automatic generated code section for Include: Start */
+    #include "APP_CFG/ConfigSpecific/AppSns_ConfigSpecific/APPSNS_SPEC_AirTemperature.h"
+    /* CAUTION : Automatic generated code section for Include: End */
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -89,37 +90,26 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
-    // Flag automatic generate code
+    /* CAUTION : Automatic generated code section for Variable: Start */
+    /**< Variable for System Sensors drivers functions*/
+    const t_sAPPSNS_SysDrvFunc c_AppSns_SysDrv_apf[APPSNS_DRIVER_NB] = {
+        {(t_cbAppSns_DrvInit *)FMKDRV_Sick_Init,                     (t_cbAppSns_DrvInit *)NULL_FONCTION},  // APPSNS_DRIVER_SICK
+        {(t_cbAppSns_DrvInit *)FMKDRV_Kuber_Init,                    (t_cbAppSns_DrvCyclic *)FMKDRV_Kuber_Cyclic},  // APPSNS_DRIVER_KUBER
+        {(t_cbAppSns_DrvInit *)NULL_FONCTION,                        (t_cbAppSns_DrvCyclic *)FMKDRV_MTS_Cyclic},  // APPSNS_DRIVER_MTS
+};
+
     /**< Variable for System Sensors functions*/
-    const t_sAPPSNS_SysSnsFunc c_AppSns_SysSns_apf[APPSNS_SNS_NB] = {
-        {APPSNS_SPEC_Humidity_SetCfg,    APPSNS_SPEC_Humidity_GetValue},
-        {APPSNS_SPEC_Humidity_SetCfg,    APPSNS_SPEC_Humidity_GetValue},
+    const t_sAPPSNS_SysSnsFunc c_AppSns_SysSns_apf[APPSNS_SENSOR_NB] = {
+        {APPSNS_SPEC_AirTemperature_SetCfg,                          APPSNS_SPEC_AirTemperature_GetValue}, //APPSNS_SENSOR_AIRTEMPERATURE
     };
 
-    // Flag automatic generate code
-    const t_sAPPSNS_SysDrvFunc c_AppSns_SysDrv_apf[APPSNS_DRV_NB] = {
-        {(t_cbAppSns_DrvInit *)NULL_FONCTION , (t_cbAppSns_DrvCyclic *)NULL_FONCTION},
-        {(t_cbAppSns_DrvInit *)NULL_FONCTION , (t_cbAppSns_DrvCyclic *)NULL_FONCTION},
-    };
-    // Flag automatic generate code
-    /**< Variable for System Sensors Drivers functions*/
-    const t_eAPPSNS_SnsMeasType c_AppSns_SnsMeasType_ae[APPSNS_SNS_NB] = {
-        APPSNS_MEASTYPE_RAW, // APPSNS_SNS_1
-        APPSNS_MEASTYPE_RAW, // APPSNS_SNS_2
-    };
-    // Flag automatic generate code
-    /**< Variable for Sensors Drivers State*/
-    const t_eAPPSNS_DrvState c_AppSns_DrvState_ae[APPSNS_DRV_NB] = {
-        APPSNS_DRIVER_ENABLE, // APPSNS_DRV_JOY_1
-        APPSNS_DRIVER_ENABLE, // APPSNS_DRV_JOY_2
+    /**< Variable for Sensors Unity Management */
+    const t_eAPPSNS_SnsMeasType c_AppSns_SnsMeasType_ae[APPSNS_SENSOR_NB] = {
+        APPSNS_MEASTYPE_RAW,                                         // APPSNS_SENSOR_AIRTEMPERATURE
     };
 
-    // Flag automatic generate code
-    /**< Variable for Sensors State*/
-    const t_eAPPSNS_SensorState c_AppSns_SnsState_ae[APPSNS_SNS_NB] = {
-        APPSNS_SENSOR_ENABLE, // APPSNS_SNS_1
-        APPSNS_SENSOR_ENABLE, // APPSNS_SNS_2
-    };
+    /* CAUTION : Automatic generated code section for Variable: End */
+
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************

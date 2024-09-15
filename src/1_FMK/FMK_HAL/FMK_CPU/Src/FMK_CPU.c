@@ -37,11 +37,11 @@
 /**< Structure of information on a timer-channel*/
 typedef struct
 {
-    t_eFMKCPU_ChnlState State_e;            /**< State of the channel */
-    t_eFMKCPU_ChnlRunMode RunMode_e;        /**< Run mode for the channel */
-    t_eFMKCPU_ChnlErrorState ErrState_e;        /**< Error state of the channel */
-    t_cbFMKCPU_InterruptChnl *chnl_cb;      /**< Callback function of the channel */
-    t_bool IsChnlConfigure_b;               /**< Wether or not the channel has beeen configured */
+    t_eFMKCPU_ChnlState State_e;                        /**< State of the channel */
+    t_eFMKCPU_ChnlRunMode RunMode_e;                    /**< Run mode for the channel */
+    t_eFMKCPU_ChnlErrorState ErrState_e;                /**< Error state of the channel */
+    t_cbFMKCPU_InterruptChnl *chnl_cb;                  /**< Callback function of the channel */
+    t_bool IsChnlConfigure_b;                           /**< Wether or not the channel has beeen configured */
 } t_sFMKCPU_ChnlInfo;
 
 /**< Structure of information on a timer*/
@@ -305,6 +305,10 @@ t_eReturnState FMKCPU_Cyclic(void)
     case STATE_CYCLIC_OPE:
     {
         Ret_e = s_FMKCPU_Operational();
+        if(Ret_e < RC_OK)
+        {
+            g_state_e = STATE_CYCLIC_ERROR;
+        }
         break;
     }
     case STATE_CYCLIC_ERROR:
@@ -1047,6 +1051,7 @@ static t_eReturnState s_FMKCPU_Operational(void)
     {
         if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKCPU_TIME_BTWN_DIAG_MS)
         {//perform diag on timer / chnl used
+            SavedTime_u32 = currentTime_u32;
             Ret_e = s_FMKCPU_PerformDiagnostic();
         }
         // else do other thing( or nothing for now)

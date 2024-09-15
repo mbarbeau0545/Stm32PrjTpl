@@ -38,8 +38,6 @@
 /**< Structure common to all digital signal to repertory signal information */
 typedef struct
 {
-    t_eFMKIO_PullMode pull_e;
-    t_eFMKIO_SpdMode spd_e;
     t_bool IsSigConfigured_b;               /**< Flag which indicate wether or not the signal has been configured */
     t_bool IsInterruptEnable_b;             /**< Flag which indicate if the interruption is enable or not for tthe signal */
 
@@ -48,8 +46,6 @@ typedef struct
 /**< Structure common to all analog and Pwm signal to repertory signal information */
 typedef struct
 {
-    t_eFMKIO_PullMode pull_e;
-    t_eFMKIO_SpdMode spd_e;
     t_bool IsSigConfigured_b;                   /**< Flag which indicate wether or not the signal has been configured */
     t_bool IsInterruptEnable_b;                 /**< Flag which indicate if the interruption is enable or not for tthe signal */
     t_cbFMKIO_SigErrorMngmt * sigError_cb;      /**< callback function if an error occured  */
@@ -59,8 +55,6 @@ typedef struct
 /**< Structure common to frequency signal information */
 typedef struct
 {
-    t_eFMKIO_PullMode pull_e;
-    t_eFMKIO_SpdMode spd_e;
     t_bool IsSigConfigured_b;       /**< @ref  IsSigConfigured_b*/
     t_bool IsInterruptEnable_b;     /**< @ref  IsInterruptEnable_b*/
     t_eFMKIO_FreqMeas meas_e;       /**< Frequency measuremnt mode (counter/ freq/Period) */
@@ -74,8 +68,6 @@ typedef struct
 /**< Structure common to Event signal information */
 typedef struct
 {
-    t_eFMKIO_PullMode pull_e;
-    t_eFMKIO_SpdMode spd_e;
     t_bool IsSigConfigured_b;               /**< @ref  IsSigConfigured_b*/
     t_bool IsInterruptEnabl;                /**< @ref  IsInterruptEnable_b*/
     t_cbFMKIO_EventFunc *EvntFunc_cb;       /**< Store the callback function*/
@@ -262,47 +254,35 @@ t_eReturnState FMKIO_Init(void)
         g_InFreqSigInfo_as[LLI_u8].FlagValueWriting_b  = False;
         g_InFreqSigInfo_as[LLI_u8].value_u32           = (t_uint32)0;
         g_InFreqSigInfo_as[LLI_u8].savedValue_32      = (t_uint32)0;
-        g_InFreqSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
-        g_InFreqSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
         g_InFreqSigInfo_as[LLI_u8].sigError_cb = (t_cbFMKIO_SigErrorMngmt *)NULL_FONCTION;
     }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_INPUT_SIGANA_NB ; LLI_u8++)
     {
         g_InAnaSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
         g_InAnaSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
-        g_InAnaSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
-        g_InAnaSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
         g_InAnaSigInfo_as[LLI_u8].sigError_cb = (t_cbFMKIO_SigErrorMngmt *)NULL_FONCTION;
     }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_INPUT_SIGDIG_NB ; LLI_u8++)
     {
         g_InDigSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
         g_InDigSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
-        g_InDigSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
-        g_InDigSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
     }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
     {
         g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb = (t_cbFMKIO_EventFunc *)NULL_FONCTION;
         g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
-        g_InEvntSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
-        g_InEvntSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
         g_InEvntSigInfo_as[LLI_u8].sigError_cb = (t_cbFMKIO_SigErrorMngmt *)NULL_FONCTION;
     }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_OUTPUT_SIGPWM_NB ; LLI_u8++)
     {
         g_OutPwmSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
         g_OutPwmSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
-        g_OutPwmSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
-        g_OutPwmSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
         g_OutPwmSigInfo_as[LLI_u8].sigError_cb = (t_cbFMKIO_SigErrorMngmt *)NULL_FONCTION;
     }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_OUTPUT_SIGDIG_NB ; LLI_u8++)
     {
         g_OutDigSigInfo_as[LLI_u8].IsInterruptEnable_b = False;
         g_OutDigSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
-        g_OutDigSigInfo_as[LLI_u8].pull_e = FMKIO_PULL_MODE_UNABLE;
-        g_OutDigSigInfo_as[LLI_u8].spd_e = FMKIO_SPD_MODE_MEDIUM;
     }
 
     return RC_OK;
@@ -324,6 +304,10 @@ t_eReturnState FMKIO_Cyclic(void)
     case STATE_CYCLIC_OPE:
     {
         Ret_e = s_FMKIO_Operational();
+        if(Ret_e < RC_OK)
+        {
+            g_state_e = STATE_CYCLIC_ERROR;
+        }
         break;
     }
     case STATE_CYCLIC_ERROR:
@@ -394,8 +378,6 @@ t_eReturnState FMKIO_Set_InDigSigCfg(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_Pull
         if (Ret_e == RC_OK)
         {
             g_InDigSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-            g_InDigSigInfo_as[f_signal_e].pull_e = f_pull_e;
-            g_InDigSigInfo_as[f_signal_e].spd_e = FMKIO_SPD_MODE_LOW;
         }
     }
     return Ret_e;
@@ -435,8 +417,6 @@ t_eReturnState FMKIO_Set_InAnaSigCfg(t_eFMKIO_InAnaSig f_signal_e,
             if (Ret_e == RC_OK)
             { // update info
                 g_InAnaSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                g_InAnaSigInfo_as[f_signal_e].pull_e = f_pull_e;
-                g_InAnaSigInfo_as[f_signal_e].spd_e = FMKIO_SPD_MODE_LOW;
                 g_InAnaSigInfo_as[f_signal_e].sigError_cb = f_sigErr_cb;
             }
         }
@@ -499,8 +479,6 @@ t_eReturnState FMKIO_Set_InFreqSigCfg(t_eFMKIO_InFreqSig f_signal_e,
         if (Ret_e == RC_OK)
         { // update info
             g_InFreqSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-            g_InFreqSigInfo_as[f_signal_e].pull_e = FMKIO_PULL_MODE_UNABLE;
-            g_InFreqSigInfo_as[f_signal_e].spd_e = FMKIO_SPD_MODE_HIGH;
             g_InFreqSigInfo_as[f_signal_e].meas_e = f_freqMeas_e;
             g_InFreqSigInfo_as[f_signal_e].sigError_cb = f_sigErr_cb;
         }
@@ -554,8 +532,6 @@ t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e,
                 if (Ret_e == RC_OK)
                 { // update info
                     g_InEvntSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                    g_InEvntSigInfo_as[f_signal_e].pull_e = FMKIO_PULL_MODE_UNABLE;
-                    g_InEvntSigInfo_as[f_signal_e].spd_e = FMKIO_SPD_MODE_LOW;
                     g_InEvntSigInfo_as[f_signal_e].EvntFunc_cb = f_Evnt_cb;
                     g_InEvntSigInfo_as[f_signal_e].sigError_cb = f_sigErr_cb;
                 }
@@ -611,8 +587,6 @@ t_eReturnState FMKIO_Set_OutPwmSigCfg(t_eFMKIO_OutPwmSig       f_signal_e,
             if (Ret_e == RC_OK)
             { // update info
                 g_OutPwmSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-                g_OutPwmSigInfo_as[f_signal_e].pull_e = f_pull_e;
-                g_OutPwmSigInfo_as[f_signal_e].spd_e = FMKIO_SPD_MODE_LOW;
                 g_OutPwmSigInfo_as[f_signal_e].sigError_cb = f_sigErr_cb;
             }
         }
@@ -651,8 +625,6 @@ t_eReturnState FMKIO_Set_OutDigSigCfg(t_eFMKIO_OutDigSig f_signal_e,
         if (Ret_e == RC_OK)
         {
             g_OutDigSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
-            g_OutDigSigInfo_as[f_signal_e].pull_e = f_pull_e;
-            g_OutDigSigInfo_as[f_signal_e].spd_e = f_spd_e;
         }
     }
     return Ret_e;
@@ -970,6 +942,7 @@ static t_eReturnState s_FMKIO_Operational(void)
     {
         if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKIO_TIME_BTWN_DIAG_MS)
         {//perform diag on timer / chnl used
+            SavedTime_u32 = currentTime_u32;
             Ret_e = s_FMKIO_PerformDiagnostic();
         }
         // else do other thing( or nothing for now)

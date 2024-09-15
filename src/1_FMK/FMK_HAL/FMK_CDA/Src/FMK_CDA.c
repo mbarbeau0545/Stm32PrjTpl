@@ -34,6 +34,7 @@
 /* CAUTION : Automatic generated code section for Structure: Start */
 
 /* CAUTION : Automatic generated code section for Structure: End */
+
 /**< Structure for store and manage analog value in Scan_Dma mode */
 typedef struct
 {
@@ -61,7 +62,7 @@ typedef struct
     const t_eFMKCPU_IRQNType IRQNType_e;                    /**< constant to store the IRQN for each ADC */
     t_bool IsAdcConfigured_b;                               /**< Flag to know if the ADC is configured */
     t_bool IsAdcRunning_b;                                  /**< Flag to know if the Adc is running a conversion */
-    t_bool flagErrDetected_b;                            /**< Flag in DMA/Interrupt mode Error Callback has been call */                 
+    t_bool flagErrDetected_b;                               /**< Flag in DMA/Interrupt mode Error Callback has been call */                 
     t_eFMKCDA_ChnlErrState Error_e;                         /**< Store the adc error status */
 } t_sFMKCDA_AdcInfo;
 // ********************************************************************
@@ -220,6 +221,10 @@ t_eReturnState FMKCDA_Cyclic(void)
         case STATE_CYCLIC_OPE:
         {
             Ret_e = s_FMKCDA_Operational();
+            if(Ret_e < RC_OK)
+            {
+                g_state_e = STATE_CYCLIC_ERROR;
+            }
             break;
         }
         case STATE_CYCLIC_ERROR:
@@ -392,12 +397,13 @@ static t_eReturnState s_FMKCDA_Operational(void)
     {
         if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKCDA_TIME_BTWN_DIAG_MS)
         {//perform diag on timer / chnl used
+            SavedTime_u32 = currentTime_u32;
             Ret_e = s_FMKCDA_PerformDiagnostic();
         }
     }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKCDA_ADC_NB ; LLI_u8++)
     {
-        // if ADc buffer for this ADC has been filled 
+        // if ADC buffer for this ADC has been filled store value buffer in adcInfo value
         if(g_AdcBuffer_as[LLI_u8].FlagValueUpdated_b == (t_bool)True)
         {// 
             g_AdcBuffer_as[LLI_u8].FlagValueUpdated_b = (t_bool)False;
@@ -410,7 +416,7 @@ static t_eReturnState s_FMKCDA_Operational(void)
                 g_AdcInfo_as[LLI_u8].Channel_as[channel_e].FlagValueUpdated_b = (t_bool)True;
             }
         }
-        else
+        else if (g_AdcInfo_as[LLI_u8].IsAdcRunning_b == (t_bool)False)
         {
             bspRet_e = HAL_ADC_Start_DMA(&g_AdcInfo_as[LLI_u8].BspInit_s,
                                          (t_uint32 *)g_AdcBuffer_as[LLI_u8].rawValue_au16,
@@ -424,6 +430,10 @@ static t_eReturnState s_FMKCDA_Operational(void)
             {
                 g_AdcInfo_as[LLI_u8].IsAdcRunning_b = True;
             }
+        }
+        else
+        {
+            Ret_e = RC_WARNING_NO_OPERATION;
         }
     }
 

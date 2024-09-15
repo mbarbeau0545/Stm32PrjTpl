@@ -13,6 +13,8 @@
 from FMK_CodeGen.FMKCPU_CodeGen import FMKCPU_CodeGen as FMKCPU
 from FMK_CodeGen.FMKIO_CodeGen  import FMKIO_CodeGen as FMKIO
 from FMK_CodeGen.FMKCDA_CodeGen  import FMKCDA_CodeGen as FMKCDA
+from App_CodeGen.AppSns_CodeGen import AppSns_CodeGen as APPSNS
+from App_CodeGen.AppAct_CodeGen import AppAct_CodeGen as APPACT
 #------------------------------------------------------------------------------
 #                                       CONSTANT
 #------------------------------------------------------------------------------
@@ -31,6 +33,8 @@ def main()-> None:
     FMKCPU.code_generation()
     FMKCDA.code_genration()
     FMKIO.code_generation()
+    APPSNS.code_generation()
+    APPACT.code_generation()
     return
 #------------------------------------------------------------------------------
 #			                MAIN

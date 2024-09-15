@@ -40,6 +40,9 @@ TARGET_T_VARIABLE_START_LINE = "    /* CAUTION : Automatic generated code sectio
 TARGET_T_VARIABLE_END_LINE   = "    /* CAUTION : Automatic generated code section for Variable: End */\n"
 TARGET_T_STRUCT_START_LINE   = "    /* CAUTION : Automatic generated code section for Structure: Start */\n"
 TARGET_T_STRUCT_END_LINE      ="    /* CAUTION : Automatic generated code section for Structure: End */\n"
+
+TARGET_T_INCLUDE_START = "    /* CAUTION : Automatic generated code section for Include: Start */\n"
+TARGET_T_INCLUDE_END   = "    /* CAUTION : Automatic generated code section for Include: End */\n"
 #------------------------------------------------------------------------------
 #                                       CLASS
 #------------------------------------------------------------------------------

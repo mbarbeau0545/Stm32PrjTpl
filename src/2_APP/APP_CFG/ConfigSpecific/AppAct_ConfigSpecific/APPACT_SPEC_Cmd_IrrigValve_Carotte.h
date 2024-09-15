@@ -1,5 +1,5 @@
 /*********************************************************************
- * @file        APPACT_ConfigPublic.h
+ * @file        TemplateName.h
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n
  *
@@ -7,9 +7,10 @@
  * @date        jj/mm/yyyy
  * @version     1.0
  */
-  
-#ifndef APPACT_CONFIGPUBLIC_H_INCLUDED
-#define APPACT_CONFIGPUBLIC_H_INCLUDED
+/* CAUTION : Automatic generated code section for ifndef: Start */
+#ifndef APPACT_SPEC_CMD_IRRIGVALVE_CAROTTE
+#define APPACT_SPEC_CMD_IRRIGVALVE_CAROTTE
+/* CAUTION : Automatic generated code section for ifndef: End */
 
 
 
@@ -18,7 +19,10 @@
     // ********************************************************************
     // *                      Includes
     // ********************************************************************
+    /* CAUTION : Automatic generated code section for Include: Start */
     #include "TypeCommon.h"
+    #include "APP_CFG/ConfigFiles/APPACT_ConfigPublic.h"
+    /* CAUTION : Automatic generated code section for Include: End */
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -26,64 +30,16 @@
     // ********************************************************************
     // *                      Types
     // ********************************************************************
-    /* CAUTION : Automatic generated code section for Enum: Start */
-    /* Enum for Actuators list */
-    typedef enum
-    {
-        APPACT_ACTUATOR_CMD_IRRIGVALVE_TOMATE = 0x0,/**< Commande du relais pour irriger les tomates  */
-        APPACT_ACTUATOR_CMD_IRRIGVALVE_COURGETTE, /**< Commande du relais pour irriger les courgettes */
-        APPACT_ACTUATOR_CMD_IRRIGVALVE_CAROTTE,   /**< Commande du relais pour irriger les carottes */
-    
-        APPACT_ACTUATOR_NB,
-    } t_eAPPACT_Actuators;
+	/* CAUTION : Automatic generated code section for Enum: Start */
 
-    /* Enum for Actuators drivers list */
-    typedef enum
-    {
-    
-        APPACT_DRIVER_NB,
-    } t_eAPPACT_Drivers;
-
-    /* CAUTION : Automatic generated code section for Enum: End */
+	/* CAUTION : Automatic generated code section for Enum: End */
 	//-----------------------------ENUM TYPES-----------------------------//
-    // Flag automatic generate code
-    /**< Enum for actuators list */
-    typedef enum 
-    {
-        APPACT_ACT_1 = 0,       /**< Description */
-        APPACT_ACT_2,           /**< Description */
 
-        APPACT_ACT_NB,
-    } t_eAPPACT_Actuators;
 
-    /**< Enum for actuators drivers list */
-    typedef enum
-    {
-        APPACT_DRV_JOY_1 = 0,   /**< Description */
-        APPACT_DRV_JOY_2,       /**< Description */
-        APPACT_DRV_NB
-    } t_eAPPACT_Drivers;
-
-    typedef enum 
-    {
-        APPACT_ACTUATOR_DISABLE = 0,    /**< The actuator is unused in a system configuration */
-        APPACT_ACTUATOR_ENABLE          /**< The actuator is used in a system configuration */
-    } t_eAPPACT_ActuatorState;
-
-    typedef enum 
-    {
-        APPACT_DRIVER_DISABLE = 0,      /**< The driver is used in a system configuration */
-        APPACT_DRIVER_ENABLE            /**< The driver is used in a system configuration */
-    } t_eAPPACT_DrvState;
 	/* CAUTION : Automatic generated code section for Structure: Start */
 
 	/* CAUTION : Automatic generated code section for Structure: End */
 	//-----------------------------STRUCT TYPES---------------------------//
-    typedef struct
-    {
-        t_sint16 rawValue_s16;      /**< Store the actuators rawValue */
-        t_bool   IsValueOK_b;       /**< Flag value is OK */
-    } t_sAPPACT_ValueInfo;
 	/* CAUTION : Automatic generated code section : Start */
 
 	/* CAUTION : Automatic generated code section : End */
@@ -95,14 +51,35 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
-    
 
 
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************
+    /* CAUTION : Automatic generated code section for Specific Function Declaration: Start */
+    /**
+    *
+    * @brief     @ref t_cbAppAct_SetActCfg
+    *
+    */
+    t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_SetCfg(void);
 
-#endif // APPACT_CONFIGPUBLIC_H_INCLUDED           
+    /**
+    *
+    * @brief     @ref t_cbAppAct_GetActValue
+    *
+    */
+    t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_GetValue(t_sAPPACT_ValueInfo *f_value_ps);
+
+    /**
+    *
+    * @brief     @ref t_cbAppAct_SetActValue
+    *
+    */
+    t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_SetValue(t_sint16 f_value_s16);
+
+    /* CAUTION : Automatic generated code section for Specific Function Declaration: End */
+#endif            
 //************************************************************************************
 // End of File
 //************************************************************************************
@@ -113,8 +90,8 @@
  *	@note   
  *
  *
- *	@params[in] 
- *	@params[out]
+ *	@param[in] 
+ *	@param[out]
  *	 
  *
  *

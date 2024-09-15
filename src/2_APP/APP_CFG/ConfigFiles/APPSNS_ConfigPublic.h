@@ -26,48 +26,52 @@
     // ********************************************************************
     // *                      Types
     // ********************************************************************
-	/* CAUTION : Automatic generated code section for Enum: Start */
-
-	/* CAUTION : Automatic generated code section for Enum: End */
-	//-----------------------------ENUM TYPES-----------------------------//
-    /**< Enum for Sensors list */
+    /* CAUTION : Automatic generated code section for Enum: Start */
+    /* Enum for Sensors list */
     typedef enum
     {
-        APPSNS_SNS_1 = 0,        /**< Description */
-        APPSNS_SNS_2,            /**< Description */
+        APPSNS_SENSOR_AIRTEMPERATURE = 0x0,     /**< Température local de l'air */
+    
+        APPSNS_SENSOR_NB,
+    } t_eAPPSNS_Sensors;
 
-        APPSNS_SNS_NB
-    }t_eAPPSNS_Sensors;
-
-    /**< Enum for Sensors drivers list */
+    /* Enum for Sensors drivers list */
     typedef enum
     {
-        APPSNS_DRV_JOY_1 = 0,    /**< Description */
-        APPSNS_DRV_JOY_2,        /**< Description */
-        APPSNS_DRV_NB
+        APPSNS_DRIVER_SICK = 0x0,               /**< driver Sick */
+        APPSNS_DRIVER_KUBER,                    /**< driver kuber */
+        APPSNS_DRIVER_MTS,                      /**< driver mts */
+    
+        APPSNS_DRIVER_NB,
     } t_eAPPSNS_Drivers;
 
-    /**< Enum for sensor conversion list */
+    /* Enum for sensor conversion list */
     typedef enum
     {
-        APPSNS_MEASTYPE_RAW = 0,            /**< Raw value is not changed */
-        APPSNS_MEASTYPE_ANGLE_RAD,          /**< Sensor value converted to angle in radians */
-        APPSNS_MEASTYPE_ANGLE_DEGREE,       /**< Sensor value converted to angle in degrees */
-        APPSNS_MEASTYPE_DISTANCE_M,         /**< Sensor value converted to distance in meters */
-        APPSNS_MEASTYPE_DISTANCE_MM,        /**< Sensor value converted to distance in millimeters */
-        APPSNS_MEASTYPE_TEMPERATURE_C,      /**< Sensor value converted to temperature in Celsius */
-        APPSNS_MEASTYPE_TEMPERATURE_F,      /**< Sensor value converted to temperature in Fahrenheit */
-        APPSNS_MEASTYPE_PRESSURE_PA,        /**< Sensor value converted to pressure in pascals */
-        APPSNS_MEASTYPE_PRESSURE_BAR,       /**< Sensor value converted to pressure in bars */
-        APPSNS_MEASTYPE_HUMIDITY,           /**< Sensor value converted to relative humidity percentage */
-        APPSNS_MEASTYPE_ACCELERATION_M_S2,  /**< Sensor value converted to acceleration in meters per second squared */
-        APPSNS_MEASTYPE_VELOCITY_M_S,       /**< Sensor value converted to velocity in meters per second */
-        APPSNS_MEASTYPE_POWER_W,            /**< Sensor value converted to power in watts */
-        APPSNS_MEASTYPE_ENERGY_J,           /**< Sensor value converted to energy in joules */
-        APPSNS_MEASTYPE_VOLUME,             /**< Sensor value converted to volume */
-
+        APPSNS_MEASTYPE_RAW = 0x0,                /**< Raw value is not changed */
+        APPSNS_MEASTYPE_ANGLE_RAD,                /**< Sensor value converted to angle in radians */
+        APPSNS_MEASTYPE_ANGLE_DEGREE,             /**< Sensor value converted to angle in degrees */
+        APPSNS_MEASTYPE_DISTANCE_M,               /**< Sensor value converted to distance in meters */
+        APPSNS_MEASTYPE_DISTANCE_MM,              /**< Sensor value converted to distance in millimeters */
+        APPSNS_MEASTYPE_TEMPERATURE_C,            /**< Sensor value converted to temperature in Celsius */
+        APPSNS_MEASTYPE_TEMPERATURE_F,            /**< Sensor value converted to temperature in Fahrenheit */
+        APPSNS_MEASTYPE_PRESSURE_PA,              /**< Sensor value converted to pressure in pascals */
+        APPSNS_MEASTYPE_PRESSURE_BAR,             /**< Sensor value converted to pressure in bars */
+        APPSNS_MEASTYPE_HUMIDITY,                 /**< Sensor value converted to relative humidity percentage */
+        APPSNS_MEASTYPE_ACCELERATION_M_S2,        /**< Sensor value converted to acceleration in meters per second squared */
+        APPSNS_MEASTYPE_VELOCITY_M_S,             /**< Sensor value converted to velocity in meters per second */
+        APPSNS_MEASTYPE_POWER_W,                  /**< Sensor value converted to power in watts */
+        APPSNS_MEASTYPE_ENERGY_J,                 /**< Sensor value converted to energy in joules */
+        APPSNS_MEASTYPE_VOLUME,                   /**< Sensor value converted to volume */
+    
         APPSNS_MEASTYPE_NB,
     } t_eAPPSNS_SnsMeasType;
+
+    /* CAUTION : Automatic generated code section for Enum: End */
+	//-----------------------------ENUM TYPES-----------------------------//
+
+
+
 
     typedef enum 
     {

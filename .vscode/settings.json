@@ -29,6 +29,8 @@
         "appact_spec_valvesome.h": "c",
         "fmk_cda.h": "c",
         "fmkcda_configpublic.h": "c",
-        "fmkio_configprivate.h": "c"
+        "fmkio_configprivate.h": "c",
+        "app_sns.h": "c",
+        "appsns_configpublic.h": "c"
     }
 }

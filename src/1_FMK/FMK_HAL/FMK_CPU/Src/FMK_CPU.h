@@ -264,7 +264,7 @@
     *   @note       First, this configuration set the bsp timer cfg in PWM mode.\n
     *               Once it's done, this function configure the bsp channel in PWM mode too.\n
     *               IMPORTANT, the PWM generation is based on a timer configuration which share
-    *               multiple channel, as so, frequency is shared by all PWM channel.\n
+    *               multiple channels, ina sense that, frequency is shared by all PWM channels.\n
     *               In result, the modification of the timer configuration reverbate for all channels.\n          
     *
     *	@param[in]  f_timer_e              : enum value for the priority, value from @ref t_eFMKCPU_Timer
@@ -323,6 +323,9 @@
     *   @note     The IC Timer configuration is used to measure a signal frequency.\n
     *             This function initialize the timer in Input Compare confgiuration if the
     *             timer is not configured yet.\n
+    *             IMPORTANT, the IC config is based on a timer configuration which share
+    *             multiple channels, ina sense that, frequency is shared by all PWM channels.\n
+    *             In result, the modification of the timer configuration reverbate for all channels.\n   
     *             Once the timer is init correctly, this function set f_channel_e configuration
     *             based on the interrupt mode gives by f_MeasTrigger_e.\n
     *             Finally, if the CPU detect the event, it will call the function f_ITChannel_cb.\n

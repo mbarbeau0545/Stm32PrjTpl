@@ -19,8 +19,12 @@
     // *                      Includes
     // ********************************************************************
     #include "./APPACT_ConfigPublic.h"
+    /* CAUTION : Automatic generated code section for Include: Start */
+    #include "APP_CFG\ConfigSpecific\AppAct_ConfigSpecific/APPACT_SPEC_Cmd_IrrigValve_Tomate.h"
+    #include "APP_CFG\ConfigSpecific\AppAct_ConfigSpecific/APPACT_SPEC_Cmd_IrrigValve_Courgette.h"
+    #include "APP_CFG\ConfigSpecific\AppAct_ConfigSpecific/APPACT_SPEC_Cmd_IrrigValve_Carotte.h"
+    /* CAUTION : Automatic generated code section for Include: End */
 
-    #include "../ConfigSpecific/AppAct_ConfigSpecific/APPACT_SPEC_ValveSome.h"
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -28,9 +32,9 @@
     // ********************************************************************
     // *                      Types
     // ********************************************************************
-	/* CAUTION : Automatic generated code section for Enum: Start */
+    /* CAUTION : Automatic generated code section for Enum: Start */
 
-	/* CAUTION : Automatic generated code section for Enum: End */
+    /* CAUTION : Automatic generated code section for Enum: End */
 	//-----------------------------ENUM TYPES-----------------------------//
 
 
@@ -102,32 +106,19 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
-    // Flag automatic generate code
-    /**< Variable for System Actuators functions*/
-    const t_sAPPACT_SysActFunc c_AppAct_SysAct_apf[APPACT_ACT_NB] = {
-        // Actuator Cfg function           Actuator SetValue function   Actuator GetValue function 
-        {APPACT_SPEC_ValveSome_SetCfg, APPACT_SPEC_ValveSome_SetValue, APPACT_SPEC_ValveSome_GetValue}, // ACTUATOR 1
-        {APPACT_SPEC_ValveSome_SetCfg, APPACT_SPEC_ValveSome_SetValue, APPACT_SPEC_ValveSome_GetValue}, // ACTUATOR 2
-    };
-    // Flag automatic generate code
-    /**< Variable for System Actuators Drivers functions*/
-    const t_sAPPACT_SysDrvFunc c_AppAct_SysDrv_apf[APPACT_DRV_NB] = {
-        {(t_cbAppAct_DrvInit *)NULL_FONCTION , (t_cbAppAct_DrvCyclic *)NULL_FONCTION}, // DRV_1 
-        {(t_cbAppAct_DrvInit *)NULL_FONCTION , (t_cbAppAct_DrvCyclic *)NULL_FONCTION}, // DRV_2
-    };
-    // Flag automatic generate code
-    /**< Variable for Actuators Drivers State*/
-    const t_eAPPACT_DrvState c_AppAct_DrvState_ae[APPACT_DRV_NB] = {
-        APPACT_DRIVER_ENABLE, // APPSNS_DRV_JOY_1
-        APPACT_DRIVER_ENABLE, // APPSNS_DRV_JOY_2
+    /* CAUTION : Automatic generated code section for Variable: Start */
+    /**< Variable for System Actuators drivers functions*/
+    const t_sAPPACT_SysDrvFunc c_AppAct_SysDrv_apf[APPACT_DRIVER_NB] = {
     };
 
-    // Flag automatic generate code
-    /**< Variable for Actuators State*/
-    const t_eAPPACT_ActuatorState c_AppAct_ActState_ae[APPACT_ACT_NB] = {
-        APPACT_ACTUATOR_ENABLE, // APPSNS_SNS_1
-        APPACT_ACTUATOR_ENABLE, // APPSNS_SNS_2
+    /**< Variable for System Actuators functions*/
+    const t_sAPPACT_SysActFunc c_AppAct_SysAct_apf[APPACT_ACTUATOR_NB] = {
+        {APPACT_SPEC_Cmd_IrrigValve_Tomate_SetCfg,                   APPACT_SPEC_Cmd_IrrigValve_Tomate_SetValue,                 APPACT_SPEC_Cmd_IrrigValve_Tomate_GetValue}, //APPACT_ACTUATOR_CMD_IRRIGVALVE_TOMATE
+        {APPACT_SPEC_Cmd_IrrigValve_Courgette_SetCfg,                APPACT_SPEC_Cmd_IrrigValve_Courgette_SetValue,              APPACT_SPEC_Cmd_IrrigValve_Courgette_GetValue}, //APPACT_ACTUATOR_CMD_IRRIGVALVE_COURGETTE
+        {APPACT_SPEC_Cmd_IrrigValve_Carotte_SetCfg,                  APPACT_SPEC_Cmd_IrrigValve_Carotte_SetValue,                APPACT_SPEC_Cmd_IrrigValve_Carotte_GetValue}, //APPACT_ACTUATOR_CMD_IRRIGVALVE_CAROTTE
     };
+
+    /* CAUTION : Automatic generated code section for Variable: End */
 
 
     //********************************************************************************
