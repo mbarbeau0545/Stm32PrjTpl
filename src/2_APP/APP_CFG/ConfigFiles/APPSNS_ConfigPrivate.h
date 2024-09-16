@@ -96,7 +96,7 @@
         {(t_cbAppSns_DrvInit *)FMKDRV_Sick_Init,                     (t_cbAppSns_DrvInit *)NULL_FONCTION},  // APPSNS_DRIVER_SICK
         {(t_cbAppSns_DrvInit *)FMKDRV_Kuber_Init,                    (t_cbAppSns_DrvCyclic *)FMKDRV_Kuber_Cyclic},  // APPSNS_DRIVER_KUBER
         {(t_cbAppSns_DrvInit *)NULL_FONCTION,                        (t_cbAppSns_DrvCyclic *)FMKDRV_MTS_Cyclic},  // APPSNS_DRIVER_MTS
-};
+    };
 
     /**< Variable for System Sensors functions*/
     const t_sAPPSNS_SysSnsFunc c_AppSns_SysSns_apf[APPSNS_SENSOR_NB] = {

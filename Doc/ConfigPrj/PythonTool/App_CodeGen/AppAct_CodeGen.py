@@ -56,7 +56,7 @@ class AppAct_CodeGen():
     def code_generation(cls) -> None:
         # Load needed excel arrays
         cls.code_gen.load_excel_file(SOFTWARE_CFG_PATH)
-        sensors_cfg_a = cls.code_gen.get_array_from_excel("AppAct_Actuators")[1:]
+        actuators_cfg_a = cls.code_gen.get_array_from_excel("AppAct_Actuators")[1:]
         drivers_cfg_a = cls.code_gen.get_array_from_excel("AppAct_Drivers")[1:]
 
         # make python varaible 
@@ -71,9 +71,9 @@ class AppAct_CodeGen():
         #-----------------------------------------------------------------
         #-----------------------------make all enum-----------------------
         #-----------------------------------------------------------------
-        enum_act = cls.code_gen.make_enum_from_variable(ENUM_APPACT_ACTUATOR_RT, [str(act_cfg[0]).upper() for act_cfg in sensors_cfg_a],
+        enum_act = cls.code_gen.make_enum_from_variable(ENUM_APPACT_ACTUATOR_RT, [str(act_cfg[0]).upper() for act_cfg in actuators_cfg_a],
                                                         "t_eAPPACT_Actuators", 0, "Enum for Actuators list",
-                                                        [str(act_cfg[-1])  for act_cfg in sensors_cfg_a])
+                                                        [str(act_cfg[-1])  for act_cfg in actuators_cfg_a])
         if str(drivers_cfg_a[0][0]) != EMPTY_CELL:
             enum_drv = cls.code_gen.make_enum_from_variable(ENUM_APPACT_DRV_RT, [str(drv_cfg[0]).upper() for drv_cfg in drivers_cfg_a],
                                                         "t_eAPPACT_Drivers", 0, "Enum for Actuators drivers list",
@@ -89,9 +89,9 @@ class AppAct_CodeGen():
         #-----------------------------------------------------------------
         var_act += "    /**< Variable for System Actuators functions*/\n" \
                     + "    const t_sAPPACT_SysActFunc c_AppAct_SysAct_apf[APPACT_ACTUATOR_NB] = {\n"
-        var_act_state += "    /**< Variable for Actuators Drivers State*/\n" \
-                        + "    const t_eAPPACT_DrvState c_AppAct_DrvState_ae[APPACT_DRV_NB] = {\n"
-        for act_cfg in sensors_cfg_a:
+        var_act_state += "/**< Variable for Actuators Drivers State*/\n" \
+                        + "t_eAPPACT_ActuatorState g_actState_ae[APPACT_ACTUATOR_NB] = {\n"
+        for act_cfg in actuators_cfg_a:
             # make var sensors
             if(str(act_cfg[0]) != EMPTY_CELL):
                 var_act += "        {" \
@@ -102,7 +102,7 @@ class AppAct_CodeGen():
                             + f"{VAR_APPACT_SPEC}_{act_cfg[0]}_GetValue" \
                             + "}, //" + f"{ENUM_APPACT_ACTUATOR_RT}_{str(act_cfg[0]).upper()}\n"
                 # make var state
-                var_act_state += "        " \
+                var_act_state += "    " \
                                 + f"{ENUM_APPACT_DRVSTATE_RT}_{str(act_cfg[1]).upper()}," \
                                 + f" // {ENUM_APPACT_DRV_RT}_{str(act_cfg[0]).upper()}\n"
                 # make include 
@@ -114,7 +114,7 @@ class AppAct_CodeGen():
                 else:
                     print(f"Header/Source file for {act_cfg[0]} already existing")
 
-        var_act_state += "    };\n\n"
+        var_act_state += "};\n\n"
         var_act += "    };\n\n"
 
         #-----------------------------------------------------------------
@@ -122,8 +122,8 @@ class AppAct_CodeGen():
         #-----------------------------------------------------------------
         var_drv += "    /**< Variable for System Actuators drivers functions*/\n" \
                     + "    const t_sAPPACT_SysDrvFunc c_AppAct_SysDrv_apf[APPACT_DRIVER_NB] = {\n"
-        var_drv_state += "    /**< Variable for Actuators Drivers State*/\n"
-        var_drv_state += "    const t_eAPPACT_DrvState c_AppSns_DrvState_ae[APPACT_DRIVER_NB] = {\n"
+        var_drv_state += "/**< Variable for Actuators Drivers State*/\n"
+        var_drv_state += "t_eAPPACT_DriverState g_ActDrvState_ae[APPACT_DRIVER_NB] = {\n"
         for drv_cfg in drivers_cfg_a:
             if(str(drv_cfg[0]) != EMPTY_CELL):
                 var_drv += "        {" 
@@ -144,7 +144,7 @@ class AppAct_CodeGen():
                 # make DRV state
                 var_drv_state += f"        {ENUM_APPACT_DRVSTATE_RT}_{str(drv_cfg[3]).upper()}, // {ENUM_APPACT_DRV_RT}_{str(drv_cfg[0]).upper()}\n"
             
-        var_drv_state += "    };\n\n"
+        var_drv_state += "};\n\n"
         var_drv += "    };\n\n"
         #-----------------------------------------------------------------
         #------------------------make code gen----------------------------
@@ -194,7 +194,9 @@ class AppAct_CodeGen():
                             + f"* {func_name}\n"  \
                             + "******************************************/\n" \
                             + f"t_eReturnState {func_name}{val[0]}\n" \
-                            + "{\n" +f"    //    Your code for {f_act_name}_{val[1][11:]} here\n\n\n\n" + "}\n\n"
+                            + "{\n" + "    t_eReturnState Ret_e = RC_OK;\n" \
+                            + f"    //    Your code for {f_act_name}_{val[1][11:]} here\n\n\n\n" \
+                            + "    return Ret_e;\n" + "}\n\n"
             var_func_decl += "    /**\n" \
                             + "    *\n" \
                             + f"    * @brief     @ref {val[1]}\n" \

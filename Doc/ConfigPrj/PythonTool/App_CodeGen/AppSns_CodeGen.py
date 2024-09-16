@@ -94,8 +94,8 @@ class AppSns_CodeGen():
         #-----------------------------------------------------------------
         var_sns += "    /**< Variable for System Sensors functions*/\n" \
                     + "    const t_sAPPSNS_SysSnsFunc c_AppSns_SysSns_apf[APPSNS_SENSOR_NB] = {\n"
-        var_sns_state += "    /**< Variable for Sensors Drivers State*/\n" \
-                        + "    const t_eAPPSNS_SensorState c_AppSns_SnsState_ae[APPSNS_SENSOR_NB] = {\n"
+        var_sns_state += "/**< Variable for Sensors Drivers State*/\n" \
+                        + "t_eAPPSNS_SensorState g_snsState_ae[APPSNS_SENSOR_NB] = {\n"
         var_unities += "    /**< Variable for Sensors Unity Management */\n" \
                     + "    const t_eAPPSNS_SnsMeasType c_AppSns_SnsMeasType_ae[APPSNS_SENSOR_NB] = {\n"
         for sns_cfg in sensors_cfg_a:
@@ -107,7 +107,7 @@ class AppSns_CodeGen():
                             + f"{VAR_APPSNS_SPEC}_{sns_cfg[0]}_GetValue" \
                             + "}, //" + f"{ENUM_APPSNS_SENSORS_RT}_{str(sns_cfg[0]).upper()}\n"
                 # make var state
-                var_sns_state += "        " \
+                var_sns_state += "    " \
                                 + f"{ENUM_APPSNS_DRVSTATE_RT}_{str(sns_cfg[2]).upper()}," \
                                 + f" // {ENUM_APPSNS_DRV_RT}_{str(sns_cfg[0]).upper()}\n"
                 # make var unities
@@ -124,7 +124,7 @@ class AppSns_CodeGen():
                     print(f"Header/Source file for {sns_cfg[0]} already existing")
 
         var_unities += "    };\n\n"
-        var_sns_state += "    };\n\n"
+        var_sns_state += "};\n\n"
         var_sns += "    };\n\n"
 
         #-----------------------------------------------------------------
@@ -132,8 +132,8 @@ class AppSns_CodeGen():
         #-----------------------------------------------------------------
         var_drv += "    /**< Variable for System Sensors drivers functions*/\n" \
                     + "    const t_sAPPSNS_SysDrvFunc c_AppSns_SysDrv_apf[APPSNS_DRIVER_NB] = {\n"
-        var_drv_state += "    /**< Variable for Sensors Drivers State*/\n"
-        var_drv_state += "    const t_eAPPSNS_DrvState c_AppSns_DrvState_ae[APPSNS_DRIVER_NB] = {\n"
+        var_drv_state += "/**< Variable for Sensors Drivers State*/\n"
+        var_drv_state += "t_eAPPSNS_DrvState g_SnsDrvState_ae[APPSNS_DRIVER_NB] = {\n"
         for drv_cfg in drivers_cfg_a:
             if str(drv_cfg[0]) != EMPTY_CELL:
                 var_drv += "        {" 
@@ -152,10 +152,10 @@ class AppSns_CodeGen():
         
                 var_drv += f"  // {ENUM_APPSNS_DRV_RT}_{str(drv_cfg[0]).upper()}\n"
                 # make DRV state
-                var_drv_state += f"        {ENUM_APPSNS_DRVSTATE_RT}_{str(drv_cfg[3]).upper()}, // {ENUM_APPSNS_DRV_RT}_{str(drv_cfg[0]).upper()}\n"
+                var_drv_state += f"    {ENUM_APPSNS_DRVSTATE_RT}_{str(drv_cfg[3]).upper()}, // {ENUM_APPSNS_DRV_RT}_{str(drv_cfg[0]).upper()}\n"
         
-        var_drv_state += "    };\n\n"
-        var_drv += "};\n\n"
+        var_drv_state += "};\n\n"
+        var_drv += "    };\n\n"
         #-----------------------------------------------------------------
         #------------------------make code gen----------------------------
         #-----------------------------------------------------------------
@@ -201,7 +201,9 @@ class AppSns_CodeGen():
                             + f"* {func_name}\n"  \
                             + "******************************************/\n" \
                             + f"t_eReturnState {func_name}{val[0]}\n" \
-                            + "{\n" +f"    //    Your code for {f_sns_name}_{val[1][11:]} here\n\n\n\n" + "}\n\n"
+                            + "{\n" + "    t_eReturnState Ret_e = RC_OK;\n" \
+                            + f"    //    Your code for {f_sns_name}_{val[1][11:]} here\n\n\n\n" \
+                            + "    return Ret_e;\n" + "}\n\n"
             var_func_decl += "    /**\n" \
                             + "    *\n" \
                             + f"    * @brief     @ref {val[1]}\n" \

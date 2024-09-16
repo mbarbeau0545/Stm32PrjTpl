@@ -64,10 +64,12 @@
 ******************************************/
 t_eReturnState APPSNS_SPEC_AirTemperature_SetCfg(void)
 {
+    t_eReturnState Ret_e = RC_OK;
     //    Your code for AirTemperature_SetSnsCfg here
 
 
 
+    return Ret_e;
 }
 
 
@@ -77,10 +79,12 @@ t_eReturnState APPSNS_SPEC_AirTemperature_SetCfg(void)
 ******************************************/
 t_eReturnState APPSNS_SPEC_AirTemperature_GetValue(t_sAPPSNS_ValueInfo *f_SnsValue_ps)
 {
+    t_eReturnState Ret_e = RC_OK;
     //    Your code for AirTemperature_GetSnsValue here
 
 
 
+    return Ret_e;
 }
 
 /* CAUTION : Automatic generated code section for Specific Function Implementation: End */

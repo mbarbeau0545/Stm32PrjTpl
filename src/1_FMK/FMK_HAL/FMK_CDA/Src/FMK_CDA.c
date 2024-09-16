@@ -778,9 +778,11 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
             break;
         }
     }
+    
     if (IT_Adc_e < FMKCDA_ADC_NB)
     {
         g_AdcBuffer_as[IT_Adc_e].FlagValueUpdated_b = (t_bool)True;
+        g_AdcInfo_as[IT_Adc_e].IsAdcRunning_b = (t_bool)False;
     }
     return;
 }

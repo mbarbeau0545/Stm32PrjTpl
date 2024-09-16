@@ -1,5 +1,5 @@
 /*********************************************************************
- * @file        APPACT_ConfigPublic.h
+ * @file        TemplateName.h
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n
  *
@@ -7,9 +7,10 @@
  * @date        jj/mm/yyyy
  * @version     1.0
  */
-  
-#ifndef APPACT_CONFIGPUBLIC_H_INCLUDED
-#define APPACT_CONFIGPUBLIC_H_INCLUDED
+/* CAUTION : Automatic generated code section for ifndef: Start */
+#ifndef APPSNS_SPEC_AIRHUMIDITY
+#define APPSNS_SPEC_AIRHUMIDITY
+/* CAUTION : Automatic generated code section for ifndef: End */
 
 
 
@@ -18,7 +19,10 @@
     // ********************************************************************
     // *                      Includes
     // ********************************************************************
+    /* CAUTION : Automatic generated code section for Include: Start */
     #include "TypeCommon.h"
+    #include "APP_CFG/ConfigFiles/APPSNS_ConfigPublic.h"
+    /* CAUTION : Automatic generated code section for Include: End */
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -26,46 +30,16 @@
     // ********************************************************************
     // *                      Types
     // ********************************************************************
-    /* CAUTION : Automatic generated code section for Enum: Start */
-    /* Enum for Actuators list */
-    typedef enum
-    {
-        APPACT_ACTUATOR_CMD_IRRIGVALVE_TOMATE = 0x0,/**< Commande du relais pour irriger les tomates  */
-        APPACT_ACTUATOR_CMD_IRRIGVALVE_COURGETTE, /**< Commande du relais pour irriger les courgettes */
-        APPACT_ACTUATOR_CMD_IRRIGVALVE_CAROTTE,   /**< Commande du relais pour irriger les carottes */
-    
-        APPACT_ACTUATOR_NB,
-    } t_eAPPACT_Actuators;
+	/* CAUTION : Automatic generated code section for Enum: Start */
 
-    /* Enum for Actuators drivers list */
-    typedef enum
-    {
-    
-        APPACT_DRIVER_NB,
-    } t_eAPPACT_Drivers;
-
-    /* CAUTION : Automatic generated code section for Enum: End */
+	/* CAUTION : Automatic generated code section for Enum: End */
 	//-----------------------------ENUM TYPES-----------------------------//
-    typedef enum 
-    {
-        APPACT_ACTUATOR_DISABLE = 0,    /**< The actuator is unused in a system configuration */
-        APPACT_ACTUATOR_ENABLE          /**< The actuator is used in a system configuration */
-    } t_eAPPACT_ActuatorState;
 
-    typedef enum 
-    {
-        APPACT_DRIVER_DISABLE = 0,      /**< The driver is used in a system configuration */
-        APPACT_DRIVER_ENABLE            /**< The driver is used in a system configuration */
-    } t_eAPPACT_DriverState;
+
 	/* CAUTION : Automatic generated code section for Structure: Start */
 
 	/* CAUTION : Automatic generated code section for Structure: End */
 	//-----------------------------STRUCT TYPES---------------------------//
-    typedef struct
-    {
-        t_sint16 rawValue_s16;      /**< Store the actuators rawValue */
-        t_bool   IsValueOK_b;       /**< Flag value is OK */
-    } t_sAPPACT_ValueInfo;
 	/* CAUTION : Automatic generated code section : Start */
 
 	/* CAUTION : Automatic generated code section : End */
@@ -77,14 +51,28 @@
     // ********************************************************************
     // *                      Variables
     // ********************************************************************
-    
 
 
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************
+    /* CAUTION : Automatic generated code section for Specific Function Declaration: Start */
+    /**
+    *
+    * @brief     @ref t_cbAppSns_SetSnsCfg
+    *
+    */
+    t_eReturnState APPSNS_SPEC_AirHumidity_SetCfg(void);
 
-#endif // APPACT_CONFIGPUBLIC_H_INCLUDED           
+    /**
+    *
+    * @brief     @ref t_cbAppSns_GetSnsValue
+    *
+    */
+    t_eReturnState APPSNS_SPEC_AirHumidity_GetValue(t_sAPPSNS_ValueInfo *f_SnsValue_ps);
+
+    /* CAUTION : Automatic generated code section for Specific Function Declaration: End */
+#endif            
 //************************************************************************************
 // End of File
 //************************************************************************************
@@ -95,8 +83,8 @@
  *	@note   
  *
  *
- *	@params[in] 
- *	@params[out]
+ *	@param[in] 
+ *	@param[out]
  *	 
  *
  *

@@ -762,6 +762,8 @@ t_eReturnState FMKIO_Get_InDigSigValue(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_Di
 t_eReturnState FMKIO_Get_InAnaSigValue(t_eFMKIO_InAnaSig f_signal_e, t_uint16 *f_value_pu16)
 {
     t_eReturnState Ret_e = RC_OK;
+    t_uint16 anaValue_16 = 0;
+
     if (f_signal_e > FMKIO_INPUT_SIGANA_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
@@ -782,7 +784,24 @@ t_eReturnState FMKIO_Get_InAnaSigValue(t_eFMKIO_InAnaSig f_signal_e, t_uint16 *f
     {
         Ret_e = FMKCDA_Get_AnaChannelMeasure(c_InAnaSigBspMap_as[f_signal_e].adc_e,
                                              c_InAnaSigBspMap_as[f_signal_e].adcChannel_e,
-                                             f_value_pu16);
+                                             &anaValue_16);
+        if(Ret_e == RC_OK)
+        {
+            if(anaValue_16 < (t_uint16)FMKIO_ANALOG_OL_VALUE)
+            {
+                *f_value_pu16 = (t_uint16)FMKIO_ANALOG_MIN_VALUE;
+                g_InAnaSigInfo_as[f_signal_e].sigError_cb((t_uint8)FMKIO_ANALOG_OL_DETECTED, (t_uint8)0);
+            }
+            else if(anaValue_16 > (t_uint16)FMKIO_ANALOG_SC_VALUE)
+            {
+                *f_value_pu16 = (t_uint16)FMKIO_ANALOG_MAX_VALUE;
+                g_InAnaSigInfo_as[f_signal_e].sigError_cb((t_uint8)FMKIO_ANALOG_SC_DETECTED, (t_uint8)0);
+            }
+            else
+            {
+                *f_value_pu16 = (t_uint16)anaValue_16;
+            }
+        }
     }
     return Ret_e;
 }
@@ -945,7 +964,7 @@ static t_eReturnState s_FMKIO_Operational(void)
             SavedTime_u32 = currentTime_u32;
             Ret_e = s_FMKIO_PerformDiagnostic();
         }
-        // else do other thing( or nothing for now)
+        // else do other thing(or nothing for now)
     }
     return Ret_e;
 }

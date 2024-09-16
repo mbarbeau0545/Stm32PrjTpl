@@ -48,16 +48,16 @@
 // *                      Variables
 // ********************************************************************
 /* CAUTION : Automatic generated code section for Variable: Start */
-    /**< Variable for Actuators Drivers State*/
-    const t_eAPPACT_DrvState c_AppAct_DrvState_ae[APPACT_DRV_NB] = {
-        APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_TOMATE
-        APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_COURGETTE
-        APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_CAROTTE
-    };
+/**< Variable for Actuators Drivers State*/
+t_eAPPACT_ActuatorState g_actState_ae[APPACT_ACTUATOR_NB] = {
+    APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_TOMATE
+    APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_COURGETTE
+    APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_CAROTTE
+};
 
-    /**< Variable for Actuators Drivers State*/
-    const t_eAPPACT_DrvState c_AppSns_DrvState_ae[APPACT_DRIVER_NB] = {
-    };
+/**< Variable for Actuators Drivers State*/
+t_eAPPACT_DriverState g_ActDrvState_ae[APPACT_DRIVER_NB] = {
+};
 
 /* CAUTION : Automatic generated code section for Variable: End */
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
@@ -67,8 +67,8 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 /**
  *
  *	@brief      Perform preOperationnal action.\n
- *  @note       Set the actuator configuration.\n
- *              Call driver init function.\n
+ *  @note       Call driver init function.\n
+ *              Set the actuator configuration (5 per cycle).\n
  *              If one of the configuration is not set the Module Cyclic 
  *              retry indefinitely.\n
  *              
@@ -167,7 +167,7 @@ t_eReturnState APPACT_Get_ActValue(t_eAPPACT_Actuators f_actuator_e, t_sint16 * 
     t_eReturnState Ret_e = RC_OK;
     t_sAPPACT_ValueInfo actValInfo_s = {0};
 
-    if(f_actuator_e > APPACT_ACT_NB)
+    if(f_actuator_e > APPACT_ACTUATOR_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -203,7 +203,7 @@ t_eReturnState APPACT_Set_ActValue(t_eAPPACT_Actuators f_actuator_e, t_sint16 f_
 {
     t_eReturnState Ret_e = RC_OK;
 
-    if(f_actuator_e > APPACT_ACT_NB)
+    if(f_actuator_e > APPACT_ACTUATOR_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -228,7 +228,7 @@ t_eReturnState APPACT_Set_ActValue(t_eAPPACT_Actuators f_actuator_e, t_sint16 f_
 static t_eReturnState s_APPACT_PreOperational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    t_uint8 LLI_u8;
+    t_uint8 LLI_u8 = 0;
     static t_uint8 LLActCfg_u8 = 0;
     static t_uint8 ActCfgCnt_u8 = 0;
     static t_bool s_IsDrvInitDone_b = False;
@@ -237,9 +237,9 @@ static t_eReturnState s_APPACT_PreOperational(void)
     {
         case False:
         {
-            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPACT_DRV_NB) && (Ret_e == RC_OK) ; LLI_u8++)
+            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPACT_DRIVER_NB) && (Ret_e == RC_OK) ; LLI_u8++)
             {
-                if(c_AppAct_DrvState_ae[LLI_u8] == APPACT_DRIVER_ENABLE)
+                if(g_ActDrvState_ae[LLI_u8] == APPACT_DRIVER_ENABLE)
                 {
                     if(c_AppAct_SysDrv_apf[LLI_u8].Init_pcb != (t_cbAppAct_DrvInit *)NULL_FONCTION)
                     {
@@ -247,7 +247,7 @@ static t_eReturnState s_APPACT_PreOperational(void)
                     }
                 }
             }
-            if((LLI_u8 >= APPACT_DRV_NB) && (Ret_e == RC_OK))
+            if((LLI_u8 >= APPACT_DRIVER_NB) && (Ret_e == RC_OK))
             {
                 s_IsDrvInitDone_b = (t_bool)True;
             }
@@ -257,7 +257,7 @@ static t_eReturnState s_APPACT_PreOperational(void)
         {// then config the sensors only if the Sensors is used which means in "enable"
             while((ActCfgCnt_u8 < (t_uint8)APPACT_CFG_NB_PER_CYCLE) && (Ret_e == RC_OK))
             {
-                if(c_AppAct_ActState_ae[LLActCfg_u8] == APPACT_ACTUATOR_ENABLE)
+                if(g_actState_ae[LLActCfg_u8] == APPACT_ACTUATOR_ENABLE)
                 {
                     if(c_AppAct_SysAct_apf[LLActCfg_u8].SetCfg_pcb != (t_cbAppAct_SetActCfg *)NULL_FONCTION)
                     {
@@ -271,7 +271,7 @@ static t_eReturnState s_APPACT_PreOperational(void)
                 if(Ret_e == RC_OK)
                 {
                     LLI_u8 += (t_uint8)1;
-                    if(LLI_u8 >= APPACT_ACT_NB)
+                    if(LLI_u8 >= APPACT_ACTUATOR_NB)
                     {
                         g_state_e = STATE_CYCLIC_WAITING;
                         break;
@@ -295,9 +295,9 @@ static t_eReturnState s_APPACT_Operational(void)
 
     if(s_IsDrvCylic_b == (t_bool)True)
     {
-        for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPACT_DRV_NB) && (Ret_e == RC_OK); LLI_u8++)
+        for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPACT_DRIVER_NB) && (Ret_e == RC_OK); LLI_u8++)
         {
-            if(c_AppAct_DrvState_ae[LLI_u8] == APPACT_DRIVER_ENABLE)
+            if(g_ActDrvState_ae[LLI_u8] == APPACT_DRIVER_ENABLE)
             {
                 if(c_AppAct_SysDrv_apf[LLI_u8].Cyclic_pcb != (t_cbAppAct_DrvCyclic *)NULL_FONCTION)
                 {

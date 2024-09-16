@@ -17,7 +17,7 @@
 // *                      Includes
 // ********************************************************************
 /* CAUTION : Automatic generated code section for Include: Start */
-#include "./APPACT_SPEC_Cmd_IrrigValve_Carotte.h"
+#include "./APPACT_SPEC_dfbfd.h"
 /* CAUTION : Automatic generated code section for Include: End */
 // ********************************************************************
 // *                      Defines
@@ -60,27 +60,12 @@
 
 
 /******************************************
-* APPACT_SPEC_Cmd_IrrigValve_Carotte_SetCfg
+* APPACT_SPEC_dfbfd_SetCfg
 ******************************************/
-t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_SetCfg(void)
+t_eReturnState APPACT_SPEC_dfbfd_SetCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    //    Your code for Cmd_IrrigValve_Carotte_SetActCfg here
-    
-
-
-    return Ret_e;
-}
-
-
-
-/******************************************
-* APPACT_SPEC_Cmd_IrrigValve_Carotte_GetValue
-******************************************/
-t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_GetValue(t_sAPPACT_ValueInfo *f_value_ps)
-{
-    t_eReturnState Ret_e = RC_OK;
-    //    Your code for Cmd_IrrigValve_Carotte_GetActValue here
+    //    Your code for dfbfd_SetActCfg here
 
 
 
@@ -90,12 +75,27 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_GetValue(t_sAPPACT_ValueInfo *
 
 
 /******************************************
-* APPACT_SPEC_Cmd_IrrigValve_Carotte_SetValue
+* APPACT_SPEC_dfbfd_GetValue
 ******************************************/
-t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_SetValue(t_sint16 f_value_s16)
+t_eReturnState APPACT_SPEC_dfbfd_GetValue(t_sAPPACT_ValueInfo *f_value_ps)
 {
     t_eReturnState Ret_e = RC_OK;
-    //    Your code for Cmd_IrrigValve_Carotte_SetActValue here
+    //    Your code for dfbfd_GetActValue here
+
+
+
+    return Ret_e;
+}
+
+
+
+/******************************************
+* APPACT_SPEC_dfbfd_SetValue
+******************************************/
+t_eReturnState APPACT_SPEC_dfbfd_SetValue(t_sint16 f_value_s16)
+{
+    t_eReturnState Ret_e = RC_OK;
+    //    Your code for dfbfd_SetActValue here
 
 
 

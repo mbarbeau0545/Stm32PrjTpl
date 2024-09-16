@@ -64,10 +64,12 @@
 ******************************************/
 t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_SetCfg(void)
 {
+    t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Tomate_SetActCfg here
 
 
 
+    return Ret_e;
 }
 
 
@@ -77,10 +79,12 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_SetCfg(void)
 ******************************************/
 t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_GetValue(t_sAPPACT_ValueInfo *f_value_ps)
 {
+    t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Tomate_GetActValue here
 
 
 
+    return Ret_e;
 }
 
 
@@ -90,10 +94,12 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_GetValue(t_sAPPACT_ValueInfo *f
 ******************************************/
 t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_SetValue(t_sint16 f_value_s16)
 {
+    t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Tomate_SetActValue here
 
 
 
+    return Ret_e;
 }
 
 /* CAUTION : Automatic generated code section for Specific Function Implementation: End */

@@ -48,17 +48,17 @@
 // *                      Variables
 // ********************************************************************
 /* CAUTION : Automatic generated code section for Variable: Start */
-    /**< Variable for Sensors Drivers State*/
-    const t_eAPPSNS_SensorState c_AppSns_SnsState_ae[APPSNS_SENSOR_NB] = {
-        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_AIRTEMPERATURE
-    };
+/**< Variable for Sensors Drivers State*/
+t_eAPPSNS_SensorState g_snsState_ae[APPSNS_SENSOR_NB] = {
+    APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_AIRTEMPERATURE
+};
 
-    /**< Variable for Sensors Drivers State*/
-    const t_eAPPSNS_DrvState c_AppSns_DrvState_ae[APPSNS_DRIVER_NB] = {
-        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_SICK
-        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_KUBER
-        APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_MTS
-    };
+/**< Variable for Sensors Drivers State*/
+t_eAPPSNS_DrvState g_SnsDrvState_ae[APPSNS_DRIVER_NB] = {
+    APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_SICK
+    APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_KUBER
+    APPSNS_DRIVER_ENABLE, // APPSNS_DRIVER_MTS
+};
 
 /* CAUTION : Automatic generated code section for Variable: End */
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
@@ -201,7 +201,7 @@ t_eReturnState APPSNS_Get_SnsValue(t_eAPPSNS_Sensors f_Sns_e, t_sint16 *f_SnsVal
             {
                 if(c_AppSns_SnsMeasType_ae[f_Sns_e] != APPSNS_MEASTYPE_RAW)
                 {
-                    Ret_e = s_APPSNS_SetValUnity(c_AppSns_SnsState_ae[f_Sns_e], &valInfo_s.SnsValue_s16);
+                    Ret_e = s_APPSNS_SetValUnity(g_snsState_ae[f_Sns_e], &valInfo_s.SnsValue_s16);
                     if(valInfo_s.IsValueOK_b == True)
                     {
                         *f_SnsValue_ps16 = valInfo_s.SnsValue_s16;
@@ -245,7 +245,7 @@ static t_eReturnState s_APPSNS_PreOperational(void)
         {
             for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRIVER_NB) && (Ret_e == RC_OK) ; LLI_u8++)
             {
-                if(c_AppSns_DrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
+                if(g_SnsDrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
                 {
                     if(c_AppSns_SysDrv_apf[LLI_u8].Init_pcb != (t_cbAppSns_DrvInit *)NULL_FONCTION)
                     {
@@ -263,7 +263,7 @@ static t_eReturnState s_APPSNS_PreOperational(void)
         {// then config the sensors only if the Sensors is used which means in "enable"
             while((SnsCfgCnt_u8 < (t_uint8)APPSNS_CFG_NB_PER_CYCLE) && (Ret_e == RC_OK))
             {
-                if(c_AppSns_SnsState_ae[LLSnsCfg_u8] == APPSNS_SENSOR_ENABLE)
+                if(g_snsState_ae[LLSnsCfg_u8] == APPSNS_SENSOR_ENABLE)
                 {
                     if(c_AppSns_SysSns_apf[LLSnsCfg_u8].SetCfg_pcb != (t_cbAppSns_SetSnsCfg *)NULL_FONCTION)
                     {
@@ -303,7 +303,7 @@ static t_eReturnState s_APPSNS_Operational(void)
     {
         for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRIVER_NB) && (Ret_e == RC_OK); LLI_u8++)
         {
-            if(c_AppSns_DrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
+            if(g_SnsDrvState_ae[LLI_u8] == APPSNS_DRIVER_ENABLE)
             {
                 if(c_AppSns_SysDrv_apf[LLI_u8].Cyclic_pcb != (t_cbAppSns_DrvCyclic *)NULL_FONCTION)
                 {

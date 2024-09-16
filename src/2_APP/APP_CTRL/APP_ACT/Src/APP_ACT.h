@@ -90,6 +90,24 @@
     t_eReturnState APPACT_SetState(t_eCyclicFuncState f_State_e);
     /**
     *
+    *	@brief  Set sensor state enable/disable
+    *
+    *	@param[in]  f_Sns_e         : actuator enum @ref t_eAPPSNS_Sensors
+    *	@param[in]  f_SnsState_pe   : storage for the value 
+    * 
+    */
+    t_eReturnState APPACT_Set_ActuatorState(t_eAPPACT_Actuators f_Sns_e, t_eAPPACT_ActuatorState f_SnsState_e);
+    /**
+    *
+    *	@brief  Get sensor state enable/disable
+    *
+    *	@param[in]  f_Sns_e         : actuator enum @ref t_eAPPSNS_Sensors
+    *	@param[in]  f_SnsState_pe   : storage for the value 
+    * 
+    */
+    t_eReturnState APPACT_Get_ActuatorState(t_eAPPACT_Actuators f_Sns_e, t_eAPPACT_ActuatorState *f_SnsState_pe);
+    /**
+    *
     *	@brief  Get actuator value 
     *
     *	@param[in]  f_actuator_e   : actuator enum

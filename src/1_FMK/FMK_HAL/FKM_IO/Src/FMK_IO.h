@@ -23,7 +23,10 @@
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
-
+    #define FMKIO_ANALOG_OL_VALUE ((t_uint16)200)
+    #define FMKIO_ANALOG_SC_VALUE ((t_uint16)4800)
+    #define FMKIO_ANALOG_MIN_VALUE ((t_uint16)0)
+    #define FMKIO_ANALOG_MAX_VALUE ((t_uint16)5000)
     // ********************************************************************
     // *                      Types
     // ********************************************************************
@@ -35,7 +38,7 @@
     typedef enum 
     {
         FMKIO_PULL_MODE_UNABLE = 0x0U,     /**< There is no pull resisstance attached to the signal */
-        FMKIO_PULL_MODE_DOWN,           /**< There is a pull down resistance attached to the signal */
+        FMKIO_PULL_MODE_DOWN,             /**< There is a pull down resistance attached to the signal */
         FMKIO_PULL_MODE_UP,             /**< There is a pull up resistance attached to the signal */
 
         FMKIO_PULL_MODE_NB              /**< Number of pull mode available */
@@ -92,6 +95,12 @@
 
         FMKIO_DIG_VALUE_NB              /**< Number of digital state */
     } t_eFMKIO_DigValue;
+    
+    enum 
+    {
+        FMKIO_ANALOG_SC_DETECTED = 0x0U,
+        FMKIO_ANALOG_OL_DETECTED = 0x1U,
+    };
     //-----------------------------TYPEDEF TYPES---------------------------//
     /**
     *
@@ -350,6 +359,8 @@
     *               IMPORTANT -> Depending on FMKCDA scan mode (the one used on V0.1) it may be possible
     *               that the conversion of all analog is not finished, in this case, the value return is 0 and
     *               RetCode = RC_WARNING_NO_OPERATION
+    *               If an error (shortcut or openload) is suspected errcallback function is called with debugInfo 1 =
+    *               FMKIO_ANALOG_OL_DETECTED or FMKIO_ANALOG_SC_DETECTED
     *
     *
     *	@param[in]      f_signal_e       : the input frequency signal, a value from @ref t_eFMKIO_InAnaSig

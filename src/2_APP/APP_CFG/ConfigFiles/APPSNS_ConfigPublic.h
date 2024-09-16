@@ -69,10 +69,6 @@
 
     /* CAUTION : Automatic generated code section for Enum: End */
 	//-----------------------------ENUM TYPES-----------------------------//
-
-
-
-
     typedef enum 
     {
         APPSNS_SENSOR_DISABLE = 0,          /**< The sensor is unused in a system configuration */
