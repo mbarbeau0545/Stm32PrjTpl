@@ -577,7 +577,8 @@ t_eReturnState FMKCPU_Set_PWMChannelCfg(t_eFMKCPU_Timer f_timer_e,
     t_uint32 bspChannel_u32 = 0;
     t_uint32 bspPeriod_u32;
 
-    if (f_timer_e > FMKCPU_TIMER_NB || f_channel_e > FMKCPU_CHANNEL_NB)
+    if (f_timer_e > FMKCPU_TIMER_NB 
+    || f_channel_e > c_FMKCPU_TimMaxChnl_ua8[f_timer_e])
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -787,7 +788,8 @@ t_eReturnState FMKCPU_Set_ICChannelCfg(t_eFMKCPU_Timer f_timer_e,
     {
         Ret_e = RC_ERROR_PTR_NULL;
     }
-    if (f_timer_e > FMKCPU_TIMER_NB || f_channel_e > FMKCPU_CHANNEL_NB)
+    if (f_timer_e > FMKCPU_TIMER_NB 
+    || f_channel_e > c_FMKCPU_TimMaxChnl_ua8[f_timer_e])
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }

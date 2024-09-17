@@ -24,7 +24,14 @@
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
-    
+    /* CAUTION : Automatic generated code section for Timer channels number: Start */
+    #define FMKCPU_MAX_CHNL_TIMER_1 ((t_uint8)4)
+    #define FMKCPU_MAX_CHNL_TIMER_3 ((t_uint8)4)
+    #define FMKCPU_MAX_CHNL_TIMER_14 ((t_uint8)1)
+    #define FMKCPU_MAX_CHNL_TIMER_15 ((t_uint8)2)
+    #define FMKCPU_MAX_CHNL_TIMER_16 ((t_uint8)1)
+    #define FMKCPU_MAX_CHNL_TIMER_17 ((t_uint8)1)
+    /* CAUTION : Automatic generated code section for Timer channels number: End */
     #define FMKCPU_HSI_CLOCK_OSC_MHZ     ((t_uint8)8)        /**<  HSI oscillatator equals to 8 MHz */
     #define FMKCPU_TIMER_CLOCK_OSC_MHZ   ((t_uint8)8)        /**<  Frequency of the timer are 8 MHz */
     #define FMKCPU_TIMER_PWM_PSC         ((t_uint8)50)       /**<  for every PWM the Prescaler is a constant */
@@ -265,6 +272,16 @@
         {FMKCPU_Enable_FLITF_Clock,     FMKCPU_Disable_FLITF_Clock},    // FMKCPU_RCC_CLK_FLITF
         {FMKCPU_Enable_WWDG_Clock,      FMKCPU_Disable_WWDG_Clock},     // FMKCPU_RCC_CLK_WWDG
         {FMKCPU_Enable_PWR_Clock,       FMKCPU_Disable_PWR_Clock},      // FMKCPU_RCC_CLK_PWR
+    };
+
+    /**< timer max channel variable */
+    const t_uint8 c_FMKCPU_TimMaxChnl_ua8[FMKCPU_TIMER_NB] = {
+        (t_uint8)FMKCPU_MAX_CHNL_TIMER_1,      // FMKCPU_TIMER_1
+        (t_uint8)FMKCPU_MAX_CHNL_TIMER_3,      // FMKCPU_TIMER_3
+        (t_uint8)FMKCPU_MAX_CHNL_TIMER_14,     // FMKCPU_TIMER_14
+        (t_uint8)FMKCPU_MAX_CHNL_TIMER_15,     // FMKCPU_TIMER_15
+        (t_uint8)FMKCPU_MAX_CHNL_TIMER_16,     // FMKCPU_TIMER_16
+        (t_uint8)FMKCPU_MAX_CHNL_TIMER_17,     // FMKCPU_TIMER_17
     };
 
     /* CAUTION : Automatic generated code section for Variable: End */

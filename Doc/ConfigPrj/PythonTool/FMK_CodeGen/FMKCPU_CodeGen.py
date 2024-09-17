@@ -14,7 +14,6 @@ from PyCodeGene import LoadConfig_FromExcel as LCFE, TARGET_T_END_LINE,TARGET_T_
                                                     TARGET_T_ENUM_START_LINE,TARGET_T_START_LINE,TARGET_T_VARIABLE_START_LINE,\
                                                     TARGET_T_VARIABLE_END_LINE,TARGET_T_STRUCT_START_LINE,\
                                                     TARGET_T_STRUCT_END_LINE
-
 from typing import List, Dict
 from .FMK_PATH import * 
 #------------------------------------------------------------------------------
@@ -34,6 +33,8 @@ TARGET_CLOCK_DISABLE_DECL_START = "    /* CAUTION : Automatic generated code sec
 TARGET_CLOCK_DISABLE_DECL_END   = "    /* CAUTION : Automatic generated code section for Disable Clk Declaration: End */\n"
 TARGET_SWITCH_NVIC_START = "            /* CAUTION : Automatic generated code section for IRQNType switch case: Start */\n"
 TARGET_SWITCH_NVIC_END   = "            /* CAUTION : Automatic generated code section for IRQNType switch case: End */\n"
+TARGET_TIMER_CHNLNB_START = "    /* CAUTION : Automatic generated code section for Timer channels number: Start */\n"
+TARGET_TIMER_CHNLNB_END   = "    /* CAUTION : Automatic generated code section for Timer channels number: End */\n"
 
 # CAUTION : Automatic generated code section: Start #
 
@@ -89,6 +90,8 @@ class FMKCPU_CodeGen():
         rcc_ena_decl = ""
         rcc_dis_decl  = ""
         var_timinfo = ""
+        def_tim_max_chnl = ""
+        var_tim_max_chnl = ""
         switch_irqn = ""
         max_channel: int = 0
         nb_evnt_channel = len(evnt_cfg_a[1:])
@@ -138,6 +141,8 @@ class FMKCPU_CodeGen():
         #-----------------------------------------------------------------
         var_timinfo += "/**< timer information variable */\n" \
                     + "t_sFMKCPU_TimerInfo g_TimerInfo_as[FMKCPU_TIMER_NB] = {\n"
+        var_tim_max_chnl += "    /**< timer max channel variable */\n" \
+                            + "    const t_uint8 c_FMKCPU_TimMaxChnl_ua8[FMKCPU_TIMER_NB] = {\n"
         for idx, timer_cfg in enumerate(timer_cfg_a[1:]):
             idx_timer = str(timer_cfg[0][6:])
             timer_number_a.append(idx_timer)
@@ -151,7 +156,15 @@ class FMKCPU_CodeGen():
                         + f"        .IRQNType_e = {ENUM_FMKCPU_NVIC_ROOT}_TIM{idx_timer}_" \
                         +  (f"IRQN,\n" if idx_timer != "1" else f"BRK_UP_TRG_COM_IRQN,\n")  \
                         + "    },\n"
+            # make defines timer channel
+            def_tim_max_chnl += f"    #define FMKCPU_MAX_CHNL_TIMER_{idx_timer} ((t_uint8){timer_cfg[1]})\n"
+            # make varialble max timer channel 
+            var_tim_max_chnl += f"        (t_uint8)FMKCPU_MAX_CHNL_TIMER_{idx_timer}," \
+                                + " " * (SPACE_VARIABLE - len(f"FMKCPU_MAX_CHNL_TIMER_{idx_timer},")) \
+                                + f"// {ENUM_FMKCPU_TIMER_ROOT}_{idx_timer}\n"      
+        var_tim_max_chnl += "    };\n\n"
         var_timinfo += "};\n\n"
+
 
         enum_timer = cls.code_gen.make_enum_from_variable(ENUM_FMKCPU_TIMER_ROOT, timer_number_a,
                                                            "t_eFMKCPU_Timer", 0, "Number of timer enable in smt32xxx board",
@@ -216,7 +229,10 @@ class FMKCPU_CodeGen():
         cls.code_gen._write_into_file(enum_channel, FMKCPU_CONFIGPUBLIC)
         cls.code_gen._write_into_file(enum_timer, FMKCPU_CONFIGPUBLIC)
         # For FMKCPU_Config Private
+        cls.code_gen.change_target_balise(TARGET_TIMER_CHNLNB_START, TARGET_TIMER_CHNLNB_END)
+        cls.code_gen._write_into_file(def_tim_max_chnl, FMKCPU_CONFIGPRIVATE)
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE, TARGET_T_VARIABLE_END_LINE)
+        cls.code_gen._write_into_file(var_tim_max_chnl, FMKCPU_CONFIGPRIVATE)
         cls.code_gen._write_into_file(var_clk_state, FMKCPU_CONFIGPRIVATE)
         cls.code_gen._write_into_file(var_nvic_prio, FMKCPU_CONFIGPRIVATE)
         cls.code_gen._write_into_file(var_evntcfg, FMKCPU_CONFIGPRIVATE)
