@@ -17,6 +17,18 @@ struct \mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\+\_\+s\+FMKCPU
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a9ca837f6f673163c485456809af6b150}{FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+1}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})4)
+\item 
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_ae78f65f5032b1d627aa76005a4339af1}{FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+3}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})4)
+\item 
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_af6f07741647d43569e3dfc2e50750a51}{FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+14}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})1)
+\item 
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a6781bab0777683799618b9598bd3bfe1}{FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+15}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})2)
+\item 
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a8b685fccf0dbb6b3b0389c59393360f3}{FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+16}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})1)
+\item 
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a08912c8c1a70ceea2724c6484ef5e6d5}{FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+17}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})1)
+\item 
 \#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_ac52e47ea7a84a1ad71b0fa4a04581b07}{FMKCPU\+\_\+\+HSI\+\_\+\+CLOCK\+\_\+\+OSC\+\_\+\+MHZ}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})8)
 \item 
 \#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a008778b0fab8387446d447e71724c69d}{FMKCPU\+\_\+\+TIMER\+\_\+\+CLOCK\+\_\+\+OSC\+\_\+\+MHZ}}~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})8)
@@ -29,7 +41,7 @@ struct \mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_timer_cfg}{t\+\_\+s\+FMKCPU
 \item 
 \#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a310ddfcd0dd443deec4dcf674029669a}{FMKCPU\+\_\+\+TIMER\+\_\+\+EVNT\+\_\+\+PSC}}~((\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}})(\mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a008778b0fab8387446d447e71724c69d}{FMKCPU\+\_\+\+TIMER\+\_\+\+CLOCK\+\_\+\+OSC\+\_\+\+MHZ}} \texorpdfstring{$\ast$}{*} 1000)-\/ (\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}})1)
 \item 
-\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_aefcda5a608148d926192638f2ba50ec9}{FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+\+CFG}}~\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d}{FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+100\+MS}}
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a2f2636d78deb030df76a0c5967547ed2}{FMKCPU\+\_\+\+TIME\+\_\+\+BTWN\+\_\+\+DIAG\+\_\+\+MS}}~((\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}})2000)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -38,6 +50,8 @@ typedef void \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_afadb3c3aafe65bd1
 \begin{DoxyCompactList}\small\item\em HAL enable clock Function abstraction. \end{DoxyCompactList}\item 
 typedef void \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_aeb47039550c481dbbb750a62653c301d}{t\+\_\+cb\+FMKCPU\+\_\+\+Clock\+Disable}}(void)
 \begin{DoxyCompactList}\small\item\em HAL Disable clock Function abstraction. \end{DoxyCompactList}\item 
+typedef HAL\+\_\+\+TIM\+\_\+\+State\+Type\+Def \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a86fd3f8a2dc5e6346ee05fd89bda9b72}{t\+\_\+cb\+FMKCPU\+\_\+\+Get\+Timer\+State}}(TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}f\+\_\+handle\+Timer\+\_\+s)
+\begin{DoxyCompactList}\small\item\em HAL Timer function for get the hardware timer state. \end{DoxyCompactList}\item 
 typedef HAL\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a8e22f949df7628d2119ff423d836119a}{t\+\_\+cb\+FMKCPU\+\_\+\+Timer\+Init\+Func}}(TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}f\+\_\+handle\+Timer\+\_\+s)
 \begin{DoxyCompactList}\small\item\em HAL Timer function for Init. \end{DoxyCompactList}\item 
 typedef HAL\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_ab1ec88e256cdbfde73981eb9fff84970}{t\+\_\+cb\+FMKCPU\+\_\+\+Timer\+De\+Init\+Func}}(TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}f\+\_\+handle\+Timer\+\_\+s)
@@ -61,6 +75,8 @@ const \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1
 \item 
 const \mbox{\hyperlink{structt__s_f_m_k_c_p_u___clk_func}{t\+\_\+s\+FMKCPU\+\_\+\+Clk\+Func}} \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_aeee60afe74541be26c5a19cec575f03f}{c\+\_\+\+FMKCPU\+\_\+\+Clk\+Functions\+\_\+apcb}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a2196bfb127e600673166e06e677a3f23ada1693bb5d3c64e463dbbf38295dd60c}{FMKCPU\+\_\+\+NVIC\+\_\+\+NB}}\mbox{]}
 \item 
+const \mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}} \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a842471e7b452f479d2803fd9ac1544d5}{c\+\_\+\+FMKCPU\+\_\+\+Tim\+Max\+Chnl\+\_\+ua8}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7abebcc97094cfd64e76d0eec9f876549c}{FMKCPU\+\_\+\+TIMER\+\_\+\+NB}}\mbox{]}
+\item 
 const \mbox{\hyperlink{structt__s_f_m_k_c_p_u___tim_channel_func}{t\+\_\+s\+FMKCPU\+\_\+\+Tim\+Channel\+Func}} \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a3aa77a2c8612b5296a19740fe80256c8}{c\+\_\+\+FMKCPU\+\_\+\+Bsp\+Tim\+Func\+\_\+apf}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04}{FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+NB}}\mbox{]}
 \item 
 const \mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_wwdg_cfg}{t\+\_\+s\+FMKCPU\+\_\+\+Bsp\+Wwdg\+Cfg}} \mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a489de4065cd838d0a320bb5e0b90c765}{c\+\_\+\+FMKCPU\+\_\+\+Wwdg\+Periodcfg\+\_\+ua16}} \mbox{[}\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7a9a4d74bb11139d4afac8a8d7f01f77d5}{FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+\+NB}}\mbox{]}
@@ -74,7 +90,49 @@ const \mbox{\hyperlink{structt__s_f_m_k_c_p_u___bsp_wwdg_cfg}{t\+\_\+s\+FMKCPU\+
 {\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_ac52e47ea7a84a1ad71b0fa4a04581b07} 
 \#define FMKCPU\+\_\+\+HSI\+\_\+\+CLOCK\+\_\+\+OSC\+\_\+\+MHZ~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})8)}
 
-HSI oscillatator equals to 8 MHz \Hypertarget{_f_m_k_c_p_u___config_private_8h_a008778b0fab8387446d447e71724c69d}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ@{FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ}}
+HSI oscillatator equals to 8 MHz \Hypertarget{_f_m_k_c_p_u___config_private_8h_a9ca837f6f673163c485456809af6b150}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_MAX\_CHNL\_TIMER\_1@{FMKCPU\_MAX\_CHNL\_TIMER\_1}}
+\index{FMKCPU\_MAX\_CHNL\_TIMER\_1@{FMKCPU\_MAX\_CHNL\_TIMER\_1}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_MAX\_CHNL\_TIMER\_1}{FMKCPU\_MAX\_CHNL\_TIMER\_1}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a9ca837f6f673163c485456809af6b150} 
+\#define FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+1~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})4)}
+
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_af6f07741647d43569e3dfc2e50750a51}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_MAX\_CHNL\_TIMER\_14@{FMKCPU\_MAX\_CHNL\_TIMER\_14}}
+\index{FMKCPU\_MAX\_CHNL\_TIMER\_14@{FMKCPU\_MAX\_CHNL\_TIMER\_14}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_MAX\_CHNL\_TIMER\_14}{FMKCPU\_MAX\_CHNL\_TIMER\_14}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_af6f07741647d43569e3dfc2e50750a51} 
+\#define FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+14~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})1)}
+
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_a6781bab0777683799618b9598bd3bfe1}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_MAX\_CHNL\_TIMER\_15@{FMKCPU\_MAX\_CHNL\_TIMER\_15}}
+\index{FMKCPU\_MAX\_CHNL\_TIMER\_15@{FMKCPU\_MAX\_CHNL\_TIMER\_15}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_MAX\_CHNL\_TIMER\_15}{FMKCPU\_MAX\_CHNL\_TIMER\_15}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a6781bab0777683799618b9598bd3bfe1} 
+\#define FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+15~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})2)}
+
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_a8b685fccf0dbb6b3b0389c59393360f3}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_MAX\_CHNL\_TIMER\_16@{FMKCPU\_MAX\_CHNL\_TIMER\_16}}
+\index{FMKCPU\_MAX\_CHNL\_TIMER\_16@{FMKCPU\_MAX\_CHNL\_TIMER\_16}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_MAX\_CHNL\_TIMER\_16}{FMKCPU\_MAX\_CHNL\_TIMER\_16}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a8b685fccf0dbb6b3b0389c59393360f3} 
+\#define FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+16~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})1)}
+
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_a08912c8c1a70ceea2724c6484ef5e6d5}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_MAX\_CHNL\_TIMER\_17@{FMKCPU\_MAX\_CHNL\_TIMER\_17}}
+\index{FMKCPU\_MAX\_CHNL\_TIMER\_17@{FMKCPU\_MAX\_CHNL\_TIMER\_17}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_MAX\_CHNL\_TIMER\_17}{FMKCPU\_MAX\_CHNL\_TIMER\_17}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a08912c8c1a70ceea2724c6484ef5e6d5} 
+\#define FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+17~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})1)}
+
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_ae78f65f5032b1d627aa76005a4339af1}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_MAX\_CHNL\_TIMER\_3@{FMKCPU\_MAX\_CHNL\_TIMER\_3}}
+\index{FMKCPU\_MAX\_CHNL\_TIMER\_3@{FMKCPU\_MAX\_CHNL\_TIMER\_3}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_MAX\_CHNL\_TIMER\_3}{FMKCPU\_MAX\_CHNL\_TIMER\_3}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_ae78f65f5032b1d627aa76005a4339af1} 
+\#define FMKCPU\+\_\+\+MAX\+\_\+\+CHNL\+\_\+\+TIMER\+\_\+3~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})4)}
+
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_a2f2636d78deb030df76a0c5967547ed2}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_TIME\_BTWN\_DIAG\_MS@{FMKCPU\_TIME\_BTWN\_DIAG\_MS}}
+\index{FMKCPU\_TIME\_BTWN\_DIAG\_MS@{FMKCPU\_TIME\_BTWN\_DIAG\_MS}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_TIME\_BTWN\_DIAG\_MS}{FMKCPU\_TIME\_BTWN\_DIAG\_MS}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a2f2636d78deb030df76a0c5967547ed2} 
+\#define FMKCPU\+\_\+\+TIME\+\_\+\+BTWN\+\_\+\+DIAG\+\_\+\+MS~((\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}})2000)}
+
+Time between diagnostic for timer and channel in cyclic ope mode \Hypertarget{_f_m_k_c_p_u___config_private_8h_a008778b0fab8387446d447e71724c69d}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ@{FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ}}
 \index{FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ@{FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
 \doxysubsubsection{\texorpdfstring{FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ}{FMKCPU\_TIMER\_CLOCK\_OSC\_MHZ}}
 {\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a008778b0fab8387446d447e71724c69d} 
@@ -104,13 +162,7 @@ for every Input\+COmpare the Prescaler is a constant \Hypertarget{_f_m_k_c_p_u__
 {\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a47a2404e910e8d06cc9af09d96d936ae} 
 \#define FMKCPU\+\_\+\+TIMER\+\_\+\+PWM\+\_\+\+PSC~((\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}})50)}
 
-for every PWM the Prescaler is a constant \Hypertarget{_f_m_k_c_p_u___config_private_8h_aefcda5a608148d926192638f2ba50ec9}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!FMKCPU\_WWDG\_RESET\_CFG@{FMKCPU\_WWDG\_RESET\_CFG}}
-\index{FMKCPU\_WWDG\_RESET\_CFG@{FMKCPU\_WWDG\_RESET\_CFG}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
-\doxysubsubsection{\texorpdfstring{FMKCPU\_WWDG\_RESET\_CFG}{FMKCPU\_WWDG\_RESET\_CFG}}
-{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_aefcda5a608148d926192638f2ba50ec9} 
-\#define FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+\+CFG~\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d}{FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+100\+MS}}}
-
-default watchdogs configuration 
+for every PWM the Prescaler is a constant 
 
 \doxysubsection{Typedef Documentation}
 \Hypertarget{_f_m_k_c_p_u___config_private_8h_aeb47039550c481dbbb750a62653c301d}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!t\_cbFMKCPU\_ClockDisable@{t\_cbFMKCPU\_ClockDisable}}
@@ -153,6 +205,31 @@ This function repertory in stm32f00xx\+\_\+hal\+\_\+tim, is used in blocking mod
 \mbox{\texttt{ out}}  & {\em f\+\_\+channel\+\_\+u32} & \+: the channel \\
 \hline
 \end{DoxyParams}
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_a86fd3f8a2dc5e6346ee05fd89bda9b72}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!t\_cbFMKCPU\_GetTimerState@{t\_cbFMKCPU\_GetTimerState}}
+\index{t\_cbFMKCPU\_GetTimerState@{t\_cbFMKCPU\_GetTimerState}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{t\_cbFMKCPU\_GetTimerState}{t\_cbFMKCPU\_GetTimerState}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a86fd3f8a2dc5e6346ee05fd89bda9b72} 
+typedef HAL\+\_\+\+TIM\+\_\+\+State\+Type\+Def t\+\_\+cb\+FMKCPU\+\_\+\+Get\+Timer\+State(TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}f\+\_\+handle\+Timer\+\_\+s)}
+
+
+
+HAL Timer function for get the hardware timer state. 
+
+\begin{DoxyNote}{Note}
+This function repertory in stm32f00xx\+\_\+hal\+\_\+tim,
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em f\+\_\+handle\+Timer\+\_\+s} & \+: the bsp init structure\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em HAL\+\_\+\+OK} & HAL\+\_\+\+OK \\
+\hline
+{\em HAL\+\_\+\+ERROR} & HAL\+\_\+\+ERROR \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{_f_m_k_c_p_u___config_private_8h_ab1ec88e256cdbfde73981eb9fff84970}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!t\_cbFMKCPU\_TimerDeInitFunc@{t\_cbFMKCPU\_TimerDeInitFunc}}
 \index{t\_cbFMKCPU\_TimerDeInitFunc@{t\_cbFMKCPU\_TimerDeInitFunc}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
 \doxysubsubsection{\texorpdfstring{t\_cbFMKCPU\_TimerDeInitFunc}{t\_cbFMKCPU\_TimerDeInitFunc}}
@@ -326,13 +403,12 @@ const \mbox{\hyperlink{structt__s_f_m_k_c_p_u___tim_channel_func}{t\+\_\+s\+FMKC
 \begin{DoxyCode}{0}
 \DoxyCodeLine{=\ }
 \DoxyCodeLine{\ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_PWM\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_DeInit,\ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Start,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Stop,\ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Start\_IT,\ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Stop\_IT\},\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_IC\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_DeInit,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Start,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Stop,\ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Start\_IT,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Stop\_IT\},\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_OC\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_DeInit,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Start,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Stop,\ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Start\_IT,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Stop\_IT\},\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OnePulse\_DeInit,\ \ \ \ \ \ HAL\_TIM\_OnePulse\_Start,\ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OnePulse\_Stop,\ \ \ \ \ \ \ \ HAL\_TIM\_OnePulse\_Start\_IT,\ \ \ \ \ \ HAL\_TIM\_OnePulse\_Stop\_IT\},\ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_Base\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Base\_DeInit,\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_a756b386eb9fe894f8941cbd25c48c992}{FMKCPU\_HAL\_TIM\_Base\_Start}},\ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_aa3325b1b5b0ae2c5708f2a40a002531d}{FMKCPU\_HAL\_TIM\_Base\_Stop}},\ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_aca85b92a0ead42cbb4e7f95d265ddcc5}{FMKCPU\_HAL\_TIM\_Base\_Start\_IT}},\ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_a308a9b8ae4450e18d1c37375e0b867f3}{FMKCPU\_HAL\_TIM\_Base\_Stop\_IT}}\},\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Encoder\_DeInit,\ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Start,\ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Stop,\ \ \ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Start\_IT,\ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Stop\_IT\},\ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_PWM\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_DeInit,\ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Start,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Stop,\ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Start\_IT,\ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Stop\_IT\},\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_PWM\_GetState,\ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_DeInit,\ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Start,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Stop,\ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Start\_IT,\ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_PWM\_Stop\_IT\},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_IC\_GetState,\ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_DeInit,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Start,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Stop,\ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Start\_IT,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_IC\_Stop\_IT\},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_OC\_GetState,\ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_DeInit,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Start,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Stop,\ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Start\_IT,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OC\_Stop\_IT\},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_OnePulse\_GetState,\ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OnePulse\_DeInit,\ \ \ \ \ \ HAL\_TIM\_OnePulse\_Start,\ \ \ \ \ \ \ \ \ \ HAL\_TIM\_OnePulse\_Stop,\ \ \ \ \ \ \ \ HAL\_TIM\_OnePulse\_Start\_IT,\ \ \ \ \ \ HAL\_TIM\_OnePulse\_Stop\_IT\},\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_Base\_GetState,\ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Base\_Init,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Base\_DeInit,\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_a756b386eb9fe894f8941cbd25c48c992}{FMKCPU\_HAL\_TIM\_Base\_Start}},\ \ \ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_aa3325b1b5b0ae2c5708f2a40a002531d}{FMKCPU\_HAL\_TIM\_Base\_Stop}},\ \ \ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_aca85b92a0ead42cbb4e7f95d265ddcc5}{FMKCPU\_HAL\_TIM\_Base\_Start\_IT}},\ \ \ \mbox{\hyperlink{_f_m_k_c_p_u___config_specific_8c_a308a9b8ae4450e18d1c37375e0b867f3}{FMKCPU\_HAL\_TIM\_Base\_Stop\_IT}}\},\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{HAL\_TIM\_Encoder\_GetState,\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_type_common_8h_aa12e75ca820c68fa135f0882a9a4727c}{NULL\_FONCTION}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Encoder\_DeInit,\ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Start,\ \ \ \ \ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Stop,\ \ \ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Start\_IT,\ \ \ \ \ \ \ HAL\_TIM\_Encoder\_Stop\_IT\},\ \ \ \ \ }
 \DoxyCodeLine{\ \ \ \ \}}
 
 \end{DoxyCode}
@@ -372,7 +448,7 @@ const \mbox{\hyperlink{structt__s_f_m_k_c_p_u___clk_func}{t\+\_\+s\+FMKCPU\+\_\+
 \DoxyCodeLine{\ \ \ \ \}}
 
 \end{DoxyCode}
-\Hypertarget{_f_m_k_c_p_u___config_private_8h_a306a37e409d033a6facde59372f32716}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!c\_FMKCPU\_EvntTimerCfg\_as@{c\_FMKCPU\_EvntTimerCfg\_as}}
+timer max channel variable \Hypertarget{_f_m_k_c_p_u___config_private_8h_a306a37e409d033a6facde59372f32716}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!c\_FMKCPU\_EvntTimerCfg\_as@{c\_FMKCPU\_EvntTimerCfg\_as}}
 \index{c\_FMKCPU\_EvntTimerCfg\_as@{c\_FMKCPU\_EvntTimerCfg\_as}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
 \doxysubsubsection{\texorpdfstring{c\_FMKCPU\_EvntTimerCfg\_as}{c\_FMKCPU\_EvntTimerCfg\_as}}
 {\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a306a37e409d033a6facde59372f32716} 
@@ -425,7 +501,25 @@ const \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aaaf20d3204ade01b365203d1
 \DoxyCodeLine{\ \ \ \ \}}
 
 \end{DoxyCode}
-Referencing all Enable/\+Disable Rcc clock function \Hypertarget{_f_m_k_c_p_u___config_private_8h_a489de4065cd838d0a320bb5e0b90c765}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!c\_FMKCPU\_WwdgPeriodcfg\_ua16@{c\_FMKCPU\_WwdgPeriodcfg\_ua16}}
+Referencing all Enable/\+Disable Rcc clock function \Hypertarget{_f_m_k_c_p_u___config_private_8h_a842471e7b452f479d2803fd9ac1544d5}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!c\_FMKCPU\_TimMaxChnl\_ua8@{c\_FMKCPU\_TimMaxChnl\_ua8}}
+\index{c\_FMKCPU\_TimMaxChnl\_ua8@{c\_FMKCPU\_TimMaxChnl\_ua8}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
+\doxysubsubsection{\texorpdfstring{c\_FMKCPU\_TimMaxChnl\_ua8}{c\_FMKCPU\_TimMaxChnl\_ua8}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a842471e7b452f479d2803fd9ac1544d5} 
+const \mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\+\_\+uint8}} c\+\_\+\+FMKCPU\+\_\+\+Tim\+Max\+Chnl\+\_\+ua8\mbox{[}\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a17696e6a68cdf4f872408b479c0e1bd7abebcc97094cfd64e76d0eec9f876549c}{FMKCPU\+\_\+\+TIMER\+\_\+\+NB}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})\mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a9ca837f6f673163c485456809af6b150}{FMKCPU\_MAX\_CHNL\_TIMER\_1}},\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})\mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_ae78f65f5032b1d627aa76005a4339af1}{FMKCPU\_MAX\_CHNL\_TIMER\_3}},\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})\mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_af6f07741647d43569e3dfc2e50750a51}{FMKCPU\_MAX\_CHNL\_TIMER\_14}},\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})\mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a6781bab0777683799618b9598bd3bfe1}{FMKCPU\_MAX\_CHNL\_TIMER\_15}},\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})\mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a8b685fccf0dbb6b3b0389c59393360f3}{FMKCPU\_MAX\_CHNL\_TIMER\_16}},\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_type_common_8h_a0914b90e8ac459280d7a279030e57bd5}{t\_uint8}})\mbox{\hyperlink{_f_m_k_c_p_u___config_private_8h_a08912c8c1a70ceea2724c6484ef5e6d5}{FMKCPU\_MAX\_CHNL\_TIMER\_17}},\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{_f_m_k_c_p_u___config_private_8h_a489de4065cd838d0a320bb5e0b90c765}\index{FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}!c\_FMKCPU\_WwdgPeriodcfg\_ua16@{c\_FMKCPU\_WwdgPeriodcfg\_ua16}}
 \index{c\_FMKCPU\_WwdgPeriodcfg\_ua16@{c\_FMKCPU\_WwdgPeriodcfg\_ua16}!FMKCPU\_ConfigPrivate.h@{FMKCPU\_ConfigPrivate.h}}
 \doxysubsubsection{\texorpdfstring{c\_FMKCPU\_WwdgPeriodcfg\_ua16}{c\_FMKCPU\_WwdgPeriodcfg\_ua16}}
 {\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_private_8h_a489de4065cd838d0a320bb5e0b90c765} 

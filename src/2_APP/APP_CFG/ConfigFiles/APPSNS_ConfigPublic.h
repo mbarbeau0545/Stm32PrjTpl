@@ -38,9 +38,6 @@
     /* Enum for Sensors drivers list */
     typedef enum
     {
-        APPSNS_DRIVER_SICK = 0x0,               /**< driver Sick */
-        APPSNS_DRIVER_KUBER,                    /**< driver kuber */
-        APPSNS_DRIVER_MTS,                      /**< driver mts */
     
         APPSNS_DRIVER_NB,
     } t_eAPPSNS_Drivers;
@@ -71,14 +68,16 @@
 	//-----------------------------ENUM TYPES-----------------------------//
     typedef enum 
     {
-        APPSNS_SENSOR_DISABLE = 0,          /**< The sensor is unused in a system configuration */
-        APPSNS_SENSOR_ENABLE                /**< The sensor is used in a system configuration */
+        APPSNS_SENSOR_STATE_DISABLE = 0,          /**< The sensor is unused in a system configuration */
+        APPSNS_SENSOR_STATE_ENABLE,               /**< The sensor is used in a system configuration */
+        APPSNS_SENSOR_STATE_NB                    /**< Number of sensor state */
     } t_eAPPSNS_SensorState;
 
     typedef enum 
     {
-        APPSNS_DRIVER_DISABLE = 0,          /**< The driver is unused in a system configuration */
-        APPSNS_DRIVER_ENABLE                /**< The driver is used in a system configuration */
+        APPSNS_DRIVER_STATE_DISABLE = 0,          /**< The driver is unused in a system configuration */
+        APPSNS_DRIVER_STATE_ENABLE,                /**< The driver is used in a system configuration */
+        APPSNS_DRIVER_STATE_NB,                    /**< Number of driver state */
     } t_eAPPSNS_DrvState;
 	/* CAUTION : Automatic generated code section for Structure: Start */
 

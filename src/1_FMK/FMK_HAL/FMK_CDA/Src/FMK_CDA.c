@@ -1,4 +1,4 @@
-/*********************************************************************
+/**
  * @file        FMK_IO.c
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n
@@ -595,6 +595,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
     t_eReturnState Ret_e = RC_OK;
     HAL_StatusTypeDef BspRet_e = HAL_OK;
     ADC_InitTypeDef *bspAdcInit_s;
+    t_bool setAdc_NVIC_b = False;
 
     if (f_Adc_e > FMKCDA_ADC_NB || f_HwAdcCfg_e > FMKCDA_ADC_CFG_NB)
     {
@@ -640,6 +641,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             bspAdcInit_s->DMAContinuousRequests = ENABLE;
             bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
             bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+            setAdc_NVIC_b = True;
             break;
         }
         case FMKCDA_ADC_CFG_SCAN_INTERRUPT:
@@ -660,6 +662,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             bspAdcInit_s->DMAContinuousRequests = ENABLE;
             bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
             bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+            setAdc_NVIC_b = True;
             break;
         }
         case FMKCDA_ADC_CFG_TRIGGERED_REGISTER:
@@ -690,6 +693,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             bspAdcInit_s->DMAContinuousRequests = ENABLE;
             bspAdcInit_s->ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC4; // Example trigger source
             bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+            setAdc_NVIC_b = True;
             break;
         }
         case FMKCDA_ADC_CFG_NB:
@@ -698,6 +702,11 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
         }
         // CAllBsp Func
         Ret_e = FMKCPU_Set_HwClock(g_AdcInfo_as[f_Adc_e].clock_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
+        if((Ret_e == RC_OK) 
+        && setAdc_NVIC_b == (t_bool)True)
+        {
+            Ret_e = FMKCPU_Set_NVICState(FMKCPU_NVIC_ADC1_IRQN, FMKCPU_NVIC_OPE_ENABLE);
+        }
         if (Ret_e == RC_OK)
         {
             BspRet_e = HAL_ADC_Init(&g_AdcInfo_as[f_Adc_e].BspInit_s);
@@ -750,6 +759,7 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
             {
                 // update mapping
                 g_AdcBuffer_as[f_Adc_e].BspChnlmapp[g_counterRank_au8[f_Adc_e]] = f_channel_e;
+                // update info
                 g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlConfigured_b = (t_bool)True;
                 g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlUsed_b = (t_bool)True;
                 g_counterRank_au8[f_Adc_e] += (t_uint8)1;

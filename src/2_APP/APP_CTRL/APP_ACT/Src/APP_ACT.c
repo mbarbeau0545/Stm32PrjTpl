@@ -50,9 +50,9 @@
 /* CAUTION : Automatic generated code section for Variable: Start */
 /**< Variable for Actuators Drivers State*/
 t_eAPPACT_ActuatorState g_actState_ae[APPACT_ACTUATOR_NB] = {
-    APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_TOMATE
-    APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_COURGETTE
-    APPACT_DRIVER_ENABLE, // APPACT_DRIVER_CMD_IRRIGVALVE_CAROTTE
+    APPACT_ACTUATOR_STATE_ENABLE, // APPACT_ACTUATOR_CMD_IRRIGVALVE_TOMATE
+    APPACT_ACTUATOR_STATE_ENABLE, // APPACT_ACTUATOR_CMD_IRRIGVALVE_COURGETTE
+    APPACT_ACTUATOR_STATE_ENABLE, // APPACT_ACTUATOR_CMD_IRRIGVALVE_CAROTTE
 };
 
 /**< Variable for Actuators Drivers State*/
@@ -219,6 +219,47 @@ t_eReturnState APPACT_Set_ActValue(t_eAPPACT_Actuators f_actuator_e, t_sint16 f_
 
     return Ret_e;    
 }
+
+/*********************************
+ * APPACT_Get_ActuatorState
+ *********************************/
+t_eReturnState APPACT_Set_ActuatorState(t_eAPPACT_Actuators f_Actuator_e, t_eAPPACT_ActuatorState f_ActState_e)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    if(f_Actuator_e > APPACT_ACTUATOR_NB
+    || f_ActState_e > APPACT_ACTUATOR_STATE_NB)
+    {
+        Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(Ret_e == RC_OK)
+    {
+        g_actState_ae[f_Actuator_e] = f_ActState_e;
+    }
+    return Ret_e;
+}
+
+/*********************************
+ * APPSNS_Get_SensorState
+ *********************************/
+t_eReturnState APPACT_Get_ActuatorState(t_eAPPACT_Actuators f_Actuator_e, t_eAPPACT_ActuatorState *f_ActState_pe)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    if(f_Actuator_e > APPACT_ACTUATOR_NB)
+    {
+        Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(f_ActState_pe == (t_eAPPACT_ActuatorState *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_ActState_pe =  g_actState_ae[f_Actuator_e];
+    }
+    return Ret_e;
+}
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
@@ -239,7 +280,7 @@ static t_eReturnState s_APPACT_PreOperational(void)
         {
             for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPACT_DRIVER_NB) && (Ret_e == RC_OK) ; LLI_u8++)
             {
-                if(g_ActDrvState_ae[LLI_u8] == APPACT_DRIVER_ENABLE)
+                if(g_ActDrvState_ae[LLI_u8] == APPACT_DRIVER_STATE_ENABLE)
                 {
                     if(c_AppAct_SysDrv_apf[LLI_u8].Init_pcb != (t_cbAppAct_DrvInit *)NULL_FONCTION)
                     {
@@ -257,7 +298,7 @@ static t_eReturnState s_APPACT_PreOperational(void)
         {// then config the sensors only if the Sensors is used which means in "enable"
             while((ActCfgCnt_u8 < (t_uint8)APPACT_CFG_NB_PER_CYCLE) && (Ret_e == RC_OK))
             {
-                if(g_actState_ae[LLActCfg_u8] == APPACT_ACTUATOR_ENABLE)
+                if(g_actState_ae[LLActCfg_u8] == APPACT_ACTUATOR_STATE_ENABLE)
                 {
                     if(c_AppAct_SysAct_apf[LLActCfg_u8].SetCfg_pcb != (t_cbAppAct_SetActCfg *)NULL_FONCTION)
                     {
@@ -297,7 +338,7 @@ static t_eReturnState s_APPACT_Operational(void)
     {
         for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPACT_DRIVER_NB) && (Ret_e == RC_OK); LLI_u8++)
         {
-            if(g_ActDrvState_ae[LLI_u8] == APPACT_DRIVER_ENABLE)
+            if(g_ActDrvState_ae[LLI_u8] == APPACT_DRIVER_STATE_ENABLE)
             {
                 if(c_AppAct_SysDrv_apf[LLI_u8].Cyclic_pcb != (t_cbAppAct_DrvCyclic *)NULL_FONCTION)
                 {

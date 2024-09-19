@@ -1,4 +1,4 @@
-/*********************************************************************
+/**
  * @file        FMK_CPU.c
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n
@@ -143,18 +143,18 @@ static t_eReturnState s_FMKCPU_Set_BspTimerInit(t_sFMKCPU_TimerInfo * f_timer_ps
                                                   t_uint32 f_clockDivision_u32,
                                                   t_uint32 f_autoRePreload_u32);
 /**
-    *
-    *	@brief      Function to get the bsp channel
-    *
-    *	@param[in]  f_channel_e              : enum value for the channel, value from @ref t_eFMKCPU_InterruptChnl
-    *	@param[in]  f_bspChnl_pu32           : storage for bsp channel.\n
-    *
-    *  @retval RC_OK                             @ref RC_OK
-    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
-    *  @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
-    *  @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
-    *
-    */
+*
+*	@brief      Function to get the bsp channel
+*
+*	@param[in]  f_channel_e              : enum value for the channel, value from @ref t_eFMKCPU_InterruptChnl
+*	@param[in]  f_bspChnl_pu32           : storage for bsp channel.\n
+*
+*  @retval RC_OK                             @ref RC_OK
+*  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+*  @retval RC_ERROR_PTR_NULL                 @ref RC_ERROR_PTR_NULL
+*  @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
+*
+*/
 static t_eReturnState s_FMKCPU_Get_BspChannel(t_eFMKCPU_InterruptChnl f_channel_e, t_uint32 *f_bspChnl_pu32);
 /**
  *
@@ -415,15 +415,13 @@ t_eReturnState FMKCPU_Set_SysClockCfg(void)
 /*********************************
  * FMKCPU_Set_NVICState
  *********************************/
-t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e,
-                                    t_eFMKCPU_NVICPriority f_priority_e,
-                                    t_eFMKCPU_NVIC_Ope f_OpeState_e)
+t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e, t_eFMKCPU_NVIC_Ope f_OpeState_e)
 {
     t_eReturnState Ret_e = RC_OK;
     t_uint32 BspPriority_u32 = 0;
     IRQn_Type bspIRQN_e;
 
-    if (f_IRQN_e > (t_eFMKCPU_IRQNType)FMKCPU_NVIC_NB || f_priority_e > FMKCPU_NVIC_PRIORITY_NB || f_OpeState_e > FMKCPU_NVIC_OPE_NB)
+    if (f_IRQN_e > (t_eFMKCPU_IRQNType)FMKCPU_NVIC_NB || f_OpeState_e > FMKCPU_NVIC_OPE_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -437,7 +435,7 @@ t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e,
         {
             case FMKCPU_NVIC_OPE_ENABLE:
             { // Get the bspPriority using t_eFMKCPU_NVICPriority
-                Ret_e = s_FMKCPU_Get_BspNVICPriority(f_priority_e, &BspPriority_u32);
+                Ret_e = s_FMKCPU_Get_BspNVICPriority(c_FMKCPU_IRQNPriority_ae[f_IRQN_e], &BspPriority_u32);
                 if (Ret_e == RC_OK)
                 {
                     HAL_NVIC_SetPriority((IRQn_Type)bspIRQN_e, BspPriority_u32, 0);
@@ -521,7 +519,7 @@ t_eReturnState FMKCPU_Set_WwdgCfg(t_eFMKCPu_WwdgResetPeriod f_period_e)
     Ret_e = FMKCPU_Set_HwClock(FMKCPU_RCC_CLK_WWDG, FMKCPU_CLOCKPORT_OPE_ENABLE);
     if(Ret_e == RC_OK)
     {
-        Ret_e = FMKCPU_Set_NVICState(WWDG_IRQn,FMKCPU_NVIC_PRIORITY_HIGH ,FMKCPU_NVIC_OPE_ENABLE);
+        Ret_e = FMKCPU_Set_NVICState(FMKCPU_NVIC_WWDG_IRQN ,FMKCPU_NVIC_OPE_ENABLE);
     }
     if(Ret_e == RC_OK)
     {
@@ -1030,12 +1028,7 @@ static t_eReturnState s_FMKCPU_PreOperational(void)
 {
     t_eReturnState Ret_e = RC_OK;
 
-    // set sys confgiguration 
-    Ret_e = FMKCPU_Set_SysClockCfg();
-    if(Ret_e == RC_OK)
-    {
-        Ret_e = FMKCPU_Set_WwdgCfg((t_eFMKCPu_WwdgResetPeriod)FMKCPU_WWDG_RESET_CFG);
-    }
+    
 
     return Ret_e;
 }
@@ -1342,9 +1335,7 @@ static t_eReturnState s_FMKCPU_Set_HwChannelState(t_eFMKCPU_Timer f_timer_e,
                     // call the right HAL function Polling or Interrupt mode
                     if (g_TimerInfo_as[f_timer_e].IsNVICTimerEnable_b == (t_bool)False)
                     {
-                        Ret_e = FMKCPU_Set_NVICState(g_TimerInfo_as[f_timer_e].IRQNType_e,
-                                                    c_FMKCPU_IRQNPriority_ae[g_TimerInfo_as[f_timer_e].IRQNType_e],
-                                                    FMKCPU_NVIC_OPE_ENABLE);
+                        Ret_e = FMKCPU_Set_NVICState(g_TimerInfo_as[f_timer_e].IRQNType_e, FMKCPU_NVIC_OPE_ENABLE);
                     }
                     if (Ret_e == RC_OK)
                     {
@@ -1373,9 +1364,7 @@ static t_eReturnState s_FMKCPU_Set_HwChannelState(t_eFMKCPU_Timer f_timer_e,
                 {
                     if (g_TimerInfo_as[f_timer_e].IsNVICTimerEnable_b == (t_bool)True)
                     {
-                        Ret_e = FMKCPU_Set_NVICState(g_TimerInfo_as[f_timer_e].IRQNType_e,
-                                                    c_FMKCPU_IRQNPriority_ae[g_TimerInfo_as[f_timer_e].IRQNType_e],
-                                                    FMKCPU_NVIC_OPE_DISABLE);
+                        Ret_e = FMKCPU_Set_NVICState(g_TimerInfo_as[f_timer_e].IRQNType_e, FMKCPU_NVIC_OPE_DISABLE);
                     }
                     if (Ret_e == RC_OK)
                     {

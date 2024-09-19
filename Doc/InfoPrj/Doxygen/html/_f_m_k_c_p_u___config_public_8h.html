@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('_f_m_k_c_p_u___config_public_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,14 +96,9 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_b982bb86fcced66b9d09fd08cfb2e628.html">FMK_CFG</a></li><li class="navelem"><a class="el" href="dir_9c4d48a77d14f5b995cfce877f8c6c30.html">FMKCFG_ConfigFiles</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">FMKCPU_ConfigPublic.h File Reference</div></div>
 </div><!--header-->
@@ -100,6 +109,11 @@ $(function(){ initResizable(false); });
 </div>
 <p><a href="_f_m_k_c_p_u___config_public_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aefcda5a608148d926192638f2ba50ec9" id="r_aefcda5a608148d926192638f2ba50ec9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefcda5a608148d926192638f2ba50ec9">FMKCPU_WWDG_RESET_CFG</a>&#160;&#160;&#160;<a class="el" href="#a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d">FMKCPU_WWDG_RESET_100MS</a></td></tr>
+<tr class="separator:aefcda5a608148d926192638f2ba50ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a17696e6a68cdf4f872408b479c0e1bd7" id="r_a17696e6a68cdf4f872408b479c0e1bd7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17696e6a68cdf4f872408b479c0e1bd7">t_eFMKCPU_Timer</a> { <br />
@@ -206,7 +220,6 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="#a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81">FMKCPU_HWTIM_CFG_EVNT</a>
 , <a class="el" href="#a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8">FMKCPU_HWTIM_CFG_ECDR</a>
-, <a class="el" href="#a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583">FMKCPU_HWTIM_CFG_TRGR</a>
 , <a class="el" href="#a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04">FMKCPU_HWTIM_CFG_NB</a>
 <br />
  }</td></tr>
@@ -228,6 +241,22 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:a25152b931793a54096307a6aea7af3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aefcda5a608148d926192638f2ba50ec9" name="aefcda5a608148d926192638f2ba50ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefcda5a608148d926192638f2ba50ec9">&#9670;&#160;</a></span>FMKCPU_WWDG_RESET_CFG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FMKCPU_WWDG_RESET_CFG&#160;&#160;&#160;<a class="el" href="#a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d">FMKCPU_WWDG_RESET_100MS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>default watchdogs configuration </p>
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a1667f208dff1f64a5c256a8851c480dc" name="a1667f208dff1f64a5c256a8851c480dc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1667f208dff1f64a5c256a8851c480dc">&#9670;&#160;</a></span>t_eFMKCPU_ClockPort</h2>
@@ -336,9 +365,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81" name="a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81"></a>FMKCPU_HWTIM_CFG_EVNT&#160;</td><td class="fielddoc"><p>Timer configuration in Event mode </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8" name="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8"></a>FMKCPU_HWTIM_CFG_ECDR&#160;</td><td class="fielddoc"><p>Timer configuration in j'saisplus mode </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583" name="a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583"></a>FMKCPU_HWTIM_CFG_TRGR&#160;</td><td class="fielddoc"><p>Timer configuration in trigger mode </p>
+<tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8" name="a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8"></a>FMKCPU_HWTIM_CFG_ECDR&#160;</td><td class="fielddoc"><p>Timer configuration in encoder mode </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04" name="a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04"></a>FMKCPU_HWTIM_CFG_NB&#160;</td><td class="fielddoc"><p>Number of timer configuration mode </p>
 </td></tr>
@@ -519,10 +546,13 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_b982bb86fcced66b9d09fd08cfb2e628.html">FMK_CFG</a></li><li class="navelem"><a class="el" href="dir_9c4d48a77d14f5b995cfce877f8c6c30.html">FMKCFG_ConfigFiles</a></li><li class="navelem"><a class="el" href="_f_m_k_c_p_u___config_public_8h.html">FMKCPU_ConfigPublic.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,19 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="doc-content">
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('classes.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -92,13 +104,15 @@ $(function(){ initResizable(false); });
 <div class="classindex">
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_T" name="letter_T">T</a></dt>
-<dd><a class="el" href="structt__s_a_p_p_a_c_t___sys_act_func.html">t_sAPPACT_SysActFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_a_c_t___sys_drv_func.html">t_sAPPACT_SysDrvFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_a_c_t___value_info.html">t_sAPPACT_ValueInfo</a></dd><dd><a class="el" href="structt__s_a_p_p_s_n_s___sys_drv_func.html">t_sAPPSNS_SysDrvFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_s_n_s___sys_sns_func.html">t_sAPPSNS_SysSnsFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_s_n_s___value_info.html">t_sAPPSNS_ValueInfo</a></dd><dd><a class="el" href="structt__s_app_sys___sys_func.html">t_sAppSys_SysFunc</a></dd><dd><a class="el" href="structt__s_f_m_k_c_d_a___adc_buffer.html">t_sFMKCDA_AdcBuffer</a></dd><dd><a class="el" href="structt__s_f_m_k_c_d_a___adc_info.html">t_sFMKCDA_AdcInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_c_d_a___chnl_info.html">t_sFMKCDA_ChnlInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___bsp_timer_cfg.html">t_sFMKCPU_BspTimerCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___bsp_wwdg_cfg.html">t_sFMKCPU_BspWwdgCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___chnl_info.html">t_sFMKCPU_ChnlInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___clk_func.html">t_sFMKCPU_ClkFunc</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___tim_channel_func.html">t_sFMKCPU_TimChannelFunc</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___timer_info.html">t_sFMKCPU_TimerInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___ana_adc_cfg.html">t_sFMKIO_AnaAdcCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___bsp_evnt_sig_cfg.html">t_sFMKIO_BspEvntSigCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___bsp_sig_cfg.html">t_sFMKIO_BspSigCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___bsp_timer_sig_cfg.html">t_sFMKIO_BspTimerSigCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___sig_info.html">t_sFMKIO_SigInfo</a></dd></dl>
+<dd><a class="el" href="structt__s_a_p_p_a_c_t___sys_act_func.html">t_sAPPACT_SysActFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_a_c_t___sys_drv_func.html">t_sAPPACT_SysDrvFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_a_c_t___value_info.html">t_sAPPACT_ValueInfo</a></dd><dd><a class="el" href="structt__s_a_p_p_s_n_s___sys_drv_func.html">t_sAPPSNS_SysDrvFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_s_n_s___sys_sns_func.html">t_sAPPSNS_SysSnsFunc</a></dd><dd><a class="el" href="structt__s_a_p_p_s_n_s___value_info.html">t_sAPPSNS_ValueInfo</a></dd><dd><a class="el" href="structt__s_app_sys___sys_func.html">t_sAppSys_SysFunc</a></dd><dd><a class="el" href="structt__s_f_m_k_c_d_a___adc_buffer.html">t_sFMKCDA_AdcBuffer</a></dd><dd><a class="el" href="structt__s_f_m_k_c_d_a___adc_info.html">t_sFMKCDA_AdcInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_c_d_a___chnl_info.html">t_sFMKCDA_ChnlInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___bsp_timer_cfg.html">t_sFMKCPU_BspTimerCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___bsp_wwdg_cfg.html">t_sFMKCPU_BspWwdgCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___chnl_info.html">t_sFMKCPU_ChnlInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___clk_func.html">t_sFMKCPU_ClkFunc</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___tim_channel_func.html">t_sFMKCPU_TimChannelFunc</a></dd><dd><a class="el" href="structt__s_f_m_k_c_p_u___timer_info.html">t_sFMKCPU_TimerInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___ana_adc_cfg.html">t_sFMKIO_AnaAdcCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___ana_pwm_sig_info.html">t_sFMKIO_AnaPwmSigInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___bsp_evnt_sig_cfg.html">t_sFMKIO_BspEvntSigCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___bsp_sig_cfg.html">t_sFMKIO_BspSigCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___bsp_timer_sig_cfg.html">t_sFMKIO_BspTimerSigCfg</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___dig_sig_info.html">t_sFMKIO_DigSigInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___in_evnt_sig_info.html">t_sFMKIO_InEvntSigInfo</a></dd><dd><a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html">t_sFMKIO_InFreqSigInfo</a></dd></dl>
 </div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

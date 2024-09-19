@@ -16,6 +16,10 @@ const \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a2196bfb127e600673166e06e
 \mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}} \mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_info_a13d8d565e89ff016320dbbd79d600705}{Is\+Adc\+Configured\+\_\+b}}
 \item 
 \mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}} \mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_info_a55a7382da87fbedff41c80d4932601b6}{Is\+Adc\+Running\+\_\+b}}
+\item 
+\mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}} \mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_info_a989daf8b8e7d3a5dc6c5cf574c330ad3}{flag\+Err\+Detected\+\_\+b}}
+\item 
+\mbox{\hyperlink{_f_m_k___c_d_a_8h_a094a68e7da206f421e2a0a092d7b8193}{t\+\_\+e\+FMKCDA\+\_\+\+Chnl\+Err\+State}} \mbox{\hyperlink{structt__s_f_m_k_c_d_a___adc_info_a69012301fc4ad54e11e65800efae4c61}{Error\+\_\+e}}
 \end{DoxyCompactItemize}
 
 
@@ -38,7 +42,19 @@ Structure channel information for each channel \Hypertarget{structt__s_f_m_k_c_d
 {\footnotesize\ttfamily \label{structt__s_f_m_k_c_d_a___adc_info_a13df327cc2145d1c2a1ca2caaff5772d} 
 const \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dc}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port}} clock\+\_\+e}
 
-constant to store the clock for each ADC \Hypertarget{structt__s_f_m_k_c_d_a___adc_info_adb0f61b7d069ec5be2b87694fb7dce1c}\index{t\_sFMKCDA\_AdcInfo@{t\_sFMKCDA\_AdcInfo}!HwCfg\_e@{HwCfg\_e}}
+constant to store the clock for each ADC \Hypertarget{structt__s_f_m_k_c_d_a___adc_info_a69012301fc4ad54e11e65800efae4c61}\index{t\_sFMKCDA\_AdcInfo@{t\_sFMKCDA\_AdcInfo}!Error\_e@{Error\_e}}
+\index{Error\_e@{Error\_e}!t\_sFMKCDA\_AdcInfo@{t\_sFMKCDA\_AdcInfo}}
+\doxysubsubsection{\texorpdfstring{Error\_e}{Error\_e}}
+{\footnotesize\ttfamily \label{structt__s_f_m_k_c_d_a___adc_info_a69012301fc4ad54e11e65800efae4c61} 
+\mbox{\hyperlink{_f_m_k___c_d_a_8h_a094a68e7da206f421e2a0a092d7b8193}{t\+\_\+e\+FMKCDA\+\_\+\+Chnl\+Err\+State}} Error\+\_\+e}
+
+Store the adc error status \Hypertarget{structt__s_f_m_k_c_d_a___adc_info_a989daf8b8e7d3a5dc6c5cf574c330ad3}\index{t\_sFMKCDA\_AdcInfo@{t\_sFMKCDA\_AdcInfo}!flagErrDetected\_b@{flagErrDetected\_b}}
+\index{flagErrDetected\_b@{flagErrDetected\_b}!t\_sFMKCDA\_AdcInfo@{t\_sFMKCDA\_AdcInfo}}
+\doxysubsubsection{\texorpdfstring{flagErrDetected\_b}{flagErrDetected\_b}}
+{\footnotesize\ttfamily \label{structt__s_f_m_k_c_d_a___adc_info_a989daf8b8e7d3a5dc6c5cf574c330ad3} 
+\mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}} flag\+Err\+Detected\+\_\+b}
+
+Flag in DMA/\+Interrupt mode Error Callback has been call \Hypertarget{structt__s_f_m_k_c_d_a___adc_info_adb0f61b7d069ec5be2b87694fb7dce1c}\index{t\_sFMKCDA\_AdcInfo@{t\_sFMKCDA\_AdcInfo}!HwCfg\_e@{HwCfg\_e}}
 \index{HwCfg\_e@{HwCfg\_e}!t\_sFMKCDA\_AdcInfo@{t\_sFMKCDA\_AdcInfo}}
 \doxysubsubsection{\texorpdfstring{HwCfg\_e}{HwCfg\_e}}
 {\footnotesize\ttfamily \label{structt__s_f_m_k_c_d_a___adc_info_adb0f61b7d069ec5be2b87694fb7dce1c} 

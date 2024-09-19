@@ -1,4 +1,4 @@
-/*********************************************************************
+/**
  * @file        FMKIO.c
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n
@@ -527,7 +527,6 @@ t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e,
             {
 
                 Ret_e = FMKCPU_Set_NVICState(c_InEvntSigBspMap_as[f_signal_e].ExtiIRQN_e,
-                                             FMKCPU_NVIC_PRIORITY_MEDIUM,
                                              FMKCPU_NVIC_OPE_ENABLE);
                 if (Ret_e == RC_OK)
                 { // update info
@@ -1092,6 +1091,7 @@ static t_eReturnState s_FMKIO_MngSigFrequency(t_eFMKCPU_Timer f_timer_e, t_eFMKC
         Ret_e = RC_ERROR_LIMIT_REACHED;
     }
     
+    return Ret_e;
 }
 /*********************************
  * s_FMKIO_Get_BspPullMode

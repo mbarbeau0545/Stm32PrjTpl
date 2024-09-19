@@ -1,13 +1,25 @@
 \doxysection{C\+:/\+Users/mbarb/\+Documents/\+Platform\+IO/\+Projects/\+STM32\+\_\+tplprj/src/1\+\_\+\+FMK/\+FMK\+\_\+\+HAL/\+FKM\+\_\+\+IO/\+Src/\+FMK\+\_\+\+IO.c File Reference}
 \hypertarget{_f_m_k___i_o_8c}{}\label{_f_m_k___i_o_8c}\index{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FKM\_IO/Src/FMK\_IO.c@{C:/Users/mbarb/Documents/PlatformIO/Projects/STM32\_tplprj/src/1\_FMK/FMK\_HAL/FKM\_IO/Src/FMK\_IO.c}}
+
+
+Template\+\_\+\+Brief\+Description.  
+
+
 {\ttfamily \#include "{}stm32f0xx\+\_\+hal.\+h"{}}\newline
 {\ttfamily \#include "{}./\+FMK\+\_\+\+IO.\+h"{}}\newline
 {\ttfamily \#include "{}FMK\+\_\+\+CFG/\+FMKCFG\+\_\+\+Config\+Files/\+FMKIO\+\_\+\+Config\+Private.\+h"{}}\newline
 {\ttfamily \#include "{}FMK\+\_\+\+HAL/\+FMK\+\_\+\+CDA/\+Src/\+FMK\+\_\+\+CDA.\+h"{}}\newline
+{\ttfamily \#include "{}FMK\+\_\+\+HAL/\+FMK\+\_\+\+CPU/\+Src/\+FMK\+\_\+\+CPU.\+h"{}}\newline
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}}
+struct \mbox{\hyperlink{structt__s_f_m_k_i_o___dig_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Dig\+Sig\+Info}}
+\item 
+struct \mbox{\hyperlink{structt__s_f_m_k_i_o___ana_pwm_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Ana\+Pwm\+Sig\+Info}}
+\item 
+struct \mbox{\hyperlink{structt__s_f_m_k_i_o___in_freq_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+In\+Freq\+Sig\+Info}}
+\item 
+struct \mbox{\hyperlink{structt__s_f_m_k_i_o___in_evnt_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+In\+Evnt\+Sig\+Info}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
@@ -30,16 +42,16 @@ struct \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_aeaa02d76b4ee106625e64fbdfc2fea67}{FMKIO\+\_\+\+Set\+\_\+\+In\+Dig\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9}{t\+\_\+e\+FMKIO\+\_\+\+In\+Dig\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e)
 \begin{DoxyCompactList}\small\item\em Set an input in Digital configuration.~\newline
 . \end{DoxyCompactList}\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_a079baea6d65eef05882dd3309277d688}{FMKIO\+\_\+\+Set\+\_\+\+In\+Ana\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e)
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_a8a7cda3e94b320ef987f92c7eb99abd3}{FMKIO\+\_\+\+Set\+\_\+\+In\+Ana\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}f\+\_\+sig\+Err\+\_\+cb)
 \begin{DoxyCompactList}\small\item\em Set an input in Analog configuration.~\newline
 . \end{DoxyCompactList}\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_aad53059e83130d19cdd7f5aa8df2180f}{FMKIO\+\_\+\+Set\+\_\+\+In\+Freq\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4}{t\+\_\+e\+FMKIO\+\_\+\+In\+Freq\+Sig}} f\+\_\+signal\+\_\+e)
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_aad47916b4039c60fca665fbccc6ede50}{FMKIO\+\_\+\+Set\+\_\+\+In\+Freq\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4}{t\+\_\+e\+FMKIO\+\_\+\+In\+Freq\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a60771f72cddb58dc77c8221ee524b662}{t\+\_\+e\+FMKIO\+\_\+\+Sig\+Trig\+Cptr}} f\+\_\+trigger\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_af68f8299ee213fcfa642fdd8f9747bef}{t\+\_\+e\+FMKIO\+\_\+\+Freq\+Meas}} f\+\_\+freq\+Meas\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}f\+\_\+sig\+Err\+\_\+cb)
 \begin{DoxyCompactList}\small\item\em Set an input in frequency configuration.~\newline
 . \end{DoxyCompactList}\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_afd609eb9cd6cd452799a6a253a4ae5a2}{FMKIO\+\_\+\+Set\+\_\+\+In\+Evnt\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0}{t\+\_\+e\+FMKIO\+\_\+\+In\+Evnt\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a60771f72cddb58dc77c8221ee524b662}{t\+\_\+e\+FMKIO\+\_\+\+Sig\+Trig\+Cptr}} f\+\_\+trigger\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_ae0d88e24116f25ee039e905008af6a25}{t\+\_\+cb\+FMKIO\+\_\+\+Event\+Func}} \texorpdfstring{$\ast$}{*}f\+\_\+\+Evnt\+\_\+cb)
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_a35864ab6fec1e051455a5a6db6dfb718}{FMKIO\+\_\+\+Set\+\_\+\+In\+Evnt\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0}{t\+\_\+e\+FMKIO\+\_\+\+In\+Evnt\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a60771f72cddb58dc77c8221ee524b662}{t\+\_\+e\+FMKIO\+\_\+\+Sig\+Trig\+Cptr}} f\+\_\+trigger\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_ae0d88e24116f25ee039e905008af6a25}{t\+\_\+cb\+FMKIO\+\_\+\+Event\+Func}} \texorpdfstring{$\ast$}{*}f\+\_\+\+Evnt\+\_\+cb, \mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}f\+\_\+sig\+Err\+\_\+cb)
 \begin{DoxyCompactList}\small\item\em Set an intput in event configuration.~\newline
 . \end{DoxyCompactList}\item 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_ad83c85db82d3414554f9b912a79e6c91}{FMKIO\+\_\+\+Set\+\_\+\+Out\+Pwm\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+frequency\+\_\+u32, \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} f\+\_\+duty\+Cycle\+\_\+u16, \mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}} f\+\_\+start\+Now\+\_\+b)
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_a34e09a997d10fe6a0600024192e60cbc}{FMKIO\+\_\+\+Set\+\_\+\+Out\+Pwm\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} f\+\_\+frequency\+\_\+u32, \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} f\+\_\+duty\+Cycle\+\_\+u16, \mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}} f\+\_\+start\+Now\+\_\+b, \mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}f\+\_\+sig\+Err\+\_\+cb)
 \begin{DoxyCompactList}\small\item\em Set an output in PWM configuration.~\newline
 . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_ae9254905f9bb1daba6a585db07c1e566}{FMKIO\+\_\+\+Set\+\_\+\+Out\+Dig\+Sig\+Cfg}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaa}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Dig\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}} f\+\_\+pull\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_a950c0b1b828b4b0f79f24eed0d4728e4}{t\+\_\+e\+FMKIO\+\_\+\+Spd\+Mode}} f\+\_\+spd\+\_\+e)
@@ -52,7 +64,7 @@ struct \mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+
 \begin{DoxyCompactList}\small\item\em Update the duty\+Cycle for a PWM.~\newline
 . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_a120532637ac48a33372c12cd2f207f24}{FMKIO\+\_\+\+Get\+\_\+\+In\+Dig\+Sig\+Value}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9}{t\+\_\+e\+FMKIO\+\_\+\+In\+Dig\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_f_m_k___i_o_8h_ac2ebf5286266fefe2967274998b6340d}{t\+\_\+e\+FMKIO\+\_\+\+Dig\+Value}} \texorpdfstring{$\ast$}{*}f\+\_\+value\+\_\+pe)
-\begin{DoxyCompactList}\small\item\em Get the digital inout.~\newline
+\begin{DoxyCompactList}\small\item\em Get the digital input.~\newline
 . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} \mbox{\hyperlink{_f_m_k___i_o_8c_a8033b60bc130abd4da8b0d3e4410b9aa}{FMKIO\+\_\+\+Get\+\_\+\+In\+Ana\+Sig\+Value}} (\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig}} f\+\_\+signal\+\_\+e, \mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}} \texorpdfstring{$\ast$}{*}f\+\_\+value\+\_\+pu16)
 \begin{DoxyCompactList}\small\item\em Get the analog input.~\newline
@@ -71,22 +83,38 @@ void \mbox{\hyperlink{_f_m_k___i_o_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{HAL\+\_
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a5f4ee554081bb2f77dae5a2b9a8bc379}{g\+\_\+\+In\+Freq\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}
+\mbox{\hyperlink{structt__s_f_m_k_i_o___in_freq_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+In\+Freq\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_ad90aa30fbd1f5901ebdf740097a500df}{g\+\_\+\+In\+Freq\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}
 \item 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_aea7da4761390d2d3deb1b49d6bfd728b}{g\+\_\+\+In\+Ana\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGANA\+\_\+\+NB}}\mbox{]}
+\mbox{\hyperlink{structt__s_f_m_k_i_o___ana_pwm_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Ana\+Pwm\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a7ee8d636cca1627376d3641d84481245}{g\+\_\+\+In\+Ana\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGANA\+\_\+\+NB}}\mbox{]}
 \item 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a53d22296a81830900d065abe8a20b46c}{g\+\_\+\+In\+Dig\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9af9764c577b0f6788965b8188df594e1f}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}
+\mbox{\hyperlink{structt__s_f_m_k_i_o___dig_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Dig\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_abeec2a9309aede45d8bc06003d53a944}{g\+\_\+\+In\+Dig\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9af9764c577b0f6788965b8188df594e1f}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}
 \item 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a484d7cb701aea551b332590dd6cab0f2}{g\+\_\+\+In\+Evnt\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0a3c6c7e808c822cbbe3af496ebc284e0a}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGEVNT\+\_\+\+NB}}\mbox{]}
+\mbox{\hyperlink{structt__s_f_m_k_i_o___in_evnt_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+In\+Evnt\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a464e1247252d18cbb5391332f29dee8b}{g\+\_\+\+In\+Evnt\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0a3c6c7e808c822cbbe3af496ebc284e0a}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGEVNT\+\_\+\+NB}}\mbox{]}
 \item 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa}{g\+\_\+\+Out\+Pwm\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGPWM\+\_\+\+NB}}\mbox{]}
+\mbox{\hyperlink{structt__s_f_m_k_i_o___ana_pwm_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Ana\+Pwm\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_ad54856f158f0524f532843c6aab852bc}{g\+\_\+\+Out\+Pwm\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGPWM\+\_\+\+NB}}\mbox{]}
 \item 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1}{g\+\_\+\+Out\+Dig\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}
+\mbox{\hyperlink{structt__s_f_m_k_i_o___dig_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Dig\+Sig\+Info}} \mbox{\hyperlink{_f_m_k___i_o_8c_a76770fa11badf23f9e614597342e9e3d}{g\+\_\+\+Out\+Dig\+Sig\+Info\+\_\+as}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}
 \item 
 \mbox{\hyperlink{_f_m_k___c_p_u_8h_a7006a8100165413151d17dbe4b3a2def}{t\+\_\+e\+FMKCPU\+\_\+\+Clock\+Port\+Ope}} \mbox{\hyperlink{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}{g\+\_\+\+Is\+Gpio\+Clock\+Enable\+\_\+ae}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ada94b7006d66becfbea9fcb93aa75c26a4837541c9b691803117708ab63cb4edd}{FMKIO\+\_\+\+GPIO\+\_\+\+PORT\+\_\+\+NB}}\mbox{]}
-\item 
-\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} \mbox{\hyperlink{_f_m_k___i_o_8c_a6118019af9c356d15ae27deedfdd7e10}{g\+\_\+\+In\+Freq\+Sig\+Raw\+Value\+\_\+ua32}} \mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Template\+\_\+\+Brief\+Description. 
+
+\begin{DoxyNote}{Note}
+Template\+Details\+Description.~\newline
+ 
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+xxxxxx 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+jj/mm/yyyy 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -127,7 +155,7 @@ Get the analog input.~\newline
 
 \begin{DoxyNote}{Note}
 Once the configuration is done, this function call the FMKCDA to know the analog signal value.~\newline
- IMPORTANT -\/\texorpdfstring{$>$}{>} Depending on FMKCDA scan mode (the one used on V0.\+1) it may be possible that the conversion of all analog is not finished, in this case, the value return is 0 and Ret\+Code = RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION
+ IMPORTANT -\/\texorpdfstring{$>$}{>} Depending on FMKCDA scan mode (the one used on V0.\+1) it may be possible that the conversion of all analog is not finished, in this case, the value return is 0 and Ret\+Code = RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION If an error (shortcut or openload) is suspected errcallback function is called with debug\+Info 1 = FMKIO\+\_\+\+ANALOG\+\_\+\+OL\+\_\+\+DETECTED or FMKIO\+\_\+\+ANALOG\+\_\+\+SC\+\_\+\+DETECTED
 \end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
@@ -144,9 +172,11 @@ Once the configuration is done, this function call the FMKCDA to know the analog
 \hline
 {\em RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969aa5710a83f0780f20a2e9fc5f53f47bc2}{RC\+\_\+\+WARNING\+\_\+\+NO\+\_\+\+OPERATION} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969affe3f860cc558a7a6f78d6c9993cda4b}{RC\+\_\+\+ERROR\+\_\+\+BUSY} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_a120532637ac48a33372c12cd2f207f24}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Get\_InDigSigValue@{FMKIO\_Get\_InDigSigValue}}
@@ -157,7 +187,7 @@ Once the configuration is done, this function call the FMKCDA to know the analog
 
 
 
-Get the digital inout.~\newline
+Get the digital input.~\newline
 . 
 
 \begin{DoxyNote}{Note}
@@ -177,7 +207,9 @@ Once the configuration is done, this function call hal library to know the state
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969affe3f860cc558a7a6f78d6c9993cda4b}{RC\+\_\+\+ERROR\+\_\+\+BUSY} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_af0ad4bd498e8fce8bcfc8d46ad8e43de}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Get\_InFreqSigValue@{FMKIO\_Get\_InFreqSigValue}}
@@ -192,7 +224,10 @@ Get the frequency input.~\newline
 . 
 
 \begin{DoxyNote}{Note}
-Once the configuration is done, this function store the frequency value in f\+\_\+value\+\_\+pu32.~\newline
+Once the configuration is done, a function is called based on the meas trigger give in configuration function.~\newline
+ In the interrupt function we either increment a counter (count mode) or get the channel capture value and store it.~\newline
+ In this function we either get this value or the last saved capture value if an interruption is in progress and interruption function is writing in countainer "{}value"{}.~\newline
+ If this happens retcode WARNING\+\_\+\+BUSY is set and the calcul will be made on saved value.~\newline
  Depending on configuration, this value is either a coutner, a period (ms) or a frequency (Hz)
 \end{DoxyNote}
 
@@ -210,7 +245,11 @@ Once the configuration is done, this function store the frequency value in f\+\_
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+\hline
+{\em RC\+\_\+\+WARNING\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a8b9ebbf8efc99649db6d574cad11a175}{RC\+\_\+\+WARNING\+\_\+\+BUSY} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969affe3f860cc558a7a6f78d6c9993cda4b}{RC\+\_\+\+ERROR\+\_\+\+BUSY} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_a824b03b20cc051862161c3fdf680d39c}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Get\_OutDigSigValue@{FMKIO\_Get\_OutDigSigValue}}
@@ -238,11 +277,13 @@ Once the configuration is done, this function ask HAL\+\_\+library the value of 
 \begin{DoxyRetVals}{Return values}
 {\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969affe3f860cc558a7a6f78d6c9993cda4b}{RC\+\_\+\+ERROR\+\_\+\+BUSY} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_abbdf4f04ee29c505dcaa5258c834cde9}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Get\_OutPwmSigValue@{FMKIO\_Get\_OutPwmSigValue}}
@@ -270,11 +311,13 @@ Once the configuration is done, this function ask FMKCPU the value of the dedica
 \begin{DoxyRetVals}{Return values}
 {\em RC\+\_\+\+OK} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14}{RC\+\_\+\+OK} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969affe3f860cc558a7a6f78d6c9993cda4b}{RC\+\_\+\+ERROR\+\_\+\+BUSY} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_ace70114f5f71668223497871df999f6c}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_GetState@{FMKIO\_GetState}}
@@ -314,11 +357,11 @@ Perform all Init action for this module.~\newline
 Set to default value all globals structure that store information for each signals.~\newline
 
 \end{DoxyNote}
-\Hypertarget{_f_m_k___i_o_8c_a079baea6d65eef05882dd3309277d688}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InAnaSigCfg@{FMKIO\_Set\_InAnaSigCfg}}
+\Hypertarget{_f_m_k___i_o_8c_a8a7cda3e94b320ef987f92c7eb99abd3}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InAnaSigCfg@{FMKIO\_Set\_InAnaSigCfg}}
 \index{FMKIO\_Set\_InAnaSigCfg@{FMKIO\_Set\_InAnaSigCfg}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{FMKIO\_Set\_InAnaSigCfg()}{FMKIO\_Set\_InAnaSigCfg()}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a079baea6d65eef05882dd3309277d688} 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+In\+Ana\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig}}}]{f\+\_\+signal\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}}}]{f\+\_\+pull\+\_\+e}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a8a7cda3e94b320ef987f92c7eb99abd3} 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+In\+Ana\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig}}}]{f\+\_\+signal\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}}}]{f\+\_\+pull\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+sig\+Err\+\_\+cb}{}\end{DoxyParamCaption})}
 
 
 
@@ -335,7 +378,9 @@ Allow the user to choose among analogs inputs.~\newline
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input analog signal, value from \doxylink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915}{t\+\_\+e\+FMKIO\+\_\+\+In\+Ana\+Sig} \\
 \hline
-\mbox{\texttt{ in}}  & {\em f\+\_\+pull\+\_\+e} & \+: the input pull mode, value from \doxylink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}\\
+\mbox{\texttt{ in}}  & {\em f\+\_\+pull\+\_\+e} & \+: the input pull mode, value from \doxylink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+sig\+Err\+\_\+cb} & \+: callbback function that will be called if an error occured\\
 \hline
 \end{DoxyParams}
 
@@ -380,11 +425,11 @@ Allow the user to choose among digitals inputs.~\newline
 {\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
 \hline
 \end{DoxyRetVals}
-\Hypertarget{_f_m_k___i_o_8c_afd609eb9cd6cd452799a6a253a4ae5a2}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InEvntSigCfg@{FMKIO\_Set\_InEvntSigCfg}}
+\Hypertarget{_f_m_k___i_o_8c_a35864ab6fec1e051455a5a6db6dfb718}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InEvntSigCfg@{FMKIO\_Set\_InEvntSigCfg}}
 \index{FMKIO\_Set\_InEvntSigCfg@{FMKIO\_Set\_InEvntSigCfg}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{FMKIO\_Set\_InEvntSigCfg()}{FMKIO\_Set\_InEvntSigCfg()}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_afd609eb9cd6cd452799a6a253a4ae5a2} 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+In\+Evnt\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0}{t\+\_\+e\+FMKIO\+\_\+\+In\+Evnt\+Sig}}}]{f\+\_\+signal\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}}}]{f\+\_\+pull\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a60771f72cddb58dc77c8221ee524b662}{t\+\_\+e\+FMKIO\+\_\+\+Sig\+Trig\+Cptr}}}]{f\+\_\+trigger\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_ae0d88e24116f25ee039e905008af6a25}{t\+\_\+cb\+FMKIO\+\_\+\+Event\+Func}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+\+Evnt\+\_\+cb}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a35864ab6fec1e051455a5a6db6dfb718} 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+In\+Evnt\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0}{t\+\_\+e\+FMKIO\+\_\+\+In\+Evnt\+Sig}}}]{f\+\_\+signal\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}}}]{f\+\_\+pull\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a60771f72cddb58dc77c8221ee524b662}{t\+\_\+e\+FMKIO\+\_\+\+Sig\+Trig\+Cptr}}}]{f\+\_\+trigger\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_ae0d88e24116f25ee039e905008af6a25}{t\+\_\+cb\+FMKIO\+\_\+\+Event\+Func}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+\+Evnt\+\_\+cb}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+sig\+Err\+\_\+cb}{}\end{DoxyParamCaption})}
 
 
 
@@ -404,7 +449,9 @@ Allow the user to choose among event inputs.~\newline
 \hline
 \mbox{\texttt{ in}}  & {\em f\+\_\+trigger\+\_\+e} & \+: the detection mode, value from \doxylink{_f_m_k___i_o_8h_a60771f72cddb58dc77c8221ee524b662}{t\+\_\+e\+FMKIO\+\_\+\+Sig\+Trig\+Cptr} \\
 \hline
-\mbox{\texttt{ in}}  & {\em f\+\_\+\+Evnt\+\_\+cb} & \+: Function to call when the edge is detected by hardware\\
+\mbox{\texttt{ in}}  & {\em f\+\_\+\+Evnt\+\_\+cb} & \+: Function to call when the edge is detected by hardware \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+sig\+Err\+\_\+cb} & \+: callbback function that will be called if an error occured\\
 \hline
 \end{DoxyParams}
 
@@ -418,11 +465,11 @@ Allow the user to choose among event inputs.~\newline
 {\em RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6}{RC\+\_\+\+ERROR\+\_\+\+PTR\+\_\+\+NULL} \\
 \hline
 \end{DoxyRetVals}
-\Hypertarget{_f_m_k___i_o_8c_aad53059e83130d19cdd7f5aa8df2180f}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InFreqSigCfg@{FMKIO\_Set\_InFreqSigCfg}}
+\Hypertarget{_f_m_k___i_o_8c_aad47916b4039c60fca665fbccc6ede50}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_InFreqSigCfg@{FMKIO\_Set\_InFreqSigCfg}}
 \index{FMKIO\_Set\_InFreqSigCfg@{FMKIO\_Set\_InFreqSigCfg}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{FMKIO\_Set\_InFreqSigCfg()}{FMKIO\_Set\_InFreqSigCfg()}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_aad53059e83130d19cdd7f5aa8df2180f} 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+In\+Freq\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4}{t\+\_\+e\+FMKIO\+\_\+\+In\+Freq\+Sig}}}]{f\+\_\+signal\+\_\+e}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_aad47916b4039c60fca665fbccc6ede50} 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+In\+Freq\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4}{t\+\_\+e\+FMKIO\+\_\+\+In\+Freq\+Sig}}}]{f\+\_\+signal\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a60771f72cddb58dc77c8221ee524b662}{t\+\_\+e\+FMKIO\+\_\+\+Sig\+Trig\+Cptr}}}]{f\+\_\+trigger\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_af68f8299ee213fcfa642fdd8f9747bef}{t\+\_\+e\+FMKIO\+\_\+\+Freq\+Meas}}}]{f\+\_\+freq\+Meas\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+sig\+Err\+\_\+cb}{}\end{DoxyParamCaption})}
 
 
 
@@ -438,7 +485,9 @@ Allow the user to choose among frequencies inputs.~\newline
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em f\+\_\+signal\+\_\+e} & \+: the input frequency signal, a value from \doxylink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4}{t\+\_\+e\+FMKIO\+\_\+\+In\+Freq\+Sig} \\
 \hline
-\mbox{\texttt{ in}}  & {\em f\+\_\+meas\+Type\+\_\+e} & \+: the input pull mode, value from \doxylink{_f_m_k___i_o_8h_af68f8299ee213fcfa642fdd8f9747bef}{t\+\_\+e\+FMKIO\+\_\+\+Freq\+Meas}\\
+\mbox{\texttt{ in}}  & {\em f\+\_\+meas\+Type\+\_\+e} & \+: the input pull mode, value from \doxylink{_f_m_k___i_o_8h_af68f8299ee213fcfa642fdd8f9747bef}{t\+\_\+e\+FMKIO\+\_\+\+Freq\+Meas} \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+sig\+Err\+\_\+cb} & \+: callbback function that will be called if an error occured\\
 \hline
 \end{DoxyParams}
 
@@ -512,14 +561,16 @@ Once the configuration is done, this function update the state of the digital cy
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969affe3f860cc558a7a6f78d6c9993cda4b}{RC\+\_\+\+ERROR\+\_\+\+BUSY} \\
 \hline
 \end{DoxyRetVals}
-\Hypertarget{_f_m_k___i_o_8c_ad83c85db82d3414554f9b912a79e6c91}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_OutPwmSigCfg@{FMKIO\_Set\_OutPwmSigCfg}}
+\Hypertarget{_f_m_k___i_o_8c_a34e09a997d10fe6a0600024192e60cbc}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_Set\_OutPwmSigCfg@{FMKIO\_Set\_OutPwmSigCfg}}
 \index{FMKIO\_Set\_OutPwmSigCfg@{FMKIO\_Set\_OutPwmSigCfg}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{FMKIO\_Set\_OutPwmSigCfg()}{FMKIO\_Set\_OutPwmSigCfg()}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_ad83c85db82d3414554f9b912a79e6c91} 
-\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+Out\+Pwm\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig}}}]{f\+\_\+signal\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}}}]{f\+\_\+pull\+\_\+e}{, }\item[{\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}}}]{f\+\_\+frequency\+\_\+u32}{, }\item[{\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}}}]{f\+\_\+duty\+Cycle\+\_\+u16}{, }\item[{\mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}}}]{f\+\_\+start\+Now\+\_\+b}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a34e09a997d10fe6a0600024192e60cbc} 
+\mbox{\hyperlink{_type_common_8h_af3fc622932488c58b80868c563cdd969}{t\+\_\+e\+Return\+State}} FMKIO\+\_\+\+Set\+\_\+\+Out\+Pwm\+Sig\+Cfg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1f}{t\+\_\+e\+FMKIO\+\_\+\+Out\+Pwm\+Sig}}}]{f\+\_\+signal\+\_\+e}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_a199756b63e131199c6d9b412057fad86}{t\+\_\+e\+FMKIO\+\_\+\+Pull\+Mode}}}]{f\+\_\+pull\+\_\+e}{, }\item[{\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}}}]{f\+\_\+frequency\+\_\+u32}{, }\item[{\mbox{\hyperlink{_type_common_8h_a2f8b43fd51d852dadf2f4e8fb70b6a50}{t\+\_\+uint16}}}]{f\+\_\+duty\+Cycle\+\_\+u16}{, }\item[{\mbox{\hyperlink{_type_common_8h_a95bcce01270fd92083b6d269f921e662}{t\+\_\+bool}}}]{f\+\_\+start\+Now\+\_\+b}{, }\item[{\mbox{\hyperlink{_f_m_k___i_o_8h_ae6ae0c93d2475d7ed47dc19b9823b765}{t\+\_\+cb\+FMKIO\+\_\+\+Sig\+Error\+Mngmt}} \texorpdfstring{$\ast$}{*}}]{f\+\_\+sig\+Err\+\_\+cb}{}\end{DoxyParamCaption})}
 
 
 
@@ -543,7 +594,9 @@ Allow the user to choose among pwm intputs.~\newline
 \hline
 \mbox{\texttt{ in}}  & {\em f\+\_\+duty\+Cycle\+\_\+u16} & \+: the dutycyle, value between 0 (0\%) -\/ 1000 (100\%) \\
 \hline
-\mbox{\texttt{ in}}  & {\em f\+\_\+puf\+\_\+start\+Now\+\_\+bll\+\_\+e} & \+: wether or not the pulse generation should start immediately\\
+\mbox{\texttt{ in}}  & {\em f\+\_\+puf\+\_\+start\+Now\+\_\+bll\+\_\+e} & \+: wether or not the pulse generation should start immediately \\
+\hline
+\mbox{\texttt{ in}}  & {\em f\+\_\+sig\+Err\+\_\+cb} & \+: callbback function that will be called if an error occured\\
 \hline
 \end{DoxyParams}
 
@@ -583,7 +636,9 @@ Once the configuration is done, this function update the dutycyle of the pwm. if
 \hline
 {\em RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba}{RC\+\_\+\+ERROR\+\_\+\+PARAM\+\_\+\+INVALID} \\
 \hline
-{\em RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c}{RC\+\_\+\+ERROR\+\_\+\+ALREADY\+\_\+\+CONFIGURED} \\
+{\em RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969ace922462c29c54b03b167480fe6a089c}{RC\+\_\+\+ERROR\+\_\+\+MISSING\+\_\+\+CONFIG} \\
+\hline
+{\em RC\+\_\+\+ERROR\+\_\+\+BUSY} & \doxylink{_type_common_8h_af3fc622932488c58b80868c563cdd969affe3f860cc558a7a6f78d6c9993cda4b}{RC\+\_\+\+ERROR\+\_\+\+BUSY} \\
 \hline
 \end{DoxyRetVals}
 \Hypertarget{_f_m_k___i_o_8c_af89cf198960b73b5a68d4798ec3837de}\index{FMK\_IO.c@{FMK\_IO.c}!FMKIO\_SetState@{FMKIO\_SetState}}
@@ -617,37 +672,31 @@ void HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Callback (\begin{DoxyParamCaption}\item[
 
 
 \doxysubsection{Variable Documentation}
-\Hypertarget{_f_m_k___i_o_8c_aea7da4761390d2d3deb1b49d6bfd728b}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InAnaSigInfo\_as@{g\_InAnaSigInfo\_as}}
+\Hypertarget{_f_m_k___i_o_8c_a7ee8d636cca1627376d3641d84481245}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InAnaSigInfo\_as@{g\_InAnaSigInfo\_as}}
 \index{g\_InAnaSigInfo\_as@{g\_InAnaSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InAnaSigInfo\_as}{g\_InAnaSigInfo\_as}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_aea7da4761390d2d3deb1b49d6bfd728b} 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Ana\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGANA\+\_\+\+NB}}\mbox{]}}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a7ee8d636cca1627376d3641d84481245} 
+\mbox{\hyperlink{structt__s_f_m_k_i_o___ana_pwm_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Ana\+Pwm\+Sig\+Info}} g\+\_\+\+In\+Ana\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGANA\+\_\+\+NB}}\mbox{]}}
 
-Signal information for input Analog \Hypertarget{_f_m_k___i_o_8c_a53d22296a81830900d065abe8a20b46c}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InDigSigInfo\_as@{g\_InDigSigInfo\_as}}
+Signal information for input Analog \Hypertarget{_f_m_k___i_o_8c_abeec2a9309aede45d8bc06003d53a944}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InDigSigInfo\_as@{g\_InDigSigInfo\_as}}
 \index{g\_InDigSigInfo\_as@{g\_InDigSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InDigSigInfo\_as}{g\_InDigSigInfo\_as}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a53d22296a81830900d065abe8a20b46c} 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Dig\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9af9764c577b0f6788965b8188df594e1f}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_abeec2a9309aede45d8bc06003d53a944} 
+\mbox{\hyperlink{structt__s_f_m_k_i_o___dig_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Dig\+Sig\+Info}} g\+\_\+\+In\+Dig\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a85d35757a43a973e804e4d39160733a9af9764c577b0f6788965b8188df594e1f}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}}
 
-Signal information for input Digital \Hypertarget{_f_m_k___i_o_8c_a484d7cb701aea551b332590dd6cab0f2}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InEvntSigInfo\_as@{g\_InEvntSigInfo\_as}}
+Signal information for input Digital \Hypertarget{_f_m_k___i_o_8c_a464e1247252d18cbb5391332f29dee8b}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InEvntSigInfo\_as@{g\_InEvntSigInfo\_as}}
 \index{g\_InEvntSigInfo\_as@{g\_InEvntSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InEvntSigInfo\_as}{g\_InEvntSigInfo\_as}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a484d7cb701aea551b332590dd6cab0f2} 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Evnt\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0a3c6c7e808c822cbbe3af496ebc284e0a}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGEVNT\+\_\+\+NB}}\mbox{]}}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a464e1247252d18cbb5391332f29dee8b} 
+\mbox{\hyperlink{structt__s_f_m_k_i_o___in_evnt_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+In\+Evnt\+Sig\+Info}} g\+\_\+\+In\+Evnt\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ab36786c32b52a47834f698f8956f9fe0a3c6c7e808c822cbbe3af496ebc284e0a}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGEVNT\+\_\+\+NB}}\mbox{]}}
 
-Signal information for input Event \Hypertarget{_f_m_k___i_o_8c_a5f4ee554081bb2f77dae5a2b9a8bc379}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InFreqSigInfo\_as@{g\_InFreqSigInfo\_as}}
+Signal information for input Event \Hypertarget{_f_m_k___i_o_8c_ad90aa30fbd1f5901ebdf740097a500df}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InFreqSigInfo\_as@{g\_InFreqSigInfo\_as}}
 \index{g\_InFreqSigInfo\_as@{g\_InFreqSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_InFreqSigInfo\_as}{g\_InFreqSigInfo\_as}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a5f4ee554081bb2f77dae5a2b9a8bc379} 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+In\+Freq\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_ad90aa30fbd1f5901ebdf740097a500df} 
+\mbox{\hyperlink{structt__s_f_m_k_i_o___in_freq_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+In\+Freq\+Sig\+Info}} g\+\_\+\+In\+Freq\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}}
 
-Signal information for input frequency \Hypertarget{_f_m_k___i_o_8c_a6118019af9c356d15ae27deedfdd7e10}\index{FMK\_IO.c@{FMK\_IO.c}!g\_InFreqSigRawValue\_ua32@{g\_InFreqSigRawValue\_ua32}}
-\index{g\_InFreqSigRawValue\_ua32@{g\_InFreqSigRawValue\_ua32}!FMK\_IO.c@{FMK\_IO.c}}
-\doxysubsubsection{\texorpdfstring{g\_InFreqSigRawValue\_ua32}{g\_InFreqSigRawValue\_ua32}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a6118019af9c356d15ae27deedfdd7e10} 
-\mbox{\hyperlink{_type_common_8h_a5543ed798da376a99db035f6ae6aaa1f}{t\+\_\+uint32}} g\+\_\+\+In\+Freq\+Sig\+Raw\+Value\+\_\+ua32\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab}{FMKIO\+\_\+\+INPUT\+\_\+\+SIGFREQ\+\_\+\+NB}}\mbox{]}}
-
-\texorpdfstring{$<$}{<} Variable to put the Signal Frequency value Module state \Hypertarget{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}\index{FMK\_IO.c@{FMK\_IO.c}!g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}}
+Signal information for input frequency \Hypertarget{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18}\index{FMK\_IO.c@{FMK\_IO.c}!g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}}
 \index{g\_IsGpioClockEnable\_ae@{g\_IsGpioClockEnable\_ae}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_IsGpioClockEnable\_ae}{g\_IsGpioClockEnable\_ae}}
 {\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a7e41daa8e269f4087583a8d44edd0e18} 
@@ -664,16 +713,16 @@ Signal information for input frequency \Hypertarget{_f_m_k___i_o_8c_a6118019af9c
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\texorpdfstring{$<$}{<} Variable to store the state of GPIO Clock \Hypertarget{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}}
+\texorpdfstring{$<$}{<} Variable to store the state of GPIO Clock \Hypertarget{_f_m_k___i_o_8c_a76770fa11badf23f9e614597342e9e3d}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}}
 \index{g\_OutDigSigInfo\_as@{g\_OutDigSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_OutDigSigInfo\_as}{g\_OutDigSigInfo\_as}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a0279857b0f72cc3f3bfbd95c0dcc03f1} 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+Out\+Dig\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a76770fa11badf23f9e614597342e9e3d} 
+\mbox{\hyperlink{structt__s_f_m_k_i_o___dig_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Dig\+Sig\+Info}} g\+\_\+\+Out\+Dig\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGDIG\+\_\+\+NB}}\mbox{]}}
 
-Signal information for output Digital \Hypertarget{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}}
+Signal information for output Digital \Hypertarget{_f_m_k___i_o_8c_ad54856f158f0524f532843c6aab852bc}\index{FMK\_IO.c@{FMK\_IO.c}!g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}}
 \index{g\_OutPwmSigInfo\_as@{g\_OutPwmSigInfo\_as}!FMK\_IO.c@{FMK\_IO.c}}
 \doxysubsubsection{\texorpdfstring{g\_OutPwmSigInfo\_as}{g\_OutPwmSigInfo\_as}}
-{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_a91a31e0499a5075957c36a5c949cbbaa} 
-\mbox{\hyperlink{structt__s_f_m_k_i_o___sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Sig\+Info}} g\+\_\+\+Out\+Pwm\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGPWM\+\_\+\+NB}}\mbox{]}}
+{\footnotesize\ttfamily \label{_f_m_k___i_o_8c_ad54856f158f0524f532843c6aab852bc} 
+\mbox{\hyperlink{structt__s_f_m_k_i_o___ana_pwm_sig_info}{t\+\_\+s\+FMKIO\+\_\+\+Ana\+Pwm\+Sig\+Info}} g\+\_\+\+Out\+Pwm\+Sig\+Info\+\_\+as\mbox{[}\mbox{\hyperlink{_f_m_k_i_o___config_public_8h_a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1}{FMKIO\+\_\+\+OUTPUT\+\_\+\+SIGPWM\+\_\+\+NB}}\mbox{]}}
 
 Signal information for output PWM 

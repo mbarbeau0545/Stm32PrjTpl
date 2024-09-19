@@ -103,8 +103,8 @@ class AppAct_CodeGen():
                             + "}, //" + f"{ENUM_APPACT_ACTUATOR_RT}_{str(act_cfg[0]).upper()}\n"
                 # make var state
                 var_act_state += "    " \
-                                + f"{ENUM_APPACT_DRVSTATE_RT}_{str(act_cfg[1]).upper()}," \
-                                + f" // {ENUM_APPACT_DRV_RT}_{str(act_cfg[0]).upper()}\n"
+                                + f"{ENUM_APPACT_ACTUATOR_ST_RT}_{str(act_cfg[1]).upper()}," \
+                                + f" // {ENUM_APPACT_ACTUATOR_RT}_{str(act_cfg[0]).upper()}\n"
                 # make include 
                 include_act += f'    #include "{ACT_SPEC_FOLDER_PATH}/{VAR_APPACT_SPEC}_{act_cfg[0]}.h"\n'
                 # make header/src file if needed

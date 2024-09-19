@@ -1,4 +1,4 @@
-/*********************************************************************
+/**
  * @file        FMK_CPU.h
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n
@@ -175,7 +175,6 @@
     *   @note       This function has to be first one to be call in the Software.\n
     *               Configure the Clocks used and the frequency for each clock.\n
     *
-    *	@param[in]  f_State_pe : store the value, value from @ref t_eCyclicFuncState
     *
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
@@ -205,21 +204,18 @@
     *   @note       This function is called to set the interruption priority
     *               for f_IRQN_e interruption.\n 
     *               If an interruption (2) occur while another Interruption (1) is running, 
-    *               depending on the value of f_priority_e (2)n that will interrupt or not
+    *               depending on the value of c_FMKCPU_IRQNPriority_ae (2) that will interrupt or not
     *               the interruption (1).\n
     *               This function also disable the IRQN interruption if needed.\n
     *
     *	@param[in]  f_IRQN_e     : enum value for IRQN type, value from @ref t_eFMKCPU_IRQNType
-    *	@param[in]  f_priority_e : enum value for priority, value from @ref t_eFMKCPU_NVICPriority
     *	@param[in]  f_OpeState_e : enum value for  pose state,value from @ref t_eFMKCPU_NVIC_Ope
     *
     *  @retval RC_OK                             @ref RC_OK
     *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
     *  @retval RC_ERROR_PARAM_NOT_SUPPORTED      @ref RC_ERROR_PARAM_NOT_SUPPORTED
     */
-    t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e, 
-                                       t_eFMKCPU_NVICPriority f_priority_e, 
-                                       t_eFMKCPU_NVIC_Ope f_OpeState_e);
+    t_eReturnState FMKCPU_Set_NVICState(t_eFMKCPU_IRQNType f_IRQN_e, t_eFMKCPU_NVIC_Ope f_OpeState_e);
     /**
     *
     *	@brief      Set the RCC clock state.\n

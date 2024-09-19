@@ -66,18 +66,18 @@
     /* /List of input digital pin available on this board */
     typedef enum
     {
-        FMKIO_INPUT_SIGDIG_1 = 0x0,                  /**< PC6 */
-        FMKIO_INPUT_SIGDIG_2,                        /**< PA1 */
-        FMKIO_INPUT_SIGDIG_3,                        /**< PA2 */
-        FMKIO_INPUT_SIGDIG_4,                        /**< PA3 */
-        FMKIO_INPUT_SIGDIG_5,                        /**< PA4 */
-        FMKIO_INPUT_SIGDIG_6,                        /**< PA5 */
-        FMKIO_INPUT_SIGDIG_7,                        /**< PA6 */
-        FMKIO_INPUT_SIGDIG_8,                        /**< PA7 */
-        FMKIO_INPUT_SIGDIG_9,                        /**< PA8 */
-        FMKIO_INPUT_SIGDIG_10,                       /**< PA9 */
-        FMKIO_INPUT_SIGDIG_11,                       /**< PA10 */
-        FMKIO_INPUT_SIGDIG_12,                       /**< PA11 */
+        FMKIO_INPUT_SIGDIG_1 = 0x0,                  /**< PA12 */
+        FMKIO_INPUT_SIGDIG_2,                        /**< PA13 */
+        FMKIO_INPUT_SIGDIG_3,                        /**< PA14 */
+        FMKIO_INPUT_SIGDIG_4,                        /**< PA15 */
+        FMKIO_INPUT_SIGDIG_5,                        /**< PB0 */
+        FMKIO_INPUT_SIGDIG_6,                        /**< PB1 */
+        FMKIO_INPUT_SIGDIG_7,                        /**< PB2 */
+        FMKIO_INPUT_SIGDIG_8,                        /**< PB3 */
+        FMKIO_INPUT_SIGDIG_9,                        /**< PB4 */
+        FMKIO_INPUT_SIGDIG_10,                       /**< PB5 */
+        FMKIO_INPUT_SIGDIG_11,                       /**< PB10 */
+        FMKIO_INPUT_SIGDIG_12,                       /**< PB11 */
     
         FMKIO_INPUT_SIGDIG_NB,
     } t_eFMKIO_InDigSig;
@@ -122,19 +122,19 @@
     /* List of output digital pin available on this board */
     typedef enum
     {
-        FMKIO_OUTPUT_SIGDIG_1 = 0x0,                  /**< PA1 */
-        FMKIO_OUTPUT_SIGDIG_2,                        /**< PA2 */
-        FMKIO_OUTPUT_SIGDIG_3,                        /**< PA3 */
-        FMKIO_OUTPUT_SIGDIG_4,                        /**< PA4 */
-        FMKIO_OUTPUT_SIGDIG_5,                        /**< PA5 */
-        FMKIO_OUTPUT_SIGDIG_6,                        /**< PA6 */
-        FMKIO_OUTPUT_SIGDIG_7,                        /**< PA7 */
-        FMKIO_OUTPUT_SIGDIG_8,                        /**< PA8 */
-        FMKIO_OUTPUT_SIGDIG_9,                        /**< PA9 */
-        FMKIO_OUTPUT_SIGDIG_10,                       /**< PA10 */
-        FMKIO_OUTPUT_SIGDIG_11,                       /**< PA11 */
-        FMKIO_OUTPUT_SIGDIG_12,                       /**< PA12 */
-        FMKIO_OUTPUT_SIGDIG_13,                       /**< PA13 */
+        FMKIO_OUTPUT_SIGDIG_1 = 0x0,                  /**< PB12 */
+        FMKIO_OUTPUT_SIGDIG_2,                        /**< PB13 */
+        FMKIO_OUTPUT_SIGDIG_3,                        /**< PB14 */
+        FMKIO_OUTPUT_SIGDIG_4,                        /**< PB15 */
+        FMKIO_OUTPUT_SIGDIG_5,                        /**< PC4 */
+        FMKIO_OUTPUT_SIGDIG_6,                        /**< PC5 */
+        FMKIO_OUTPUT_SIGDIG_7,                        /**< PC13 */
+        FMKIO_OUTPUT_SIGDIG_8,                        /**< PC14 */
+        FMKIO_OUTPUT_SIGDIG_9,                        /**< PC15 */
+        FMKIO_OUTPUT_SIGDIG_10,                       /**< PF4 */
+        FMKIO_OUTPUT_SIGDIG_11,                       /**< PF5 */
+        FMKIO_OUTPUT_SIGDIG_12,                       /**< PF6 */
+        FMKIO_OUTPUT_SIGDIG_13,                       /**< PF7 */
     
         FMKIO_OUTPUT_SIGDIG_NB,
     } t_eFMKIO_OutDigSig;

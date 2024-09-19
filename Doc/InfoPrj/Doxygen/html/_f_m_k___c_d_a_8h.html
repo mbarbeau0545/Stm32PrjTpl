@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('_f_m_k___c_d_a_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,12 +96,6 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_830fcf1a82ee92f371f6a9bcd00b9e76.html">FMK_HAL</a></li><li class="navelem"><a class="el" href="dir_1dc15319ec84c6c24c1dab20c2bf2309.html">FMK_CDA</a></li><li class="navelem"><a class="el" href="dir_f4f0535acd58d71134a056968852159e.html">Src</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#enum-members">Enumerations</a> &#124;
@@ -95,6 +103,9 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">FMK_CDA.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Template_BriefDescription.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_f_m_k_c_d_a___config_public_8h_source.html">FMK_CFG/FMKCFG_ConfigFiles/FMKCDA_ConfigPublic.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_type_common_8h_source.html">TypeCommon.h</a>&quot;</code><br />
 </div>
@@ -117,6 +128,18 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a2f1c9b5f338ca53ed1e79c6d50732d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a094a68e7da206f421e2a0a092d7b8193" id="r_a094a68e7da206f421e2a0a092d7b8193"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a094a68e7da206f421e2a0a092d7b8193">t_eFMKCDA_ChnlErrState</a> { <br />
+&#160;&#160;<a class="el" href="#a094a68e7da206f421e2a0a092d7b8193a95a4fdeb058e767b7ba54d71185c3ac4">FMKCDA_ERRSTATE_OK</a> = 0x00U
+, <a class="el" href="#a094a68e7da206f421e2a0a092d7b8193a6cede9b582c54020f7cf306f478a46c6">FMKCDA_ERRSTATE_ERR_INTERNAL</a> = 0x01U
+, <a class="el" href="#a094a68e7da206f421e2a0a092d7b8193a8710b79541edf414d0ccd00b46a30d5d">FMKCDA_ERRSTATE_ERR_OVR</a> = 0x02U
+, <a class="el" href="#a094a68e7da206f421e2a0a092d7b8193af5471748827379a034cd84de564dc6af">FMKCDA_ERRSTATE_ERR_DMA</a> = 0x04U
+, <br />
+&#160;&#160;<a class="el" href="#a094a68e7da206f421e2a0a092d7b8193aee84faaf4b0e650c1bd817fd76e763fc">FMKCDA_ERRSTATE_CB</a> = 0x08U
+, <a class="el" href="#a094a68e7da206f421e2a0a092d7b8193ab5c87206dc9c6b482ab072381ac5e574">FMKCDA_ERRSTATE_JQOVF</a> = 0x10U
+, <a class="el" href="#a094a68e7da206f421e2a0a092d7b8193a6719bcfaaeb7a89519f9366dd6de3d05">FMKCDA_ERRSTATE_UNKNOWN</a> = 0x20U
+<br />
+ }</td></tr>
+<tr class="separator:a094a68e7da206f421e2a0a092d7b8193"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -139,8 +162,48 @@ Functions</h2></td></tr>
 <tr class="memitem:ab8052715231b7e259e73b4ea091f32a6" id="r_ab8052715231b7e259e73b4ea091f32a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969">t_eReturnState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8052715231b7e259e73b4ea091f32a6">FMKCDA_Get_AnaChannelMeasure</a> (<a class="el" href="_f_m_k_c_d_a___config_public_8h.html#a05ef889bfb1abced1e626d16ac71690a">t_eFMKCDA_Adc</a> f_Adc_e, <a class="el" href="_f_m_k_c_d_a___config_public_8h.html#a8a7cf2dd524526e08e4b02ba4399ae33">t_eFMKCDA_AdcChannel</a> f_channel_e, <a class="el" href="_type_common_8h.html#a2f8b43fd51d852dadf2f4e8fb70b6a50">t_uint16</a> *f_AnaMeasure_u16)</td></tr>
 <tr class="memdesc:ab8052715231b7e259e73b4ea091f32a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the analog value from a adc channel.  <br /></td></tr>
 <tr class="separator:ab8052715231b7e259e73b4ea091f32a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f61783117ce514dee7ed78f352821d" id="r_ac2f61783117ce514dee7ed78f352821d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969">t_eReturnState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2f61783117ce514dee7ed78f352821d">FMKCDA_Get_AdcError</a> (<a class="el" href="_f_m_k_c_d_a___config_public_8h.html#a05ef889bfb1abced1e626d16ac71690a">t_eFMKCDA_Adc</a> f_adc_e, <a class="el" href="#a094a68e7da206f421e2a0a092d7b8193">t_eFMKCDA_ChnlErrState</a> *f_chnlErrInfo_pe)</td></tr>
+<tr class="memdesc:ac2f61783117ce514dee7ed78f352821d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the error code for a adc_channel.  <br /></td></tr>
+<tr class="separator:ac2f61783117ce514dee7ed78f352821d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Template_BriefDescription. </p>
+<dl class="section note"><dt>Note</dt><dd>TemplateDetailsDescription.<br  />
+ </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>xxxxxx </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>jj/mm/yyyy </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a094a68e7da206f421e2a0a092d7b8193" name="a094a68e7da206f421e2a0a092d7b8193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a094a68e7da206f421e2a0a092d7b8193">&#9670;&#160;</a></span>t_eFMKCDA_ChnlErrState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a094a68e7da206f421e2a0a092d7b8193">t_eFMKCDA_ChnlErrState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a094a68e7da206f421e2a0a092d7b8193a95a4fdeb058e767b7ba54d71185c3ac4" name="a094a68e7da206f421e2a0a092d7b8193a95a4fdeb058e767b7ba54d71185c3ac4"></a>FMKCDA_ERRSTATE_OK&#160;</td><td class="fielddoc"><p>No error detected on channel </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a094a68e7da206f421e2a0a092d7b8193a6cede9b582c54020f7cf306f478a46c6" name="a094a68e7da206f421e2a0a092d7b8193a6cede9b582c54020f7cf306f478a46c6"></a>FMKCDA_ERRSTATE_ERR_INTERNAL&#160;</td><td class="fielddoc"><p>Internal/ bsp error detected on channel </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a094a68e7da206f421e2a0a092d7b8193a8710b79541edf414d0ccd00b46a30d5d" name="a094a68e7da206f421e2a0a092d7b8193a8710b79541edf414d0ccd00b46a30d5d"></a>FMKCDA_ERRSTATE_ERR_OVR&#160;</td><td class="fielddoc"><p>overrun error detetcted on channel </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a094a68e7da206f421e2a0a092d7b8193af5471748827379a034cd84de564dc6af" name="a094a68e7da206f421e2a0a092d7b8193af5471748827379a034cd84de564dc6af"></a>FMKCDA_ERRSTATE_ERR_DMA&#160;</td><td class="fielddoc"><p>Dma error detetected on channel </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a094a68e7da206f421e2a0a092d7b8193aee84faaf4b0e650c1bd817fd76e763fc" name="a094a68e7da206f421e2a0a092d7b8193aee84faaf4b0e650c1bd817fd76e763fc"></a>FMKCDA_ERRSTATE_CB&#160;</td><td class="fielddoc"><p>callback error detetected on channel </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a094a68e7da206f421e2a0a092d7b8193ab5c87206dc9c6b482ab072381ac5e574" name="a094a68e7da206f421e2a0a092d7b8193ab5c87206dc9c6b482ab072381ac5e574"></a>FMKCDA_ERRSTATE_JQOVF&#160;</td><td class="fielddoc"><p>to do </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a094a68e7da206f421e2a0a092d7b8193a6719bcfaaeb7a89519f9366dd6de3d05" name="a094a68e7da206f421e2a0a092d7b8193a6719bcfaaeb7a89519f9366dd6de3d05"></a>FMKCDA_ERRSTATE_UNKNOWN&#160;</td><td class="fielddoc"><p>Unknown error detected </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="a2f1c9b5f338ca53ed1e79c6d50732d71" name="a2f1c9b5f338ca53ed1e79c6d50732d71"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f1c9b5f338ca53ed1e79c6d50732d71">&#9670;&#160;</a></span>t_eFMKCDA_HwAdcCfg</h2>
 
@@ -208,6 +271,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac2f61783117ce514dee7ed78f352821d" name="ac2f61783117ce514dee7ed78f352821d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f61783117ce514dee7ed78f352821d">&#9670;&#160;</a></span>FMKCDA_Get_AdcError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969">t_eReturnState</a> FMKCDA_Get_AdcError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_f_m_k_c_d_a___config_public_8h.html#a05ef889bfb1abced1e626d16ac71690a">t_eFMKCDA_Adc</a></td>          <td class="paramname"><span class="paramname"><em>f_adc_e</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a094a68e7da206f421e2a0a092d7b8193">t_eFMKCDA_ChnlErrState</a> *</td>          <td class="paramname"><span class="paramname"><em>f_chnlErrInfo_pe</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get the error code for a adc_channel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f_adc_e</td><td>: enum value for the adc, value from f_adc_e </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">f_chnlErrInfo_pe</td><td>: storage for channel error.<br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">RC_OK</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14">RC_OK</a> </td></tr>
+    <tr><td class="paramname">RC_ERROR_PARAM_INVALID</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969a9644a03a8b2adec983642b87d652d0ba">RC_ERROR_PARAM_INVALID</a> </td></tr>
+    <tr><td class="paramname">RC_ERROR_PTR_NULL</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969a07c50b18043a705e83c24862045206b6">RC_ERROR_PTR_NULL</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ab8052715231b7e259e73b4ea091f32a6" name="ab8052715231b7e259e73b4ea091f32a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab8052715231b7e259e73b4ea091f32a6">&#9670;&#160;</a></span>FMKCDA_Get_AnaChannelMeasure()</h2>
 
@@ -248,8 +350,7 @@ Functions</h2></td></tr>
   <table class="retval">
     <tr><td class="paramname">RC_OK</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969ab834a5bb2ce6d97c2831fe3d71103c14">RC_OK</a> </td></tr>
     <tr><td class="paramname">RC_ERROR_PTR_NULL</td><td>RC_ERROR_PTR_NUL </td></tr>
-    <tr><td class="paramname">RC_WARNING_WRONG_STATE</td><td>RC_ERROR_WARNING_STATE </td></tr>
-    <tr><td class="paramname">RC_ERROR_ALREADY_CONFIGURED</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c">RC_ERROR_ALREADY_CONFIGURED</a> </td></tr>
+    <tr><td class="paramname">RC_ERROR_WRONG_STATE</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969a6e288ccffa3577ad6162eaf01d9d29c8">RC_ERROR_WRONG_STATE</a> </td></tr>
     <tr><td class="paramname">RC_WARNING_NO_OPERATION</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969aa5710a83f0780f20a2e9fc5f53f47bc2">RC_WARNING_NO_OPERATION</a> </td></tr>
     <tr><td class="paramname">RC_ERROR_MODULE_NOT_INITIALIZED</td><td><a class="el" href="_type_common_8h.html#af3fc622932488c58b80868c563cdd969a866a182ef691f43f7952f0ebf7a6d8d0">RC_ERROR_MODULE_NOT_INITIALIZED</a> </td></tr>
   </table>
@@ -397,10 +498,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_830fcf1a82ee92f371f6a9bcd00b9e76.html">FMK_HAL</a></li><li class="navelem"><a class="el" href="dir_1dc15319ec84c6c24c1dab20c2bf2309.html">FMK_CDA</a></li><li class="navelem"><a class="el" href="dir_f4f0535acd58d71134a056968852159e.html">Src</a></li><li class="navelem"><a class="el" href="_f_m_k___c_d_a_8h.html">FMK_CDA.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

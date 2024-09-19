@@ -19,7 +19,7 @@
     // *                      Includes
     // ********************************************************************
     #include "TypeCommon.h"
-
+    #include "stm32f0xx_hal.h"
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
@@ -50,14 +50,56 @@
     {
         FMKMAC_DMA_RQSTYPE_ADC1 = 0,    /**< Reference to bsp dma request for ADC1 */
         FMKMAC_DMA_RQSTYPE_SPI1,        /**< Reference to bsp dma request for SPI1 */
-        FMKMAC_DMA_RQSTYPE_SPI2,
-        FMKMAC_DMA_RQSTYPE_UART1,
+        FMKMAC_DMA_RQSTYPE_SPI2,        /**< Reference to bsp dma request for SPI2 */
+        FMKMAC_DMA_RQSTYPE_UART1,       /**< Reference to bsp dma request for UART1 */
 
         FMKMAC_DMA_RQSTYPE_NB,
 
     } t_eFMKMAC_DmaRqstType;
 
 
+    // Flag automatic generate code
+    /**< Enum for Dma Number */
+    typedef enum
+    {
+        FMKMAC_DMA_CTRL_1 = 0x0U, 
+
+        FMKMAC_DMA_CTRL_NB
+    } t_eFMKMAC_DmaController;
+
+    // Flag automatic generate code
+    /**< Enum for number of channel in DMA */
+    typedef enum 
+    {
+        FMKMAC_DMA_CHANNEL_1 = 0x0U,
+        FMKMAC_DMA_CHANNEL_2, 
+        FMKMAC_DMA_CHANNEL_3, 
+        FMKMAC_DMA_CHANNEL_4,
+        FMKMAC_DMA_CHANNEL_5,
+
+        FMKMAC_DMA_CHANNEL_NB, 
+    } t_eFMKMAC_DmaChnl;
+
+    /**< Reference to Dma Priority */
+    typedef enum
+    {
+        FMKMAC_DMA_TRANSPRIO_LOW = 0x0U,
+        FMKMAC_DMA_TRANSPRIO_MEDIUM,
+        FMKMAC_DMA_TRANSPRIO_HIGH,
+        FMKMAC_DMA_TRANSPRIO_VERY_HIGH,
+
+        FMKMAC_DMA_TRANSPRIO_NB,
+    } t_eFMKMAC_DmaTransferPriority;
+
+    /**< Reference for Dma Transfer Direction */
+    typedef enum
+    {
+        FMKMAC_DMA_TRANSDIR_MEM_TO_MEM = 0x0U,
+        FMKMAC_DMA_TRANSDIR_PERIPH_TO_MEM,
+        FMKMAC_DMA_TRANSDIR_MEM_TO_PERIPH,
+
+        FMKMAC_DMA_TRANSDIR_NB
+    } t_eFMKMAC_DmaTransferDir;
     //********************************************************************************
     //                      Public functions - Prototyupes
     //********************************************************************************

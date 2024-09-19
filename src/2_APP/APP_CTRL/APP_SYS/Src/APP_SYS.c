@@ -62,14 +62,22 @@ void APPSYS_Init(void)
 {
     t_eReturnState Ret_e = RC_OK;
     t_uint8 LLI_u8 = 0;
-
-    while(LLI_u8 < (t_uint8)(APPSYS_MODULE_NB))
+    // set sys confgiguration 
+    Ret_e = FMKCPU_Set_SysClockCfg();
+    if(Ret_e == RC_OK)
     {
-        g_ModuleState_ae[LLI_u8] = STATE_CYCLIC_WAITING;
-        Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcInit_cb();
-        if(Ret_e == RC_OK)
+        //Ret_e = FMKCPU_Set_WwdgCfg((t_eFMKCPu_WwdgResetPeriod)FMKCPU_WWDG_RESET_CFG);
+    }
+    if(Ret_e == RC_OK)
+    {
+        while(LLI_u8 < (t_uint8)(APPSYS_MODULE_NB))
         {
-            LLI_u8 += (t_uint8)1;
+            g_ModuleState_ae[LLI_u8] = STATE_CYCLIC_WAITING;
+            Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcInit_cb();
+            if(Ret_e == RC_OK)
+            {
+                LLI_u8 += (t_uint8)1;
+            }
         }
     }
     return;
@@ -90,18 +98,19 @@ void APPSYS_Cyclic(void)
     Ret_e = FMKCPU_Get_Tick(&currentCnt_u32);
     if(Ret_e == RC_OK)
     {
-        Ret_e = FMKCPU_ResetWwdg();
+        //Ret_e = FMKCPU_ResetWwdg();
     }
     if(Ret_e == RC_OK)
     {
         elapsedTime_u32 = (t_uint32)(currentCnt_u32 - s_previousCnt_u32);
-        if((elapsedTime_u32) > APPSYS_ELAPSED_TIME_CYCLIC)
+        // DEBUGGGG
+        if((elapsedTime_u32) < APPSYS_ELAPSED_TIME_CYCLIC)
         {
             // reset whatchdog for fmk/app cycle
            
             s_previousCnt_u32 = currentCnt_u32;
            // call every fmk/app function cyclic
-            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < (t_uint8)APPSYS_MODULE_NB) && (Ret_e > RC_OK) ; LLI_u8++)
+            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < (t_uint8)APPSYS_MODULE_NB) && (Ret_e >= RC_OK) ; LLI_u8++)
             {
                 Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].funcCyclic_cb();
                 if((s_IsAllModInitialized_b == (t_bool)False) && (Ret_e == RC_OK))
@@ -118,7 +127,7 @@ void APPSYS_Cyclic(void)
         if(Ret_e == RC_OK)
         {
             // reset watchdog for logic cycle
-            Ret_e = FMKCPU_ResetWwdg();
+            //Ret_e = FMKCPU_ResetWwdg();
         }
         if(Ret_e == RC_OK)
         {

@@ -1,4 +1,4 @@
-/*********************************************************************
+/**
  * @file        FMK_CDA.h
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n

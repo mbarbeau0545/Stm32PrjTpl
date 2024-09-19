@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('_f_m_k_m_a_c___config_public_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,12 +96,6 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_b982bb86fcced66b9d09fd08cfb2e628.html">FMK_CFG</a></li><li class="navelem"><a class="el" href="dir_9c4d48a77d14f5b995cfce877f8c6c30.html">FMKCFG_ConfigFiles</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#enum-members">Enumerations</a>  </div>
@@ -110,8 +118,81 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a07165ae3baf8fc5ef60c24bbcaf65220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4825bc3afddced634bab934e8f6a472d" id="r_a4825bc3afddced634bab934e8f6a472d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4825bc3afddced634bab934e8f6a472d">t_eFMKMAC_DmaController</a> { <a class="el" href="#a4825bc3afddced634bab934e8f6a472da55a1d6f8c1380a17ddd703d96d89da4a">FMKMAC_DMA_CTRL_1</a> = 0x0U
+, <a class="el" href="#a4825bc3afddced634bab934e8f6a472da21876b7efa558e49b27d136ca6d3c290">FMKMAC_DMA_CTRL_NB</a>
+ }</td></tr>
+<tr class="separator:a4825bc3afddced634bab934e8f6a472d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c0d1823aa7d0f8636ebe85fd7bc1597" id="r_a2c0d1823aa7d0f8636ebe85fd7bc1597"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597">t_eFMKMAC_DmaChnl</a> { <br />
+&#160;&#160;<a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597ad1840be55526f80fb4a9c2bb84e8ba6b">FMKMAC_DMA_CHANNEL_1</a> = 0x0U
+, <a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597aec0230739e8f7d38fdcfa822f037fff7">FMKMAC_DMA_CHANNEL_2</a>
+, <a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597af6a150b95b11a136c6c6507505efad98">FMKMAC_DMA_CHANNEL_3</a>
+, <a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597ab75d05cd9aee4715394d86bc9c93320c">FMKMAC_DMA_CHANNEL_4</a>
+, <br />
+&#160;&#160;<a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597a5d25fbf4dec6fa9b9ef9a2058544a872">FMKMAC_DMA_CHANNEL_5</a>
+, <a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597a96d990ac289ce4d0131f9b3546831717">FMKMAC_DMA_CHANNEL_NB</a>
+<br />
+ }</td></tr>
+<tr class="separator:a2c0d1823aa7d0f8636ebe85fd7bc1597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf32efa565ee8e98c00c8c3d1c311f21" id="r_aaf32efa565ee8e98c00c8c3d1c311f21"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf32efa565ee8e98c00c8c3d1c311f21">t_eFMKMAC_DmaTransferPriority</a> { <br />
+&#160;&#160;<a class="el" href="#aaf32efa565ee8e98c00c8c3d1c311f21ade1045d913081a5c691fd451deae3ea3">FMKMAC_DMA_TRANSPRIO_LOW</a> = 0x0U
+, <a class="el" href="#aaf32efa565ee8e98c00c8c3d1c311f21adbc1fd7a0fc90c4b4cfe9711c41cf0bc">FMKMAC_DMA_TRANSPRIO_MEDIUM</a>
+, <a class="el" href="#aaf32efa565ee8e98c00c8c3d1c311f21afd0d9660d5573ded7980a981551c909e">FMKMAC_DMA_TRANSPRIO_HIGH</a>
+, <a class="el" href="#aaf32efa565ee8e98c00c8c3d1c311f21a0460717c8bf075ee5bdf0b948052609d">FMKMAC_DMA_TRANSPRIO_VERY_HIGH</a>
+, <br />
+&#160;&#160;<a class="el" href="#aaf32efa565ee8e98c00c8c3d1c311f21a7ba827f5f3081b759ee41349b972d5cc">FMKMAC_DMA_TRANSPRIO_NB</a>
+<br />
+ }</td></tr>
+<tr class="separator:aaf32efa565ee8e98c00c8c3d1c311f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4344db74ca1acc43e6f774a4e9c46f8d" id="r_a4344db74ca1acc43e6f774a4e9c46f8d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4344db74ca1acc43e6f774a4e9c46f8d">t_eFMKMAC_DmaTransferDir</a> { <a class="el" href="#a4344db74ca1acc43e6f774a4e9c46f8da21955269117b73a55ed5cc53ee0fc4b6">FMKMAC_DMA_TRANSDIR_MEM_TO_MEM</a> = 0x0U
+, <a class="el" href="#a4344db74ca1acc43e6f774a4e9c46f8da2dad5be2b736fd2702bb71ea4ab7be25">FMKMAC_DMA_TRANSDIR_PERIPH_TO_MEM</a>
+, <a class="el" href="#a4344db74ca1acc43e6f774a4e9c46f8dad2418f637676ac6d450a71d6ebebe794">FMKMAC_DMA_TRANSDIR_MEM_TO_PERIPH</a>
+, <a class="el" href="#a4344db74ca1acc43e6f774a4e9c46f8da829e5f75b28bf570f03bc465e5ba95c4">FMKMAC_DMA_TRANSDIR_NB</a>
+ }</td></tr>
+<tr class="separator:a4344db74ca1acc43e6f774a4e9c46f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a2c0d1823aa7d0f8636ebe85fd7bc1597" name="a2c0d1823aa7d0f8636ebe85fd7bc1597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c0d1823aa7d0f8636ebe85fd7bc1597">&#9670;&#160;</a></span>t_eFMKMAC_DmaChnl</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a2c0d1823aa7d0f8636ebe85fd7bc1597">t_eFMKMAC_DmaChnl</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&lt; Enum for number of channel in DMA </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2c0d1823aa7d0f8636ebe85fd7bc1597ad1840be55526f80fb4a9c2bb84e8ba6b" name="a2c0d1823aa7d0f8636ebe85fd7bc1597ad1840be55526f80fb4a9c2bb84e8ba6b"></a>FMKMAC_DMA_CHANNEL_1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2c0d1823aa7d0f8636ebe85fd7bc1597aec0230739e8f7d38fdcfa822f037fff7" name="a2c0d1823aa7d0f8636ebe85fd7bc1597aec0230739e8f7d38fdcfa822f037fff7"></a>FMKMAC_DMA_CHANNEL_2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2c0d1823aa7d0f8636ebe85fd7bc1597af6a150b95b11a136c6c6507505efad98" name="a2c0d1823aa7d0f8636ebe85fd7bc1597af6a150b95b11a136c6c6507505efad98"></a>FMKMAC_DMA_CHANNEL_3&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2c0d1823aa7d0f8636ebe85fd7bc1597ab75d05cd9aee4715394d86bc9c93320c" name="a2c0d1823aa7d0f8636ebe85fd7bc1597ab75d05cd9aee4715394d86bc9c93320c"></a>FMKMAC_DMA_CHANNEL_4&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2c0d1823aa7d0f8636ebe85fd7bc1597a5d25fbf4dec6fa9b9ef9a2058544a872" name="a2c0d1823aa7d0f8636ebe85fd7bc1597a5d25fbf4dec6fa9b9ef9a2058544a872"></a>FMKMAC_DMA_CHANNEL_5&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2c0d1823aa7d0f8636ebe85fd7bc1597a96d990ac289ce4d0131f9b3546831717" name="a2c0d1823aa7d0f8636ebe85fd7bc1597a96d990ac289ce4d0131f9b3546831717"></a>FMKMAC_DMA_CHANNEL_NB&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a4825bc3afddced634bab934e8f6a472d" name="a4825bc3afddced634bab934e8f6a472d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4825bc3afddced634bab934e8f6a472d">&#9670;&#160;</a></span>t_eFMKMAC_DmaController</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a4825bc3afddced634bab934e8f6a472d">t_eFMKMAC_DmaController</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&lt; Enum for Dma Number </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4825bc3afddced634bab934e8f6a472da55a1d6f8c1380a17ddd703d96d89da4a" name="a4825bc3afddced634bab934e8f6a472da55a1d6f8c1380a17ddd703d96d89da4a"></a>FMKMAC_DMA_CTRL_1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4825bc3afddced634bab934e8f6a472da21876b7efa558e49b27d136ca6d3c290" name="a4825bc3afddced634bab934e8f6a472da21876b7efa558e49b27d136ca6d3c290"></a>FMKMAC_DMA_CTRL_NB&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="a07165ae3baf8fc5ef60c24bbcaf65220" name="a07165ae3baf8fc5ef60c24bbcaf65220"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a07165ae3baf8fc5ef60c24bbcaf65220">&#9670;&#160;</a></span>t_eFMKMAC_DmaRqstType</h2>
 
@@ -129,18 +210,64 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a07165ae3baf8fc5ef60c24bbcaf65220a5f52e32c860a309b47d697e9fcc11c59" name="a07165ae3baf8fc5ef60c24bbcaf65220a5f52e32c860a309b47d697e9fcc11c59"></a>FMKMAC_DMA_RQSTYPE_SPI1&#160;</td><td class="fielddoc"><p>Reference to bsp dma request for SPI1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a07165ae3baf8fc5ef60c24bbcaf65220a4c1a57ad878962297b734cdb85753e6a" name="a07165ae3baf8fc5ef60c24bbcaf65220a4c1a57ad878962297b734cdb85753e6a"></a>FMKMAC_DMA_RQSTYPE_SPI2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a07165ae3baf8fc5ef60c24bbcaf65220a3b06f1ae147c0e0b49c3af188178c12c" name="a07165ae3baf8fc5ef60c24bbcaf65220a3b06f1ae147c0e0b49c3af188178c12c"></a>FMKMAC_DMA_RQSTYPE_UART1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a07165ae3baf8fc5ef60c24bbcaf65220a4c1a57ad878962297b734cdb85753e6a" name="a07165ae3baf8fc5ef60c24bbcaf65220a4c1a57ad878962297b734cdb85753e6a"></a>FMKMAC_DMA_RQSTYPE_SPI2&#160;</td><td class="fielddoc"><p>Reference to bsp dma request for SPI2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a07165ae3baf8fc5ef60c24bbcaf65220a3b06f1ae147c0e0b49c3af188178c12c" name="a07165ae3baf8fc5ef60c24bbcaf65220a3b06f1ae147c0e0b49c3af188178c12c"></a>FMKMAC_DMA_RQSTYPE_UART1&#160;</td><td class="fielddoc"><p>Reference to bsp dma request for UART1 </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a07165ae3baf8fc5ef60c24bbcaf65220a58703a007880176b0b230c17e77c952d" name="a07165ae3baf8fc5ef60c24bbcaf65220a58703a007880176b0b230c17e77c952d"></a>FMKMAC_DMA_RQSTYPE_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
+<a id="a4344db74ca1acc43e6f774a4e9c46f8d" name="a4344db74ca1acc43e6f774a4e9c46f8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4344db74ca1acc43e6f774a4e9c46f8d">&#9670;&#160;</a></span>t_eFMKMAC_DmaTransferDir</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a4344db74ca1acc43e6f774a4e9c46f8d">t_eFMKMAC_DmaTransferDir</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4344db74ca1acc43e6f774a4e9c46f8da21955269117b73a55ed5cc53ee0fc4b6" name="a4344db74ca1acc43e6f774a4e9c46f8da21955269117b73a55ed5cc53ee0fc4b6"></a>FMKMAC_DMA_TRANSDIR_MEM_TO_MEM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4344db74ca1acc43e6f774a4e9c46f8da2dad5be2b736fd2702bb71ea4ab7be25" name="a4344db74ca1acc43e6f774a4e9c46f8da2dad5be2b736fd2702bb71ea4ab7be25"></a>FMKMAC_DMA_TRANSDIR_PERIPH_TO_MEM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4344db74ca1acc43e6f774a4e9c46f8dad2418f637676ac6d450a71d6ebebe794" name="a4344db74ca1acc43e6f774a4e9c46f8dad2418f637676ac6d450a71d6ebebe794"></a>FMKMAC_DMA_TRANSDIR_MEM_TO_PERIPH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4344db74ca1acc43e6f774a4e9c46f8da829e5f75b28bf570f03bc465e5ba95c4" name="a4344db74ca1acc43e6f774a4e9c46f8da829e5f75b28bf570f03bc465e5ba95c4"></a>FMKMAC_DMA_TRANSDIR_NB&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="aaf32efa565ee8e98c00c8c3d1c311f21" name="aaf32efa565ee8e98c00c8c3d1c311f21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf32efa565ee8e98c00c8c3d1c311f21">&#9670;&#160;</a></span>t_eFMKMAC_DmaTransferPriority</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aaf32efa565ee8e98c00c8c3d1c311f21">t_eFMKMAC_DmaTransferPriority</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aaf32efa565ee8e98c00c8c3d1c311f21ade1045d913081a5c691fd451deae3ea3" name="aaf32efa565ee8e98c00c8c3d1c311f21ade1045d913081a5c691fd451deae3ea3"></a>FMKMAC_DMA_TRANSPRIO_LOW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf32efa565ee8e98c00c8c3d1c311f21adbc1fd7a0fc90c4b4cfe9711c41cf0bc" name="aaf32efa565ee8e98c00c8c3d1c311f21adbc1fd7a0fc90c4b4cfe9711c41cf0bc"></a>FMKMAC_DMA_TRANSPRIO_MEDIUM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf32efa565ee8e98c00c8c3d1c311f21afd0d9660d5573ded7980a981551c909e" name="aaf32efa565ee8e98c00c8c3d1c311f21afd0d9660d5573ded7980a981551c909e"></a>FMKMAC_DMA_TRANSPRIO_HIGH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf32efa565ee8e98c00c8c3d1c311f21a0460717c8bf075ee5bdf0b948052609d" name="aaf32efa565ee8e98c00c8c3d1c311f21a0460717c8bf075ee5bdf0b948052609d"></a>FMKMAC_DMA_TRANSPRIO_VERY_HIGH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf32efa565ee8e98c00c8c3d1c311f21a7ba827f5f3081b759ee41349b972d5cc" name="aaf32efa565ee8e98c00c8c3d1c311f21a7ba827f5f3081b759ee41349b972d5cc"></a>FMKMAC_DMA_TRANSPRIO_NB&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_b982bb86fcced66b9d09fd08cfb2e628.html">FMK_CFG</a></li><li class="navelem"><a class="el" href="dir_9c4d48a77d14f5b995cfce877f8c6c30.html">FMKCFG_ConfigFiles</a></li><li class="navelem"><a class="el" href="_f_m_k_m_a_c___config_public_8h.html">FMKMAC_ConfigPublic.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

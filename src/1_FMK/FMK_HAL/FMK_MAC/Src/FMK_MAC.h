@@ -1,6 +1,6 @@
-/*********************************************************************
- * @file        FMKCDA_ConfigPrivate.h
- * @brief       Template_BriefDescription.
+/**
+ * @file        FMK_MAC.h
+ * @brief       Memomry access control for DMA & user access\n.
  * @note        TemplateDetailsDescription.\n
  *
  * @author      xxxxxx
@@ -31,8 +31,15 @@
     /* CAUTION : Automatic generated code section for Enum: Start */
 
     /* CAUTION : Automatic generated code section for Enum: End */
-
+    /**< Enum for Dma channel state */
+    typedef enum
+    {
+        FMKMAC_DMA_CHNLSTATE_START = 0x0, /**< The dma channel is running */
+        FMKMAC_DMA_CHNLSTATE_STOP,        /**< The dma channel is not running */
+        FMKMAC_DMA_CHNLSTATE_NB,          /**< Number of channel state*/
+    } t_eFMKMAC_DmaChnlState;
     //-----------------------------TYPEDEF TYPES---------------------------//
+    
     //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */
 
@@ -62,7 +69,7 @@
  *
  *
  */
-t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType, void *f_ModuleHandle_s);
+t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType, void *f_ModuleHandle_pv);
 #endif // FMKMAC_H_INCLUDED           
 //************************************************************************************
 // End of File

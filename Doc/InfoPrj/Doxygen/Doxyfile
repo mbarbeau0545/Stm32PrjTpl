@@ -54,7 +54,7 @@ PROJECT_NUMBER         = V0.1
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor"
+PROJECT_BRIEF          = "This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
@@ -352,7 +352,7 @@ EXTENSION_MAPPING      =
 
 # If the MARKDOWN_SUPPORT tag is enabled then Doxygen pre-processes all comments
 # according to the Markdown format, which allows for more readable
-# documentation. See https://daringfireball.net/projects/markdown/ for note.
+# documentation. See https://daringfireball.net/projects/markdown/ for details.
 # The output of markdown processing is further processed by Doxygen, so you can
 # mix Doxygen, HTML, and XML commands with Markdown formatting. Disable only in
 # case of backward compatibilities issues.
@@ -1772,7 +1772,7 @@ DISABLE_INDEX          = NO
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-GENERATE_TREEVIEW      = NO
+GENERATE_TREEVIEW      = YES
 
 # When both GENERATE_TREEVIEW and DISABLE_INDEX are set to YES, then the
 # FULL_SIDEBAR option determines if the side bar is limited to only the treeview
@@ -1845,7 +1845,7 @@ FORMULA_FONTSIZE       = 10
 
 # The FORMULA_MACROFILE can contain LaTeX \newcommand and \renewcommand commands
 # to create new LaTeX commands to be used in formulas as building blocks. See
-# the section "Including formulas" for note.
+# the section "Including formulas" for details.
 
 FORMULA_MACROFILE      =
 
@@ -1872,7 +1872,7 @@ USE_MATHJAX            = NO
 MATHJAX_VERSION        = MathJax_2
 
 # When MathJax is enabled you can set the default output format to be used for
-# the MathJax output. For more note about the output format see MathJax
+# the MathJax output. For more details about the output format see MathJax
 # version 2 (see:
 # http://docs.mathjax.org/en/v2.7-latest/output.html) and MathJax version 3
 # (see:
@@ -1917,7 +1917,7 @@ MATHJAX_EXTENSIONS     =
 # The MATHJAX_CODEFILE tag can be used to specify a file with JavaScript pieces
 # of code that will be used on startup of the MathJax code. See the MathJax site
 # (see:
-# http://docs.mathjax.org/en/v2.7-latest/output.html) for more note. For an
+# http://docs.mathjax.org/en/v2.7-latest/output.html) for more details. For an
 # example see the documentation.
 # This tag requires that the tag USE_MATHJAX is set to YES.
 
@@ -1950,7 +1950,7 @@ SEARCHENGINE           = YES
 # setting. When disabled, Doxygen will generate a PHP script for searching and
 # an index file used by the script. When EXTERNAL_SEARCH is enabled the indexing
 # and searching needs to be provided by external tools. See the section
-# "External Indexing and Searching" for note.
+# "External Indexing and Searching" for details.
 # The default value is: NO.
 # This tag requires that the tag SEARCHENGINE is set to YES.
 
@@ -1967,7 +1967,7 @@ SERVER_BASED_SEARCH    = NO
 # Xapian (see:
 # https://xapian.org/).
 #
-# See the section "External Indexing and Searching" for note.
+# See the section "External Indexing and Searching" for details.
 # The default value is: NO.
 # This tag requires that the tag SEARCHENGINE is set to YES.
 
@@ -1980,7 +1980,7 @@ EXTERNAL_SEARCH        = NO
 # (doxysearch.cgi) which are based on the open source search engine library
 # Xapian (see:
 # https://xapian.org/). See the section "External Indexing and Searching" for
-# note.
+# details.
 # This tag requires that the tag SEARCHENGINE is set to YES.
 
 SEARCHENGINE_URL       =
@@ -2587,7 +2587,7 @@ DOT_NUM_THREADS        = 0
 # DOT_COMMON_ATTR is common attributes for nodes, edges and labels of
 # subgraphs. When you want a differently looking font in the dot files that
 # Doxygen generates you can specify fontname, fontcolor and fontsize attributes.
-# For note please see <a href=https://graphviz.org/doc/info/attrs.html>Node,
+# For details please see <a href=https://graphviz.org/doc/info/attrs.html>Node,
 # Edge and Graph Attributes specification</a> You need to make sure dot is able
 # to find the font, which can be done by putting it in a standard location or by
 # setting the DOTFONTPATH environment variable or by setting DOT_FONTPATH to the

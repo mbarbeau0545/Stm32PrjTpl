@@ -66,7 +66,7 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_SetCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Carotte_SetActCfg here
-    
+
 
 
     return Ret_e;

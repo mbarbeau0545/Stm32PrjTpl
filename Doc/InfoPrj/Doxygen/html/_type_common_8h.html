@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('_type_common_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,12 +96,6 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4a305301dd106dd3fec5647a4cdc0ef8.html">0_Common</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
@@ -205,6 +213,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#af3fc622932488c58b80868c563cdd969aaad7c1593efc15d4fdd6e4dd43731fd4">RC_WARNING_WRONG_RESULT</a> = 9
 <br />
  }</td></tr>
+<tr class="memdesc:af3fc622932488c58b80868c563cdd969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum for return function.  <a href="#af3fc622932488c58b80868c563cdd969">More...</a><br /></td></tr>
 <tr class="separator:af3fc622932488c58b80868c563cdd969"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3880607bf76af2806d46607baf78e6e5" id="r_a3880607bf76af2806d46607baf78e6e5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3880607bf76af2806d46607baf78e6e5">t_eCyclicFuncState</a> { <br />
 &#160;&#160;<a class="el" href="#a3880607bf76af2806d46607baf78e6e5a9eda8a550a6c842af4e2449c222be5c7">STATE_CYCLIC_PREOPE</a> = 0
@@ -260,7 +269,7 @@ Enumerations</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    (Ms8ValueB0, Ms8ValueB1)  \</div>
 <div class="line">    (((<a class="code hl_typedef" href="#a1596b77ac46df9f9a3f112366cc08930">t_sint16</a>)(Ms8ValueB0))            <span class="comment">/* 0x00FFUL*/</span> | \</div>
 <div class="line">    (((<a class="code hl_typedef" href="#a1596b77ac46df9f9a3f112366cc08930">t_sint16</a>)(Ms8ValueB1)) &lt;&lt; 8   )      <span class="comment">/* 0xFF00UL*/</span>)</div>
-<div class="ttc" id="a_type_common_8h_html_a1596b77ac46df9f9a3f112366cc08930"><div class="ttname"><a href="#a1596b77ac46df9f9a3f112366cc08930">t_sint16</a></div><div class="ttdeci">signed short t_sint16</div><div class="ttdef"><b>Definition</b> TypeCommon.h:82</div></div>
+<div class="ttc" id="a_type_common_8h_html_a1596b77ac46df9f9a3f112366cc08930"><div class="ttname"><a href="#a1596b77ac46df9f9a3f112366cc08930">t_sint16</a></div><div class="ttdeci">signed short t_sint16</div><div class="ttdef"><b>Definition</b> TypeCommon.h:84</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -280,7 +289,7 @@ Enumerations</h2></td></tr>
 <div class="line">    ((<a class="code hl_typedef" href="#a879ad29618b485db656730acdaae68fa">t_sint32</a>)(Mu8ValueB1) &lt;&lt; 8     )       <span class="comment">/* 0x0000FF00UL*/</span> | \</div>
 <div class="line">    ((<a class="code hl_typedef" href="#a879ad29618b485db656730acdaae68fa">t_sint32</a>)(Mu8ValueB2) &lt;&lt; 16    )       <span class="comment">/* 0x00FF0000UL*/</span> | \</div>
 <div class="line">    ((<a class="code hl_typedef" href="#a879ad29618b485db656730acdaae68fa">t_sint32</a>)(Mu8ValueB3) &lt;&lt; 24    )       <span class="comment">/* 0xFF000000UL*/</span> | )</div>
-<div class="ttc" id="a_type_common_8h_html_a879ad29618b485db656730acdaae68fa"><div class="ttname"><a href="#a879ad29618b485db656730acdaae68fa">t_sint32</a></div><div class="ttdeci">signed long t_sint32</div><div class="ttdef"><b>Definition</b> TypeCommon.h:84</div></div>
+<div class="ttc" id="a_type_common_8h_html_a879ad29618b485db656730acdaae68fa"><div class="ttname"><a href="#a879ad29618b485db656730acdaae68fa">t_sint32</a></div><div class="ttdeci">signed long t_sint32</div><div class="ttdef"><b>Definition</b> TypeCommon.h:86</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -382,7 +391,7 @@ Enumerations</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    (Mu8ValueB0, Mu8ValueB1)  \</div>
 <div class="line">    (((<a class="code hl_typedef" href="#a2f8b43fd51d852dadf2f4e8fb70b6a50">t_uint16</a>)(Mu8ValueB0))            <span class="comment">/* 0x00FFUL*/</span> | \</div>
 <div class="line">    (((<a class="code hl_typedef" href="#a2f8b43fd51d852dadf2f4e8fb70b6a50">t_uint16</a>)(Mu8ValueB1)) &lt;&lt; 8)      <span class="comment">/* 0xFF00UL*/</span>   )</div>
-<div class="ttc" id="a_type_common_8h_html_a2f8b43fd51d852dadf2f4e8fb70b6a50"><div class="ttname"><a href="#a2f8b43fd51d852dadf2f4e8fb70b6a50">t_uint16</a></div><div class="ttdeci">unsigned short t_uint16</div><div class="ttdef"><b>Definition</b> TypeCommon.h:81</div></div>
+<div class="ttc" id="a_type_common_8h_html_a2f8b43fd51d852dadf2f4e8fb70b6a50"><div class="ttname"><a href="#a2f8b43fd51d852dadf2f4e8fb70b6a50">t_uint16</a></div><div class="ttdeci">unsigned short t_uint16</div><div class="ttdef"><b>Definition</b> TypeCommon.h:83</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -402,7 +411,7 @@ Enumerations</h2></td></tr>
 <div class="line">    ((<a class="code hl_typedef" href="#a5543ed798da376a99db035f6ae6aaa1f">t_uint32</a>)(Mu8ValueB1) &lt;&lt; 8     )       <span class="comment">/* 0x0000FF00UL*/</span> | \</div>
 <div class="line">    ((<a class="code hl_typedef" href="#a5543ed798da376a99db035f6ae6aaa1f">t_uint32</a>)(Mu8ValueB2) &lt;&lt; 16    )       <span class="comment">/* 0x00FF0000UL*/</span> | \</div>
 <div class="line">    ((<a class="code hl_typedef" href="#a5543ed798da376a99db035f6ae6aaa1f">t_uint32</a>)(Mu8ValueB3) &lt;&lt; 24    )       <span class="comment">/* 0xFF000000UL*/</span> | )</div>
-<div class="ttc" id="a_type_common_8h_html_a5543ed798da376a99db035f6ae6aaa1f"><div class="ttname"><a href="#a5543ed798da376a99db035f6ae6aaa1f">t_uint32</a></div><div class="ttdeci">unsigned long t_uint32</div><div class="ttdef"><b>Definition</b> TypeCommon.h:83</div></div>
+<div class="ttc" id="a_type_common_8h_html_a5543ed798da376a99db035f6ae6aaa1f"><div class="ttname"><a href="#a5543ed798da376a99db035f6ae6aaa1f">t_uint32</a></div><div class="ttdeci">unsigned long t_uint32</div><div class="ttdef"><b>Definition</b> TypeCommon.h:85</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -501,7 +510,6 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Enum for return function </p>
 
 </div>
 </div>
@@ -720,6 +728,8 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Enum for return function. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c" name="af3fc622932488c58b80868c563cdd969a35dfc2905249b743ca050424b612e63c"></a>RC_ERROR_ALREADY_CONFIGURED&#160;</td><td class="fielddoc"><p>The operation is not accepted </p>
 </td></tr>
@@ -780,10 +790,13 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4a305301dd106dd3fec5647a4cdc0ef8.html">0_Common</a></li><li class="navelem"><a class="el" href="_type_common_8h.html">TypeCommon.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

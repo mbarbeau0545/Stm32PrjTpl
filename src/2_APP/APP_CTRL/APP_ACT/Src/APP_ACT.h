@@ -92,11 +92,11 @@
     *
     *	@brief  Set sensor state enable/disable
     *
-    *	@param[in]  f_Sns_e         : actuator enum @ref t_eAPPSNS_Sensors
+    *	@param[in]  f_Actuator_e         : actuator enum @ref t_eAPPSNS_Sensors
     *	@param[in]  f_SnsState_pe   : storage for the value 
     * 
     */
-    t_eReturnState APPACT_Set_ActuatorState(t_eAPPACT_Actuators f_Sns_e, t_eAPPACT_ActuatorState f_SnsState_e);
+    t_eReturnState APPACT_Set_ActuatorState(t_eAPPACT_Actuators f_Actuator_e, t_eAPPACT_ActuatorState f_ActState_e);
     /**
     *
     *	@brief  Get sensor state enable/disable
@@ -105,7 +105,7 @@
     *	@param[in]  f_SnsState_pe   : storage for the value 
     * 
     */
-    t_eReturnState APPACT_Get_ActuatorState(t_eAPPACT_Actuators f_Sns_e, t_eAPPACT_ActuatorState *f_SnsState_pe);
+    t_eReturnState APPACT_Get_ActuatorState(t_eAPPACT_Actuators f_Actuator_e, t_eAPPACT_ActuatorState *f_ActState_pe);
     /**
     *
     *	@brief  Get actuator value 

@@ -48,14 +48,16 @@
 	//-----------------------------ENUM TYPES-----------------------------//
     typedef enum 
     {
-        APPACT_ACTUATOR_DISABLE = 0,    /**< The actuator is unused in a system configuration */
-        APPACT_ACTUATOR_ENABLE          /**< The actuator is used in a system configuration */
+        APPACT_ACTUATOR_STATE_DISABLE = 0,    /**< The actuator is unused in a system configuration */
+        APPACT_ACTUATOR_STATE_ENABLE,         /**< The actuator is used in a system configuration */
+        APPACT_ACTUATOR_STATE_NB,             /**< Number of actuator state */
     } t_eAPPACT_ActuatorState;
 
     typedef enum 
     {
-        APPACT_DRIVER_DISABLE = 0,      /**< The driver is used in a system configuration */
-        APPACT_DRIVER_ENABLE            /**< The driver is used in a system configuration */
+        APPACT_DRIVER_STATE_DISABLE = 0,      /**< The driver is used in a system configuration */
+        APPACT_DRIVER_STATE_ENABLE,           /**< The driver is used in a system configuration */
+        APPACT_DRIVER_STATE_NB,               /**< Number of driver state */
     } t_eAPPACT_DriverState;
 	/* CAUTION : Automatic generated code section for Structure: Start */
 

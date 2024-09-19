@@ -203,7 +203,6 @@ void MX_DMA_Init(void)
     // Lier le DMA à l'ADC
     __HAL_LINKDMA(&hadc1, DMA_Handle, hdma_adc1);
 }
-
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
     // Cette fonction est appelée à chaque fois que le DMA a transféré le nombre requis d'échantillons

@@ -40,7 +40,6 @@
     #define FMKCPU_TIMER_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC_MHZ * 1000)- (t_uint16)1) /**<  The prescaler use for evnt timer, having 1000Hz (1ms) */
 
     #define FMKCPU_TIME_BTWN_DIAG_MS     ((t_uint16)2000)   /**< Time between diagnostic for timer and channel in cyclic ope mode*/
-    #define FMKCPU_WWDG_RESET_CFG  FMKCPU_WWDG_RESET_100MS /**< default watchdogs configuration */
     // ********************************************************************
     // *                      Types
     // ********************************************************************

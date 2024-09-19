@@ -93,9 +93,6 @@
     /* CAUTION : Automatic generated code section for Variable: Start */
     /**< Variable for System Sensors drivers functions*/
     const t_sAPPSNS_SysDrvFunc c_AppSns_SysDrv_apf[APPSNS_DRIVER_NB] = {
-        {(t_cbAppSns_DrvInit *)FMKDRV_Sick_Init,                     (t_cbAppSns_DrvInit *)NULL_FONCTION},  // APPSNS_DRIVER_SICK
-        {(t_cbAppSns_DrvInit *)FMKDRV_Kuber_Init,                    (t_cbAppSns_DrvCyclic *)FMKDRV_Kuber_Cyclic},  // APPSNS_DRIVER_KUBER
-        {(t_cbAppSns_DrvInit *)NULL_FONCTION,                        (t_cbAppSns_DrvCyclic *)FMKDRV_MTS_Cyclic},  // APPSNS_DRIVER_MTS
     };
 
     /**< Variable for System Sensors functions*/

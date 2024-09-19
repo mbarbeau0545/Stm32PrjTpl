@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('_f_m_k_i_o___config_public_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,31 +96,16 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_b982bb86fcced66b9d09fd08cfb2e628.html">FMK_CFG</a></li><li class="navelem"><a class="el" href="dir_9c4d48a77d14f5b995cfce877f8c6c30.html">FMKCFG_ConfigFiles</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">FMKIO_ConfigPublic.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_type_common_8h_source.html">TypeCommon.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_f_m_k___c_p_u_8h_source.html">FMK_HAL/FMK_CPU/Src/FMK_CPU.h</a>&quot;</code><br />
 </div>
 <p><a href="_f_m_k_i_o___config_public_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__s_f_m_k_i_o___bsp_sig_cfg.html">t_sFMKIO_BspSigCfg</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__s_f_m_k_i_o___bsp_timer_sig_cfg.html">t_sFMKIO_BspTimerSigCfg</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ada94b7006d66becfbea9fcb93aa75c26" id="r_ada94b7006d66becfbea9fcb93aa75c26"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada94b7006d66becfbea9fcb93aa75c26">t_eFMKIO_GpioPort</a> { <br />
@@ -165,10 +164,22 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a85d35757a43a973e804e4d39160733a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cb8c16a035f78dc5e4d20c9887f0915" id="r_a4cb8c16a035f78dc5e4d20c9887f0915"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915">t_eFMKIO_InAnaSig</a> { <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a08794667c06ee5e16f1a6e6547a6c26c">FMKIO_INPUT_SIGANA_1</a> = 0x0
+<tr class="memitem:a4cb8c16a035f78dc5e4d20c9887f0915" id="r_a4cb8c16a035f78dc5e4d20c9887f0915"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915">t_eFMKIO_InAnaSig</a> { <br />
+&#160;&#160;<a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a08794667c06ee5e16f1a6e6547a6c26c">FMKIO_INPUT_SIGANA_1</a> = 0x0
 , <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915aac6114c9f5a8202c77b7eae92e0553da">FMKIO_INPUT_SIGANA_2</a>
 , <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a9ea506485105164c9638f058cebc7727">FMKIO_INPUT_SIGANA_3</a>
+, <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a0cdbe9016921f3cdacf0add4dcedd2db">FMKIO_INPUT_SIGANA_4</a>
+, <br />
+&#160;&#160;<a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a41beee3bc7e2f3c7660ab9b5da28fca5">FMKIO_INPUT_SIGANA_5</a>
+, <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a107a416e94ce18f53226cf7ff23635fa">FMKIO_INPUT_SIGANA_6</a>
+, <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915aaffae72e188a9b91124a0353cd152546">FMKIO_INPUT_SIGANA_7</a>
+, <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a58b858c4596a3bc30990207103f5a4d3">FMKIO_INPUT_SIGANA_8</a>
+, <br />
+&#160;&#160;<a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a0fb79159a6627d666cd60d563eae82f1">FMKIO_INPUT_SIGANA_9</a>
+, <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a35eb4373e5d39535902dfd8ce150d771">FMKIO_INPUT_SIGANA_10</a>
+, <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a29b25511c63f3caedb80b1bf507a5edc">FMKIO_INPUT_SIGANA_11</a>
 , <a class="el" href="#a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c">FMKIO_INPUT_SIGANA_NB</a>
+<br />
  }</td></tr>
 <tr class="separator:a4cb8c16a035f78dc5e4d20c9887f0915"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a369ca310d55cbf67de9010ec81477fa4" id="r_a369ca310d55cbf67de9010ec81477fa4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a369ca310d55cbf67de9010ec81477fa4">t_eFMKIO_InFreqSig</a> { <a class="el" href="#a369ca310d55cbf67de9010ec81477fa4afd6dc123ce61fa0fa41b2a5c355d798e">FMKIO_INPUT_SIGFREQ_1</a> = 0x0
@@ -203,10 +214,19 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:ac9a244e75be9a944575215a9382cfbaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c5f0e578cac21eb7f6effcf3c017a1f" id="r_a1c5f0e578cac21eb7f6effcf3c017a1f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1f">t_eFMKIO_OutPwmSig</a> { <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fa0cef286893568f81a60f039d095348c8">FMKIO_OUTPUT_SIGPWM_1</a> = 0x0
+<tr class="memitem:a1c5f0e578cac21eb7f6effcf3c017a1f" id="r_a1c5f0e578cac21eb7f6effcf3c017a1f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1f">t_eFMKIO_OutPwmSig</a> { <br />
+&#160;&#160;<a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fa0cef286893568f81a60f039d095348c8">FMKIO_OUTPUT_SIGPWM_1</a> = 0x0
 , <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fae843501889ae295bb1f8bbcd239f1f30">FMKIO_OUTPUT_SIGPWM_2</a>
 , <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fa57bfb5ac83439cb1f772f8dcaa9b5487">FMKIO_OUTPUT_SIGPWM_3</a>
-, <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1">FMKIO_OUTPUT_SIGPWM_NB</a>
+, <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1faf2f582b6d6f1db378f3cb72275630162">FMKIO_OUTPUT_SIGPWM_4</a>
+, <br />
+&#160;&#160;<a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fadb12c779a25541f7b1ce417a407e6c6b">FMKIO_OUTPUT_SIGPWM_5</a>
+, <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fa2378bc2f3c956d235d1491e2ceec2e04">FMKIO_OUTPUT_SIGPWM_6</a>
+, <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fa74fb103bcbed92a2c8860f4215346b3c">FMKIO_OUTPUT_SIGPWM_7</a>
+, <a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fac3aed488d58c30319400a9f8caab3fd7">FMKIO_OUTPUT_SIGPWM_8</a>
+, <br />
+&#160;&#160;<a class="el" href="#a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1">FMKIO_OUTPUT_SIGPWM_NB</a>
+<br />
  }</td></tr>
 <tr class="separator:a1c5f0e578cac21eb7f6effcf3c017a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35c27e0fc7916486db6efe7ee0ba1eb4" id="r_a35c27e0fc7916486db6efe7ee0ba1eb4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35c27e0fc7916486db6efe7ee0ba1eb4">t_eFMKIO_AlternateFunc</a> { <br />
@@ -423,11 +443,27 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a08794667c06ee5e16f1a6e6547a6c26c" name="a4cb8c16a035f78dc5e4d20c9887f0915a08794667c06ee5e16f1a6e6547a6c26c"></a>FMKIO_INPUT_SIGANA_1&#160;</td><td class="fielddoc"><p>PA1 </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a08794667c06ee5e16f1a6e6547a6c26c" name="a4cb8c16a035f78dc5e4d20c9887f0915a08794667c06ee5e16f1a6e6547a6c26c"></a>FMKIO_INPUT_SIGANA_1&#160;</td><td class="fielddoc"><p>PC0 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915aac6114c9f5a8202c77b7eae92e0553da" name="a4cb8c16a035f78dc5e4d20c9887f0915aac6114c9f5a8202c77b7eae92e0553da"></a>FMKIO_INPUT_SIGANA_2&#160;</td><td class="fielddoc"><p>PA2 </p>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915aac6114c9f5a8202c77b7eae92e0553da" name="a4cb8c16a035f78dc5e4d20c9887f0915aac6114c9f5a8202c77b7eae92e0553da"></a>FMKIO_INPUT_SIGANA_2&#160;</td><td class="fielddoc"><p>PC1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a9ea506485105164c9638f058cebc7727" name="a4cb8c16a035f78dc5e4d20c9887f0915a9ea506485105164c9638f058cebc7727"></a>FMKIO_INPUT_SIGANA_3&#160;</td><td class="fielddoc"><p>PA3 </p>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a9ea506485105164c9638f058cebc7727" name="a4cb8c16a035f78dc5e4d20c9887f0915a9ea506485105164c9638f058cebc7727"></a>FMKIO_INPUT_SIGANA_3&#160;</td><td class="fielddoc"><p>PC2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a0cdbe9016921f3cdacf0add4dcedd2db" name="a4cb8c16a035f78dc5e4d20c9887f0915a0cdbe9016921f3cdacf0add4dcedd2db"></a>FMKIO_INPUT_SIGANA_4&#160;</td><td class="fielddoc"><p>PC3 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a41beee3bc7e2f3c7660ab9b5da28fca5" name="a4cb8c16a035f78dc5e4d20c9887f0915a41beee3bc7e2f3c7660ab9b5da28fca5"></a>FMKIO_INPUT_SIGANA_5&#160;</td><td class="fielddoc"><p>PA6 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a107a416e94ce18f53226cf7ff23635fa" name="a4cb8c16a035f78dc5e4d20c9887f0915a107a416e94ce18f53226cf7ff23635fa"></a>FMKIO_INPUT_SIGANA_6&#160;</td><td class="fielddoc"><p>PA7 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915aaffae72e188a9b91124a0353cd152546" name="a4cb8c16a035f78dc5e4d20c9887f0915aaffae72e188a9b91124a0353cd152546"></a>FMKIO_INPUT_SIGANA_7&#160;</td><td class="fielddoc"><p>PB8 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a58b858c4596a3bc30990207103f5a4d3" name="a4cb8c16a035f78dc5e4d20c9887f0915a58b858c4596a3bc30990207103f5a4d3"></a>FMKIO_INPUT_SIGANA_8&#160;</td><td class="fielddoc"><p>PB9 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a0fb79159a6627d666cd60d563eae82f1" name="a4cb8c16a035f78dc5e4d20c9887f0915a0fb79159a6627d666cd60d563eae82f1"></a>FMKIO_INPUT_SIGANA_9&#160;</td><td class="fielddoc"><p>PA1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a35eb4373e5d39535902dfd8ce150d771" name="a4cb8c16a035f78dc5e4d20c9887f0915a35eb4373e5d39535902dfd8ce150d771"></a>FMKIO_INPUT_SIGANA_10&#160;</td><td class="fielddoc"><p>PA2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a29b25511c63f3caedb80b1bf507a5edc" name="a4cb8c16a035f78dc5e4d20c9887f0915a29b25511c63f3caedb80b1bf507a5edc"></a>FMKIO_INPUT_SIGANA_11&#160;</td><td class="fielddoc"><p>PA3 </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c" name="a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c"></a>FMKIO_INPUT_SIGANA_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -446,29 +482,29 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9af94ccbaea483ad8e6d46ad08a2a22fe4" name="a85d35757a43a973e804e4d39160733a9af94ccbaea483ad8e6d46ad08a2a22fe4"></a>FMKIO_INPUT_SIGDIG_1&#160;</td><td class="fielddoc"><p>PA0 </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9af94ccbaea483ad8e6d46ad08a2a22fe4" name="a85d35757a43a973e804e4d39160733a9af94ccbaea483ad8e6d46ad08a2a22fe4"></a>FMKIO_INPUT_SIGDIG_1&#160;</td><td class="fielddoc"><p>PA12 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a660f1c273ae4a30251e024de01c25e10" name="a85d35757a43a973e804e4d39160733a9a660f1c273ae4a30251e024de01c25e10"></a>FMKIO_INPUT_SIGDIG_2&#160;</td><td class="fielddoc"><p>PA1 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a660f1c273ae4a30251e024de01c25e10" name="a85d35757a43a973e804e4d39160733a9a660f1c273ae4a30251e024de01c25e10"></a>FMKIO_INPUT_SIGDIG_2&#160;</td><td class="fielddoc"><p>PA13 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a9f6fa7ba4589622fa28837e09f187249" name="a85d35757a43a973e804e4d39160733a9a9f6fa7ba4589622fa28837e09f187249"></a>FMKIO_INPUT_SIGDIG_3&#160;</td><td class="fielddoc"><p>PA2 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a9f6fa7ba4589622fa28837e09f187249" name="a85d35757a43a973e804e4d39160733a9a9f6fa7ba4589622fa28837e09f187249"></a>FMKIO_INPUT_SIGDIG_3&#160;</td><td class="fielddoc"><p>PA14 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9acb8ab85646dfef5e458a842c39174f50" name="a85d35757a43a973e804e4d39160733a9acb8ab85646dfef5e458a842c39174f50"></a>FMKIO_INPUT_SIGDIG_4&#160;</td><td class="fielddoc"><p>PA3 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9acb8ab85646dfef5e458a842c39174f50" name="a85d35757a43a973e804e4d39160733a9acb8ab85646dfef5e458a842c39174f50"></a>FMKIO_INPUT_SIGDIG_4&#160;</td><td class="fielddoc"><p>PA15 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9ae9b8b77aea3660f317d4437bd009b7bd" name="a85d35757a43a973e804e4d39160733a9ae9b8b77aea3660f317d4437bd009b7bd"></a>FMKIO_INPUT_SIGDIG_5&#160;</td><td class="fielddoc"><p>PA4 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9ae9b8b77aea3660f317d4437bd009b7bd" name="a85d35757a43a973e804e4d39160733a9ae9b8b77aea3660f317d4437bd009b7bd"></a>FMKIO_INPUT_SIGDIG_5&#160;</td><td class="fielddoc"><p>PB0 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9ac1cdcca200819ea056d774d8b542d163" name="a85d35757a43a973e804e4d39160733a9ac1cdcca200819ea056d774d8b542d163"></a>FMKIO_INPUT_SIGDIG_6&#160;</td><td class="fielddoc"><p>PA5 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9ac1cdcca200819ea056d774d8b542d163" name="a85d35757a43a973e804e4d39160733a9ac1cdcca200819ea056d774d8b542d163"></a>FMKIO_INPUT_SIGDIG_6&#160;</td><td class="fielddoc"><p>PB1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a15450c76f63b0cb2d9418d8e6c2b14a0" name="a85d35757a43a973e804e4d39160733a9a15450c76f63b0cb2d9418d8e6c2b14a0"></a>FMKIO_INPUT_SIGDIG_7&#160;</td><td class="fielddoc"><p>PA6 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a15450c76f63b0cb2d9418d8e6c2b14a0" name="a85d35757a43a973e804e4d39160733a9a15450c76f63b0cb2d9418d8e6c2b14a0"></a>FMKIO_INPUT_SIGDIG_7&#160;</td><td class="fielddoc"><p>PB2 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a9ea48847b83037519410bea4eaf94579" name="a85d35757a43a973e804e4d39160733a9a9ea48847b83037519410bea4eaf94579"></a>FMKIO_INPUT_SIGDIG_8&#160;</td><td class="fielddoc"><p>PA7 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a9ea48847b83037519410bea4eaf94579" name="a85d35757a43a973e804e4d39160733a9a9ea48847b83037519410bea4eaf94579"></a>FMKIO_INPUT_SIGDIG_8&#160;</td><td class="fielddoc"><p>PB3 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a3c9ca3dafbdb683462d668750b813ec6" name="a85d35757a43a973e804e4d39160733a9a3c9ca3dafbdb683462d668750b813ec6"></a>FMKIO_INPUT_SIGDIG_9&#160;</td><td class="fielddoc"><p>PA8 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a3c9ca3dafbdb683462d668750b813ec6" name="a85d35757a43a973e804e4d39160733a9a3c9ca3dafbdb683462d668750b813ec6"></a>FMKIO_INPUT_SIGDIG_9&#160;</td><td class="fielddoc"><p>PB4 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9aa0af6ffb66d0015dfe9e9addba6ece1c" name="a85d35757a43a973e804e4d39160733a9aa0af6ffb66d0015dfe9e9addba6ece1c"></a>FMKIO_INPUT_SIGDIG_10&#160;</td><td class="fielddoc"><p>PA9 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9aa0af6ffb66d0015dfe9e9addba6ece1c" name="a85d35757a43a973e804e4d39160733a9aa0af6ffb66d0015dfe9e9addba6ece1c"></a>FMKIO_INPUT_SIGDIG_10&#160;</td><td class="fielddoc"><p>PB5 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9ad52ae3d004feae113daf17169a55edf2" name="a85d35757a43a973e804e4d39160733a9ad52ae3d004feae113daf17169a55edf2"></a>FMKIO_INPUT_SIGDIG_11&#160;</td><td class="fielddoc"><p>PA10 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9ad52ae3d004feae113daf17169a55edf2" name="a85d35757a43a973e804e4d39160733a9ad52ae3d004feae113daf17169a55edf2"></a>FMKIO_INPUT_SIGDIG_11&#160;</td><td class="fielddoc"><p>PB10 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a8ff427bb148847581e209da09e1751b1" name="a85d35757a43a973e804e4d39160733a9a8ff427bb148847581e209da09e1751b1"></a>FMKIO_INPUT_SIGDIG_12&#160;</td><td class="fielddoc"><p>PA11 </p>
+<tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9a8ff427bb148847581e209da09e1751b1" name="a85d35757a43a973e804e4d39160733a9a8ff427bb148847581e209da09e1751b1"></a>FMKIO_INPUT_SIGDIG_12&#160;</td><td class="fielddoc"><p>PB11 </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a85d35757a43a973e804e4d39160733a9af9764c577b0f6788965b8188df594e1f" name="a85d35757a43a973e804e4d39160733a9af9764c577b0f6788965b8188df594e1f"></a>FMKIO_INPUT_SIGDIG_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -487,9 +523,9 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab36786c32b52a47834f698f8956f9fe0a9e02e3542fbe202faee7a7b7b76ca2d8" name="ab36786c32b52a47834f698f8956f9fe0a9e02e3542fbe202faee7a7b7b76ca2d8"></a>FMKIO_INPUT_SIGEVNT_1&#160;</td><td class="fielddoc"><p>PA1 </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab36786c32b52a47834f698f8956f9fe0a9e02e3542fbe202faee7a7b7b76ca2d8" name="ab36786c32b52a47834f698f8956f9fe0a9e02e3542fbe202faee7a7b7b76ca2d8"></a>FMKIO_INPUT_SIGEVNT_1&#160;</td><td class="fielddoc"><p>PF0 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ab36786c32b52a47834f698f8956f9fe0af71f590a75d965919851c3cad4ef00b7" name="ab36786c32b52a47834f698f8956f9fe0af71f590a75d965919851c3cad4ef00b7"></a>FMKIO_INPUT_SIGEVNT_2&#160;</td><td class="fielddoc"><p>PA2 </p>
+<tr><td class="fieldname"><a id="ab36786c32b52a47834f698f8956f9fe0af71f590a75d965919851c3cad4ef00b7" name="ab36786c32b52a47834f698f8956f9fe0af71f590a75d965919851c3cad4ef00b7"></a>FMKIO_INPUT_SIGEVNT_2&#160;</td><td class="fielddoc"><p>PF1 </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ab36786c32b52a47834f698f8956f9fe0a3c6c7e808c822cbbe3af496ebc284e0a" name="ab36786c32b52a47834f698f8956f9fe0a3c6c7e808c822cbbe3af496ebc284e0a"></a>FMKIO_INPUT_SIGEVNT_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -508,11 +544,11 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a369ca310d55cbf67de9010ec81477fa4afd6dc123ce61fa0fa41b2a5c355d798e" name="a369ca310d55cbf67de9010ec81477fa4afd6dc123ce61fa0fa41b2a5c355d798e"></a>FMKIO_INPUT_SIGFREQ_1&#160;</td><td class="fielddoc"><p>PA1 </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a369ca310d55cbf67de9010ec81477fa4afd6dc123ce61fa0fa41b2a5c355d798e" name="a369ca310d55cbf67de9010ec81477fa4afd6dc123ce61fa0fa41b2a5c355d798e"></a>FMKIO_INPUT_SIGFREQ_1&#160;</td><td class="fielddoc"><p>PA4 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a369ca310d55cbf67de9010ec81477fa4a32baa28c417dda0bcd23d765abbace43" name="a369ca310d55cbf67de9010ec81477fa4a32baa28c417dda0bcd23d765abbace43"></a>FMKIO_INPUT_SIGFREQ_2&#160;</td><td class="fielddoc"><p>PA2 </p>
+<tr><td class="fieldname"><a id="a369ca310d55cbf67de9010ec81477fa4a32baa28c417dda0bcd23d765abbace43" name="a369ca310d55cbf67de9010ec81477fa4a32baa28c417dda0bcd23d765abbace43"></a>FMKIO_INPUT_SIGFREQ_2&#160;</td><td class="fielddoc"><p>PB14 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a369ca310d55cbf67de9010ec81477fa4a08c043c3a3eb4c673b5c780eaca17a30" name="a369ca310d55cbf67de9010ec81477fa4a08c043c3a3eb4c673b5c780eaca17a30"></a>FMKIO_INPUT_SIGFREQ_3&#160;</td><td class="fielddoc"><p>PA3 </p>
+<tr><td class="fieldname"><a id="a369ca310d55cbf67de9010ec81477fa4a08c043c3a3eb4c673b5c780eaca17a30" name="a369ca310d55cbf67de9010ec81477fa4a08c043c3a3eb4c673b5c780eaca17a30"></a>FMKIO_INPUT_SIGFREQ_3&#160;</td><td class="fielddoc"><p>PB15 </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab" name="a369ca310d55cbf67de9010ec81477fa4a50f4682541296934ae87c3cb82996bab"></a>FMKIO_INPUT_SIGFREQ_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -531,31 +567,31 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa01bf58681f3d096f378a4c0ffa2d5e7d" name="ac9a244e75be9a944575215a9382cfbaaa01bf58681f3d096f378a4c0ffa2d5e7d"></a>FMKIO_OUTPUT_SIGDIG_1&#160;</td><td class="fielddoc"><p>PA1 </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa01bf58681f3d096f378a4c0ffa2d5e7d" name="ac9a244e75be9a944575215a9382cfbaaa01bf58681f3d096f378a4c0ffa2d5e7d"></a>FMKIO_OUTPUT_SIGDIG_1&#160;</td><td class="fielddoc"><p>PB12 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa00c67015d04d51f9caf391fea7d7a61a" name="ac9a244e75be9a944575215a9382cfbaaa00c67015d04d51f9caf391fea7d7a61a"></a>FMKIO_OUTPUT_SIGDIG_2&#160;</td><td class="fielddoc"><p>PA2 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa00c67015d04d51f9caf391fea7d7a61a" name="ac9a244e75be9a944575215a9382cfbaaa00c67015d04d51f9caf391fea7d7a61a"></a>FMKIO_OUTPUT_SIGDIG_2&#160;</td><td class="fielddoc"><p>PB13 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa29d6eb6499e35757cdd42637c234c78d" name="ac9a244e75be9a944575215a9382cfbaaa29d6eb6499e35757cdd42637c234c78d"></a>FMKIO_OUTPUT_SIGDIG_3&#160;</td><td class="fielddoc"><p>PA3 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa29d6eb6499e35757cdd42637c234c78d" name="ac9a244e75be9a944575215a9382cfbaaa29d6eb6499e35757cdd42637c234c78d"></a>FMKIO_OUTPUT_SIGDIG_3&#160;</td><td class="fielddoc"><p>PB14 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa7561f4fe20a6867a399fb79153564fd1" name="ac9a244e75be9a944575215a9382cfbaaa7561f4fe20a6867a399fb79153564fd1"></a>FMKIO_OUTPUT_SIGDIG_4&#160;</td><td class="fielddoc"><p>PA4 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa7561f4fe20a6867a399fb79153564fd1" name="ac9a244e75be9a944575215a9382cfbaaa7561f4fe20a6867a399fb79153564fd1"></a>FMKIO_OUTPUT_SIGDIG_4&#160;</td><td class="fielddoc"><p>PB15 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaae5273ac6a648a70a3ad780514b3e0ff4" name="ac9a244e75be9a944575215a9382cfbaaae5273ac6a648a70a3ad780514b3e0ff4"></a>FMKIO_OUTPUT_SIGDIG_5&#160;</td><td class="fielddoc"><p>PA5 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaae5273ac6a648a70a3ad780514b3e0ff4" name="ac9a244e75be9a944575215a9382cfbaaae5273ac6a648a70a3ad780514b3e0ff4"></a>FMKIO_OUTPUT_SIGDIG_5&#160;</td><td class="fielddoc"><p>PC4 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa8a0e5313643f4c787bf3f7cee388b05d" name="ac9a244e75be9a944575215a9382cfbaaa8a0e5313643f4c787bf3f7cee388b05d"></a>FMKIO_OUTPUT_SIGDIG_6&#160;</td><td class="fielddoc"><p>PA6 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa8a0e5313643f4c787bf3f7cee388b05d" name="ac9a244e75be9a944575215a9382cfbaaa8a0e5313643f4c787bf3f7cee388b05d"></a>FMKIO_OUTPUT_SIGDIG_6&#160;</td><td class="fielddoc"><p>PC5 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa1ae7491d5ccecfb50e866708a0808696" name="ac9a244e75be9a944575215a9382cfbaaa1ae7491d5ccecfb50e866708a0808696"></a>FMKIO_OUTPUT_SIGDIG_7&#160;</td><td class="fielddoc"><p>PA7 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa1ae7491d5ccecfb50e866708a0808696" name="ac9a244e75be9a944575215a9382cfbaaa1ae7491d5ccecfb50e866708a0808696"></a>FMKIO_OUTPUT_SIGDIG_7&#160;</td><td class="fielddoc"><p>PC13 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa29d6ff645b16872d1f062f207248d33a" name="ac9a244e75be9a944575215a9382cfbaaa29d6ff645b16872d1f062f207248d33a"></a>FMKIO_OUTPUT_SIGDIG_8&#160;</td><td class="fielddoc"><p>PA8 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa29d6ff645b16872d1f062f207248d33a" name="ac9a244e75be9a944575215a9382cfbaaa29d6ff645b16872d1f062f207248d33a"></a>FMKIO_OUTPUT_SIGDIG_8&#160;</td><td class="fielddoc"><p>PC14 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa882e471f013566f64d55268c788cecac" name="ac9a244e75be9a944575215a9382cfbaaa882e471f013566f64d55268c788cecac"></a>FMKIO_OUTPUT_SIGDIG_9&#160;</td><td class="fielddoc"><p>PA9 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa882e471f013566f64d55268c788cecac" name="ac9a244e75be9a944575215a9382cfbaaa882e471f013566f64d55268c788cecac"></a>FMKIO_OUTPUT_SIGDIG_9&#160;</td><td class="fielddoc"><p>PC15 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa2bba7619b3b6ddca9f72cc60a08daa00" name="ac9a244e75be9a944575215a9382cfbaaa2bba7619b3b6ddca9f72cc60a08daa00"></a>FMKIO_OUTPUT_SIGDIG_10&#160;</td><td class="fielddoc"><p>PA10 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa2bba7619b3b6ddca9f72cc60a08daa00" name="ac9a244e75be9a944575215a9382cfbaaa2bba7619b3b6ddca9f72cc60a08daa00"></a>FMKIO_OUTPUT_SIGDIG_10&#160;</td><td class="fielddoc"><p>PF4 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa299b3fe237cac58c6b4931c46856b394" name="ac9a244e75be9a944575215a9382cfbaaa299b3fe237cac58c6b4931c46856b394"></a>FMKIO_OUTPUT_SIGDIG_11&#160;</td><td class="fielddoc"><p>PA11 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa299b3fe237cac58c6b4931c46856b394" name="ac9a244e75be9a944575215a9382cfbaaa299b3fe237cac58c6b4931c46856b394"></a>FMKIO_OUTPUT_SIGDIG_11&#160;</td><td class="fielddoc"><p>PF5 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa855cdfee756a45f93d172b8e18cf4f58" name="ac9a244e75be9a944575215a9382cfbaaa855cdfee756a45f93d172b8e18cf4f58"></a>FMKIO_OUTPUT_SIGDIG_12&#160;</td><td class="fielddoc"><p>PA12 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa855cdfee756a45f93d172b8e18cf4f58" name="ac9a244e75be9a944575215a9382cfbaaa855cdfee756a45f93d172b8e18cf4f58"></a>FMKIO_OUTPUT_SIGDIG_12&#160;</td><td class="fielddoc"><p>PF6 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa20cbe506afcf62a914cbbefc1f958e0d" name="ac9a244e75be9a944575215a9382cfbaaa20cbe506afcf62a914cbbefc1f958e0d"></a>FMKIO_OUTPUT_SIGDIG_13&#160;</td><td class="fielddoc"><p>PA13 </p>
+<tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa20cbe506afcf62a914cbbefc1f958e0d" name="ac9a244e75be9a944575215a9382cfbaaa20cbe506afcf62a914cbbefc1f958e0d"></a>FMKIO_OUTPUT_SIGDIG_13&#160;</td><td class="fielddoc"><p>PF7 </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4" name="ac9a244e75be9a944575215a9382cfbaaa58639abb274026065c03795f0735d0e4"></a>FMKIO_OUTPUT_SIGDIG_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -574,11 +610,21 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fa0cef286893568f81a60f039d095348c8" name="a1c5f0e578cac21eb7f6effcf3c017a1fa0cef286893568f81a60f039d095348c8"></a>FMKIO_OUTPUT_SIGPWM_1&#160;</td><td class="fielddoc"><p>PA1 </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fa0cef286893568f81a60f039d095348c8" name="a1c5f0e578cac21eb7f6effcf3c017a1fa0cef286893568f81a60f039d095348c8"></a>FMKIO_OUTPUT_SIGPWM_1&#160;</td><td class="fielddoc"><p>PC6 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fae843501889ae295bb1f8bbcd239f1f30" name="a1c5f0e578cac21eb7f6effcf3c017a1fae843501889ae295bb1f8bbcd239f1f30"></a>FMKIO_OUTPUT_SIGPWM_2&#160;</td><td class="fielddoc"><p>PA2 </p>
+<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fae843501889ae295bb1f8bbcd239f1f30" name="a1c5f0e578cac21eb7f6effcf3c017a1fae843501889ae295bb1f8bbcd239f1f30"></a>FMKIO_OUTPUT_SIGPWM_2&#160;</td><td class="fielddoc"><p>PC7 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fa57bfb5ac83439cb1f772f8dcaa9b5487" name="a1c5f0e578cac21eb7f6effcf3c017a1fa57bfb5ac83439cb1f772f8dcaa9b5487"></a>FMKIO_OUTPUT_SIGPWM_3&#160;</td><td class="fielddoc"><p>PA3 </p>
+<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fa57bfb5ac83439cb1f772f8dcaa9b5487" name="a1c5f0e578cac21eb7f6effcf3c017a1fa57bfb5ac83439cb1f772f8dcaa9b5487"></a>FMKIO_OUTPUT_SIGPWM_3&#160;</td><td class="fielddoc"><p>PC8 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1faf2f582b6d6f1db378f3cb72275630162" name="a1c5f0e578cac21eb7f6effcf3c017a1faf2f582b6d6f1db378f3cb72275630162"></a>FMKIO_OUTPUT_SIGPWM_4&#160;</td><td class="fielddoc"><p>PC9 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fadb12c779a25541f7b1ce417a407e6c6b" name="a1c5f0e578cac21eb7f6effcf3c017a1fadb12c779a25541f7b1ce417a407e6c6b"></a>FMKIO_OUTPUT_SIGPWM_5&#160;</td><td class="fielddoc"><p>PA8 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fa2378bc2f3c956d235d1491e2ceec2e04" name="a1c5f0e578cac21eb7f6effcf3c017a1fa2378bc2f3c956d235d1491e2ceec2e04"></a>FMKIO_OUTPUT_SIGPWM_6&#160;</td><td class="fielddoc"><p>PA9 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fa74fb103bcbed92a2c8860f4215346b3c" name="a1c5f0e578cac21eb7f6effcf3c017a1fa74fb103bcbed92a2c8860f4215346b3c"></a>FMKIO_OUTPUT_SIGPWM_7&#160;</td><td class="fielddoc"><p>PA10 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fac3aed488d58c30319400a9f8caab3fd7" name="a1c5f0e578cac21eb7f6effcf3c017a1fac3aed488d58c30319400a9f8caab3fd7"></a>FMKIO_OUTPUT_SIGPWM_8&#160;</td><td class="fielddoc"><p>PA11 </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1" name="a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1"></a>FMKIO_OUTPUT_SIGPWM_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -586,10 +632,13 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_60756387c45bca44c605caff83b1d7b9.html">1_FMK</a></li><li class="navelem"><a class="el" href="dir_b982bb86fcced66b9d09fd08cfb2e628.html">FMK_CFG</a></li><li class="navelem"><a class="el" href="dir_9c4d48a77d14f5b995cfce877f8c6c30.html">FMKCFG_ConfigFiles</a></li><li class="navelem"><a class="el" href="_f_m_k_i_o___config_public_8h.html">FMKIO_ConfigPublic.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

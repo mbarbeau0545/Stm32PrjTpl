@@ -16,5 +16,6 @@ var searchData=
   ['fmkcpu_5fconfigspecific_2eh_13',['FMKCPU_ConfigSpecific.h',['../_f_m_k_c_p_u___config_specific_8h.html',1,'']]],
   ['fmkio_5fconfigprivate_2eh_14',['FMKIO_ConfigPrivate.h',['../_f_m_k_i_o___config_private_8h.html',1,'']]],
   ['fmkio_5fconfigpublic_2eh_15',['FMKIO_ConfigPublic.h',['../_f_m_k_i_o___config_public_8h.html',1,'']]],
-  ['fmkmac_5fconfigpublic_2eh_16',['FMKMAC_ConfigPublic.h',['../_f_m_k_m_a_c___config_public_8h.html',1,'']]]
+  ['fmkmac_5fconfigprivate_2eh_16',['FMKMAC_ConfigPrivate.h',['../_f_m_k_m_a_c___config_private_8h.html',1,'']]],
+  ['fmkmac_5fconfigpublic_2eh_17',['FMKMAC_ConfigPublic.h',['../_f_m_k_m_a_c___config_public_8h.html',1,'']]]
 ];

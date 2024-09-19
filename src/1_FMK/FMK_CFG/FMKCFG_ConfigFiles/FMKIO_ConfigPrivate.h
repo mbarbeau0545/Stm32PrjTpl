@@ -99,18 +99,18 @@
     /**< Variable for bsp_Gpio_Pin Digital input signal mapping */
     const t_sFMKIO_BspSigCfg c_InDigSigBspMap_as[FMKIO_INPUT_SIGDIG_NB] = {
         //GPIO_name                     Pin_name                      bsp pin name                  
-        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_6},    // FMKIO_INPUT_SIGDIG_1,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_1},    // FMKIO_INPUT_SIGDIG_2,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_2},    // FMKIO_INPUT_SIGDIG_3,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_3},    // FMKIO_INPUT_SIGDIG_4,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_4},    // FMKIO_INPUT_SIGDIG_5,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_5},    // FMKIO_INPUT_SIGDIG_6,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_6},    // FMKIO_INPUT_SIGDIG_7,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_7},    // FMKIO_INPUT_SIGDIG_8,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_8},    // FMKIO_INPUT_SIGDIG_9,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_9},    // FMKIO_INPUT_SIGDIG_10,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_10},   // FMKIO_INPUT_SIGDIG_11,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_11},   // FMKIO_INPUT_SIGDIG_12,
+        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_12},   // FMKIO_INPUT_SIGDIG_1,
+        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_13},   // FMKIO_INPUT_SIGDIG_2,
+        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_14},   // FMKIO_INPUT_SIGDIG_3,
+        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_15},   // FMKIO_INPUT_SIGDIG_4,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_0},    // FMKIO_INPUT_SIGDIG_5,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_1},    // FMKIO_INPUT_SIGDIG_6,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_2},    // FMKIO_INPUT_SIGDIG_7,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_3},    // FMKIO_INPUT_SIGDIG_8,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_4},    // FMKIO_INPUT_SIGDIG_9,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_5},    // FMKIO_INPUT_SIGDIG_10,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_10},   // FMKIO_INPUT_SIGDIG_11,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_11},   // FMKIO_INPUT_SIGDIG_12,
     };
 
     /**< Variable for bsp_Gpio_Pin, adc coonfig Analog input signal mapping */
@@ -140,26 +140,26 @@
     /**< Variable for bsp_Gpio_Pin frequency input signal mapping */
     const t_sFMKIO_BspEvntSigCfg c_InEvntSigBspMap_as[FMKIO_INPUT_SIGEVNT_NB] = {
         //GPIO_name                     Pin_name                      GPIO_IRQN                     bsp pin name                  
-        {{FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_0},              EXT1_3IRQN},               // FMKIO_INPUT_SIGEVNT_1,
-        {{FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_1},              EXT1_3IRQN},               // FMKIO_INPUT_SIGEVNT_2,
+        {{FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_0},              EXTI0_1_IRQn},             // FMKIO_INPUT_SIGEVNT_1,
+        {{FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_1},              EXTI0_1_IRQn},             // FMKIO_INPUT_SIGEVNT_2,
     };
 
     /**< Variable for bsp_Gpio_Pin Digital ouput signal mapping */
     const t_sFMKIO_BspSigCfg c_OutDigSigBspMap_as[FMKIO_OUTPUT_SIGDIG_NB] = {
         //GPIO_name                     Pin_name                      bsp pin name                  
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_12},   // FMKIO_OUTPUT_SIGDIG_1,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_2,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_14},   // FMKIO_OUTPUT_SIGDIG_3,
-        {FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_15},   // FMKIO_OUTPUT_SIGDIG_4,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_2},    // FMKIO_OUTPUT_SIGDIG_5,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_3},    // FMKIO_OUTPUT_SIGDIG_6,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_4},    // FMKIO_OUTPUT_SIGDIG_7,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_5},    // FMKIO_OUTPUT_SIGDIG_8,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_10},   // FMKIO_OUTPUT_SIGDIG_9,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_11},   // FMKIO_OUTPUT_SIGDIG_10,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_12},   // FMKIO_OUTPUT_SIGDIG_11,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_12,
-        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_13,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_12},   // FMKIO_OUTPUT_SIGDIG_1,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_2,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_14},   // FMKIO_OUTPUT_SIGDIG_3,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_15},   // FMKIO_OUTPUT_SIGDIG_4,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_4},    // FMKIO_OUTPUT_SIGDIG_5,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_5},    // FMKIO_OUTPUT_SIGDIG_6,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_7,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_14},   // FMKIO_OUTPUT_SIGDIG_8,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_15},   // FMKIO_OUTPUT_SIGDIG_9,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_4},    // FMKIO_OUTPUT_SIGDIG_10,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_5},    // FMKIO_OUTPUT_SIGDIG_11,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_6},    // FMKIO_OUTPUT_SIGDIG_12,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_7},    // FMKIO_OUTPUT_SIGDIG_13,
     };
 
     /**< Variable for bsp_Gpio_Pin PWM output signal mapping */

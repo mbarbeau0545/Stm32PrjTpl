@@ -31,6 +31,8 @@
         "fmkcda_configpublic.h": "c",
         "fmkio_configprivate.h": "c",
         "app_sns.h": "c",
-        "appsns_configpublic.h": "c"
+        "appsns_configpublic.h": "c",
+        "fmk_mac.h": "c",
+        "fmkmac_configpublic.h": "c"
     }
 }

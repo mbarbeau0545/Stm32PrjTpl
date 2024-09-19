@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,19 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="doc-content">
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -90,7 +102,6 @@ $(function(){ initResizable(false); });
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>adc_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___ana_adc_cfg.html#a35f885a91aa9e8cdbf78ef78007b78f3">t_sFMKIO_AnaAdcCfg</a></li>
 <li>adcChannel_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___ana_adc_cfg.html#a57923eb97a2c06335e58c72a810a8f38">t_sFMKIO_AnaAdcCfg</a></li>
-<li>altFunc_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___sig_info.html#a1f66aded4f4d129d93fdb77c4bdbaf79">t_sFMKIO_SigInfo</a></li>
 </ul>
 
 
@@ -119,15 +130,17 @@ $(function(){ initResizable(false); });
 
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
 <li>EnableClk_pcb&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___clk_func.html#a4a8dd8ca28952940dbe81d41b7ded388">t_sFMKCPU_ClkFunc</a></li>
-<li>Error_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_d_a___chnl_info.html#a69012301fc4ad54e11e65800efae4c61">t_sFMKCDA_ChnlInfo</a></li>
-<li>ErrState_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___chnl_info.html#ad5f8fbfa6818d6c5b406c54d74b24ce9">t_sFMKCPU_ChnlInfo</a></li>
-<li>EvntFunc_cb&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___sig_info.html#ad0d8842c300205d461e8cba97bf2e7d3">t_sFMKIO_SigInfo</a></li>
+<li>Error_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_d_a___adc_info.html#a69012301fc4ad54e11e65800efae4c61">t_sFMKCDA_AdcInfo</a></li>
+<li>ErrState_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___chnl_info.html#a794550838d8f8c037fb90b66db832d88">t_sFMKCPU_ChnlInfo</a></li>
+<li>EvntFunc_cb&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___in_evnt_sig_info.html#ad0d8842c300205d461e8cba97bf2e7d3">t_sFMKIO_InEvntSigInfo</a></li>
 <li>ExtiIRQN_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___bsp_evnt_sig_cfg.html#a8632511de9fcd542c05f81c982024044">t_sFMKIO_BspEvntSigCfg</a></li>
 </ul>
 
 
 <h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>flagErrDetected_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_d_a___adc_info.html#a989daf8b8e7d3a5dc6c5cf574c330ad3">t_sFMKCDA_AdcInfo</a></li>
 <li>FlagValueUpdated_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_d_a___adc_buffer.html#ad0bde3350e9f8f82d223e5890ad48a2c">t_sFMKCDA_AdcBuffer</a>, <a class="el" href="structt__s_f_m_k_c_d_a___chnl_info.html#ad0bde3350e9f8f82d223e5890ad48a2c">t_sFMKCDA_ChnlInfo</a></li>
+<li>FlagValueWriting_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html#a9543f1b2f76bfae35fc53a949ca135c9">t_sFMKIO_InFreqSigInfo</a></li>
 <li>funcCyclic_cb&#160;:&#160;<a class="el" href="structt__s_app_sys___sys_func.html#a84e7b342cf11e515367364a293607f18">t_sAppSys_SysFunc</a></li>
 <li>funcGetState_cb&#160;:&#160;<a class="el" href="structt__s_app_sys___sys_func.html#a9ea764eefa95b9e76a8ca2dc631ecf92">t_sAppSys_SysFunc</a></li>
 <li>funcInit_cb&#160;:&#160;<a class="el" href="structt__s_app_sys___sys_func.html#a32ee5adaaab9ec3b6a0d6be3e67f5481">t_sAppSys_SysFunc</a></li>
@@ -136,6 +149,7 @@ $(function(){ initResizable(false); });
 
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
+<li>GetTimerState_cb&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___tim_channel_func.html#acfef36d101cb2e2c0655ea4c449d2b72">t_sFMKCPU_TimChannelFunc</a></li>
 <li>GetValue_pcb&#160;:&#160;<a class="el" href="structt__s_a_p_p_a_c_t___sys_act_func.html#a64b2b4b686c404b576b3f989ce0979f2">t_sAPPACT_SysActFunc</a>, <a class="el" href="structt__s_a_p_p_s_n_s___sys_sns_func.html#a89f7d634a75a800b4abba725e0dc86a0">t_sAPPSNS_SysSnsFunc</a></li>
 </ul>
 
@@ -155,17 +169,23 @@ $(function(){ initResizable(false); });
 <li>IsChnlConfigure_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___chnl_info.html#a945549dbd1d4b0a15ad893f75b9decbf">t_sFMKCPU_ChnlInfo</a></li>
 <li>IsChnlConfigured_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_d_a___chnl_info.html#a845bae7749317670f3060c40e3250e4d">t_sFMKCDA_ChnlInfo</a></li>
 <li>IsChnlUsed_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_d_a___chnl_info.html#ae4179767488db81fce3a275539828196">t_sFMKCDA_ChnlInfo</a></li>
-<li>IsInterruptEnable_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___sig_info.html#a4e434e4844ee11e14e9055ee5eb01315">t_sFMKIO_SigInfo</a></li>
+<li>IsInterruptEnabl&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___in_evnt_sig_info.html#a35035cbd294630b7cb53b0b9ccdd642c">t_sFMKIO_InEvntSigInfo</a></li>
+<li>IsInterruptEnable_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___ana_pwm_sig_info.html#a4e434e4844ee11e14e9055ee5eb01315">t_sFMKIO_AnaPwmSigInfo</a>, <a class="el" href="structt__s_f_m_k_i_o___dig_sig_info.html#a4e434e4844ee11e14e9055ee5eb01315">t_sFMKIO_DigSigInfo</a>, <a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html#a4e434e4844ee11e14e9055ee5eb01315">t_sFMKIO_InFreqSigInfo</a></li>
 <li>IsNVICTimerEnable_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___timer_info.html#accab14f01177340fb29a0af53ed97e74">t_sFMKCPU_TimerInfo</a></li>
-<li>IsSigConfigured_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___sig_info.html#a7a331c83d2c3e3bfe960fa300e329eb8">t_sFMKIO_SigInfo</a></li>
+<li>IsSigConfigured_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___ana_pwm_sig_info.html#a7a331c83d2c3e3bfe960fa300e329eb8">t_sFMKIO_AnaPwmSigInfo</a>, <a class="el" href="structt__s_f_m_k_i_o___dig_sig_info.html#a7a331c83d2c3e3bfe960fa300e329eb8">t_sFMKIO_DigSigInfo</a>, <a class="el" href="structt__s_f_m_k_i_o___in_evnt_sig_info.html#a7a331c83d2c3e3bfe960fa300e329eb8">t_sFMKIO_InEvntSigInfo</a>, <a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html#a7a331c83d2c3e3bfe960fa300e329eb8">t_sFMKIO_InFreqSigInfo</a></li>
 <li>IsTimerConfigured_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___timer_info.html#a926f8bdf51606ea805f9ee74c1c5bd8e">t_sFMKCPU_TimerInfo</a></li>
+<li>IsTimerRunning_b&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___timer_info.html#a2c088aca3251aca5476b5812078b9e86">t_sFMKCPU_TimerInfo</a></li>
 <li>IsValueOK_b&#160;:&#160;<a class="el" href="structt__s_a_p_p_a_c_t___value_info.html#afda7eddc72eb248165c068b7792a19b8">t_sAPPACT_ValueInfo</a>, <a class="el" href="structt__s_a_p_p_s_n_s___value_info.html#afda7eddc72eb248165c068b7792a19b8">t_sAPPSNS_ValueInfo</a></li>
+</ul>
+
+
+<h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>meas_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html#a8f7800ab3d7e276d12a4370a87ded398">t_sFMKIO_InFreqSigInfo</a></li>
 </ul>
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>psc_u16&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___bsp_wwdg_cfg.html#a50c7934e6a457b902c952326df4c2e19">t_sFMKCPU_BspWwdgCfg</a></li>
-<li>pull_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___sig_info.html#aeea0f8a648bbffd9166dbf3dffbffbda">t_sFMKIO_SigInfo</a></li>
 </ul>
 
 
@@ -179,10 +199,11 @@ $(function(){ initResizable(false); });
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>savedValue_32&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html#a55fb97ee2fa5ad4d83bb5c5144588ecb">t_sFMKIO_InFreqSigInfo</a></li>
 <li>SetCfg_pcb&#160;:&#160;<a class="el" href="structt__s_a_p_p_a_c_t___sys_act_func.html#a5f2af9f8e045680d84ef6f462b2b00f8">t_sAPPACT_SysActFunc</a>, <a class="el" href="structt__s_a_p_p_s_n_s___sys_sns_func.html#a7ab2d023add644e476ada13c4926132a">t_sAPPSNS_SysSnsFunc</a></li>
 <li>SetValue_pcb&#160;:&#160;<a class="el" href="structt__s_a_p_p_a_c_t___sys_act_func.html#a57f14e8e737d833630ecf486f4da9b30">t_sAPPACT_SysActFunc</a></li>
+<li>sigError_cb&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___ana_pwm_sig_info.html#aa8ddc97c735cbb604699fee97fdecfa3">t_sFMKIO_AnaPwmSigInfo</a>, <a class="el" href="structt__s_f_m_k_i_o___in_evnt_sig_info.html#aa8ddc97c735cbb604699fee97fdecfa3">t_sFMKIO_InEvntSigInfo</a>, <a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html#aa8ddc97c735cbb604699fee97fdecfa3">t_sFMKIO_InFreqSigInfo</a></li>
 <li>SnsValue_s16&#160;:&#160;<a class="el" href="structt__s_a_p_p_s_n_s___value_info.html#a9843825a6165fdc7435a7a0e25f6f231">t_sAPPSNS_ValueInfo</a></li>
-<li>spd_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___sig_info.html#ae1f6f0b99cc74940ccc00b667217ad06">t_sFMKIO_SigInfo</a></li>
 <li>StartFuncInterrupt_pcb&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___tim_channel_func.html#a333610792b160c6cae30d80a5ae629b8">t_sFMKCPU_TimChannelFunc</a></li>
 <li>StartFuncPoll_pcb&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___tim_channel_func.html#a0e46c7669651ff214bd88d6ba0dd5e2c">t_sFMKCPU_TimChannelFunc</a></li>
 <li>State_e&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___chnl_info.html#a5fff21ed9f915cf703cb6122aa93fec5">t_sFMKCPU_ChnlInfo</a></li>
@@ -196,11 +217,18 @@ $(function(){ initResizable(false); });
 <li>TimerDeInit_pcb&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___tim_channel_func.html#af387af20dde10e3f455369c1f255c7f4">t_sFMKCPU_TimChannelFunc</a></li>
 <li>TimerInit_pcb&#160;:&#160;<a class="el" href="structt__s_f_m_k_c_p_u___tim_channel_func.html#ac68d8edee04ba264c418139f3267ba22">t_sFMKCPU_TimChannelFunc</a></li>
 </ul>
+
+
+<h3><a id="index_v" name="index_v"></a>- v -</h3><ul>
+<li>value_u32&#160;:&#160;<a class="el" href="structt__s_f_m_k_i_o___in_freq_sig_info.html#a3f874f3b040cc68834fbbbbf5edf03d2">t_sFMKIO_InFreqSigInfo</a></li>
+</ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

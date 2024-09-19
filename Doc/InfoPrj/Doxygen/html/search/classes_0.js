@@ -17,8 +17,11 @@ var searchData=
   ['t_5fsfmkcpu_5ftimchannelfunc_14',['t_sFMKCPU_TimChannelFunc',['../structt__s_f_m_k_c_p_u___tim_channel_func.html',1,'']]],
   ['t_5fsfmkcpu_5ftimerinfo_15',['t_sFMKCPU_TimerInfo',['../structt__s_f_m_k_c_p_u___timer_info.html',1,'']]],
   ['t_5fsfmkio_5fanaadccfg_16',['t_sFMKIO_AnaAdcCfg',['../structt__s_f_m_k_i_o___ana_adc_cfg.html',1,'']]],
-  ['t_5fsfmkio_5fbspevntsigcfg_17',['t_sFMKIO_BspEvntSigCfg',['../structt__s_f_m_k_i_o___bsp_evnt_sig_cfg.html',1,'']]],
-  ['t_5fsfmkio_5fbspsigcfg_18',['t_sFMKIO_BspSigCfg',['../structt__s_f_m_k_i_o___bsp_sig_cfg.html',1,'']]],
-  ['t_5fsfmkio_5fbsptimersigcfg_19',['t_sFMKIO_BspTimerSigCfg',['../structt__s_f_m_k_i_o___bsp_timer_sig_cfg.html',1,'']]],
-  ['t_5fsfmkio_5fsiginfo_20',['t_sFMKIO_SigInfo',['../structt__s_f_m_k_i_o___sig_info.html',1,'']]]
+  ['t_5fsfmkio_5fanapwmsiginfo_17',['t_sFMKIO_AnaPwmSigInfo',['../structt__s_f_m_k_i_o___ana_pwm_sig_info.html',1,'']]],
+  ['t_5fsfmkio_5fbspevntsigcfg_18',['t_sFMKIO_BspEvntSigCfg',['../structt__s_f_m_k_i_o___bsp_evnt_sig_cfg.html',1,'']]],
+  ['t_5fsfmkio_5fbspsigcfg_19',['t_sFMKIO_BspSigCfg',['../structt__s_f_m_k_i_o___bsp_sig_cfg.html',1,'']]],
+  ['t_5fsfmkio_5fbsptimersigcfg_20',['t_sFMKIO_BspTimerSigCfg',['../structt__s_f_m_k_i_o___bsp_timer_sig_cfg.html',1,'']]],
+  ['t_5fsfmkio_5fdigsiginfo_21',['t_sFMKIO_DigSigInfo',['../structt__s_f_m_k_i_o___dig_sig_info.html',1,'']]],
+  ['t_5fsfmkio_5finevntsiginfo_22',['t_sFMKIO_InEvntSigInfo',['../structt__s_f_m_k_i_o___in_evnt_sig_info.html',1,'']]],
+  ['t_5fsfmkio_5finfreqsiginfo_23',['t_sFMKIO_InFreqSigInfo',['../structt__s_f_m_k_i_o___in_freq_sig_info.html',1,'']]]
 ];

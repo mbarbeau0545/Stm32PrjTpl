@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('_a_p_p_s_n_s___config_public_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,12 +96,6 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_eab1cd0f987a66bb1e8816ddc65c807e.html">2_APP</a></li><li class="navelem"><a class="el" href="dir_dc55300171ea7e938f51b7039fafa4fd.html">APP_CFG</a></li><li class="navelem"><a class="el" href="dir_ba806e477fbc3f78689e5f33c2efb6fe.html">ConfigFiles</a></li>  </ul>
-</div>
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
@@ -106,18 +114,15 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a5fd39a5550ff50adf236b17d07e5d1a4" id="r_a5fd39a5550ff50adf236b17d07e5d1a4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fd39a5550ff50adf236b17d07e5d1a4">t_eAPPSNS_Sensors</a> { <a class="el" href="#a5fd39a5550ff50adf236b17d07e5d1a4a6b7ea7523c888b29e8b35db4e3edfdcd">APPSNS_SNS_1</a> = 0
-, <a class="el" href="#a5fd39a5550ff50adf236b17d07e5d1a4a33a9129a51386a2438037ce73027ab3c">APPSNS_SNS_2</a>
-, <a class="el" href="#a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9">APPSNS_SNS_NB</a>
+<tr class="memitem:a5fd39a5550ff50adf236b17d07e5d1a4" id="r_a5fd39a5550ff50adf236b17d07e5d1a4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fd39a5550ff50adf236b17d07e5d1a4">t_eAPPSNS_Sensors</a> { <a class="el" href="#a5fd39a5550ff50adf236b17d07e5d1a4ac63d0f26cc632594089cabe90b1030b9">APPSNS_SENSOR_AIRTEMPERATURE</a> = 0x0
+, <a class="el" href="#a5fd39a5550ff50adf236b17d07e5d1a4adb3814c4991dd41cbc8d0d41adb65070">APPSNS_SENSOR_NB</a>
  }</td></tr>
 <tr class="separator:a5fd39a5550ff50adf236b17d07e5d1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae479a9dbf75dd3ff4f9fad8038aed69c" id="r_ae479a9dbf75dd3ff4f9fad8038aed69c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae479a9dbf75dd3ff4f9fad8038aed69c">t_eAPPSNS_Drivers</a> { <a class="el" href="#ae479a9dbf75dd3ff4f9fad8038aed69ca7e7e97b041639790e397130d8d3e7feb">APPSNS_DRV_JOY_1</a> = 0
-, <a class="el" href="#ae479a9dbf75dd3ff4f9fad8038aed69ca7bf3355f63a438a705d7c5f7ce9b1b3c">APPSNS_DRV_JOY_2</a>
-, <a class="el" href="#ae479a9dbf75dd3ff4f9fad8038aed69caad7018d907ac7d88e9ca88620e039808">APPSNS_DRV_NB</a>
+<tr class="memitem:ae479a9dbf75dd3ff4f9fad8038aed69c" id="r_ae479a9dbf75dd3ff4f9fad8038aed69c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae479a9dbf75dd3ff4f9fad8038aed69c">t_eAPPSNS_Drivers</a> { <a class="el" href="#ae479a9dbf75dd3ff4f9fad8038aed69ca5f5543d3ac4b81d604678bf1c80ee8af">APPSNS_DRIVER_NB</a>
  }</td></tr>
 <tr class="separator:ae479a9dbf75dd3ff4f9fad8038aed69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b2f12d7e5441f19c5c89bb067f10d68" id="r_a4b2f12d7e5441f19c5c89bb067f10d68"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2f12d7e5441f19c5c89bb067f10d68">t_eAPPSNS_SnsMeasType</a> { <br />
-&#160;&#160;<a class="el" href="#a4b2f12d7e5441f19c5c89bb067f10d68a18b37215eba6aacfd29f3a40f6ce56fa">APPSNS_MEASTYPE_RAW</a> = 0
+&#160;&#160;<a class="el" href="#a4b2f12d7e5441f19c5c89bb067f10d68a18b37215eba6aacfd29f3a40f6ce56fa">APPSNS_MEASTYPE_RAW</a> = 0x0
 , <a class="el" href="#a4b2f12d7e5441f19c5c89bb067f10d68aa864df1a1064557cf50381d9bbd44690">APPSNS_MEASTYPE_ANGLE_RAD</a>
 , <a class="el" href="#a4b2f12d7e5441f19c5c89bb067f10d68a0f9eea1ec4e41ab6a199e0fc14b7bb41">APPSNS_MEASTYPE_ANGLE_DEGREE</a>
 , <a class="el" href="#a4b2f12d7e5441f19c5c89bb067f10d68a9027f343686a2f8edb79ac95f8c75cef">APPSNS_MEASTYPE_DISTANCE_M</a>
@@ -139,12 +144,14 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a4b2f12d7e5441f19c5c89bb067f10d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7afd89244a58f698fc5ac71cbbc897f" id="r_af7afd89244a58f698fc5ac71cbbc897f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7afd89244a58f698fc5ac71cbbc897f">t_eAPPSNS_SensorState</a> { <a class="el" href="#af7afd89244a58f698fc5ac71cbbc897fa63b384c6e0af2e3449c6e1282d21cc77">APPSNS_SENSOR_DISABLE</a> = 0
-, <a class="el" href="#af7afd89244a58f698fc5ac71cbbc897fa9f055dd22205dff6130d0b56643fb70c">APPSNS_SENSOR_ENABLE</a>
+<tr class="memitem:af7afd89244a58f698fc5ac71cbbc897f" id="r_af7afd89244a58f698fc5ac71cbbc897f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7afd89244a58f698fc5ac71cbbc897f">t_eAPPSNS_SensorState</a> { <a class="el" href="#af7afd89244a58f698fc5ac71cbbc897fa527da5636a255a0acce77cbe0ac8d400">APPSNS_SENSOR_STATE_DISABLE</a> = 0
+, <a class="el" href="#af7afd89244a58f698fc5ac71cbbc897fa02b24125cca117dc7e43158b4d98383f">APPSNS_SENSOR_STATE_ENABLE</a>
+, <a class="el" href="#af7afd89244a58f698fc5ac71cbbc897fa839a28cee603e79d2d290a6e97feafb8">APPSNS_SENSOR_STATE_NB</a>
  }</td></tr>
 <tr class="separator:af7afd89244a58f698fc5ac71cbbc897f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6ef4d954b286471e5a367bf0db5084c" id="r_ad6ef4d954b286471e5a367bf0db5084c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6ef4d954b286471e5a367bf0db5084c">t_eAPPSNS_DrvState</a> { <a class="el" href="#ad6ef4d954b286471e5a367bf0db5084cafd01672036f3020ff73666832f0b6749">APPSNS_DRIVER_DISABLE</a> = 0
-, <a class="el" href="#ad6ef4d954b286471e5a367bf0db5084caac9e7869c1d857210c9cc8c28973376f">APPSNS_DRIVER_ENABLE</a>
+<tr class="memitem:ad6ef4d954b286471e5a367bf0db5084c" id="r_ad6ef4d954b286471e5a367bf0db5084c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6ef4d954b286471e5a367bf0db5084c">t_eAPPSNS_DrvState</a> { <a class="el" href="#ad6ef4d954b286471e5a367bf0db5084ca500faacf728f46706b14012db3acabc3">APPSNS_DRIVER_STATE_DISABLE</a> = 0
+, <a class="el" href="#ad6ef4d954b286471e5a367bf0db5084caca035c316ed2172b57d954aad989d9c6">APPSNS_DRIVER_STATE_ENABLE</a>
+, <a class="el" href="#ad6ef4d954b286471e5a367bf0db5084ca270c25eacc5cfb27b545e2839caeabad">APPSNS_DRIVER_STATE_NB</a>
  }</td></tr>
 <tr class="separator:ad6ef4d954b286471e5a367bf0db5084c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -161,11 +168,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae479a9dbf75dd3ff4f9fad8038aed69ca7e7e97b041639790e397130d8d3e7feb" name="ae479a9dbf75dd3ff4f9fad8038aed69ca7e7e97b041639790e397130d8d3e7feb"></a>APPSNS_DRV_JOY_1&#160;</td><td class="fielddoc"><p>Description </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae479a9dbf75dd3ff4f9fad8038aed69ca7bf3355f63a438a705d7c5f7ce9b1b3c" name="ae479a9dbf75dd3ff4f9fad8038aed69ca7bf3355f63a438a705d7c5f7ce9b1b3c"></a>APPSNS_DRV_JOY_2&#160;</td><td class="fielddoc"><p>Description </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ae479a9dbf75dd3ff4f9fad8038aed69caad7018d907ac7d88e9ca88620e039808" name="ae479a9dbf75dd3ff4f9fad8038aed69caad7018d907ac7d88e9ca88620e039808"></a>APPSNS_DRV_NB&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae479a9dbf75dd3ff4f9fad8038aed69ca5f5543d3ac4b81d604678bf1c80ee8af" name="ae479a9dbf75dd3ff4f9fad8038aed69ca5f5543d3ac4b81d604678bf1c80ee8af"></a>APPSNS_DRIVER_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -182,9 +185,11 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad6ef4d954b286471e5a367bf0db5084cafd01672036f3020ff73666832f0b6749" name="ad6ef4d954b286471e5a367bf0db5084cafd01672036f3020ff73666832f0b6749"></a>APPSNS_DRIVER_DISABLE&#160;</td><td class="fielddoc"><p>The driver is unused in a system configuration </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad6ef4d954b286471e5a367bf0db5084ca500faacf728f46706b14012db3acabc3" name="ad6ef4d954b286471e5a367bf0db5084ca500faacf728f46706b14012db3acabc3"></a>APPSNS_DRIVER_STATE_DISABLE&#160;</td><td class="fielddoc"><p>The driver is unused in a system configuration </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ad6ef4d954b286471e5a367bf0db5084caac9e7869c1d857210c9cc8c28973376f" name="ad6ef4d954b286471e5a367bf0db5084caac9e7869c1d857210c9cc8c28973376f"></a>APPSNS_DRIVER_ENABLE&#160;</td><td class="fielddoc"><p>The driver is used in a system configuration </p>
+<tr><td class="fieldname"><a id="ad6ef4d954b286471e5a367bf0db5084caca035c316ed2172b57d954aad989d9c6" name="ad6ef4d954b286471e5a367bf0db5084caca035c316ed2172b57d954aad989d9c6"></a>APPSNS_DRIVER_STATE_ENABLE&#160;</td><td class="fielddoc"><p>The driver is used in a system configuration </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad6ef4d954b286471e5a367bf0db5084ca270c25eacc5cfb27b545e2839caeabad" name="ad6ef4d954b286471e5a367bf0db5084ca270c25eacc5cfb27b545e2839caeabad"></a>APPSNS_DRIVER_STATE_NB&#160;</td><td class="fielddoc"><p>Number of driver state </p>
 </td></tr>
 </table>
 
@@ -201,13 +206,10 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Enum for Sensors list </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5fd39a5550ff50adf236b17d07e5d1a4a6b7ea7523c888b29e8b35db4e3edfdcd" name="a5fd39a5550ff50adf236b17d07e5d1a4a6b7ea7523c888b29e8b35db4e3edfdcd"></a>APPSNS_SNS_1&#160;</td><td class="fielddoc"><p>Description </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5fd39a5550ff50adf236b17d07e5d1a4ac63d0f26cc632594089cabe90b1030b9" name="a5fd39a5550ff50adf236b17d07e5d1a4ac63d0f26cc632594089cabe90b1030b9"></a>APPSNS_SENSOR_AIRTEMPERATURE&#160;</td><td class="fielddoc"><p>Température local de l'air </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5fd39a5550ff50adf236b17d07e5d1a4a33a9129a51386a2438037ce73027ab3c" name="a5fd39a5550ff50adf236b17d07e5d1a4a33a9129a51386a2438037ce73027ab3c"></a>APPSNS_SNS_2&#160;</td><td class="fielddoc"><p>Description </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9" name="a5fd39a5550ff50adf236b17d07e5d1a4a9c1cd86a055fcbe573c68b17483ef2e9"></a>APPSNS_SNS_NB&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5fd39a5550ff50adf236b17d07e5d1a4adb3814c4991dd41cbc8d0d41adb65070" name="a5fd39a5550ff50adf236b17d07e5d1a4adb3814c4991dd41cbc8d0d41adb65070"></a>APPSNS_SENSOR_NB&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -224,9 +226,11 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af7afd89244a58f698fc5ac71cbbc897fa63b384c6e0af2e3449c6e1282d21cc77" name="af7afd89244a58f698fc5ac71cbbc897fa63b384c6e0af2e3449c6e1282d21cc77"></a>APPSNS_SENSOR_DISABLE&#160;</td><td class="fielddoc"><p>The sensor is unused in a system configuration </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af7afd89244a58f698fc5ac71cbbc897fa527da5636a255a0acce77cbe0ac8d400" name="af7afd89244a58f698fc5ac71cbbc897fa527da5636a255a0acce77cbe0ac8d400"></a>APPSNS_SENSOR_STATE_DISABLE&#160;</td><td class="fielddoc"><p>The sensor is unused in a system configuration </p>
 </td></tr>
-<tr><td class="fieldname"><a id="af7afd89244a58f698fc5ac71cbbc897fa9f055dd22205dff6130d0b56643fb70c" name="af7afd89244a58f698fc5ac71cbbc897fa9f055dd22205dff6130d0b56643fb70c"></a>APPSNS_SENSOR_ENABLE&#160;</td><td class="fielddoc"><p>The sensor is used in a system configuration </p>
+<tr><td class="fieldname"><a id="af7afd89244a58f698fc5ac71cbbc897fa02b24125cca117dc7e43158b4d98383f" name="af7afd89244a58f698fc5ac71cbbc897fa02b24125cca117dc7e43158b4d98383f"></a>APPSNS_SENSOR_STATE_ENABLE&#160;</td><td class="fielddoc"><p>The sensor is used in a system configuration </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7afd89244a58f698fc5ac71cbbc897fa839a28cee603e79d2d290a6e97feafb8" name="af7afd89244a58f698fc5ac71cbbc897fa839a28cee603e79d2d290a6e97feafb8"></a>APPSNS_SENSOR_STATE_NB&#160;</td><td class="fielddoc"><p>Number of sensor state </p>
 </td></tr>
 </table>
 
@@ -280,10 +284,13 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_eab1cd0f987a66bb1e8816ddc65c807e.html">2_APP</a></li><li class="navelem"><a class="el" href="dir_dc55300171ea7e938f51b7039fafa4fd.html">APP_CFG</a></li><li class="navelem"><a class="el" href="dir_ba806e477fbc3f78689e5f33c2efb6fe.html">ConfigFiles</a></li><li class="navelem"><a class="el" href="_a_p_p_s_n_s___config_public_8h.html">APPSNS_ConfigPublic.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

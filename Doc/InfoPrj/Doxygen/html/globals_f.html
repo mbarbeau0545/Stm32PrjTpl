@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">STM32_TplPrj<span id="projectnumber">&#160;V0.1</span>
    </div>
-   <div id="projectbrief">This project is a SMT32 Template Proeject which can be used in every develeppment using STM32 Processor</div>
+   <div id="projectbrief">This project is a SMT32 Template Project which can be used in every develeppment using STM32 Processor</div>
   </td>
  </tr>
  </tbody>
@@ -50,19 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="doc-content">
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('globals_f.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -121,20 +133,21 @@ $(function(){ initResizable(false); });
 <li>FMKCDA_ADC_CHANNEL_9&#160;:&#160;<a class="el" href="_f_m_k_c_d_a___config_public_8h.html#a8a7cf2dd524526e08e4b02ba4399ae33a837c349bb9e340e6ee550ca4840b9150">FMKCDA_ConfigPublic.h</a></li>
 <li>FMKCDA_ADC_CHANNEL_NB&#160;:&#160;<a class="el" href="_f_m_k_c_d_a___config_public_8h.html#a8a7cf2dd524526e08e4b02ba4399ae33a99d9e41e5d326cf4e46beca9715c15ed">FMKCDA_ConfigPublic.h</a></li>
 <li>FMKCDA_ADC_NB&#160;:&#160;<a class="el" href="_f_m_k_c_d_a___config_public_8h.html#a05ef889bfb1abced1e626d16ac71690aa4ac0441a3fc8c9ff9c701d7e583fa128">FMKCDA_ConfigPublic.h</a></li>
-<li>FMKCDA_CHANNEL_STATE_CB&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a094a68e7da206f421e2a0a092d7b8193a0d672e6e615d4826422594aeb7b4aebd">FMK_CDA.c</a></li>
-<li>FMKCDA_CHANNEL_STATE_ERR_DMA&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a094a68e7da206f421e2a0a092d7b8193a29119b6ef1ae2305e33da023456bdbe6">FMK_CDA.c</a></li>
-<li>FMKCDA_CHANNEL_STATE_ERR_INTERNAL&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a094a68e7da206f421e2a0a092d7b8193a86ba85231d24194603cb1d9c7bc948e9">FMK_CDA.c</a></li>
-<li>FMKCDA_CHANNEL_STATE_ERR_OVR&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a094a68e7da206f421e2a0a092d7b8193a3b3b1e68805a1e6e123b2584eae7ec6f">FMK_CDA.c</a></li>
-<li>FMKCDA_CHANNEL_STATE_JQOVF&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a094a68e7da206f421e2a0a092d7b8193a5fb8dff42bf8ccdb7d040498fca0922d">FMK_CDA.c</a></li>
-<li>FMKCDA_CHANNEL_STATE_NB&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a094a68e7da206f421e2a0a092d7b8193a9b6cffb85bd07822cfa15af11343027e">FMK_CDA.c</a></li>
-<li>FMKCDA_ERRSTATE_OK&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a094a68e7da206f421e2a0a092d7b8193a1461b9d64b7a30f205bf4eab3bbd7476">FMK_CDA.c</a></li>
-<li>FMKCDA_CHNLCFG_PER_CYCLE&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#ad8ff939a9840aeb6a958ea7586dac7f8">FMK_CDA.c</a></li>
 <li>FMKCDA_Cyclic()&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#ac11f19ed4e979333f6a96b69e737ccee">FMK_CDA.c</a>, <a class="el" href="_f_m_k___c_d_a_8h.html#ac11f19ed4e979333f6a96b69e737ccee">FMK_CDA.h</a></li>
+<li>FMKCDA_ERRSTATE_CB&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8h.html#a094a68e7da206f421e2a0a092d7b8193aee84faaf4b0e650c1bd817fd76e763fc">FMK_CDA.h</a></li>
+<li>FMKCDA_ERRSTATE_ERR_DMA&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8h.html#a094a68e7da206f421e2a0a092d7b8193af5471748827379a034cd84de564dc6af">FMK_CDA.h</a></li>
+<li>FMKCDA_ERRSTATE_ERR_INTERNAL&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8h.html#a094a68e7da206f421e2a0a092d7b8193a6cede9b582c54020f7cf306f478a46c6">FMK_CDA.h</a></li>
+<li>FMKCDA_ERRSTATE_ERR_OVR&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8h.html#a094a68e7da206f421e2a0a092d7b8193a8710b79541edf414d0ccd00b46a30d5d">FMK_CDA.h</a></li>
+<li>FMKCDA_ERRSTATE_JQOVF&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8h.html#a094a68e7da206f421e2a0a092d7b8193ab5c87206dc9c6b482ab072381ac5e574">FMK_CDA.h</a></li>
+<li>FMKCDA_ERRSTATE_OK&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8h.html#a094a68e7da206f421e2a0a092d7b8193a95a4fdeb058e767b7ba54d71185c3ac4">FMK_CDA.h</a></li>
+<li>FMKCDA_ERRSTATE_UNKNOWN&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8h.html#a094a68e7da206f421e2a0a092d7b8193a6719bcfaaeb7a89519f9366dd6de3d05">FMK_CDA.h</a></li>
+<li>FMKCDA_Get_AdcError()&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#ac2f61783117ce514dee7ed78f352821d">FMK_CDA.c</a>, <a class="el" href="_f_m_k___c_d_a_8h.html#ac2f61783117ce514dee7ed78f352821d">FMK_CDA.h</a></li>
 <li>FMKCDA_Get_AnaChannelMeasure()&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#ab8052715231b7e259e73b4ea091f32a6">FMK_CDA.c</a>, <a class="el" href="_f_m_k___c_d_a_8h.html#ab8052715231b7e259e73b4ea091f32a6">FMK_CDA.h</a></li>
 <li>FMKCDA_GetState()&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a332c3fdd2006dc0d7fdc9c2edc5fabda">FMK_CDA.c</a>, <a class="el" href="_f_m_k___c_d_a_8h.html#a332c3fdd2006dc0d7fdc9c2edc5fabda">FMK_CDA.h</a></li>
 <li>FMKCDA_Init()&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a5db2ccad399532331783f3daad8921f3">FMK_CDA.c</a>, <a class="el" href="_f_m_k___c_d_a_8h.html#a5db2ccad399532331783f3daad8921f3">FMK_CDA.h</a></li>
 <li>FMKCDA_Set_AdcChannelCfg()&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#a7b8b7ff82bea5f3fdc6ae2c064b47a4e">FMK_CDA.c</a>, <a class="el" href="_f_m_k___c_d_a_8h.html#a3ece52592b05318f715996ab0855cb11">FMK_CDA.h</a></li>
 <li>FMKCDA_SetState()&#160;:&#160;<a class="el" href="_f_m_k___c_d_a_8c.html#ad058c2853d407eef1ce24c293be76fb9">FMK_CDA.c</a>, <a class="el" href="_f_m_k___c_d_a_8h.html#ad058c2853d407eef1ce24c293be76fb9">FMK_CDA.h</a></li>
+<li>FMKCDA_TIME_BTWN_DIAG_MS&#160;:&#160;<a class="el" href="_f_m_k_c_d_a___config_private_8h.html#add8c925937eeaba53f5ff866d1aba303">FMKCDA_ConfigPrivate.h</a></li>
 <li>FMKCPU_AddTimerChnlCallback()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a4f9d7cdfeb63d6ec451bef5f7a33cd57">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#a4f9d7cdfeb63d6ec451bef5f7a33cd57">FMK_CPU.h</a></li>
 <li>FMKCPU_CHANNEL_1&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a62c77c6bd32b5ea82296617e8f03a25ba84abefb2204b561bdf70e29412abccf2">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_CHANNEL_2&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a62c77c6bd32b5ea82296617e8f03a25ba77dc9f2d8f9ef8451b5536953840e4eb">FMKCPU_ConfigPublic.h</a></li>
@@ -204,20 +217,21 @@ $(function(){ initResizable(false); });
 <li>FMKCPU_Enable_USART1_Clock()&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_specific_8c.html#a37149fbdd4e6123b3d06877b45ec4644">FMKCPU_ConfigSpecific.c</a>, <a class="el" href="_f_m_k_c_p_u___config_specific_8h.html#a37149fbdd4e6123b3d06877b45ec4644">FMKCPU_ConfigSpecific.h</a></li>
 <li>FMKCPU_Enable_USART2_Clock()&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_specific_8c.html#a1fe56646df48d9649a04882914cdb752">FMKCPU_ConfigSpecific.c</a>, <a class="el" href="_f_m_k_c_p_u___config_specific_8h.html#a1fe56646df48d9649a04882914cdb752">FMKCPU_ConfigSpecific.h</a></li>
 <li>FMKCPU_Enable_WWDG_Clock()&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_specific_8c.html#a23c453a79942fb915b1fd074915151e8">FMKCPU_ConfigSpecific.c</a>, <a class="el" href="_f_m_k_c_p_u___config_specific_8h.html#a23c453a79942fb915b1fd074915151e8">FMKCPU_ConfigSpecific.h</a></li>
-<li>FMKCPU_ERRSTATE_BUSY&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301ada253f6b246a45d2aa03eb2c3ff7a3aa1f">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_INIT_FAILED&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301adae9df58406e17d5fac60295debc02ef1e">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_INVALID_CHANNEL&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301ada8a8effc04fddaa5bd3319b688dc53374">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_NOT_CONFIGURED&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301adaad477d8bc2a3b5d18025f72c33aaab1d">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_OK&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301ada28baa8ec404c8260ac7337d99ecf4691">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_OVERFLOW&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301ada30feb2614c84e2c1edf8e724221295ac">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_STATE_NB&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301ada116905731b37a6d1377f4a85ac7ab8d8">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_TIMEOUT&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301adac89212f392732309f4169a3df68b15fd">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_UNDERFLOW&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301adaddcd5a102776b504401e5d707cfdfd59">FMK_CPU.c</a></li>
-<li>FMKCPU_ERRSTATE_UNKNOWN&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3387a7f486e23b7557998c8bd9f301ada492ff4b72f5e9e6539557a4b049b37bd">FMK_CPU.c</a></li>
+<li>FMKCPU_ERRSTATE_BUSY&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595a253f6b246a45d2aa03eb2c3ff7a3aa1f">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_INIT_FAILED&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595ae9df58406e17d5fac60295debc02ef1e">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_INVALID_CHANNEL&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595a8a8effc04fddaa5bd3319b688dc53374">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_NOT_CONFIGURED&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595aad477d8bc2a3b5d18025f72c33aaab1d">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_OK&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595a28baa8ec404c8260ac7337d99ecf4691">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_OVERFLOW&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595a30feb2614c84e2c1edf8e724221295ac">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_TIMEOUT&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595ac89212f392732309f4169a3df68b15fd">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_UNDERFLOW&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595addcd5a102776b504401e5d707cfdfd59">FMK_CPU.h</a></li>
+<li>FMKCPU_ERRSTATE_UNKNOWN&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8h.html#adc3eac9262e855d24c96004c38649595a492ff4b72f5e9e6539557a4b049b37bd">FMK_CPU.h</a></li>
 <li>FMKCPU_EVENT_CHANNEL_1&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a3e2f7da9e5fe4b2768ed682326f65c23af784bd4724362e38f7457b559b852d3a">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_EVENT_CHANNEL_2&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a3e2f7da9e5fe4b2768ed682326f65c23a5e4252070621f4cfb1243b81d131e453">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_EVENT_CHANNEL_NB&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a3e2f7da9e5fe4b2768ed682326f65c23a23884d1ad34090357efbc1a6d25adf71">FMKCPU_ConfigPublic.h</a></li>
+<li>FMKCPU_Get_ChannelErrorStatus()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#acfff1d9657cf87a7d03b8888ba3651e5">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#acfff1d9657cf87a7d03b8888ba3651e5">FMK_CPU.h</a></li>
 <li>FMKCPU_Get_PWMChannelDuty()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3034498766ccde11c32215ce5d4c4b94">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#a3034498766ccde11c32215ce5d4c4b94">FMK_CPU.h</a></li>
+<li>FMKCPU_Get_RegisterCRRx()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a5ac126f23421d8778a799c099feb691f">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#a5ac126f23421d8778a799c099feb691f">FMK_CPU.h</a></li>
 <li>FMKCPU_Get_Tick()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#aad5afa0db90627a3c1b6a20c32a5c896">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#aad5afa0db90627a3c1b6a20c32a5c896">FMK_CPU.h</a></li>
 <li>FMKCPU_GetState()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#ab0e031ae820fd8661f0a1be174462853">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#ab0e031ae820fd8661f0a1be174462853">FMK_CPU.h</a></li>
 <li>FMKCPU_HAL_TIM_Base_Start()&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_specific_8c.html#a756b386eb9fe894f8941cbd25c48c992">FMKCPU_ConfigSpecific.c</a>, <a class="el" href="_f_m_k_c_p_u___config_specific_8h.html#a756b386eb9fe894f8941cbd25c48c992">FMKCPU_ConfigSpecific.h</a></li>
@@ -232,8 +246,13 @@ $(function(){ initResizable(false); });
 <li>FMKCPU_HWTIM_CFG_OC&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a6a68a17e31a534e603cb06bde4ec660ca332f5a43dd3513357a73ff71103c982b">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_HWTIM_CFG_OP&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a6a68a17e31a534e603cb06bde4ec660ca4ac0f63786432f304bbda0fa215b07ce">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_HWTIM_CFG_PWM&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a6a68a17e31a534e603cb06bde4ec660ca1801077b968741a58bf661c7bd2f5962">FMKCPU_ConfigPublic.h</a></li>
-<li>FMKCPU_HWTIM_CFG_TRGR&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_Init()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a3f8a0b3f948f251f4a49615b99214567">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#a3f8a0b3f948f251f4a49615b99214567">FMK_CPU.h</a></li>
+<li>FMKCPU_MAX_CHNL_TIMER_1&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#a9ca837f6f673163c485456809af6b150">FMKCPU_ConfigPrivate.h</a></li>
+<li>FMKCPU_MAX_CHNL_TIMER_14&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#af6f07741647d43569e3dfc2e50750a51">FMKCPU_ConfigPrivate.h</a></li>
+<li>FMKCPU_MAX_CHNL_TIMER_15&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#a6781bab0777683799618b9598bd3bfe1">FMKCPU_ConfigPrivate.h</a></li>
+<li>FMKCPU_MAX_CHNL_TIMER_16&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#a8b685fccf0dbb6b3b0389c59393360f3">FMKCPU_ConfigPrivate.h</a></li>
+<li>FMKCPU_MAX_CHNL_TIMER_17&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#a08912c8c1a70ceea2724c6484ef5e6d5">FMKCPU_ConfigPrivate.h</a></li>
+<li>FMKCPU_MAX_CHNL_TIMER_3&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#ae78f65f5032b1d627aa76005a4339af1">FMKCPU_ConfigPrivate.h</a></li>
 <li>FMKCPU_NVIC_ADC1_IRQN&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a2196bfb127e600673166e06e677a3f23a794fd7f94e165eb5a3516a778286fbed">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_NVIC_DMA1_CHANNEL1_IRQN&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a2196bfb127e600673166e06e677a3f23abfac284ce4d00bedc19365829ff94467">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_NVIC_DMA1_CHANNEL2_3_IRQN&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a2196bfb127e600673166e06e677a3f23a7ab0cd6d807754ecc0e84b980795e365">FMKCPU_ConfigPublic.h</a></li>
@@ -305,6 +324,7 @@ $(function(){ initResizable(false); });
 <li>FMKCPU_Set_SysClockCfg()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#abe28cb7add1078e41b94092380e173be">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#abe28cb7add1078e41b94092380e173be">FMK_CPU.h</a></li>
 <li>FMKCPU_Set_WwdgCfg()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#a60e3806dec6978b25e9d6a239be247eb">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#a60e3806dec6978b25e9d6a239be247eb">FMK_CPU.h</a></li>
 <li>FMKCPU_SetState()&#160;:&#160;<a class="el" href="_f_m_k___c_p_u_8c.html#acaca75f0d8867a5b3e0a2bde245e79a9">FMK_CPU.c</a>, <a class="el" href="_f_m_k___c_p_u_8h.html#acaca75f0d8867a5b3e0a2bde245e79a9">FMK_CPU.h</a></li>
+<li>FMKCPU_TIME_BTWN_DIAG_MS&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#a2f2636d78deb030df76a0c5967547ed2">FMKCPU_ConfigPrivate.h</a></li>
 <li>FMKCPU_TIMER_1&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a17696e6a68cdf4f872408b479c0e1bd7a5270d1d405a3127f27b162a00ee52642">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_TIMER_14&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a17696e6a68cdf4f872408b479c0e1bd7ac581ca7b6ce38f2e7b61d6b04e01c4cb">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_TIMER_15&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a17696e6a68cdf4f872408b479c0e1bd7afee0fcbe543ad97034815d9e0cf3f244">FMKCPU_ConfigPublic.h</a></li>
@@ -321,7 +341,7 @@ $(function(){ initResizable(false); });
 <li>FMKCPU_WWDG_RESET_200MS&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a25152b931793a54096307a6aea7af3b7a581332cf40fc60a00b8517424586d0a0">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_WWDG_RESET_500MS&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a25152b931793a54096307a6aea7af3b7a9837d16c717e6993fc970e9dce265543">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_WWDG_RESET_50MS&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a25152b931793a54096307a6aea7af3b7a1cf49bcebdc0d144a3c6c1c48c311f49">FMKCPU_ConfigPublic.h</a></li>
-<li>FMKCPU_WWDG_RESET_CFG&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_private_8h.html#aefcda5a608148d926192638f2ba50ec9">FMKCPU_ConfigPrivate.h</a></li>
+<li>FMKCPU_WWDG_RESET_CFG&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#aefcda5a608148d926192638f2ba50ec9">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKCPU_WWDG_RESET_NB&#160;:&#160;<a class="el" href="_f_m_k_c_p_u___config_public_8h.html#a25152b931793a54096307a6aea7af3b7a9a4d74bb11139d4afac8a8d7f01f77d5">FMKCPU_ConfigPublic.h</a></li>
 <li>FMKIO_AF0_EVENTOUT&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a35c27e0fc7916486db6efe7ee0ba1eb4a62170faf27ada91b236bbc0b07b4fc52">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_AF0_IR&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a35c27e0fc7916486db6efe7ee0ba1eb4a785c2cb604d874be8de203402faefbaf">FMKIO_ConfigPublic.h</a></li>
@@ -356,14 +376,20 @@ $(function(){ initResizable(false); });
 <li>FMKIO_AF6_EVENTOUT&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a35c27e0fc7916486db6efe7ee0ba1eb4ae063a5c344a3ff7d48c1ef719701a532">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_AF_NB&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a35c27e0fc7916486db6efe7ee0ba1eb4a9698cb690f0484b949f84a80b2053952">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_AF_UNUSED&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a699f4c20fc065821add7e93247bde3cb">FMK_IO.c</a></li>
+<li>FMKIO_ANALOG_MAX_VALUE&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a20d9803bec6bf2010f8c75e6857e3acf">FMK_IO.h</a></li>
+<li>FMKIO_ANALOG_MIN_VALUE&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a87689d61988a5122424ef5bdd3bab167">FMK_IO.h</a></li>
+<li>FMKIO_ANALOG_OL_DETECTED&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba81766de36639924910f6af855e6468f5">FMK_IO.h</a></li>
+<li>FMKIO_ANALOG_OL_VALUE&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a7c93f684a08f5a0dac7d89eaecb963a0">FMK_IO.h</a></li>
+<li>FMKIO_ANALOG_SC_DETECTED&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a06fc87d81c62e9abb8790b6e5713c55baefc052cbebe93f0690d1b15a61919fcd">FMK_IO.h</a></li>
+<li>FMKIO_ANALOG_SC_VALUE&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#ae6fd440c13b0f097bc7bc6ddd8c55173">FMK_IO.h</a></li>
 <li>FMKIO_Cyclic()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a0f33201863bef3c2adecdf895eed9971">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a0f33201863bef3c2adecdf895eed9971">FMK_IO.h</a></li>
 <li>FMKIO_DIG_VALUE_HIGH&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#ac2ebf5286266fefe2967274998b6340da4221b29b00dc8b117f22340b3a57268a">FMK_IO.h</a></li>
 <li>FMKIO_DIG_VALUE_LOW&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#ac2ebf5286266fefe2967274998b6340da7861b3ee6b6b523f6e3558c9194f2512">FMK_IO.h</a></li>
 <li>FMKIO_DIG_VALUE_NB&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#ac2ebf5286266fefe2967274998b6340dae83ce3e217a82d72b3cb4d9a9be6e9b3">FMK_IO.h</a></li>
 <li>FMKIO_FREQ_MEAS_COUNT&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#af68f8299ee213fcfa642fdd8f9747befad5d12e44b838a17f6798070948018439">FMK_IO.h</a></li>
+<li>FMKIO_FREQ_MEAS_FREQ&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#af68f8299ee213fcfa642fdd8f9747befacf1aa61ff1762aeb4959af47e001b1b5">FMK_IO.h</a></li>
 <li>FMKIO_FREQ_MEAS_NB&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#af68f8299ee213fcfa642fdd8f9747befab6db0678a640796afca5fdff74bde819">FMK_IO.h</a></li>
 <li>FMKIO_FREQ_MEAS_PERIOD&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#af68f8299ee213fcfa642fdd8f9747befa5ab201bb800b43a921da62135f2da1b1">FMK_IO.h</a></li>
-<li>FMKIO_FREQ_MEAS_RAW&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#af68f8299ee213fcfa642fdd8f9747befa324321db163444302b6c0b04fc9e22e7">FMK_IO.h</a></li>
 <li>FMKIO_Get_InAnaSigValue()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a8033b60bc130abd4da8b0d3e4410b9aa">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a8033b60bc130abd4da8b0d3e4410b9aa">FMK_IO.h</a></li>
 <li>FMKIO_Get_InDigSigValue()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a120532637ac48a33372c12cd2f207f24">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a120532637ac48a33372c12cd2f207f24">FMK_IO.h</a></li>
 <li>FMKIO_Get_InFreqSigValue()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#af0ad4bd498e8fce8bcfc8d46ad8e43de">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#af0ad4bd498e8fce8bcfc8d46ad8e43de">FMK_IO.h</a></li>
@@ -395,8 +421,16 @@ $(function(){ initResizable(false); });
 <li>FMKIO_GPIO_PORT_NB&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#ada94b7006d66becfbea9fcb93aa75c26a4837541c9b691803117708ab63cb4edd">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_Init()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a57983039a2c11bc371d70e833540210d">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a57983039a2c11bc371d70e833540210d">FMK_IO.h</a></li>
 <li>FMKIO_INPUT_SIGANA_1&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a08794667c06ee5e16f1a6e6547a6c26c">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_10&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a35eb4373e5d39535902dfd8ce150d771">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_11&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a29b25511c63f3caedb80b1bf507a5edc">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_INPUT_SIGANA_2&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915aac6114c9f5a8202c77b7eae92e0553da">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_INPUT_SIGANA_3&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a9ea506485105164c9638f058cebc7727">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_4&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a0cdbe9016921f3cdacf0add4dcedd2db">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_5&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a41beee3bc7e2f3c7660ab9b5da28fca5">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_6&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a107a416e94ce18f53226cf7ff23635fa">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_7&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915aaffae72e188a9b91124a0353cd152546">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_8&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a58b858c4596a3bc30990207103f5a4d3">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_INPUT_SIGANA_9&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a0fb79159a6627d666cd60d563eae82f1">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_INPUT_SIGANA_NB&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a4cb8c16a035f78dc5e4d20c9887f0915a0363d710f00a56b2acd0ece837f0614c">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_INPUT_SIGDIG_1&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a85d35757a43a973e804e4d39160733a9af94ccbaea483ad8e6d46ad08a2a22fe4">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_INPUT_SIGDIG_10&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a85d35757a43a973e804e4d39160733a9aa0af6ffb66d0015dfe9e9addba6ece1c">FMKIO_ConfigPublic.h</a></li>
@@ -435,18 +469,23 @@ $(function(){ initResizable(false); });
 <li>FMKIO_OUTPUT_SIGPWM_1&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fa0cef286893568f81a60f039d095348c8">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_OUTPUT_SIGPWM_2&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fae843501889ae295bb1f8bbcd239f1f30">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_OUTPUT_SIGPWM_3&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fa57bfb5ac83439cb1f772f8dcaa9b5487">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_OUTPUT_SIGPWM_4&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1faf2f582b6d6f1db378f3cb72275630162">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_OUTPUT_SIGPWM_5&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fadb12c779a25541f7b1ce417a407e6c6b">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_OUTPUT_SIGPWM_6&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fa2378bc2f3c956d235d1491e2ceec2e04">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_OUTPUT_SIGPWM_7&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fa74fb103bcbed92a2c8860f4215346b3c">FMKIO_ConfigPublic.h</a></li>
+<li>FMKIO_OUTPUT_SIGPWM_8&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fac3aed488d58c30319400a9f8caab3fd7">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_OUTPUT_SIGPWM_NB&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_public_8h.html#a1c5f0e578cac21eb7f6effcf3c017a1fab1f573054a355789c74d440a9dc5afa1">FMKIO_ConfigPublic.h</a></li>
 <li>FMKIO_PULL_MODE_DOWN&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a199756b63e131199c6d9b412057fad86a6290196af1d873778466b3305373276e">FMK_IO.h</a></li>
 <li>FMKIO_PULL_MODE_NB&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a199756b63e131199c6d9b412057fad86a5695c024b6e30fff62ce6089998254db">FMK_IO.h</a></li>
 <li>FMKIO_PULL_MODE_UNABLE&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a199756b63e131199c6d9b412057fad86a77ce1bbd3ea03ef249c25f1d96c20d80">FMK_IO.h</a></li>
 <li>FMKIO_PULL_MODE_UP&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a199756b63e131199c6d9b412057fad86a4e2dde32efb28ff88e3f8763b722d596">FMK_IO.h</a></li>
-<li>FMKIO_Set_InAnaSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a079baea6d65eef05882dd3309277d688">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a079baea6d65eef05882dd3309277d688">FMK_IO.h</a></li>
+<li>FMKIO_Set_InAnaSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a8a7cda3e94b320ef987f92c7eb99abd3">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a8a7cda3e94b320ef987f92c7eb99abd3">FMK_IO.h</a></li>
 <li>FMKIO_Set_InDigSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#aeaa02d76b4ee106625e64fbdfc2fea67">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#aeaa02d76b4ee106625e64fbdfc2fea67">FMK_IO.h</a></li>
-<li>FMKIO_Set_InEvntSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#afd609eb9cd6cd452799a6a253a4ae5a2">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#afd609eb9cd6cd452799a6a253a4ae5a2">FMK_IO.h</a></li>
-<li>FMKIO_Set_InFreqSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#aad53059e83130d19cdd7f5aa8df2180f">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#aad53059e83130d19cdd7f5aa8df2180f">FMK_IO.h</a></li>
+<li>FMKIO_Set_InEvntSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a35864ab6fec1e051455a5a6db6dfb718">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a35864ab6fec1e051455a5a6db6dfb718">FMK_IO.h</a></li>
+<li>FMKIO_Set_InFreqSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#aad47916b4039c60fca665fbccc6ede50">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#aad47916b4039c60fca665fbccc6ede50">FMK_IO.h</a></li>
 <li>FMKIO_Set_OutDigSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#ae9254905f9bb1daba6a585db07c1e566">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#ae9254905f9bb1daba6a585db07c1e566">FMK_IO.h</a></li>
 <li>FMKIO_Set_OutDigSigValue()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a3ee3b76284c4d38783885c1c273d9a51">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a3ee3b76284c4d38783885c1c273d9a51">FMK_IO.h</a></li>
-<li>FMKIO_Set_OutPwmSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#ad83c85db82d3414554f9b912a79e6c91">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#ad83c85db82d3414554f9b912a79e6c91">FMK_IO.h</a></li>
+<li>FMKIO_Set_OutPwmSigCfg()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a34e09a997d10fe6a0600024192e60cbc">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a34e09a997d10fe6a0600024192e60cbc">FMK_IO.h</a></li>
 <li>FMKIO_Set_OutPwmSigValue()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#a137f22945fdc325923ac04f96f26bf38">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#a137f22945fdc325923ac04f96f26bf38">FMK_IO.h</a></li>
 <li>FMKIO_SetState()&#160;:&#160;<a class="el" href="_f_m_k___i_o_8c.html#af89cf198960b73b5a68d4798ec3837de">FMK_IO.c</a>, <a class="el" href="_f_m_k___i_o_8h.html#af89cf198960b73b5a68d4798ec3837de">FMK_IO.h</a></li>
 <li>FMKIO_SIGTYPE_INPUT_ANA&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a24a9d02fe3d0c0d06b7573c3ab9553b5a784e60bba0fe10d9359a92290140d600">FMK_IO.h</a></li>
@@ -464,18 +503,39 @@ $(function(){ initResizable(false); });
 <li>FMKIO_STC_FALLING_EDGE&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a60771f72cddb58dc77c8221ee524b662af70f5f3d6a2f7c14b8f9afd893059ed8">FMK_IO.h</a></li>
 <li>FMKIO_STC_NB&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a60771f72cddb58dc77c8221ee524b662aab9f03bbb9fef7eef5d2ca8c973e529b">FMK_IO.h</a></li>
 <li>FMKIO_STC_RISING_EDGE&#160;:&#160;<a class="el" href="_f_m_k___i_o_8h.html#a60771f72cddb58dc77c8221ee524b662ad1a0d4b1e009b73fc8d8fbdad1003415">FMK_IO.h</a></li>
+<li>FMKIO_TIME_BTWN_DIAG_MS&#160;:&#160;<a class="el" href="_f_m_k_i_o___config_private_8h.html#a1de5bec68e478a6f42401b0e519eb3d8">FMKIO_ConfigPrivate.h</a></li>
+<li>FMKMAC_DMA_1_MAX_CHANNELS&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_private_8h.html#a61414977ea96e2e96a85e51d794c1b85">FMKMAC_ConfigPrivate.h</a></li>
+<li>FMKMAC_DMA_CHANNEL_1&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a2c0d1823aa7d0f8636ebe85fd7bc1597ad1840be55526f80fb4a9c2bb84e8ba6b">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_CHANNEL_2&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a2c0d1823aa7d0f8636ebe85fd7bc1597aec0230739e8f7d38fdcfa822f037fff7">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_CHANNEL_3&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a2c0d1823aa7d0f8636ebe85fd7bc1597af6a150b95b11a136c6c6507505efad98">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_CHANNEL_4&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a2c0d1823aa7d0f8636ebe85fd7bc1597ab75d05cd9aee4715394d86bc9c93320c">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_CHANNEL_5&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a2c0d1823aa7d0f8636ebe85fd7bc1597a5d25fbf4dec6fa9b9ef9a2058544a872">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_CHANNEL_NB&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a2c0d1823aa7d0f8636ebe85fd7bc1597a96d990ac289ce4d0131f9b3546831717">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_CTRL_1&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a4825bc3afddced634bab934e8f6a472da55a1d6f8c1380a17ddd703d96d89da4a">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_CTRL_NB&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a4825bc3afddced634bab934e8f6a472da21876b7efa558e49b27d136ca6d3c290">FMKMAC_ConfigPublic.h</a></li>
 <li>FMKMAC_DMA_RQSTYPE_ADC1&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a07165ae3baf8fc5ef60c24bbcaf65220af5e1d2b4b9db4df2f5cfc866a7a46157">FMKMAC_ConfigPublic.h</a></li>
 <li>FMKMAC_DMA_RQSTYPE_NB&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a07165ae3baf8fc5ef60c24bbcaf65220a58703a007880176b0b230c17e77c952d">FMKMAC_ConfigPublic.h</a></li>
 <li>FMKMAC_DMA_RQSTYPE_SPI1&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a07165ae3baf8fc5ef60c24bbcaf65220a5f52e32c860a309b47d697e9fcc11c59">FMKMAC_ConfigPublic.h</a></li>
 <li>FMKMAC_DMA_RQSTYPE_SPI2&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a07165ae3baf8fc5ef60c24bbcaf65220a4c1a57ad878962297b734cdb85753e6a">FMKMAC_ConfigPublic.h</a></li>
 <li>FMKMAC_DMA_RQSTYPE_UART1&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a07165ae3baf8fc5ef60c24bbcaf65220a3b06f1ae147c0e0b49c3af188178c12c">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSDIR_MEM_TO_MEM&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a4344db74ca1acc43e6f774a4e9c46f8da21955269117b73a55ed5cc53ee0fc4b6">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSDIR_MEM_TO_PERIPH&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a4344db74ca1acc43e6f774a4e9c46f8dad2418f637676ac6d450a71d6ebebe794">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSDIR_NB&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a4344db74ca1acc43e6f774a4e9c46f8da829e5f75b28bf570f03bc465e5ba95c4">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSDIR_PERIPH_TO_MEM&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#a4344db74ca1acc43e6f774a4e9c46f8da2dad5be2b736fd2702bb71ea4ab7be25">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSPRIO_HIGH&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#aaf32efa565ee8e98c00c8c3d1c311f21afd0d9660d5573ded7980a981551c909e">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSPRIO_LOW&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#aaf32efa565ee8e98c00c8c3d1c311f21ade1045d913081a5c691fd451deae3ea3">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSPRIO_MEDIUM&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#aaf32efa565ee8e98c00c8c3d1c311f21adbc1fd7a0fc90c4b4cfe9711c41cf0bc">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSPRIO_NB&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#aaf32efa565ee8e98c00c8c3d1c311f21a7ba827f5f3081b759ee41349b972d5cc">FMKMAC_ConfigPublic.h</a></li>
+<li>FMKMAC_DMA_TRANSPRIO_VERY_HIGH&#160;:&#160;<a class="el" href="_f_m_k_m_a_c___config_public_8h.html#aaf32efa565ee8e98c00c8c3d1c311f21a0460717c8bf075ee5bdf0b948052609d">FMKMAC_ConfigPublic.h</a></li>
 <li>FMKMAC_RqstDmaInit()&#160;:&#160;<a class="el" href="_f_m_k___m_a_c_8c.html#a68d7f45e9f0bc067ac1edd26f7ac67ae">FMK_MAC.c</a>, <a class="el" href="_f_m_k___m_a_c_8h.html#a549a237c3164c52ae0c12889f3b5bc1f">FMK_MAC.h</a></li>
 </ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
 </body>
 </html>

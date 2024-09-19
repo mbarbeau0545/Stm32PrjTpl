@@ -3,6 +3,11 @@
 {\ttfamily \#include "{}stm32f030x8.\+h"{}}\newline
 {\ttfamily \#include "{}stm32f0xx\+\_\+hal.\+h"{}}\newline
 {\ttfamily \#include "{}Type\+Common.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_aefcda5a608148d926192638f2ba50ec9}{FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+\+CFG}}~\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d}{FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+100\+MS}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -106,7 +111,6 @@ enum \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde
 , \newline
 \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660ca125781fc5d1e2a73f551ceeb53e44f81}{FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+EVNT}}
 , \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8}{FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+ECDR}}
-, \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583}{FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+TRGR}}
 , \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04}{FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+NB}}
  \}
 \item 
@@ -126,6 +130,15 @@ enum \mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6ae
  \}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_f_m_k_c_p_u___config_public_8h_aefcda5a608148d926192638f2ba50ec9}\index{FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}!FMKCPU\_WWDG\_RESET\_CFG@{FMKCPU\_WWDG\_RESET\_CFG}}
+\index{FMKCPU\_WWDG\_RESET\_CFG@{FMKCPU\_WWDG\_RESET\_CFG}!FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}}
+\doxysubsubsection{\texorpdfstring{FMKCPU\_WWDG\_RESET\_CFG}{FMKCPU\_WWDG\_RESET\_CFG}}
+{\footnotesize\ttfamily \label{_f_m_k_c_p_u___config_public_8h_aefcda5a608148d926192638f2ba50ec9} 
+\#define FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+\+CFG~\mbox{\hyperlink{_f_m_k_c_p_u___config_public_8h_a25152b931793a54096307a6aea7af3b7a00d7079b4442566092ecf46c16c1419d}{FMKCPU\+\_\+\+WWDG\+\_\+\+RESET\+\_\+100\+MS}}}
+
+default watchdogs configuration 
 
 \doxysubsection{Enumeration Type Documentation}
 \Hypertarget{_f_m_k_c_p_u___config_public_8h_a1667f208dff1f64a5c256a8851c480dc}\index{FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}!t\_eFMKCPU\_ClockPort@{t\_eFMKCPU\_ClockPort}}
@@ -280,11 +293,7 @@ FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+EVNT&Timer configuration in Event mode \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCPU\_HWTIM\_CFG\_ECDR@{FMKCPU\_HWTIM\_CFG\_ECDR}!FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}}\index{FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}!FMKCPU\_HWTIM\_CFG\_ECDR@{FMKCPU\_HWTIM\_CFG\_ECDR}}}\Hypertarget{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660ca3d79808cc6214ac865021947d4020da8}\label{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660c} 
-FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+ECDR&Timer configuration in j\textquotesingle{}saisplus mode \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCPU\_HWTIM\_CFG\_TRGR@{FMKCPU\_HWTIM\_CFG\_TRGR}!FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}}\index{FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}!FMKCPU\_HWTIM\_CFG\_TRGR@{FMKCPU\_HWTIM\_CFG\_TRGR}}}\Hypertarget{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660caa0114e9f19ebe8caf0c4e010675c5583}\label{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660c} 
-FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+TRGR&Timer configuration in trigger mode \\
+FMKCPU\+\_\+\+HWTIM\+\_\+\+CFG\+\_\+\+ECDR&Timer configuration in encoder mode \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FMKCPU\_HWTIM\_CFG\_NB@{FMKCPU\_HWTIM\_CFG\_NB}!FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}}\index{FMKCPU\_ConfigPublic.h@{FMKCPU\_ConfigPublic.h}!FMKCPU\_HWTIM\_CFG\_NB@{FMKCPU\_HWTIM\_CFG\_NB}}}\Hypertarget{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660ca394afcc7f9bc1f6ca8d59c4e44fa8a04}\label{_f_m_k_c_p_u___config_public_8h_a6a68a17e31a534e603cb06bde4ec660c} 
