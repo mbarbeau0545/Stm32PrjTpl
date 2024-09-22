@@ -1,4 +1,4 @@
-/*********************************************************************
+/**
  * @file        APP_SYS.h
  * @brief       Template_BriefDescription.
  * @note        TemplateDetailsDescription.\n

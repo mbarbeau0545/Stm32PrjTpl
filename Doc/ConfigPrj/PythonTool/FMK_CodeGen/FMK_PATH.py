@@ -17,7 +17,7 @@
 HARDWARE_CFG_PATH = "Doc\ConfigPrj\ExcelCfg\Hardware_Configuration.xlsx"
 FMKIO_CONFIGPRIVATE_PATH = "src\\1_FMK\FMK_CFG\FMKCFG_ConfigFiles\FMKIO_ConfigPrivate.h"
 FMKIO_CONFIGPUBLIC_PATH = "src\\1_FMK\FMK_CFG\FMKCFG_ConfigFiles\FMKIO_ConfigPublic.h"
-FMKIO_PATH = "src\\1_FMK\FMK_HAL\FKM_IO\Src\FMK_IO.c"
+FMKIO_PATH = "src\\1_FMK\FMK_HAL\FMK_IO\Src\FMK_IO.c"
 
 FMKCPU_CONFIGPUBLIC = "src\\1_FMK\FMK_CFG\FMKCFG_ConfigFiles\FMKCPU_ConfigPublic.h"
 FMKCPU_CONFIGPRIVATE = "src\\1_FMK\FMK_CFG\FMKCFG_ConfigFiles\FMKCPU_ConfigPrivate.h"

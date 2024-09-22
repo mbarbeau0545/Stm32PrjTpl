@@ -22,6 +22,7 @@
 *  else all framework & application function are called
 */
 //#define STANDALONE_MODE 
+
 // ********************************************************************
 // *                      Prototypes
 // ********************************************************************

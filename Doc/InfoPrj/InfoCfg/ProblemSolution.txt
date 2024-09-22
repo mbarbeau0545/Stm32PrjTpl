@@ -1,0 +1,25 @@
+ Boucles infinies ou deadlocks
+Si votre code entre dans une boucle infinie ou un deadlock, le microcontrôleur peut devenir non réactif. Par exemple, un while(1) sans condition d'échappement peut bloquer le CPU.
+Si vous utilisez des interruptions ou des timers, vérifiez qu'ils ne sont pas mal configurés ou qu'ils ne provoquent pas des surcharges du système.
+2. Mauvaise configuration des horloges
+Un problème dans la configuration des horloges (notamment avec le système d'horloge PLL) peut empêcher le microcontrôleur de fonctionner correctement après un reset. Si la source d'horloge sélectionnée n'est pas valide (par exemple, si le HSE externe est mal configuré), cela peut bloquer le système.
+Vérifiez la configuration dans votre fichier SystemInit() ou dans les registres liés à l'horloge.
+3. Mauvaise gestion des périphériques (ADC, DMA, etc.)
+Si des périphériques tels que l'ADC ou le DMA sont mal configurés ou mal initialisés, cela peut conduire à des comportements imprévisibles.
+Par exemple, une mauvaise configuration du DMA (comme une mauvaise adresse de mémoire) peut provoquer des erreurs.
+4. Watchdog (WWDG/IWDG)
+Si un Watchdog est activé mais que votre code ne le rafraîchit pas correctement, il peut causer un reset en boucle, empêchant ainsi un comportement stable.
+Assurez-vous que le Watchdog est correctement géré ou désactivé pour vos tests.
+5. Mauvaise gestion des interruptions (NVIC)
+Si une interruption n'est pas correctement configurée, ou si une interruption se déclenche continuellement sans être gérée, cela peut bloquer le CPU.
+Vérifiez les priorités et l'activation des interruptions dans le NVIC.
+6. Accès mémoire invalide
+Un accès à une zone mémoire non valide, comme un pointeur mal initialisé ou une écriture dans une zone protégée, peut causer des crashs ou des comportements indéterminés.
+Utilisez les outils de débogage pour vérifier les adresses de mémoire et les pointeurs dans votre code.
+7. Mode bas consommation (Sleep/Stop)
+Si votre code met le microcontrôleur en mode basse consommation (Sleep, Stop ou Standby), cela peut empêcher le CPU de fonctionner correctement après un reset ou après une interruption.
+Assurez-vous que le microcontrôleur se réveille correctement ou que le mode basse consommation est bien géré.
+8. Initialisation incorrecte du matériel externe
+Si vous utilisez du matériel externe (capteurs, périphériques de communication, etc.) et que l'initialisation est incorrecte, cela peut empêcher le microcontrôleur de fonctionner correctement.
+9. Mauvaise gestion des sections critiques
+Si vous gérez des sections critiques avec des désactivations d'interruptions (__disable_irq()), assurez-vous de bien réactiver les interruptions après la section critique, sinon le système pourrait devenir non réactif.

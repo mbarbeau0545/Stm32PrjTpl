@@ -19,6 +19,7 @@
 
 #include "./APP_LGC.h"
 #include "FMK_HAL/FMK_CPU/Src/FMK_CPU.h"
+#include "FMK_HAL/FMK_IO/Src/FMK_IO.h"
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
@@ -61,7 +62,6 @@
 t_eReturnState APPLGC_Init(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    // code to run once here
     return Ret_e;
 }
 
@@ -72,6 +72,11 @@ t_eReturnState APPLGC_Cyclic(void)
 {
     t_eReturnState Ret_e = RC_OK;
     // code to run every x milliseconds, config in APPSYS_ConfigPrivate.h
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_11, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
     return Ret_e;
 }
 //********************************************************************************

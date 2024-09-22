@@ -50,7 +50,7 @@
 /* CAUTION : Automatic generated code section for Variable: Start */
 /**< Variable for Sensors Drivers State*/
 t_eAPPSNS_SensorState g_snsState_ae[APPSNS_SENSOR_NB] = {
-    APPSNS_DRIVER_STATE_ENABLE, // APPSNS_SENSOR_STATE_AIRTEMPERATURE
+    APPSNS_SENSOR_STATE_ENABLE, // APPSNS_SENSOR_STATE_AIRTEMPERATURE
 };
 
 /**< Variable for Sensors Drivers State*/
@@ -118,6 +118,10 @@ t_eReturnState APPSNS_Cyclic(void)
     case STATE_CYCLIC_PREOPE:
     {
         Ret_e = s_APPSNS_PreOperational();
+        if(Ret_e == RC_OK)
+        {
+            g_state_e = STATE_CYCLIC_WAITING;
+        }
         break;
     }
     case STATE_CYCLIC_WAITING:
@@ -272,59 +276,33 @@ t_eReturnState APPSNS_Get_SensorState(t_eAPPSNS_Sensors f_Sns_e, t_eAPPSNS_Senso
 static t_eReturnState s_APPSNS_PreOperational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    t_uint8 LLI_u8 = 0;
-    static t_uint8 LLSnsCfg_u8 = 0;
-    static t_uint8 SnsCfgCnt_u8 = 0;
-    static t_bool s_IsDrvInitDone_b = False;
-    // first call drv init function 
-    switch (s_IsDrvInitDone_b)
+    static t_uint8 s_LLDRV_u8 = 0;
+    static t_uint8 s_LLSNS_u8 = 0;
+    // driver init
+    for(; (s_LLDRV_u8 < APPSNS_DRIVER_NB) && (Ret_e == RC_OK) ; s_LLDRV_u8++)
     {
-        case False:
+        if(g_SnsDrvState_ae[s_LLDRV_u8] == APPSNS_DRIVER_STATE_ENABLE
+        && c_AppSns_SysDrv_apf[s_LLDRV_u8].Init_pcb != (t_cbAppSns_DrvInit *)NULL_FONCTION)
         {
-            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPSNS_DRIVER_NB) && (Ret_e == RC_OK) ; LLI_u8++)
-            {
-                if(g_SnsDrvState_ae[LLI_u8] == APPSNS_DRIVER_STATE_ENABLE)
-                {
-                    if(c_AppSns_SysDrv_apf[LLI_u8].Init_pcb != (t_cbAppSns_DrvInit *)NULL_FONCTION)
-                    {
-                        Ret_e = (c_AppSns_SysDrv_apf[LLI_u8].Init_pcb)();
-                    }
-                }
-            }
-            if((LLI_u8 >= APPSNS_DRIVER_NB) && (Ret_e == RC_OK))
-            {
-                s_IsDrvInitDone_b = (t_bool)True;
-            }
-            break;
-        }
-        case True:
-        {// then config the sensors only if the Sensors is used which means in "enable"
-            while((SnsCfgCnt_u8 < (t_uint8)APPSNS_CFG_NB_PER_CYCLE) && (Ret_e == RC_OK))
-            {
-                if(g_snsState_ae[LLSnsCfg_u8] == APPSNS_SENSOR_STATE_ENABLE)
-                {
-                    if(c_AppSns_SysSns_apf[LLSnsCfg_u8].SetCfg_pcb != (t_cbAppSns_SetSnsCfg *)NULL_FONCTION)
-                    {
-                        Ret_e = (c_AppSns_SysSns_apf[LLSnsCfg_u8].SetCfg_pcb)();
-                        if(Ret_e == RC_OK)
-                        {
-                            SnsCfgCnt_u8 += (t_uint8)1;
-                        }
-                    }                    
-                }
-                if(Ret_e == RC_OK)
-                {
-                    LLI_u8 += (t_uint8)1;
-                    if(LLI_u8 >= APPSNS_SENSOR_NB)
-                    {
-                        g_state_e = STATE_CYCLIC_WAITING;
-                        break;
-                    }
-                }
-            }
-            break;
+            Ret_e = (c_AppSns_SysDrv_apf[s_LLDRV_u8].Init_pcb)();
         }
     }
+    // sensors configuration call
+    for(; (s_LLSNS_u8 < APPSNS_SENSOR_NB) && (Ret_e == RC_OK) ; s_LLSNS_u8++)
+    {
+        if(g_snsState_ae[s_LLSNS_u8] == APPSNS_SENSOR_STATE_ENABLE
+        && c_AppSns_SysSns_apf[s_LLDRV_u8].SetCfg_pcb != (t_cbAppSns_SetSnsCfg *)NULL_FONCTION)
+        {
+            Ret_e = (c_AppSns_SysSns_apf[s_LLSNS_u8].SetCfg_pcb)();
+        }
+    }
+    if( s_LLDRV_u8 < APPSNS_DRIVER_NB
+    &&  s_LLSNS_u8 < APPSNS_SENSOR_NB
+    && Ret_e == RC_OK) // only if problem has not been captured yet
+    {// problem or waiting on init or sensors config just waiting for next cycle
+        Ret_e = RC_WARNING_BUSY;
+    }
+
     return Ret_e;
 }
 /*********************************

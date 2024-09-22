@@ -108,8 +108,8 @@ class AppSns_CodeGen():
                             + "}, //" + f"{ENUM_APPSNS_SENSORS_RT}_{str(sns_cfg[0]).upper()}\n"
                 # make var state
                 var_sns_state += "    " \
-                                + f"{ENUM_APPSNS_DRVSTATE_RT}_{str(sns_cfg[2]).upper()}," \
-                                + f" // {ENUM_APPSNS_SENSORSST_RT}_{str(sns_cfg[0]).upper()}\n"
+                                + f"{ENUM_APPSNS_SENSORSST_RT}_{str(sns_cfg[2]).upper()}," \
+                                + f" // {ENUM_APPSNS_SENSORS_RT}_{str(sns_cfg[0]).upper()}\n"
                 # make var unities
                 var_unities += f"        {ENUM_APPSNS_UNITY_RT}_{sns_cfg[1]}," \
                                 + " " * ((SPACE_VARIABLE * 2) - len(f"{ENUM_APPSNS_UNITY_RT}_{sns_cfg[1]},")) \

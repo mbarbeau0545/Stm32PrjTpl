@@ -108,6 +108,10 @@ t_eReturnState APPACT_Cyclic(void)
     case STATE_CYCLIC_PREOPE:
     {
         Ret_e = s_APPACT_PreOperational();
+        if(Ret_e == RC_OK)
+        {
+            g_state_e = STATE_CYCLIC_WAITING;
+        }   
         break;
     }
     case STATE_CYCLIC_WAITING:
@@ -269,59 +273,38 @@ t_eReturnState APPACT_Get_ActuatorState(t_eAPPACT_Actuators f_Actuator_e, t_eAPP
 static t_eReturnState s_APPACT_PreOperational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    t_uint8 LLI_u8 = 0;
-    static t_uint8 LLActCfg_u8 = 0;
-    static t_uint8 ActCfgCnt_u8 = 0;
-    static t_bool s_IsDrvInitDone_b = False;
+    static t_uint8 s_LLDRV_u8 = 0;
+    static t_uint8 s_LLACT_u8 = 0;
     // first call drv init function 
-    switch (s_IsDrvInitDone_b)
+
+    for(; (s_LLDRV_u8 < APPACT_DRIVER_NB) && (Ret_e == RC_OK) ; s_LLDRV_u8++)
     {
-        case False:
+        if(g_ActDrvState_ae[s_LLDRV_u8] == APPACT_DRIVER_STATE_ENABLE
+        && c_AppAct_SysDrv_apf[s_LLDRV_u8].Init_pcb != (t_cbAppAct_DrvInit *)NULL_FONCTION)
         {
-            for(LLI_u8 = (t_uint8)0 ; (LLI_u8 < APPACT_DRIVER_NB) && (Ret_e == RC_OK) ; LLI_u8++)
-            {
-                if(g_ActDrvState_ae[LLI_u8] == APPACT_DRIVER_STATE_ENABLE)
-                {
-                    if(c_AppAct_SysDrv_apf[LLI_u8].Init_pcb != (t_cbAppAct_DrvInit *)NULL_FONCTION)
-                    {
-                        Ret_e = (c_AppAct_SysDrv_apf[LLI_u8].Init_pcb)();
-                    }
-                }
-            }
-            if((LLI_u8 >= APPACT_DRIVER_NB) && (Ret_e == RC_OK))
-            {
-                s_IsDrvInitDone_b = (t_bool)True;
-            }
-            break;
-        }
-        case True:
-        {// then config the sensors only if the Sensors is used which means in "enable"
-            while((ActCfgCnt_u8 < (t_uint8)APPACT_CFG_NB_PER_CYCLE) && (Ret_e == RC_OK))
-            {
-                if(g_actState_ae[LLActCfg_u8] == APPACT_ACTUATOR_STATE_ENABLE)
-                {
-                    if(c_AppAct_SysAct_apf[LLActCfg_u8].SetCfg_pcb != (t_cbAppAct_SetActCfg *)NULL_FONCTION)
-                    {
-                        Ret_e = (c_AppAct_SysAct_apf[LLActCfg_u8].SetCfg_pcb)();
-                        if(Ret_e == RC_OK)
-                        {
-                            ActCfgCnt_u8 += (t_uint8)1;
-                        }
-                    }                    
-                }
-                if(Ret_e == RC_OK)
-                {
-                    LLI_u8 += (t_uint8)1;
-                    if(LLI_u8 >= APPACT_ACTUATOR_NB)
-                    {
-                        g_state_e = STATE_CYCLIC_WAITING;
-                        break;
-                    }
-                }
-            }
-            break;
+
+            Ret_e = (c_AppAct_SysDrv_apf[s_LLDRV_u8].Init_pcb)();
+            
         }
     }
+    // actuators configuration call
+        
+    for (; (s_LLACT_u8 < APPACT_ACTUATOR_NB) && (Ret_e == RC_OK) ; s_LLACT_u8++)  
+    {
+        if(g_actState_ae[s_LLACT_u8] == APPACT_ACTUATOR_STATE_ENABLE
+        && c_AppAct_SysAct_apf[s_LLACT_u8].SetCfg_pcb != (t_cbAppAct_SetActCfg *)NULL_FONCTION)
+        {
+             Ret_e = (c_AppAct_SysAct_apf[s_LLACT_u8].SetCfg_pcb)();                 
+        }
+    }
+
+    if(Ret_e == RC_OK
+    && s_LLDRV_u8 < APPACT_DRIVER_NB
+    && s_LLACT_u8 < APPACT_ACTUATOR_NB)
+    {
+        Ret_e = RC_WARNING_BUSY;
+    }
+
     return Ret_e;
 }
 /*********************************

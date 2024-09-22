@@ -85,24 +85,31 @@ typedef struct
 // *                      Variables
 // ********************************************************************
 t_sFMKMAC_DmaInfo g_DmaInfo_as[FMKMAC_DMA_CTRL_NB] = {
-    {// DMA1_CONTROLLER
-        
+    { // DMA1_CONTROLLER
         .clock_e = FMKCPU_RCC_CLK_DMA1,
 
-        .channel_as[FMKMAC_DMA_CHANNEL_1].bspDma_ps.Instance = DMA1_Channel1,
-        .channel_as[FMKMAC_DMA_CHANNEL_1].NVICType_e = DMA1_Channel1_IRQn,
-
-        .channel_as[FMKMAC_DMA_CHANNEL_2].bspDma_ps = DMA1_Channel2,
-        .channel_as[FMKMAC_DMA_CHANNEL_2].NVICType_e = DMA1_Channel2_3_IRQn,
-
-        .channel_as[FMKMAC_DMA_CHANNEL_3].bspDma_ps = DMA1_Channel3,
-        .channel_as[FMKMAC_DMA_CHANNEL_3].NVICType_e = DMA1_Channel2_3_IRQn,
-
-        .channel_as[FMKMAC_DMA_CHANNEL_4].bspDma_ps = DMA1_Channel4,
-        .channel_as[FMKMAC_DMA_CHANNEL_4].NVICType_e = DMA1_Channel4_5_IRQn,
-
-        .channel_as[FMKMAC_DMA_CHANNEL_5].bspDma_ps = DMA1_Channel5,
-        .channel_as[FMKMAC_DMA_CHANNEL_5].NVICType_e = DMA1_Channel4_5_IRQn,
+        .channel_as = {
+            [FMKMAC_DMA_CHANNEL_1] = {
+                .bspDma_ps.Instance = DMA1_Channel1,
+                .NVICType_e = DMA1_Channel1_IRQn,
+            },
+            [FMKMAC_DMA_CHANNEL_2] = {
+                .bspDma_ps = DMA1_Channel2,
+                .NVICType_e = DMA1_Channel2_3_IRQn,
+            },
+            [FMKMAC_DMA_CHANNEL_3] = {
+                .bspDma_ps = DMA1_Channel3,
+                .NVICType_e = DMA1_Channel2_3_IRQn,
+            },
+            [FMKMAC_DMA_CHANNEL_4] = {
+                .bspDma_ps = DMA1_Channel4,
+                .NVICType_e = DMA1_Channel4_5_IRQn,
+            },
+            [FMKMAC_DMA_CHANNEL_5] = {
+                .bspDma_ps = DMA1_Channel5,
+                .NVICType_e = DMA1_Channel4_5_IRQn,
+            }
+        }
     }
 };
 //********************************************************************************
@@ -143,7 +150,7 @@ static t_eReturnState s_FMKMAC_Get_DmaBspPriority(t_eFMKMAC_DmaTransferPriority 
 //********************************************************************************
 t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType, void *f_ModuleHandle_pv)
 {
-
+    return RC_OK;
 }
 //********************************************************************************
 //                      Local functions - Implementation

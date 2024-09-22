@@ -449,8 +449,8 @@ var searchData=
   ['fmkmac_5fdma_5ftransprio_5fnb_446',['FMKMAC_DMA_TRANSPRIO_NB',['../_f_m_k_m_a_c___config_public_8h.html#aaf32efa565ee8e98c00c8c3d1c311f21a7ba827f5f3081b759ee41349b972d5cc',1,'FMKMAC_ConfigPublic.h']]],
   ['fmkmac_5fdma_5ftransprio_5fvery_5fhigh_447',['FMKMAC_DMA_TRANSPRIO_VERY_HIGH',['../_f_m_k_m_a_c___config_public_8h.html#aaf32efa565ee8e98c00c8c3d1c311f21a0460717c8bf075ee5bdf0b948052609d',1,'FMKMAC_ConfigPublic.h']]],
   ['fmkmac_5frqstdmainit_448',['FMKMAC_RqstDmaInit',['../_f_m_k___m_a_c_8c.html#a68d7f45e9f0bc067ac1edd26f7ac67ae',1,'FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType_e, void *f_ModuleHandle_s):&#160;FMK_MAC.c'],['../_f_m_k___m_a_c_8h.html#a549a237c3164c52ae0c12889f3b5bc1f',1,'FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType, void *f_ModuleHandle_s):&#160;FMK_MAC.c']]],
-  ['funccyclic_5fcb_449',['funcCyclic_cb',['../structt__s_app_sys___sys_func.html#a84e7b342cf11e515367364a293607f18',1,'t_sAppSys_SysFunc']]],
-  ['funcgetstate_5fcb_450',['funcGetState_cb',['../structt__s_app_sys___sys_func.html#a9ea764eefa95b9e76a8ca2dc631ecf92',1,'t_sAppSys_SysFunc']]],
+  ['funccyclic_5fcb_449',['Cyclic_pcb',['../structt__s_app_sys___sys_func.html#a84e7b342cf11e515367364a293607f18',1,'t_sAppSys_SysFunc']]],
+  ['funcgetstate_5fcb_450',['GetState_pcb',['../structt__s_app_sys___sys_func.html#a9ea764eefa95b9e76a8ca2dc631ecf92',1,'t_sAppSys_SysFunc']]],
   ['funcinit_5fcb_451',['funcInit_cb',['../structt__s_app_sys___sys_func.html#a32ee5adaaab9ec3b6a0d6be3e67f5481',1,'t_sAppSys_SysFunc']]],
-  ['funcsetstate_5fcb_452',['funcSetState_cb',['../structt__s_app_sys___sys_func.html#acda0ea3406b593da6d6bbc355ee8199d',1,'t_sAppSys_SysFunc']]]
+  ['funcsetstate_5fcb_452',['SetState_pcb',['../structt__s_app_sys___sys_func.html#acda0ea3406b593da6d6bbc355ee8199d',1,'t_sAppSys_SysFunc']]]
 ];

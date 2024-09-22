@@ -19,7 +19,7 @@
     // *                      Includes
     // ********************************************************************
     #include "./APPSYS_ConfigPublic.h"
-    #include "1_FMK/FMK_HAL/FKM_IO/Src/FMK_IO.h"
+    #include "1_FMK/FMK_HAL/FMK_IO/Src/FMK_IO.h"
     #include "1_FMK/FMK_HAL/FMK_CDA/Src/FMK_CDA.h"
     #include "1_FMK/FMK_HAL/FMK_CPU/Src/FMK_CPU.h"
     #include "2_APP/APP_CTRL/APP_ACT/Src/APP_ACT.h"
@@ -81,10 +81,10 @@
     /* Structure to store Init and Cyclic Func*/
     typedef struct 
     {
-        t_cbAppSys_FuncInit   * funcInit_cb;        
-        t_cbAppSys_FuncCyclic * funcCyclic_cb;
-        t_cbAppSys_GetState   * funcGetState_cb;
-        t_cbAppSys_SetState   * funcSetState_cb;
+        t_cbAppSys_FuncInit   * Init_pcb;        
+        t_cbAppSys_FuncCyclic * Cyclic_pcb;
+        t_cbAppSys_GetState   * GetState_pcb;
+        t_cbAppSys_SetState   * SetState_pcb;
     } t_sAppSys_SysFunc;
     // ********************************************************************
     // *                      Prototypes
@@ -99,7 +99,7 @@
     t_sAppSys_SysFunc c_AppSys_ModuleFunc_apf[APPSYS_MODULE_NB] = {
         // FrameWork module 
         {FMKCPU_Init,    FMKCPU_Cyclic,     FMKCPU_GetState, FMKCPU_SetState},
-        {FMKCDA_Init,    FMKCDA_Cyclic,     FMKCDA_GetState, FMKCDA_SetState},
+        //{FMKCDA_Init,    FMKCDA_Cyclic,     FMKCDA_GetState, FMKCDA_SetState},
         {FMKIO_Init,     FMKIO_Cyclic,      FMKIO_GetState,  FMKIO_SetState},
 
         // Application module

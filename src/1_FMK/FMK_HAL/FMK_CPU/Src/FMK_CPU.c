@@ -65,7 +65,7 @@ typedef struct
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
+static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
 
 WWDG_HandleTypeDef g_wwdgInfos_s = {0};
 /* CAUTION : Automatic generated code section for Timer Configuration: Start */
@@ -229,17 +229,6 @@ static void s_FMKCPU_BspRqst_InterruptMngmt(TIM_HandleTypeDef *f_timerIstce_ps, 
  */
 static t_eReturnState s_FMKCPU_Operational(void);
 
-/**
- *
- *	@brief      Perform preOperationnal action
- *  @note       Set the sysclock configuration for the system and set the whatchdogs
- * 
- *  @retval RC_OK                             @ref RC_OK
- *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
- *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
-
- */
-static t_eReturnState s_FMKCPU_PreOperational(void);
 
 /**
  *
@@ -287,16 +276,7 @@ t_eReturnState FMKCPU_Cyclic(void)
 
     switch (g_state_e)
     {
-    case STATE_CYCLIC_PREOPE:
-    {
 
-        Ret_e = s_FMKCPU_PreOperational();
-        if(Ret_e == RC_OK)
-        {
-            g_state_e = STATE_CYCLIC_WAITING;
-        }
-        break;
-    }
     case STATE_CYCLIC_WAITING:
     {
         // nothing to do, just wait all module are Ope
@@ -315,6 +295,7 @@ t_eReturnState FMKCPU_Cyclic(void)
     {
         break;
     }
+    case STATE_CYCLIC_PREOPE:
     case STATE_CYCLIC_BUSY:
     default:
         Ret_e = RC_OK;
@@ -1021,17 +1002,6 @@ t_eReturnState FMKCPU_Get_RegisterCRRx(t_eFMKCPU_Timer f_timer_e,
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
-/*********************************
- * s_FMKCPU_PreOperational
- *********************************/
-static t_eReturnState s_FMKCPU_PreOperational(void)
-{
-    t_eReturnState Ret_e = RC_OK;
-
-    
-
-    return Ret_e;
-}
 /*********************************
  * s_FMKCPU_Operational
  *********************************/
