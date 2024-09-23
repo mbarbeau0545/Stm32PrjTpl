@@ -34,6 +34,7 @@
     /* CAUTION : Automatic generated code section for Enum: End */
 
     //-----------------------------TYPEDEF TYPES---------------------------//
+
     //-----------------------------STRUCT TYPES---------------------------//
     /**< Structure for Hardware Dma Configuration for a request type */
     typedef struct 

@@ -48,7 +48,6 @@ typedef struct
 {
     t_uint16 rawValue_u16;              /**< the analog value for this channel */
     t_bool FlagValueUpdated_b;          /**< Flag to know when the rawvalue is available */
-    t_bool IsChnlUsed_b;                /**< Flag to know if the channel is currently used */
     t_bool IsChnlConfigured_b;          /**< Flag to know if the channel if configured well */
 } t_sFMKCDA_ChnlInfo;
 
@@ -197,7 +196,6 @@ t_eReturnState FMKCDA_Init(void)
         for (LLI2_u8 = (t_uint8)0; LLI2_u8 < (t_uint8)FMKCDA_ADC_CHANNEL_NB; LLI2_u8++)
         { // all channel for a timer
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].IsChnlConfigured_b = (t_bool)False;
-            g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].IsChnlUsed_b = (t_bool)False;
             g_AdcInfo_as[LLI1_u8].Channel_as[LLI2_u8].rawValue_u16 = (t_uint16)0;
         }
     }
@@ -283,28 +281,23 @@ t_eReturnState FMKCDA_Set_AdcChannelCfg(t_eFMKCDA_Adc f_Adc_e,
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
-    if (Ret_e == RC_OK)
+    if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False)
     {
-        if (g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False)
-        { // configure adc timer
-            Ret_e = s_FMKCDA_Set_BspAdcCfg((t_eFMKCDA_Adc)f_Adc_e,
+        Ret_e = s_FMKCDA_Set_BspAdcCfg((t_eFMKCDA_Adc)f_Adc_e,
                                            f_hwAdcCfg_e);
-            if (Ret_e == RC_OK)
-            {
-            #warning "Only Scan/DMA mode is trreated for AdcChannel Configuration"
-                Ret_e = FMKMAC_RqstDmaInit(FMKMAC_DMA_RQSTYPE_ADC1, (void *)&g_AdcInfo_as[f_Adc_e].BspInit_s);
-                if (Ret_e == RC_OK)
-                {
-                    g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b = True;
-                    g_AdcInfo_as[f_Adc_e].HwCfg_e = f_hwAdcCfg_e;
-                }
-            }
-        }
-        if (Ret_e == RC_OK)
-        { // Configure Channel
-            Ret_e = s_FMKCDA_Set_BspChannelCfg(f_Adc_e, f_channel_e);
-        }
     }
+    if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)True
+    && f_hwAdcCfg_e != g_AdcInfo_as[f_Adc_e].HwCfg_e)
+    {
+        Ret_e = RC_ERROR_WRONG_CONFIG;
+    }
+    if (Ret_e == RC_OK)
+    {// depending on hardware configuration make some configuration
+        #warning "Only Scan/DMA mode is trreated for AdcChannel Configuration"
+        // Configure Channel
+        Ret_e = s_FMKCDA_Set_BspChannelCfg(f_Adc_e, f_channel_e);
+    }
+    
     return Ret_e;
 }
 
@@ -401,6 +394,7 @@ static t_eReturnState s_FMKCDA_Operational(void)
             Ret_e = s_FMKCDA_PerformDiagnostic();
         }
     }
+    // For every adc in stm32
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKCDA_ADC_NB ; LLI_u8++)
     {
         // if ADC buffer for this ADC has been filled store value buffer in adcInfo value
@@ -416,11 +410,15 @@ static t_eReturnState s_FMKCDA_Operational(void)
                 g_AdcInfo_as[LLI_u8].Channel_as[channel_e].FlagValueUpdated_b = (t_bool)True;
             }
         }
-        else if (g_AdcInfo_as[LLI_u8].IsAdcRunning_b == (t_bool)False)
+        // if the adc is not running and the adc is configured, launch a conversion
+        // only on timer and Dma cpnfiguration
+        else if (g_AdcInfo_as[LLI_u8].IsAdcRunning_b == (t_bool)False
+                && g_AdcInfo_as[LLI_u8].IsAdcConfigured_b == (t_bool)true)
         {
             bspRet_e = HAL_ADC_Start_DMA(&g_AdcInfo_as[LLI_u8].BspInit_s,
                                          (t_uint32 *)g_AdcBuffer_as[LLI_u8].rawValue_au16,
-                                         g_counterRank_au8[LLI_u8]);
+                                         g_counterRank_au8[LLI_u8]); // corresponing to the number of channel 
+                                                                    //configured for this adc
             
             if(bspRet_e != HAL_OK)
             {
@@ -595,7 +593,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
     t_eReturnState Ret_e = RC_OK;
     HAL_StatusTypeDef BspRet_e = HAL_OK;
     ADC_InitTypeDef *bspAdcInit_s;
-    t_bool setAdc_NVIC_b = False;
+    t_bool setAdcDmaCfg_b = False;
 
     if (f_Adc_e > FMKCDA_ADC_NB || f_HwAdcCfg_e > FMKCDA_ADC_CFG_NB)
     {
@@ -641,7 +639,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             bspAdcInit_s->DMAContinuousRequests = ENABLE;
             bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
             bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-            setAdc_NVIC_b = True;
+            setAdcDmaCfg_b = True;
             break;
         }
         case FMKCDA_ADC_CFG_SCAN_INTERRUPT:
@@ -662,7 +660,7 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             bspAdcInit_s->DMAContinuousRequests = ENABLE;
             bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
             bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-            setAdc_NVIC_b = True;
+            setAdcDmaCfg_b = True;
             break;
         }
         case FMKCDA_ADC_CFG_TRIGGERED_REGISTER:
@@ -693,26 +691,32 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             bspAdcInit_s->DMAContinuousRequests = ENABLE;
             bspAdcInit_s->ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC4; // Example trigger source
             bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-            setAdc_NVIC_b = True;
+            setAdcDmaCfg_b = True;
             break;
         }
         case FMKCDA_ADC_CFG_NB:
         default:
             Ret_e = RC_WARNING_NO_OPERATION;
         }
-        // CAllBsp Func
+        // Set hardware clock register to enable
         Ret_e = FMKCPU_Set_HwClock(g_AdcInfo_as[f_Adc_e].clock_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
+
         if((Ret_e == RC_OK) 
-        && setAdc_NVIC_b == (t_bool)True)
-        {
+        && setAdcDmaCfg_b == (t_bool)True)
+        {// set NVIC state and Dma Request if DMA is in hardware config
             Ret_e = FMKCPU_Set_NVICState(FMKCPU_NVIC_ADC1_IRQN, FMKCPU_NVIC_OPE_ENABLE);
+            if(Ret_e == RC_OK)
+            {
+                Ret_e = FMKMAC_RqstDmaInit(FMKMAC_DMA_RQSTYPE_ADC1, (void *)&g_AdcInfo_as[f_Adc_e].BspInit_s);
+            }
         }
         if (Ret_e == RC_OK)
-        {
+        {// Init hardware ADC
             BspRet_e = HAL_ADC_Init(&g_AdcInfo_as[f_Adc_e].BspInit_s);
 
             if (BspRet_e == HAL_OK)
             {
+                g_AdcInfo_as[f_Adc_e].HwCfg_e = f_HwAdcCfg_e;
                 g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b = (t_bool)True;
             }
         }
@@ -757,11 +761,10 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
 
             if (BspRet_e == HAL_OK)
             {
-                // update mapping
+                // update mapping for dma
                 g_AdcBuffer_as[f_Adc_e].BspChnlmapp[g_counterRank_au8[f_Adc_e]] = f_channel_e;
                 // update info
                 g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlConfigured_b = (t_bool)True;
-                g_AdcInfo_as[f_Adc_e].Channel_as[f_channel_e].IsChnlUsed_b = (t_bool)True;
                 g_counterRank_au8[f_Adc_e] += (t_uint8)1;
             }
             else

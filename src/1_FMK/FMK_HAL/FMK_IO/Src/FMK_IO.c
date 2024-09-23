@@ -952,15 +952,15 @@ t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
 static t_eReturnState s_FMKIO_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    static t_uint32 SavedTime_u32 = 0;
+    static t_uint32 s_SavedTime_u32 = 0;
     t_uint32 currentTime_u32 = 0;
 
     Ret_e = FMKCPU_Get_Tick(&currentTime_u32);
     if(Ret_e == RC_OK)
     {
-        if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKIO_TIME_BTWN_DIAG_MS)
+        if((currentTime_u32 - s_SavedTime_u32) > (t_uint32)FMKIO_TIME_BTWN_DIAG_MS)
         {//perform diag on timer / chnl used
-            SavedTime_u32 = currentTime_u32;
+            s_SavedTime_u32 = currentTime_u32;
             Ret_e = s_FMKIO_PerformDiagnostic();
         }
         // else do other thing(or nothing for now)

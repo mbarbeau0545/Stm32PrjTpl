@@ -38,6 +38,7 @@
     /* CAUTION : Automatic generated code section for Enum: End */
 
     //-----------------------------TYPEDEF TYPES---------------------------//
+    
     //-----------------------------STRUCT TYPES---------------------------//
     /* CAUTION : Automatic generated code section for Structure: Start */
 
