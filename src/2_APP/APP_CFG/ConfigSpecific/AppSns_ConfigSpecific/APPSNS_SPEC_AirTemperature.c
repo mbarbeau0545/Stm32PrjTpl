@@ -50,10 +50,11 @@
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-
+static const t_eFMKIO_InAnaSig c_InputSig_e = FMKIO_INPUT_SIGANA_11;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
+static t_eReturnState s_APPSNS_SPEC_AirTemperature_DiagMngmt(t_uint8 f_debugInfo1_u8, t_uint8 f_debugInfo2_u8);
 //****************************************************************************
 //                      Public functions - Implementation
 //********************************************************************************
@@ -67,7 +68,9 @@ t_eReturnState APPSNS_SPEC_AirTemperature_SetCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for AirTemperature_SetSnsCfg here
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_3, FMKIO_PULL_MODE_UNABLE);
+    Ret_e = FMKIO_Set_InAnaSigCfg(c_InputSig_e, 
+                                    FMKIO_PULL_MODE_UNABLE,
+                                    s_APPSNS_SPEC_AirTemperature_DiagMngmt);
     return Ret_e;
 }
 
@@ -79,24 +82,29 @@ t_eReturnState APPSNS_SPEC_AirTemperature_SetCfg(void)
 t_eReturnState APPSNS_SPEC_AirTemperature_GetValue(t_sAPPSNS_ValueInfo *f_SnsValue_ps)
 {
     t_eReturnState Ret_e = RC_OK;
-    t_eFMKIO_DigValue value_e;
+    t_uint16 value_u16;
     //    Your code for AirTemperature_GetSnsValue here
-    //Ret_e = FMKIO_Get_InDigSigValue(FMKIO_INPUT_SIGDIG_3, &value_e);
+    Ret_e = FMKIO_Get_InAnaSigValue(c_InputSig_e, &value_u16);
     if(Ret_e == RC_OK)
     {
         f_SnsValue_ps->IsValueOK_b = True;
-        f_SnsValue_ps->rawValue_s16 = value_e;
     }
-    else
+    else 
     {
         f_SnsValue_ps->IsValueOK_b = False;
-        f_SnsValue_ps->rawValue_s16 = value_e;
     }
+    f_SnsValue_ps->rawValue_s16 = (t_sint16)value_u16;
 
     return Ret_e;
 }
 
 /* CAUTION : Automatic generated code section for Specific Function Implementation: End */
+static t_eReturnState s_APPSNS_SPEC_AirTemperature_DiagMngmt(t_uint8 f_debugInfo1_u8, t_uint8 f_debugInfo2_u8)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    return Ret_e;
+}
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************

@@ -388,8 +388,27 @@ t_eReturnState FMKCPU_Set_SysClockCfg(void)
     }
     if(bspRet_e != HAL_OK)
     {
-        Ret_e = RC_ERROR_WRONG_STATE;
+        g_state_e = STATE_CYCLIC_ERROR;
+        Ret_e = RC_ERROR_WRONG_RESULT;
     }
+    return Ret_e;
+}
+
+/*********************************
+ * FMKCPU_Set_SysClockCfg
+ *********************************/
+t_eReturnState FMKCPU_Set_HardwareInit(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+    HAL_StatusTypeDef bspRet_e = HAL_OK;
+
+    bspRet_e = HAL_Init();
+    if(bspRet_e != HAL_OK)
+    {
+        Ret_e = RC_ERROR_WRONG_RESULT;
+        g_state_e = STATE_CYCLIC_ERROR;
+    }
+
     return Ret_e;
 }
 
@@ -582,7 +601,7 @@ t_eReturnState FMKCPU_Set_PWMChannelCfg(t_eFMKCPU_Timer f_timer_e,
             Ret_e = RC_ERROR_WRONG_RESULT;
         }
     }
-    if (g_TimerInfo_as[f_timer_e].HwCfg_e != FMKCPU_HWTIM_CFG_IC)
+    if (g_TimerInfo_as[f_timer_e].HwCfg_e != FMKCPU_HWTIM_CFG_PWM)
     { // this timer and channel is already configured for another purpose
         Ret_e = RC_ERROR_NOT_ALLOWED;
     }
@@ -599,7 +618,7 @@ t_eReturnState FMKCPU_Set_PWMChannelCfg(t_eFMKCPU_Timer f_timer_e,
         {
             // see if channel state is ok 
             bspChannelState_e = HAL_TIM_GetChannelState(&g_TimerInfo_as[f_timer_e].BspTimer_ps, bspChannel_u32);
-            if(bspChannelState_e == HAL_TIM_CHANNEL_STATE_RESET)
+            if(bspChannelState_e == HAL_TIM_CHANNEL_STATE_READY)
             {
                 BspOcInit_s.OCMode = (t_uint32)TIM_OCMODE_PWM1; 
                 BspOcInit_s.Pulse = (t_uint32)0;   // set init DutyCycle to 0
@@ -652,6 +671,10 @@ t_eReturnState FMKCPU_Set_PWMChannelDuty(t_eFMKCPU_Timer f_timer_e,
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
+    if(g_state_e != STATE_CYCLIC_OPE)
+    {
+        Ret_e = RC_ERROR_MODULE_NOT_INITIALIZED;
+    }
     if (g_TimerInfo_as[f_timer_e].IsTimerConfigured_b == (t_bool)False 
     || g_TimerInfo_as[f_timer_e].Channel_as[f_channel_e].IsChnlConfigure_b == (t_bool)False)
     {
@@ -669,7 +692,7 @@ t_eReturnState FMKCPU_Set_PWMChannelDuty(t_eFMKCPU_Timer f_timer_e,
         {
             s_FMKCPU_Set_HwChannelState(f_timer_e, f_channel_e, FMKCPU_CHNLST_DISACTIVATED);
         }
-        else if (f_dutyCycle_u16 > (t_uint16)FMKCPU_PWM_MIN_DUTY_CYLCE && f_dutyCycle_u16 <= (t_uint16)FMKCPU_PWM_MAX_DUTY_CYLCE)
+        if (f_dutyCycle_u16 > (t_uint16)FMKCPU_PWM_MIN_DUTY_CYLCE && f_dutyCycle_u16 <= (t_uint16)FMKCPU_PWM_MAX_DUTY_CYLCE)
         { // update dutycycle
             CCRxValue_u32 = (t_uint32)((t_float32)f_dutyCycle_u16 / (t_float32)FMKCPU_PWM_MAX_DUTY_CYLCE *
                            (t_float32)(g_TimerInfo_as[f_timer_e].BspTimer_ps.Init.Period + (t_uint32)1));
@@ -715,6 +738,10 @@ t_eReturnState FMKCPU_Get_PWMChannelDuty(t_eFMKCPU_Timer f_timer_e,
     if (f_timer_e > FMKCPU_TIMER_NB || f_channel_e > FMKCPU_CHANNEL_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(g_state_e != STATE_CYCLIC_OPE)
+    {
+        Ret_e = RC_ERROR_MODULE_NOT_INITIALIZED;
     }
     if (f_dutyCycle_u16 == (t_uint16 *)NULL)
     {
@@ -797,7 +824,7 @@ t_eReturnState FMKCPU_Set_ICChannelCfg(t_eFMKCPU_Timer f_timer_e,
         {
             // see if channel state is ok 
             bspChannelState_e = HAL_TIM_GetChannelState(&g_TimerInfo_as[f_timer_e].BspTimer_ps, bspChannel_u32);
-            if(bspChannelState_e == HAL_TIM_CHANNEL_STATE_RESET)
+            if(bspChannelState_e == HAL_TIM_CHANNEL_STATE_READY)
             {
                 BspICInit_s.ICPolarity = (t_uint32)TIM_ICPOLARITY_RISING;
                 BspICInit_s.ICSelection = (t_uint32)TIM_ICSELECTION_DIRECTTI;
@@ -938,7 +965,6 @@ t_eReturnState FMKCPU_Set_ChannelState(t_eFMKCPU_Timer f_timer_e,
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
-    if(g_state_e != STATE_CYCLIC_OPE)
     if (Ret_e == RC_OK)
     {
         Ret_e = s_FMKCPU_Set_HwChannelState(f_timer_e, f_channel_e, f_channelState_e);
@@ -959,6 +985,10 @@ t_eReturnState FMKCPU_Get_ChannelErrorStatus(t_eFMKCPU_Timer f_timer_e,
     || f_channel_e > FMKCPU_CHANNEL_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(g_state_e != STATE_CYCLIC_OPE)
+    {
+        Ret_e = RC_ERROR_MODULE_NOT_INITIALIZED;
     }
     if(f_chnlErrInfo_pe == (t_eFMKCPU_ChnlErrorState *)NULL)
     {
@@ -1032,7 +1062,7 @@ static t_eReturnState s_FMKCPU_PerformDiagnostic(void)
     t_eReturnState Ret_e = RC_OK;
     HAL_TIM_StateTypeDef bspTimerState_e;
     t_eFMKCPU_ChnlErrorState channelErr_e = FMKCPU_ERRSTATE_OK;
-    HAL_TIM_ChannelStateTypeDef bspChnlState_e = HAL_TIM_CHANNEL_STATE_RESET;
+    HAL_TIM_ChannelStateTypeDef bspChnlState_e = HAL_TIM_CHANNEL_STATE_READY;
     t_uint32 bspChannel_u32 = 0;
     t_sFMKCPU_TimerInfo * timerInfo_ps;
     t_uint8 CLLI_u8; /**< Channel loop  */
@@ -1479,7 +1509,7 @@ static void s_FMKCPU_BspRqst_InterruptMngmt(TIM_HandleTypeDef *f_timerIstce_ps, 
 //********************************************************************************
 //                      HAL_Callback Implementation
 //********************************************************************************
-/*****************************************************************************
+/**
  *
  *	@brief      Every calllack function is now centralized in one function
  *	@note   

@@ -52,7 +52,7 @@
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
-
+static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e);
 //****************************************************************************
 //                      Public functions - Implementation
 //********************************************************************************
@@ -62,6 +62,8 @@
 t_eReturnState APPLGC_Init(void)
 {
     t_eReturnState Ret_e = RC_OK;
+    Ret_e = FMKCPU_Set_EvntChannelCfg(FMKCPU_EVENT_CHANNEL_1, 3000, s_APPLGC_callback);
+    Ret_e = FMKCPU_Set_ChannelState(FMKCPU_TIMER_16, FMKCPU_CHANNEL_1, FMKCPU_CHNLST_ACTIVATED);
     return Ret_e;
 }
 
@@ -82,7 +84,12 @@ t_eReturnState APPLGC_Cyclic(void)
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
-
+static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e)
+{
+    t_eReturnState Ret_e = RC_OK;
+    
+    return Ret_e;
+}
 //************************************************************************************
 // End of File
 //************************************************************************************

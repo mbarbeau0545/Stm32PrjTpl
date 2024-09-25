@@ -99,7 +99,7 @@
     t_sAppSys_SysFunc c_AppSys_ModuleFunc_apf[APPSYS_MODULE_NB] = {
         // FrameWork module 
         {FMKCPU_Init,    FMKCPU_Cyclic,     FMKCPU_GetState, FMKCPU_SetState},
-        //{FMKCDA_Init,    FMKCDA_Cyclic,     FMKCDA_GetState, FMKCDA_SetState},
+        {FMKCDA_Init,    FMKCDA_Cyclic,     FMKCDA_GetState, FMKCDA_SetState},
         {FMKIO_Init,     FMKIO_Cyclic,      FMKIO_GetState,  FMKIO_SetState},
 
         // Application module

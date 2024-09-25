@@ -44,8 +44,8 @@
     /**< Enum  for channel state */
     typedef enum
     {
-        FMKCPU_CHNLST_ACTIVATED= 0x0U,          /**< The channel is acitvated by software, is running */
-        FMKCPU_CHNLST_DISACTIVATED,             /**< the channel is disactivated by software, not running */
+        FMKCPU_CHNLST_DISACTIVATED = 0x0U,       /**< the channel is disactivated by software, not running */
+        FMKCPU_CHNLST_ACTIVATED,                 /**< The channel is acitvated by software, is running */
 
         FMKCPU_CHNLST_NB                        /**< Number of channel state */
     } t_eFMKCPU_ChnlState;
@@ -198,6 +198,15 @@
     *   @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
     */
     t_eReturnState FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32);
+    /**
+    *
+    *	@brief      Set the hardware configuration.\n
+    *   @note       Reset of all peripherals, Initializes the Flash interface and the Systick..\n              
+    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_WRONG_RESULT             @ref RC_ERROR_WRONG_RESULT
+    */
+   t_eReturnState FMKCPU_Set_HardwareInit(void);
     /**
     *
     *	@brief      Set the priority for a NVIC and the state ON/OFF\n

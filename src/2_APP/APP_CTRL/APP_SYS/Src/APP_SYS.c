@@ -84,7 +84,11 @@ void APPSYS_Init(void)
     // set sys confgiguration 
     if( s_IsSysCfgDone_b == (t_bool)False)
     {
-        Ret_e = FMKCPU_Set_SysClockCfg();
+        Ret_e = FMKCPU_Set_HardwareInit();
+        if(Ret_e == RC_OK)
+        {
+            Ret_e = FMKCPU_Set_SysClockCfg();
+        }
         if(Ret_e == RC_OK)
         {
             //Ret_e = FMKCPU_Set_WwdgCfg((t_eFMKCPu_WwdgResetPeriod)FMKCPU_WWDG_RESET_CFG);
@@ -177,9 +181,9 @@ static t_eReturnState s_APPSYS_PreOperational(void)
 
     Ret_e = s_APPSYS_Set_ModulesCyclic();
     if(Ret_e == RC_OK)
-    {
+    {//  get the state of all modules
         for(LLI_u8 = (t_uint8)0 ; (LLI_u8 <  (t_uint8)APPSYS_MODULE_NB) && (Ret_e == RC_OK) ; LLI_u8++)
-        {// get the state of all modules
+        {
             Ret_e = c_AppSys_ModuleFunc_apf[LLI_u8].GetState_pcb(&g_ModuleState_ae[LLI_u8]);
             if(g_ModuleState_ae[LLI_u8] == STATE_CYCLIC_WAITING)
             {
@@ -222,24 +226,25 @@ static t_eReturnState s_APPSYS_Operational(void)
     if(Ret_e == RC_OK)
     {
         elapsedTime_u32 = (t_uint32)(currentCnt_u32 - s_previousCnt_u32);
-        if((elapsedTime_u32) < APPSYS_ELAPSED_TIME_CYCLIC)
+        if((elapsedTime_u32) > APPSYS_ELAPSED_TIME_CYCLIC)
         {
             // reset whatchdog for fmk/app cycle
             s_previousCnt_u32 = currentCnt_u32;
             Ret_e = s_APPSYS_Set_ModulesCyclic();
-        }
-        if(Ret_e == RC_OK)
-        {
-            // reset watchdog for logic cycle
-            //Ret_e = FMKCPU_ResetWwdg();
-            Ret_e = APPLGC_Cyclic();
-        }
-        if(Ret_e < RC_OK)
-        {
-            // deal with error
+        
+            if(Ret_e == RC_OK)
+            {
+                // reset watchdog for logic cycle
+                //Ret_e = FMKCPU_ResetWwdg();
+                Ret_e = APPLGC_Cyclic();
+            }
+            if(Ret_e < RC_OK)
+            {
+                // deal with error
+            }
         }
     }
-
+    
     return Ret_e;
 }
 //************************************************************************************

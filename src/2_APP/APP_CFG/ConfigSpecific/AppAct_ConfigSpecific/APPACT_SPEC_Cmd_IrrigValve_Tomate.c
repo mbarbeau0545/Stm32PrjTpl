@@ -19,6 +19,7 @@
 /* CAUTION : Automatic generated code section for Include: Start */
 #include "./APPACT_SPEC_Cmd_IrrigValve_Tomate.h"
 /* CAUTION : Automatic generated code section for Include: End */
+#include "./FMK_HAL/FMK_IO/Src/FMK_IO.h"
 // ********************************************************************
 // *                      Defines
 // ********************************************************************
@@ -49,7 +50,7 @@
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-
+static const t_eFMKIO_OutDigSig c_InputSig_e = FMKIO_OUTPUT_SIGPWM_5;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
@@ -66,8 +67,12 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_SetCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Tomate_SetActCfg here
-
-
+    Ret_e = FMKIO_Set_OutPwmSigCfg(c_InputSig_e, 
+                                    FMKIO_PULL_MODE_UNABLE,
+                                    200,
+                                    500,
+                                    False,
+                                    NULL_FONCTION);
 
     return Ret_e;
 }
@@ -81,8 +86,9 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_GetValue(t_sAPPACT_ValueInfo *f
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Tomate_GetActValue here
-
-
+    t_uint16 value_u16 = 0;
+    Ret_e = FMKIO_Get_OutPwmSigValue(c_InputSig_e, &value_u16);
+    f_value_ps->rawValue_s16 = (t_sint16)value_u16;
 
     return Ret_e;
 }
@@ -96,7 +102,7 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_SetValue(t_sint16 f_value_s16)
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Tomate_SetActValue here
-
+    Ret_e = FMKIO_Set_OutPwmSigValue(c_InputSig_e, 500);
 
 
     return Ret_e;

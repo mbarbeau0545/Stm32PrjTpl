@@ -94,7 +94,7 @@
                 "F_CPU=48000000L",
                 ""
             ],
-            "compilerPath": "C:/Users/mbarb/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe",
+            "compilerPath": "C:/Users/mbarb/.platformio/packages/toolchain-gccarmnoneeabi@1.70201.0/bin/arm-none-eabi-gcc.exe",
             "compilerArgs": [
                 "-mthumb",
                 "-mcpu=cortex-m0",
