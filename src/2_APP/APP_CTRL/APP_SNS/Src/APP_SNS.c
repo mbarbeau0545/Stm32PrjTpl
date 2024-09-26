@@ -50,7 +50,7 @@
 /* CAUTION : Automatic generated code section for Variable: Start */
 /**< Variable for Sensors Drivers State*/
 t_eAPPSNS_SensorState g_snsState_ae[APPSNS_SENSOR_NB] = {
-    APPSNS_SENSOR_STATE_ENABLE, // APPSNS_SENSOR_STATE_AIRTEMPERATURE
+    APPSNS_SENSOR_STATE_ENABLE, // APPSNS_SENSOR_AIRTEMPERATURE
 };
 
 /**< Variable for Sensors Drivers State*/

@@ -451,6 +451,21 @@
     *
     */
     t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_DigValue *f_value_pe);
+    /**
+    *
+    *	@brief       @brief This function handles EXTI line 0 to 1 interrupts.\n
+    */
+    void EXTI0_1_IRQHandler(void);
+    /**
+    *
+    *	@brief       @brief This function handles EXTI line 2 to 3 interrupts.\n
+    */
+    void EXTI2_3_IRQHandler(void);
+    /**
+    *
+    *	@brief       @brief This function handles EXTI line 4 to 15 interrupts.\n
+    */
+    void EXTI4_15_IRQHandler(void);
 #endif // FMKIO_H_INCLUDED           
 //************************************************************************************
 // End of File

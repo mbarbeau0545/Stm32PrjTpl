@@ -35,7 +35,8 @@ TARGET_SWITCH_NVIC_START = "            /* CAUTION : Automatic generated code se
 TARGET_SWITCH_NVIC_END   = "            /* CAUTION : Automatic generated code section for IRQNType switch case: End */\n"
 TARGET_TIMER_CHNLNB_START = "    /* CAUTION : Automatic generated code section for Timer channels number: Start */\n"
 TARGET_TIMER_CHNLNB_END   = "    /* CAUTION : Automatic generated code section for Timer channels number: End */\n"
-
+TARGET_TIMER_X_IRQH_START = "/* CAUTION : Automatic generated code section for TIMx IRQHandler: Start */\n"
+TARGET_TIMER_X_IRQH_END = "/* CAUTION : Automatic generated code section for TIMx IRQHandler: End */\n"
 # CAUTION : Automatic generated code section: Start #
 
 # CAUTION : Automatic generated code section: End #
@@ -67,6 +68,7 @@ class FMKCPU_CodeGen():
             file  FMK_CPU.c
                 - variable g_timerInfo_as init          x  
                 - switch case IRQN to bsp IRQN          x
+                - hardware IRQNHandler for timer        
         """
     code_gen = LCFE()
     @classmethod
@@ -90,6 +92,7 @@ class FMKCPU_CodeGen():
         rcc_ena_decl = ""
         rcc_dis_decl  = ""
         var_timinfo = ""
+        func_imple = ""
         def_tim_max_chnl = ""
         var_tim_max_chnl = ""
         switch_irqn = ""
@@ -162,6 +165,12 @@ class FMKCPU_CodeGen():
             var_tim_max_chnl += f"        (t_uint8)FMKCPU_MAX_CHNL_TIMER_{idx_timer}," \
                                 + " " * (SPACE_VARIABLE - len(f"FMKCPU_MAX_CHNL_TIMER_{idx_timer},")) \
                                 + f"// {ENUM_FMKCPU_TIMER_ROOT}_{idx_timer}\n"      
+            # Make hardware IRQ handler function impleementation  
+            func_imple += f"void TIM{idx_timer}_IRQHandler(void)" \
+                        + "{return HAL_TIM_IRQHandler(&g_TimerInfo_as" \
+                        + f"[{ENUM_FMKCPU_TIMER_ROOT}_{idx_timer}].BspTimer_ps);" \
+                        + "}\n"
+
         var_tim_max_chnl += "    };\n\n"
         var_timinfo += "};\n\n"
 
@@ -244,10 +253,13 @@ class FMKCPU_CodeGen():
         cls.code_gen._write_into_file(rcc_ena_decl, FMKCPU_CONFIGSPECIFIC_H)
         cls.code_gen.change_target_balise(TARGET_CLOCK_DISABLE_DECL_START, TARGET_CLOCK_DISABLE_DECL_END)
         cls.code_gen._write_into_file(rcc_dis_decl, FMKCPU_CONFIGSPECIFIC_H)
+        # for FMKCPU.c
         cls.code_gen.change_target_balise(TARGET_TIMER_INFO_START, TARGET_TIMER_INFO_END)
         cls.code_gen._write_into_file(var_timinfo, FMKCPU)
         cls.code_gen.change_target_balise(TARGET_SWITCH_NVIC_START, TARGET_SWITCH_NVIC_END)
         cls.code_gen._write_into_file(switch_irqn, FMKCPU)
+        cls.code_gen.change_target_balise(TARGET_TIMER_X_IRQH_START, TARGET_TIMER_X_IRQH_END)
+        cls.code_gen._write_into_file(func_imple, FMKCPU)
     
 #------------------------------------------------------------------------------
 #                             FUNCTION IMPLMENTATION

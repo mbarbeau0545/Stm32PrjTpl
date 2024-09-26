@@ -119,7 +119,7 @@ t_sFMKCPU_TimerInfo g_TimerInfo_as[FMKCPU_TIMER_NB] = {
  *	@brief      Function to set the bsp timer init container 
  *  @note       Depending on f_hwTimCfg_e and other variable, 
  *              this function filled f_timer_ps with cfg variable.\n
- *              This function set the rcc clock if needed
+ *              This function set the rcc clock if needed and call HAL_Init function
  *
  *	@param[in]  f_timer_ps            : enum for the timer,value from @ref t_sFMKCPU_TimerInfo
  *	@param[in]  f_timer_ps            : enum for the hardware timer cfg,value from @ref t_eFMKCPU_HwTimerCfg
@@ -808,6 +808,7 @@ t_eReturnState FMKCPU_Set_ICChannelCfg(t_eFMKCPU_Timer f_timer_e,
                                     (t_uint32)TIM_COUNTERMODE_UP,
                                     (t_uint32)TIM_CLOCKDIVISION_DIV1,
                                     (t_uint32)TIM_AUTORELOAD_PRELOAD_DISABLE);
+                
     }
     if (g_TimerInfo_as[f_timer_e].HwCfg_e != FMKCPU_HWTIM_CFG_IC)
     { // this timer and channel is already configured for another purpose
@@ -868,13 +869,15 @@ t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
     /********************************
      *   Some useful information for Evnt generation
      *   In FMKCPU_ConfigPrivate, we set the prescaler so that
-     *   the freqTimer counter is 1ms. In conclusion ARR = .period= (f_periodms -1) in ms
+     *   we also have freqTimer = (CLOCK) / (ARR + 1)(PSC+1)
+     *   We fix PSC = 8000 -> .period = 1000 * f_periodms_u32 * 1000
+     *   The last multiplication by 1000 is for ms to second
      ********************************/
     t_eReturnState Ret_e = RC_OK;
     HAL_StatusTypeDef bspRet_e = HAL_OK;
     t_eFMKCPU_Timer EvntTimer_e = FMKCPU_TIMER_NB;
     t_eFMKCPU_InterruptChnl EvntChnl_e = FMKCPU_CHANNEL_NB;
-
+    t_uint32 bspPeriod_u32 = (t_uint32)(1000 * 1000 * f_periodms_u32);
     if (f_evntChannel_e > FMKCPU_EVENT_CHANNEL_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
@@ -893,31 +896,24 @@ t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
             Ret_e = s_FMKCPU_Set_BspTimerInit(&g_TimerInfo_as[EvntTimer_e],
                                                 FMKCPU_HWTIM_CFG_EVNT,
                                                 (t_uint32)FMKCPU_TIMER_EVNT_PSC,
-                                                (t_uint32)(f_periodms_u32 - 1),
+                                                (t_uint32)(bspPeriod_u32 - 1),
                                                 (t_uint32)TIM_COUNTERMODE_UP,
                                                 (t_uint32)TIM_CLOCKDIVISION_DIV1,
                                                 (t_uint32)TIM_AUTORELOAD_PRELOAD_DISABLE);
             if (Ret_e == RC_OK)
             {
-                bspRet_e = c_FMKCPU_BspTimFunc_apf[FMKCPU_HWTIM_CFG_EVNT].TimerInit_pcb(&g_TimerInfo_as[EvntTimer_e].BspTimer_ps);
-                if(bspRet_e == HAL_OK)
-                {
-                    // Update Flag Configured
-                    g_TimerInfo_as[EvntTimer_e].IsTimerConfigured_b = (t_bool)True;
-                    g_TimerInfo_as[EvntTimer_e].Channel_as[EvntChnl_e].RunMode_e = FMKCPU_CNHL_RUNMODE_INTERRUPT;
-                    g_TimerInfo_as[EvntTimer_e].Channel_as[EvntChnl_e].chnl_cb = f_ITChannel_cb;
-                }
-                else 
-                {
-                    Ret_e = RC_ERROR_WRONG_RESULT;
-                }
-            }     
+                g_TimerInfo_as[EvntTimer_e].Channel_as[EvntChnl_e].chnl_cb = f_ITChannel_cb;
+                g_TimerInfo_as[EvntTimer_e].Channel_as[EvntChnl_e].RunMode_e = FMKCPU_CNHL_RUNMODE_INTERRUPT;
+            }
+            else 
+            {
+                Ret_e = RC_ERROR_WRONG_RESULT;
+            }  
         }
         else 
         {
             Ret_e = RC_ERROR_ALREADY_CONFIGURED;
         }
-          
     }
     return Ret_e;
 }
@@ -1511,14 +1507,21 @@ static void s_FMKCPU_BspRqst_InterruptMngmt(TIM_HandleTypeDef *f_timerIstce_ps, 
 //********************************************************************************
 /**
  *
- *	@brief      Every calllack function is now centralized in one function
- *	@note   
+ *	@brief      Implementation of every timer IRQHandler wardware function.\n 
  *
+ */
+/* CAUTION : Automatic generated code section for TIMx IRQHandler: Start */
+void TIM1_IRQHandler(void){return HAL_TIM_IRQHandler(&g_TimerInfo_as[FMKCPU_TIMER_1].BspTimer_ps);}
+void TIM3_IRQHandler(void){return HAL_TIM_IRQHandler(&g_TimerInfo_as[FMKCPU_TIMER_3].BspTimer_ps);}
+void TIM14_IRQHandler(void){return HAL_TIM_IRQHandler(&g_TimerInfo_as[FMKCPU_TIMER_14].BspTimer_ps);}
+void TIM15_IRQHandler(void){return HAL_TIM_IRQHandler(&g_TimerInfo_as[FMKCPU_TIMER_15].BspTimer_ps);}
+void TIM16_IRQHandler(void){return HAL_TIM_IRQHandler(&g_TimerInfo_as[FMKCPU_TIMER_16].BspTimer_ps);}
+void TIM17_IRQHandler(void){return HAL_TIM_IRQHandler(&g_TimerInfo_as[FMKCPU_TIMER_17].BspTimer_ps);}
+/* CAUTION : Automatic generated code section for TIMx IRQHandler: End */
+
+/**
  *
- *	@param[in]
- *	@param[out]
- *
- *
+ *	@brief      Every callback function is now centralized in one function
  *
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) { return s_FMKCPU_BspRqst_InterruptMngmt(htim, FMKCPU_HWTIM_CFG_EVNT); }
@@ -1530,6 +1533,7 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim) { return s_FMKCP
 void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim) { return s_FMKCPU_BspRqst_InterruptMngmt(htim, FMKCPU_HWTIM_CFG_PWM); }
 //void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim) { return s_FMKCPU_BspRqst_InterruptMngmt(htim, FMKCPU_HWTIM_CFG_TRGR); }
 void SysTick_Handler(void) { return HAL_IncTick(); }
+
 
 /***********************************
  * WWDG_IRQHandler
@@ -1544,6 +1548,7 @@ void WWDG_IRQHandler(void)
         // deal with error
     }
 }
+
 //************************************************************************************
 // End of File
 //************************************************************************************

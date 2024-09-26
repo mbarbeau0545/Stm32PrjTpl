@@ -1349,6 +1349,65 @@ static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t
 //********************************************************************************
 //                      HAL_Callback Implementation
 //********************************************************************************
+/*********************************
+ * EXTI0_1_IRQHandler
+ *********************************/
+void EXTI0_1_IRQHandler(void)
+{
+    t_uint8 LLI_u8;
+
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
+    {
+        if(g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b == (t_bool)True
+        && c_BspPinMapping_ua32[LLI_u8] <= (t_uint32)1)
+        {
+            HAL_GPIO_EXTI_IRQHandler(c_BspPinMapping_ua32[LLI_u8]);
+        }
+    }
+
+    return;
+}
+/*********************************
+ * EXTI2_3_IRQHandler
+ *********************************/
+void EXTI2_3_IRQHandler(void)
+{
+    t_uint8 LLI_u8;
+
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
+    {
+        if(g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b == (t_bool)True
+        && c_BspPinMapping_ua32[LLI_u8] >= (t_uint32)2
+        && c_BspPinMapping_ua32[LLI_u8] <= (t_uint32)3)
+        {
+            HAL_GPIO_EXTI_IRQHandler(c_BspPinMapping_ua32[LLI_u8]);
+        }
+    }
+
+    return;
+}
+/*********************************
+ * EXTI4_15_IRQHandler
+ *********************************/
+void EXTI4_15_IRQHandler(void)
+{
+    t_uint8 LLI_u8;
+
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
+    {
+        if(g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b == (t_bool)True
+        && c_BspPinMapping_ua32[LLI_u8] >= (t_uint32)4
+        && c_BspPinMapping_ua32[LLI_u8] <= (t_uint32)15)
+        {
+            HAL_GPIO_EXTI_IRQHandler(c_BspPinMapping_ua32[LLI_u8]);
+        }
+    }
+
+    return;
+}
+/*********************************
+ * HAL_GPIO_EXTI_Callback
+ *********************************/
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     t_uint8 LLI_u8;
