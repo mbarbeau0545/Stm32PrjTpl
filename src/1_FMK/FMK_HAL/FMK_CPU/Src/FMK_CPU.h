@@ -50,6 +50,15 @@
         FMKCPU_CHNLST_NB                        /**< Number of channel state */
     } t_eFMKCPU_ChnlState;
 
+    /**< Enum for timer state */
+    typedef enum
+    {
+        FMKCPU_TIMST_DISACTIVATED = 0x0U,       /**< Event timer is disactivated */
+        FMKCPU_TIMST_ACTIVATED,                 /**< Event timer is activated */
+
+        FMKCPU_TIMST_NB 
+    } t_eFMKCPU_EvntTimState;
+
     /**< Enum for channel run mode */
     typedef enum 
     {
@@ -356,12 +365,12 @@
     *   @note     This function initialize the timer in event configuration if the
     *             timer is not configured yet.\n
     *             Once the timer configure is done, update the channel state using function 
-    *             "FMKCPU_Set_ChannelState" and every f_periodms_u32 callback function is called.\n
-    *             IMPORTANT, in event configuration, this the timer and not the channel who manage 
-    *             the interruption, which means it is better to choose timer whith only one channel 
-    *             to eventTimer configuration in FMKCPU_ConfigPrivate
+    *             "FMKCPU_Set_EvntTimerState" and every f_periodms_u32 callback function is called.\n
+    *             IMPORTANT, In hardware this is the Timer which manage the interruption with ARR register,
+    *             In software this is channel structure who manage interruption to make all timer identical 
+    *             in just in variable.\n
     *
-    *	@param[in]  f_evntChannel_e           : enum value for event channel, value from @ref t_eFMKCPU_EventChannel
+    *	@param[in]  f_evntChannel_e           : enum value for event channel, value from @ref f_timer_e
     *	@param[in]  f_periodms_u32            : period before calling function, in millisecond
     *	@param[in]  f_ITChannel_cb            : callback function to call
     *
@@ -371,9 +380,9 @@
     *  @retval RC_ERROR_ALREADY_CONFIGURED       @ref RC_ERROR_ALREADY_CONFIGURED
     *  @retval RC_ERROR_NOT_ALLOWED              @ref RC_ERROR_NOT_ALLOWED
     */
-    t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e, 
-                                             t_uint32 f_periodms_u32,
-                                             t_cbFMKCPU_InterruptChnl f_ITChannel_cb);
+    t_eReturnState FMKCP_Set_EvntTimerCfg(t_eFMKCPU_Timer f_timer_e,
+                                         t_uint32 f_periodms_u32,
+                                         t_cbFMKCPU_InterruptChnl f_ITChannel_cb);
     /**
     *
     *	@brief      Add a callback function to a timer channel.\n
@@ -413,6 +422,20 @@
                                            t_eFMKCPU_ChnlState f_channelState_e);
     /**
     *
+    *	@brief      Set a timer-channel state ON/OFF.\n
+    *   @note       Using HAL_TIM function 
+    *           
+    *
+    *	@param[in]  f_timer_e              : enum value for the timer, value from @ref t_eFMKCPU_Timer
+    *	@param[in]  f_TimState_e       : enum value for the state operation, value from @ref t_eFMKCPU_EvntTimState
+    *
+    *  @retval RC_OK                             @ref RC_OK
+    *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+    *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
+    */
+    t_eReturnState FMKCPU_Set_EventTimerState(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_EvntTimState f_TimState_e);
+    /**
+    *
     *	@brief      Function to get the error code for a timer_channel
     *
     *	@param[in]  f_timer_e                : enum value for the timer, value from @ref t_eFMKCPU_Timer
@@ -443,6 +466,15 @@
     t_eReturnState FMKCPU_Get_RegisterCRRx(t_eFMKCPU_Timer f_timer_e, 
                                         t_eFMKCPU_InterruptChnl f_channel_e,
                                         t_uint32 * f_CCRxValue_pu32);
+    /**
+     *  @brief Declaration for hardware IRQnHandler call
+     */
+    void TIM1_IRQHandler(void);
+    void TIM3_IRQHandler(void);
+    void TIM14_IRQHandler(void);
+    void TIM15_IRQHandler(void);
+    void TIM16_IRQHandler(void);
+    void TIM17_IRQHandler(void);
 #endif // FMKCPU_H_INCLUDED           
 //************************************************************************************
 // End of File

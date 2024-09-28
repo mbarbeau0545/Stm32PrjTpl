@@ -28,7 +28,7 @@
     // *                      Defines
     // ********************************************************************
 
-    #define APPSYS_ELAPSED_TIME_CYCLIC ((t_uint8)20) /**< Elapsed time between cyclic function call*/
+    #define APPSYS_ELAPSED_TIME_CYCLIC ((t_uint8)100) /**< Elapsed time between cyclic function call*/
     // ********************************************************************
     // *                      Types
     // ********************************************************************

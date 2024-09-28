@@ -68,9 +68,9 @@ t_eReturnState APPSNS_SPEC_AirTemperature_SetCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for AirTemperature_SetSnsCfg here
-    Ret_e = FMKIO_Set_InAnaSigCfg(c_InputSig_e, 
-                                    FMKIO_PULL_MODE_UNABLE,
-                                    s_APPSNS_SPEC_AirTemperature_DiagMngmt);
+    //Ret_e = FMKIO_Set_InAnaSigCfg(c_InputSig_e, 
+    //                                FMKIO_PULL_MODE_UNABLE,
+    //                                s_APPSNS_SPEC_AirTemperature_DiagMngmt);
     return Ret_e;
 }
 

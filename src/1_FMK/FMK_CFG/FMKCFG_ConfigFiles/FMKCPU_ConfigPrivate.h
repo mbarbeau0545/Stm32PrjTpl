@@ -37,9 +37,11 @@
     #define FMKCPU_TIMER_PWM_PSC         ((t_uint8)50)       /**<  for every PWM the Prescaler is a constant */
     #define FMKCPU_TIMER_IC_PSC          ((t_uint8)0)        /**<  for every InputCOmpare the Prescaler is a constant */
     #define FMKCPU_TIMER_IC_ARR          ((t_uint16)0xFFFF)       /**<  for every InputCOmpare the Prescaler is a constant */
-    #define FMKCPU_TIMER_EVNT_PSC        ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC_MHZ * 1000)- (t_uint16)1) /**<  The prescaler use for evnt timer, having 1000Hz (1ms) */
 
-    #define FMKCPU_TIME_BTWN_DIAG_MS     ((t_uint16)2000)   /**< Time between diagnostic for timer and channel in cyclic ope mode*/
+    #define FMKCPU_TIMER_EVNT_MAX_LOW_PERIOD_MS ((t_uint16)60000)
+    #define FMKCPU_TIMER_EVNT_PSC_HIGH          ((t_uint16)(FMKCPU_TIMER_CLOCK_OSC_MHZ * 1000)- (t_uint16)1) /**<  The prescaler use for evnt timer, having 1000Hz (1ms) */
+    #define FMKCPU_TIMER_EVNT_PSC_LOW           ((t_uint16)65534)
+    #define FMKCPU_TIME_BTWN_DIAG_MS            ((t_uint16)2000)   /**< Time between diagnostic for timer and channel in cyclic ope mode*/
     // ********************************************************************
     // *                      Types
     // ********************************************************************

@@ -62,8 +62,8 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
 t_eReturnState APPLGC_Init(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    Ret_e = FMKCPU_Set_EvntChannelCfg(FMKCPU_EVENT_CHANNEL_1, 3000, s_APPLGC_callback);
-    Ret_e = FMKCPU_Set_ChannelState(FMKCPU_TIMER_16, FMKCPU_CHANNEL_1, FMKCPU_CHNLST_ACTIVATED);
+    Ret_e = FMKCP_Set_EvntTimerCfg(FMKCPU_TIMER_16, 3000, s_APPLGC_callback);
+    Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
     return Ret_e;
 }
 
@@ -87,7 +87,21 @@ t_eReturnState APPLGC_Cyclic(void)
 static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e)
 {
     t_eReturnState Ret_e = RC_OK;
-    
+    static t_uint32 last_tick_u32;
+    t_uint32 current_tick_u23;
+    t_uint32 elasped_time_u32;
+
+    Ret_e = FMKCPU_Get_Tick(&current_tick_u23);
+    if(Ret_e == RC_OK)
+    {
+        elasped_time_u32 = (current_tick_u23 - last_tick_u32);
+        if(elasped_time_u32 > (t_uint32)0)
+        {
+            last_tick_u32 = current_tick_u23;
+            elasped_time_u32 += 1;
+            Ret_e = RC_WARNING_BUSY;
+        }
+    }
     return Ret_e;
 }
 //************************************************************************************

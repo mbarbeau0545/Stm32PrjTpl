@@ -31,8 +31,7 @@
     /**< Enum dor configuration of an ADC and her channels */
     typedef enum 
     {
-        FMKCDA_ADC_CFG_BASIC_REGISTER = 0,      /**< ADC conversion in basic register : only one channel ->
-                                                    Call function to set an adc channel conversion and get directly result*/
+
         FMKCDA_ADC_CFG_PERIODIC_INTERRUPT,      /**< ADC conversion in periodic interrupt : multiple channels -> 
                                                     Configure a periodic conversion that will be launch periodically and callback function will
                                                      be called once the conversion channel is done*/
@@ -45,8 +44,6 @@
         FMKCDA_ADC_CFG_SCAN_DMA,                /**< ADC conversion in scan interrupt : multiple channels ->  DEFAULT ONE
                                                     Every module cyclic, conversion of all channel used is made and user called dediacate function
                                                     to know the value of a channel*/
-        FMKCDA_ADC_CFG_TRIGGERED_REGISTER,      /**< ADC conversion is triggered register -> only one channel ->
-                                                    The conversion is made on a event, call dedicate function to know the analog value */
         FMKCDA_ADC_CFG_TRIGGERED_INTERRUPT,     /**< ADC conversion is triggered interrupt -> only one channel ->
                                                     The conversion is made on a event, callback is called once the triggered conversion is done */
         FMKCDA_ADC_CFG_TRIGGERED_DMA,            /**< ADC conversion is triggered DMA -> only one channel ->

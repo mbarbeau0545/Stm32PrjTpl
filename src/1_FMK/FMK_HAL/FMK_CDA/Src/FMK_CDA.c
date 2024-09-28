@@ -174,6 +174,18 @@ static t_eReturnState s_FMKCDA_Operational(void);
 
  */
 static t_eReturnState s_FMKCDA_PerformDiagnostic(void);
+/**
+ *
+ *	@brief      Start adc ocnversion
+ *  @note       Depending on hardware configuration, start on adc conversion
+ *              either on interrupt either on dma 
+ * 
+ *  @retval RC_OK                             @ref RC_OK
+ *  @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ *  @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
+
+ */
+static t_eReturnState s_FMKCDA_StartAdcConversion(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_HwAdcCfg f_hwAdc_e);
 
 //****************************************************************************
 //                      Public functions - Implementation
@@ -377,9 +389,8 @@ t_eReturnState FMKCDA_Get_AdcError(t_eFMKCDA_Adc f_adc_e, t_eFMKCDA_ChnlErrState
  *********************************/
 static t_eReturnState s_FMKCDA_Operational(void)
 {
+    static t_uint32 SavedTime_u32    = 0;
     t_eReturnState Ret_e = RC_OK;
-    HAL_StatusTypeDef bspRet_e = HAL_OK;
-    static t_uint32 SavedTime_u32 = 0;
     t_uint32 currentTime_u32 = 0;
     t_uint8 LLI_u8;
     t_uint8 LLI2_u8;
@@ -415,16 +426,9 @@ static t_eReturnState s_FMKCDA_Operational(void)
         else if (g_AdcInfo_as[LLI_u8].IsAdcRunning_b == (t_bool)False
                 && g_AdcInfo_as[LLI_u8].IsAdcConfigured_b == (t_bool)true)
         {
-            bspRet_e = HAL_ADC_Start_DMA(&g_AdcInfo_as[LLI_u8].BspInit_s,
-                                         (t_uint32 *)g_AdcBuffer_as[LLI_u8].rawValue_au16,
-                                         g_counterRank_au8[LLI_u8]); // corresponing to the number of channel 
-                                                                    //configured for this adc
             
-            if(bspRet_e != HAL_OK)
-            {
-                Ret_e = RC_ERROR_WRONG_STATE;
-            }
-            else
+            Ret_e = s_FMKCDA_StartAdcConversion((t_eFMKCDA_Adc)LLI_u8, g_AdcInfo_as[LLI_u8].HwCfg_e);
+            if(Ret_e != RC_OK)
             {
                 g_AdcInfo_as[LLI_u8].IsAdcRunning_b = True;
             }
@@ -441,6 +445,54 @@ static t_eReturnState s_FMKCDA_Operational(void)
 /*********************************
  * s_FMKCDA_PerformDiagnostic
  *********************************/
+static t_eReturnState s_FMKCDA_StartAdcConversion(t_eFMKCDA_Adc f_Adc_e, t_eFMKCDA_HwAdcCfg f_hwAdc_e)
+{
+    t_eReturnState Ret_e = RC_OK;
+    HAL_StatusTypeDef bspRet_e = HAL_OK;
+
+    if(f_Adc_e > FMKCDA_ADC_NB
+    || f_hwAdc_e > FMKCDA_ADC_CFG_NB)
+    {
+        Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(Ret_e == RC_OK)
+    {
+        switch (f_hwAdc_e)
+        {
+            case FMKCDA_ADC_CFG_SCAN_DMA:
+            {
+                bspRet_e = HAL_ADC_Start_DMA(&g_AdcInfo_as[f_Adc_e].BspInit_s,
+                                            (t_uint32 *)g_AdcBuffer_as[f_Adc_e].rawValue_au16,
+                                            g_counterRank_au8[f_Adc_e]); // corresponing to the number of channel 
+                                                                        //configured for this adc
+                break;                                                        
+            }
+            case FMKCDA_ADC_CFG_SCAN_INTERRUPT:
+            {
+                bspRet_e = HAL_ADC_Start_IT(&g_AdcInfo_as[f_Adc_e].BspInit_s);
+                break;
+            }
+            case FMKCDA_ADC_CFG_PERIODIC_DMA:
+            case FMKCDA_ADC_CFG_TRIGGERED_DMA:
+            case FMKCDA_ADC_CFG_PERIODIC_INTERRUPT:
+            case FMKCDA_ADC_CFG_TRIGGERED_INTERRUPT:
+            default:
+            {
+                Ret_e = RC_WARNING_NO_OPERATION;
+            }
+                break;
+        }
+        if(bspRet_e != HAL_OK)
+        {
+            Ret_e = RC_ERROR_WRONG_RESULT;
+        }
+    }
+
+    return Ret_e;
+}
+/*********************************
+ * s_FMKCDA_PerformDiagnostic
+ *********************************/
 static t_eReturnState s_FMKCDA_PerformDiagnostic(void)
 {
     t_eReturnState Ret_e = RC_OK;
@@ -453,9 +505,7 @@ static t_eReturnState s_FMKCDA_PerformDiagnostic(void)
         adcInfo_ps = (t_sFMKCDA_AdcInfo *)&g_AdcInfo_as[LLI_u8];
         // enter in condition only in basic_register or triggered register (no HAL_errorCallback)
         // or if the flag is set to true in DMA & Interrupt mode
-        if(adcInfo_ps->HwCfg_e == FMKCDA_ADC_CFG_BASIC_REGISTER 
-        || adcInfo_ps->HwCfg_e == FMKCDA_ADC_CFG_TRIGGERED_REGISTER
-        || adcInfo_ps->flagErrDetected_b == (t_bool)True)
+        if(adcInfo_ps->flagErrDetected_b == (t_bool)True)
         {
             adcErr_u32 = HAL_ADC_GetError(&adcInfo_ps->BspInit_s);
         }
@@ -484,6 +534,9 @@ static t_eReturnState s_FMKCDA_PerformDiagnostic(void)
  *  @note       Update flag error detected.\n
  *             
  */
+/*********************************
+ * HAL_ADC_ErrorCallback
+ *********************************/
 void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
 {
     t_uint8 LLI_u8;
@@ -611,16 +664,6 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
         bspAdcInit_s->LowPowerAutoPowerOff = ENABLE;
         switch (f_HwAdcCfg_e)
         {
-        case FMKCDA_ADC_CFG_BASIC_REGISTER:
-        {
-            bspAdcInit_s->ScanConvMode = DISABLE;
-            bspAdcInit_s->ContinuousConvMode = DISABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = DISABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-            break;
-        }
         case FMKCDA_ADC_CFG_PERIODIC_INTERRUPT:
         {
             bspAdcInit_s->ScanConvMode = DISABLE;
@@ -661,16 +704,6 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
             bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
             setAdcDmaCfg_b = True;
-            break;
-        }
-        case FMKCDA_ADC_CFG_TRIGGERED_REGISTER:
-        {
-            bspAdcInit_s->ScanConvMode = DISABLE;
-            bspAdcInit_s->ContinuousConvMode = DISABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = DISABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC4; // Example trigger source
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
             break;
         }
         case FMKCDA_ADC_CFG_TRIGGERED_INTERRUPT:

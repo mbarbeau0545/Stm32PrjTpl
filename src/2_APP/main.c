@@ -21,7 +21,7 @@
 /* If define only logic Init & Cyclic are called
 *  else all framework & application function are called
 */
-#define STANDALONE_MODE 
+//#define STANDALONE_MODE 
 
 // ********************************************************************
 // *                      Prototypes
@@ -36,8 +36,8 @@
 //********************************************************************************
 int main(void)
 {
-    t_eReturnState Ret_e = RC_OK;
     #ifdef STANDALONE_MODE
+        t_eReturnState Ret_e = RC_OK;
         Ret_e = FMKCPU_Set_HardwareInit();
         if(Ret_e == RC_OK)
         {

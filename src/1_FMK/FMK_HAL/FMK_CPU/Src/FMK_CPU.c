@@ -860,9 +860,9 @@ t_eReturnState FMKCPU_Set_ICChannelCfg(t_eFMKCPU_Timer f_timer_e,
 }
 
 /*********************************
- * FMKCPU_Set_EvntChannelCfg
+ * FMKCPU_Set_EvntTimerCfg
  *********************************/
-t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
+t_eReturnState FMKCP_Set_EvntTimerCfg(t_eFMKCPU_Timer f_timer_e,
                                          t_uint32 f_periodms_u32,
                                          t_cbFMKCPU_InterruptChnl f_ITChannel_cb)
 {
@@ -870,15 +870,14 @@ t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
      *   Some useful information for Evnt generation
      *   In FMKCPU_ConfigPrivate, we set the prescaler so that
      *   we also have freqTimer = (CLOCK) / (ARR + 1)(PSC+1)
-     *   We fix PSC = 8000 -> .period = 1000 * f_periodms_u32 * 1000
+     *   We fix PSC = 8000 -> .period = (f_clock * (f_periodms_u32 / 1000)) / Prescaler
      *   The last multiplication by 1000 is for ms to second
      ********************************/
     t_eReturnState Ret_e = RC_OK;
-    HAL_StatusTypeDef bspRet_e = HAL_OK;
-    t_eFMKCPU_Timer EvntTimer_e = FMKCPU_TIMER_NB;
-    t_eFMKCPU_InterruptChnl EvntChnl_e = FMKCPU_CHANNEL_NB;
-    t_uint32 bspPeriod_u32 = (t_uint32)(1000 * 1000 * f_periodms_u32);
-    if (f_evntChannel_e > FMKCPU_EVENT_CHANNEL_NB)
+    t_uint32 bspPeriod_u32 = 0; 
+    t_uint32 prescaler_u32 = 0;
+
+    if (f_timer_e > FMKCPU_TIMER_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -886,35 +885,43 @@ t_eReturnState FMKCPU_Set_EvntChannelCfg(t_eFMKCPU_EventChannel f_evntChannel_e,
     {
         Ret_e = RC_ERROR_PTR_NULL;
     }
+     if(g_TimerInfo_as[f_timer_e].IsTimerConfigured_b == (t_bool)True)
+    {
+        Ret_e = RC_ERROR_ALREADY_CONFIGURED;
+    }
     if(Ret_e == RC_OK)
     {
-        EvntTimer_e = c_FMKCPU_EvntTimerCfg_as[f_evntChannel_e].timer_e;
-        EvntChnl_e = c_FMKCPU_EvntTimerCfg_as[f_evntChannel_e].channel_e;
-    
-        if (g_TimerInfo_as[EvntTimer_e].IsTimerConfigured_b == (t_bool)False)
+        if(f_periodms_u32 < FMKCPU_TIMER_EVNT_MAX_LOW_PERIOD_MS)
         {
-            Ret_e = s_FMKCPU_Set_BspTimerInit(&g_TimerInfo_as[EvntTimer_e],
-                                                FMKCPU_HWTIM_CFG_EVNT,
-                                                (t_uint32)FMKCPU_TIMER_EVNT_PSC,
-                                                (t_uint32)(bspPeriod_u32 - 1),
-                                                (t_uint32)TIM_COUNTERMODE_UP,
-                                                (t_uint32)TIM_CLOCKDIVISION_DIV1,
-                                                (t_uint32)TIM_AUTORELOAD_PRELOAD_DISABLE);
-            if (Ret_e == RC_OK)
-            {
-                g_TimerInfo_as[EvntTimer_e].Channel_as[EvntChnl_e].chnl_cb = f_ITChannel_cb;
-                g_TimerInfo_as[EvntTimer_e].Channel_as[EvntChnl_e].RunMode_e = FMKCPU_CNHL_RUNMODE_INTERRUPT;
-            }
-            else 
-            {
-                Ret_e = RC_ERROR_WRONG_RESULT;
-            }  
+            prescaler_u32 = FMKCPU_TIMER_EVNT_PSC_HIGH; 
         }
         else 
         {
-            Ret_e = RC_ERROR_ALREADY_CONFIGURED;
+            prescaler_u32 = FMKCPU_TIMER_EVNT_PSC_LOW;
+        }
+
+        bspPeriod_u32 = (t_uint32)((t_float32)((t_float32)(FMKCPU_HSI_CLOCK_OSC_MHZ * CST_MHZ_TO_HZ) * (t_float32)(f_periodms_u32 / 1000)) / 
+                                                (t_float32)((prescaler_u32 + 1))
+                                );
+
+        Ret_e = s_FMKCPU_Set_BspTimerInit(&g_TimerInfo_as[f_timer_e],
+                                            FMKCPU_HWTIM_CFG_EVNT,
+                                            (t_uint32)FMKCPU_TIMER_EVNT_PSC_HIGH,
+                                            (t_uint32)(bspPeriod_u32 - (t_uint32)1),
+                                            (t_uint32)TIM_COUNTERMODE_UP,
+                                            (t_uint32)TIM_CLOCKDIVISION_DIV1,
+                                            (t_uint32)TIM_AUTORELOAD_PRELOAD_DISABLE);
+        if (Ret_e == RC_OK)
+        {
+            g_TimerInfo_as[f_timer_e].Channel_as[FMKCPU_CHANNEL_1].chnl_cb = f_ITChannel_cb;
+            g_TimerInfo_as[f_timer_e].Channel_as[FMKCPU_CHANNEL_1].RunMode_e = FMKCPU_CNHL_RUNMODE_INTERRUPT;
+        }
+        else 
+        {
+            Ret_e = RC_ERROR_WRONG_RESULT;
         }
     }
+
     return Ret_e;
 }
 /*********************************
@@ -949,6 +956,45 @@ t_eReturnState FMKCPU_AddTimerChnlCallback(t_eFMKCPU_Timer f_timer_e,
 }
 
 /*********************************
+ * FMKCPU_Set_EventTimerState
+ *********************************/
+t_eReturnState FMKCPU_Set_EventTimerState(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_EvntTimState f_TimState_e)
+{
+    t_eReturnState Ret_e = RC_OK;
+    t_eFMKCPU_ChnlState chnlOpe_e;
+    if (f_timer_e > FMKCPU_TIMER_NB
+    || f_TimState_e > FMKCPU_TIMST_NB)
+    {
+        Ret_e = RC_ERROR_PARAM_INVALID;
+    }
+    if(Ret_e == RC_OK)
+    {
+        // IMPORTANT in hardware the timer is the one managing interruption for event timer
+        // but in software to make every timer modular decided to make channel as if the channel make 
+        // interruption and not the timer, in consequence to set the timer state, we have to make the channel 1 state
+        // on other channel are not used
+        switch(f_TimState_e)
+        {
+            case FMKCPU_TIMST_DISACTIVATED:
+                chnlOpe_e = FMKCPU_CHNLST_DISACTIVATED;
+                break;
+            case FMKCPU_TIMST_ACTIVATED:
+                chnlOpe_e = FMKCPU_CHNLST_ACTIVATED;
+                break;
+            case FMKCPU_TIMST_NB:
+            default:
+                Ret_e = RC_ERROR_NOT_ALLOWED;
+                break;
+        }
+        if(Ret_e == RC_OK)
+        {
+            Ret_e = s_FMKCPU_Set_HwChannelState(f_timer_e, FMKCPU_CHANNEL_1, chnlOpe_e );
+        }
+    }
+
+    return Ret_e;
+}
+/*********************************
  * FMKCPU_Set_ChannelState
  *********************************/
 t_eReturnState FMKCPU_Set_ChannelState(t_eFMKCPU_Timer f_timer_e,
@@ -957,7 +1003,9 @@ t_eReturnState FMKCPU_Set_ChannelState(t_eFMKCPU_Timer f_timer_e,
 {
     t_eReturnState Ret_e = RC_OK;
 
-    if (f_timer_e > FMKCPU_TIMER_NB || f_channel_e > FMKCPU_CHANNEL_NB || f_channelState_e > FMKCPU_CHNLST_NB)
+    if (f_timer_e > FMKCPU_TIMER_NB 
+    || f_channel_e > FMKCPU_CHANNEL_NB 
+    || f_channelState_e > FMKCPU_CHNLST_NB)
     {
         Ret_e = RC_ERROR_PARAM_INVALID;
     }
@@ -1472,28 +1520,34 @@ static void s_FMKCPU_BspRqst_InterruptMngmt(TIM_HandleTypeDef *f_timerIstce_ps, 
     }
     else
     {
-        #warning "only channel callback take in charged"
-        BspITChnl_e = HAL_TIM_GetActiveChannel(&g_TimerInfo_as[Calltimer_e].BspTimer_ps);
-        switch (BspITChnl_e)
+        if(g_TimerInfo_as[Calltimer_e].HwCfg_e == FMKCPU_HWTIM_CFG_EVNT)
         {
-            case HAL_TIM_ACTIVE_CHANNEL_1:
-                ITChnl_e = FMKCPU_CHANNEL_1;
-                break;
+            ITChnl_e = FMKCPU_CHANNEL_1;
+        }
+        else
+        {
+            BspITChnl_e = HAL_TIM_GetActiveChannel(&g_TimerInfo_as[Calltimer_e].BspTimer_ps);
+            switch (BspITChnl_e)
+            {
+                case HAL_TIM_ACTIVE_CHANNEL_1:
+                    ITChnl_e = FMKCPU_CHANNEL_1;
+                    break;
 
-            case HAL_TIM_ACTIVE_CHANNEL_2:
-                ITChnl_e = FMKCPU_CHANNEL_1;
-                break;
+                case HAL_TIM_ACTIVE_CHANNEL_2:
+                    ITChnl_e = FMKCPU_CHANNEL_1;
+                    break;
 
-            case HAL_TIM_ACTIVE_CHANNEL_3:
-                ITChnl_e = FMKCPU_CHANNEL_1;
-                break;
+                case HAL_TIM_ACTIVE_CHANNEL_3:
+                    ITChnl_e = FMKCPU_CHANNEL_1;
+                    break;
 
-            case HAL_TIM_ACTIVE_CHANNEL_4:
-                ITChnl_e = FMKCPU_CHANNEL_1;
-                break;
-            case HAL_TIM_ACTIVE_CHANNEL_CLEARED:
-            default:
-                break;
+                case HAL_TIM_ACTIVE_CHANNEL_4:
+                    ITChnl_e = FMKCPU_CHANNEL_1;
+                    break;
+                case HAL_TIM_ACTIVE_CHANNEL_CLEARED:
+                default:
+                    break;
+            }
         }
         if (ITChnl_e != FMKCPU_CHANNEL_NB)
         {

@@ -13,7 +13,7 @@ var _f_m_k___c_p_u_8c =
     [ "FMKCPU_ResetWwdg", "_f_m_k___c_p_u_8c.html#a2e6c15b2b4e3465e9319dc2b72f1564e", null ],
     [ "FMKCPU_Set_ChannelState", "_f_m_k___c_p_u_8c.html#adb8dfb21f4aac3d65a45ac8eed341c7a", null ],
     [ "FMKCPU_Set_Delay", "_f_m_k___c_p_u_8c.html#a3781183498c848aa58c960c873f70094", null ],
-    [ "FMKCPU_Set_EvntChannelCfg", "_f_m_k___c_p_u_8c.html#abdcfd49a46e1ec2a7e5d958946e82dea", null ],
+    [ "FMKCPU_Set_EvntTimerCfg", "_f_m_k___c_p_u_8c.html#abdcfd49a46e1ec2a7e5d958946e82dea", null ],
     [ "FMKCPU_Set_HwClock", "_f_m_k___c_p_u_8c.html#ab1f77ff513accfba4a6f550730d717c5", null ],
     [ "FMKCPU_Set_ICChannelCfg", "_f_m_k___c_p_u_8c.html#af79aeafd4fb0d3f89c254fea3353e263", null ],
     [ "FMKCPU_Set_NVICState", "_f_m_k___c_p_u_8c.html#ac40b45930ed1477a125eb47492be18b4", null ],
