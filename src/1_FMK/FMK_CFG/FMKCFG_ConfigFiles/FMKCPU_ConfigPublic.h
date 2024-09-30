@@ -55,15 +55,6 @@
         FMKCPU_CHANNEL_NB,
     } t_eFMKCPU_InterruptChnl;
 
-    /* Number of cannel channel dedicate for timer_event configuration */
-    typedef enum
-    {
-        FMKCPU_EVENT_CHANNEL_1 = 0x0,                  /**< Event channel 0 */
-        FMKCPU_EVENT_CHANNEL_2,                        /**< Event channel 1 */
-    
-        FMKCPU_EVENT_CHANNEL_NB,
-    } t_eFMKCPU_EventChannel;
-
     /* Enum for rcc clock state reference */
     typedef enum
     {

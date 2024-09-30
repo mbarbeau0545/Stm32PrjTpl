@@ -54,6 +54,9 @@ class AppSns_CodeGen():
 
     @classmethod
     def code_generation(cls) -> None:
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<Start code generation for AppSns Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         # Load needed excel arrays
         cls.code_gen.load_excel_file(SOFTWARE_CFG_PATH)
         sensors_cfg_a = cls.code_gen.get_array_from_excel("AppSns_Sensors")[1:]
@@ -159,22 +162,28 @@ class AppSns_CodeGen():
         #-----------------------------------------------------------------
         #------------------------make code gen----------------------------
         #-----------------------------------------------------------------
+        print("\t- For configPublic file")
         cls.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE,TARGET_T_ENUM_END_LINE)
+        print("\t\tt Write enum sns, drv, unity")
         cls.code_gen._write_into_file(enum_unity, APPSNS_CONFIGPUBLIC_PATH)
         cls.code_gen._write_into_file(enum_drv, APPSNS_CONFIGPUBLIC_PATH)
         cls.code_gen._write_into_file(enum_sns, APPSNS_CONFIGPUBLIC_PATH)
-        print("write enum sns, drv, unity in config public")
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE,TARGET_T_VARIABLE_END_LINE)
+        print("\t- For configPrivate file")
+        print("\t\t- write variable for sns_cfg, drv_cfg")
         cls.code_gen._write_into_file(var_unities, APPSNS_CONFIGPRIVATE_PATH)
         cls.code_gen._write_into_file(var_sns, APPSNS_CONFIGPRIVATE_PATH)
         cls.code_gen._write_into_file(var_drv, APPSNS_CONFIGPRIVATE_PATH)
         cls.code_gen.change_target_balise(TARGET_T_INCLUDE_START, TARGET_T_INCLUDE_END)
         cls.code_gen._write_into_file(include_sns, APPSNS_CONFIGPRIVATE_PATH)
-        print("write variable sns_cfg, drv_cfg in config private")
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE[4:],TARGET_T_VARIABLE_END_LINE[4:])
+        print("\t- For AppSns.c file")
+        print("write variable sns_state, drv_state in APPSNS.c")
         cls.code_gen._write_into_file(var_drv_state, APPSNS_C_PATH)
         cls.code_gen._write_into_file(var_sns_state, APPSNS_C_PATH)
-        print("write variable sns_state, drv_state in APPSNS.c")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<End code generation for AppSns Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
     @classmethod
     def make_header_src_file(cls, f_sns_name:str):
@@ -223,6 +232,7 @@ class AppSns_CodeGen():
         cls.code_gen._write_into_file(ifdef_h, distination_file_h)
 
         print(f"Succesfully create Header and Source file for {f_sns_name}")
+
 
         
 

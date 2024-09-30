@@ -124,17 +124,15 @@
     {
         FMKIO_OUTPUT_SIGDIG_1 = 0x0,                  /**< PB12 */
         FMKIO_OUTPUT_SIGDIG_2,                        /**< PB13 */
-        FMKIO_OUTPUT_SIGDIG_3,                        /**< PB14 */
-        FMKIO_OUTPUT_SIGDIG_4,                        /**< PB15 */
-        FMKIO_OUTPUT_SIGDIG_5,                        /**< PC4 */
-        FMKIO_OUTPUT_SIGDIG_6,                        /**< PC5 */
-        FMKIO_OUTPUT_SIGDIG_7,                        /**< PC13 */
-        FMKIO_OUTPUT_SIGDIG_8,                        /**< PC14 */
-        FMKIO_OUTPUT_SIGDIG_9,                        /**< PC15 */
-        FMKIO_OUTPUT_SIGDIG_10,                       /**< PF4 */
-        FMKIO_OUTPUT_SIGDIG_11,                       /**< PF5 */
-        FMKIO_OUTPUT_SIGDIG_12,                       /**< PF6 */
-        FMKIO_OUTPUT_SIGDIG_13,                       /**< PF7 */
+        FMKIO_OUTPUT_SIGDIG_3,                        /**< PC4 */
+        FMKIO_OUTPUT_SIGDIG_4,                        /**< PC5 */
+        FMKIO_OUTPUT_SIGDIG_5,                        /**< PC13 */
+        FMKIO_OUTPUT_SIGDIG_6,                        /**< PC14 */
+        FMKIO_OUTPUT_SIGDIG_7,                        /**< PC15 */
+        FMKIO_OUTPUT_SIGDIG_8,                        /**< PF4 */
+        FMKIO_OUTPUT_SIGDIG_9,                        /**< PF5 */
+        FMKIO_OUTPUT_SIGDIG_10,                       /**< PF6 */
+        FMKIO_OUTPUT_SIGDIG_11,                       /**< PF7 */
     
         FMKIO_OUTPUT_SIGDIG_NB,
     } t_eFMKIO_OutDigSig;

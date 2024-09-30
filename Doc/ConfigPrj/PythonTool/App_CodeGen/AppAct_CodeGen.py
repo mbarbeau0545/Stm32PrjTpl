@@ -54,6 +54,9 @@ class AppAct_CodeGen():
 
     @classmethod
     def code_generation(cls) -> None:
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<Start code generation for AppAct Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         # Load needed excel arrays
         cls.code_gen.load_excel_file(SOFTWARE_CFG_PATH)
         actuators_cfg_a = cls.code_gen.get_array_from_excel("AppAct_Actuators")[1:]
@@ -109,10 +112,10 @@ class AppAct_CodeGen():
                 include_act += f'    #include "{ACT_SPEC_FOLDER_PATH}/{VAR_APPACT_SPEC}_{act_cfg[0]}.h"\n'
                 # make header/src file if needed
                 if not os.path.isfile(f"{ACT_SPEC_FOLDER_FULLPATH}/{VAR_APPACT_SPEC}_{act_cfg[0]}.h"):
-                    print(f"Couldn't find reference for {act_cfg[0]}")
+                    print(f"\t- Couldn't find reference for {act_cfg[0]}, Create Header/Source file")
                     cls.make_header_src_file(str(act_cfg[0]))
                 else:
-                    print(f"Header/Source file for {act_cfg[0]} already existing")
+                    print(f"\t- Header/Source file for {act_cfg[0]} already existing, no operation")
 
         var_act_state += "};\n\n"
         var_act += "    };\n\n"
@@ -149,21 +152,27 @@ class AppAct_CodeGen():
         #-----------------------------------------------------------------
         #------------------------make code gen----------------------------
         #-----------------------------------------------------------------
+        print("\t- For configPublic file")
+        print("\t\t- Write enum act, drv, unity")
         cls.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE,TARGET_T_ENUM_END_LINE)
         cls.code_gen._write_into_file(enum_drv, APPACT_CONFIGPUBLIC_PATH)
         cls.code_gen._write_into_file(enum_act, APPACT_CONFIGPUBLIC_PATH)
-        print("write enum act, drv, unity in config public")
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE,TARGET_T_VARIABLE_END_LINE)
         cls.code_gen._write_into_file(var_unities, APPACT_CONFIGPRIVATE_PATH)
         cls.code_gen._write_into_file(var_act, APPACT_CONFIGPRIVATE_PATH)
         cls.code_gen._write_into_file(var_drv, APPACT_CONFIGPRIVATE_PATH)
         cls.code_gen.change_target_balise(TARGET_T_INCLUDE_START, TARGET_T_INCLUDE_END)
         cls.code_gen._write_into_file(include_act, APPACT_CONFIGPRIVATE_PATH)
-        print("write variable act_cfg, drv_cfg in config private")
+        print("\t- For configPrivate file")
+        print("\t\t- Write variable act_cfg, drv_cfg")
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE[4:],TARGET_T_VARIABLE_END_LINE[4:])
+        print("\t- For AppAct.c file")
+        print("\t\t- Write variable act_state, drv_state in APPACT.c")
         cls.code_gen._write_into_file(var_drv_state, APPACT_C_PATH)
         cls.code_gen._write_into_file(var_act_state, APPACT_C_PATH)
-        print("write variable act_state, drv_state in APPACT.c")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<End code generation for AppSns Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
     @classmethod
     def make_header_src_file(cls, f_act_name:str):

@@ -95,10 +95,6 @@ void APPSYS_Init(void)
         }
         if(Ret_e == RC_OK)
         {
-            Ret_e = APPLGC_Init();
-        }
-        if(Ret_e == RC_OK)
-        {
             s_IsSysCfgDone_b = (t_bool)True;
         }
     }

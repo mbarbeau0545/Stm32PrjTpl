@@ -210,13 +210,6 @@
     // *                      Variables
     // ********************************************************************
     /* CAUTION : Automatic generated code section for Variable: Start */
-    /**< Hardware configuration for Event Period Timer */
-    const t_sFMKCPU_BspTimerCfg c_FMKCPU_EvntTimerCfg_as[FMKCPU_EVENT_CHANNEL_NB] = {
-      //Colonne1                      Colonne2                      
-    {FMKCPU_TIMER_16,              FMKCPU_CHANNEL_1},  // FMKCPU_EVENT_CHANNEL_1
-    {FMKCPU_TIMER_17,              FMKCPU_CHANNEL_1},  // FMKCPU_EVENT_CHANNEL_2
-    };
-
     /**< Set the NVIC Priority for all NVIC_IRqn Priority */
     const t_eFMKCPU_NVICPriority c_FMKCPU_IRQNPriority_ae[FMKCPU_NVIC_NB] = {
       //Colonne1                      Colonne2                      

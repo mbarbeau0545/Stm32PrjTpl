@@ -149,17 +149,15 @@
         //GPIO_name                     Pin_name                      bsp pin name                  
         {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_12},   // FMKIO_OUTPUT_SIGDIG_1,
         {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_2,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_14},   // FMKIO_OUTPUT_SIGDIG_3,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_15},   // FMKIO_OUTPUT_SIGDIG_4,
-        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_4},    // FMKIO_OUTPUT_SIGDIG_5,
-        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_5},    // FMKIO_OUTPUT_SIGDIG_6,
-        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_7,
-        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_14},   // FMKIO_OUTPUT_SIGDIG_8,
-        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_15},   // FMKIO_OUTPUT_SIGDIG_9,
-        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_4},    // FMKIO_OUTPUT_SIGDIG_10,
-        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_5},    // FMKIO_OUTPUT_SIGDIG_11,
-        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_6},    // FMKIO_OUTPUT_SIGDIG_12,
-        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_7},    // FMKIO_OUTPUT_SIGDIG_13,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_4},    // FMKIO_OUTPUT_SIGDIG_3,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_5},    // FMKIO_OUTPUT_SIGDIG_4,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_13},   // FMKIO_OUTPUT_SIGDIG_5,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_14},   // FMKIO_OUTPUT_SIGDIG_6,
+        {FMKIO_GPIO_PORT_C,             FMKIO_GPIO_PIN_15},   // FMKIO_OUTPUT_SIGDIG_7,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_4},    // FMKIO_OUTPUT_SIGDIG_8,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_5},    // FMKIO_OUTPUT_SIGDIG_9,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_6},    // FMKIO_OUTPUT_SIGDIG_10,
+        {FMKIO_GPIO_PORT_F,             FMKIO_GPIO_PIN_7},    // FMKIO_OUTPUT_SIGDIG_11,
     };
 
     /**< Variable for bsp_Gpio_Pin PWM output signal mapping */

@@ -43,6 +43,9 @@ TARGET_TIMER_X_IRQH_END = "/* CAUTION : Automatic generated code section for TIM
 #------------------------------------------------------------------------------
 #                                       CLASS
 #------------------------------------------------------------------------------
+class TimerCfg_alreadyUsed(Exception):
+    pass
+
 class FMKCPU_CodeGen():
     """
             Make code generation for FMKCPU module which include 
@@ -71,9 +74,15 @@ class FMKCPU_CodeGen():
                 - hardware IRQNHandler for timer        
         """
     code_gen = LCFE()
+    stm_tim_chnl = []
+    #-------------------------
+    # code_generation
+    #-------------------------
     @classmethod
     def code_generation(cls) -> None:
-        
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<Start code generation for FmkCpu Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         cls.code_gen.load_excel_file(HARDWARE_CFG_PATH)
         irqn_cfg_a    = cls.code_gen.get_array_from_excel("GI_IRQN")
         timer_cfg_a   = cls.code_gen.get_array_from_excel("GI_Timer")
@@ -116,12 +125,12 @@ class FMKCPU_CodeGen():
             var_clk_state += f"{elem_desc}" + " " * (SPACE_VARIABLE - len(elem_desc))
         var_clk_state += "\n"
         for rccclock_cfg in rcclock_cfg_a[1:]:
-            rcc_dis_imple += f"    /**< Function to enable {rccclock_cfg[0]} rcc clock*/\n"
+            rcc_ena_imple += f"/**< Function to enable {rccclock_cfg[0]} rcc clock*/\n"
             rcc_ena_imple += f"void FMKCPU_Enable_{rccclock_cfg[0]}_Clock(void) " \
                             + "{" + f"__HAL_RCC_{rccclock_cfg[0]}_CLK_ENABLE();" + "}\n"
             
             
-            rcc_dis_imple += f"    /**< Function to disable {rccclock_cfg[0]} rcc clock*/\n"
+            rcc_dis_imple += f"/**< Function to disable {rccclock_cfg[0]} rcc clock*/\n"
             rcc_dis_imple += f"void FMKCPU_Disable_{rccclock_cfg[0]}_Clock(void) " \
                             + "{" + f"__HAL_RCC_{rccclock_cfg[0]}_CLK_DISABLE();" + "}\n"
             
@@ -193,6 +202,10 @@ class FMKCPU_CodeGen():
             var_evntcfg += f"{elem_desc}" + " " * (SPACE_VARIABLE - len(elem_desc))
         var_evntcfg += "\n"
         for idx, evnt_cfg in enumerate(evnt_cfg_a[1:]):
+            if str(evnt_cfg[0] + evnt_cfg[1]) in cls.stm_tim_chnl:
+                raise TimerCfg_alreadyUsed(f" the timer {evnt_cfg[0]} and his channel {evnt_cfg[1]} has already been configured")
+            
+            cls.stm_tim_chnl.append(str(evnt_cfg[0] + evnt_cfg[1]))
             var_evntcfg += "    {" \
                         + f"{ENUM_FMKCPU_TIMER_ROOT}_{evnt_cfg[0][6:]}," \
                         +" " * (SPACE_VARIABLE - len(f"{ENUM_FMKCPU_TIMER_ROOT}_{evnt_cfg[0][5:]}")) \
@@ -231,21 +244,30 @@ class FMKCPU_CodeGen():
         #------------code genration for FMKCPU module---------------
         #-----------------------------------------------------------
         # For FMKCPU_Config Public
+        print("\t- For configPublic file")
         cls.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE,TARGET_T_ENUM_END_LINE)
+        print("\t\t- enum for NVIC available in this stm")
         cls.code_gen._write_into_file(enum_nvic, FMKCPU_CONFIGPUBLIC)
+        print("\t\t- enum for RCC clock available in this stm")
         cls.code_gen._write_into_file(enum_rcc, FMKCPU_CONFIGPUBLIC)
-        cls.code_gen._write_into_file(enum_evnt, FMKCPU_CONFIGPUBLIC)
+        print("\t\t- enum for timer channel")
         cls.code_gen._write_into_file(enum_channel, FMKCPU_CONFIGPUBLIC)
+        print("\t\t- enum for timer")
         cls.code_gen._write_into_file(enum_timer, FMKCPU_CONFIGPUBLIC)
+        print("\t- For configPrivate file")
         # For FMKCPU_Config Private
         cls.code_gen.change_target_balise(TARGET_TIMER_CHNLNB_START, TARGET_TIMER_CHNLNB_END)
+        print("\t\t- Define for max channel per timer")
         cls.code_gen._write_into_file(def_tim_max_chnl, FMKCPU_CONFIGPRIVATE)
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE, TARGET_T_VARIABLE_END_LINE)
+        print("\t\t- Variable for max channel per timer")
         cls.code_gen._write_into_file(var_tim_max_chnl, FMKCPU_CONFIGPRIVATE)
+        print("\t\t- Variable for clock state functions")
         cls.code_gen._write_into_file(var_clk_state, FMKCPU_CONFIGPRIVATE)
+        print("\t\t- Configuration for nvic priority")
         cls.code_gen._write_into_file(var_nvic_prio, FMKCPU_CONFIGPRIVATE)
-        cls.code_gen._write_into_file(var_evntcfg, FMKCPU_CONFIGPRIVATE)
         cls.code_gen.change_target_balise(TARGET_CLOCK_ENABLE_IMPL_START, TARGET_CLOCK_ENABLE_IMPL_END)
+        print("\t\t- Function for enable/disable RCC clock")
         cls.code_gen._write_into_file(rcc_ena_imple, FMKCPU_CONFIGSPECIFIC_C)
         cls.code_gen.change_target_balise(TARGET_CLOCK_DISABLE_IMPL_START, TARGET_CLOCK_DISABLE_IMPL_END)
         cls.code_gen._write_into_file(rcc_dis_imple, FMKCPU_CONFIGSPECIFIC_C)
@@ -254,13 +276,25 @@ class FMKCPU_CodeGen():
         cls.code_gen.change_target_balise(TARGET_CLOCK_DISABLE_DECL_START, TARGET_CLOCK_DISABLE_DECL_END)
         cls.code_gen._write_into_file(rcc_dis_decl, FMKCPU_CONFIGSPECIFIC_H)
         # for FMKCPU.c
+        print("\t- For FMKCPU.c file")
         cls.code_gen.change_target_balise(TARGET_TIMER_INFO_START, TARGET_TIMER_INFO_END)
+        print("\t\t- variable for timer information")
         cls.code_gen._write_into_file(var_timinfo, FMKCPU)
         cls.code_gen.change_target_balise(TARGET_SWITCH_NVIC_START, TARGET_SWITCH_NVIC_END)
+        print("\t\t- switch case to find stm NVIC from enum")
         cls.code_gen._write_into_file(switch_irqn, FMKCPU)
         cls.code_gen.change_target_balise(TARGET_TIMER_X_IRQH_START, TARGET_TIMER_X_IRQH_END)
         cls.code_gen._write_into_file(func_imple, FMKCPU)
-    
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<End code generation for FmkCpu Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+    #-------------------------
+    # code_generation
+    #-------------------------
+    @classmethod
+    def get_tim_chnl_used(cls)->List:
+        return cls.stm_tim_chnl
 #------------------------------------------------------------------------------
 #                             FUNCTION IMPLMENTATION
 #------------------------------------------------------------------------------

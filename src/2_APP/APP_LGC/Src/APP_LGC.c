@@ -48,10 +48,13 @@
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-
+static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
+static t_eReturnState s_APPLGC_Operational(void);
+static t_eReturnState s_APPLGC_PreOperational(void);
+
 static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e);
 //****************************************************************************
 //                      Public functions - Implementation
@@ -63,7 +66,7 @@ t_eReturnState APPLGC_Init(void)
 {
     t_eReturnState Ret_e = RC_OK;
     Ret_e = FMKCP_Set_EvntTimerCfg(FMKCPU_TIMER_16, 3000, s_APPLGC_callback);
-    Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
+    
     return Ret_e;
 }
 
@@ -79,7 +82,74 @@ t_eReturnState APPLGC_Cyclic(void)
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_UNABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_UNABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
+    t_eReturnState Ret_e = RC_OK;
+
+    switch (g_state_e)
+    {
+    case STATE_CYCLIC_PREOPE:
+    {
+        Ret_e = s_APPLGC_PreOperational();
+        if(Ret_e == RC_OK)
+        {
+            g_state_e = STATE_CYCLIC_WAITING;
+        }
+        break;
+    }
+
+    case STATE_CYCLIC_WAITING:
+    {
+        // nothing to do, just wait all module are Ope
+        break;
+    }
+    case STATE_CYCLIC_OPE:
+    {
+        Ret_e = s_APPLGC_Operational();
+        if(Ret_e < RC_OK)
+        {
+            g_state_e = STATE_CYCLIC_ERROR;
+        }
+        break;
+    }
+    case STATE_CYCLIC_ERROR:
+    {
+        break;
+    }
+    case STATE_CYCLIC_BUSY:
+    default:
+        Ret_e = RC_OK;
+        break;
+    }
     return Ret_e;
+}
+
+/*********************************
+ * APPLGC_GetState
+ *********************************/
+t_eReturnState APPLGC_GetState(t_eCyclicFuncState *f_State_pe)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    if(f_State_pe == (t_eCyclicFuncState *)NULL)
+    {
+        Ret_e = RC_ERROR_PTR_NULL;
+    }
+    if(Ret_e == RC_OK)
+    {
+        *f_State_pe = g_state_e;
+    }
+
+    return Ret_e;
+}
+
+/*********************************
+ * APPLGC_SetState
+ *********************************/
+t_eReturnState APPLGC_SetState(t_eCyclicFuncState f_State_e)
+{
+
+    g_state_e = f_State_e;
+
+    return RC_OK;
 }
 //********************************************************************************
 //                      Local functions - Implementation
@@ -102,6 +172,27 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
             Ret_e = RC_WARNING_BUSY;
         }
     }
+    return Ret_e;
+}
+
+/*********************************
+ * s_APPLGC_PreOperational
+ *********************************/
+static t_eReturnState s_APPLGC_PreOperational(void)
+{
+    t_eReturnState Ret_e = RC_OK;
+
+    Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
+
+    return Ret_e;
+}
+
+/*********************************
+ * s_APPLGC_Operational
+ *********************************/
+static t_eReturnState s_APPLGC_Operational(void)
+{
+    t_eReturnState Ret_e = RC_OK;
     return Ret_e;
 }
 //************************************************************************************

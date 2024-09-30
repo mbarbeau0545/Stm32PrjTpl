@@ -49,7 +49,9 @@ class FMKCDA_CodeGen():
 
     @classmethod
     def code_genration(cls) -> None:
-        
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<Start code generation for FmkCda Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         # load array needed
         cls.code_gen.load_excel_file(HARDWARE_CFG_PATH)
         #irqn_cfg_a = cls.code_gen.get_array_from_excel("GI_IRQN")
@@ -117,18 +119,27 @@ class FMKCDA_CodeGen():
         #-----------------------------------------------------------
         #------------code genration for FMKADC module---------------
         #-----------------------------------------------------------
+        print("\t- For configPublic file")
         cls.code_gen.change_target_balise(TARGET_T_ENUM_START_LINE, TARGET_T_ENUM_END_LINE)
+        print("\t\t- Enum for adc cahnnel")
         cls.code_gen._write_into_file(enum_adc_channel, FMKCDA_CONFIGPUBLIC)
+        print("\t\t- Enum for adc")
         cls.code_gen._write_into_file(enum_adc, FMKCDA_CONFIGPUBLIC)
         cls.code_gen.change_target_balise(TARGET_ADC_CHNLNB_START, TARGET_ADC_CHNLNB_END)
+        print("\t\t- define for max channel per adc")
         cls.code_gen._write_into_file(def_adcx_max_channel, FMKCDA_CONFIGPRIVATE)
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE, TARGET_T_VARIABLE_END_LINE)
         cls.code_gen._write_into_file(var_adc_max_channel, FMKCDA_CONFIGPRIVATE)
         cls.code_gen.change_target_balise(TARGET_ADC_SWITCH_START, TARGET_ADC_SWITCH_END)
+        print("\t\t- swtich case to find stm channel from enum")
         cls.code_gen._write_into_file(switch_adc_channel, FMKCDA)
         cls.code_gen.change_target_balise(TARGET_T_VARIABLE_START_LINE[4:], TARGET_T_VARIABLE_END_LINE[4:])
+        print("\t\t- variable for Adc Info")
         cls.code_gen._write_into_file(var_rank_counter, FMKCDA)
         cls.code_gen._write_into_file(var_adc_info, FMKCDA)
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<End code generation for FmkCda Module>>>>>>>>>>>>>>>>>>>")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 #------------------------------------------------------------------------------
 #                             FUNCTION IMPLMENTATION
 #------------------------------------------------------------------------------

@@ -30,7 +30,7 @@
     {
 
         // Errors
-        RC_ERROR_ALREADY_CONFIGURED = -17,              /**< The operation is not accepted */
+        RC_ERROR_ALREADY_CONFIGURED = -17,              /**< The operation is not accepted 'cause the instance has already benn configured*/
         RC_ERROR_COPY_FAILED = -16,                      /**< The copy between two variable failed*/
         RC_ERROR_PTR_NULL = -15,                         /**< At least one of the pointer is null*/
         RC_ERROR_PARAM_INVALID = -14,                   /**< At least one of the parameters is not in the allowed range. */

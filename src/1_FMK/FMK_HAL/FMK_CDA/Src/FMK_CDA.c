@@ -733,15 +733,16 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
         }
         // Set hardware clock register to enable
         Ret_e = FMKCPU_Set_HwClock(g_AdcInfo_as[f_Adc_e].clock_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
-
+        if(Ret_e == RC_OK)
+        {
+            Ret_e = FMKCPU_Set_NVICState(g_AdcInfo_as[f_Adc_e].IRQNType_e, FMKCPU_NVIC_OPE_ENABLE);
+        }
         if((Ret_e == RC_OK) 
         && setAdcDmaCfg_b == (t_bool)True)
         {// set NVIC state and Dma Request if DMA is in hardware config
-            Ret_e = FMKCPU_Set_NVICState(FMKCPU_NVIC_ADC1_IRQN, FMKCPU_NVIC_OPE_ENABLE);
-            if(Ret_e == RC_OK)
-            {
-                Ret_e = FMKMAC_RqstDmaInit(FMKMAC_DMA_RQSTYPE_ADC1, (void *)&g_AdcInfo_as[f_Adc_e].BspInit_s);
-            }
+            
+            Ret_e = FMKMAC_RqstDmaInit(FMKMAC_DMA_RQSTYPE_ADC1, (void *)&g_AdcInfo_as[f_Adc_e].BspInit_s);
+            
         }
         if (Ret_e == RC_OK)
         {// Init hardware ADC
@@ -751,6 +752,10 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
             {
                 g_AdcInfo_as[f_Adc_e].HwCfg_e = f_HwAdcCfg_e;
                 g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b = (t_bool)True;
+            }
+            else 
+            {
+                Ret_e = RC_ERROR_WRONG_STATE;
             }
         }
         else
