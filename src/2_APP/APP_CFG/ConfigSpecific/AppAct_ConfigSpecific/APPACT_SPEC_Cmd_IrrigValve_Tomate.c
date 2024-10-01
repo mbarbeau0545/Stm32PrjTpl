@@ -67,13 +67,13 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Tomate_SetCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Tomate_SetActCfg here
-    Ret_e = FMKIO_Set_OutPwmSigCfg(c_InputSig_e, 
-                                    FMKIO_PULL_MODE_UNABLE,
-                                    200,
-                                    500,
-                                    False,
-                                    NULL_FONCTION);
-
+    //Ret_e = FMKIO_Set_OutPwmSigCfg(c_InputSig_e, 
+    //                                FMKIO_PULL_MODE_UNABLE,
+    //                                200,
+    //                                500,
+    //                                False,
+    //                                NULL_FONCTION);
+//
     return Ret_e;
 }
 

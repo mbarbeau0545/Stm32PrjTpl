@@ -67,7 +67,7 @@ t_eReturnState APPACT_SPEC_Cmd_IrrigValve_Carotte_SetCfg(void)
 {
     t_eReturnState Ret_e = RC_OK;
     //    Your code for Cmd_IrrigValve_Carotte_SetActCfg here
-    Ret_e = FMKIO_Set_OutDigSigCfg(c_InputSig_e, FMKIO_PULL_MODE_UNABLE, FMKIO_SPD_MODE_LOW);
+    //Ret_e = FMKIO_Set_OutDigSigCfg(c_InputSig_e, FMKIO_PULL_MODE_UNABLE, FMKIO_SPD_MODE_LOW);
 
 
     return Ret_e;

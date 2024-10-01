@@ -168,7 +168,7 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
     Ret_e = FMKCPU_Get_Tick(&current_tick_u23);
     if(Ret_e == RC_OK)
     {
-        Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_INPUT_SIGDIG_11, FMKIO_DIG_VALUE_HIGH);
+        Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_1, s_digval_e);
     }
     if(Ret_e == RC_OK)
     {
@@ -194,15 +194,15 @@ static t_eReturnState s_APPLGC_PreOperational(void)
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_UNABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_UNABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
-    Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_6, FMKIO_PULL_MODE_UNABLE, FMKIO_SPD_MODE_MEDIUM);
-    //if(Ret_e == RC_OK)
-    //{
-    //    Ret_e = FMKCP_Set_EvntTimerCfg(FMKCPU_TIMER_16, 5000, s_APPLGC_callback);
-    //}
-    //if(Ret_e == RC_OK)
-    //{
-    //    Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
-    //}
+    Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_1, FMKIO_PULL_MODE_UNABLE, FMKIO_SPD_MODE_LOW);
+    if(Ret_e == RC_OK)
+    {
+        Ret_e = FMKCP_Set_EvntTimerCfg(FMKCPU_TIMER_16, 62000, s_APPLGC_callback);
+    }
+    if(Ret_e == RC_OK)
+    {
+        Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
+    }
     return Ret_e;
 }
 
@@ -212,7 +212,10 @@ static t_eReturnState s_APPLGC_PreOperational(void)
 static t_eReturnState s_APPLGC_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_6, FMKIO_DIG_VALUE_HIGH);
+    //Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_1, FMKIO_DIG_VALUE_HIGH);
+    //HAL_Delay(1000);
+    //Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_1, FMKIO_DIG_VALUE_LOW);
+    //HAL_Delay(1000);
     return Ret_e;
 }
 //************************************************************************************
