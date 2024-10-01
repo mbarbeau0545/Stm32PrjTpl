@@ -65,7 +65,7 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
 t_eReturnState APPLGC_Init(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    Ret_e = FMKCP_Set_EvntTimerCfg(FMKCPU_TIMER_16, 3000, s_APPLGC_callback);
+    
     
     return Ret_e;
 }
@@ -77,12 +77,6 @@ t_eReturnState APPLGC_Cyclic(void)
 {
     t_eReturnState Ret_e = RC_OK;
     // code to run every x milliseconds, config in APPSYS_ConfigPrivate.h
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_11, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
-    t_eReturnState Ret_e = RC_OK;
 
     switch (g_state_e)
     {
@@ -160,8 +154,22 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
     static t_uint32 last_tick_u32;
     t_uint32 current_tick_u23;
     t_uint32 elasped_time_u32;
+    static t_eFMKIO_DigValue s_digval_e = FMKIO_DIG_VALUE_HIGH;
+
+    if(s_digval_e == FMKIO_DIG_VALUE_HIGH)
+    {
+        s_digval_e = FMKIO_DIG_VALUE_LOW;
+    }
+    else
+    {
+        s_digval_e = FMKIO_DIG_VALUE_HIGH;
+    }
 
     Ret_e = FMKCPU_Get_Tick(&current_tick_u23);
+    if(Ret_e == RC_OK)
+    {
+        Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_INPUT_SIGDIG_11, FMKIO_DIG_VALUE_HIGH);
+    }
     if(Ret_e == RC_OK)
     {
         elasped_time_u32 = (current_tick_u23 - last_tick_u32);
@@ -181,9 +189,20 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
 static t_eReturnState s_APPLGC_PreOperational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-
-    Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
-
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_11, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_UNABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
+    Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_6, FMKIO_PULL_MODE_UNABLE, FMKIO_SPD_MODE_MEDIUM);
+    //if(Ret_e == RC_OK)
+    //{
+    //    Ret_e = FMKCP_Set_EvntTimerCfg(FMKCPU_TIMER_16, 5000, s_APPLGC_callback);
+    //}
+    //if(Ret_e == RC_OK)
+    //{
+    //    Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
+    //}
     return Ret_e;
 }
 
@@ -193,6 +212,7 @@ static t_eReturnState s_APPLGC_PreOperational(void)
 static t_eReturnState s_APPLGC_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
+    Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_6, FMKIO_DIG_VALUE_HIGH);
     return Ret_e;
 }
 //************************************************************************************

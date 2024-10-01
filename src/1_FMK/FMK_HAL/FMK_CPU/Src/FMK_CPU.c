@@ -868,10 +868,8 @@ t_eReturnState FMKCP_Set_EvntTimerCfg(t_eFMKCPU_Timer f_timer_e,
 {
     /********************************
      *   Some useful information for Evnt generation
-     *   In FMKCPU_ConfigPrivate, we set the prescaler so that
-     *   we also have freqTimer = (CLOCK) / (ARR + 1)(PSC+1)
-     *   We fix PSC = 8000 -> .period = (f_clock * (f_periodms_u32 / 1000)) / Prescaler
-     *   The last multiplication by 1000 is for ms to second
+     *   In FMKCPU_ConfigPrivate, 
+     * 
      ********************************/
     t_eReturnState Ret_e = RC_OK;
     t_uint32 bspPeriod_u32 = 0; 
@@ -906,7 +904,7 @@ t_eReturnState FMKCP_Set_EvntTimerCfg(t_eFMKCPU_Timer f_timer_e,
 
         Ret_e = s_FMKCPU_Set_BspTimerInit(&g_TimerInfo_as[f_timer_e],
                                             FMKCPU_HWTIM_CFG_EVNT,
-                                            (t_uint32)FMKCPU_TIMER_EVNT_PSC_HIGH,
+                                            (t_uint32)(prescaler_u32 - (t_uint32)1),
                                             (t_uint32)(bspPeriod_u32 - (t_uint32)1),
                                             (t_uint32)TIM_COUNTERMODE_UP,
                                             (t_uint32)TIM_CLOCKDIVISION_DIV1,

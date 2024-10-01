@@ -24,11 +24,12 @@
     #include "1_FMK/FMK_HAL/FMK_CPU/Src/FMK_CPU.h"
     #include "2_APP/APP_CTRL/APP_ACT/Src/APP_ACT.h"
     #include "2_APP/APP_CTRL/APP_SNS/Src/APP_SNS.h"
+    #include "2_APP/APP_LGC/Src/APP_LGC.h"
     // ********************************************************************
     // *                      Defines
     // ********************************************************************
 
-    #define APPSYS_ELAPSED_TIME_CYCLIC ((t_uint8)100) /**< Elapsed time between cyclic function call*/
+    #define APPSYS_ELAPSED_TIME_CYCLIC ((t_uint8)100) /**< Elapsed time (in ms) between cyclic function call*/
     // ********************************************************************
     // *                      Types
     // ********************************************************************
