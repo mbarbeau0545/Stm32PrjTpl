@@ -93,9 +93,8 @@
         FMKIO_INPUT_SIGANA_6,                        /**< PA7 */
         FMKIO_INPUT_SIGANA_7,                        /**< PB8 */
         FMKIO_INPUT_SIGANA_8,                        /**< PB9 */
-        FMKIO_INPUT_SIGANA_9,                        /**< PA1 */
-        FMKIO_INPUT_SIGANA_10,                       /**< PA2 */
-        FMKIO_INPUT_SIGANA_11,                       /**< PA3 */
+        FMKIO_INPUT_SIGANA_9,                        /**< PA2 */
+        FMKIO_INPUT_SIGANA_10,                       /**< PA3 */
     
         FMKIO_INPUT_SIGANA_NB,
     } t_eFMKIO_InAnaSig;
@@ -113,8 +112,8 @@
     /* List of input event pin available on this board */
     typedef enum
     {
-        FMKIO_INPUT_SIGEVNT_1 = 0x0,                  /**< PF0 */
-        FMKIO_INPUT_SIGEVNT_2,                        /**< PF1 */
+        FMKIO_INPUT_SIGEVNT_1 = 0x0,                  /**< PA0 */
+        FMKIO_INPUT_SIGEVNT_2,                        /**< PA1 */
     
         FMKIO_INPUT_SIGEVNT_NB,
     } t_eFMKIO_InEvntSig;
@@ -127,12 +126,10 @@
         FMKIO_OUTPUT_SIGDIG_3,                        /**< PC4 */
         FMKIO_OUTPUT_SIGDIG_4,                        /**< PC5 */
         FMKIO_OUTPUT_SIGDIG_5,                        /**< PC13 */
-        FMKIO_OUTPUT_SIGDIG_6,                        /**< PC14 */
-        FMKIO_OUTPUT_SIGDIG_7,                        /**< PC15 */
-        FMKIO_OUTPUT_SIGDIG_8,                        /**< PF4 */
-        FMKIO_OUTPUT_SIGDIG_9,                        /**< PF5 */
-        FMKIO_OUTPUT_SIGDIG_10,                       /**< PF6 */
-        FMKIO_OUTPUT_SIGDIG_11,                       /**< PF7 */
+        FMKIO_OUTPUT_SIGDIG_6,                        /**< PF4 */
+        FMKIO_OUTPUT_SIGDIG_7,                        /**< PF5 */
+        FMKIO_OUTPUT_SIGDIG_8,                        /**< PF6 */
+        FMKIO_OUTPUT_SIGDIG_9,                        /**< PF7 */
     
         FMKIO_OUTPUT_SIGDIG_NB,
     } t_eFMKIO_OutDigSig;

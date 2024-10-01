@@ -83,7 +83,8 @@ class FMKIO_CodeGen():
         enum_suffix_a: List[str] = []
         enum_description = ""
         element_description_a:  List[str] = []
-        stm_pin = []
+        # this pin are usually used by hardware
+        stm_pin = ["PC14", "PC15"]
         stm_tim_chnl:List = FMKCPU_CodeGen.get_tim_chnl_used()
         max_pin_per_gpio: int = 0
         #---------------------------------------------------

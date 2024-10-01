@@ -37,7 +37,7 @@
     /**< Enum for signal hardware pull mode  */
     typedef enum 
     {
-        FMKIO_PULL_MODE_UNABLE = 0x0U,     /**< There is no pull resisstance attached to the signal */
+        FMKIO_PULL_MODE_DISABLE = 0x0U,     /**< There is no pull resisstance attached to the signal */
         FMKIO_PULL_MODE_DOWN,             /**< There is a pull down resistance attached to the signal */
         FMKIO_PULL_MODE_UP,             /**< There is a pull up resistance attached to the signal */
 
@@ -209,7 +209,7 @@
     *
     *	@param[in]      f_signal_e     : the input analog signal, value from @ref t_eFMKIO_InAnaSig
     *	@param[in]     f_pull_e        : the input pull mode, value from @ref t_eFMKIO_PullMode
-    *	@param[in]      f_sigErr_cb     : callbback function that will be called if an error occured
+    *	@param[in]      f_sigErr_cb     : callbback function that will be called if an error occured,NULL_FONCTION if not used
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
@@ -254,7 +254,7 @@
     *	@param[in]      f_pull_e       : the input pull mode, value from @ref t_eFMKIO_PullMode
     *	@param[in]      f_trigger_e    : the detection mode, value from @ref t_eFMKIO_SigTrigCptr
     *	@param[in]      f_Evnt_cb      : Function to call when the edge is detected by hardware
-    *	@param[in]      f_sigErr_cb     : callbback function that will be called if an error occured
+    *	@param[in]      f_sigErr_cb     : callbback function that will be called if an error occured, NULL_FONCTION if not used
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
@@ -285,7 +285,7 @@
     *	@param[in]      f_frequency_u32        : the PWM frequency 
     *	@param[in]      f_dutyCycle_u16        : the dutycyle, value between 0 (0%) - 1000 (100%)
     *	@param[in]      f_puf_startNow_bll_e   : wether or not the pulse generation should start immediately
-    *	@param[in]      f_sigErr_cb             : callbback function that will be called if an error occured
+    *	@param[in]      f_sigErr_cb             : callbback function that will be called if an error occured, NULL_FONCTION if not used
     *	 
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID

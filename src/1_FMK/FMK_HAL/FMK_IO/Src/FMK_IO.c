@@ -450,7 +450,7 @@ t_eReturnState FMKIO_Set_InFreqSigCfg(t_eFMKIO_InFreqSig f_signal_e,
         Ret_e = s_FMKIO_Set_BspSigCfg(c_InFreqSigBspMap_as[f_signal_e].BasicCfg.HwGpio_e,
                                       c_InFreqSigBspMap_as[f_signal_e].BasicCfg.HwPin_e,
                                       (t_uint32)GPIO_MODE_AF_PP,
-                                      FMKIO_PULL_MODE_UNABLE,
+                                      FMKIO_PULL_MODE_DISABLE,
                                       FMKIO_SPD_MODE_HIGH, 
                                       c_InFreqSigBspMap_as[f_signal_e].BspAlternateFunc_u8);
         if (Ret_e == RC_OK)
@@ -520,7 +520,7 @@ t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e,
             Ret_e = s_FMKIO_Set_BspSigCfg(gpioPort_e,
                                           c_InEvntSigBspMap_as[f_signal_e].BasicCfg.HwPin_e,
                                           (t_uint32)bspTrigger_u32,
-                                          FMKIO_PULL_MODE_UNABLE,
+                                          FMKIO_PULL_MODE_DISABLE,
                                           FMKIO_SPD_MODE_LOW, // irrevelent for a input sig dig
                                           FMKIO_AF_UNUSED);
             if (Ret_e == RC_OK)
@@ -789,12 +789,18 @@ t_eReturnState FMKIO_Get_InAnaSigValue(t_eFMKIO_InAnaSig f_signal_e, t_uint16 *f
             if(anaValue_16 < (t_uint16)FMKIO_ANALOG_OL_VALUE)
             {
                 *f_value_pu16 = (t_uint16)FMKIO_ANALOG_MIN_VALUE;
-                g_InAnaSigInfo_as[f_signal_e].sigError_cb((t_uint8)FMKIO_ANALOG_OL_DETECTED, (t_uint8)0);
+                if(g_InAnaSigInfo_as[f_signal_e].sigError_cb != (t_cbFMKIO_SigErrorMngmt *)NULL_FONCTION)
+                {
+                    g_InAnaSigInfo_as[f_signal_e].sigError_cb((t_uint8)FMKIO_ANALOG_OL_DETECTED, (t_uint8)0);
+                }
             }
             else if(anaValue_16 > (t_uint16)FMKIO_ANALOG_SC_VALUE)
             {
                 *f_value_pu16 = (t_uint16)FMKIO_ANALOG_MAX_VALUE;
-                g_InAnaSigInfo_as[f_signal_e].sigError_cb((t_uint8)FMKIO_ANALOG_SC_DETECTED, (t_uint8)0);
+                if(g_InAnaSigInfo_as[f_signal_e].sigError_cb != (t_cbFMKIO_SigErrorMngmt *)NULL_FONCTION)
+                {
+                    g_InAnaSigInfo_as[f_signal_e].sigError_cb((t_uint8)FMKIO_ANALOG_SC_DETECTED, (t_uint8)0);
+                }
             }
             else
             {
@@ -1112,7 +1118,7 @@ static t_eReturnState s_FMKIO_Get_BspPullMode(t_eFMKIO_PullMode f_pull_e, t_uint
     {
         switch (f_pull_e)
         {
-        case FMKIO_PULL_MODE_UNABLE:
+        case FMKIO_PULL_MODE_DISABLE:
             *f_bspPull_pu32 = GPIO_NOPULL;
             break;
         case FMKIO_PULL_MODE_DOWN:

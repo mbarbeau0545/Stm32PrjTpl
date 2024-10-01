@@ -55,7 +55,7 @@ static t_eCyclicFuncState g_state_e = STATE_CYCLIC_PREOPE;
 static t_eReturnState s_APPLGC_Operational(void);
 static t_eReturnState s_APPLGC_PreOperational(void);
 
-static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e);
+static t_eReturnState s_APPLGC_callback(void);
 //****************************************************************************
 //                      Public functions - Implementation
 //********************************************************************************
@@ -148,7 +148,7 @@ t_eReturnState APPLGC_SetState(t_eCyclicFuncState f_State_e)
 //********************************************************************************
 //                      Local functions - Implementation
 //********************************************************************************
-static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_InterruptChnl f_channel_e)
+static t_eReturnState s_APPLGC_callback(void)
 {
     t_eReturnState Ret_e = RC_OK;
     static t_uint32 last_tick_u32;
@@ -168,7 +168,7 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
     Ret_e = FMKCPU_Get_Tick(&current_tick_u23);
     if(Ret_e == RC_OK)
     {
-        Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_1, s_digval_e);
+        Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_3, s_digval_e);
     }
     if(Ret_e == RC_OK)
     {
@@ -189,20 +189,23 @@ static t_eReturnState s_APPLGC_callback(t_eFMKCPU_Timer f_timer_e, t_eFMKCPU_Int
 static t_eReturnState s_APPLGC_PreOperational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_11, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_UNABLE);
-    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_UNABLE);
-    Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_1, FMKIO_PULL_MODE_UNABLE, FMKIO_SPD_MODE_LOW);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_DISABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_11, FMKIO_PULL_MODE_DISABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_DISABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_DISABLE);
+    //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_DISABLE);
+    /*Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_3, FMKIO_PULL_MODE_DISABLE, FMKIO_SPD_MODE_LOW);
+    
     if(Ret_e == RC_OK)
     {
-        Ret_e = FMKCP_Set_EvntTimerCfg(FMKCPU_TIMER_16, 62000, s_APPLGC_callback);
-    }
-    if(Ret_e == RC_OK)
-    {
-        Ret_e = FMKCPU_Set_EventTimerState(FMKCPU_TIMER_16, FMKCPU_TIMST_ACTIVATED);
-    }
+        Ret_e = FMKIO_Set_InEvntSigCfg(FMKIO_INPUT_SIGEVNT_1, 
+                                    FMKIO_PULL_MODE_DISABLE,
+                                    FMKIO_STC_RISING_EDGE,
+                                    s_APPLGC_callback,
+                                    NULL_FONCTION);
+    }*/
+    Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_4,FMKIO_PULL_MODE_UP);
+
     return Ret_e;
 }
 
@@ -212,10 +215,20 @@ static t_eReturnState s_APPLGC_PreOperational(void)
 static t_eReturnState s_APPLGC_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    //Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_1, FMKIO_DIG_VALUE_HIGH);
-    //HAL_Delay(1000);
-    //Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_1, FMKIO_DIG_VALUE_LOW);
-    //HAL_Delay(1000);
+    t_eFMKIO_DigValue value_e;
+
+    Ret_e = FMKIO_Get_InDigSigValue(FMKIO_INPUT_SIGDIG_4, &value_e);
+    if(Ret_e == RC_OK)
+    {
+        if(value_e == FMKIO_DIG_VALUE_LOW)
+        {
+            Ret_e = RC_WARNING_BUSY;
+        }
+        else 
+        {
+            Ret_e = RC_WARNING_PENDING;
+        }
+    }
     return Ret_e;
 }
 //************************************************************************************

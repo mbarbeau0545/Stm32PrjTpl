@@ -50,7 +50,7 @@
 // ********************************************************************
 // *                      Variables
 // ********************************************************************
-static const t_eFMKIO_InAnaSig c_InputSig_e = FMKIO_INPUT_SIGANA_11;
+static const t_eFMKIO_InAnaSig c_InputSig_e = FMKIO_INPUT_SIGANA_9;
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
@@ -69,7 +69,7 @@ t_eReturnState APPSNS_SPEC_AirTemperature_SetCfg(void)
     t_eReturnState Ret_e = RC_OK;
     //    Your code for AirTemperature_SetSnsCfg here
     //Ret_e = FMKIO_Set_InAnaSigCfg(c_InputSig_e, 
-    //                                FMKIO_PULL_MODE_UNABLE,
+    //                                FMKIO_PULL_MODE_DISABLE,
     //                                s_APPSNS_SPEC_AirTemperature_DiagMngmt);
     return Ret_e;
 }
