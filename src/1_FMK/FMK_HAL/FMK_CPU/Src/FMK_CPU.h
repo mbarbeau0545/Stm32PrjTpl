@@ -206,7 +206,7 @@
     *   @retval RC_OK                             @ref RC_OK
     *   @retval RC_ERROR_WRONG_STATE              @ref RC_ERROR_WRONG_STATE
     */
-    t_eReturnState FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32);
+    void FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32);
     /**
     *
     *	@brief      Set the hardware configuration.\n

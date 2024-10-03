@@ -165,11 +165,10 @@ static t_eReturnState s_APPLGC_callback(void)
         s_digval_e = FMKIO_DIG_VALUE_HIGH;
     }
 
-    Ret_e = FMKCPU_Get_Tick(&current_tick_u23);
-    if(Ret_e == RC_OK)
-    {
-        Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_3, s_digval_e);
-    }
+    FMKCPU_Get_Tick(&current_tick_u23);
+
+    Ret_e = FMKIO_Set_OutDigSigValue(FMKIO_OUTPUT_SIGDIG_3, s_digval_e);
+    
     if(Ret_e == RC_OK)
     {
         elasped_time_u32 = (current_tick_u23 - last_tick_u32);
@@ -194,18 +193,17 @@ static t_eReturnState s_APPLGC_PreOperational(void)
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_DISABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_DISABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_DISABLE);
-    /*Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_3, FMKIO_PULL_MODE_DISABLE, FMKIO_SPD_MODE_LOW);
+    Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_3, FMKIO_PULL_MODE_DISABLE, FMKIO_SPD_MODE_LOW);
     
     if(Ret_e == RC_OK)
     {
         Ret_e = FMKIO_Set_InEvntSigCfg(FMKIO_INPUT_SIGEVNT_1, 
-                                    FMKIO_PULL_MODE_DISABLE,
+                                    FMKIO_PULL_MODE_UP,
                                     FMKIO_STC_RISING_EDGE,
+                                    500,
                                     s_APPLGC_callback,
                                     NULL_FONCTION);
-    }*/
-    Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_4,FMKIO_PULL_MODE_UP);
-
+    }
     return Ret_e;
 }
 
@@ -216,19 +214,7 @@ static t_eReturnState s_APPLGC_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
     t_eFMKIO_DigValue value_e;
-
-    Ret_e = FMKIO_Get_InDigSigValue(FMKIO_INPUT_SIGDIG_4, &value_e);
-    if(Ret_e == RC_OK)
-    {
-        if(value_e == FMKIO_DIG_VALUE_LOW)
-        {
-            Ret_e = RC_WARNING_BUSY;
-        }
-        else 
-        {
-            Ret_e = RC_WARNING_PENDING;
-        }
-    }
+    //Ret_e = FMKIO_Get_InDigSigValue(FMKIO_INPUT_SIGDIG_10, &value_e);
     return Ret_e;
 }
 //************************************************************************************

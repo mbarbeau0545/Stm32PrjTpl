@@ -70,6 +70,7 @@ typedef struct
 {
     t_bool IsSigConfigured_b;               /**< @ref  IsSigConfigured_b*/
     t_bool IsInterruptEnabl;                /**< @ref  IsInterruptEnable_b*/
+    t_uint32 debcDelay_u32;                 /**< Debouncer delay to ignore fluctuation when a interruption happen */
     t_cbFMKIO_EventFunc *EvntFunc_cb;       /**< Store the callback function*/
     t_cbFMKIO_SigErrorMngmt * sigError_cb;    /**< callback function if an error occured  */
    
@@ -102,6 +103,7 @@ t_eFMKCPU_ClockPortOpe g_IsGpioClockEnable_ae[FMKIO_GPIO_PORT_NB] = {
 
 /**< Module state */
 static t_eCyclicFuncState g_state_e = STATE_CYCLIC_WAITING;
+t_uint32 g_lastTick_ua32[FMKIO_INPUT_SIGEVNT_NB];
 //********************************************************************************
 //                      Local functions - Prototypes
 //********************************************************************************
@@ -220,6 +222,16 @@ static t_eReturnState s_FMKIO_MngSigFrequency(t_eFMKCPU_Timer f_timer_e, t_eFMKC
 static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t_eFMKCPU_ClockPortOpe f_ope_e);
 /**
  *
+ *	@brief      Function to centralized GPIO interruption management
+ *  @note       Called user function and reset flag 
+ *
+ * @retval RC_OK                             @ref RC_OK
+ * @retval RC_ERROR_PARAM_INVALID            @ref RC_ERROR_PARAM_INVALID
+ *
+ */
+static void s_FMKIO_BspRqst_InterruptMngmt(void);
+/**
+ *
  *	@brief      Function to perform diag on siganl used 
  *
  * @retval RC_OK                             @ref RC_OK
@@ -271,7 +283,10 @@ t_eReturnState FMKIO_Init(void)
     {
         g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb = (t_cbFMKIO_EventFunc *)NULL_FONCTION;
         g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b   = False;
+        g_InEvntSigInfo_as[LLI_u8].debcDelay_u32 = (t_uint32)0;
         g_InEvntSigInfo_as[LLI_u8].sigError_cb = (t_cbFMKIO_SigErrorMngmt *)NULL_FONCTION;
+
+        g_lastTick_ua32[LLI_u8] = (t_uint32)0;
     }
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKIO_OUTPUT_SIGPWM_NB ; LLI_u8++)
     {
@@ -492,6 +507,7 @@ t_eReturnState FMKIO_Set_InFreqSigCfg(t_eFMKIO_InFreqSig f_signal_e,
 t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e, 
                                           t_eFMKIO_PullMode f_pull_e,
                                           t_eFMKIO_SigTrigCptr f_trigger_e,
+                                          t_uint32 f_debouncerDelay_u32,
                                           t_cbFMKIO_EventFunc * f_Evnt_cb,
                                           t_cbFMKIO_SigErrorMngmt *f_sigErr_cb)
 {
@@ -531,6 +547,7 @@ t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e,
                 if (Ret_e == RC_OK)
                 { // update info
                     g_InEvntSigInfo_as[f_signal_e].IsSigConfigured_b = (t_bool)True;
+                    g_InEvntSigInfo_as[f_signal_e].debcDelay_u32 = f_debouncerDelay_u32;
                     g_InEvntSigInfo_as[f_signal_e].EvntFunc_cb = f_Evnt_cb;
                     g_InEvntSigInfo_as[f_signal_e].sigError_cb = f_sigErr_cb;
                 }
@@ -671,7 +688,7 @@ t_eReturnState FMKIO_Set_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
             if (Ret_e == RC_OK)
             {
                 HAL_GPIO_WritePin(bspGpio_ps,
-                                  c_BspPinMapping_ua32[c_OutDigSigBspMap_as[f_signal_e].HwPin_e],
+                                  c_BspPinMapping_ua16[c_OutDigSigBspMap_as[f_signal_e].HwPin_e],
                                   bspSigValue_e);
             }
         }
@@ -736,8 +753,8 @@ t_eReturnState FMKIO_Get_InDigSigValue(t_eFMKIO_InDigSig f_signal_e, t_eFMKIO_Di
         Ret_e = s_FMKIO_Get_BspGpioPort(c_InDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_ps);
         if (Ret_e == RC_OK)
         {
-            bspSigValue_e = HAL_GPIO_ReadPin(bspGpio_ps, c_BspPinMapping_ua32[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
-            switch (bspSigValue_e)
+            bspSigValue_e = HAL_GPIO_ReadPin(bspGpio_ps, c_BspPinMapping_ua16[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
+             switch (bspSigValue_e)
             {
             case GPIO_PIN_RESET:
                 *f_value_pe = FMKIO_DIG_VALUE_LOW;
@@ -931,7 +948,7 @@ t_eReturnState FMKIO_Get_OutDigSigValue(t_eFMKIO_OutDigSig f_signal_e, t_eFMKIO_
         Ret_e = s_FMKIO_Get_BspGpioPort(c_InDigSigBspMap_as[f_signal_e].HwGpio_e, &bspGpio_ps);
         if (Ret_e == RC_OK)
         {
-            bspSigValue_e = HAL_GPIO_ReadPin(bspGpio_ps, c_BspPinMapping_ua32[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
+            bspSigValue_e = HAL_GPIO_ReadPin(bspGpio_ps, c_BspPinMapping_ua16[c_InDigSigBspMap_as[f_signal_e].HwPin_e]);
             switch (bspSigValue_e)
             {
             case GPIO_PIN_RESET:
@@ -961,16 +978,13 @@ static t_eReturnState s_FMKIO_Operational(void)
     static t_uint32 s_SavedTime_u32 = 0;
     t_uint32 currentTime_u32 = 0;
 
-    Ret_e = FMKCPU_Get_Tick(&currentTime_u32);
-    if(Ret_e == RC_OK)
-    {
-        if((currentTime_u32 - s_SavedTime_u32) > (t_uint32)FMKIO_TIME_BTWN_DIAG_MS)
-        {//perform diag on timer / chnl used
-            s_SavedTime_u32 = currentTime_u32;
-            Ret_e = s_FMKIO_PerformDiagnostic();
-        }
-        // else do other thing(or nothing for now)
+    FMKCPU_Get_Tick(&currentTime_u32);
+    if((currentTime_u32 - s_SavedTime_u32) > (t_uint32)FMKIO_TIME_BTWN_DIAG_MS)
+    {//perform diag on timer / chnl used
+        s_SavedTime_u32 = currentTime_u32;
+        Ret_e = s_FMKIO_PerformDiagnostic();
     }
+        // else do other thing(or nothing for now)
     return Ret_e;
 }
 
@@ -1293,7 +1307,7 @@ static t_eReturnState s_FMKIO_Set_BspSigCfg(t_eFMKIO_GpioPort f_gpioPort_e,
         if (Ret_e == RC_OK)
         {
             bspInit_s.Mode = (t_uint32)f_mode_u32;
-            bspInit_s.Pin = (t_uint32)c_BspPinMapping_ua32[f_pin_e];
+            bspInit_s.Pin = (t_uint32)c_BspPinMapping_ua16[f_pin_e];
             bspInit_s.Pull = (t_uint32)bspPull_32;
             bspInit_s.Speed = (t_uint32)bspSpd_u32;
             if (f_AltFunc_u8 != (t_uint8)FMKIO_AF_UNUSED)
@@ -1352,6 +1366,42 @@ static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t
     }
     return Ret_e;
 }
+
+/*********************************
+ * s_FMKIO_BspRqst_InterruptMngmt
+ *********************************/
+static void s_FMKIO_BspRqst_InterruptMngmt(void)
+{
+    t_uint8 LLI_u8;
+    t_eFMKIO_BspGpioPin pin_e;
+    t_uint16 bspPin_u16;
+    t_uint32 currentTick_u32 = 0;
+
+
+    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
+    {
+        pin_e = c_InEvntSigBspMap_as[LLI_u8].BasicCfg.HwPin_e;
+
+        if(g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b == (t_bool)True)
+        {
+            bspPin_u16 = c_BspPinMapping_ua16[pin_e];
+
+            if(__HAL_GPIO_EXTI_GET_IT(bspPin_u16) != 0x00u)
+            { 
+                //call user function if debouncer counter is passed
+                FMKCPU_Get_Tick(&currentTick_u32);
+                if((currentTick_u32 - g_lastTick_ua32[LLI_u8]) > g_InEvntSigInfo_as[LLI_u8].debcDelay_u32)
+                {
+                    g_lastTick_ua32[LLI_u8] = currentTick_u32;
+                    __HAL_GPIO_EXTI_CLEAR_IT(bspPin_u16);
+                    g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb();
+                }
+            }
+        }
+    }
+
+    return;
+}
 //********************************************************************************
 //                      HAL_Callback Implementation
 //********************************************************************************
@@ -1360,83 +1410,23 @@ static t_eReturnState s_FMKIO_Set_GpioClkState(t_eFMKIO_GpioPort f_gpioPort_e, t
  *********************************/
 void EXTI0_1_IRQHandler(void)
 {
-    t_uint8 LLI_u8;
-
-    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
-    {
-        if(g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b == (t_bool)True
-        && c_BspPinMapping_ua32[LLI_u8] <= (t_uint32)1)
-        {
-            HAL_GPIO_EXTI_IRQHandler(c_BspPinMapping_ua32[LLI_u8]);
-        }
-    }
-
-    return;
+    s_FMKIO_BspRqst_InterruptMngmt();
 }
 /*********************************
  * EXTI2_3_IRQHandler
  *********************************/
 void EXTI2_3_IRQHandler(void)
 {
-    t_uint8 LLI_u8;
-
-    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
-    {
-        if(g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b == (t_bool)True
-        && c_BspPinMapping_ua32[LLI_u8] >= (t_uint32)2
-        && c_BspPinMapping_ua32[LLI_u8] <= (t_uint32)3)
-        {
-            HAL_GPIO_EXTI_IRQHandler(c_BspPinMapping_ua32[LLI_u8]);
-        }
-    }
-
-    return;
+    s_FMKIO_BspRqst_InterruptMngmt();
 }
 /*********************************
  * EXTI4_15_IRQHandler
  *********************************/
 void EXTI4_15_IRQHandler(void)
 {
-    t_uint8 LLI_u8;
-
-    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
-    {
-        if(g_InEvntSigInfo_as[LLI_u8].IsSigConfigured_b == (t_bool)True
-        && c_BspPinMapping_ua32[LLI_u8] >= (t_uint32)4
-        && c_BspPinMapping_ua32[LLI_u8] <= (t_uint32)15)
-        {
-            HAL_GPIO_EXTI_IRQHandler(c_BspPinMapping_ua32[LLI_u8]);
-        }
-    }
-
-    return;
+    s_FMKIO_BspRqst_InterruptMngmt();
 }
-/*********************************
- * HAL_GPIO_EXTI_Callback
- *********************************/
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-    t_uint8 LLI_u8;
-    t_eFMKIO_BspGpioPin bspPinEvnt_e;
-    for(LLI_u8 = (t_uint8)0 ; LLI_u8 < FMKIO_INPUT_SIGEVNT_NB ; LLI_u8++)
-    {
-        bspPinEvnt_e = c_InEvntSigBspMap_as[LLI_u8].BasicCfg.HwPin_e;
-        if(c_BspPinMapping_ua32[bspPinEvnt_e] == GPIO_Pin)
-        {
-            break;
-        }
-    }
-    if(LLI_u8 < FMKIO_INPUT_SIGEVNT_NB)
-    {
-        if(g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb != (t_cbFMKIO_EventFunc *)NULL_FONCTION)
-        {
-            g_InEvntSigInfo_as[LLI_u8].EvntFunc_cb();
-        }
-    }
-    
-    
-    return;
-}
+
 //************************************************************************************
 // End of File
 //************************************************************************************

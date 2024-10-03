@@ -396,15 +396,14 @@ static t_eReturnState s_FMKCDA_Operational(void)
     t_uint8 LLI2_u8;
     t_eFMKCPU_InterruptChnl channel_e;
 
-    Ret_e = FMKCPU_Get_Tick(&currentTime_u32);
-    if(Ret_e == RC_OK)
-    {
-        if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKCDA_TIME_BTWN_DIAG_MS)
-        {//perform diag on timer / chnl used
-            SavedTime_u32 = currentTime_u32;
-            Ret_e = s_FMKCDA_PerformDiagnostic();
-        }
+   FMKCPU_Get_Tick(&currentTime_u32);
+
+    if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKCDA_TIME_BTWN_DIAG_MS)
+    {//perform diag on timer / chnl used
+        SavedTime_u32 = currentTime_u32;
+        Ret_e = s_FMKCDA_PerformDiagnostic();
     }
+    
     // For every adc in stm32
     for(LLI_u8 = (t_uint8)0 ; LLI_u8 < (t_uint8)FMKCDA_ADC_NB ; LLI_u8++)
     {

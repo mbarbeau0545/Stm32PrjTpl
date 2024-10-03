@@ -76,8 +76,7 @@
         FMKIO_INPUT_SIGDIG_8,                        /**< PB3 */
         FMKIO_INPUT_SIGDIG_9,                        /**< PB4 */
         FMKIO_INPUT_SIGDIG_10,                       /**< PB5 */
-        FMKIO_INPUT_SIGDIG_11,                       /**< PB10 */
-        FMKIO_INPUT_SIGDIG_12,                       /**< PB11 */
+        FMKIO_INPUT_SIGDIG_11,                       /**< PB11 */
     
         FMKIO_INPUT_SIGDIG_NB,
     } t_eFMKIO_InDigSig;
@@ -112,7 +111,7 @@
     /* List of input event pin available on this board */
     typedef enum
     {
-        FMKIO_INPUT_SIGEVNT_1 = 0x0,                  /**< PA0 */
+        FMKIO_INPUT_SIGEVNT_1 = 0x0,                  /**< PB10 */
         FMKIO_INPUT_SIGEVNT_2,                        /**< PA1 */
     
         FMKIO_INPUT_SIGEVNT_NB,

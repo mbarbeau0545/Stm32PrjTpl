@@ -129,7 +129,7 @@ class FMKIO_CodeGen():
         #-----------------make Pin mapping variable---------------------
         #---------------------------------------------------------------
         var_bsp_pin_map += "    /**< Variable for bsp_enum pin mapping */\n" \
-                            + "    const t_uint32 c_BspPinMapping_ua32[FMKIO_GPIO_PIN_NB] = {\n"
+                            + "    const t_uint32 c_BspPinMapping_ua16[FMKIO_GPIO_PIN_NB] = {\n"
         for idx,pin in enumerate(pin_list):
             var_bsp_pin_map += f"        GPIO_PIN_{pin},"  \
                                 + " " * (SPACE_VARIABLE - len(f"    GPIO_PIN_{pin},")) \
@@ -243,7 +243,7 @@ class FMKIO_CodeGen():
                     + " " * (SPACE_VARIABLE - len(f"{ENUM_GPIO_PORT_ROOT}_{pin_evnt_cfg[0][5:]}")) \
                     + f"{ENUM_GPIO_PIN_ROOT}_{pin_evnt_cfg[1][4:]}" + "}," \
                     + " " * (SPACE_VARIABLE - len(f"{ENUM_GPIO_PIN_ROOT}_{pin_evnt_cfg[1][4:]}")) \
-                    + f"{pin_evnt_cfg[2]}" \
+                    + f"{ENUM_FMKCPU_NVIC_ROOT}_{str(pin_evnt_cfg[2]).upper()}" \
                     + "}," +  " " * (25 - len(f"{pin_evnt_cfg[2]}")) \
                     + f"// {ENUM_INSIGEVNT_ROOT}_{idx + 1},\n"
         var_InEvnt += "    };\n\n"

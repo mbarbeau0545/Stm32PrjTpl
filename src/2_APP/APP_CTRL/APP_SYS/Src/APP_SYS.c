@@ -218,11 +218,10 @@ static t_eReturnState s_APPSYS_Operational(void)
     static t_uint32 s_previousCnt_u32 = 0;
     t_uint32 elapsedTime_u32 =  0;
 
-    Ret_e = FMKCPU_Get_Tick(&currentCnt_u32);
-    if(Ret_e == RC_OK)
-    {
-        //Ret_e = FMKCPU_ResetWwdg();
-    }
+    FMKCPU_Get_Tick(&currentCnt_u32);
+
+    //Ret_e = FMKCPU_ResetWwdg();
+    
     if(Ret_e == RC_OK)
     {
         elapsedTime_u32 = (t_uint32)(currentCnt_u32 - s_previousCnt_u32);

@@ -345,7 +345,7 @@ void FMKCPU_Set_Delay(t_uint32 f_delayms_u32)
 /*********************************
  * FMKCPU_Get_Tick
  *********************************/
-t_eReturnState FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32)
+void FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32)
 {
     t_eReturnState Ret_e = RC_OK;
 
@@ -357,7 +357,7 @@ t_eReturnState FMKCPU_Get_Tick(t_uint32 * f_tickms_pu32)
     {
         *f_tickms_pu32 = HAL_GetTick();
     }
-    return Ret_e;
+    return;
 }
 
 /*********************************
@@ -1083,16 +1083,15 @@ static t_eReturnState s_FMKCPU_Operational(void)
     static t_uint32 SavedTime_u32 = 0;
     t_uint32 currentTime_u32 = 0;
 
-    Ret_e = FMKCPU_Get_Tick(&currentTime_u32);
-    if(Ret_e == RC_OK)
-    {
-        if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKCPU_TIME_BTWN_DIAG_MS)
-        {//perform diag on timer / chnl used
-            SavedTime_u32 = currentTime_u32;
-            Ret_e = s_FMKCPU_PerformDiagnostic();
-        }
-        // else do other thing( or nothing for now)
+     FMKCPU_Get_Tick(&currentTime_u32);
+
+    if((currentTime_u32 - SavedTime_u32) > (t_uint32)FMKCPU_TIME_BTWN_DIAG_MS)
+    {//perform diag on timer / chnl used
+        SavedTime_u32 = currentTime_u32;
+        Ret_e = s_FMKCPU_PerformDiagnostic();
     }
+        // else do other thing( or nothing for now)
+    
     return Ret_e;
 }
 

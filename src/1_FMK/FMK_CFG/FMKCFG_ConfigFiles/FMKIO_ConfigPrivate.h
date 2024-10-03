@@ -77,7 +77,7 @@
     // ********************************************************************
     /* CAUTION : Automatic generated code section for Variable: Start */
     /**< Variable for bsp_enum pin mapping */
-    const t_uint32 c_BspPinMapping_ua32[FMKIO_GPIO_PIN_NB] = {
+    const t_uint16 c_BspPinMapping_ua16[FMKIO_GPIO_PIN_NB] = {
         GPIO_PIN_0,               // FMKIO_GPIO_PIN_0
         GPIO_PIN_1,               // FMKIO_GPIO_PIN_1
         GPIO_PIN_2,               // FMKIO_GPIO_PIN_2
@@ -109,8 +109,7 @@
         {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_3},    // FMKIO_INPUT_SIGDIG_8,
         {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_4},    // FMKIO_INPUT_SIGDIG_9,
         {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_5},    // FMKIO_INPUT_SIGDIG_10,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_10},   // FMKIO_INPUT_SIGDIG_11,
-        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_11},   // FMKIO_INPUT_SIGDIG_12,
+        {FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_11},   // FMKIO_INPUT_SIGDIG_11,
     };
 
     /**< Variable for bsp_Gpio_Pin, adc coonfig Analog input signal mapping */
@@ -139,8 +138,8 @@
     /**< Variable for bsp_Gpio_Pin frequency input signal mapping */
     const t_sFMKIO_BspEvntSigCfg c_InEvntSigBspMap_as[FMKIO_INPUT_SIGEVNT_NB] = {
         //GPIO_name                     Pin_name                      GPIO_IRQN                     bsp pin name                  
-        {{FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_0},              EXTI0_1_IRQn},             // FMKIO_INPUT_SIGEVNT_1,
-        {{FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_1},              EXTI0_1_IRQn},             // FMKIO_INPUT_SIGEVNT_2,
+        {{FMKIO_GPIO_PORT_B,             FMKIO_GPIO_PIN_10},             FMKCPU_NVIC_EXTI4_15_IRQN},             // FMKIO_INPUT_SIGEVNT_1,
+        {{FMKIO_GPIO_PORT_A,             FMKIO_GPIO_PIN_1},              FMKCPU_NVIC_EXTI0_1_IRQN},             // FMKIO_INPUT_SIGEVNT_2,
     };
 
     /**< Variable for bsp_Gpio_Pin Digital ouput signal mapping */
