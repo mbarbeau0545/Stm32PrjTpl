@@ -44,6 +44,14 @@ typedef enum
     FMKMAC_ERRSTATE_TIMEOUT = 0x100                  /**< Timeout delay (transfer has take too many time)*/
 } t_eFMKMAC_DmaChnlErr;
 
+/**< Union to centralize Dma Handle TypeDef  */
+typedef union 
+{
+    ADC_HandleTypeDef adcHandle_s;
+    USART_HandleTypeDef UsartHandle_s;
+    SPI_HandleTypeDef SpiHandle_s;
+} t_uFMKMAC_DmaHandleType;
+
 /* CAUTION : Automatic generated code section for Structure: Start */
 
 /* CAUTION : Automatic generated code section for Structure: End */
@@ -124,7 +132,8 @@ t_sFMKMAC_DmaInfo g_DmaInfo_as[FMKMAC_DMA_CTRL_NB] = {
 */
 static t_eReturnState s_FMKMAC_Set_DmaBspCfg(t_eFMKMAC_DmaRqstType f_RqstType_e,
                                                 DMA_HandleTypeDef * f_bspDma_ps,
-                                                t_eFMKMAC_DmaTransferPriority f_dmaPrio_e);
+                                                t_eFMKMAC_DmaTransferPriority f_dmaPrio_e,
+                                                t_uFMKMAC_DmaHandleType * f_modHandle_pu);
 /**
 *
 *	@brief      Function to get the bsp dma priority
@@ -178,7 +187,8 @@ t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType,
         {   
             Ret_e = s_FMKMAC_Set_DmaBspCfg(f_DmaType, 
                                             &DmaChnl_ps->bspDma_ps,
-                                            c_FmkMac_DmaRqstCfg_as[f_DmaType].transfPrio_e);
+                                            c_FmkMac_DmaRqstCfg_as[f_DmaType].transfPrio_e,
+                                            (t_uFMKMAC_DmaHandleType *)f_ModuleHandle_pv);
         }
         if(Ret_e == RC_OK)
         {
@@ -207,7 +217,8 @@ t_eReturnState FMKMAC_RqstDmaInit(t_eFMKMAC_DmaRqstType f_DmaType,
  ***********************************/
 static t_eReturnState s_FMKMAC_Set_DmaBspCfg(t_eFMKMAC_DmaRqstType f_RqstType_e,
                                                 DMA_HandleTypeDef * f_bspDma_ps,
-                                                t_eFMKMAC_DmaTransferPriority f_dmaPrio_e)
+                                                t_eFMKMAC_DmaTransferPriority f_dmaPrio_e,
+                                                t_uFMKMAC_DmaHandleType * f_modHandle_pu)
 {
     t_eReturnState Ret_e = RC_OK;
     t_uint32 bspPriority_u32 = 0;
@@ -237,7 +248,11 @@ static t_eReturnState s_FMKMAC_Set_DmaBspCfg(t_eFMKMAC_DmaRqstType f_RqstType_e,
                 f_bspDma_ps->Init.MemInc = DMA_MINC_ENABLE;
                 f_bspDma_ps->Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
                 f_bspDma_ps->Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-                
+                // Make link between Module Handle and Dma Channel
+                //__HAL_LINKDMA
+                f_modHandle_pu->adcHandle_s.DMA_Handle = f_bspDma_ps;
+                f_bspDma_ps->Parent = &f_modHandle_pu->adcHandle_s;
+
                 break;
             }
             case FMKMAC_DMA_RQSTYPE_SPI1:

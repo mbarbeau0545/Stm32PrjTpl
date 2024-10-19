@@ -297,8 +297,6 @@
     t_eReturnState FMKIO_Set_OutPwmSigCfg(t_eFMKIO_OutPwmSig       f_signal_e, 
                                           t_eFMKIO_PullMode        f_pull_e,
                                           t_uint32                 f_frequency_u32,
-                                          t_uint16                 f_dutyCycle_u16,
-                                          t_bool                   f_startNow_b,
                                           t_cbFMKIO_SigErrorMngmt *f_sigErr_cb);
     /**
     *

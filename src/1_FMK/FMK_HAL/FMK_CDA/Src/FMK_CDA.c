@@ -663,72 +663,72 @@ static t_eReturnState s_FMKCDA_Set_BspAdcCfg(t_eFMKCDA_Adc f_Adc_e,
         bspAdcInit_s->LowPowerAutoPowerOff = ENABLE;
         switch (f_HwAdcCfg_e)
         {
-        case FMKCDA_ADC_CFG_PERIODIC_INTERRUPT:
-        {
-            bspAdcInit_s->ScanConvMode = DISABLE;
-            bspAdcInit_s->ContinuousConvMode = ENABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = DISABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-            break;
-        }
-        case FMKCDA_ADC_CFG_PERIODIC_DMA:
-        {
-            bspAdcInit_s->ScanConvMode = DISABLE;
-            bspAdcInit_s->ContinuousConvMode = ENABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = ENABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-            setAdcDmaCfg_b = True;
-            break;
-        }
-        case FMKCDA_ADC_CFG_SCAN_INTERRUPT:
-        {
-            bspAdcInit_s->ScanConvMode = ENABLE;
-            bspAdcInit_s->ContinuousConvMode = DISABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = DISABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-            break;
-        }
-        case FMKCDA_ADC_CFG_SCAN_DMA:
-        {
-            bspAdcInit_s->ScanConvMode = ADC_SCAN_ENABLE;
-            bspAdcInit_s->ContinuousConvMode = DISABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = ENABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-            setAdcDmaCfg_b = True;
-            break;
-        }
-        case FMKCDA_ADC_CFG_TRIGGERED_INTERRUPT:
-        {
-            bspAdcInit_s->ScanConvMode = DISABLE;
-            bspAdcInit_s->ContinuousConvMode = DISABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = DISABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC4; // Example trigger source
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-            break;
-        }
-        case FMKCDA_ADC_CFG_TRIGGERED_DMA:
-        {
-            bspAdcInit_s->ScanConvMode = DISABLE;
-            bspAdcInit_s->ContinuousConvMode = DISABLE;
-            bspAdcInit_s->DiscontinuousConvMode = DISABLE;
-            bspAdcInit_s->DMAContinuousRequests = ENABLE;
-            bspAdcInit_s->ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC4; // Example trigger source
-            bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-            setAdcDmaCfg_b = True;
-            break;
-        }
-        case FMKCDA_ADC_CFG_NB:
-        default:
-            Ret_e = RC_WARNING_NO_OPERATION;
+            case FMKCDA_ADC_CFG_PERIODIC_INTERRUPT:
+            {
+                bspAdcInit_s->ScanConvMode = DISABLE;
+                bspAdcInit_s->ContinuousConvMode = ENABLE;
+                bspAdcInit_s->DiscontinuousConvMode = DISABLE;
+                bspAdcInit_s->DMAContinuousRequests = DISABLE;
+                bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
+                bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+                break;
+            }
+            case FMKCDA_ADC_CFG_PERIODIC_DMA:
+            {
+                bspAdcInit_s->ScanConvMode = DISABLE;
+                bspAdcInit_s->ContinuousConvMode = ENABLE;
+                bspAdcInit_s->DiscontinuousConvMode = DISABLE;
+                bspAdcInit_s->DMAContinuousRequests = ENABLE;
+                bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
+                bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+                setAdcDmaCfg_b = True;
+                break;
+            }
+            case FMKCDA_ADC_CFG_SCAN_INTERRUPT:
+            {
+                bspAdcInit_s->ScanConvMode = ENABLE;
+                bspAdcInit_s->ContinuousConvMode = DISABLE;
+                bspAdcInit_s->DiscontinuousConvMode = DISABLE;
+                bspAdcInit_s->DMAContinuousRequests = DISABLE;
+                bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
+                bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+                break;
+            }
+            case FMKCDA_ADC_CFG_SCAN_DMA:
+            {
+                bspAdcInit_s->ScanConvMode = ADC_SCAN_ENABLE;
+                bspAdcInit_s->ContinuousConvMode = DISABLE;
+                bspAdcInit_s->DiscontinuousConvMode = DISABLE;
+                bspAdcInit_s->DMAContinuousRequests = ENABLE;
+                bspAdcInit_s->ExternalTrigConv = ADC_SOFTWARE_START;
+                bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+                setAdcDmaCfg_b = True;
+                break;
+            }
+            case FMKCDA_ADC_CFG_TRIGGERED_INTERRUPT:
+            {
+                bspAdcInit_s->ScanConvMode = DISABLE;
+                bspAdcInit_s->ContinuousConvMode = DISABLE;
+                bspAdcInit_s->DiscontinuousConvMode = DISABLE;
+                bspAdcInit_s->DMAContinuousRequests = DISABLE;
+                bspAdcInit_s->ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC4; // Example trigger source
+                bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+                break;
+            }
+            case FMKCDA_ADC_CFG_TRIGGERED_DMA:
+            {
+                bspAdcInit_s->ScanConvMode = DISABLE;
+                bspAdcInit_s->ContinuousConvMode = DISABLE;
+                bspAdcInit_s->DiscontinuousConvMode = DISABLE;
+                bspAdcInit_s->DMAContinuousRequests = ENABLE;
+                bspAdcInit_s->ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC4; // Example trigger source
+                bspAdcInit_s->ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+                setAdcDmaCfg_b = True;
+                break;
+            }
+            case FMKCDA_ADC_CFG_NB:
+            default:
+                Ret_e = RC_WARNING_NO_OPERATION;
         }
         // Set hardware clock register to enable
         Ret_e = FMKCPU_Set_HwClock(g_AdcInfo_as[f_Adc_e].clock_e, FMKCPU_CLOCKPORT_OPE_ENABLE);
@@ -782,7 +782,7 @@ static t_eReturnState s_FMKCDA_Set_BspChannelCfg(t_eFMKCDA_Adc f_Adc_e, t_eFMKCD
     }
     if(g_AdcInfo_as[f_Adc_e].IsAdcConfigured_b == (t_bool)False)
     {
-        Ret_e = RC_ERROR_ALREADY_CONFIGURED;
+        Ret_e = RC_ERROR_MISSING_CONFIG;
     }
     if (Ret_e == RC_OK)
     {

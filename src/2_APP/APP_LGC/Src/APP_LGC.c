@@ -193,17 +193,9 @@ static t_eReturnState s_APPLGC_PreOperational(void)
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_12, FMKIO_PULL_MODE_DISABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_9, FMKIO_PULL_MODE_DISABLE);
     //Ret_e = FMKIO_Set_InDigSigCfg(FMKIO_INPUT_SIGDIG_10, FMKIO_PULL_MODE_DISABLE);
-    Ret_e = FMKIO_Set_OutDigSigCfg(FMKIO_OUTPUT_SIGDIG_3, FMKIO_PULL_MODE_DISABLE, FMKIO_SPD_MODE_LOW);
+    Ret_e = FMKIO_Set_InAnaSigCfg(FMKIO_INPUT_SIGANA_2, FMKIO_PULL_MODE_DISABLE, NULL_FONCTION);
     
-    if(Ret_e == RC_OK)
-    {
-        Ret_e = FMKIO_Set_InEvntSigCfg(FMKIO_INPUT_SIGEVNT_1, 
-                                    FMKIO_PULL_MODE_UP,
-                                    FMKIO_STC_RISING_EDGE,
-                                    500,
-                                    s_APPLGC_callback,
-                                    NULL_FONCTION);
-    }
+   
     return Ret_e;
 }
 
@@ -213,8 +205,9 @@ static t_eReturnState s_APPLGC_PreOperational(void)
 static t_eReturnState s_APPLGC_Operational(void)
 {
     t_eReturnState Ret_e = RC_OK;
-    t_eFMKIO_DigValue value_e;
+    t_uint16 value_u16;
     //Ret_e = FMKIO_Get_InDigSigValue(FMKIO_INPUT_SIGDIG_10, &value_e);
+    Ret_e = FMKIO_Get_InAnaSigValue(FMKIO_INPUT_SIGANA_2, &value_u16);
     return Ret_e;
 }
 //************************************************************************************

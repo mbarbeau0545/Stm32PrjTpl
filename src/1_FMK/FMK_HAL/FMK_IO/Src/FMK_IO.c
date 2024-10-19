@@ -562,8 +562,6 @@ t_eReturnState FMKIO_Set_InEvntSigCfg(t_eFMKIO_InEvntSig f_signal_e,
 t_eReturnState FMKIO_Set_OutPwmSigCfg(t_eFMKIO_OutPwmSig       f_signal_e, 
                                           t_eFMKIO_PullMode        f_pull_e,
                                           t_uint32                 f_frequency_u32,
-                                          t_uint16                 f_dutyCycle_u16,
-                                          t_bool                   f_startNow_b,
                                           t_cbFMKIO_SigErrorMngmt *f_sigErr_cb)
 {
     t_eReturnState Ret_e = RC_OK;
@@ -584,11 +582,6 @@ t_eReturnState FMKIO_Set_OutPwmSigCfg(t_eFMKIO_OutPwmSig       f_signal_e,
         timer_e = c_OutPwmSigBspMap_as[f_signal_e].timer_e;
         TimChannel_e = c_OutPwmSigBspMap_as[f_signal_e].channel_e;
         Ret_e = FMKCPU_Set_PWMChannelCfg(timer_e, TimChannel_e, f_frequency_u32);
-
-        if (Ret_e == RC_OK && f_startNow_b == (t_bool)True)
-        {
-            Ret_e = FMKCPU_Set_PWMChannelDuty(timer_e, TimChannel_e, f_dutyCycle_u16);
-        }
         
         if (Ret_e == RC_OK)
         {

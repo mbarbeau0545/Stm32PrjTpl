@@ -279,7 +279,7 @@ class FMKIO_CodeGen():
                     + " " * (SPACE_VARIABLE - len(f"{ENUM_FMKCPU_TIMER_ROOT}_{pin_pwm_cfg[3][6:]},")) \
                     + f"{ENUM_FMKCPU_CHANNEL_ROOT}_{pin_pwm_cfg[4][8:]}" \
                     + "}," +  " " * (5 - len(f"{pin_pwm_cfg[4][8:]}")) \
-                    + f"// {ENUM_OUTSIGDIG_ROOT}_{idx + 1},\n"
+                    + f"// {ENUM_OUTSIGPWM_ROOT}_{idx + 1},\n"
         var_OutPWM += "    };\n\n" 
         #-----------------------------------------------------------
         #-----------------make OutDig cfg variable-------------------
